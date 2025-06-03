@@ -1,4 +1,4 @@
-// ClientDoc.cpp : implementation of the CClientDoc class
+﻿// ClientDoc.cpp : implementation of the CClientDoc class
 //
 
 #include "stdafx.h"

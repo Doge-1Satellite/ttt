@@ -1,4 +1,4 @@
-// GeneParams.cpp : implementation file
+﻿// GeneParams.cpp : implementation file
 //
 
 #include "stdafx.h"

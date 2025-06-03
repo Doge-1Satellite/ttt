@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "WinXPButtonST.h"
 
 #ifdef _DEBUG

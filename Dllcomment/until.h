@@ -1,10 +1,10 @@
-#if !defined(AFX_UNTIL_H_INCLUDED)
+ï»¿#if !defined(AFX_UNTIL_H_INCLUDED)
 #define AFX_UNTIL_H_INCLUDED
 typedef struct 
 {
 	unsigned ( __stdcall *start_address )( void * );
 	void	*arglist;
-	bool	bInteractive; // ÊÇ·ñÖ§³Ö½»»¥×ÀÃæ
+	bool	bInteractive; // æ˜¯å¦æ”¯æŒäº¤äº’æ¡Œé¢
 	HANDLE	hEventTransferArg;
 }THREAD_ARGLIST, *LPTHREAD_ARGLIST;
 

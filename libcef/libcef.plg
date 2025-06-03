@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <body>
 <pre>
 <h1>Build Log</h1>
@@ -9,13 +9,13 @@
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC41.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LIBCEF_EXPORTS" /Fp"Release/libcef.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /Zm660 /c 
-"C:\Users\Administrator\Desktop\Դ��\Զ��Դ��\EminĦ�ɸ�Դ��GAIͨѶ\EminĦ�ɸ�Դ��\libcef\libcef.cpp"
+"C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\libcef.cpp"
 ]
 Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPCC41.tmp" 
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC42.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LIBCEF_EXPORTS" /Fp"Release/libcef.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /Zm660 /c 
-"C:\Users\Administrator\Desktop\Դ��\Զ��Դ��\EminĦ�ɸ�Դ��GAIͨѶ\EminĦ�ɸ�Դ��\libcef\StdAfx.cpp"
+"C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\StdAfx.cpp"
 ]
 Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPCC42.tmp" 
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC43.tmp" with contents
@@ -30,7 +30,7 @@ Compiling...
 StdAfx.cpp
 Compiling...
 libcef.cpp
-C:\Users\Administrator\Desktop\Դ��\Զ��Դ��\EminĦ�ɸ�Դ��GAIͨѶ\EminĦ�ɸ�Դ��\libcef\../Install/MemoryModule.h(892) : warning C4390: ';' : empty controlled statement found; is this the intent?
+C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\../Install/MemoryModule.h(892) : warning C4390: ';' : empty controlled statement found; is this the intent?
 Linking...
    Creating library Release/libcef.lib and object Release/libcef.exp
 

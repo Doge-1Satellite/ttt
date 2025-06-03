@@ -1,4 +1,4 @@
-// ClientDoc.h : interface of the CClientDoc class
+﻿// ClientDoc.h : interface of the CClientDoc class
 //
 /////////////////////////////////////////////////////////////////////////////
 

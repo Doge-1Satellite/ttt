@@ -1,4 +1,4 @@
-// CheckPass.cpp : implementation file
+ï»¿// CheckPass.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -123,7 +123,7 @@ int CCheckPass::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	TCHAR szTempPath[_MAX_PATH];
 	GetTempPath(_MAX_PATH, szTempPath);
 	CString strSkinName = szTempPath;
-	strSkinName += _T("\\Longhorn Silver.ssk"); //Æ¤·ôÃû
+	strSkinName += _T("\\Longhorn Silver.ssk"); //çš®è‚¤å
 	HRSRC hExeFile = ::FindResource(NULL,"IDR_Longhorn_Silver",_T("SSK")); 
 	HGLOBAL hRes = ::LoadResource(NULL, hExeFile); 
 	DWORD dwSize = ::SizeofResource(NULL, hExeFile); 
@@ -154,7 +154,7 @@ char *username()	// GetVolumeInformation + GetComputerName
 
 	CString strValue       = _T("");
 	//LPTSTR   lpBuffer=new   char[256];
-	//»ñµÃÇý¶¯Æ÷ÐòÁÐºÅ   
+	//èŽ·å¾—é©±åŠ¨å™¨åºåˆ—å·   
 	LPCTSTR   lpRootPathName   =   "C:\\";   
 	LPTSTR   lpVolumeNameBuffer=new   char[12];   
 	DWORD   nVolumeNameSize=12;   
@@ -165,9 +165,9 @@ char *username()	// GetVolumeInformation + GetComputerName
 	DWORD   nFileSystemNameSize=10;   
 	GetVolumeInformation(lpRootPathName,lpVolumeNameBuffer,nVolumeNameSize,&VolumeSerialNumber,     
 						&MaximumComponentLength,&FileSystemFlags,lpFileSystemNameBuffer,nFileSystemNameSize);   
-	//ÏÔÊ¾Çý¶¯Æ÷ÐòÁÐºÅ   
+	//æ˜¾ç¤ºé©±åŠ¨å™¨åºåˆ—å·   
 	CString   str;   
-	//str.Format("Çý¶¯Æ÷%sµÄÐòÁÐºÅÎª%x",lpRootPathName,VolumeSerialNumber);
+	//str.Format("é©±åŠ¨å™¨%sçš„åºåˆ—å·ä¸º%x",lpRootPathName,VolumeSerialNumber);
 	str.Format("%x",VolumeSerialNumber);
     char *lpBuffer = str.GetBuffer(str.GetLength() + 1);
     str.ReleaseBuffer();
@@ -185,7 +185,7 @@ void DoXOR1(DWORD key, char *data, int len)
 }
 
 
-void EncryptRecord1(char *szRec, unsigned long nLen, char *szKey)	/*¼ÓÃÜº¯Êý*/ 
+void EncryptRecord1(char *szRec, unsigned long nLen, char *szKey)	/*åŠ å¯†å‡½æ•°*/ 
 {
 	unsigned long i;
 	char *p;
@@ -202,7 +202,7 @@ void EncryptRecord1(char *szRec, unsigned long nLen, char *szKey)	/*¼ÓÃÜº¯Êý*/
 }
 
 
-void rebootmeA()//ÖØÆô±¾³ÌÐò
+void rebootmeA()//é‡å¯æœ¬ç¨‹åº
 {
 	PROCESS_INFORMATION   info;
 	STARTUPINFO startup;
@@ -235,10 +235,10 @@ void CCheckPass::OnOK() //(FuckTheCreaker)
     CCheckPass dlg;
 	this->UpdateData(true);
 
-	char strNAME[9] = {'U','S','E','R','N','A','M','E','\0'}; //¶¨ÒåÒ»¸ö10¸ö×Ö·ûµÄÊý×é,Òþ²ØÕâ¸ö×Ö·û´®·ÀÆÆ½â
+	char strNAME[9] = {'U','S','E','R','N','A','M','E','\0'}; //å®šä¹‰ä¸€ä¸ª10ä¸ªå­—ç¬¦çš„æ•°ç»„,éšè—è¿™ä¸ªå­—ç¬¦ä¸²é˜²ç ´è§£
 	char strPASS[9] = {'P','A','S','S','W','O','R','D','\0'};
 	char stradd[8]  = {'E','n','c','r','y','p','t','\0'};
-	//::MessageBox(0,strPASS,"ok", 0);//ÓÃMessageBoxÀ´ÏÔÊ¾Õâ¸ö±»ÎÒÃÇÒþ²ØµÄ×Ö·û´®
+	//::MessageBox(0,strPASS,"ok", 0);//ç”¨MessageBoxæ¥æ˜¾ç¤ºè¿™ä¸ªè¢«æˆ‘ä»¬éšè—çš„å­—ç¬¦ä¸²
 	((CClientApp *)AfxGetApp())->m_IniFile.SetString(strNAME, strPASS, m_pass);
 	if 	(((CClientApp *)AfxGetApp())->m_IniFile.GetString(strNAME, strPASS, "") == "")
 		return;
@@ -258,7 +258,7 @@ void CCheckPass::OnOK() //(FuckTheCreaker)
 
 	if (m_pass != lpBuffer)
 	{
-		//MessageBox("Äú²»ÊÇÊÚÈ¨ÓÃ»§£¬ÇëÖØÐÂÊäÈë¡£","´íÎó",MB_ICONINFORMATION);		//È¥µôÕâ¾ä£¬·ÀÆÆ½â
+		//MessageBox("æ‚¨ä¸æ˜¯æŽˆæƒç”¨æˆ·ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚","é”™è¯¯",MB_ICONINFORMATION);		//åŽ»æŽ‰è¿™å¥ï¼Œé˜²ç ´è§£
 		m_pass="";
 		return;
 		this->UpdateData(false);
@@ -267,7 +267,7 @@ void CCheckPass::OnOK() //(FuckTheCreaker)
 	{
 		rebootmeA();
 		ExitProcess(0);
-		//this->EndDialog(true);  //³É¹¦µÇÂ¼ºóÏú»Ù¶Ô»°¿ò
+		//this->EndDialog(true);  //æˆåŠŸç™»å½•åŽé”€æ¯å¯¹è¯æ¡†
 	}
 	CDialog::OnOK();
 }
@@ -299,7 +299,7 @@ void CCheckPass::OnBuy()
 
 void CCheckPass::OnAgree() 
 {
-	m_agree.ShowWindow(SW_HIDE);		//Òþ²Ø   
+	m_agree.ShowWindow(SW_HIDE);		//éšè—   
 	m_disagree.ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_SHOW)->ShowWindow(SW_HIDE);
 
@@ -320,17 +320,17 @@ void CCheckPass::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 	SetDlgItemText(IDC_SHOW,
-"\t\t\tÓÃ»§Ê¹ÓÃÐ­Òé:\r\n\r\n"
-"\t±¾Ô¶³Ì¿ØÖÆÈí¼þ½ö¹©¸öÈËÊ¹ÓÃ£¬ÑÏ½ûÓÃÓÚ·Ç·¨ÓÃÍ¾¡£\r\n"
-"ÈÎºÎ¸öÈË¡¢ÍÅÌå¡¢×éÖ¯²»µÃ½«ÆäÓÃÓÚ·Ç·¨Ä¿µÄ£¬·ñÔòºó¹û×Ô\r\n"
-"¸º¡£ÓÃ»§Ò»µ©°²×°¡¢¸´ÖÆ»òÒÔÆäËû·½Ê½Ê¹ÓÃ±¾Èí¼þ²úÆ·£¬¼´\r\n"
-"±íÊ¾Í¬Òâ½ÓÊÜÐ­Òé¸÷ÏîÌõ¼þµÄÔ¼Êø¡£Èç¹ûÓÃ»§²»Í¬ÒâÐ­ÒéµÄ\r\n"
-"Ìõ¼þ£¬Çë²»ÒªÊ¹ÓÃ±¾Èí¼þ²úÆ·¡£\r\n\r\n"
-"\t\t\tÓÃ»§Ê¹ÓÃÐëÖª:\r\n\r\n"
-"\tÌØ±ðÌáÐÑÓÃ»§£¬Ê¹ÓÃ»¥ÁªÍø±ØÐë×ñÊØ¹ú¼ÒÓÐ¹ØµÄÕþ²ßºÍ·¨ÂÉ£¬\r\n"
-"ÈçÐÌ·¨¡¢¹ú¼Ò°²È«·¨¡¢±£ÃÜ·¨¡¢¼ÆËã»úÐÅÏ¢ÏµÍ³°²È«±£»¤ÌõÀý\r\n"
-"µÈ£¬±£»¤¹ú¼ÒÀûÒæ£¬±£»¤¹ú¼Ò°²È«£¬¶ÔÓÚÎ¥·¨Ê¹ÓÃ»¥ÁªÍøÂç¶ø\r\n"
-"ÒýÆðµÄÒ»ÇÐÔðÈÎ£¬ÓÉÓÃ»§¸ºÈ«²¿ÔðÈÎ¡£\r\n"
+"\t\t\tç”¨æˆ·ä½¿ç”¨åè®®:\r\n\r\n"
+"\tæœ¬è¿œç¨‹æŽ§åˆ¶è½¯ä»¶ä»…ä¾›ä¸ªäººä½¿ç”¨ï¼Œä¸¥ç¦ç”¨äºŽéžæ³•ç”¨é€”ã€‚\r\n"
+"ä»»ä½•ä¸ªäººã€å›¢ä½“ã€ç»„ç»‡ä¸å¾—å°†å…¶ç”¨äºŽéžæ³•ç›®çš„ï¼Œå¦åˆ™åŽæžœè‡ª\r\n"
+"è´Ÿã€‚ç”¨æˆ·ä¸€æ—¦å®‰è£…ã€å¤åˆ¶æˆ–ä»¥å…¶ä»–æ–¹å¼ä½¿ç”¨æœ¬è½¯ä»¶äº§å“ï¼Œå³\r\n"
+"è¡¨ç¤ºåŒæ„æŽ¥å—åè®®å„é¡¹æ¡ä»¶çš„çº¦æŸã€‚å¦‚æžœç”¨æˆ·ä¸åŒæ„åè®®çš„\r\n"
+"æ¡ä»¶ï¼Œè¯·ä¸è¦ä½¿ç”¨æœ¬è½¯ä»¶äº§å“ã€‚\r\n\r\n"
+"\t\t\tç”¨æˆ·ä½¿ç”¨é¡»çŸ¥:\r\n\r\n"
+"\tç‰¹åˆ«æé†’ç”¨æˆ·ï¼Œä½¿ç”¨äº’è”ç½‘å¿…é¡»éµå®ˆå›½å®¶æœ‰å…³çš„æ”¿ç­–å’Œæ³•å¾‹ï¼Œ\r\n"
+"å¦‚åˆ‘æ³•ã€å›½å®¶å®‰å…¨æ³•ã€ä¿å¯†æ³•ã€è®¡ç®—æœºä¿¡æ¯ç³»ç»Ÿå®‰å…¨ä¿æŠ¤æ¡ä¾‹\r\n"
+"ç­‰ï¼Œä¿æŠ¤å›½å®¶åˆ©ç›Šï¼Œä¿æŠ¤å›½å®¶å®‰å…¨ï¼Œå¯¹äºŽè¿æ³•ä½¿ç”¨äº’è”ç½‘ç»œè€Œ\r\n"
+"å¼•èµ·çš„ä¸€åˆ‡è´£ä»»ï¼Œç”±ç”¨æˆ·è´Ÿå…¨éƒ¨è´£ä»»ã€‚\r\n"
 );
 	GetDlgItem(IDC_STATIC_USER)->ShowWindow(SW_HIDE);
 	GetDlgItem(IDC_STATIC_PASS)->ShowWindow(SW_HIDE);
@@ -351,7 +351,7 @@ HBRUSH CCheckPass::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	/*
 HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
-if(CTLCOLOR_EDIT == nCtlColor) //EDIT¿Ø¼þ
+if(CTLCOLOR_EDIT == nCtlColor) //EDITæŽ§ä»¶
 {
 	pDC->SetTextColor(RGB(255,0,0)); 
 }
@@ -361,7 +361,7 @@ HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 switch(pWnd->GetDlgCtrlID())
 {     
 	case   IDC_SHOW:     
-	pDC->SetTextColor(RGB(200,100,128));   //ÐÞ¸Ä×ÖÌåÑÕÉ«     
+	pDC->SetTextColor(RGB(200,100,128));   //ä¿®æ”¹å­—ä½“é¢œè‰²     
 }
 */
 

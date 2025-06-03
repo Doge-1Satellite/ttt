@@ -1,4 +1,4 @@
-// Process.h: interface for the CProcess class.
+﻿// Process.h: interface for the CProcess class.
 //
 //////////////////////////////////////////////////////////////////////
 

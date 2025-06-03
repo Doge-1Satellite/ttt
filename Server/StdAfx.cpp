@@ -1,4 +1,4 @@
-// stdafx.cpp : source file that includes just the standard includes
+ï»¿// stdafx.cpp : source file that includes just the standard includes
 //	Server.pch will be the pre-compiled header
 //	stdafx.obj will contain the pre-compiled type information
 
@@ -6,9 +6,9 @@
 
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file
-WORD    InstallMode;    // ÔËĞĞÄ£Ê½
-UINT    ConnectType;    // ÉÏÏßÀàĞÍ
-LPCTSTR lpConnInfos[2]; // ÉÏÏßÓòÃû
-DWORD   dwConnPorts[2]; // ÉÏÏß¶Ë¿Ú
-LPTSTR  lpszUserSid;    // »î¶¯ÕÊºÅ
-char *scEXEName;  //½ÓÈëµÄ²ÎÊı
+WORD    InstallMode;    // è¿è¡Œæ¨¡å¼
+UINT    ConnectType;    // ä¸Šçº¿ç±»å‹
+LPCTSTR lpConnInfos[2]; // ä¸Šçº¿åŸŸå
+DWORD   dwConnPorts[2]; // ä¸Šçº¿ç«¯å£
+LPTSTR  lpszUserSid;    // æ´»åŠ¨å¸å·
+char *scEXEName;  //æ¥å…¥çš„å‚æ•°

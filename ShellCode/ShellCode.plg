@@ -1,4 +1,4 @@
-<html>
+ï»¿<html>
 <body>
 <pre>
 <h1>Build Log</h1>
@@ -9,13 +9,13 @@
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPA3AE.tmp" with contents
 [
 /nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/ShellCode.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\ShellCode\ShellCode.cpp"
+"C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \ShellCode\ShellCode.cpp"
 ]
 Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPA3AE.tmp" 
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPA3AF.tmp" with contents
 [
 /nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/ShellCode.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\ShellCode\StdAfx.cpp"
+"C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \ShellCode\StdAfx.cpp"
 ]
 Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPA3AF.tmp" 
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPA3B0.tmp" with contents
@@ -40,9 +40,9 @@ copy /Y Release\ShellCode.exe ..\Bin\Plugins\ShellCode.exe
 ]
 Creating command line "C:\Users\Administrator\AppData\Local\Temp\RSPA4EA.bat"
 
-ÒÑ¸´ÖÆ         1 ¸öÎÄ¼ş¡£
-ÒÑ¸´ÖÆ         1 ¸öÎÄ¼ş¡£
-ÒÑ¸´ÖÆ         1 ¸öÎÄ¼ş¡£
+å·²å¤åˆ¶         1 ä¸ªæ–‡ä»¶ã€‚
+å·²å¤åˆ¶         1 ä¸ªæ–‡ä»¶ã€‚
+å·²å¤åˆ¶         1 ä¸ªæ–‡ä»¶ã€‚
 
 
 

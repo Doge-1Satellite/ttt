@@ -1,4 +1,4 @@
-// ShellManager.cpp: implementation of the CShellManager class.
+ï»¿// ShellManager.cpp: implementation of the CShellManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -284,7 +284,7 @@ DWORD WINAPI CShellManager::ReadPipeThread(LPVOID lparam)
 			memset(ReadBuff, 0, sizeof(ReadBuff));
 			LPBYTE lpBuffer = (LPBYTE)pLocalAlloc(LPTR, TotalBytesAvail);
 			pReadFile(pThis->m_hReadPipeHandle, lpBuffer, TotalBytesAvail, &BytesRead, NULL);
-			// ·¢ËÍÊý¾Ý
+			// å‘é€æ•°æ®
 			pThis->Send(lpBuffer, BytesRead);
 			pLocalFree(lpBuffer);
 		}

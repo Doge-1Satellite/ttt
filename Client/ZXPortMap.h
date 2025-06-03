@@ -1,4 +1,4 @@
-// ZXPortMap.h: interface for the CZXPortMap class.
+ï»¿// ZXPortMap.h: interface for the CZXPortMap class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -119,7 +119,7 @@ public:
 	static int nThreadNum;
 	CZXPortMap();
 	virtual ~CZXPortMap();
-	static int DataSend(SOCKET s, char *DataBuf, int DataLen);//½«DataBufÖĞµÄDataLen¸ö×Ö½Ú·¢µ½sÈ¥
+	static int DataSend(SOCKET s, char *DataBuf, int DataLen);//å°†DataBufä¸­çš„DataLenä¸ªå­—èŠ‚å‘åˆ°så»
 	static DWORD WINAPI TransmitData(LPVOID lParam);
 	static DWORD WINAPI PortTransfer_1(LPVOID lParam);
 	static DWORD WINAPI PortTransfer_2(LPVOID lParam);

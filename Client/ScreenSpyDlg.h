@@ -1,4 +1,4 @@
-#if !defined(AFX_SCREENSPYDLG_H__8C27AA31_1C2A_428A_A937_BC00F2519DB1__INCLUDED_)
+Ôªø#if !defined(AFX_SCREENSPYDLG_H__8C27AA31_1C2A_428A_A937_BC00F2519DB1__INCLUDED_)
 #define AFX_SCREENSPYDLG_H__8C27AA31_1C2A_428A_A937_BC00F2519DB1__INCLUDED_
 
 #include "CursorInfo.h"
@@ -89,9 +89,9 @@ private:
 	CCursorInfo	m_CursorInfo;
 	void DrawTipString(CString str);
 	void DrawFirstScreen();
-	void DrawNextScreenHome();	// º“”√∞Ïπ´À„∑®
+	void DrawNextScreenHome();	// ÂÆ∂Áî®ÂäûÂÖ¨ÁÆóÊ≥ï
 	bool JPG_BMP(int cbit, void *input, int inlen, void *output);
-	void DrawNextScreenXvid();	// ”∞ ””È¿÷À„∑®
+	void DrawNextScreenXvid();	// ÂΩ±ËßÜÂ®±‰πêÁÆóÊ≥ï
 	void SendResetScreen(int nBitCount);
 	void SendResetAlgorithm(UINT nAlgorithm);
 	void FullScreen();

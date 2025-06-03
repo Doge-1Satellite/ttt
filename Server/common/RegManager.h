@@ -1,4 +1,4 @@
-// RegManager.h: interface for the CRegManager class.
+﻿// RegManager.h: interface for the CRegManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

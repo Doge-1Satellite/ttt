@@ -1,4 +1,4 @@
- Server
+ï»¿ Server
 
  Timestamp is 67ece9ed (Wed Apr 02 15:40:29 2025)
 
@@ -3232,7 +3232,7 @@
  0001:000584c0       _xvid_gbl_info             100594c0 f   libxvidcore:xvid.obj
  0001:00058510       _xvid_gbl_convert          10059510 f   libxvidcore:xvid.obj
 
-Line numbers for .\Release\ZXPortMap.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ZXPortMap.cpp) segment .text
+Line numbers for .\Release\ZXPortMap.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ZXPortMap.cpp) segment .text
 
     28 0001:00027d60    29 0001:00027d62    30 0001:00027d6d    31 0001:00027d70
     34 0001:00027da0    36 0001:00027da6    39 0001:00027db0    46 0001:00027dd3
@@ -3260,7 +3260,7 @@ Line numbers for .\Release\ZXPortMap.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³
    437 0001:00028228   440 0001:00028239   441 0001:0002823e   443 0001:00028245
    447 0001:00028253   448 0001:0002825d   452 0001:00028267   453 0001:0002826f
 
-Line numbers for .\Release\XvidEnc.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\xvidsdk\XvidEnc.cpp) segment .text
+Line numbers for .\Release\XvidEnc.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\xvidsdk\XvidEnc.cpp) segment .text
 
     11 0001:00027b80    18 0001:00027b87    19 0001:00027bb3    22 0001:00027bb7
     21 0001:00027bbd    22 0001:00027bc1    25 0001:00027bd0    30 0001:00027be0
@@ -3275,7 +3275,7 @@ Line numbers for .\Release\XvidEnc.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ
     84 0001:00027d30    85 0001:00027d33    87 0001:00027d4e    88 0001:00027d51
     91 0001:00027d54    90 0001:00027d55    91 0001:00027d58
 
-Line numbers for .\Release\until.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\until.cpp) segment .text
+Line numbers for .\Release\until.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\until.cpp) segment .text
 
     20 0001:000270d0    22 0001:000270eb    25 0001:000270ed    24 0001:000270ee
     25 0001:000270f3    28 0001:00027100    35 0001:0002711b    38 0001:0002713e
@@ -3328,7 +3328,7 @@ Line numbers for .\Release\until.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Â
    432 0001:00027b5a   433 0001:00027b5d   434 0001:00027b65   435 0001:00027b68
    436 0001:00027b75
 
-Line numbers for .\Release\SystemManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\SystemManager.cpp) segment .text
+Line numbers for .\Release\SystemManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\SystemManager.cpp) segment .text
 
     71 0001:00024380    72 0001:000243a7    73 0001:000243ab    74 0001:000243af
     75 0001:000243b9    79 0001:000243cb    80 0001:000243ee    81 0001:00024403
@@ -3473,7 +3473,7 @@ Line numbers for .\Release\SystemManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
   1251 0001:0002702a  1253 0001:0002703c  1254 0001:0002705f  1261 0001:00027094
   1264 0001:0002709f  1267 0001:000270b1  1171 0001:000270bb  1267 0001:000270be
 
-Line numbers for .\Release\SysInfo.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\SysInfo.cpp) segment .text
+Line numbers for .\Release\SysInfo.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\SysInfo.cpp) segment .text
 
     34 0001:0001f7d0    35 0001:0001f80a    36 0001:0001f80e    37 0001:0001f812
     38 0001:0001f81c    40 0001:0001f82b    43 0001:0001f844    44 0001:0001f86a
@@ -3669,7 +3669,7 @@ Line numbers for .\Release\SysInfo.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ
   1723 0001:00024346  1728 0001:00024348  1729 0001:0002434d  1734 0001:0002434f
   1736 0001:00024368
 
-Line numbers for .\Release\SysInfo.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Proxy.h) segment .text
+Line numbers for .\Release\SysInfo.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Proxy.h) segment .text
 
    114 0001:0001e0d0   118 0001:0001e0fc   119 0001:0001e100   120 0001:0001e105
    121 0001:0001e114   116 0001:0001e11c   123 0001:0001e129   126 0001:0001e130
@@ -3823,7 +3823,7 @@ Line numbers for .\Release\ShellManager.obj(C:\Program Files (x86)\Microsoft Vis
 
     57 0001:0001d890
 
-Line numbers for .\Release\ShellManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ShellManager.cpp) segment .text
+Line numbers for .\Release\ShellManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ShellManager.cpp) segment .text
 
      7 0001:0001ca00    15 0001:0001cb30    21 0001:0001cb62    28 0001:0001cbc8
     37 0001:0001cbdb    43 0001:0001cbee    58 0001:0001cc01    60 0001:0001cc18
@@ -3874,7 +3874,7 @@ Line numbers for .\Release\ShellManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\
    439 0001:0001d815   442 0001:0001d81b   443 0001:0001d829   449 0001:0001d858
    448 0001:0001d861   449 0001:0001d87e
 
-Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\Server.cpp) segment .text
+Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\Server.cpp) segment .text
 
     74 0001:00016f60    77 0001:00016f6c    78 0001:00016f70    79 0001:00016f77
     80 0001:00016f7b    83 0001:00016f88    82 0001:00016f89    83 0001:00016f8c
@@ -4082,7 +4082,7 @@ Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´
   1509 0001:0001c9c5  1511 0001:0001c9cc  1513 0001:0001c9d0  1810 0001:0001c9e0
   1813 0001:0001c9e5
 
-Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common/login.h) segment .text
+Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common/login.h) segment .text
 
     53 0001:00015ac0    54 0001:00015ac6    55 0001:00015aeb    56 0001:00015b15
     58 0001:00015b28    61 0001:00015be7    62 0001:00015bf4    63 0001:00015bfa
@@ -4154,7 +4154,7 @@ Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´
    677 0001:00016f11   680 0001:00016f1e   684 0001:00016f29   686 0001:00016f39
    688 0001:00016f56
 
-Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\decode.h) segment .text
+Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\decode.h) segment .text
 
     15 0001:00015910    22 0001:00015914    23 0001:00015938    24 0001:0001593a
     20 0001:00015947    24 0001:0001594a    26 0001:00015956    27 0001:00015962
@@ -4170,7 +4170,7 @@ Line numbers for .\Release\Server.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´
    106 0001:00015a8b   108 0001:00015a92   109 0001:00015a9f   111 0001:00015ab1
    112 0001:00015ab6   111 0001:00015ab8   112 0001:00015abc
 
-Line numbers for .\Release\SerManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\SerManager.cpp) segment .text
+Line numbers for .\Release\SerManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\SerManager.cpp) segment .text
 
     27 0001:00015090    28 0001:000150b7    29 0001:000150cc    32 0001:00015100
     34 0001:00015106    36 0001:00015110    37 0001:00015113    39 0001:00015118
@@ -4209,7 +4209,7 @@ Line numbers for .\Release\SerManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    318 0001:000158ca   319 0001:000158d1   320 0001:000158d8   321 0001:000158e6
    322 0001:000158f7   323 0001:000158fd
 
-Line numbers for .\Release\ScreenSpy.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ScreenSpy.cpp) segment .text
+Line numbers for .\Release\ScreenSpy.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ScreenSpy.cpp) segment .text
 
     22 0001:00014360    24 0001:00014450    30 0001:0001447a    31 0001:0001447d
     33 0001:0001447f    36 0001:00014486    38 0001:00014491    41 0001:0001449b
@@ -4265,11 +4265,11 @@ Line numbers for .\Release\ScreenSpy.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³
    409 0001:0001505d   412 0001:00015060   413 0001:00015064   414 0001:00015070
    416 0001:00015072   417 0001:0001507e   419 0001:00015089   420 0001:0001508d
 
-Line numbers for .\Release\ScreenManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\CursorInfo.h) segment .text
+Line numbers for .\Release\ScreenManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\CursorInfo.h) segment .text
 
     51 0001:000136c0    54 0001:000136d7    56 0001:000136e5
 
-Line numbers for .\Release\ScreenManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ScreenManager.cpp) segment .text
+Line numbers for .\Release\ScreenManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ScreenManager.cpp) segment .text
 
     16 0001:00013500    19 0001:000135eb    24 0001:00013631    25 0001:0001365a
     27 0001:00013667    28 0001:0001367d    30 0001:00013693    33 0001:00013750
@@ -4329,7 +4329,7 @@ Line numbers for .\Release\ScreenManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    394 0001:0001433c   395 0001:00014342   388 0001:00014343   395 0001:00014346
    398 0001:00014350   400 0001:00014356
 
-Line numbers for .\Release\RegManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\RegManager.cpp) segment .text
+Line numbers for .\Release\RegManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\RegManager.cpp) segment .text
 
     14 0001:00012b10    17 0001:00012b37    18 0001:00012b58    21 0001:00012b90
     23 0001:00012b96    27 0001:00012ba0    29 0001:00012ba1    30 0001:00012bb2
@@ -4377,7 +4377,7 @@ Line numbers for .\Release\RegManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    321 0001:0001348f   307 0001:00013491   309 0001:000134a4   311 0001:000134b6
    312 0001:000134bd   322 0001:000134bf   324 0001:000134c4   326 0001:000134d1
 
-Line numbers for .\Release\Registry.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Registry.cpp) segment .text
+Line numbers for .\Release\Registry.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Registry.cpp) segment .text
 
     16 0001:000126b0    18 0001:000126b2    20 0001:000126c9    38 0001:000126d0
     23 0001:000126d3    38 0001:000126da    29 0001:000126dd    38 0001:000126e4
@@ -4397,7 +4397,7 @@ Line numbers for .\Release\Registry.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³Ì
    172 0001:00012a90   175 0001:00012ab7   179 0001:00012abe   268 0001:00012ad0
    271 0001:00012af7   275 0001:00012afe
 
-Line numbers for .\Release\RegeditOpt.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\RegeditOpt.cpp) segment .text
+Line numbers for .\Release\RegeditOpt.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\RegeditOpt.cpp) segment .text
 
     25 0001:000120f0    47 0001:0001210a    48 0001:0001211d    47 0001:00012124
     48 0001:00012137    47 0001:0001213e    48 0001:00012151    47 0001:00012158
@@ -4420,7 +4420,7 @@ Line numbers for .\Release\RegeditOpt.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    184 0001:000125d4   186 0001:000125e0   187 0001:00012610   189 0001:0001262d
    190 0001:0001263a   191 0001:00012644   195 0001:00012652   196 0001:00012656
 
-Line numbers for .\Release\RegEditEx.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\RegEditEx.cpp) segment .text
+Line numbers for .\Release\RegEditEx.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\RegEditEx.cpp) segment .text
 
     68 0001:00011940    69 0001:00011966    74 0001:00011980    75 0001:000119ad
     76 0001:000119cf    83 0001:000119f9    84 0001:00011a2a    85 0001:00011a4c
@@ -4447,7 +4447,7 @@ Line numbers for .\Release\RegEditEx.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³
    256 0001:0001207d   265 0001:00012090   266 0001:00012093   262 0001:000120a4
    263 0001:000120b0   266 0001:000120b7
 
-Line numbers for .\Release\QQInfoManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\QQInfoManager.cpp) segment .text
+Line numbers for .\Release\QQInfoManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\QQInfoManager.cpp) segment .text
 
     16 0001:0000fc80    18 0001:0000fca7    19 0001:0000fcc8    20 0001:0000fccf
     21 0001:0000fcd6    24 0001:0000fd10    26 0001:0000fd16    29 0001:0000fd20
@@ -4576,7 +4576,7 @@ Line numbers for .\Release\QQInfoManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    829 0001:000118ff   830 0001:0001190e   831 0001:00011912   833 0001:0001192d
    834 0001:00011931
 
-Line numbers for .\Release\ProxyManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ProxyManager.cpp) segment .text
+Line numbers for .\Release\ProxyManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ProxyManager.cpp) segment .text
 
     15 0001:0000f640    16 0001:0000f668    17 0001:0000f683    20 0001:0000f690
     21 0001:0000f6ab    24 0001:0000f6e0    26 0001:0000f708    27 0001:0000f71d
@@ -4628,7 +4628,7 @@ Line numbers for .\Release\Path.obj(C:\Program Files (x86)\Microsoft Visual Stud
     53 0001:0000f5a0    58 0001:0000f5a6    61 0001:0000f5d7    62 0001:0000f5e3
     63 0001:0000f623
 
-Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Path.h) segment .text
+Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Path.h) segment .text
 
    149 0001:0000e9e0   150 0001:0000e9fb   151 0001:0000ea0c   152 0001:0000ea38
    154 0001:0000ea49   155 0001:0000ea5c   156 0001:0000eae9   157 0001:0000eaeb
@@ -4636,7 +4636,7 @@ Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë
    165 0001:0000ebe9   166 0001:0000ec00   167 0001:0000ec11   168 0001:0000ec22
    169 0001:0000ec2b
 
-Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Path.cpp) segment .text
+Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Path.cpp) segment .text
 
     27 0001:0000e140    28 0001:0000e1e5    29 0001:0000e206    37 0001:0000e220
     39 0001:0000e247    60 0001:0000e320    66 0001:0000e340    67 0001:0000e34a
@@ -4677,7 +4677,7 @@ Line numbers for .\Release\Path.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë
    540 0001:0000f0d4   541 0001:0000f0fa   558 0001:0000f110   559 0001:0000f127
    561 0001:0000f15e
 
-Line numbers for .\Release\Myfunction.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\Myfunction.cpp) segment .text
+Line numbers for .\Release\Myfunction.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\Myfunction.cpp) segment .text
 
     73 0001:0000def0    78 0001:0000df0d    79 0001:0000df10    80 0001:0000df1f
     81 0001:0000df22    82 0001:0000df2e    83 0001:0000df31    88 0001:0000df40
@@ -4694,7 +4694,7 @@ Line numbers for .\Release\Myfunction.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    233 0001:0000e0b0   238 0001:0000e0d0   306 0001:0000e0e0   309 0001:0000e0e6
    310 0001:0000e0f3   311 0001:0000e10b   315 0001:0000e119
 
-Line numbers for .\Release\Manager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Manager.cpp) segment .text
+Line numbers for .\Release\Manager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Manager.cpp) segment .text
 
     14 0001:0000dc80    15 0001:0000dc83    16 0001:0000dc87    19 0001:0000dc96
     20 0001:0000dcad    21 0001:0000dcba    24 0001:0000dce0    25 0001:0000dce3
@@ -4706,7 +4706,7 @@ Line numbers for .\Release\Manager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ
     72 0001:0000de6e    75 0001:0000de70    77 0001:0000de7a    80 0001:0000de80
     83 0001:0000de99    89 0001:0000deb5    87 0001:0000dec8    89 0001:0000dece
 
-Line numbers for .\Release\KeyboardManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\KeyboardManager.cpp) segment .text
+Line numbers for .\Release\KeyboardManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\KeyboardManager.cpp) segment .text
 
     13 0001:0000d8e0    15 0001:0000d907    16 0001:0000d91c    17 0001:0000d923
     20 0001:0000d960    21 0001:0000d966    22 0001:0000d970    26 0001:0000d980
@@ -4723,7 +4723,7 @@ Line numbers for .\Release\KeyboardManager.obj(C:\Users\Administrator\Desktop\Ô´
    100 0001:0000dc34   102 0001:0000dc3a   118 0001:0000dc45   111 0001:0000dc4e
    113 0001:0000dc57   114 0001:0000dc62   115 0001:0000dc69   118 0001:0000dc72
 
-Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\KernelManager.cpp) segment .text
+Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\KernelManager.cpp) segment .text
 
     31 0001:0000c7f0    33 0001:0000c7fd    34 0001:0000c80b    36 0001:0000c817
     37 0001:0000c825    38 0001:0000c834    40 0001:0000c83e    41 0001:0000c848
@@ -4789,7 +4789,7 @@ Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    471 0001:0000d8a3   473 0001:0000d8a8   490 0001:0000d8b0   492 0001:0000d8bc
    493 0001:0000d8cc   494 0001:0000d8db
 
-Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\loop.h) segment .text
+Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\loop.h) segment .text
 
     46 0001:0000a750    49 0001:0000a759    52 0001:0000a7f1    55 0001:0000a85d
     57 0001:0000a8b3    58 0001:0000a8c7    60 0001:0000a8c9    65 0001:0000a9f1
@@ -4893,7 +4893,7 @@ Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    817 0001:0000c7c1   818 0001:0000c7c7   821 0001:0000c7d0   823 0001:0000c7dd
    824 0001:0000c7df
 
-Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\MyGnonen.h) segment .text
+Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\MyGnonen.h) segment .text
 
     66 0001:0000a5f0    68 0001:0000a5fa    71 0001:0000a605    73 0001:0000a620
     75 0001:0000a629    79 0001:0000a62f    81 0001:0000a65a   102 0001:0000a660
@@ -4903,7 +4903,7 @@ Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    119 0001:0000a70a   121 0001:0000a721   123 0001:0000a72b   124 0001:0000a72f
    125 0001:0000a737   126 0001:0000a73d
 
-Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\keylog.h) segment .text
+Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\keylog.h) segment .text
 
      4 0001:0000a190     7 0001:0000a19a    13 0001:0000a1aa    19 0001:0000a1be
     21 0001:0000a24d    22 0001:0000a25e    23 0001:0000a265    25 0001:0000a272
@@ -4926,7 +4926,7 @@ Line numbers for .\Release\KernelManager.obj(C:\Users\Administrator\Desktop\Ô´Âë
    497 0001:0000a5b8   500 0001:0000a5c4   501 0001:0000a5c6   503 0001:0000a5ca
    434 0001:0000a5dc   411 0001:0000a5eb
 
-Line numbers for .\Release\GetNetState.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\GetNetState.cpp) segment .text
+Line numbers for .\Release\GetNetState.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\GetNetState.cpp) segment .text
 
     13 0001:000090f0    14 0001:000090fa    24 0001:00009109    27 0001:0000911f
     31 0001:00009133    33 0001:0000913d   210 0001:00009151   211 0001:0000915b
@@ -4989,7 +4989,7 @@ Line numbers for .\Release\FileManager.obj(C:\Program Files (x86)\Microsoft Visu
    388 0001:00008ec7   389 0001:00008ed6   390 0001:00008ee1   389 0001:00008ee4
    390 0001:00008ee7   108 0001:00008ef0   109 0001:00008ef2   110 0001:00008ef6
 
-Line numbers for .\Release\FileManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\FileManager.cpp) segment .text
+Line numbers for .\Release\FileManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\FileManager.cpp) segment .text
 
     31 0001:00006f10    32 0001:00006f68    33 0001:00006f73    34 0001:00006f8d
     38 0001:00006f90    39 0001:00006fad    42 0001:00006ff0    43 0001:00007018
@@ -5097,14 +5097,14 @@ Line numbers for .\Release\FileFinder.obj(C:\Program Files (x86)\Microsoft Visua
 
    315 0001:00006ef0   317 0001:00006f00
 
-Line numbers for .\Release\FileFinder.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\FileFinder.h) segment .text
+Line numbers for .\Release\FileFinder.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\FileFinder.h) segment .text
 
     49 0001:00006550    53 0001:00006bb0    54 0001:00006bb4    55 0001:00006bb9
     56 0001:00006bc6    57 0001:00006bc8    58 0001:00006bd7    59 0001:00006bda
     60 0001:00006bdd    61 0001:00006be9    62 0001:00006bf8    63 0001:00006c07
     64 0001:00006c16    65 0001:00006c25    66 0001:00006c38
 
-Line numbers for .\Release\FileFinder.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\FileFinder.cpp) segment .text
+Line numbers for .\Release\FileFinder.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\FileFinder.cpp) segment .text
 
     23 0001:00006470    26 0001:000064a5    29 0001:000064f0    31 0001:00006513
     52 0001:000065b0    53 0001:000065ce    54 0001:000065d7    55 0001:000065eb
@@ -5133,7 +5133,7 @@ Line numbers for .\Release\FileFinder.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    241 0001:00006e8c   244 0001:00006ea4   259 0001:00006eb0   260 0001:00006eb3
    261 0001:00006ec9   264 0001:00006ed0   266 0001:00006ed4   267 0001:00006ede
 
-Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\DllManager.cpp) segment .text
+Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\DllManager.cpp) segment .text
 
     23 0001:00005ad0    25 0001:00005afa    26 0001:00005b1e    28 0001:00005b24
     29 0001:00005b2b    30 0001:00005b3a    31 0001:00005b3f    33 0001:00005b71
@@ -5167,7 +5167,7 @@ Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    322 0001:0000642c   328 0001:0000643c   325 0001:00006443   327 0001:0000644a
    328 0001:0000645c
 
-Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\MemLoadDll.h) segment .text
+Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\MemLoadDll.h) segment .text
 
     57 0001:00005460    61 0001:00005462    62 0001:00005464    63 0001:00005466
     64 0001:00005468    65 0001:0000546a    67 0001:0000546c    72 0001:00005470
@@ -5213,12 +5213,12 @@ Line numbers for .\Release\DllManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶
    496 0001:00005a84   497 0001:00005a8f   499 0001:00005a9b   502 0001:00005aa8
    504 0001:00005aaf   506 0001:00005abd   508 0001:00005ace
 
-Line numbers for .\Release\Dialupass.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Dialupass.h) segment .text
+Line numbers for .\Release\Dialupass.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Dialupass.h) segment .text
 
     55 0001:000053b0    58 0001:000053bd    59 0001:000053ca    61 0001:000053d3
     62 0001:000053e6    63 0001:00005410
 
-Line numbers for .\Release\Dialupass.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Dialupass.cpp) segment .text
+Line numbers for .\Release\Dialupass.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Dialupass.cpp) segment .text
 
     12 0001:00003d70    13 0001:00003d79    14 0001:00003d80    15 0001:00003d85
     16 0001:00003d8f    17 0001:00003da0    20 0001:00003db2    21 0001:00003dca
@@ -5276,7 +5276,7 @@ Line numbers for .\Release\Dialupass.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³
    558 0001:00005346   559 0001:0000535b   560 0001:00005370   561 0001:00005385
    562 0001:0000538f   565 0001:00005395   564 0001:0000539c   565 0001:0000539f
 
-Line numbers for .\Release\ClientSocket.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\ClientSocket.cpp) segment .text
+Line numbers for .\Release\ClientSocket.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\ClientSocket.cpp) segment .text
 
     64 0001:000030e0    66 0001:0000313e    67 0001:0000315c    71 0001:0000316a
     72 0001:00003174    74 0001:0000318a    77 0001:0000321b    81 0001:00003260
@@ -5327,7 +5327,7 @@ Line numbers for .\Release\ClientSocket.obj(C:\Users\Administrator\Desktop\Ô´Âë\
    473 0001:00003d3c   476 0001:00003d40   477 0001:00003d4a   479 0001:00003d4c
    480 0001:00003d53   483 0001:00003d60   485 0001:00003d6a
 
-Line numbers for .\Release\cJSON.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\cJSON.c) segment .text
+Line numbers for .\Release\cJSON.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\cJSON.c) segment .text
 
     82 0001:000016f0    87 0001:00001700    88 0001:00001719    89 0001:0000172f
     90 0001:00001748    91 0001:00001752    93 0001:0000175b   324 0001:00001760
@@ -5439,7 +5439,7 @@ Line numbers for .\Release\cJSON.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Â
     43 0001:00003036    44 0001:00003051    42 0001:00003055    44 0001:00003058
    671 0001:00003060   666 0001:00003090   672 0001:000030a0
 
-Line numbers for .\Release\ChatManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\ChatManager.cpp) segment .text
+Line numbers for .\Release\ChatManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\ChatManager.cpp) segment .text
 
      5 0001:00000f70     9 0001:00000f97    10 0001:00000fc2    11 0001:00000fc9
     12 0001:00000fdd    13 0001:00000fe8    16 0001:00001020    17 0001:00001023
@@ -5468,7 +5468,7 @@ Line numbers for .\Release\ChatManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô
    221 0001:0000168f   222 0001:0000169a   224 0001:000016a1   225 0001:000016ad
    227 0001:000016b0   228 0001:000016c0   230 0001:000016cf   231 0001:000016e1
 
-Line numbers for .\Release\Buffer.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Buffer.cpp) segment .text
+Line numbers for .\Release\Buffer.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Buffer.cpp) segment .text
 
     37 0001:00000b80    39 0001:00000b83    41 0001:00000b88    43 0001:00000b8e
     44 0001:00000b9e    64 0001:00000bd0    65 0001:00000bd3    66 0001:00000be0
@@ -5494,7 +5494,7 @@ Line numbers for .\Release\Buffer.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´
    421 0001:00000f1e   423 0001:00000f25   424 0001:00000f33   425 0001:00000f41
    428 0001:00000f48   429 0001:00000f51   479 0001:00000f60   481 0001:00000f69
 
-Line numbers for .\Release\AudioManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\AudioManager.cpp) segment .text
+Line numbers for .\Release\AudioManager.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\AudioManager.cpp) segment .text
 
     12 0001:00000880    17 0001:000008aa    19 0001:000008d1    29 0001:000008d8
     24 0001:000008ed    26 0001:00000900    28 0001:00000907    29 0001:00000917
@@ -5510,7 +5510,7 @@ Line numbers for .\Release\AudioManager.obj(C:\Users\Administrator\Desktop\Ô´Âë\
     84 0001:00000b4b    87 0001:00000b50    90 0001:00000b5f    92 0001:00000b70
     93 0001:00000b74
 
-Line numbers for .\Release\Audio.obj(C:\Users\Administrator\Desktop\Ô´Âë\Ô¶³ÌÔ´Âë\EminÄ¦ÄÉ¸çÔ´ÂëGAIÍ¨Ñ¶\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\Audio.cpp) segment .text
+Line numbers for .\Release\Audio.obj(C:\Users\Administrator\Desktop\æºç \è¿œç¨‹æºç \Eminæ‘©çº³å“¥æºç GAIé€šè®¯\Eminæ‘©çº³å“¥æºç \Server\common\Audio.cpp) segment .text
 
     12 0001:00000000    20 0001:00000004    21 0001:00000016    23 0001:00000067
     24 0001:0000006f    25 0001:0000007b    26 0001:0000007e    27 0001:00000081

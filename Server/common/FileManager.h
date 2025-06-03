@@ -1,4 +1,4 @@
-// FileManager.h: interface for the CFileManager class.
+ï»¿// FileManager.h: interface for the CFileManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -18,8 +18,8 @@ using namespace std;
 
 typedef struct 
 {
-	UINT	nFileSize;	// ÎÄ¼ş´óĞ¡
-	UINT	nSendSize;	// ÒÑ·¢ËÍ´óĞ¡
+	UINT	nFileSize;	// æ–‡ä»¶å¤§å°
+	UINT	nSendSize;	// å·²å‘é€å¤§å°
 }SENDFILEPROGRESS, *PSENDFILEPROGRESS;
 
 
@@ -36,8 +36,8 @@ private:
 	UINT m_nTransferMode;
 	HANDLE m_hFileSend;
 	HANDLE m_hFileRecv;
-	char m_strCurrentProcessFileName[MAX_PATH]; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼ş
-	__int64 m_nCurrentProcessFileLength; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼şµÄ³¤¶È
+	char m_strCurrentProcessFileName[MAX_PATH]; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶
+	__int64 m_nCurrentProcessFileLength; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶çš„é•¿åº¦
 	HANDLE ImpersonateLoggedOnUserWrapper();
 	bool MakeSureDirectoryPathExists(LPCTSTR pszDirPath);
 	bool UploadToRemote(LPBYTE lpBuffer);

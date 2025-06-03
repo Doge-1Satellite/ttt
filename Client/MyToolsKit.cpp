@@ -1,4 +1,4 @@
-// MyToolsKit.cpp : implementation file
+ï»¿// MyToolsKit.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -73,7 +73,7 @@ BOOL CMyToolsKit::OnInitDialog()
 // 	SetIcon(AfxGetApp()->LoadIcon(IDI_TOOL),FALSE);
 // 	SetIcon(AfxGetApp()->LoadIcon(IDI_TOOL),TRUE);
 
-	//³õÊ¼»¯Í¼±ê×ÊÔ´±äÁ¿
+	//åˆå§‹åŒ–å›¾æ ‡èµ„æºå˜é‡
     lpIR = (LPICONRESOURCE )malloc(sizeof(ICONRESOURCE));
 	lstrcpy( lpIR->szOriginalICOFileName, "Untitled" );
 	lstrcpy( lpIR->szOriginalDLLFileName, "" );
@@ -102,7 +102,7 @@ BOOL CALLBACK MyEnumProcedure( HANDLE  hModule, LPCTSTR  lpszType, LPTSTR  lpszN
     // Name is from MAKEINTRESOURCE()
     if( HIWORD(lpszName) == 0 )
     {
-        wsprintf( szBuffer, "Í¼±ê [%d]", (DWORD)lpszName );
+        wsprintf( szBuffer, "å›¾æ ‡ [%d]", (DWORD)lpszName );
         lpID = lpszName;
     }
     else
@@ -110,7 +110,7 @@ BOOL CALLBACK MyEnumProcedure( HANDLE  hModule, LPCTSTR  lpszType, LPTSTR  lpszN
         // Name is string
         //lpID = strdup( lpszName );
         
-		wsprintf( szBuffer, "Í¼±ê [%s]", lpszName);
+		wsprintf( szBuffer, "å›¾æ ‡ [%s]", lpszName);
     }
     // Add it to the listbox
     nIndex = SendDlgItemMessage( (HWND)lParam, IDC_LIST2, LB_ADDSTRING, 0, (LPARAM)(szBuffer) );
@@ -139,7 +139,7 @@ void CMyToolsKit::OnSelecticon()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñPEÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©PEæ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -163,9 +163,9 @@ void CMyToolsKit::OnSelecticon()
 		
 		szOpenFileExtName.MakeLower ();
 		
-		m_List.ResetContent (); //Ñ¡Çå¿Õ×ó²àÍ¼±êÁĞ±í¿ò
+		m_List.ResetContent (); //é€‰æ¸…ç©ºå·¦ä¾§å›¾æ ‡åˆ—è¡¨æ¡†
 		
-		if(szOpenFileExtName == "exe")//¶ÁÈ¡²¢ÏÔÊ¾EXE¡¢DLLµÈ×ÊÔ´ÎÄ¼ş
+		if(szOpenFileExtName == "exe")//è¯»å–å¹¶æ˜¾ç¤ºEXEã€DLLç­‰èµ„æºæ–‡ä»¶
 		{
 			HINSTANCE  hLibrary;
 			
@@ -173,7 +173,7 @@ void CMyToolsKit::OnSelecticon()
 			if( (hLibrary = LoadLibraryEx( szOpenFileName, NULL, LOAD_LIBRARY_AS_DATAFILE )) == NULL )
 			{
 				// Failed to load - abort
-				MessageBox( szOpenFileName+ "ÎÄ¼şÔØÈë´íÎó£¬±ØĞëÊÇWIN32µÄÎÄ¼ş!", "´íÎó", MB_OK );
+				MessageBox( szOpenFileName+ "æ–‡ä»¶è½½å…¥é”™è¯¯ï¼Œå¿…é¡»æ˜¯WIN32çš„æ–‡ä»¶!", "é”™è¯¯", MB_OK );
 				return;
 			}
 			// Store the info
@@ -183,7 +183,7 @@ void CMyToolsKit::OnSelecticon()
 			// Fill in the listbox with the icons available
 			if( ! EnumResourceNames( EDII.hInstance, RT_GROUP_ICON, (ENUMRESNAMEPROC )MyEnumProcedure, (LPARAM)GetSafeHwnd()) )
 			{
-				MessageBox( "ÁĞ¾ÙÍ¼±ê×ÊÔ´ÃûÊ±³ö´í!", "´íÎó", MB_OK );
+				MessageBox( "åˆ—ä¸¾å›¾æ ‡èµ„æºåæ—¶å‡ºé”™!", "é”™è¯¯", MB_OK );
 				return;
 			}
 			
@@ -192,15 +192,15 @@ void CMyToolsKit::OnSelecticon()
 		m_List.SetCurSel (0);
 		if( m_List.GetCount()  == 0 )
 		{
-			MessageBox( "´ËÎÄ¼şÖĞÃ»ÓĞÍ¼±ê×ÊÔ´!", "´íÎó", MB_OK );
-			//ÎŞÍ¼±ê×ÊÔ´£¬ÖÃ±£´æºÍ¸´ÖÆ°´Å¥ÎªÎŞĞ§×´Ì¬
+			MessageBox( "æ­¤æ–‡ä»¶ä¸­æ²¡æœ‰å›¾æ ‡èµ„æº!", "é”™è¯¯", MB_OK );
+			//æ— å›¾æ ‡èµ„æºï¼Œç½®ä¿å­˜å’Œå¤åˆ¶æŒ‰é’®ä¸ºæ— æ•ˆçŠ¶æ€
 			GetDlgItem(IDC_BUTTON_SAVEAS)->EnableWindow(FALSE);
 			return;
 		}
-        //ÓĞÍ¼±ê×ÊÔ´£¬ÖÃ±£´æºÍ¸´ÖÆ°´Å¥ÎªÓĞĞ§×´Ì¬£€£€£€£€
+        //æœ‰å›¾æ ‡èµ„æºï¼Œç½®ä¿å­˜å’Œå¤åˆ¶æŒ‰é’®ä¸ºæœ‰æ•ˆçŠ¶æ€î—…î—…î—…î—…
 		GetDlgItem(IDC_BUTTON_SAVEAS)->EnableWindow(TRUE);
 		
-		//Ë¢ĞÂµ÷ÓÃOnPaintÀ´ÏÔÊ¾Í¼±ê
+		//åˆ·æ–°è°ƒç”¨OnPaintæ¥æ˜¾ç¤ºå›¾æ ‡
 		InvalidateRect(NULL,TRUE);
 		
 	}
@@ -237,7 +237,7 @@ void CMyToolsKit::OnButtonSaveas()
 	// TODO: Add your control notification handler code here
 	LPTSTR lpIconID;
 	
-	CFileDialog fileDialog( FALSE,"*.ICO",NULL,NULL,"Í¼±êÎÄ¼ş(*.ICO)|*.ICO|Î»Í¼ÎÄ¼ş(*.BMP)|*.BMP||");
+	CFileDialog fileDialog( FALSE,"*.ICO",NULL,NULL,"å›¾æ ‡æ–‡ä»¶(*.ICO)|*.ICO|ä½å›¾æ–‡ä»¶(*.BMP)|*.BMP||");
 	if (fileDialog.DoModal() == IDOK) 
 	{
 		szSaveFileName=fileDialog.GetPathName();	
@@ -260,7 +260,7 @@ void CMyToolsKit::OnButtonSaveas()
 				EndWaitCursor();
 			}
 			else
-				MessageBox( "Ã»ÓĞ¿É±£´æµÄÍ¼±ê×ÊÔ´!", "´íÎó", MB_OK );
+				MessageBox( "æ²¡æœ‰å¯ä¿å­˜çš„å›¾æ ‡èµ„æº!", "é”™è¯¯", MB_OK );
 		}
 		else if(szSaveFileExtName=="ico")
 		{
@@ -271,7 +271,7 @@ void CMyToolsKit::OnButtonSaveas()
 				EndWaitCursor();
 			}
 			else
-				MessageBox( "Ã»ÓĞ¿É±£´æµÄÍ¼±ê×ÊÔ´!", "´íÎó", MB_OK );
+				MessageBox( "æ²¡æœ‰å¯ä¿å­˜çš„å›¾æ ‡èµ„æº!", "é”™è¯¯", MB_OK );
 		}
 	}
 }
@@ -294,7 +294,7 @@ void CMyToolsKit::OnButton3()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñEXEÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©EXEæ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -325,7 +325,7 @@ void CMyToolsKit::OnButton1()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñÍ¼±êÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©å›¾æ ‡æ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -405,21 +405,21 @@ BOOL ChangeExeIcons(LPCTSTR lpExeName,PBYTE pIconFileData,DWORD dwDataSize)
 		if(dwDataSize < sizeof(HEADER))break;
 		pHeader = LPHEADER(pIconFileData);
 		
-		//½¨Á¢Ã¿Ò»¸öÍ¼±êµÄÄ¿Â¼ĞÅÏ¢´æ·ÅÇøÓò
+		//å»ºç«‹æ¯ä¸€ä¸ªå›¾æ ‡çš„ç›®å½•ä¿¡æ¯å­˜æ”¾åŒºåŸŸ
 		if(dwDataSize < 
 			(sizeof(HEADER) + sizeof(ICONDIRENTRY) * pHeader->idCount))break;
 		pIconDirEntry = LPICONDIRENTRY(pIconFileData + sizeof(HEADER));
 		
-		//½¨Á¢EXEÎÄ¼şÖĞRT_GROUP_ICONËùĞèµÄÊı¾İ½á¹¹´æ·ÅÇøÓò
+		//å»ºç«‹EXEæ–‡ä»¶ä¸­RT_GROUP_ICONæ‰€éœ€çš„æ•°æ®ç»“æ„å­˜æ”¾åŒºåŸŸ
 		nGSize = sizeof(GRPICONDIR) + sizeof(GRPICONDIRENTRY) * (pHeader->idCount - 1);
 		pGrpIconDir = LPGRPICONDIR(new BYTE[nGSize]);
 		ZeroMemory(pGrpIconDir,nGSize);
 		
-		//Ìî³äĞÅÏ¢£¬ÕâÀïÏàµ±ÓÚÒ»¸ö×ª»»µÄ¹ı³Ì
+		//å¡«å……ä¿¡æ¯ï¼Œè¿™é‡Œç›¸å½“äºä¸€ä¸ªè½¬æ¢çš„è¿‡ç¨‹
 		pGrpIconDir->idReserved = pHeader->idReserved;
 		pGrpIconDir->idType = pHeader->idType;
 		pGrpIconDir->idCount = pHeader->idCount;
-		//¸´ÖÆĞÅÏ¢²¢ÉèÖÃÃ¿Ò»¸öÍ¼±ê¶ÔÓ¦µÄID¡£IDÎªÎ»ÖÃË÷ÒıºÅ
+		//å¤åˆ¶ä¿¡æ¯å¹¶è®¾ç½®æ¯ä¸€ä¸ªå›¾æ ‡å¯¹åº”çš„IDã€‚IDä¸ºä½ç½®ç´¢å¼•å·
 		for(int i = 0;i < pHeader->idCount;i++)      
 		{
 			pGrpIconDir->idEntries[i].bWidth = pIconDirEntry[i].bWidth;
@@ -429,32 +429,32 @@ BOOL ChangeExeIcons(LPCTSTR lpExeName,PBYTE pIconFileData,DWORD dwDataSize)
 			pGrpIconDir->idEntries[i].wPlanes = pIconDirEntry[i].wPlanes;
 			pGrpIconDir->idEntries[i].wBitCount = pIconDirEntry[i].wBitCount;
 			pGrpIconDir->idEntries[i].dwBytesInRes = pIconDirEntry[i].dwBytesInRes;
-			pGrpIconDir->idEntries[i].nID = i+1;    //ID¿ÉÒÔËæ»úÑ¡,µ«×îºÃ²»ÒªºÍÖ®Ç°´æÔÚµÄÓĞ³åÍ»,¿ÉÒÔÊ¹ÓÃ FindResource(...,MAKEINTRESOURCE(n),RT_ICON);²âÊÔ
+			pGrpIconDir->idEntries[i].nID = i+1;    //IDå¯ä»¥éšæœºé€‰,ä½†æœ€å¥½ä¸è¦å’Œä¹‹å‰å­˜åœ¨çš„æœ‰å†²çª,å¯ä»¥ä½¿ç”¨ FindResource(...,MAKEINTRESOURCE(n),RT_ICON);æµ‹è¯•
 		}
 		
 		hUpdate = BeginUpdateResource(lpExeName, false);
 		if (hUpdate)      
 		{
-			//Ê×ÏÈ¸üĞÂRT_GROUP_ICONĞÅÏ¢
+			//é¦–å…ˆæ›´æ–°RT_GROUP_ICONä¿¡æ¯
 			bRet = UpdateResource(
 				hUpdate,
 				RT_GROUP_ICON,
-				MAKEINTRESOURCE(1),//EXEÏÔÊ¾Îª×îĞ¡IDµÄÍ¼±ê×é
+				MAKEINTRESOURCE(1),//EXEæ˜¾ç¤ºä¸ºæœ€å°IDçš„å›¾æ ‡ç»„
 				MAKELANGID(LANG_CHINESE,SUBLANG_CHINESE_SIMPLIFIED),
 				pGrpIconDir,
 				nGSize);
 			if (!bRet)break;
 			
-			//½Ó×ÅµÄÊÇÃ¿Ò»¸öIconµÄĞÅÏ¢´æ·Å
+			//æ¥ç€çš„æ˜¯æ¯ä¸€ä¸ªIconçš„ä¿¡æ¯å­˜æ”¾
 			for(int i = 0;i < pHeader->idCount;i++)
 			{
 				if(dwDataSize <
 					(pIconDirEntry[i].dwImageOffset +
 					pIconDirEntry[i].dwBytesInRes))break;
 				pIconBytes = pIconFileData + pIconDirEntry[i].dwImageOffset;
-				//×¼±¸pIconBytesÀ´´æ·ÅÎÄ¼şÀïµÄByteĞÅÏ¢ÓÃÓÚ¸üĞÂµ½EXEÖĞ¡£
+				//å‡†å¤‡pIconBytesæ¥å­˜æ”¾æ–‡ä»¶é‡Œçš„Byteä¿¡æ¯ç”¨äºæ›´æ–°åˆ°EXEä¸­ã€‚
 				
-				//¸üĞÂÃ¿Ò»¸öID¶ÔÓ¦µÄRT_ICONĞÅÏ¢      
+				//æ›´æ–°æ¯ä¸€ä¸ªIDå¯¹åº”çš„RT_ICONä¿¡æ¯      
 				bRet = UpdateResource(
 					hUpdate,
 					RT_ICON,
@@ -464,13 +464,13 @@ BOOL ChangeExeIcons(LPCTSTR lpExeName,PBYTE pIconFileData,DWORD dwDataSize)
 					pIconDirEntry[i].dwBytesInRes);
 				if(!bRet)break;
 			}
-			//½áÊøEXE×ÊÔ´µÄ¸üĞÂ²Ù×÷
+			//ç»“æŸEXEèµ„æºçš„æ›´æ–°æ“ä½œ
 			EndUpdateResource(hUpdate, false);
 			bReturn = TRUE;
 		}
 	}while(false);
     
-    //ÇåÀí×ÊÔ´²¢¹Ø±ÕIconÎÄ¼ş£¬µ½´Ë¸üĞÂ²Ù×÷½áÊø£¡
+    //æ¸…ç†èµ„æºå¹¶å…³é—­Iconæ–‡ä»¶ï¼Œåˆ°æ­¤æ›´æ–°æ“ä½œç»“æŸï¼
     SAFE_ARRAY_DELETE(pGrpIconDir);
 	return bReturn;
 }
@@ -533,11 +533,11 @@ void CMyToolsKit::OnButton2()
 	
 	if(ChangeExeIcon(IconPath,ExePath))
 	{
-		MessageBox("¹§Ï² ÎÄ¼şĞŞ¸Ä³É¹¦!!!");
+		MessageBox("æ­å–œ æ–‡ä»¶ä¿®æ”¹æˆåŠŸ!!!");
 	}
 	else
 	{
-		MessageBox("ÎÄ¼şĞŞ¸ÄÊ§°Ü!!!");
+		MessageBox("æ–‡ä»¶ä¿®æ”¹å¤±è´¥!!!");
 	}
 
 }
@@ -560,7 +560,7 @@ void CMyToolsKit::OnSelectfile()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©æ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -591,7 +591,7 @@ void CMyToolsKit::OnStart()
 	
 	if(m_Path.GetLength()<1) 
 	{
-		MessageBox("Äú»¹Ã»ÓĞÑ¡ÔñÎÄ¼ş!!","ÓÑÇéÌáÊ¾",MB_ICONWARNING|MB_OK);
+		MessageBox("æ‚¨è¿˜æ²¡æœ‰é€‰æ‹©æ–‡ä»¶!!","å‹æƒ…æç¤º",MB_ICONWARNING|MB_OK);
 		return ;	
 	}
 
@@ -632,24 +632,24 @@ void CMyToolsKit::OnTimer(UINT nIDEvent)
 			SetFilePointer(m_Handle,-100,NULL,FILE_END);
 
 		CHAR Buffer[100]={NULL};
-//		((CGh0stApp *)AfxGetApp())->GetRandString(Buffer,100);   //Ëæ»úÊı¾İ
+//		((CGh0stApp *)AfxGetApp())->GetRandString(Buffer,100);   //éšæœºæ•°æ®
 
-		GetRandString(Buffer,100);   //Ëæ»úÊı¾İ
+		GetRandString(Buffer,100);   //éšæœºæ•°æ®
 //		Buffer[0]=CountTimes*12;
 
 		DWORD WriteBytes=0;
-		WriteFile(m_Handle,Buffer,100,&WriteBytes,NULL);   //Ğ´ÈëÊı¾İ
+		WriteFile(m_Handle,Buffer,100,&WriteBytes,NULL);   //å†™å…¥æ•°æ®
 		
 		CloseHandle(m_Handle);
 
 		char CMd5[64]={NULL};
-		MD5_File(m_Path.GetBuffer(0),CMd5);    //¼ÆËãMD5
+		MD5_File(m_Path.GetBuffer(0),CMd5);    //è®¡ç®—MD5
 		SetDlgItemText(IDC_CMD5,CMd5);
 
 		CountTimes++;
 
 		CString szStr;
-		szStr.Format("µ±Ç°ÒÑĞŞ¸Ä´ÎÊı %d ",CountTimes);
+		szStr.Format("å½“å‰å·²ä¿®æ”¹æ¬¡æ•° %d ",CountTimes);
 		SetDlgItemText(IDC_STATIC_COUNT,szStr);
 
 	}
@@ -680,7 +680,7 @@ void CMyToolsKit::OnButton4()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñÍ¼±êÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©å›¾æ ‡æ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -717,7 +717,7 @@ void CMyToolsKit::OnFilePath()
 	OpenFileName.lpstrFileTitle    = NULL;
 	OpenFileName.nMaxFileTitle     = 0;
 	OpenFileName.lpstrInitialDir   = _T(".");
-	OpenFileName.lpstrTitle        = _T("ÇëÑ¡ÔñÍ¼±êÎÄ¼ş");
+	OpenFileName.lpstrTitle        = _T("è¯·é€‰æ‹©å›¾æ ‡æ–‡ä»¶");
 	OpenFileName.nFileOffset       = 0;
 	OpenFileName.nFileExtension    = 0;
 	OpenFileName.lpstrDefExt       = NULL;
@@ -732,7 +732,7 @@ void CMyToolsKit::OnFilePath()
 			NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
 		if(Handle == INVALID_HANDLE_VALUE)
 		{
-			MessageBox("ÎÄ¼ş¾Ü¾ø·ÃÎÊ..Çë³¢ÊÔ¸´ÖÆÒ»·İ ÔÙĞŞ¸Ä!");
+			MessageBox("æ–‡ä»¶æ‹’ç»è®¿é—®..è¯·å°è¯•å¤åˆ¶ä¸€ä»½ å†ä¿®æ”¹!");
 			return;
 		}
 		DWORD Size = GetFileSize(Handle,NULL)/1024;
@@ -769,7 +769,7 @@ void CMyToolsKit::OnButton5()
 
 	if(Handle == INVALID_HANDLE_VALUE)
 	{
-		MessageBox("ÎÄ¼ş¾Ü¾ø·ÃÎÊ..Çë³¢ÊÔ¸´ÖÆÒ»·İ ÔÙĞŞ¸Ä!");
+		MessageBox("æ–‡ä»¶æ‹’ç»è®¿é—®..è¯·å°è¯•å¤åˆ¶ä¸€ä»½ å†ä¿®æ”¹!");
 		return;
 	}
 	
@@ -790,11 +790,11 @@ void CMyToolsKit::OnButton5()
 	
 	CloseHandle(Handle);
 
-	MessageBox("ĞŞ¸Ä³É¹¦!");
+	MessageBox("ä¿®æ”¹æˆåŠŸ!");
 
 }
 
-//Ëæ»ú×Ö·û´®²úÉúº¯Êı£¬Ö§³ÖÁ´Ê½½á¹¹    
+//éšæœºå­—ç¬¦ä¸²äº§ç”Ÿå‡½æ•°ï¼Œæ”¯æŒé“¾å¼ç»“æ„    
 void CMyToolsKit::GetRandString(LPSTR szStr,DWORD len)  
 {  
 	assert(szStr != NULL);  

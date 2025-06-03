@@ -1,4 +1,4 @@
-# Microsoft Developer Studio Project File - Name="Client" - Package Owner=<4>
+ï»¿# Microsoft Developer Studio Project File - Name="Client" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
@@ -1494,948 +1494,948 @@ SOURCE=.\res\zhuji.bmp
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢¶û°ÍÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\é˜¿å°”å·´å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢¶û¼°ÀûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\é˜¿å°”åŠåˆ©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢¸»º¹.ico"
+SOURCE=".\res\GuoQiICO\é˜¿å¯Œæ±—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢¸ùÍ¢.ico"
+SOURCE=".\res\GuoQiICO\é˜¿æ ¹å»·.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢À­²®¹ú¼ÒÁªÃË.ico"
+SOURCE=".\res\GuoQiICO\é˜¿æ‹‰ä¼¯å›½å®¶è”ç›Ÿ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢ÁªÇõ.ico"
+SOURCE=".\res\GuoQiICO\é˜¿è”é…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢Âü.ico"
+SOURCE=".\res\GuoQiICO\é˜¿æ›¼.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°¢Èû°İ½®.ico"
+SOURCE=".\res\GuoQiICO\é˜¿å¡æ‹œç–†.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°£¼°.ico"
+SOURCE=".\res\GuoQiICO\åŸƒåŠ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°£Èû¶í±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\åŸƒå¡ä¿„æ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°®¶ûÀ¼.ico"
+SOURCE=".\res\GuoQiICO\çˆ±å°”å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°®É³ÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\çˆ±æ²™å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°²µÀ¶û.ico"
+SOURCE=".\res\GuoQiICO\å®‰é“å°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°²¸çÀ­.ico"
+SOURCE=".\res\GuoQiICO\å®‰å“¥æ‹‰.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°²Ìá¹ÏºÍ°Í²¼´ï.ico"
+SOURCE=".\res\GuoQiICO\å®‰æç“œå’Œå·´å¸ƒè¾¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÂµØÀû.ico"
+SOURCE=".\res\GuoQiICO\å¥¥åœ°åˆ©.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°Ä´óÀûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\æ¾³å¤§åˆ©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÄÃÅ.ico"
+SOURCE=".\res\GuoQiICO\æ¾³é—¨.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°Í°Í¶àË¹.ico"
+SOURCE=".\res\GuoQiICO\å·´å·´å¤šæ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°Í²¼ÑÇĞÂ¼¸ÄÚÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å·´å¸ƒäºšæ–°å‡ å†…äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°Í¹şÂí.ico"
+SOURCE=".\res\GuoQiICO\å·´å“ˆé©¬.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°Í»ùË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\å·´åŸºæ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÍÀ­¹ç.ico"
+SOURCE=".\res\GuoQiICO\å·´æ‹‰åœ­.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÍÀÕË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\å·´å‹’æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÍÁÖ.ico"
+SOURCE=".\res\GuoQiICO\å·´æ—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÍÄÃÂí.ico"
+SOURCE=".\res\GuoQiICO\å·´æ‹¿é©¬.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°ÍÎ÷.ico"
+SOURCE=".\res\GuoQiICO\å·´è¥¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\°×¶íÂŞË¹.ico"
+SOURCE=".\res\GuoQiICO\ç™½ä¿„ç½—æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\±£¼ÓÀûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\ä¿åŠ åˆ©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\±±´óÎ÷Ñó¹«Ô¼×éÖ¯.ico"
+SOURCE=".\res\GuoQiICO\åŒ—å¤§è¥¿æ´‹å…¬çº¦ç»„ç»‡.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\±´Äş.ico"
+SOURCE=".\res\GuoQiICO\è´å®.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\±ÈÀûÊ±.ico"
+SOURCE=".\res\GuoQiICO\æ¯”åˆ©æ—¶.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\±ùµº.ico"
+SOURCE=".\res\GuoQiICO\å†°å²›.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²£ÀûÎ¬ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\ç»åˆ©ç»´äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²¨¶àÀè¸÷.ico"
+SOURCE=".\res\GuoQiICO\æ³¢å¤šé»å„.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²¨À¼.ico"
+SOURCE=".\res\GuoQiICO\æ³¢å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²¨Ë¹ÄáÑÇºÍºÚÈû¸çÎ¬ÄÇ.ico"
+SOURCE=".\res\GuoQiICO\æ³¢æ–¯å°¼äºšå’Œé»‘å¡å“¥ç»´é‚£.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²©´ÄÍßÄÉ.ico"
+SOURCE=".\res\GuoQiICO\åšèŒ¨ç“¦çº³.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²»µ¤.ico"
+SOURCE=".\res\GuoQiICO\ä¸ä¸¹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²¼»ùÄÉ·¨Ë÷.ico"
+SOURCE=".\res\GuoQiICO\å¸ƒåŸºçº³æ³•ç´¢.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\²¼Â¡µÏ.ico"
+SOURCE=".\res\GuoQiICO\å¸ƒéš†è¿ª.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\³¬¼¶À¦°ó.bmp"
+SOURCE=".\res\TOOLBAR\è¶…çº§æ†ç»‘.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\³¬¼¶ÖÕ¶Ë.bmp"
+SOURCE=".\res\TOOLBAR\è¶…çº§ç»ˆç«¯.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\³¯ÏÊ.ico"
+SOURCE=".\res\GuoQiICO\æœé²œ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\³àµÀ¼¸ÄÚÑÇ.ico"
+SOURCE=".\res\GuoQiICO\èµ¤é“å‡ å†…äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\´´½¨¿Í»§.bmp"
+SOURCE=".\res\TOOLBAR\åˆ›å»ºå®¢æˆ·.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\µ¤Âó.ico"
+SOURCE=".\res\GuoQiICO\ä¸¹éº¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\µÂ¹ú.ico"
+SOURCE=".\res\GuoQiICO\å¾·å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶«µÛãë.ico"
+SOURCE=".\res\GuoQiICO\ä¸œå¸æ±¶.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶«ÄÏÑÇ¹ú¼ÒĞ­»á.ico"
+SOURCE=".\res\GuoQiICO\ä¸œå—äºšå›½å®¶åä¼š.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶ÀÁ¢¹ú¼Ò¹úĞ­.ico"
+SOURCE=".\res\GuoQiICO\ç‹¬ç«‹å›½å®¶å›½å.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶à¸ç.ico"
+SOURCE=".\res\GuoQiICO\å¤šå“¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶àÃ×Äá¼Ó.ico"
+SOURCE=".\res\GuoQiICO\å¤šç±³å°¼åŠ .ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶àÃ×Äá¿Ë.ico"
+SOURCE=".\res\GuoQiICO\å¤šç±³å°¼å…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶íÂŞË¹.ico"
+SOURCE=".\res\GuoQiICO\ä¿„ç½—æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶ò¹Ï¶à¶û.ico"
+SOURCE=".\res\GuoQiICO\å„ç“œå¤šå°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¶òÁ¢ÌØÀïÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å„ç«‹ç‰¹é‡Œäºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\·¨¹ú.ico"
+SOURCE=".\res\GuoQiICO\æ³•å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\·ÆÂÉ±ö.ico"
+SOURCE=".\res\GuoQiICO\è²å¾‹å®¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\·ÒÀ¼.ico"
+SOURCE=".\res\GuoQiICO\èŠ¬å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\·ğµÃ½Ç.ico"
+SOURCE=".\res\GuoQiICO\ä½›å¾—è§’.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\·şÎñ¹ÜÀí.bmp"
+SOURCE=".\res\TOOLBAR\æœåŠ¡ç®¡ç†.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸Ô±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å†ˆæ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸Õ¹û(½ğ).ico"
+SOURCE=".\res\GuoQiICO\åˆšæœ(é‡‘).ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸Õ¹û.ico"
+SOURCE=".\res\GuoQiICO\åˆšæœ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸çÂ×±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å“¥ä¼¦æ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸çË¹´ïÀè¼Ó.ico"
+SOURCE=".\res\GuoQiICO\å“¥æ–¯è¾¾é»åŠ .ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸ñÁÖÄÉ´ï.ico"
+SOURCE=".\res\GuoQiICO\æ ¼æ—çº³è¾¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¸ñÂ³¼ªÑÇ.ico"
+SOURCE=".\res\GuoQiICO\æ ¼é²å‰äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¹Å°Í.ico"
+SOURCE=".\res\GuoQiICO\å¤å·´.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\¹ØÓÚ³ÌĞò.bmp"
+SOURCE=".\res\TOOLBAR\å…³äºç¨‹åº.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¹çÑÇÄÇ.ico"
+SOURCE=".\res\GuoQiICO\åœ­äºšé‚£.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¹úĞ­.ico"
+SOURCE=".\res\GuoQiICO\å›½å.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¹şÈø¿ËË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\å“ˆè¨å…‹æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\º£µØ.ico"
+SOURCE=".\res\GuoQiICO\æµ·åœ°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\º«¹ú.ico"
+SOURCE=".\res\GuoQiICO\éŸ©å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ºÉÀ¼.ico"
+SOURCE=".\res\GuoQiICO\è·å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ºé¶¼À­Ë¹.ico"
+SOURCE=".\res\GuoQiICO\æ´ªéƒ½æ‹‰æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\»ùÀï°ÍË¹.ico"
+SOURCE=".\res\GuoQiICO\åŸºé‡Œå·´æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ª²¼Ìá.ico"
+SOURCE=".\res\GuoQiICO\å‰å¸ƒæ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ª¶û¼ªË¹Ë¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\å‰å°”å‰æ–¯æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼¸ÄÚÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å‡ å†…äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼¸ÄÚÑÇ±ÈÉÜ.ico"
+SOURCE=".\res\GuoQiICO\å‡ å†…äºšæ¯”ç».ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ÓÀÕ±Èº£¹²Í¬Ìå.ico"
+SOURCE=".\res\GuoQiICO\åŠ å‹’æ¯”æµ·å…±åŒä½“.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ÓÄÃ´ó.ico"
+SOURCE=".\res\GuoQiICO\åŠ æ‹¿å¤§.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ÓÄÉ.ico"
+SOURCE=".\res\GuoQiICO\åŠ çº³.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼ÓÅî.ico"
+SOURCE=".\res\GuoQiICO\åŠ è“¬.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\¼àÌı³É¹¦.ico"
+SOURCE=".\res\ç›‘å¬æˆåŠŸ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\¼àÌıÊ§°Ü.ico"
+SOURCE=".\res\ç›‘å¬å¤±è´¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¼íÆÒÕ¯.ico"
+SOURCE=".\res\GuoQiICO\æŸ¬åŸ”å¯¨.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\¼üÅÌ¼ÇÂ¼.bmp"
+SOURCE=".\res\TOOLBAR\é”®ç›˜è®°å½•.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\½İ¿Ë.ico"
+SOURCE=".\res\GuoQiICO\æ·å…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\½ò°Í²¼Î¤.ico"
+SOURCE=".\res\GuoQiICO\æ´¥å·´å¸ƒéŸ¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿¦ÂóÂ¡.ico"
+SOURCE=".\res\GuoQiICO\å–€éº¦éš†.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿¨Ëş¶û.ico"
+SOURCE=".\res\GuoQiICO\å¡å¡”å°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿ÆÄ¦ÂŞ.ico"
+SOURCE=".\res\GuoQiICO\ç§‘æ‘©ç½—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿ÆÌØµÏÍß.ico"
+SOURCE=".\res\GuoQiICO\ç§‘ç‰¹è¿ªç“¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿ÆÍşÌØ.ico"
+SOURCE=".\res\GuoQiICO\ç§‘å¨ç‰¹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿ËÂŞµØÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å…‹ç½—åœ°äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\¿ÏÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\è‚¯å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\À­ÍÑÎ¬ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\æ‹‰è„±ç»´äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\À³Ë÷ÍĞ.ico"
+SOURCE=".\res\GuoQiICO\è±ç´¢æ‰˜.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÀÏÎÎ.ico"
+SOURCE=".\res\GuoQiICO\è€æŒ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Àè°ÍÄÛ.ico"
+SOURCE=".\res\GuoQiICO\é»å·´å«©.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Àû±È¹ûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\åˆ©æ¯”æœäºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Àû±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\åˆ©æ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Á¢ÌÕÍğ.ico"
+SOURCE=".\res\GuoQiICO\ç«‹é™¶å®›.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÁªºÏ¹ú.ico"
+SOURCE=".\res\GuoQiICO\è”åˆå›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÁĞÖ§¶ØÊ¿µÇ.ico"
+SOURCE=".\res\GuoQiICO\åˆ—æ”¯æ•¦å£«ç™».ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Â¬É­±¤.ico"
+SOURCE=".\res\GuoQiICO\å¢æ£®å ¡.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Â¬Íú´ï.ico"
+SOURCE=".\res\GuoQiICO\å¢æ—ºè¾¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂŞÂíÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\ç½—é©¬å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Âí´ï¼ÓË¹¼Ó.ico"
+SOURCE=".\res\GuoQiICO\é©¬è¾¾åŠ æ–¯åŠ .ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Âí¶úËû.ico"
+SOURCE=".\res\GuoQiICO\é©¬è€³ä»–.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Âí¶û´ú·ò.ico"
+SOURCE=".\res\GuoQiICO\é©¬å°”ä»£å¤«.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂíÀ­Î¬.ico"
+SOURCE=".\res\GuoQiICO\é©¬æ‹‰ç»´.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂíÀ´Î÷ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\é©¬æ¥è¥¿äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂíÀï.ico"
+SOURCE=".\res\GuoQiICO\é©¬é‡Œ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂíÆä¶Ù.ico"
+SOURCE=".\res\GuoQiICO\é©¬å…¶é¡¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÂíÉÜ¶ûÈºµº.ico"
+SOURCE=".\res\GuoQiICO\é©¬ç»å°”ç¾¤å²›.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ã«ÀïÇóË¹.ico"
+SOURCE=".\res\GuoQiICO\æ¯›é‡Œæ±‚æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ã«ÀïËşÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\æ¯›é‡Œå¡”å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃÀ¹ú.ico"
+SOURCE=".\res\GuoQiICO\ç¾å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃÀ¹ú¹ú¼Ò×éÖ¯.ico"
+SOURCE=".\res\GuoQiICO\ç¾å›½å›½å®¶ç»„ç»‡.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃÉ¹Å.ico"
+SOURCE=".\res\GuoQiICO\è’™å¤.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃÏ¼ÓÀ­.ico"
+SOURCE=".\res\GuoQiICO\å­ŸåŠ æ‹‰.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃØÂ³.ico"
+SOURCE=".\res\GuoQiICO\ç§˜é².ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÃÜ¿ËÂŞÄáÎ÷ÑÇÁª°î.ico"
+SOURCE=".\res\GuoQiICO\å¯†å…‹ç½—å°¼è¥¿äºšè”é‚¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ãåµé.ico"
+SOURCE=".\res\GuoQiICO\ç¼…ç”¸.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ä¦¶û¶àÍß.ico"
+SOURCE=".\res\GuoQiICO\æ‘©å°”å¤šç“¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ä¦Âå¸ç.ico"
+SOURCE=".\res\GuoQiICO\æ‘©æ´›å“¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ä¦ÄÉ¸ç.ico"
+SOURCE=".\res\GuoQiICO\æ‘©çº³å“¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÄªÉ£±È¿Ë.ico"
+SOURCE=".\res\GuoQiICO\è«æ¡‘æ¯”å…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ä«Î÷¸ç.ico"
+SOURCE=".\res\GuoQiICO\å¢¨è¥¿å“¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÄÉÃ×±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\çº³ç±³æ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÄÏ·Ç.ico"
+SOURCE=".\res\GuoQiICO\å—é.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Äá²´¶û.ico"
+SOURCE=".\res\GuoQiICO\å°¼æ³Šå°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Äá¼ÓÀ­¹Ï.ico"
+SOURCE=".\res\GuoQiICO\å°¼åŠ æ‹‰ç“œ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÄáÈÕ¶û.ico"
+SOURCE=".\res\GuoQiICO\å°¼æ—¥å°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÄáÈÕÀûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å°¼æ—¥åˆ©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Å²Íş.ico"
+SOURCE=".\res\GuoQiICO\æŒªå¨.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Å·ÖŞÁªÃË.ico"
+SOURCE=".\res\GuoQiICO\æ¬§æ´²è”ç›Ÿ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÅÁÀÍ.ico"
+SOURCE=".\res\GuoQiICO\å¸•åŠ³.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÆÁÄ»¼à¿Ø.bmp"
+SOURCE=".\res\TOOLBAR\å±å¹•ç›‘æ§.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÆÏÌÑÑÀ.ico"
+SOURCE=".\res\GuoQiICO\è‘¡è„ç‰™.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈÕ±¾.ico"
+SOURCE=".\res\GuoQiICO\æ—¥æœ¬.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Èğµä.ico"
+SOURCE=".\res\GuoQiICO\ç‘å…¸.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈğÊ¿.ico"
+SOURCE=".\res\GuoQiICO\ç‘å£«.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Èø¶ûÍß¶à.ico"
+SOURCE=".\res\GuoQiICO\è¨å°”ç“¦å¤š.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Èû¶ûÎ¬ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å¡å°”ç»´äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈûÀ­Àû°º.ico"
+SOURCE=".\res\GuoQiICO\å¡æ‹‰åˆ©æ˜‚.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈûÄÚ¼Ó¶û.ico"
+SOURCE=".\res\GuoQiICO\å¡å†…åŠ å°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈûÆÖÂ·Ë¹.ico"
+SOURCE=".\res\GuoQiICO\å¡æµ¦è·¯æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÈûÉà¶û.ico"
+SOURCE=".\res\GuoQiICO\å¡èˆŒå°”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\É³ÌØ°¢À­²®.ico"
+SOURCE=".\res\GuoQiICO\æ²™ç‰¹é˜¿æ‹‰ä¼¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\icos\ÉÏÏß.ico"
+SOURCE=".\res\icos\ä¸Šçº¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\ÉÏÏß.ico"
+SOURCE=".\res\ä¸Šçº¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\ÉùÃ÷.ico"
+SOURCE=".\res\å£°æ˜.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ê¥¶àÃÀºÍÆÕÁÖÎ÷±È.ico"
+SOURCE=".\res\GuoQiICO\åœ£å¤šç¾å’Œæ™®æ—è¥¿æ¯”.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ê¥»ù´ÄºÍÄáÎ¬Ë¹.ico"
+SOURCE=".\res\GuoQiICO\åœ£åŸºèŒ¨å’Œå°¼ç»´æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ê¥Â¬Î÷ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\åœ£å¢è¥¿äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ê¥ÂíÁ¦Åµ.ico"
+SOURCE=".\res\GuoQiICO\åœ£é©¬åŠ›è¯º.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ê¥ÎÄÉ­ÌØºÍ¸ñÁÖÄÉ¶¡Ë¹.ico"
+SOURCE=".\res\GuoQiICO\åœ£æ–‡æ£®ç‰¹å’Œæ ¼æ—çº³ä¸æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÊÓÆµ¼à¿Ø.bmp"
+SOURCE=".\res\TOOLBAR\è§†é¢‘ç›‘æ§.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ë¹ÀïÀ¼¿¨.ico"
+SOURCE=".\res\GuoQiICO\æ–¯é‡Œå…°å¡.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ë¹Âå·¥¿Ë.ico"
+SOURCE=".\res\GuoQiICO\æ–¯æ´›ä¼å…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ë¹ÂåÎÄÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\æ–¯æ´›æ–‡å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ë¹ÍşÊ¿À¼.ico"
+SOURCE=".\res\GuoQiICO\æ–¯å¨å£«å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ËÕµ¤.ico"
+SOURCE=".\res\GuoQiICO\è‹ä¸¹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ËÕÀïÄÏ.ico"
+SOURCE=".\res\GuoQiICO\è‹é‡Œå—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ë÷ÂíÀï.ico"
+SOURCE=".\res\GuoQiICO\ç´¢é©¬é‡Œ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ËùÂŞÃÅÈºµº.ico"
+SOURCE=".\res\GuoQiICO\æ‰€ç½—é—¨ç¾¤å²›.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ëş¼ª¿ËË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\å¡”å‰å…‹æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ì¨ÍåÊ¡.ico"
+SOURCE=".\res\GuoQiICO\å°æ¹¾çœ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ì©¹ú.ico"
+SOURCE=".\res\GuoQiICO\æ³°å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ì«Æ½Ñó¹²Í¬Ìå.ico"
+SOURCE=".\res\GuoQiICO\å¤ªå¹³æ´‹å…±åŒä½“.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ì¹É£ÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å¦æ¡‘å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÌÀ¼Ó.ico"
+SOURCE=".\res\GuoQiICO\æ±¤åŠ .ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÌØÁ¢Äá´ïºÍ¶à°Í¸ç.ico"
+SOURCE=".\res\GuoQiICO\ç‰¹ç«‹å°¼è¾¾å’Œå¤šå·´å“¥.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÌÚÑ¶qqÍ¼±êÏÂÔØ7.ico"
+SOURCE=".\res\GuoQiICO\è…¾è®¯qqå›¾æ ‡ä¸‹è½½7.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÌÚÑ¶qqÍ¼±êÏÂÔØ8.ico"
+SOURCE=".\res\GuoQiICO\è…¾è®¯qqå›¾æ ‡ä¸‹è½½8.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Í»ÄáË¹.ico"
+SOURCE=".\res\GuoQiICO\çªå°¼æ–¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Í¼ÍßÂ¬.ico"
+SOURCE=".\res\GuoQiICO\å›¾ç“¦å¢.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÍÁ¶úÆä.ico"
+SOURCE=".\res\GuoQiICO\åœŸè€³å…¶.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÍÁ¿âÂüË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\åœŸåº“æ›¼æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÍË³ö³ÌĞò.bmp"
+SOURCE=".\res\TOOLBAR\é€€å‡ºç¨‹åº.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÍßÅ¬°¢Í¼.ico"
+SOURCE=".\res\GuoQiICO\ç“¦åŠªé˜¿å›¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Î£µØÂíÀ­.ico"
+SOURCE=".\res\GuoQiICO\å±åœ°é©¬æ‹‰.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Î¯ÄÚÈğÀ­.ico"
+SOURCE=".\res\GuoQiICO\å§”å†…ç‘æ‹‰.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÎÄ¼ş¹ÜÀí.bmp"
+SOURCE=".\res\TOOLBAR\æ–‡ä»¶ç®¡ç†.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\ÎÄ¼ş¼Ğ1.ico"
+SOURCE=".\res\æ–‡ä»¶å¤¹1.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎÄÀ³.ico"
+SOURCE=".\res\GuoQiICO\æ–‡è±.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎÚ¸É´ï.ico"
+SOURCE=".\res\GuoQiICO\ä¹Œå¹²è¾¾.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎÚ¿ËÀ¼.ico"
+SOURCE=".\res\GuoQiICO\ä¹Œå…‹å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎÚÀ­¹ç.ico"
+SOURCE=".\res\GuoQiICO\ä¹Œæ‹‰åœ­.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎÚ×È±ğ¿ËË¹Ì¹.ico"
+SOURCE=".\res\GuoQiICO\ä¹Œå…¹åˆ«å…‹æ–¯å¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÎŞIPÊı¾İ¿â.ico"
+SOURCE=".\res\GuoQiICO\æ— IPæ•°æ®åº“.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Î÷°àÑÀ.ico"
+SOURCE=".\res\GuoQiICO\è¥¿ç­ç‰™.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Î÷ÈøÄ¦ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\è¥¿è¨æ‘©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ï£À°.ico"
+SOURCE=".\res\GuoQiICO\å¸Œè…Š.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÏµÍ³¹ÜÀí.bmp"
+SOURCE=".\res\TOOLBAR\ç³»ç»Ÿç®¡ç†.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÏµÍ³ÉèÖÃ.bmp"
+SOURCE=".\res\TOOLBAR\ç³»ç»Ÿè®¾ç½®.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\ÏÂÏß.ico"
+SOURCE=".\res\ä¸‹çº¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ïã¸Û.ico"
+SOURCE=".\res\GuoQiICO\é¦™æ¸¯.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ĞÂ¼ÓÆÂ.ico"
+SOURCE=".\res\GuoQiICO\æ–°åŠ å¡.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ĞÂÎ÷À¼.ico"
+SOURCE=".\res\GuoQiICO\æ–°è¥¿å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ĞÙÑÀÀû.ico"
+SOURCE=".\res\GuoQiICO\åŒˆç‰™åˆ©.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ĞğÀûÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å™åˆ©äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÑÀÂò¼Ó.ico"
+SOURCE=".\res\GuoQiICO\ç‰™ä¹°åŠ .ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÑÇÃÀÄáÑÇ.ico"
+SOURCE=".\res\GuoQiICO\äºšç¾å°¼äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ò²ÃÅ.ico"
+SOURCE=".\res\GuoQiICO\ä¹Ÿé—¨.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÒÁÀ­¿Ë.ico"
+SOURCE=".\res\GuoQiICO\ä¼Šæ‹‰å…‹.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÒÁÀÊ.ico"
+SOURCE=".\res\GuoQiICO\ä¼Šæœ—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÒÔÉ«ÁĞ.ico"
+SOURCE=".\res\GuoQiICO\ä»¥è‰²åˆ—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Òâ´óÀû.ico"
+SOURCE=".\res\GuoQiICO\æ„å¤§åˆ©.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ó¡¶È.ico"
+SOURCE=".\res\GuoQiICO\å°åº¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ó¡¶ÈÄáÎ÷ÑÇ.ico"
+SOURCE=".\res\GuoQiICO\å°åº¦å°¼è¥¿äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ó¢¸ñÀ¼.ico"
+SOURCE=".\res\GuoQiICO\è‹±æ ¼å…°.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ó¢¹ú.ico"
+SOURCE=".\res\GuoQiICO\è‹±å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÓïÒô¼àÌı.bmp"
+SOURCE=".\res\TOOLBAR\è¯­éŸ³ç›‘å¬.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\ÓòÃû¸üĞÂ.bmp"
+SOURCE=".\res\TOOLBAR\åŸŸåæ›´æ–°.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ô¼µ©.ico"
+SOURCE=".\res\GuoQiICO\çº¦æ—¦.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Ô½ÄÏ.ico"
+SOURCE=".\res\GuoQiICO\è¶Šå—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÔŞ±ÈÑÇ.ico"
+SOURCE=".\res\GuoQiICO\èµæ¯”äºš.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\Õ§µÃ.ico"
+SOURCE=".\res\GuoQiICO\ä¹å¾—.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÖÇÀû.ico"
+SOURCE=".\res\GuoQiICO\æ™ºåˆ©.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÖĞ·Ç.ico"
+SOURCE=".\res\GuoQiICO\ä¸­é.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ÖĞ¹ú.ico"
+SOURCE=".\res\GuoQiICO\ä¸­å›½.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\ÖØ¸´ÉÏÏß.ico"
+SOURCE=".\res\é‡å¤ä¸Šçº¿.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Ö÷»ú.bmp"
+SOURCE=".\res\ä¸»æœº.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\TOOLBAR\×¢²á±í.bmp"
+SOURCE=".\res\TOOLBAR\æ³¨å†Œè¡¨.bmp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\è§Â³.ico"
+SOURCE=".\res\GuoQiICO\ç‘™é².ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\èóµÙ¸Ô.ico"
+SOURCE=".\res\GuoQiICO\æ¢µè’‚å†ˆ.ico"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\GuoQiICO\ì³¼Ã.ico"
+SOURCE=".\res\GuoQiICO\æ–æµ.ico"
 # End Source File
 # End Group
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\360¼«ËÙä¯ÀÀ.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\360æé€Ÿæµè§ˆ.cer"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\360ÎÀÊ¿.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\360å«å£«.cer"
 # End Source File
 # Begin Source File
 
@@ -2463,7 +2463,7 @@ SOURCE=.\res\Sound\Offline.wav
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\QQìÅÎè.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\QQç‚«èˆ.cer"
 # End Source File
 # Begin Source File
 
@@ -2483,15 +2483,15 @@ SOURCE=.\res\xp.xml
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\¿á¹·.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\é…·ç‹—.cer"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\ÌÚÑ¶QQ.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\è…¾è®¯QQ.cer"
 # End Source File
 # Begin Source File
 
-SOURCE=".\res\Êı×ÖÇ©Ãû\Ñ¸À×.cer"
+SOURCE=".\res\æ•°å­—ç­¾å\è¿…é›·.cer"
 # End Source File
 # End Target
 # End Project

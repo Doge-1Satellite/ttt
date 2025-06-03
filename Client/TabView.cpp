@@ -1,4 +1,4 @@
-// TabView.cpp : implementation file
+ï»¿// TabView.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -173,7 +173,7 @@ LRESULT CTabView::OnAddFindGroup(WPARAM wParam, LPARAM lParam)
 	}
 	try
 	{	
-		// ²»ºÏ·¨µÄÊý¾Ý°ü
+		// ä¸åˆæ³•çš„æ•°æ®åŒ…
 		if (pContext->m_DeCompressionBuffer.GetBufferLen() != sizeof(LOGININFO))
 		{	
 			return -1;
@@ -261,7 +261,7 @@ int CTabView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	xtpTabAppearanceVisio,                  // Gives your tabs a Visio appearance.//Good
 	xtpTabAppearanceVisualStudio2005,       // Gives your tabs a Visual Studio 2005 appearance.//Good
 	*/
-	m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//±êÇ©ÑÕÉ«
+	m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//æ ‡ç­¾é¢œè‰²
 	/*
 	xtpTabColorDefault          = 0x0001, // Tabs will use the default color for the currently set Appearance.
 	xtpTabColorVisualStudio2003 = 0x0002, // Tabs will use the Visual Studio 2003 color style for the currently set Appearance.
@@ -276,17 +276,17 @@ int CTabView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	*/
 	m_wndTabControl.GetPaintManager()->m_bHotTracking = TRUE;
 //	m_wndTabControl.GetPaintManager()->DisableLunaColors(TRUE);
-	m_wndTabControl.GetPaintManager()->SetPosition(xtpTabPositionBottom); //±êÇ©Î»ÖÃ
+	m_wndTabControl.GetPaintManager()->SetPosition(xtpTabPositionBottom); //æ ‡ç­¾ä½ç½®
 	/*
-	xtpTabPositionTop,          // ÉÏ
-	xtpTabPositionLeft,         // ×ó
-	xtpTabPositionBottom,       // ÏÂ
-	xtpTabPositionRight         // ÓÒ
+	xtpTabPositionTop,          // ä¸Š
+	xtpTabPositionLeft,         // å·¦
+	xtpTabPositionBottom,       // ä¸‹
+	xtpTabPositionRight         // å³
 	*/
-	AddGroup(_T("Default(0)"));	//±êÇ©Ãû³Æ
-// 	AddView(RUNTIME_CLASS(CPlay), _T("ÉÏÏßÖ÷»ú"));
-// 	AddView(RUNTIME_CLASS(CPlayer), _T("±¾µØÉèÖÃ"));
-// 	AddView(RUNTIME_CLASS(CLockFile), _T("¶¯Ì¬IP¸üÐÂ"));
+	AddGroup(_T("Default(0)"));	//æ ‡ç­¾åç§°
+// 	AddView(RUNTIME_CLASS(CPlay), _T("ä¸Šçº¿ä¸»æœº"));
+// 	AddView(RUNTIME_CLASS(CPlayer), _T("æœ¬åœ°è®¾ç½®"));
+// 	AddView(RUNTIME_CLASS(CLockFile), _T("åŠ¨æ€IPæ›´æ–°"));
 	m_wndTabControl.SetCurSel(0);
 	return 0;
 }
@@ -320,7 +320,7 @@ BOOL CTabView::UpDateNumber()
 			strGroupName = strTemp;
 		}
 		CClientView* pView = DYNAMIC_DOWNCAST(CClientView, CWnd::FromHandle(m_wndTabControl.GetItem(i)->GetHandle()));
-		//×Ô¶¯É¾³ý ¶àÓà·Ö×é
+		//è‡ªåŠ¨åˆ é™¤ å¤šä½™åˆ†ç»„
 		if (pView->m_pListCtrl->GetItemCount() == 0 && strGroupName != "Default")
 		{
 			m_wndTabControl.DeleteItem(i);
@@ -366,7 +366,7 @@ void CTabView::OnAddGroup()
 	CInputDialog dlg;
 	CClientView* pView = NULL;
 	CString strGroup, strGroupName, strTemp;
-	dlg.Init(_T("Ìí¼ÓÐÂ·Ö×é"), _T("ÇëÊäÈëÐÂ·Ö×éµÄÃû³Æ£º"), this);
+	dlg.Init(_T("æ·»åŠ æ–°åˆ†ç»„"), _T("è¯·è¾“å…¥æ–°åˆ†ç»„çš„åç§°ï¼š"), this);
 	if (dlg.DoModal() != IDOK || dlg.m_str.GetLength()== 0)   
 		return;
 	int nTabs = g_pTabView->m_wndTabControl.GetItemCount();
@@ -385,7 +385,7 @@ void CTabView::OnAddGroup()
 		}
 		if (dlg.m_str == strGroupName)
 		{
-			AfxMessageBox(_T("ÒÑ´æÔÚ¸Ã·Ö×é"));
+			AfxMessageBox(_T("å·²å­˜åœ¨è¯¥åˆ†ç»„"));
 			return;
 		}
 	}
@@ -414,13 +414,13 @@ void CTabView::OnDelGroup()
 
 	if( strGroupName == _T("Default"))
 	{
-		AfxMessageBox(_T("Ä¬ÈÏ·Ö×é²»ÔÊÐíÉ¾³ý!"));
+		AfxMessageBox(_T("é»˜è®¤åˆ†ç»„ä¸å…è®¸åˆ é™¤!"));
 		return;
 	}
 	pView = DYNAMIC_DOWNCAST(CClientView, CWnd::FromHandle(pRightItem->GetHandle()));
 	if (pView->m_pListCtrl->GetItemCount())
 	{
-		AfxMessageBox(_T("·Ö×éÄÚ´æÔÚÖ÷»ú²»¿ÉÉ¾³ý!"));
+		AfxMessageBox(_T("åˆ†ç»„å†…å­˜åœ¨ä¸»æœºä¸å¯åˆ é™¤!"));
 		return;
 	}
 	//	DeleteGroup(pRightItem->GetCaption());

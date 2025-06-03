@@ -1,4 +1,4 @@
-#if !defined(AFX_SystemDlg_H__7A784A33_3CF5_4998_B9A1_1E1C11EF8EB2__INCLUDED_)
+ï»¿#if !defined(AFX_SystemDlg_H__7A784A33_3CF5_4998_B9A1_1E1C11EF8EB2__INCLUDED_)
 #define AFX_SystemDlg_H__7A784A33_3CF5_4998_B9A1_1E1C11EF8EB2__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -49,7 +49,7 @@ public:
 
 // Implementation
 protected:
-	CImageList *m_image;  //Í¼±ê
+	CImageList *m_image;  //å›¾æ ‡
 private:
 	void AdjustList();
 	void ShowSystemInfo();
@@ -95,10 +95,10 @@ private:
 	afx_msg void OnNMRClickListProcess(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnWindowReflush();
 	afx_msg void OnWindowClose();
-	afx_msg void OnWindowHide();        //Òş²Ø
-	afx_msg void OnWindowShow();        //ÏÔÊ¾
-	afx_msg void OnWindowMax();         //×î´ó»¯
-	afx_msg void OnWindowMin();         //×îĞ¡»¯
+	afx_msg void OnWindowHide();        //éšè—
+	afx_msg void OnWindowShow();        //æ˜¾ç¤º
+	afx_msg void OnWindowMax();         //æœ€å¤§åŒ–
+	afx_msg void OnWindowMin();         //æœ€å°åŒ–
 	afx_msg void OnReceiveCpuMemory(void);
 	afx_msg void OnShowWindow(int Show);
 	afx_msg void OnRclickList1(NMHDR* pNMHDR, LRESULT* pResult);

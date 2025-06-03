@@ -1,4 +1,4 @@
-// HtmlCtrl.cpp : implementation file
+ï»¿// HtmlCtrl.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -45,7 +45,7 @@ BEGIN_DISPATCH_MAP(CHtmlCtrl, CHtmlView)
 	//}}AFX_DISPATCH_MAP
 END_DISPATCH_MAP()
 
-// ÔÚJavaScriptÖĞµ÷ÓÃdocument.body.external.lng»ñÈ¡»òÉèÖÃÊôĞÔ
+// åœ¨JavaScriptä¸­è°ƒç”¨document.body.external.lngè·å–æˆ–è®¾ç½®å±æ€§
 
 void CHtmlCtrl::DocumentComplete(LPDISPATCH pDisp, VARIANT* URL)
 {
@@ -134,12 +134,12 @@ void CHtmlCtrl::Dump(CDumpContext& dc) const
 
 BOOL CHtmlCtrl::CreateFromStatic(UINT nID, CWnd* pParent)
 {
-	CStatic wndStatic; // ¾²Ì¬¿Ø¼ş¶ÔÏó
+	CStatic wndStatic; // é™æ€æ§ä»¶å¯¹è±¡
 	if (!wndStatic.SubclassDlgItem(nID, pParent))
 		return FALSE;
 	m_pMapDlg = (CMapDlg*)pParent;
 	
-	// »ñÈ¡¾²Ì¬¿ØÖÆµÄ¾ØĞÎÇøÓò²¢×ª»»Îª¸¸´°¿ÚµÄ¿Í»§Çø×ø±ê
+	// è·å–é™æ€æ§åˆ¶çš„çŸ©å½¢åŒºåŸŸå¹¶è½¬æ¢ä¸ºçˆ¶çª—å£çš„å®¢æˆ·åŒºåæ ‡
 	CRect rc;
 	wndStatic.GetWindowRect(&rc);
 	pParent->ScreenToClient(&rc);
@@ -153,7 +153,7 @@ BOOL CHtmlCtrl::CreateFromStatic(UINT nID, CWnd* pParent)
 		pParent,							// parent
 		nID,								// control ID
 		NULL);								// frame/doc context not used
-	m_pBrowserApp->put_Silent(TRUE);		// ½ûÖ¹µ¯³ö½Å±¾´íÎóÌáÊ¾
+	m_pBrowserApp->put_Silent(TRUE);		// ç¦æ­¢å¼¹å‡ºè„šæœ¬é”™è¯¯æç¤º
 	return bRet;
 }
 

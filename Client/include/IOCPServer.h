@@ -1,4 +1,4 @@
-// IOCPServer.h: interface for the CIOCPServer class.
+ï»¿// IOCPServer.h: interface for the CIOCPServer class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@
 #define	NC_CLIENT_DISCONNECT	0x0002
 #define	NC_TRANSMIT				0x0003
 #define	NC_RECEIVE				0x0004
-#define NC_RECEIVE_COMPLETE		0x0005 // ÍêÕû½ÓÊÕ
+#define NC_RECEIVE_COMPLETE		0x0005 // å®Œæ•´æ¥æ”¶
 #define	NC_DIALOG_CLOSE     	0x0006
 
 class CLock
@@ -88,11 +88,11 @@ struct ClientContext
     SOCKET				m_Socket;
 	// Store buffers
 	CBuffer				m_WriteBuffer;
-	CBuffer				m_CompressionBuffer;	// ½ÓÊÕµ½µÄÑ¹ËõµÄÊı¾İ
-	CBuffer				m_DeCompressionBuffer;	// ½âÑ¹ºóµÄÊı¾İ
-	CBuffer				m_ResendWriteBuffer;	// ÉÏ´Î·¢ËÍµÄÊı¾İ°ü£¬½ÓÊÕÊ§°ÜÊ±ÖØ·¢Ê±ÓÃ
+	CBuffer				m_CompressionBuffer;	// æ¥æ”¶åˆ°çš„å‹ç¼©çš„æ•°æ®
+	CBuffer				m_DeCompressionBuffer;	// è§£å‹åçš„æ•°æ®
+	CBuffer				m_ResendWriteBuffer;	// ä¸Šæ¬¡å‘é€çš„æ•°æ®åŒ…ï¼Œæ¥æ”¶å¤±è´¥æ—¶é‡å‘æ—¶ç”¨
 
-	int					m_Dialog[2]; // ·Å¶Ô»°¿òÁĞ±íÓÃ£¬µÚÒ»¸öintÊÇÀàĞÍ£¬µÚ¶ş¸öÊÇCDialogµÄµØÖ·
+	int					m_Dialog[2]; // æ”¾å¯¹è¯æ¡†åˆ—è¡¨ç”¨ï¼Œç¬¬ä¸€ä¸ªintæ˜¯ç±»å‹ï¼Œç¬¬äºŒä¸ªæ˜¯CDialogçš„åœ°å€
 	int					m_nTransferProgress;
 
 	// Input Elements for Winsock
@@ -103,12 +103,12 @@ struct ClientContext
 	WSABUF				m_wsaOutBuffer;
 //	HANDLE				m_hWriteComplete;
 
-	BOOL				m_bIsMainSocket; // ÊÇ²»ÊÇÖ÷socket
-	char				m_group[50];     // ÔÚÏß·Ö×é
+	BOOL				m_bIsMainSocket; // æ˜¯ä¸æ˜¯ä¸»socket
+	char				m_group[50];     // åœ¨çº¿åˆ†ç»„
 
 	CRITICAL_SECTION m_SndLock;
 
-	// ´úÀíÓ³ÉäÓÃµ½
+	// ä»£ç†æ˜ å°„ç”¨åˆ°
 	DWORD				dwID;
 	BYTE				m_bProxyConnected;
 };
@@ -153,9 +153,9 @@ public:
 	void ResetConnection(ClientContext* pContext);
 	
 
-	UINT					m_nSendKbps; // ·¢ËÍ¼´Ê±ËÙ¶È
-	UINT					m_nRecvKbps; // ½ÓÊÜ¼´Ê±ËÙ¶È
-	UINT					m_nMaxConnections; // ×î´óÁ¬½ÓÊı
+	UINT					m_nSendKbps; // å‘é€å³æ—¶é€Ÿåº¦
+	UINT					m_nRecvKbps; // æ¥å—å³æ—¶é€Ÿåº¦
+	UINT					m_nMaxConnections; // æœ€å¤§è¿æ¥æ•°
 
 	SOCKET					m_socListen;    
 protected:
@@ -175,7 +175,7 @@ protected:
 	bool InitializeIOCP(void);
 	void Stop();
 
-	// ÉèÖÃ±£»î»úÖÆ nKeepTime¶à³¤Ê±¼äÃ»ÓĞÊı¾İ¾Í¿ªÊ¼·¢ËÍĞÄÌø°ü,nKeepIntervalÃ¿¸ô¶à³¤Ê±¼ä·¢ËÍÒ»¸öĞÄÌø°ü (VistaÖ®Ç°Ä¬ÈÏ5´Î Ö®ºóÄ¬ÈÏ·¢10´Î)
+	// è®¾ç½®ä¿æ´»æœºåˆ¶ nKeepTimeå¤šé•¿æ—¶é—´æ²¡æœ‰æ•°æ®å°±å¼€å§‹å‘é€å¿ƒè·³åŒ…,nKeepIntervalæ¯éš”å¤šé•¿æ—¶é—´å‘é€ä¸€ä¸ªå¿ƒè·³åŒ… (Vistaä¹‹å‰é»˜è®¤5æ¬¡ ä¹‹åé»˜è®¤å‘10æ¬¡)
 	BOOL SetKeepAlive( SOCKET Socket, UINT nKeepTime = 10 * 1000, UINT nKeepInterval = 3000 );
 
 
@@ -187,8 +187,8 @@ protected:
 	HANDLE					m_hCompletionPort;
 	bool					m_bTimeToKill;
 
-	LONG					m_nKeepLiveTime;    	// ¶à³¤Ê±¼äÃ»ÓĞÊı¾İ
-	UINT                 	m_nIntervalTime;		// ¼ä¸ô¶àÉÙÊ±¼ä·¢ËÍ
+	LONG					m_nKeepLiveTime;    	// å¤šé•¿æ—¶é—´æ²¡æœ‰æ•°æ®
+	UINT                 	m_nIntervalTime;		// é—´éš”å¤šå°‘æ—¶é—´å‘é€
 
 	DWORD					m_dwIndex;
 

@@ -1,4 +1,4 @@
-// Registry.cpp : implementation file
+﻿// Registry.cpp : implementation file
 //
 #include "StdAfx.h"
 #include "Registry.h"

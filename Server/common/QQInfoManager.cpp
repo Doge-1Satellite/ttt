@@ -1,4 +1,4 @@
-// GetQQInfo.cpp: implementation of the CGetQQInfo class.
+ï»¿// GetQQInfo.cpp: implementation of the CGetQQInfo class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -98,8 +98,8 @@ BOOL CQQInfoManager::GetQQCookieInfo(char *szNumber, char *szToken, char *szInCo
 	char szGetName3[2048];
 	char szHeaders3[2048];
 
-	// 1.¸ù¾İÖ¸¶¨µÄQQºÅÂëºÍszInCookie½âÎöCookieµ½szCookieData1
-	memset(szOutCookie, 0, stOutSize); // ÖÃÁãÒªÊä³öµÄszOutCookie
+	// 1.æ ¹æ®æŒ‡å®šçš„QQå·ç å’ŒszInCookieè§£æCookieåˆ°szCookieData1
+	memset(szOutCookie, 0, stOutSize); // ç½®é›¶è¦è¾“å‡ºçš„szOutCookie
 	hInternet = InternetOpen(szGenAgent, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 	if (hInternet == NULL)
 		return FALSE;
@@ -154,8 +154,8 @@ BOOL CQQInfoManager::GetQQCookieInfo(char *szNumber, char *szToken, char *szInCo
 	}
 	delete[] szRawHeaders1;
 
-	// 2.¸ù¾İÖ¸¶¨µÄQQºÅÂëºÍ(szCookieData1ÓëszInCookie)½âÎöCookieµ½szCookieData2
-	strcat(szCookieData1, szInCookie); // ºÏ²¢szInCookieµ½szCookieData1
+	// 2.æ ¹æ®æŒ‡å®šçš„QQå·ç å’Œ(szCookieData1ä¸szInCookie)è§£æCookieåˆ°szCookieData2
+	strcat(szCookieData1, szInCookie); // åˆå¹¶szInCookieåˆ°szCookieData1
 	hInternet = InternetOpen(szGenAgent, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 	if (hInternet == NULL)
 		return FALSE;
@@ -242,7 +242,7 @@ BOOL CQQInfoManager::GetQQCookieInfo(char *szNumber, char *szToken, char *szInCo
 	strncpy(szGetName3, pLPosition, pRPosition - pLPosition);
 	delete[] szUtf8Buffer2;
 
-	// 3.¸ù¾İÖ¸¶¨µÄQQºÅÂëºÍszCookieData2½âÎöCookieµ½szCookieData3
+	// 3.æ ¹æ®æŒ‡å®šçš„QQå·ç å’ŒszCookieData2è§£æCookieåˆ°szCookieData3
 	hInternet = InternetOpen(szGenAgent, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 	if (hInternet == NULL)
 		return FALSE;
@@ -297,7 +297,7 @@ BOOL CQQInfoManager::GetQQCookieInfo(char *szNumber, char *szToken, char *szInCo
 	}
 	delete[] szRawHeaders3;
 
-	// 4.¸ù¾İÖ¸¶¨µÄQQºÅÂëºÍszCookieData3Êä³öCookieµ½szOutCookie
+	// 4.æ ¹æ®æŒ‡å®šçš„QQå·ç å’ŒszCookieData3è¾“å‡ºCookieåˆ°szOutCookie
 	strcat(szOutCookie, szCookieData3);
 	return strlen(szOutCookie);
 }
@@ -401,7 +401,7 @@ cJSON* CQQInfoManager::GetQQFriendJson(char *szInCookie)
 	WideCharToMultiByte(CP_ACP, 0, szWideBuffer1, -1, szAnsiBuffer1, dwAnsiBuffer1, NULL, NULL);
 	delete[] szWideBuffer1;
 
-	// ½âÎöJSON¸ñÊ½Êı¾İ°ü
+	// è§£æJSONæ ¼å¼æ•°æ®åŒ…
 	pQQFriendJson = cJSON_Parse(szAnsiBuffer1);
 	delete[] szAnsiBuffer1;
 	return pQQFriendJson;
@@ -486,7 +486,7 @@ cJSON* CQQInfoManager::GetQQGroupMemberJson(char *szInCookie, char *szPostData)
 	WideCharToMultiByte(CP_ACP, 0, szWideBuffer1, -1, szAnsiBuffer1, dwAnsiBuffer1, NULL, NULL);
 	delete[] szWideBuffer1;
 
-	// ½âÎöJSON¸ñÊ½Êı¾İ°ü
+	// è§£æJSONæ ¼å¼æ•°æ®åŒ…
 	gmr = cJSON_Parse(szAnsiBuffer1);
 	delete[] szAnsiBuffer1;
 	return gmr;
@@ -597,7 +597,7 @@ cJSON* CQQInfoManager::GetQQGroupJson(char *szInCookie)
 	WideCharToMultiByte(CP_ACP, 0, szWideBuffer1, -1, szAnsiBuffer1, dwAnsiBuffer1, NULL, NULL);
 	delete[] szWideBuffer1;
 
-	// ½âÎöJSON¸ñÊ½Êı¾İ°ü
+	// è§£æJSONæ ¼å¼æ•°æ®åŒ…
 	pQQGroupJson = cJSON_Parse(szAnsiBuffer1);
 	delete[] szAnsiBuffer1;
 	if (pQQGroupJson == NULL)
@@ -686,7 +686,7 @@ cJSON* CQQInfoManager::GetQQLocalJson()
 	char szGetName2[2048];
 	char szHeaders2[2048];
 
-	// 1.½âÎöCookieµ½szCookieData1²¢´ÓCookie»ñÈ¡pt_local_tkµÄÖµ(ÓÃÓÚ´«µİUrl²ÎÊı)
+	// 1.è§£æCookieåˆ°szCookieData1å¹¶ä»Cookieè·å–pt_local_tkçš„å€¼(ç”¨äºä¼ é€’Urlå‚æ•°)
 	hInternet = InternetOpen(szGenAgent, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 	if (hInternet == NULL)
 		return pQQLocalJson;
@@ -748,7 +748,7 @@ cJSON* CQQInfoManager::GetQQLocalJson()
 	}
 	delete[] szRawHeaders1;
 
-	// 2.»ñÈ¡±¾µØµÇÂ¼µÄQQêÇ³ÆºÍºÅÂëÁĞ±í²¢Êä³öµ½vQQLocalInfo
+	// 2.è·å–æœ¬åœ°ç™»å½•çš„QQæ˜µç§°å’Œå·ç åˆ—è¡¨å¹¶è¾“å‡ºåˆ°vQQLocalInfo
 	hInternet = InternetOpen(szGenAgent, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
 	if (hInternet == NULL)
 		return pQQLocalJson;

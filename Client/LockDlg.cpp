@@ -1,4 +1,4 @@
-// LOCKDlg.cpp : implementation file
+ï»¿// LOCKDlg.cpp : implementation file
 // Download by http://www.codefans.net
 
 #include "stdafx.h"
@@ -118,7 +118,7 @@ void CLockDlg::OnSetlock()
 	    GetDlgItemText(IDC_SETAGAIN,PASSWORD2);
 	    if(PASSWORD1!=PASSWORD2)
 		{
-			SetDlgItemText(IDC_MESSAGE,"Á½´ÎµÄÃÜÂë²»ÏàÍ¬\nÇëÖØÐÂÊäÈë");
+			SetDlgItemText(IDC_MESSAGE,"ä¸¤æ¬¡çš„å¯†ç ä¸ç›¸åŒ\nè¯·é‡æ–°è¾“å…¥");
 			SetDlgItemText(IDC_SET,"");
 		    SetDlgItemText(IDC_SETAGAIN,"");
 			GetDlgItem(IDC_SET)->SetFocus();
@@ -126,16 +126,16 @@ void CLockDlg::OnSetlock()
 		}
 		if(PASSWORD1=="")
 		{
-			SetDlgItemText(IDC_MESSAGE,"ÃÜÂëÉèÎª¿Õ\nÕâÑù²»Ì«°²È«!");
+			SetDlgItemText(IDC_MESSAGE,"å¯†ç è®¾ä¸ºç©º\nè¿™æ ·ä¸å¤ªå®‰å…¨!");
 			GetDlgItem(IDC_SET)->SetFocus();
 			return;
 		}
-		SetDlgItemText(IDC_MESSAGE,"ÎÒÏÈ°ïÄã¿´×Å\n¿ìµã»ØÀ´.");
+		SetDlgItemText(IDC_MESSAGE,"æˆ‘å…ˆå¸®ä½ çœ‹ç€\nå¿«ç‚¹å›žæ¥.");
 		
 		SendDlgItemMessage(IDC_SET,EM_SETREADONLY,1);
 		SendDlgItemMessage(IDC_SETAGAIN,EM_SETREADONLY,1);
 		SendDlgItemMessage(IDC_UNLOCK,EM_SETREADONLY,0);
-		SetDlgItemText(ID_SETLOCK,"½âËø");
+		SetDlgItemText(ID_SETLOCK,"è§£é”");
 		SetDlgItemText(IDC_SET,"");
 		SetDlgItemText(IDC_SETAGAIN,"");
 		GetDlgItem(ID_QUIT)->EnableWindow(false);
@@ -151,7 +151,7 @@ void CLockDlg::OnSetlock()
 		pwi.hWnd = GetSafeHwnd();
 		EnumWindows(EnumWindowsProc, (LPARAM)&pwi);
 		::ShowWindow(::FindWindow("Progman",NULL),SW_HIDE);
-		::ShowWindow(::FindWindow("Button","¿ªÊ¼"),SW_HIDE);
+		::ShowWindow(::FindWindow("Button","å¼€å§‹"),SW_HIDE);
 		::ShowWindow(::FindWindow("Shell_TrayWnd",NULL),SW_HIDE);
 		
 		GetDlgItem(IDC_UNLOCK)->SetFocus();
@@ -163,17 +163,17 @@ void CLockDlg::OnSetlock()
         GetDlgItemText(IDC_UNLOCK,PASSWORD3);
 		if(PASSWORD1!=PASSWORD3)
 		{
-			SetDlgItemText(IDC_MESSAGE,"ÃÜÂëÊäÈë´íÎó\nÄãÎÞÈ¨½âËø!");
+			SetDlgItemText(IDC_MESSAGE,"å¯†ç è¾“å…¥é”™è¯¯\nä½ æ— æƒè§£é”!");
 			SetDlgItemText(IDC_UNLOCK,"");
 			GetDlgItem(IDC_UNLOCK)->SetFocus();
 			return;
 		}
-		SetDlgItemText(IDC_MESSAGE,"²»ÓÃÎÒ°ïÃ¦ÁË?");
+		SetDlgItemText(IDC_MESSAGE,"ä¸ç”¨æˆ‘å¸®å¿™äº†?");
 		
 		SendDlgItemMessage(IDC_SET,EM_SETREADONLY,0);
 		SendDlgItemMessage(IDC_SETAGAIN,EM_SETREADONLY,0);
 		SendDlgItemMessage(IDC_UNLOCK,EM_SETREADONLY,1);
-		SetDlgItemText(ID_SETLOCK,"¼ÓËø");
+		SetDlgItemText(ID_SETLOCK,"åŠ é”");
 		SetDlgItemText(IDC_UNLOCK,"");
 		GetDlgItem(ID_QUIT)->EnableWindow(true);
 		user=0;
@@ -181,7 +181,7 @@ void CLockDlg::OnSetlock()
 		ClipCursor(NULL);
 		SystemParametersInfo(SPI_SETSCREENSAVERRUNNING,false,0,SPIF_UPDATEINIFILE);
 		::ShowWindow (::FindWindow("Shell_TrayWnd",NULL),SW_SHOW);
-		::ShowWindow (::FindWindow("Button","¿ªÊ¼"),SW_SHOW);
+		::ShowWindow (::FindWindow("Button","å¼€å§‹"),SW_SHOW);
 		::ShowWindow(::FindWindow("Progman",NULL),SW_SHOW);
 		AfxGetApp()->m_pMainWnd->ShowWindow(SW_SHOW);
 	}

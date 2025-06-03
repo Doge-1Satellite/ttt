@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _XVID_ENCODE_H
 #define _XVID_ENCODE_H
 #include "xvid.h"

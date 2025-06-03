@@ -1,4 +1,4 @@
-/*
+﻿/*
  * jerror.h
  *
  * This file was part of the Independent JPEG Group's software:

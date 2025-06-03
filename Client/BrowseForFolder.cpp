@@ -1,4 +1,4 @@
-//Download by http://www.NewXing.com
+﻿//Download by http://www.NewXing.com
 //////////////////////////////////////////////////////////////////////
 //
 // ShellBrowser.cpp: implementation of the CShellBrowser class.

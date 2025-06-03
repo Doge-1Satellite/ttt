@@ -1,4 +1,4 @@
-// GetNetState.h: interface for the CGetNetState class.
+ï»¿// GetNetState.h: interface for the CGetNetState class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -20,12 +20,12 @@
 
 typedef struct  
 {     
-	DWORD   dwState;          // Á¬½Ó×´Ì¬     
-	DWORD   dwLocalAddr;      // ±¾µØµØÖ·     
-	DWORD   dwLocalPort;      // ±¾µØ¶Ë¿Ú     
-	DWORD   dwRemoteAddr;     // Ô¶³ÌµØÖ·     
-	DWORD   dwRemotePort;     // Ô¶³Ì¶Ë¿Ú     
-	DWORD   dwProcessId;      // ½ø³ÌIDºÅ     
+	DWORD   dwState;          // è¿æ¥çŠ¶æ€     
+	DWORD   dwLocalAddr;      // æœ¬åœ°åœ°å€     
+	DWORD   dwLocalPort;      // æœ¬åœ°ç«¯å£     
+	DWORD   dwRemoteAddr;     // è¿œç¨‹åœ°å€     
+	DWORD   dwRemotePort;     // è¿œç¨‹ç«¯å£     
+	DWORD   dwProcessId;      // è¿›ç¨‹IDå·     
 } MIB_TCPEXROW, *PMIB_TCPEXROW;     
 
 typedef struct  
@@ -36,9 +36,9 @@ typedef struct
 
 typedef struct  
 {     
-	DWORD   dwLocalAddr;      // ±¾µØµØÖ·     
-	DWORD   dwLocalPort;      // ±¾µØ¶Ë¿Ú     
-	DWORD   dwProcessId;      // ½ø³ÌIDºÅ     
+	DWORD   dwLocalAddr;      // æœ¬åœ°åœ°å€     
+	DWORD   dwLocalPort;      // æœ¬åœ°ç«¯å£     
+	DWORD   dwProcessId;      // è¿›ç¨‹IDå·     
 } MIB_UDPEXROW, *PMIB_UDPEXROW;     
 
 typedef struct  
@@ -48,7 +48,7 @@ typedef struct
 } MIB_UDPEXTABLE, *PMIB_UDPEXTABLE;     
 
 
-// À©Õ¹º¯ÊıÔ­ĞÍ     
+// æ‰©å±•å‡½æ•°åŸå‹     
 typedef DWORD (WINAPI *PFNAllocateAndGetTcpExTableFromStack)(     
 															 PMIB_TCPEXTABLE *pTcpTable,      
 															 BOOL bOrder,                  
@@ -67,13 +67,13 @@ typedef DWORD (WINAPI *PFNAllocateAndGetUdpExTableFromStack)(
 
 
 typedef struct{
-	DWORD dwState;      //Á¬½Ó×´Ì¬
-	DWORD dwLocalAddr;  //±¾µØµØÖ·
-	DWORD dwLocalPort;  //±¾µØ¶Ë¿Ú
-	DWORD dwRemoteAddr; //Ô¶³ÌµØÖ·
-	DWORD dwRemotePort; //Ô¶³Ì¶Ë¿Ú
-	DWORD dwProcessId;  //½ø³Ì±êÊ¶
-	DWORD Unknown;      //´ı¶¨±êÊ¶
+	DWORD dwState;      //è¿æ¥çŠ¶æ€
+	DWORD dwLocalAddr;  //æœ¬åœ°åœ°å€
+	DWORD dwLocalPort;  //æœ¬åœ°ç«¯å£
+	DWORD dwRemoteAddr; //è¿œç¨‹åœ°å€
+	DWORD dwRemotePort; //è¿œç¨‹ç«¯å£
+	DWORD dwProcessId;  //è¿›ç¨‹æ ‡è¯†
+	DWORD Unknown;      //å¾…å®šæ ‡è¯†
 }MIB_TCPEXROW_VISTA,*PMIB_TCPEXROW_VISTA;
 
 typedef struct{

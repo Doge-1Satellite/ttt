@@ -1,4 +1,4 @@
-// Signature.cpp : implementation file
+ï»¿// Signature.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -76,7 +76,7 @@ void CSignature::OnInitialUpdate()
 	::DragAcceptFiles(GetSafeHwnd(),true);
 	m_dropEdit.SubclassDlgItem(IDC_EDIT1, this);
 	m_dropEdit.SetUseDir(FALSE);
-	GetDlgItem(IDC_EDIT1)->SetWindowText("°ÑÎÄ¼şÍÏµ½ÕâÀïµã»÷Ç©Ãû....");
+	GetDlgItem(IDC_EDIT1)->SetWindowText("æŠŠæ–‡ä»¶æ‹–åˆ°è¿™é‡Œç‚¹å‡»ç­¾å....");
 
 }
 
@@ -86,10 +86,10 @@ HBRUSH CSignature::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if ((pWnd->GetDlgCtrlID() == IDC_Log) && (nCtlColor == CTLCOLOR_EDIT))
 	{
 		COLORREF clr = RGB(0, 255, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃ°×É«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®ç™½è‰²çš„æ–‡æœ¬
 		clr = RGB(0,0,0);
-		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 	}
 	else
 	{
@@ -100,7 +100,7 @@ HBRUSH CSignature::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 void CSignature::OnDropFiles( HDROP hDropInfo )
 {
-	UINT cFiles = ::DragQueryFile( hDropInfo, 0xffffffff, 0, 0);    //È¡µÃÎÄ¼şÊı
+	UINT cFiles = ::DragQueryFile( hDropInfo, 0xffffffff, 0, 0);    //å–å¾—æ–‡ä»¶æ•°
 	CString szText;
 	char szFile[MAX_PATH];
 	
@@ -109,7 +109,7 @@ void CSignature::OnDropFiles( HDROP hDropInfo )
 		if(cFiles>0)
 		{
 			::DragQueryFile(hDropInfo, count, szFile, sizeof(szFile));
-			szText += szFile;       //¾ø¶ÔÂ·¾¶+ÎÄ¼şÃû´æÓÚszFile
+			szText += szFile;       //ç»å¯¹è·¯å¾„+æ–‡ä»¶åå­˜äºszFile
 			GetDlgItem(IDC_EDIT1)->SetWindowText(szText);
 		}
 	}
@@ -192,7 +192,7 @@ void * GetMemoryFilePoint(const TCHAR* szFile)
 	{
 		return NULL;
 	}
-	// ´´½¨Ò»¸öÓ³ÉäÎÄ¼ş.
+	// åˆ›å»ºä¸€ä¸ªæ˜ å°„æ–‡ä»¶.
 	if (!(hMapping = CreateFileMapping(hFile, 0, PAGE_READWRITE, 0, 0, 0)))
 	{
 		OutputDebugStringA("CreateMapping Failed.");
@@ -200,7 +200,7 @@ void * GetMemoryFilePoint(const TCHAR* szFile)
 		return NULL;
 	}
 	
-	// °ÑÎÄ¼şÍ·Ó³Ïó´æÈë pPE
+	// æŠŠæ–‡ä»¶å¤´æ˜ è±¡å­˜å…¥ pPE
 	if (!(pPE = MapViewOfFile(hMapping, FILE_MAP_ALL_ACCESS, 0, 0, 0)))
 	{
 		OutputDebugStringA("MapViewOfFile Failed.");
@@ -239,16 +239,16 @@ void CreateSingedFile(TCHAR szFile[],void *pMemFile,DWORD dwLen)
 // void CreateSign()
 // {
 // 	DWORD dwSize,dwWritten;
-// 	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_QQxuanwu),"SIGN");//²éÕÒ×ÊÔ´
+// 	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_QQxuanwu),"SIGN");//æŸ¥æ‰¾èµ„æº
 // 	if(hr==NULL) return;
 // 	dwSize=SizeofResource(NULL,hr);
-// 	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+// 	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 // 	if(hg==NULL) return;
-// 	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+// 	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 // 	if(lp==NULL) return;
 // 	
 // 	HANDLE hFile;
-// 	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+// 	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 // 	if(hFile == NULL)	return;
 // 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 // 	CloseHandle(hFile);	
@@ -259,16 +259,16 @@ void CSignature::Onxuanwu()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_QQxuanwu),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_QQxuanwu),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);	
@@ -278,16 +278,16 @@ void CSignature::Onweishi()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_360weishi),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_360weishi),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);	
@@ -297,16 +297,16 @@ void CSignature::Onkugou()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_kugou),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_kugou),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);	
@@ -316,16 +316,16 @@ void CSignature::Onliulanqi()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_liulanqi),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_liulanqi),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);	
@@ -335,16 +335,16 @@ void CSignature::Onxunlei()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_xunlei),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_xunlei),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);
@@ -354,16 +354,16 @@ void CSignature::Ontengxun()
 {
 	// TODO: Add your control notification handler code here
 	DWORD dwSize,dwWritten;
-	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_tengxun),"SIGN");//²éÕÒ×ÊÔ´
+	HRSRC hr=FindResource(0,MAKEINTRESOURCE(IDR_tengxun),"SIGN");//æŸ¥æ‰¾èµ„æº
 	if(hr==NULL) return;
 	dwSize=SizeofResource(NULL,hr);
-	HGLOBAL hg=LoadResource(NULL,hr);//¼ÓÔØ×ÊÔ´
+	HGLOBAL hg=LoadResource(NULL,hr);//åŠ è½½èµ„æº
 	if(hg==NULL) return;
-	LPSTR lp=(LPSTR)LockResource(hg);//Ëø¶¨×ÊÔ´
+	LPSTR lp=(LPSTR)LockResource(hg);//é”å®šèµ„æº
 	if(lp==NULL) return;
 	
 	HANDLE hFile;
-	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//´´½¨ÎÄ¼ş
+	hFile = CreateFile("C:\\SIGN",GENERIC_WRITE,0,NULL,CREATE_ALWAYS,0,NULL);//åˆ›å»ºæ–‡ä»¶
 	if(hFile == NULL)	return;
 	WriteFile(hFile,(LPCVOID)lp,dwSize,&dwWritten,NULL);
 	CloseHandle(hFile);
@@ -402,13 +402,13 @@ void CSignature::OnButton1()
 	
     pImageDosHeader = (PIMAGE_DOS_HEADER)pFile ;
 	
-/*	AddText("¿ªÊ¼¼ì²âÎÄ¼şµÄÓĞĞ§ĞÔ");*/
-// 	m_Log.ReplaceSel( "<- ¿ªÊ¼¼ì²âÎÄ¼şµÄÓĞĞ§ĞÔ...\r\n");
+/*	AddText("å¼€å§‹æ£€æµ‹æ–‡ä»¶çš„æœ‰æ•ˆæ€§");*/
+// 	m_Log.ReplaceSel( "<- å¼€å§‹æ£€æµ‹æ–‡ä»¶çš„æœ‰æ•ˆæ€§...\r\n");
 //     if (pImageDosHeader->e_magic!=IMAGE_DOS_SIGNATURE)
 //     {
 // 		UnmapViewOfFile(pFile);
-// //		AddText("ÄúÑ¡ÔñµÄÎÄ¼şÊÇÎŞĞ§µÄ");
-// 		m_Log.ReplaceSel( "<- ÄúÑ¡ÔñµÄÎÄ¼şÊÇÎŞĞ§µÄ...\r\n");
+// //		AddText("æ‚¨é€‰æ‹©çš„æ–‡ä»¶æ˜¯æ— æ•ˆçš„");
+// 		m_Log.ReplaceSel( "<- æ‚¨é€‰æ‹©çš„æ–‡ä»¶æ˜¯æ— æ•ˆçš„...\r\n");
 // 		DeleteFile("C:\\QQxuanwu.cer");
 // 		DeleteFile("C:\\360weishi.cer");
 // 		DeleteFile("C:\\liulanqi.cer");
@@ -425,7 +425,7 @@ void CSignature::OnButton1()
 // 	if (pImageNtHeaders->Signature!=IMAGE_NT_SIGNATURE)
 // 	{
 // 		UnmapViewOfFile(pFile);
-// 		m_Log.ReplaceSel( "<- ÄúÑ¡ÔñµÄÎÄ¼şÊÇÎŞĞ§µÄ...\r\n");
+// 		m_Log.ReplaceSel( "<- æ‚¨é€‰æ‹©çš„æ–‡ä»¶æ˜¯æ— æ•ˆçš„...\r\n");
 // 		DeleteFile("C:\\QQxuanwu.cer");
 // 		DeleteFile("C:\\360weishi.cer");
 // 		DeleteFile("C:\\liulanqi.cer");
@@ -438,11 +438,11 @@ void CSignature::OnButton1()
 // 	}
 // 	if (pImageNtHeaders->OptionalHeader.DataDirectory[4].Size!=0 || pImageNtHeaders->OptionalHeader.DataDirectory[4].VirtualAddress!=0 )
 // 	{
-// 		if(MessageBox(_TEXT("Õâ¸öÎÄ¼şÒÔ¾­ÓĞÁËÊı×ÖÇ©Ãû Òª¼ÌĞøÌí¼ÓÂğ?"),_TEXT("ÌáÊ¾"),MB_YESNO|MB_ICONQUESTION)!=IDYES)
+// 		if(MessageBox(_TEXT("è¿™ä¸ªæ–‡ä»¶ä»¥ç»æœ‰äº†æ•°å­—ç­¾å è¦ç»§ç»­æ·»åŠ å—?"),_TEXT("æç¤º"),MB_YESNO|MB_ICONQUESTION)!=IDYES)
 // 		{
 // 			UnmapViewOfFile(pFile);
-// 	//		AddText("Õâ¸öÎÄ¼şÒÔ¾­ÓĞÁËÊı×ÖÇ©Ãû");
-// 			m_Log.ReplaceSel( "<- Õâ¸öÎÄ¼şÒÔ¾­ÓĞÁËÊı×ÖÇ©Ãû...\r\n");
+// 	//		AddText("è¿™ä¸ªæ–‡ä»¶ä»¥ç»æœ‰äº†æ•°å­—ç­¾å");
+// 			m_Log.ReplaceSel( "<- è¿™ä¸ªæ–‡ä»¶ä»¥ç»æœ‰äº†æ•°å­—ç­¾å...\r\n");
 // 			DeleteFile("C:\\QQxuanwu.cer");
 // 			DeleteFile("C:\\360weishi.cer");
 // 			DeleteFile("C:\\liulanqi.cer");
@@ -455,18 +455,18 @@ void CSignature::OnButton1()
 // 		}
 	}
 	
-//	AddText("¿ªÊ¼Ğ´ÈëÆ«ÒÆÎ»ÖÃºÍ´óĞ¡");
-//	pImageNtHeaders->OptionalHeader.DataDirectory[4].Size=dwSingSize;				//Êı×ÖÇ©ÃûµÄ´óĞ¡ 
-//	pImageNtHeaders->OptionalHeader.DataDirectory[4].VirtualAddress=dwSingOffe;		//Êı×ÖÇ©ÃûµÄÎ»ÖÃ
+//	AddText("å¼€å§‹å†™å…¥åç§»ä½ç½®å’Œå¤§å°");
+//	pImageNtHeaders->OptionalHeader.DataDirectory[4].Size=dwSingSize;				//æ•°å­—ç­¾åçš„å¤§å° 
+//	pImageNtHeaders->OptionalHeader.DataDirectory[4].VirtualAddress=dwSingOffe;		//æ•°å­—ç­¾åçš„ä½ç½®
 	
 	TCHAR szNewFile[MAX_PATH]={0};
 //	lstrcpy(szNewFile,m_path.LockBuffer());
 //	lstrcat(szNewFile,"New.exe");
 	
-//	AddText("´´½¨ĞÂµÄÎÄ¼ş");
+//	AddText("åˆ›å»ºæ–°çš„æ–‡ä»¶");
 //	CreateSingedFile(szNewFile,pFile,dwSingOffe+dwSingSize);
-//	AddText("Ìí¼ÓÊı×ÖÇ©Ãû³É¹¦");
-// 	m_Log.ReplaceSel( "<- Ìí¼ÓÊı×ÖÇ©Ãû³É¹¦...\r\n");
+//	AddText("æ·»åŠ æ•°å­—ç­¾åæˆåŠŸ");
+// 	m_Log.ReplaceSel( "<- æ·»åŠ æ•°å­—ç­¾åæˆåŠŸ...\r\n");
 // 	UnmapViewOfFile(pFile);
 // 	DeleteFile("C:\\QQxuanwu.cer");
 // 	DeleteFile("C:\\360weishi.cer");

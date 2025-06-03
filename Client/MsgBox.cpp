@@ -1,4 +1,4 @@
-// MsgBox.cpp : implementation file
+ï»¿// MsgBox.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -20,8 +20,8 @@ CMsgBox::CMsgBox(CWnd* pParent /*=NULL*/)
 	: CDialog(CMsgBox::IDD, pParent)
 {
 	//{{AFX_DATA_INIT(CMsgBox)
-	m_Title = _T("Éö±¦£¡");
-	m_Text = _T("Î¶µÀºÃ¼«ÁË! ");
+	m_Title = _T("è‚¾å®ï¼");
+	m_Text = _T("å‘³é“å¥½æäº†! ");
 	//}}AFX_DATA_INIT
 }
 
@@ -158,10 +158,10 @@ HBRUSH CMsgBox::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if ((pWnd->GetDlgCtrlID() == IDC_EDIT_TITLE|IDC_EDIT_TEXT)&& (nCtlColor == CTLCOLOR_EDIT))
 	{
 		COLORREF clr = RGB(0, 255, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃÂÌÉ«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®ç»¿è‰²çš„æ–‡æœ¬
 		clr = RGB(0, 0, 0);
-		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 	}
 	else
 	{

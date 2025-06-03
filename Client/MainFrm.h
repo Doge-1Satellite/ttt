@@ -1,4 +1,4 @@
-// MainFrm.h : interface of the CMainFrame class
+ï»¿// MainFrm.h : interface of the CMainFrame class
 //
 /////////////////////////////////////////////////////////////////////////////
 
@@ -64,7 +64,7 @@ protected:  // control bar embedded members
 // Generated message map functions
 protected:
 	//{{AFX_MSG(CMainFrame)
-	afx_msg int OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl);//¾ÍÕâ¸öº¯ÊýÁË
+	afx_msg int OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl);//å°±è¿™ä¸ªå‡½æ•°äº†
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnClose();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);

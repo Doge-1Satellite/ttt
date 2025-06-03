@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "xvidenc.h"
 #include "xvid.h"
 #include <windows.h>
@@ -247,7 +247,7 @@ int CXvidEnc::enc_core(unsigned char *image,unsigned char *bitstream, int * key)
 	/* Encode the frame */
 	ret = xvid_encore(m_enc_handle, XVID_ENC_ENCODE, &xvid_enc_frame,NULL);
 	//    &xvid_enc_stats);
-	//--�б��Ƿ��ǹؼ�֡
+	//--判别是否是关键帧
 	*key = (xvid_enc_frame.out_flags & XVID_KEYFRAME);
 	//*stats_type = xvid_enc_stats.type;
 	//*stats_quant = xvid_enc_stats.quant;
