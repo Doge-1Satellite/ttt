@@ -1,0 +1,82 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Client - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPF63C.tmp" with contents
+[
+SHLWAPI.LIB nafxcw.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Emin.pdb" /machine:I386 /out:"../Bin/Emin.exe" 
+".\Release\Audio.obj"
+".\Release\AudioDlg.obj"
+".\Release\BmpToAvi.obj"
+".\Release\BrowseForFolder.obj"
+".\Release\Buffer.obj"
+".\Release\Build.obj"
+".\Release\ChangeGroup.obj"
+".\Release\Chat.obj"
+".\Release\CheckPass.obj"
+".\Release\cJSON.obj"
+".\Release\Client.obj"
+".\Release\ClientDoc.obj"
+".\Release\ClientView.obj"
+".\Release\CpuUsage.obj"
+".\Release\Dib.obj"
+".\Release\DllDlg.obj"
+".\Release\DropEdit.obj"
+".\Release\FileManagerDlg.obj"
+".\Release\FileTransferModeDlg.obj"
+".\Release\HtmlCtrl.obj"
+".\Release\Icons.obj"
+".\Release\IniFile.obj"
+".\Release\InputDlg.obj"
+".\Release\IOCPServer.obj"
+".\Release\KeyBoardDlg.obj"
+".\Release\LFileName.obj"
+".\Release\LockDlg.obj"
+".\Release\LogView.obj"
+".\Release\MainFrm.obj"
+".\Release\MapDlg.obj"
+".\Release\MD5.obj"
+".\Release\MemoryModule.obj"
+".\Release\MsgBox.obj"
+".\Release\MyToolsKit.obj"
+".\Release\Play.obj"
+".\Release\ProxyMapDlg.obj"
+".\Release\QQInfoDlg.obj"
+".\Release\RegDataDlg.obj"
+".\Release\RegDlg.obj"
+".\Release\SBDestination.obj"
+".\Release\ScreenSpyDlg.obj"
+".\Release\SerAttribute.obj"
+".\Release\SerManager.obj"
+".\Release\Setting.obj"
+".\Release\SeuQQwry.obj"
+".\Release\ShellDlg.obj"
+".\Release\Signature.obj"
+".\Release\SplashScreenEx.obj"
+".\Release\Start.obj"
+".\Release\StdAfx.obj"
+".\Release\SysInfo.obj"
+".\Release\SystemDlg.obj"
+".\Release\TabView.obj"
+".\Release\TrueColorToolBar.obj"
+".\Release\UpdateDlg.obj"
+".\Release\WebCamDlg.obj"
+".\Release\XvidDec.obj"
+".\Release\ZXPortMap.obj"
+".\Release\Client.res"
+]
+Creating command line "link.exe @C:\Users\Administrator\AppData\Local\Temp\RSPF63C.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+Emin.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

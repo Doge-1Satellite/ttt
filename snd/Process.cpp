@@ -1,0 +1,37 @@
+// Process.cpp: implementation of the CProcess class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "??????.h"
+#include "Process.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Only One Global class CFFt for the whole app
+//////////////////////////////////////////////////////////////////////
+CProcess Fft;
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CProcess::CProcess()
+{
+
+}
+
+CProcess::~CProcess()
+{
+
+}
+
+void CProcess::ComputeSamples(SHORT *)
+{
+	CSoundIn::ComputeSamples(0);  // first call the process base class
+    // place here you process (try to add an offset to the Input samples)
+}
