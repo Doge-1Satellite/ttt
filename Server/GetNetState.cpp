@@ -1,4 +1,4 @@
-// GetNetState.cpp: implementation of the CGetNetState class.
+ï»¿// GetNetState.cpp: implementation of the CGetNetState class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -16,11 +16,11 @@ LPBYTE getNetStateList()
 	DWORD	dwOffset = 1;
 	DWORD	dwLength = 0;
 
-    // ¶¨ÒåÀ©Õ¹º¯ÊıÖ¸Õë
+    // å®šä¹‰æ‰©å±•å‡½æ•°æŒ‡é’ˆ
     PFNAllocateAndGetTcpExTableFromStack pAllocateAndGetTcpExTableFromStack;
     PFNAllocateAndGetUdpExTableFromStack pAllocateAndGetUdpExTableFromStack;
 	
-    // »ñÈ¡À©Õ¹º¯ÊıµÄÈë¿ÚµØÖ·
+    // è·å–æ‰©å±•å‡½æ•°çš„å…¥å£åœ°å€
     HMODULE hModule = ::LoadLibrary("iphlpapi.dll");
     pAllocateAndGetTcpExTableFromStack =
 		(PFNAllocateAndGetTcpExTableFromStack)::GetProcAddress(hModule,
@@ -32,12 +32,12 @@ LPBYTE getNetStateList()
 	
     if(pAllocateAndGetTcpExTableFromStack != NULL || pAllocateAndGetUdpExTableFromStack != NULL)
     {
-		// µ÷ÓÃÀ©Õ¹º¯Êı£¬»ñÈ¡TCPÀ©Õ¹Á¬½Ó±íºÍUDPÀ©Õ¹¼àÌı±í
+		// è°ƒç”¨æ‰©å±•å‡½æ•°ï¼Œè·å–TCPæ‰©å±•è¿æ¥è¡¨å’ŒUDPæ‰©å±•ç›‘å¬è¡¨
 		
 		PMIB_TCPEXTABLE pTcpExTable;
 		PMIB_UDPEXTABLE pUdpExTable;
 		
-		// pTcpExTableºÍpUdpExTableËùÖ¸µÄ»º³åÇø×Ô¶¯ÓÉÀ©Õ¹º¯ÊıÔÚ½ø³Ì¶ÑÖĞÉêÇë
+		// pTcpExTableå’ŒpUdpExTableæ‰€æŒ‡çš„ç¼“å†²åŒºè‡ªåŠ¨ç”±æ‰©å±•å‡½æ•°åœ¨è¿›ç¨‹å †ä¸­ç”³è¯·
 		if(pAllocateAndGetTcpExTableFromStack(&pTcpExTable, TRUE, GetProcessHeap(), 2, 2) != 0)
 		{
             return NULL;
@@ -47,7 +47,7 @@ LPBYTE getNetStateList()
             return NULL;
 		}
 		
-		// ¸øÏµÍ³ÄÚµÄËùÓĞ½ø³ÌÅÄÒ»¸ö¿ìÕÕ
+		// ç»™ç³»ç»Ÿå†…çš„æ‰€æœ‰è¿›ç¨‹æ‹ä¸€ä¸ªå¿«ç…§
 		HANDLE hProcessSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 		if(hProcessSnap == INVALID_HANDLE_VALUE)
 		{
@@ -61,26 +61,26 @@ LPBYTE getNetStateList()
 		char    strState[128];
 		DWORD   dwRemotePort = 0;
 		
-		// ´òÓ¡TCPÀ©Õ¹Á¬½Ó±íĞÅÏ¢
+		// æ‰“å°TCPæ‰©å±•è¿æ¥è¡¨ä¿¡æ¯
 		for(UINT i = 0; i < pTcpExTable->dwNumEntries; ++i)
 		{
-			// ×´Ì¬
+			// çŠ¶æ€
 			switch (pTcpExTable->table[i].dwState)
 			{
 			case MIB_TCP_STATE_CLOSED:
-				strcpy(strState, "ÒÑ¹Ø±Õ");
+				strcpy(strState, "å·²å…³é—­");
 				break;
 			case MIB_TCP_STATE_LISTEN:
-				strcpy(strState, "¼àÌı");
+				strcpy(strState, "ç›‘å¬");
 				break;
 			case MIB_TCP_STATE_SYN_SENT:
-				strcpy(strState, "SYN_·¢ËÍ");
+				strcpy(strState, "SYN_å‘é€");
 				break;
 			case MIB_TCP_STATE_SYN_RCVD:
-				strcpy(strState, "SYN_½ÓÊÕ");
+				strcpy(strState, "SYN_æ¥æ”¶");
 				break;
 			case MIB_TCP_STATE_ESTAB:
-				strcpy(strState, "Á¬½Ó");
+				strcpy(strState, "è¿æ¥");
 				break;
 			case MIB_TCP_STATE_FIN_WAIT1:
 				strcpy(strState, "FIN_WAIT1");
@@ -92,7 +92,7 @@ LPBYTE getNetStateList()
 				strcpy(strState, "CLOSE_WAIT");
 				break;
 			case MIB_TCP_STATE_CLOSING:
-				strcpy(strState, "ÕıÔÚ¹Ø±Õ");
+				strcpy(strState, "æ­£åœ¨å…³é—­");
 				break;
 			case MIB_TCP_STATE_LAST_ACK:
 				strcpy(strState, "LAST_ACK");
@@ -101,23 +101,23 @@ LPBYTE getNetStateList()
 				strcpy(strState, "TIME_WAIT");
 				break;
 			case MIB_TCP_STATE_DELETE_TCB:
-				strcpy(strState, "É¾³ı");
+				strcpy(strState, "åˆ é™¤");
 				break;
 			default:
 				break;
 			}
-			// ±¾µØIPµØÖ·
+			// æœ¬åœ°IPåœ°å€
 			inadLocal.s_addr = pTcpExTable->table[i].dwLocalAddr;
 			
-			// Ô¶³Ì¶Ë¿Ú
-			if(strcmp(strState, "¼àÌı") != 0)
+			// è¿œç¨‹ç«¯å£
+			if(strcmp(strState, "ç›‘å¬") != 0)
 			{
 				dwRemotePort = pTcpExTable->table[i].dwRemotePort;
 			}
 			else
 				dwRemotePort = 0;
 			
-			// Ô¶³ÌIPµØÖ·
+			// è¿œç¨‹IPåœ°å€
 			inadRemote.s_addr = pTcpExTable->table[i].dwRemoteAddr;
 			
 			wsprintf(szLocalAddr, "%s:%u", inet_ntoa(inadLocal),
@@ -125,7 +125,7 @@ LPBYTE getNetStateList()
 			wsprintf(szRemoteAddr, "%s:%u", inet_ntoa(inadRemote),
 				ntohs((unsigned short)(0x0000FFFF & dwRemotePort)));
 			
-			// ´òÓ¡³ö´ËÈë¿ÚµÄĞÅÏ¢
+			// æ‰“å°å‡ºæ­¤å…¥å£çš„ä¿¡æ¯
 			char strProcessName[100] = {0};
 			char * strType = "[TCP]";
 			lstrcpy(strProcessName, ProcessPidToName(hProcessSnap, pTcpExTable->table[i].dwProcessId, szProcessName));
@@ -153,16 +153,16 @@ LPBYTE getNetStateList()
 			dwOffset += lstrlen(strState) + 1;
 		}
 		
-		// ´òÓ¡UDP¼àÌı±íĞÅÏ¢
+		// æ‰“å°UDPç›‘å¬è¡¨ä¿¡æ¯
 		for(i = 0; i < pUdpExTable->dwNumEntries; ++i)
 		{
-			// ±¾µØIPµØÖ·
+			// æœ¬åœ°IPåœ°å€
 			inadLocal.s_addr = pUdpExTable->table[i].dwLocalAddr;
 			
 			wsprintf(szLocalAddr,  "%s:%u", inet_ntoa(inadLocal),
                 ntohs((unsigned short)(0x0000FFFF & pUdpExTable->table[i].dwLocalPort)));
 			
-			// ´òÓ¡³ö´ËÈë¿ÚµÄĞÅÏ¢
+			// æ‰“å°å‡ºæ­¤å…¥å£çš„ä¿¡æ¯
 			char strProcessName[100] = {0};
 			char * strType = "[UDP]";
 			char * szRemoteAddr = "*.*.*.*:*";
@@ -214,7 +214,7 @@ LPBYTE getNetStateList()
 		if (pGetTcpTable(&pTcpTable_Vista,GetProcessHeap(),1))
 			return 0;
 
-		// ¸øÏµÍ³ÄÚµÄËùÓĞ½ø³ÌÅÄÒ»¸ö¿ìÕÕ
+		// ç»™ç³»ç»Ÿå†…çš„æ‰€æœ‰è¿›ç¨‹æ‹ä¸€ä¸ªå¿«ç…§
 		HANDLE hProcessSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 		if(hProcessSnap == INVALID_HANDLE_VALUE)
 		{
@@ -223,23 +223,23 @@ LPBYTE getNetStateList()
 
 		for (UINT i = 0; i < pTcpTable_Vista->dwNumEntries; i++)
 		{
-			// ×´Ì¬
+			// çŠ¶æ€
 			switch (pTcpTable_Vista->table[i].dwState)
 			{
 			case MIB_TCP_STATE_CLOSED:
-				strcpy(strState, "ÒÑ¹Ø±Õ");
+				strcpy(strState, "å·²å…³é—­");
 				break;
 			case MIB_TCP_STATE_LISTEN:
-				strcpy(strState, "¼àÌı");
+				strcpy(strState, "ç›‘å¬");
 				break;
 			case MIB_TCP_STATE_SYN_SENT:
-				strcpy(strState, "SYN_·¢ËÍ");
+				strcpy(strState, "SYN_å‘é€");
 				break;
 			case MIB_TCP_STATE_SYN_RCVD:
-				strcpy(strState, "SYN_½ÓÊÕ");
+				strcpy(strState, "SYN_æ¥æ”¶");
 				break;
 			case MIB_TCP_STATE_ESTAB:
-				strcpy(strState, "Á¬½Ó");
+				strcpy(strState, "è¿æ¥");
 				break;
 			case MIB_TCP_STATE_FIN_WAIT1:
 				strcpy(strState, "FIN_WAIT1");
@@ -251,7 +251,7 @@ LPBYTE getNetStateList()
 				strcpy(strState, "CLOSE_WAIT");
 				break;
 			case MIB_TCP_STATE_CLOSING:
-				strcpy(strState, "ÕıÔÚ¹Ø±Õ");
+				strcpy(strState, "æ­£åœ¨å…³é—­");
 				break;
 			case MIB_TCP_STATE_LAST_ACK:
 				strcpy(strState, "LAST_ACK");
@@ -260,23 +260,23 @@ LPBYTE getNetStateList()
 				strcpy(strState, "TIME_WAIT");
 				break;
 			case MIB_TCP_STATE_DELETE_TCB:
-				strcpy(strState, "É¾³ı");
+				strcpy(strState, "åˆ é™¤");
 				break;
 			default:
 				break;
 			}
-			// ±¾µØIPµØÖ·
+			// æœ¬åœ°IPåœ°å€
 			inadLocal.s_addr = pTcpTable_Vista->table[i].dwLocalAddr;
 			
-			// Ô¶³Ì¶Ë¿Ú
-			if(strcmp(strState, "¼àÌı") != 0)
+			// è¿œç¨‹ç«¯å£
+			if(strcmp(strState, "ç›‘å¬") != 0)
 			{
 				dwRemotePort = pTcpTable_Vista->table[i].dwRemotePort;
 			}
 			else
 				dwRemotePort = 0;
 			
-			// Ô¶³ÌIPµØÖ·
+			// è¿œç¨‹IPåœ°å€
 			inadRemote.s_addr = pTcpTable_Vista->table[i].dwRemoteAddr;
 			
 			wsprintf(szLocalAddr, "%s:%u", inet_ntoa(inadLocal),
@@ -284,7 +284,7 @@ LPBYTE getNetStateList()
 			wsprintf(szRemoteAddr, "%s:%u", inet_ntoa(inadRemote),
 				ntohs((unsigned short)(0x0000FFFF & dwRemotePort)));
 			
-			// ´òÓ¡³ö´ËÈë¿ÚµÄĞÅÏ¢
+			// æ‰“å°å‡ºæ­¤å…¥å£çš„ä¿¡æ¯
 			char strProcessName[100] = {0};
 			char * strType = "[TCP]";
 			lstrcpy(strProcessName, ProcessPidToName(hProcessSnap, pTcpTable_Vista->table[i].dwProcessId, szProcessName));
@@ -313,7 +313,7 @@ LPBYTE getNetStateList()
 		}
 
 		PMIB_UDPEXTABLE pUdpExTable = NULL;
-		// ±íÃ÷Îª Vista »òÕß 7 ²Ù×÷ÏµÍ³
+		// è¡¨æ˜ä¸º Vista æˆ–è€… 7 æ“ä½œç³»ç»Ÿ
 		PFNInternalGetUdpTableWithOwnerPid pInternalGetUdpTableWithOwnerPid;
 		pInternalGetUdpTableWithOwnerPid =
 			(PFNInternalGetUdpTableWithOwnerPid)GetProcAddress(hModule, "InternalGetUdpTableWithOwnerPid");
@@ -332,16 +332,16 @@ LPBYTE getNetStateList()
 				return 0;
             }
 			
-			// ´òÓ¡UDP¼àÌı±íĞÅÏ¢
+			// æ‰“å°UDPç›‘å¬è¡¨ä¿¡æ¯
 			for(i = 0; i < pUdpExTable->dwNumEntries; ++i)
 			{
-				// ±¾µØIPµØÖ·
+				// æœ¬åœ°IPåœ°å€
 				inadLocal.s_addr = pUdpExTable->table[i].dwLocalAddr;
 				
 				wsprintf(szLocalAddr,  "%s:%u", inet_ntoa(inadLocal),
 					ntohs((unsigned short)(0x0000FFFF & pUdpExTable->table[i].dwLocalPort)));
 				
-				// ´òÓ¡³ö´ËÈë¿ÚµÄĞÅÏ¢
+				// æ‰“å°å‡ºæ­¤å…¥å£çš„ä¿¡æ¯
 				char strProcessName[100] = {0};
 				char * strType = "[UDP]";
 				char * szRemoteAddr = "*.*.*.*:*";
@@ -378,18 +378,18 @@ LPBYTE getNetStateList()
 	return lpBuffer;
 }
 
-// ½«½ø³ÌIDºÅ£¨PID£©×ª»¯Îª½ø³ÌÃû³Æ
+// å°†è¿›ç¨‹IDå·ï¼ˆPIDï¼‰è½¬åŒ–ä¸ºè¿›ç¨‹åç§°
 PCHAR ProcessPidToName(HANDLE hProcessSnap, DWORD ProcessId, PCHAR ProcessName)
 {
     PROCESSENTRY32 processEntry;
     processEntry.dwSize = sizeof(processEntry);
-    // ÕÒ²»µ½µÄ»°£¬Ä¬ÈÏ½ø³ÌÃûÎª¡°???¡±
+    // æ‰¾ä¸åˆ°çš„è¯ï¼Œé»˜è®¤è¿›ç¨‹åä¸ºâ€œ???â€
     strcpy(ProcessName, "???");
     if(!::Process32First(hProcessSnap, &processEntry))
         return ProcessName;
     do
     {
-        if(processEntry.th32ProcessID == ProcessId) // ¾ÍÊÇÕâ¸ö½ø³Ì
+        if(processEntry.th32ProcessID == ProcessId) // å°±æ˜¯è¿™ä¸ªè¿›ç¨‹
         {
             strcpy(ProcessName, processEntry.szExeFile);
             break;

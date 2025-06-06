@@ -1,4 +1,4 @@
-// KeyBoardDlg.cpp : implementation file
+ï»¿// KeyBoardDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -76,22 +76,22 @@ BOOL CKeyBoardDlg::OnInitDialog()
 // 	{
 		//pSysMenu->DeleteMenu(SC_TASKLIST, MF_BYCOMMAND);
 //		pSysMenu->AppendMenu(MF_SEPARATOR);
-//		pSysMenu->AppendMenu(MF_STRING, IDM_ENABLE_OFFLINE, "ÀëÏß¼ÇÂ¼(&O)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_CLEAR_RECORD, "Çå¿Õ¼ÇÂ¼(&C)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_SAVE_RECORD, "±£´æ¼ÇÂ¼(&S)");
+//		pSysMenu->AppendMenu(MF_STRING, IDM_ENABLE_OFFLINE, "ç¦»çº¿è®°å½•(&O)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_CLEAR_RECORD, "æ¸…ç©ºè®°å½•(&C)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_SAVE_RECORD, "ä¿å­˜è®°å½•(&S)");
 // 		if (m_bIsOfflineRecord)
 // 			pSysMenu->CheckMenuItem(IDM_ENABLE_OFFLINE, MF_CHECKED);
 // 	}
-	SetDlgItemText(IDC_STATICKEY, "   Ô¶³Ì¹ÜÀíÏµÍ³ÃâÉ±°æ-ÌáÊ¾ĞÅÏ¢:\r\n");
+	SetDlgItemText(IDC_STATICKEY, "   è¿œç¨‹ç®¡ç†ç³»ç»Ÿå…æ€ç‰ˆ-æç¤ºä¿¡æ¯:\r\n");
 
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
-	m_edit.SetLimitText(MAXDWORD); // ÉèÖÃ×î´ó³¤¶È
+	m_edit.SetLimitText(MAXDWORD); // è®¾ç½®æœ€å¤§é•¿åº¦
 //	ResizeEdit();
 	UpdateTitle();
 
-	// Í¨ÖªÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ¾­´ò¿ª
+	// é€šçŸ¥è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²ç»æ‰“å¼€
 	BYTE bToken = COMMAND_NEXT;
 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 	
@@ -142,7 +142,7 @@ void CKeyBoardDlg::OnReceiveComplete()
 		AddKeyBoardData();
 		break;
 	default:
-		// ´«Êä·¢ÉúÒì³£Êı¾İ
+		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
 		SendException();
 		break;
 	}
@@ -162,7 +162,7 @@ void CKeyBoardDlg::OnClose()
 	m_pContext->m_Dialog[0] = 0;
 	closesocket(m_pContext->m_Socket);
 
-//	((CDialog*)m_pContext->m_Dialog[1])->DestroyWindow();//×÷ÕßºóÀ´¸ÄµÄ ÎÒ×¢ÊÍÁË ÔÚÓĞ»ñÈ¡ÏµÍ³Í¼±ê½çÃæ ½áÊø½ø³ÌÍ¼±ê¾ÍÊ§Ğ§
+//	((CDialog*)m_pContext->m_Dialog[1])->DestroyWindow();//ä½œè€…åæ¥æ”¹çš„ æˆ‘æ³¨é‡Šäº† åœ¨æœ‰è·å–ç³»ç»Ÿå›¾æ ‡ç•Œé¢ ç»“æŸè¿›ç¨‹å›¾æ ‡å°±å¤±æ•ˆ
 	CDialog::OnClose();
 }
 
@@ -173,20 +173,20 @@ HBRUSH CKeyBoardDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if (nCtrlID==IDC_STATICKEY && nCtlColor == CTLCOLOR_EDIT)
 	{
 // 		COLORREF clr = RGB(200, 200, 200);
-// 		pDC->SetTextColor(clr);   //ÉèÖÃ»ÒÉ«µÄÎÄ±¾
+// 		pDC->SetTextColor(clr);   //è®¾ç½®ç°è‰²çš„æ–‡æœ¬
 // 		clr = RGB(0, 0, 0);
-// 		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-// 		hbr = CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+// 		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+// 		hbr = CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 		COLORREF clr = RGB(255, 0, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃ°×É«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®ç™½è‰²çš„æ–‡æœ¬
 		clr = RGB(0,0,0);
-		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
-		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
+		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
+		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
 	}
 	else if ((nCtrlID==IDC_DNS || nCtrlID==IDC_PORT) && m_lanpenetrate)
 	{
 		COLORREF clr = RGB(255, 0, 0);
-		pDC->SetTextColor(clr);   //ÉèÖÃºìÉ«µÄÎÄ±¾
+		pDC->SetTextColor(clr);   //è®¾ç½®çº¢è‰²çš„æ–‡æœ¬
 	}
 	return hbr;
 }
@@ -198,7 +198,7 @@ void CKeyBoardDlg::AddKeyBoardData()
 		addlog=TRUE;
 		return;
 	}
-	// ×îºóÌîÉÏ0
+	// æœ€åå¡«ä¸Š0
 	m_edit.SetWindowText("");
 	m_pContext->m_DeCompressionBuffer.Write((LPBYTE)"", 1);
 	int	len = m_edit.GetWindowTextLength();
@@ -243,8 +243,8 @@ bool CKeyBoardDlg::SaveRecord()
 	CFile	file;
 	if (!file.Open( dlg.GetPathName(), CFile::modeWrite | CFile::modeCreate))
 	{
-	//	MessageBox("¼ÇÂ¼ÎÄ¼ş±£´æÊ§°Ü");
-	SetDlgItemText(IDC_STATICKEY,"ÌáÊ¾ĞÅÏ¢£º¼ÇÂ¼ÎÄ¼ş±£´æÊ§°Ü£¡");
+	//	MessageBox("è®°å½•æ–‡ä»¶ä¿å­˜å¤±è´¥");
+	SetDlgItemText(IDC_STATICKEY,"æç¤ºä¿¡æ¯ï¼šè®°å½•æ–‡ä»¶ä¿å­˜å¤±è´¥ï¼");
 		return false;
 	}
 	// Write the DIB header and the bits
@@ -252,8 +252,8 @@ bool CKeyBoardDlg::SaveRecord()
 	m_edit.GetWindowText(strRecord);
 	file.Write(strRecord, strRecord.GetLength());
 	file.Close();
-	//	MessageBox("¼ÇÂ¼ÎÄ¼ş±£´æ³É¹¦");
-	SetDlgItemText(IDC_STATICKEY,"ÌáÊ¾ĞÅÏ¢£º¼ÇÂ¼ÎÄ¼ş±£´æ³É¹¦£¡");
+	//	MessageBox("è®°å½•æ–‡ä»¶ä¿å­˜æˆåŠŸ");
+	SetDlgItemText(IDC_STATICKEY,"æç¤ºä¿¡æ¯ï¼šè®°å½•æ–‡ä»¶ä¿å­˜æˆåŠŸï¼");
 	return true;
 }
 
@@ -270,21 +270,21 @@ BOOL CKeyBoardDlg::PreTranslateMessage(MSG* pMsg)
 void CKeyBoardDlg::UpdateTitle()
 {
 	CString str;
-	str.Format("¼üÅÌ¼ÇÂ¼ \\\\ %s", m_IPAddress);
+	str.Format("é”®ç›˜è®°å½• \\\\ %s", m_IPAddress);
 	// 	if (m_bIsOfflineRecord)
-	// 		str += " (ÀëÏß¼ÇÂ¼ÒÑ¿ªÆô)";
+	// 		str += " (ç¦»çº¿è®°å½•å·²å¼€å¯)";
 	// 	else
-	// 		str += " (ÀëÏß¼ÇÂ¼Î´¿ªÆô)";
+	// 		str += " (ç¦»çº¿è®°å½•æœªå¼€å¯)";
 	SetWindowText(str);	
 }
 
 void CKeyBoardDlg::OnSendkey() 
 {
 	// TODO: Add your control notification handler code here
-	m_edit.SetWindowText("");//ÏÈ½«Êı¾İÇå¿Õ
+	m_edit.SetWindowText("");//å…ˆå°†æ•°æ®æ¸…ç©º
 	BYTE bToken = COMMAND_SEND_KEYBOARD;
 	m_iocpServer->Send(m_pContext, &bToken, 1);
-	SetDlgItemText(IDC_STATICKEY,"ÌáÊ¾ĞÅÏ¢£º»ñÈ¡¼ÇÂ¼ÃüÁî·¢ËÍ³É¹¦£¡");
+	SetDlgItemText(IDC_STATICKEY,"æç¤ºä¿¡æ¯ï¼šè·å–è®°å½•å‘½ä»¤å‘é€æˆåŠŸï¼");
 }
 
 void CKeyBoardDlg::OnDelkey() 
@@ -294,7 +294,7 @@ void CKeyBoardDlg::OnDelkey()
 	BYTE bToken = COMMAND_KEYBOARD_CLEAR;
 	m_iocpServer->Send(m_pContext, &bToken, 1);
 	m_edit.SetWindowText("");
-	SetDlgItemText(IDC_STATICKEY,"ÌáÊ¾ĞÅÏ¢£ºÇå³ı¼ÇÂ¼ÃüÁî·¢ËÍ³É¹¦£¡");
+	SetDlgItemText(IDC_STATICKEY,"æç¤ºä¿¡æ¯ï¼šæ¸…é™¤è®°å½•å‘½ä»¤å‘é€æˆåŠŸï¼");
 }
 
 void CKeyBoardDlg::OnSavekey() 

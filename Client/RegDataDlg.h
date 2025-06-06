@@ -1,4 +1,4 @@
-#if !defined(AFX_REGDATADLG_H__0240443D_1FFA_46A6_8B45_31C7BF4DBC3F__INCLUDED_)
+﻿#if !defined(AFX_REGDATADLG_H__0240443D_1FFA_46A6_8B45_31C7BF4DBC3F__INCLUDED_)
 #define AFX_REGDATADLG_H__0240443D_1FFA_46A6_8B45_31C7BF4DBC3F__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -20,7 +20,7 @@ public:
 	bool EPath;
 	bool EKey;
 	bool isOK;
-	bool isDWORD;             //�Ƿ�ΪDWORDֵ
+	bool isDWORD;             //是否为DWORD值
 // Dialog Data
 	//{{AFX_DATA(CRegDataDlg)
 	enum { IDD = IDD_REGDATA_DLG };

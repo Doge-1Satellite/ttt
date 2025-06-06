@@ -1,4 +1,4 @@
-// ProxyMapDlg.cpp : implementation file
+ï»¿// ProxyMapDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -63,11 +63,11 @@ BOOL CProxyMapDlg::OnInitDialog()
 		return FALSE;
 	}
 
-	m_edit.SetLimitText(MAXDWORD); // ÉèÖÃ×î´ó³¤¶È
+	m_edit.SetLimitText(MAXDWORD); // è®¾ç½®æœ€å¤§é•¿åº¦
 	
 	CString		str;
 	DWORD		nPort;
-	// ¿ªÆôIPCP·şÎñÆ÷
+	// å¼€å¯IPCPæœåŠ¡å™¨
 	if (m_iocpLocal->Initialize(NotifyProc,(CMainFrame *)this, 100000, 0))
 	{
 		sockaddr_in  sockAddr;
@@ -80,7 +80,7 @@ BOOL CProxyMapDlg::OnInitDialog()
 	    m_IPAddress = bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "";
 
 
-		str.Format(_T("\\\\%s ´úÀí·şÎñÆ÷ ¶Ë¿Ú: %d \r\n"),m_IPAddress, nPort);
+		str.Format(_T("\\\\%s ä»£ç†æœåŠ¡å™¨ ç«¯å£: %d \r\n"),m_IPAddress, nPort);
 		SetWindowText(str);
 /*
 		WriteRegEx(HKEY_CURRENT_USER, _T("Software\\Permeo Technologies\\SocksCap32\\Connections"),
@@ -88,12 +88,12 @@ BOOL CProxyMapDlg::OnInitDialog()
 		WriteRegEx(HKEY_CURRENT_USER, _T("Software\\Permeo Technologies\\SocksCap32\\Connections"),
 			_T("SocksServer"),REG_SZ,_T("127.0.0.1"),0,1);*/
 
-		str.Format(_T("ÒÑÉèÖÃsockscap32£¬Ê¹ÓÃÆäËûsocks´úÀíÈí¼şÇëÉèÖÃ·şÎñÆ÷Îª:127.0.0.1, ¶Ë¿ÚÎª:%d \r\n"),nPort);
+		str.Format(_T("å·²è®¾ç½®sockscap32ï¼Œä½¿ç”¨å…¶ä»–socksä»£ç†è½¯ä»¶è¯·è®¾ç½®æœåŠ¡å™¨ä¸º:127.0.0.1, ç«¯å£ä¸º:%d \r\n"),nPort);
 		AddLog(str.GetBuffer(0));	
 	}
 	else
 	{
-		str.Format(_T("\\\\´úÀí·şÎñÆ÷ ¶Ë¿Ú°ó¶¨Ê§°Ü \r\n"));
+		str.Format(_T("\\\\ä»£ç†æœåŠ¡å™¨ ç«¯å£ç»‘å®šå¤±è´¥ \r\n"));
 		SetWindowText(str);
  	}
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -150,7 +150,7 @@ LRESULT CProxyMapDlg::OnNotifyProc(WPARAM wParam, LPARAM lParam)
 			{
 				m_iocpServer->Send(m_pContext,pContext->m_CompressionBuffer.GetBuffer(),
 					pContext->m_CompressionBuffer.GetBufferLen());
-				wsprintf(szMsg,_T("%d <==·¢ %d bytes\r\n"),index,pContext->m_CompressionBuffer.GetBufferLen()-5);
+				wsprintf(szMsg,_T("%d <==å‘ %d bytes\r\n"),index,pContext->m_CompressionBuffer.GetBufferLen()-5);
 			}
 			else if(pContext->m_bProxyConnected==0)
 			{
@@ -160,7 +160,7 @@ LRESULT CProxyMapDlg::OnNotifyProc(WPARAM wParam, LPARAM lParam)
 				buf[1]=0;
 				pContext->m_bProxyConnected=1;
 				m_iocpLocal->Send(pContext,buf,2);
-				wsprintf(szMsg,_T("%d ·µ»Ø±êÊ¾ %d %d %d\r\n"),index,lpData[0],lpData[1],lpData[2]);
+				wsprintf(szMsg,_T("%d è¿”å›æ ‡ç¤º %d %d %d\r\n"),index,lpData[0],lpData[1],lpData[2]);
 			}
 			else if(pContext->m_bProxyConnected==1)
 			{
@@ -186,7 +186,7 @@ LRESULT CProxyMapDlg::OnNotifyProc(WPARAM wParam, LPARAM lParam)
 					buf[3]=lpData[3];
 					m_iocpLocal->Send(pContext,buf,sizeof(buf));
 					closesocket(pContext->m_Socket );
-					wsprintf(szMsg,_T("%d ²»·ûÒªÇó,¶Ï¿ª %d %d %d\r\n"),index,lpData[0],lpData[1],lpData[3]);
+					wsprintf(szMsg,_T("%d ä¸ç¬¦è¦æ±‚,æ–­å¼€ %d %d %d\r\n"),index,lpData[0],lpData[1],lpData[3]);
 				}
 			}
 			break;
@@ -218,9 +218,9 @@ void CProxyMapDlg::OnReceiveComplete()
 		if (sendbuf[1]==0)
 		{
 			pContexts[index]->m_bProxyConnected =2;
-			wsprintf(szMsg,_T("%d Á¬½Ó³É¹¦\r\n"),index);
+			wsprintf(szMsg,_T("%d è¿æ¥æˆåŠŸ\r\n"),index);
 		}else
-			wsprintf(szMsg,_T("%d Á¬½ÓÊ§°Ü\r\n"),index);
+			wsprintf(szMsg,_T("%d è¿æ¥å¤±è´¥\r\n"),index);
 		m_iocpLocal->Send(pContexts[index],sendbuf,sizeof(sendbuf));
 		AddLog(szMsg);
 		break;
@@ -243,11 +243,11 @@ void CProxyMapDlg::OnReceiveComplete()
 		break;
 	case TOKEN_PROXY_DATA:
 		m_iocpLocal->Send(pContexts[index],&buf[5],m_pContext->m_DeCompressionBuffer.GetBufferLen()-5);
-		wsprintf(szMsg,_T("%d ==>ÊÕ %d bytes\r\n"),index,m_pContext->m_DeCompressionBuffer.GetBufferLen()-5);
+		wsprintf(szMsg,_T("%d ==>æ”¶ %d bytes\r\n"),index,m_pContext->m_DeCompressionBuffer.GetBufferLen()-5);
 		AddLog(szMsg);
 		break;
 	default:
-		// ´«Êä·¢ÉúÒì³£Êı¾İ
+		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
 		break;
 	}
 }

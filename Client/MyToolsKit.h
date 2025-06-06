@@ -1,4 +1,4 @@
-#if !defined(AFX_MYTOOLSKIT_H__629E0060_A724_4B03_80D8_E87293440312__INCLUDED_)
+Ôªø#if !defined(AFX_MYTOOLSKIT_H__629E0060_A724_4B03_80D8_E87293440312__INCLUDED_)
 #define AFX_MYTOOLSKIT_H__629E0060_A724_4B03_80D8_E87293440312__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -17,7 +17,7 @@ class CMyToolsKit : public CDialog
 public:
 	CMyToolsKit(CWnd* pParent = NULL);
 
-	LPICONRESOURCE lpIR;  // ICON◊ ‘¥÷∏’Î
+	LPICONRESOURCE lpIR;  // ICONËµÑÊ∫êÊåáÈíà
     EXEDLLICONINFO EDII;
     CString szOpenFileName,szOpenFileExtName,szSaveFileName,szSaveFileExtName;
 // Dialog Data

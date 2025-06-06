@@ -1,11 +1,11 @@
-/*********************************************************************
+ï»¿/*********************************************************************
 * SEU_QQwry.cpp
 *
-* ³şÜøÊÕ¼¯ÕûÀí
+* æ¥šèŒ—æ”¶é›†æ•´ç†
 *
-* ËµÃ÷:´¿ÕæIPÊı¾İ¿â QQWry.datµÄ²Ù×÷Àà
+* è¯´æ˜:çº¯çœŸIPæ•°æ®åº“ QQWry.datçš„æ“ä½œç±»
 * 
-* ²¿·Ö´úÂëÀ´Ô´ÓÚÍøÂç,Äã¿ÉÒÔËæÒâÊ¹ÓÃ,´«²¥»òĞŞ¸Ä.µ«ÊÇ²»¿ÉÓÃÓÚÉÌÒµÓÃÍ¾
+* éƒ¨åˆ†ä»£ç æ¥æºäºç½‘ç»œ,ä½ å¯ä»¥éšæ„ä½¿ç”¨,ä¼ æ’­æˆ–ä¿®æ”¹.ä½†æ˜¯ä¸å¯ç”¨äºå•†ä¸šç”¨é€”
 *********************************************************************/
 
 #include "stdafx.h"
@@ -33,9 +33,9 @@ CSeuQQwry::~CSeuQQwry()
 /*********************************************************************
 * OpenQQwry(CString szFileName)
 *
-* ÓÃÀ´´ò¿ªIPÊı¾İ¿âÎÄ¼şµÄº¯Êıº¯Êı
+* ç”¨æ¥æ‰“å¼€IPæ•°æ®åº“æ–‡ä»¶çš„å‡½æ•°å‡½æ•°
 *
-* ËµÃ÷:Ò»°ã´ò¿ªQQWry.datÎÄ¼ş
+* è¯´æ˜:ä¸€èˆ¬æ‰“å¼€QQWry.datæ–‡ä»¶
 *********************************************************************/
 bool CSeuQQwry::OpenQQwry(CString szFileName)
 {
@@ -63,9 +63,9 @@ bool CSeuQQwry::GetBE()
 /*********************************************************************
 * GetStartIPInfo(int iIndex)
 *
-* ¸ù¾İÊäÈëIPµÄË÷ÒıµÃµ½¸Ã¶ÎIPËùÊôµÄIP¶ÎµÄÆğÊ¼IP
+* æ ¹æ®è¾“å…¥IPçš„ç´¢å¼•å¾—åˆ°è¯¥æ®µIPæ‰€å±çš„IPæ®µçš„èµ·å§‹IP
 *
-* ËµÃ÷:
+* è¯´æ˜:
 *********************************************************************/
 int CSeuQQwry::GetStartIPInfo(int iIndex)
 {
@@ -82,14 +82,14 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 
 	if(m_ei.buf[0]!=1 &&  m_ei.buf[0]!=2)
 	{
-		m_ei.bMode=1;//Ã»ÓĞÌø
+		m_ei.bMode=1;//æ²¡æœ‰è·³
 		for(int i=0;i<MAXBUF;i++)
 		{
 			if(m_ei.buf[i]==0)
 			{
 				if(m_ei.buf[i+1]==2)
 				{
-					m_ei.bMode=2;//Local Ìø
+					m_ei.bMode=2;//Local è·³
 					m_ei.offset1=m_ei.buf[i+2]+
 						m_ei.buf[i+3]*256+
 						m_ei.buf[i+4]*256*256;
@@ -100,7 +100,7 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 	}
 	else if(m_ei.buf[0]==2)
 	{
-		m_ei.bMode=3;//Country Ìø local²»Ìø
+		m_ei.bMode=3;//Country è·³ localä¸è·³
 		m_ei.offset1=m_ei.buf[1]+m_ei.buf[2]*256+m_ei.buf[3]*256*256;
 		if(m_ei.buf[4]!=2)
 		{
@@ -108,7 +108,7 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 		}
 		else
 		{
-			m_ei.bMode=4;//CountryÌø localÌø
+			m_ei.bMode=4;//Countryè·³ localè·³
 			m_ei.offset2=m_ei.buf[5]+m_ei.buf[6]*256+m_ei.buf[7]*256*256;
 		}
 	}
@@ -127,11 +127,11 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 				{
 					if(m_ei.buf[i+1]!=2)
 					{
-						m_ei.bMode=5;//1 Ã»ÓĞÌø
+						m_ei.bMode=5;//1 æ²¡æœ‰è·³
 					}
 					else
 					{
-						m_ei.bMode=6;//1 Country²»Ìø Local Ìø
+						m_ei.bMode=6;//1 Countryä¸è·³ Local è·³
 						m_ei.offset2=m_ei.buf[i+2]+
 							m_ei.buf[i+3]*256+
 							m_ei.buf[i+4]*256*256;
@@ -145,7 +145,7 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 			
 			if(m_ei.buf[4]!=2)
 			{
-				m_ei.bMode=7;// 1 CountryÌø Local²»Ìø
+				m_ei.bMode=7;// 1 Countryè·³ Localä¸è·³
 				m_ei.offset2=m_ei.buf[1]+
 							m_ei.buf[2]*256+
 							m_ei.buf[3]*256*256;
@@ -153,7 +153,7 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 			}
 			else
 			{
-				m_ei.bMode=8;// 1 CountryÌø LocalÌø
+				m_ei.bMode=8;// 1 Countryè·³ Localè·³
 				m_ei.offset1=m_ei.buf[1]+
 					m_ei.buf[2]*256+
 					m_ei.buf[3]*256*256;
@@ -166,14 +166,14 @@ int CSeuQQwry::GetStartIPInfo(int iIndex)
 	return ioff;
 }
 
-int CSeuQQwry::GetRecordCount(void)//µÃµ½×ÜµÄIP¼ÇÂ¼Êı
+int CSeuQQwry::GetRecordCount(void)//å¾—åˆ°æ€»çš„IPè®°å½•æ•°
 {
 	if(!m_bOpen) return 0;
 	if((m_be.uEOff-m_be.uBOff)<0) return 0;
 	return (m_be.uEOff-m_be.uBOff)/7+1;
 }
 
-CString CSeuQQwry::GetStr(int ioffset)//¸ù¾İÎ»ÖÃ¶ÁĞÅÏ¢
+CString CSeuQQwry::GetStr(int ioffset)//æ ¹æ®ä½ç½®è¯»ä¿¡æ¯
 {
 	if(ioffset>m_be.uEOff) return "";
 	BYTE ch;
@@ -195,66 +195,66 @@ CString CSeuQQwry::GetStr(int ioffset)//¸ù¾İÎ»ÖÃ¶ÁĞÅÏ¢
 /*********************************************************************
 * GetCountryLocal(int index)
 *
-* ¸ù¾İË÷ÒıµÃµ½µØÖ·
+* æ ¹æ®ç´¢å¼•å¾—åˆ°åœ°å€
 *
-* ËµÃ÷:
+* è¯´æ˜:
 *********************************************************************/
 CString CSeuQQwry::GetCountryLocal(int index)
 {
 	if(index<0 || index>GetRecordCount()-1)
-		return "Î´²éµ½Ïà¹ØĞÅÏ¢";
+		return "æœªæŸ¥åˆ°ç›¸å…³ä¿¡æ¯";
 	return GetCountryLocal(m_ei.bMode,GetStartIPInfo(index)+4);
 }
 
 CString CSeuQQwry::GetCountryLocal(BYTE bMode,int ioffset)
 {
 	CString buf="";
-	if(bMode==1)//X Ã»ÓĞÌø
+	if(bMode==1)//X æ²¡æœ‰è·³
 	{
 		buf=GetStr(ioffset);
 		buf+=" ";
 		buf+=GetStr();
 	}
-	if(bMode==2)//X Country²»Ìø Local Ìø
+	if(bMode==2)//X Countryä¸è·³ Local è·³
 	{
 		buf=GetStr(ioffset);
 		buf+=" ";
 		buf+=GetStr(m_ei.offset1);
 	}
-	if(bMode==3)//2 CountryÌø local²»Ìø
+	if(bMode==3)//2 Countryè·³ localä¸è·³
 	{
 		buf=GetStr(m_ei.offset1);
 		buf+=" ";
 		buf+=GetStr(ioffset+4);
 	}
 
-	if(bMode==4)//2 CountryÌø localÌø
+	if(bMode==4)//2 Countryè·³ localè·³
 	{
 		buf=GetStr(m_ei.offset1);
 		buf+=" ";
 		buf+=GetStr(m_ei.offset2);
 	}
 
-	if(bMode==5)//1 Ã»ÓĞÌø
+	if(bMode==5)//1 æ²¡æœ‰è·³
 	{
 		buf=GetStr(m_ei.offset1);
 		buf+=" ";
 		buf+=GetStr();
 	}
 
-	if(bMode==6)//1 Country²»Ìø Local Ìø
+	if(bMode==6)//1 Countryä¸è·³ Local è·³
 	{
 		buf=GetStr(m_ei.offset1);
 		buf+=" ";
 		buf+=GetStr(m_ei.offset2);
 	}
-	if(bMode==7)//1 CountryÌø Local ²»Ìø
+	if(bMode==7)//1 Countryè·³ Local ä¸è·³
 	{
 		buf=GetStr(m_ei.offset2);
 		buf+=" ";
 		buf+=GetStr(m_ei.offset1+4);
 	}
-	if(bMode==8)//1 CountryÌø LocalÌø
+	if(bMode==8)//1 Countryè·³ Localè·³
 	{
 		buf=GetStr(m_ei.offset1);
 		buf+=" ";
@@ -283,9 +283,9 @@ CString CSeuQQwry::GetStr()
 /*********************************************************************
 * SaveToFile()
 *
-* ±£´æËùÓĞĞÅÏ¢µ½ÎÄ¼ş
+* ä¿å­˜æ‰€æœ‰ä¿¡æ¯åˆ°æ–‡ä»¶
 *
-* ËµÃ÷:
+* è¯´æ˜:
 *********************************************************************/
 void CSeuQQwry::SaveToFile(CString Name)
 {
@@ -297,14 +297,14 @@ void CSeuQQwry::SaveToFile(CString Name)
 	if (hFile == INVALID_HANDLE_VALUE)
 		return;
 	int ioff;
-	m_buf.Format("Total %d\r\n",GetRecordCount());//µÃµ½×Ü¼ÇÂ¼
+	m_buf.Format("Total %d\r\n",GetRecordCount());//å¾—åˆ°æ€»è®°å½•
 	WriteFile(hFile, m_buf.GetBuffer(0), m_buf.GetLength(), &dwBytesWrite, NULL);
 
 	for(m_i=0;m_i<GetRecordCount();m_i++)
 	{
-		ioff=GetStartIPInfo(m_i);//µÃµ½¿ªÊ¼µÄIPĞÅÏ¢
-		str1.Format("%d.%d.%d.%d",m_ipoff.b3,m_ipoff.b2,m_ipoff.b1,m_ipoff.b0);//¿ªÊ¼IP
-		str2.Format("%d.%d.%d.%d",m_ei.b3,m_ei.b2,m_ei.b1,m_ei.b0);//½áÊøIP
+		ioff=GetStartIPInfo(m_i);//å¾—åˆ°å¼€å§‹çš„IPä¿¡æ¯
+		str1.Format("%d.%d.%d.%d",m_ipoff.b3,m_ipoff.b2,m_ipoff.b1,m_ipoff.b0);//å¼€å§‹IP
+		str2.Format("%d.%d.%d.%d",m_ei.b3,m_ei.b2,m_ei.b1,m_ei.b0);//ç»“æŸIP
 		m_buf.Format("%-15s %-15s %s\r\n",
 			str1,str2,GetCountryLocal(m_ei.bMode,ioff+4));
 		WriteFile(hFile, m_buf.GetBuffer(0), m_buf.GetLength(), &dwBytesWrite, NULL);
@@ -315,25 +315,25 @@ void CSeuQQwry::SaveToFile(CString Name)
 /*********************************************************************
 * IPtoAdd(CString szIP)
 *
-* ¸ù¾İIPÕÒµ½µØÖ·
+* æ ¹æ®IPæ‰¾åˆ°åœ°å€
 *
-* ËµÃ÷:
+* è¯´æ˜:
 *********************************************************************/
 CString CSeuQQwry::IPtoAddr(CString szIP)
 {
 	if (!m_bOpen)
-		return "Î´ÕÒµ½IPÊı¾İ¿â";
+		return "æœªæ‰¾åˆ°IPæ•°æ®åº“";
 	if (szIP == "")
-		return "ÊäÈëIPµØÖ·Îª¿Õ";
+		return "è¾“å…¥IPåœ°å€ä¸ºç©º";
 	return GetCountryLocal(GetIndex(szIP));
 }
 
 /*********************************************************************
 * GetIndex(CString szIP)
 *
-* ¸ù¾İIPÕÒµ½Ë÷Òı
+* æ ¹æ®IPæ‰¾åˆ°ç´¢å¼•
 *
-* ËµÃ÷:
+* è¯´æ˜:
 *********************************************************************/
 int CSeuQQwry::GetIndex(CString szIP)
 {
@@ -341,7 +341,7 @@ int CSeuQQwry::GetIndex(CString szIP)
 	DWORD dwInputIP;
 	DWORD dwStartIP;
 	dwInputIP=IPtoDWORD(szIP);
-	//ÀûÓÃ°ëÌø·½·¨ËÙ¶È¿ìÒ»Ğ©
+	//åˆ©ç”¨åŠè·³æ–¹æ³•é€Ÿåº¦å¿«ä¸€äº›
 	int iT;
 	int iB,iE;
 	iB=0;
@@ -383,7 +383,7 @@ int CSeuQQwry::GetIndex(CString szIP)
 	return index;
 }
 
-//¸ù¾İË÷ÒıµÃµ½DWORDÀàĞÍµÄIP,GetIndex(CString szIP)º¯ÊıÖĞÓÃµ½
+//æ ¹æ®ç´¢å¼•å¾—åˆ°DWORDç±»å‹çš„IP,GetIndex(CString szIP)å‡½æ•°ä¸­ç”¨åˆ°
 DWORD CSeuQQwry::GetSIP(int index)
 {
 	DWORD ip;
@@ -402,7 +402,7 @@ DWORD CSeuQQwry::GetSIP(int index)
 	return ip;
 }
 
-//×ªCStringÎªDWORD,GetIndex(CString szIP)º¯ÊıÖĞÓÃµ½
+//è½¬CStringä¸ºDWORD,GetIndex(CString szIP)å‡½æ•°ä¸­ç”¨åˆ°
 DWORD CSeuQQwry::IPtoDWORD(CString szIP)
 {
 	DWORD iIP;

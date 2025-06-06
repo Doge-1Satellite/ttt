@@ -1,4 +1,4 @@
-// Dialupass.h: interface for the CDialupass class.
+﻿// Dialupass.h: interface for the CDialupass class.
 //
 //////////////////////////////////////////////////////////////////////
 

@@ -1,7 +1,7 @@
-/*
+ï»¿/*
  DriverCode64 By Anonymity
  My QQ ????????
- Ö±½Óinclude´Ëµ¥Ôª£¬Ê¹ÓÃ DriverCode64SaveFile("xxx.xxx");¼´¿ÉÉú³ÉÎÄ¼ş
+ ç›´æ¥includeæ­¤å•å…ƒï¼Œä½¿ç”¨ DriverCode64SaveFile("xxx.xxx");å³å¯ç”Ÿæˆæ–‡ä»¶
 */
 
 #ifndef _HEX_DRIVERCODE64_

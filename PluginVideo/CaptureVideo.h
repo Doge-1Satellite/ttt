@@ -1,4 +1,4 @@
-// CCaptureVideoÊÓÆµ²¶×½ÀàÍ·ÎÄ¼ş
+ï»¿// CCaptureVideoè§†é¢‘æ•æ‰ç±»å¤´æ–‡ä»¶
 /////////////////////////////////////////////////////////////////////
 #if !defined(AFX_CAPTUREVIDEO_H__F5345AA4_A39F_4B07_B843_3D87C4287AA0__INCLUDED_)
 #define AFX_CAPTUREVIDEO_H__F5345AA4_A39F_4B07_B843_3D87C4287AA0__INCLUDED_

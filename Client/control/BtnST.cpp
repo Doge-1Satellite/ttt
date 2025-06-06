@@ -1,4 +1,4 @@
-//   Modified by jingzhou xu, Add background color support
+ï»¿//   Modified by jingzhou xu, Add background color support
 //
 
 #include "stdafx.h"
@@ -2055,7 +2055,7 @@ DWORD CButtonST::OnDrawBackground(CDC* pDC, CRect* pRect)
 			crColor = m_crColors[BTNST_COLOR_BK_OUT];
 	} // else
 
-	// ÔÚ´Ë×Ô¶¨Òå±³¾°ÑÕÉ«, jingzhou xu
+	// åœ¨æ­¤è‡ªå®šä¹‰èƒŒæ™¯é¢œè‰², jingzhou xu
 	crColor = m_clrBkColor;
 	CBrush		brBackground(crColor);
 

@@ -1,4 +1,4 @@
-// VideoCap.h: interface for the CVideoCap class.
+﻿// VideoCap.h: interface for the CVideoCap class.
 //
 //////////////////////////////////////////////////////////////////////
 #if !defined(AFX_VIDEOCAP_H__5D857DCE_D889_45B0_8A98_33E1DF64CDE3__INCLUDED_)

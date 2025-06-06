@@ -1,21 +1,21 @@
-#if !defined(AFX_VIDEOCODEC_H_INCLUDED)
+ï»¿#if !defined(AFX_VIDEOCODEC_H_INCLUDED)
 #define AFX_VIDEOCODEC_H_INCLUDED
 /*
-³£ÓÃµÄ±àÂëÆ÷Ñ¹Ëõ±È,³ÌĞòÊ¹ÓÃM263±àÂë
+å¸¸ç”¨çš„ç¼–ç å™¨å‹ç¼©æ¯”,ç¨‹åºä½¿ç”¨M263ç¼–ç 
 0x64697663,1684633187,Cinepak Codec by Radius			76032 >> 1860
 0x32335649,842225225,Intel Indeo(R) Video R3.2			76032 >> 475
-0x56555949,1448433993,Intel IYUV codec					76032 >> 38016 ·ÅÆúÕâ¸ö£¬Ñ¹Ëõ±ÈÌ«µÍ
+0x56555949,1448433993,Intel IYUV codec					76032 >> 38016 æ”¾å¼ƒè¿™ä¸ªï¼Œå‹ç¼©æ¯”å¤ªä½
 0x4356534d,1129730893,Microsoft Video 1					76032 >> 3202
-0x3336324d,859189837,Microsoft H.263 Video Codec		76032 >> 663 ¶Ô·Ö±çÂÊÓĞÒªÇó
+0x3336324d,859189837,Microsoft H.263 Video Codec		76032 >> 663 å¯¹åˆ†è¾©ç‡æœ‰è¦æ±‚
 0x33564d57,861293911,Microsoft Windows Media Video 9	76032 >> 196
 0x3234504d,842289229,Microsoft MPEG-4 Video Codec V2	76032 >> 349
 
-M263Ö»Ö§³Ö176*144 352*288 (352*288 24²ÊµÄÊÔÑéÖ»Ö§³ÖbiPlanes = 1)
+M263åªæ”¯æŒ176*144 352*288 (352*288 24å½©çš„è¯•éªŒåªæ”¯æŒbiPlanes = 1)
 
 
-Ò»¶Î¿ÉÒÔÓÃµÄÉÏµÄ´úÂë
+ä¸€æ®µå¯ä»¥ç”¨çš„ä¸Šçš„ä»£ç 
 
-  // ÁĞ¾Ù±¾»ú°²×°µÄ½âÂëÆ÷(CODEC)
+  // åˆ—ä¸¾æœ¬æœºå®‰è£…çš„è§£ç å™¨(CODEC)
 int EnumCodecs(int *fccHandler, char *strName)
 {
 	static int	i = 0;
@@ -37,7 +37,7 @@ int EnumCodecs(int *fccHandler, char *strName)
 	{
 		ICGetInfo(hIC, &icInfo, sizeof(icInfo)); 
 		*fccHandler = icInfo.fccHandler;
-		//ÓÉÓÚµÃµ½µÄszDescriptionÊÇUNICODEË«×Ö½Ú×Ö´®£¬ËùÒÔÒª×ª»»ÎªASCIIµÄ
+		//ç”±äºå¾—åˆ°çš„szDescriptionæ˜¯UNICODEåŒå­—èŠ‚å­—ä¸²ï¼Œæ‰€ä»¥è¦è½¬æ¢ä¸ºASCIIçš„
 		if (strName != NULL)
 			wcstombs(strName, icInfo.szDescription, 256);
 	}
@@ -90,7 +90,7 @@ public:
 		}
 
 		ICCompressGetFormat(m_hIC, m_lpbmiInput, &m_bmiOutput);
-		// Ïò±àÂëÆ÷·¢ËÍÑéÖ¤
+		// å‘ç¼–ç å™¨å‘é€éªŒè¯
 		ICSendMessage(m_hIC, 0x60c9, 0xf7329ace, 0xacdeaea2);
 		
 		m_cv.hic = m_hIC;

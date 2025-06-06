@@ -1,4 +1,4 @@
-<html>
+ï»¿<html>
 <body>
 <pre>
 <h1>Build Log</h1>
@@ -9,7 +9,7 @@
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8FDE.tmp" with contents
 [
 /nologo /MD /w /W0 /GX /Zd /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/Server.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Users\Administrator\Desktop\EminÄ¦ÄÉ¸çÔ´Âë2025.4.3\EminÄ¦ÄÉ¸çÔ´Âë\Server\common\FileManager.cpp"
+"C:\Users\Administrator\Desktop\Eminæ‘©çº³å“¥æºç 2025.4.3\Eminæ‘©çº³å“¥æºç \Server\common\FileManager.cpp"
 ]
 Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSP8FDE.tmp" 
 Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8FDF.tmp" with contents
@@ -65,8 +65,8 @@ ShellCode.bat
 ]
 Creating command line "C:\Users\Administrator\AppData\Local\Temp\RSP9157.bat"
 
-ÒÑ¸´ÖÆ         1 ¸öÎÄ¼ş¡£
-ÒÑ¸´ÖÆ         1 ¸öÎÄ¼ş¡£
+å·²å¤åˆ¶         1 ä¸ªæ–‡ä»¶ã€‚
+å·²å¤åˆ¶         1 ä¸ªæ–‡ä»¶ã€‚
 
 
 

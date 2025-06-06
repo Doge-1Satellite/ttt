@@ -1,4 +1,4 @@
-;***
+﻿;***
 ;cruntime.inc - multi-model assembly macros for interfacing to HLLs
 ;
 ;       Copyright (c) Microsoft Corporation.  All rights reserved.

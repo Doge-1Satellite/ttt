@@ -1,4 +1,4 @@
-// ScreenManager.h: interface for the CScreenManager class.
+﻿// ScreenManager.h: interface for the CScreenManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

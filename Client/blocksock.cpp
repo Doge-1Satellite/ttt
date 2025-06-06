@@ -1,4 +1,4 @@
-// blocksock.cpp (CMyBlockSocketException, CMyBlockSocket, CMyHttpBlockSocket)
+ï»¿// blocksock.cpp (CMyBlockSocketException, CMyBlockSocket, CMyHttpBlockSocket)
 #include <stdafx.h>
 #include "blocksock.h"
 
@@ -17,10 +17,10 @@ BOOL CMyBlockSocketException::GetErrorMessage(LPTSTR lpstrError, UINT nMaxError,
 
 	char text[200];
 	if(m_nError == 0) {
-		wsprintf(text, "%s ´íÎó", (const char*) m_strMessage);
+		wsprintf(text, "%s é”™è¯¯", (const char*) m_strMessage);
 	}
 	else {
-		wsprintf(text, "%s   ´íÎóºÅ£º#%d", (const char*) m_strMessage, m_nError);
+		wsprintf(text, "%s   é”™è¯¯å·ï¼š#%d", (const char*) m_strMessage, m_nError);
 	}
 	strncpy(lpstrError, text, nMaxError - 1);
 	return TRUE;
@@ -40,7 +40,7 @@ void CMyBlockSocket::Create(int nType /* = SOCK_STREAM */)
 {
 	ASSERT(m_hSocket == NULL);
 	if((m_hSocket = socket(AF_INET, nType, 0)) == INVALID_SOCKET) {
-		throw new CMyBlockSocketException("´´½¨Ì×½Ó×Ö(Create)");
+		throw new CMyBlockSocketException("åˆ›å»ºå¥—æ¥å­—(Create)");
 	}
 }
 
@@ -48,7 +48,7 @@ void CMyBlockSocket::Bind(LPCSOCKADDR psa)
 {
 	ASSERT(m_hSocket != NULL);
 	if(bind(m_hSocket, psa, sizeof(SOCKADDR)) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("°ó¶¨µØÖ·(Bind)");
+		throw new CMyBlockSocketException("ç»‘å®šåœ°å€(Bind)");
 	}
 }
 
@@ -56,7 +56,7 @@ void CMyBlockSocket::Listen()
 {
 	ASSERT(m_hSocket != NULL);
 	if(listen(m_hSocket, 5) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("ÕìÌıÁ¬½Ó(Listen)");
+		throw new CMyBlockSocketException("ä¾¦å¬è¿æ¥(Listen)");
 	}
 }
 
@@ -68,7 +68,7 @@ BOOL CMyBlockSocket::Accept(CMyBlockSocket& sConnect, LPSOCKADDR psa)
 	sConnect.m_hSocket = accept(m_hSocket, psa, &nLengthAddr);
 	if(sConnect == INVALID_SOCKET) {
 		if(WSAGetLastError() != WSAEINTR) {
-			throw new CMyBlockSocketException("½ÓÊÜÁ¬½Ó(Accept)");
+			throw new CMyBlockSocketException("æ¥å—è¿æ¥(Accept)");
 		}
 		return FALSE;
 	}
@@ -79,7 +79,7 @@ void CMyBlockSocket::Close()
 {
 	ASSERT(m_hSocket != NULL);
 	if(closesocket(m_hSocket) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("¹Ø±ÕÌ×½Ó×Ö(Close)");
+		throw new CMyBlockSocketException("å…³é—­å¥—æ¥å­—(Close)");
 	}
 	m_hSocket = NULL;
 }
@@ -88,7 +88,7 @@ void CMyBlockSocket::Connect(LPCSOCKADDR psa)
 {
 	ASSERT(m_hSocket != NULL);
 	if(connect(m_hSocket, psa, sizeof(SOCKADDR)) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("·¢ËÍÁ¬½Ó(Connect)");
+		throw new CMyBlockSocketException("å‘é€è¿æ¥(Connect)");
 	}
 }
 
@@ -111,11 +111,11 @@ int CMyBlockSocket::Send(const char* pch, const int nSize, const int nSecs)
 	FD_SET fd = {1, m_hSocket};
 	TIMEVAL tv = {nSecs, 0};
 	if(select(0, NULL, &fd, NULL, &tv) == 0) {
-		throw new CMyBlockSocketException("·¢ËÍ³¬Ê±(Send timeout)");
+		throw new CMyBlockSocketException("å‘é€è¶…æ—¶(Send timeout)");
 	}
 	int nBytesSent;
 	if((nBytesSent = send(m_hSocket, pch, nSize, 0)) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("·¢ËÍÊı¾İ(Send)");
+		throw new CMyBlockSocketException("å‘é€æ•°æ®(Send)");
 	}
 	return nBytesSent;
 }
@@ -126,12 +126,12 @@ int CMyBlockSocket::Receive(char* pch, const int nSize, const int nSecs)
 	FD_SET fd = {1, m_hSocket};
 	TIMEVAL tv = {nSecs, 0};
 	if(select(0, &fd, NULL, NULL, &tv) == 0) {
-		throw new CMyBlockSocketException("½ÓÊÕ³¬Ê±(Receive timeout)");
+		throw new CMyBlockSocketException("æ¥æ”¶è¶…æ—¶(Receive timeout)");
 	}
 
 	int nBytesReceived;
 	if((nBytesReceived = recv(m_hSocket, pch, nSize, 0)) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("½ÓÊÕÊı¾İ(Receive)");
+		throw new CMyBlockSocketException("æ¥æ”¶æ•°æ®(Receive)");
 	}
 	return nBytesReceived;
 }
@@ -142,13 +142,13 @@ int CMyBlockSocket::ReceiveDatagram(char* pch, const int nSize, LPSOCKADDR psa, 
 	FD_SET fd = {1, m_hSocket};
 	TIMEVAL tv = {nSecs, 0};
 	if(select(0, &fd, NULL, NULL, &tv) == 0) {
-		throw new CMyBlockSocketException("½ÓÊÕ³¬Ê±(Receive timeout)");
+		throw new CMyBlockSocketException("æ¥æ”¶è¶…æ—¶(Receive timeout)");
 	}
 
 	int nFromSize = sizeof(SOCKADDR);
 	int nBytesReceived = recvfrom(m_hSocket, pch, nSize, 0, psa, &nFromSize);
 	if(nBytesReceived == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("½ÓÊÕÊı¾İ±¨(ReceiveDatagram)");
+		throw new CMyBlockSocketException("æ¥æ”¶æ•°æ®æŠ¥(ReceiveDatagram)");
 	}
 	return nBytesReceived;
 }
@@ -159,12 +159,12 @@ int CMyBlockSocket::SendDatagram(const char* pch, const int nSize, LPCSOCKADDR p
 	FD_SET fd = {1, m_hSocket};
 	TIMEVAL tv = {nSecs, 0};
 	if(select(0, NULL, &fd, NULL, &tv) == 0) {
-		throw new CMyBlockSocketException("·¢ËÍ³¬Ê±(Send timeout)");
+		throw new CMyBlockSocketException("å‘é€è¶…æ—¶(Send timeout)");
 	}
 
 	int nBytesSent = sendto(m_hSocket, pch, nSize, 0, psa, sizeof(SOCKADDR));
 	if(nBytesSent == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("·¢ËÍÊı¾İ±¨(SendDatagram)");
+		throw new CMyBlockSocketException("å‘é€æ•°æ®æŠ¥(SendDatagram)");
 	}
 	return nBytesSent;
 }
@@ -174,7 +174,7 @@ void CMyBlockSocket::GetPeerAddr(LPSOCKADDR psa)
 	ASSERT(m_hSocket != NULL);
 	int nLengthAddr = sizeof(SOCKADDR);
 	if(getpeername(m_hSocket, psa, &nLengthAddr) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("»ñµÃ¶Ô·½µØÖ·(GetPeerName)");
+		throw new CMyBlockSocketException("è·å¾—å¯¹æ–¹åœ°å€(GetPeerName)");
 	}
 }
 
@@ -183,7 +183,7 @@ void CMyBlockSocket::GetSockAddr(LPSOCKADDR psa)
 	ASSERT(m_hSocket != NULL);
 	int nLengthAddr = sizeof(SOCKADDR);
 	if(getsockname(m_hSocket, psa, &nLengthAddr) == SOCKET_ERROR) {
-		throw new CMyBlockSocketException("»ñµÃ±¾·½µØÖ·(GetSockName)");
+		throw new CMyBlockSocketException("è·å¾—æœ¬æ–¹åœ°å€(GetSockName)");
 	}
 }
 
@@ -191,7 +191,7 @@ CSocketAddress CMyBlockSocket::GetHostByName(const char* pchName, const USHORT u
 {
 	hostent* pHostEnt = gethostbyname(pchName);
 	if(pHostEnt == NULL) {
-		throw new CMyBlockSocketException("Í¨¹ıÃû×Ö²éÕÒÖ÷»ú(GetHostByName)");
+		throw new CMyBlockSocketException("é€šè¿‡åå­—æŸ¥æ‰¾ä¸»æœº(GetHostByName)");
 	}
 	ULONG* pulAddr = (ULONG*) pHostEnt->h_addr_list[0];
 	SOCKADDR_IN sockTemp;
@@ -206,7 +206,7 @@ const char* CMyBlockSocket::GetHostByAddr(LPCSOCKADDR psa)
 	hostent* pHostEnt = gethostbyaddr((char*) &((LPSOCKADDR_IN) psa)
 				->sin_addr.s_addr, 4, PF_INET);
 	if(pHostEnt == NULL) {
-		throw new CMyBlockSocketException("Í¨¹ıµØÖ·²éÕÒÖ÷»ú(GetHostByAddr)");
+		throw new CMyBlockSocketException("é€šè¿‡åœ°å€æŸ¥æ‰¾ä¸»æœº(GetHostByAddr)");
 	}
 	return pHostEnt->h_name;
 }
@@ -232,7 +232,7 @@ typedef void* (__cdecl *memchrT)
 );
 memchrT   pmemchr   =   (memchrT)GetProcAddress(LoadLibrary("MSVCRT.dll"),"memchr");
 
-//¶ÁÈ¡Õû¸öÍ·ĞÅÏ¢£¬²¢ÔÚ½áÎ²¼ÓÉÏ×Ö·û´®µÄ½áÊø±êÖ¾
+//è¯»å–æ•´ä¸ªå¤´ä¿¡æ¯ï¼Œå¹¶åœ¨ç»“å°¾åŠ ä¸Šå­—ç¬¦ä¸²çš„ç»“æŸæ ‡å¿—
 int CMyHttpBlockSocket::ReadHttpHeaderLine(char* pch, const int nSize, const int nSecs)
 {
 	int nBytesThisTime = m_nReadBuf;
@@ -254,7 +254,7 @@ int CMyHttpBlockSocket::ReadHttpHeaderLine(char* pch, const int nSize, const int
 		pch1 += nBytesThisTime;
 		nBytesThisTime = Receive(m_pReadBuf + m_nReadBuf, nSizeRecv - m_nReadBuf, nSecs);
 		if(nBytesThisTime <= 0) {
-			throw new CMyBlockSocketException("»ñÈ¡Í·²¿ĞÅÏ¢(ReadHeaderLine)");
+			throw new CMyBlockSocketException("è·å–å¤´éƒ¨ä¿¡æ¯(ReadHeaderLine)");
 		}
 		m_nReadBuf += nBytesThisTime;
 	}
@@ -263,7 +263,7 @@ int CMyHttpBlockSocket::ReadHttpHeaderLine(char* pch, const int nSize, const int
 	return nLineLength;
 }
 
-//¶ÁÈ¡´«ÊäµÄĞÅÏ¢µÄÆäËü²¿·Ö(¼Ù¶¨Í·ĞÅÏ¢ÒÑ¾­¶ÁÈ¡ÁË)
+//è¯»å–ä¼ è¾“çš„ä¿¡æ¯çš„å…¶å®ƒéƒ¨åˆ†(å‡å®šå¤´ä¿¡æ¯å·²ç»è¯»å–äº†)
 int CMyHttpBlockSocket::ReadHttpResponse(char* pch, const int nSize, const int nSecs)
 {
 	int nBytesToRead, nBytesThisTime, nBytesRead = 0;

@@ -1,4 +1,4 @@
-// AudioManager.h: interface for the CAudioManager class.
+﻿// AudioManager.h: interface for the CAudioManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

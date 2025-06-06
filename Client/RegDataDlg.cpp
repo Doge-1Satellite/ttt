@@ -1,4 +1,4 @@
-// RegDataDlg.cpp : implementation file
+ï»¿// RegDataDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -65,14 +65,14 @@ BOOL CRegDataDlg::OnInitDialog()
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-// Â·¾¶±ä»Ò
+// è·¯å¾„å˜ç°
 void CRegDataDlg::EnablePath()
 {
 	GetDlgItem(IDC_PATH)->EnableWindow(false);
 	UpdateData(false);
 }
 
-// key±ä»Ò
+// keyå˜ç°
 void CRegDataDlg::EnableKey()
 {
 	GetDlgItem(IDC_KEY)->EnableWindow(false);
@@ -85,13 +85,13 @@ void CRegDataDlg::OnOK()
 	UpdateData(true);
 	if(m_path==""&&!EPath)
 	{
-		MessageBox("Ãû³Æ²»ÄÜÎª¿Õ£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		MessageBox("åç§°ä¸èƒ½ä¸ºç©ºï¼","æç¤º",MB_ICONINFORMATION);
 		isOK=false;
 		return;
 	}
 	if(m_key==""&&!EKey)
 	{
-		MessageBox("Êı¾İ²»ÄÜÎª¿Õ£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		MessageBox("æ•°æ®ä¸èƒ½ä¸ºç©ºï¼","æç¤º",MB_ICONINFORMATION);
 		isOK=false;
 		return;
 	}
@@ -122,7 +122,7 @@ void CRegDataDlg::OnChangeKey()
 	}
 	length=m_key.GetLength();
 	if(length > 9)
-	{                               //Êı¾İ²»ÄÜ³¬·¶Î§
+	{                               //æ•°æ®ä¸èƒ½è¶…èŒƒå›´
 		m_key.Delete(length-1);
 		UpdateData(false);
 	}

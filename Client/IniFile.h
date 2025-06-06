@@ -1,4 +1,4 @@
-// IniFile.h: interface for the CIniFile class.
+﻿// IniFile.h: interface for the CIniFile class.
 //
 //////////////////////////////////////////////////////////////////////
 

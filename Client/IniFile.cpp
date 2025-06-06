@@ -1,4 +1,4 @@
-// IniFile.cpp: implementation of the CIniFile class.
+﻿// IniFile.cpp: implementation of the CIniFile class.
 //
 //////////////////////////////////////////////////////////////////////
 

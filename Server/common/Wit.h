@@ -1,4 +1,4 @@
-//
+﻿//
 // winsock2i.h - Include winsock2.h safely.
 //
 // Copyleft   02/24/2005   by freefalcon

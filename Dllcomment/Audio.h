@@ -1,4 +1,4 @@
-// Audio.h: interface for the CAudio class.
+ï»¿// Audio.h: interface for the CAudio class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -20,15 +20,15 @@ public:
 	virtual ~CAudio();
 	int m_nBufferLength;
 
-	LPBYTE m_lpInAudioData[2]; // ±£³ÖÉùÒôµÄÁ¬¼Ì
+	LPBYTE m_lpInAudioData[2]; // ä¿æŒå£°éŸ³çš„è¿ç»§
 	LPBYTE m_lpOutAudioData[2];
 
 	HWAVEIN m_hWaveIn;
 	int m_nWaveInIndex;
 	int m_nWaveOutIndex;
 
-	HANDLE	m_hEventWaveIn; // MM_WIM_DATA´¥·¢
-	HANDLE	m_hStartRecord; // getRecordBuffer ·µ»Øºó´¥·¢
+	HANDLE	m_hEventWaveIn; // MM_WIM_DATAè§¦å‘
+	HANDLE	m_hStartRecord; // getRecordBuffer è¿”å›åè§¦å‘
 
 	LPBYTE getRecordBuffer(LPDWORD lpdwBytes);
 	bool playBuffer(LPBYTE lpWaveBuffer, DWORD dwBytes);

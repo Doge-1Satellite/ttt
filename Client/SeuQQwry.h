@@ -1,11 +1,11 @@
-/*********************************************************************
+ï»¿/*********************************************************************
 * SEU_QQwry.h
 *
-* ³şÜøÊÕ¼¯ÕûÀí
+* æ¥šèŒ—æ”¶é›†æ•´ç†
 *
-* ËµÃ÷:´¿ÕæIPÊı¾İ¿â QQWry.datµÄ²Ù×÷Àà
+* è¯´æ˜:çº¯çœŸIPæ•°æ®åº“ QQWry.datçš„æ“ä½œç±»
 * 
-* ²¿·Ö´úÂëÀ´Ô´ÓÚÍøÂç,Äã¿ÉÒÔËæÒâÊ¹ÓÃ,´«²¥»òĞŞ¸Ä.µ«ÊÇ²»¿ÉÓÃÓÚÉÌÒµÓÃÍ¾
+* éƒ¨åˆ†ä»£ç æ¥æºäºç½‘ç»œ,ä½ å¯ä»¥éšæ„ä½¿ç”¨,ä¼ æ’­æˆ–ä¿®æ”¹.ä½†æ˜¯ä¸å¯ç”¨äºå•†ä¸šç”¨é€”
 *********************************************************************/
 #include "stdafx.h"
 #if !defined(AFX_SEU_QQWRY_H)
@@ -48,12 +48,12 @@ typedef struct _tagBE
 
 class CSeuQQwry  
 {
-public://ÆÕÍ¨ÓÃ»§½Ó¿Úº¯Êı
-	void SetPath(CString path);//ÉèÖÃQQWry.datµÄÂ·¾¶
-    CString IPtoAddr(CString szIP);//²ÎÊıÊÇIP,·µ»ØIP¶ÔÓ¦µÄµØÖ·   
-	void SaveToFile(CString Name);//½«QQWry.datÎÄ¼şµÄÄÚÈİµ¼³öÎªÖ¸¶¨µÄÎÄ¼ş
+public://æ™®é€šç”¨æˆ·æ¥å£å‡½æ•°
+	void SetPath(CString path);//è®¾ç½®QQWry.datçš„è·¯å¾„
+    CString IPtoAddr(CString szIP);//å‚æ•°æ˜¯IP,è¿”å›IPå¯¹åº”çš„åœ°å€   
+	void SaveToFile(CString Name);//å°†QQWry.datæ–‡ä»¶çš„å†…å®¹å¯¼å‡ºä¸ºæŒ‡å®šçš„æ–‡ä»¶
 
-public://¸ß¼¶ÓÃ»§º¯Êı	
+public://é«˜çº§ç”¨æˆ·å‡½æ•°	
 	DWORD m_dwLastIP;
 	CString GetCountryLocal(int index);
 	DWORD GetSIP(int index);
@@ -67,8 +67,8 @@ public://¸ß¼¶ÓÃ»§º¯Êı
 	int GetStartIPInfo(int iIndex);
 	CString m_buf;
 	bool GetBE(void);
-	bool OpenQQwry(CString szFileName);//´ò¿ªQQwryÊı¾İ¿â
-	void CloseQQwry(void);//¹Ø±ÕQQwryÊı¾İ¿â
+	bool OpenQQwry(CString szFileName);//æ‰“å¼€QQwryæ•°æ®åº“
+	void CloseQQwry(void);//å…³é—­QQwryæ•°æ®åº“
 	BE m_be;
 	IPOFF m_ipoff;
 	EndInfo m_ei;

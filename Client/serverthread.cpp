@@ -1,4 +1,4 @@
-// serverthread.cpp
+ï»¿// serverthread.cpp
 
 #include "stdafx.h"
 #include "blocksock.h"
@@ -12,15 +12,15 @@
 #include   <stdio.h> 
 #include   <list> 
 
-volatile int g_nConnection=0;//Á¬½ÓµÄ¸öÊı
-volatile BOOL g_bListening=FALSE;//ÕìÌıÌ×½Ó×Ö×´Ì¬
-volatile UINT g_nPortServer=80;//·şÎñ¶Ë¿Ú
-CString g_strDirect="c:\\WebSite\\";//·şÎñÂ·¾¶
-CString g_strIPServer;//·şÎñÆ÷µØÖ·
-CString g_strDefault="index.htm";//È±Ê¡ÍøÒ³µÄÃû×Ö
-CMyBlockSocket g_sListen;//ÕìÌıÌ×½Ó×Ö
+volatile int g_nConnection=0;//è¿æ¥çš„ä¸ªæ•°
+volatile BOOL g_bListening=FALSE;//ä¾¦å¬å¥—æ¥å­—çŠ¶æ€
+volatile UINT g_nPortServer=80;//æœåŠ¡ç«¯å£
+CString g_strDirect="c:\\WebSite\\";//æœåŠ¡è·¯å¾„
+CString g_strIPServer;//æœåŠ¡å™¨åœ°å€
+CString g_strDefault="index.htm";//ç¼ºçœç½‘é¡µçš„åå­—
+CMyBlockSocket g_sListen;//ä¾¦å¬å¥—æ¥å­—
 
-//½âÎöÇëÇó
+//è§£æè¯·æ±‚
 BOOL Parse(char* pStr, char** ppToken1, char** ppToken2)
 {
 	*ppToken1=pStr;
@@ -39,28 +39,28 @@ BOOL Parse(char* pStr, char** ppToken1, char** ppToken2)
 	return FALSE;
 }
 
-//ÇëÇó´ò¿ªÎÄ¼ş£¬Ğ´ÈÕÖ¾
+//è¯·æ±‚æ‰“å¼€æ–‡ä»¶ï¼Œå†™æ—¥å¿—
 void LogRequest(LPVOID pParam, char* pch, CSocketAddress sa)
 {
-	//pParam²ÎÊı±£´æÁËCListBox¶ÔÏóµÄÖ¸Õë
+	//pParamå‚æ•°ä¿å­˜äº†CListBoxå¯¹è±¡çš„æŒ‡é’ˆ
 	CString strList;
 	CListBox* pList=(CListBox*)pParam;
 	CString strGmt=CTime::GetCurrentTime().FormatGmt("%m/%d/%y %H:%M:%S");
-	strList.Format("[%s] ·şÎñÆ÷Á¬½Ó # %d ",strGmt,g_nConnection);
+	strList.Format("[%s] æœåŠ¡å™¨è¿æ¥ # %d ",strGmt,g_nConnection);
 	pList->AddString(strList);
-	strList.Format("[%s] IPµØÖ·:%s ¶Ë¿Ú:%d", strGmt,sa.DottedDecimal(), sa.Port());
+	strList.Format("[%s] IPåœ°å€:%s ç«¯å£:%d", strGmt,sa.DottedDecimal(), sa.Port());
 	pList->AddString(strList);
-	//strList.Format("Ê±¼ä:%s",strGmt);
+	//strList.Format("æ—¶é—´:%s",strGmt);
 	//pList->AddString(strList);
-	strList.Format("[%s] ÇëÇó:%s", strGmt,pch);
+	strList.Format("[%s] è¯·æ±‚:%s", strGmt,pch);
 	pList->AddString(strList);
 }
 
-//ĞéÄâÂ·¾¶×ªÕæÊµÂ·¾¶£¬´ò¿ªÎÄ¼ş²¢·µ»Ø¾ä±ú
+//è™šæ‹Ÿè·¯å¾„è½¬çœŸå®è·¯å¾„ï¼Œæ‰“å¼€æ–‡ä»¶å¹¶è¿”å›å¥æŸ„
 CFile* OpenFile(const char* pName)
 {
-	//´ò¿ªÎÄ¼ş
-	//×¢Òâ£¬ÕâÀï¼ÓÉÏÁË·şÎñÆ÷Â·¾¶
+	//æ‰“å¼€æ–‡ä»¶
+	//æ³¨æ„ï¼Œè¿™é‡ŒåŠ ä¸Šäº†æœåŠ¡å™¨è·¯å¾„
 	CFileException e;
 	CFile* pFile=new CFile();
 	if(*pName=='/') pName++;
@@ -72,7 +72,7 @@ CFile* OpenFile(const char* pName)
 	if((e.m_cause==CFileException::accessDenied) ||
 			(e.m_cause==CFileException::badPath)) 
 	{
-		//´íÎó´¦Àí
+		//é”™è¯¯å¤„ç†
 		int nLength;
 		// add a \ unless it's the "root" directory
 		if((nLength=strName.GetLength()) > 1) 
@@ -82,7 +82,7 @@ CFile* OpenFile(const char* pName)
 				strName+='\\';
 			}
 		}
-		//Ö¸¶¨È±Ê¡µÄÎÄ¼şÃû
+		//æŒ‡å®šç¼ºçœçš„æ–‡ä»¶å
 		strName+=g_strDefault;
 		if(pFile->Open(g_strDirect+strName, CFile::modeRead, &e)) 
 			return pFile;
@@ -91,46 +91,46 @@ CFile* OpenFile(const char* pName)
 	return NULL;
 }
 
-//¼ÇÂ¼´íÎóĞÅÏ¢
+//è®°å½•é”™è¯¯ä¿¡æ¯
 void LogBlockingSocketException(LPVOID pParam, char* pch, CMyBlockSocketException* pe)
 {
-	//pParam²ÎÊı±£´æÁËCListBox¶ÔÏóµÄÖ¸Õë
+	//pParamå‚æ•°ä¿å­˜äº†CListBoxå¯¹è±¡çš„æŒ‡é’ˆ
 	CListBox* pList=(CListBox*)pParam;
 	CString strGmt = CTime::GetCurrentTime().FormatGmt("%m/%d/%y %H:%M:%S");
 	char text2[50];
 	pe->GetErrorMessage(text2, 49);
 	CString strList;
 	pList->AddString(strList);
-	strList.Format("WINSOCK´íÎó!");
+	strList.Format("WINSOCKé”™è¯¯!");
 	pList->AddString(strList);
 	strList.Format("%s",pch);
 	pList->AddString(strList);
-	strList.Format("´íÎóĞÅÏ¢:%s",text2);
+	strList.Format("é”™è¯¯ä¿¡æ¯:%s",text2);
 	pList->AddString(strList);
-	strList.Format("Ê±¼ä:%s",strGmt);
+	strList.Format("æ—¶é—´:%s",strGmt);
 	pList->AddString(strList);
 }
 
-//·şÎñÏß³Ì
+//æœåŠ¡çº¿ç¨‹
 UINT ServerThreadProc(LPVOID pParam)
 {
 	CSocketAddress saClient;
 	CMyHttpBlockSocket sConnect;
 	CListBox* pList=(CListBox*)pParam;
-	//»º´æÇø
+	//ç¼“å­˜åŒº
 	char* buffer=new char[SERVERMAXBUF];
 	char headers[500], 
 		 request1[MAXLINELENGTH],  
 		 request2[MAXLINELENGTH];
-	//Á¬½Ó´íÎó·µ»Øµ½ä¯ÀÀµÄĞÅÏ¢
+	//è¿æ¥é”™è¯¯è¿”å›åˆ°æµè§ˆçš„ä¿¡æ¯
 	char hdrErr[]=
-		"HTTP/1.0 404 ¶ÔÏóÃ»ÓĞÕÒµ½\r\n"
+		"HTTP/1.0 404 å¯¹è±¡æ²¡æœ‰æ‰¾åˆ°\r\n"
 		"Server: MySocket Server\r\n"
 		"Content-Type: text/html\r\n"
 		"Accept-Ranges: bytes\r\n"
 		"Content-Length: 66\r\n\r\n"
-		"<html><h1><body>HTTP/1.0 404 ¶ÔÏóÃ»ÓĞÕÒµ½</h1></body></html>\r\n";
-	//Á¬½ÓÕıÈ·Ê±·µ»ØµÄĞÅÏ¢
+		"<html><h1><body>HTTP/1.0 404 å¯¹è±¡æ²¡æœ‰æ‰¾åˆ°</h1></body></html>\r\n";
+	//è¿æ¥æ­£ç¡®æ—¶è¿”å›çš„ä¿¡æ¯
 	char hdrFmt[]=
 		"HTTP/1.0 200 OK\r\n"
 		"Server: MySocket Server\r\n"
@@ -138,17 +138,17 @@ UINT ServerThreadProc(LPVOID pParam)
 		"Content-Type: text/html\r\n"
 		"Accept-Ranges: bytes\r\n"
 		"Content-Length: %d\r\n";
-	//Ä¬ÈÏµÄÒ³Ãæ--default HTML page
+	//é»˜è®¤çš„é¡µé¢--default HTML page
 	char CustomHtml[]=
 		"<html>\r\n"
 		"<head>\r\n"
 		"<title></title>\r\n"
 		"</head>\r\n"
 		"<body>\r\n"
-		"<p align=\"center\">»¶Ó­·ÃÎÊÎÒµÄÖ÷Ò³</p>\r\n"
-		"<h3 align=\"center\"><a href=\"Default.htm\">¿ìÀÖÌìµØ</a></h3>\r\n"
-		"<p>½áÊø</p>\r\n"
-		"<p>¡¡</p>\r\n"
+		"<p align=\"center\">æ¬¢è¿è®¿é—®æˆ‘çš„ä¸»é¡µ</p>\r\n"
+		"<h3 align=\"center\"><a href=\"Default.htm\">å¿«ä¹å¤©åœ°</a></h3>\r\n"
+		"<p>ç»“æŸ</p>\r\n"
+		"<p>ã€€</p>\r\n"
 		"</body></html>\r\n\r\n";
 	
 	CString strGmtNow=
@@ -160,37 +160,37 @@ UINT ServerThreadProc(LPVOID pParam)
 
 	try 
 	{
-		//¿ªÊ¼ÕìÌıÁ¬½ÓÇëÇó
+		//å¼€å§‹ä¾¦å¬è¿æ¥è¯·æ±‚
 		if(!g_sListen.Accept(sConnect, saClient)) 
 		{
-			//ÔÚÓ¦ÓÃ³ÌĞò¹Ø±ÕÊ±µÄ´¦Àí
+			//åœ¨åº”ç”¨ç¨‹åºå…³é—­æ—¶çš„å¤„ç†
 			g_bListening=FALSE;
 			delete [] buffer;
 			return 0;
 		}
-		//Á¬½ÓÊıÔö¼ÓÒ»¸ö
+		//è¿æ¥æ•°å¢åŠ ä¸€ä¸ª
 		g_nConnection++;
-		//¿ªÊ¼ÁíÒ»¸ö·şÎñÆ÷Ïß³Ì
+		//å¼€å§‹å¦ä¸€ä¸ªæœåŠ¡å™¨çº¿ç¨‹
 		AfxBeginThread(ServerThreadProc, pParam, THREAD_PRIORITY_NORMAL);
-		//´Ó¿Í»§¶Ë(ä¯ÀÀÆ÷)¶ÁÈ¡ÇëÇó
+		//ä»å®¢æˆ·ç«¯(æµè§ˆå™¨)è¯»å–è¯·æ±‚
 		sConnect.ReadHttpHeaderLine(request1, MAXLINELENGTH, 10);
-		//¼ÇÂ¼ÇëÇó
+		//è®°å½•è¯·æ±‚
 		LogRequest(pParam, request1, saClient);
-		//½âÎöÇëÇó²¢×÷ÏàÓ¦µÄ´¦Àí
+		//è§£æè¯·æ±‚å¹¶ä½œç›¸åº”çš„å¤„ç†
 		if(Parse(request1, &pToken1, &pToken2))
 		{
-			//ä¯ÀÀÆ÷GET·½Ê½
+			//æµè§ˆå™¨GETæ–¹å¼
 			if(!_stricmp(pToken1, "GET")) 
 			{
 				do 
 				{	
-					//¶ÁÈ¡ÇëÇóµÄÊ£Óà²¿·Ö
+					//è¯»å–è¯·æ±‚çš„å‰©ä½™éƒ¨åˆ†
 					sConnect.ReadHttpHeaderLine(request2, MAXLINELENGTH, 10);
 				}
 				while(strcmp(request2, "\r\n"));
 				if(!_stricmp(pToken2, "/custom"))// || !stricmp(pToken2, "/"))
 				{
-					//·¢ËÍÄ¬ÈÏµÄÒ³Ãæ--default HTML page
+					//å‘é€é»˜è®¤çš„é¡µé¢--default HTML page
 					wsprintf(headers, hdrFmt, (const char*) strGmtNow, strlen(CustomHtml));
 					strcat(headers, "\r\n");
 					sConnect.Write(headers, strlen(headers), 10);
@@ -198,17 +198,17 @@ UINT ServerThreadProc(LPVOID pParam)
 				}
 				else if(strchr(pToken2, '?')) 
 				{
-					//CGIÇëÇó
-					//¸ÃHTTP·şÎñÆ÷»¹²»ÄÜ¶ÔCGIÇëÇó×÷³öÏìÓ¦
+					//CGIè¯·æ±‚
+					//è¯¥HTTPæœåŠ¡å™¨è¿˜ä¸èƒ½å¯¹CGIè¯·æ±‚ä½œå‡ºå“åº”
 				}
 				else
 				{
-					//ÎÄ¼ş´¦Àí
-					//×¢Òâ¶Ô·şÎñÆ÷Ä¿Â¼µÄÉè¶¨
-					//»ñµÃÎÄ¼şÔÚ·şÎñÆ÷ÉÏµÄÂ·¾¶
+					//æ–‡ä»¶å¤„ç†
+					//æ³¨æ„å¯¹æœåŠ¡å™¨ç›®å½•çš„è®¾å®š
+					//è·å¾—æ–‡ä»¶åœ¨æœåŠ¡å™¨ä¸Šçš„è·¯å¾„
 					if((pFile=OpenFile(pToken2))!=NULL) 
 					{
-						//ÎÄ¼ş´ò¿ª
+						//æ–‡ä»¶æ‰“å¼€
 						CFileStatus fileStatus;
 						pFile->GetStatus(fileStatus);
 						CString strGmtMod=fileStatus.m_mtime.FormatGmt("%a, %d %b %Y %H:%M:%S");
@@ -218,12 +218,12 @@ UINT ServerThreadProc(LPVOID pParam)
 						wsprintf(headers, hdrFmt,  (const char*) strGmtNow, dwLength);
 						strcat(headers, hdrModified);
 						nBytesSent=sConnect.Write(headers, strlen(headers), 10);
-						//´«ËÍµÄÎÄ¼şÓ¦¸ÃÊÇÔÚÄ³Ò»¸öÊ±¼äÖ®ºó±»ĞŞ¸Ä¹ıµÄ
-						//Òò´ËÎÄ¼şµÄÊ±¼äÓ¦¸ÃÊÇĞ¡ÓÚ¸ÃÉè¶¨Ê±¼ä
+						//ä¼ é€çš„æ–‡ä»¶åº”è¯¥æ˜¯åœ¨æŸä¸€ä¸ªæ—¶é—´ä¹‹åè¢«ä¿®æ”¹è¿‡çš„
+						//å› æ­¤æ–‡ä»¶çš„æ—¶é—´åº”è¯¥æ˜¯å°äºè¯¥è®¾å®šæ—¶é—´
 						nBytesSent=0;
 						DWORD dwBytesRead=0;
 						UINT uBytesToRead;
-						//½«ÎÄ¼şÒÔ5kµÄ´óĞ¡Îªµ¥Î»·¢ËÍ£¬±ÜÃâÄÚ´æ·ÖÅä´íÎó
+						//å°†æ–‡ä»¶ä»¥5kçš„å¤§å°ä¸ºå•ä½å‘é€ï¼Œé¿å…å†…å­˜åˆ†é…é”™è¯¯
 						while(dwBytesRead < dwLength) 
 						{
 							uBytesToRead=min(SERVERMAXBUF, dwLength-dwBytesRead);
@@ -234,41 +234,41 @@ UINT ServerThreadProc(LPVOID pParam)
 					}
 					else
 					{
-						//Ïòä¯ÀÀÆ÷·¢ËÍ¡°³ö´íĞÅÏ¢¡±
+						//å‘æµè§ˆå™¨å‘é€â€œå‡ºé”™ä¿¡æ¯â€
 						nBytesSent=sConnect.Write(hdrErr, strlen(hdrErr), 10);
 					}
 				}
 			}
 			else if(!_stricmp(pToken1, "POST"))
 			{
-				//ä¯ÀÀÆ÷POST·½Ê½
+				//æµè§ˆå™¨POSTæ–¹å¼
 				do 
 				{
-					//¶ÁÈ¡ÇëÇóµÄÊ£Óà²¿·Ö
+					//è¯»å–è¯·æ±‚çš„å‰©ä½™éƒ¨åˆ†
 					sConnect.ReadHttpHeaderLine(request2, MAXLINELENGTH, 10);
 				}
 				while(strcmp(request2, "\r\n"));
 				sConnect.ReadHttpHeaderLine(request2, MAXLINELENGTH, 10);
 				LogRequest(pParam, request2, saClient);
-				//Ïòä¯ÀÀÆ÷·¢ËÍ¡°³ö´íĞÅÏ¢¡±
+				//å‘æµè§ˆå™¨å‘é€â€œå‡ºé”™ä¿¡æ¯â€
 				nBytesSent=sConnect.Write(hdrErr, strlen(hdrErr), 10);
 			}
 			else 
 			{
-				//ÆäËüµÄÇëÇó·½Ê½
+				//å…¶å®ƒçš„è¯·æ±‚æ–¹å¼
 			}
 		}
 		else 
 		{
-			//´íÎóµÄÇëÇó
+			//é”™è¯¯çš„è¯·æ±‚
 		}
-		//¹Ø±ÕÌ×½Ó×Ö
+		//å…³é—­å¥—æ¥å­—
 		sConnect.Close();
 	}
 	catch(CMyBlockSocketException* pe)
 	{
-		//´íÎó´¦Àí
-		LogBlockingSocketException(pParam, "·şÎñÆ÷:", pe);
+		//é”™è¯¯å¤„ç†
+		LogBlockingSocketException(pParam, "æœåŠ¡å™¨:", pe);
 		pe->Delete();
 	}
 	delete [] buffer;

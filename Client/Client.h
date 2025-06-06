@@ -1,4 +1,4 @@
-// Client.h : main header file for the Client application
+ï»¿// Client.h : main header file for the Client application
 //
 
 #if !defined(AFX_Client_H__C0496689_B41C_45DE_9F46_75A916C86D38__INCLUDED_)
@@ -28,7 +28,7 @@ public:
 	CSeuQQwry m_SeuQQwry;
 	bool m_bIsDisablePopTips;
 	bool m_bisDisableSound;
-	CView* m_pConnectView; // Ö÷Á¬½ÓÊÓÍ¼
+	CView* m_pConnectView; // ä¸»è¿žæŽ¥è§†å›¾
 	CSplashScreenEx *pSplash;
 	CClientApp();
 	HMODULE m_hModule;

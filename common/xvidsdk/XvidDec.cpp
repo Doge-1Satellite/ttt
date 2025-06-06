@@ -1,4 +1,4 @@
-#include "XvidDec.h"
+﻿#include "XvidDec.h"
 #include <Windows.h>
 
 #ifdef _DEBUG

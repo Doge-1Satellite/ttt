@@ -1,4 +1,4 @@
-// DllManager.h: interface for the CDllManager class.
+ï»¿// DllManager.h: interface for the CDllManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -26,8 +26,8 @@ private:
 //	list <string> m_UploadList;
 	LPBYTE blparam;
 	UINT m_nTransferMode;
-	char m_strCurrentProcessFileName[MAX_PATH]; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼ş
-	__int64 m_nCurrentProcessFileLength; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼şµÄ³¤¶È
+	char m_strCurrentProcessFileName[MAX_PATH]; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶
+	__int64 m_nCurrentProcessFileLength; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶çš„é•¿åº¦
 	int	SendToken(BYTE bToken);
  	void CreateLocalRecvFile(LPBYTE lpBuffer);
  	void GetFileData();

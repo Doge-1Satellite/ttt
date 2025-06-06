@@ -1,9 +1,9 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 
 #include "link.h"
 
 /************************************************************************/
-/*   CPlayListNode * l_createLink()´´½¨Ò»¸öÐÂÁ´±í ·µ»ØËûµÄÍ·            */
+/*   CPlayListNode * l_createLink()åˆ›å»ºä¸€ä¸ªæ–°é“¾è¡¨ è¿”å›žä»–çš„å¤´            */
 /************************************************************************/
 CPlayListNode * l_createLink()
 {
@@ -17,7 +17,7 @@ CPlayListNode * l_createLink()
 
 /************************************************************************/
 /*   CPlayListNode * l_createNode(CString path,CString name)            */
-/*   ´´½¨Ò»¸ö½Úµã ·µ»Ø½ÚµãÖ¸Õë                                          */
+/*   åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹ è¿”å›žèŠ‚ç‚¹æŒ‡é’ˆ                                          */
 /************************************************************************/
 CPlayListNode * l_createNode(CString path="",CString name="")
 {
@@ -30,7 +30,7 @@ CPlayListNode * l_createNode(CString path="",CString name="")
 }
 
 /************************************************************************/
-/* l_getNodesCount(CPlayListNode * p_Head)»ñÈ¡½ÚµãÊýÄ¿(²»°üÀ¨Í·)        */
+/* l_getNodesCount(CPlayListNode * p_Head)èŽ·å–èŠ‚ç‚¹æ•°ç›®(ä¸åŒ…æ‹¬å¤´)        */
 /************************************************************************/
 int l_getNodesCount(CPlayListNode * p_Head)
 {
@@ -46,7 +46,7 @@ int l_getNodesCount(CPlayListNode * p_Head)
 }
 /************************************************************************/
 /* CPlayListNode * l_getNode(CPlayListNode * p_Head,int id)             */
-/* »ñÈ¡Ö¸¶¨½Úµã£¬²ÎÊýÎªÍ·Ö¸Õë¡¢½Úµãid £¬·µ»Ø½ÚµãÖ¸Õë£¬ÈôÕÒ²»µ½Ôò·µ»ØNULL*/
+/* èŽ·å–æŒ‡å®šèŠ‚ç‚¹ï¼Œå‚æ•°ä¸ºå¤´æŒ‡é’ˆã€èŠ‚ç‚¹id ï¼Œè¿”å›žèŠ‚ç‚¹æŒ‡é’ˆï¼Œè‹¥æ‰¾ä¸åˆ°åˆ™è¿”å›žNULL*/
 /************************************************************************/
 CPlayListNode * l_getNode(CPlayListNode * p_Head,CString name)
 {
@@ -64,7 +64,7 @@ CPlayListNode * l_getNode(CPlayListNode * p_Head,CString name)
 
 /************************************************************************/
 /* CPlayListNode * l_getLastNode(CPlayListNode *p_Head)                 */
-/*  »ñÈ¡×îºóÎ»ÖÃÉÏµÄ½Úµã                                                */
+/*  èŽ·å–æœ€åŽä½ç½®ä¸Šçš„èŠ‚ç‚¹                                                */
 /************************************************************************/
 CPlayListNode * l_getLastNode(CPlayListNode *p_Head)
 {
@@ -77,7 +77,7 @@ CPlayListNode * l_getLastNode(CPlayListNode *p_Head)
 
 /************************************************************************/
 /*  CPlayListNode * l_appendNode(CPlayListNode *p_Node,CPlayListNode * p_Node_new)                 */
-/*  ÔÚÖ¸¶¨½ÚµãºóÌí¼Ó½Úµãµ½Á´±í£¬·µ»ØÐÂÌí¼ÓµÄ½ÚµãÖ¸Õë                    */
+/*  åœ¨æŒ‡å®šèŠ‚ç‚¹åŽæ·»åŠ èŠ‚ç‚¹åˆ°é“¾è¡¨ï¼Œè¿”å›žæ–°æ·»åŠ çš„èŠ‚ç‚¹æŒ‡é’ˆ                    */
 /************************************************************************/
 CPlayListNode * l_appendNode(CPlayListNode *p_Node,CPlayListNode * p_Node_new)
 {
@@ -91,7 +91,7 @@ CPlayListNode * l_appendNode(CPlayListNode *p_Node,CPlayListNode * p_Node_new)
 
 /************************************************************************/
 /* CPlayListNode * l_delNode(CPlayListNode * p_Head,CString name)       */
-/* É¾³ýÖ¸¶¨½Úµã ·µ»Ø±»É¾³ý½ÚµãÖ®Ç°Ò»¸ö½Úµã                              */
+/* åˆ é™¤æŒ‡å®šèŠ‚ç‚¹ è¿”å›žè¢«åˆ é™¤èŠ‚ç‚¹ä¹‹å‰ä¸€ä¸ªèŠ‚ç‚¹                              */
 /************************************************************************/
 CPlayListNode * l_delNode(CPlayListNode * p_Head,CString name)
 {
@@ -107,14 +107,14 @@ CPlayListNode * l_delNode(CPlayListNode * p_Head,CString name)
 	if(p_Node->p_Next != NULL)
 		p_Node->p_Next->p_Prev = p_Node2 ;
 	delete p_Node ;
-	//Èç¹ûÉ¾³ýµÄÊÇµÚÒ»¸öÓÐÐ§½Úµã£¬Ôò·µ»ØËüºóÃæµÄÒ»¸ö½ÚµãÖ¸Õë£¬ÈÔ´¦ÔÚµÚÒ»µÄÎ»ÖÃ
+	//å¦‚æžœåˆ é™¤çš„æ˜¯ç¬¬ä¸€ä¸ªæœ‰æ•ˆèŠ‚ç‚¹ï¼Œåˆ™è¿”å›žå®ƒåŽé¢çš„ä¸€ä¸ªèŠ‚ç‚¹æŒ‡é’ˆï¼Œä»å¤„åœ¨ç¬¬ä¸€çš„ä½ç½®
 	if(p_Node2->name == "_HEAD_")
 		return p_Node2->p_Next;
 	return p_Node2 ;
 }
 
 /************************************************************************/
-/* void l_destroyLink(CPlayListNode * p_Head)Ïú»ÙÁ´±í    */
+/* void l_destroyLink(CPlayListNode * p_Head)é”€æ¯é“¾è¡¨    */
 /************************************************************************/
 void l_destroyLink(CPlayListNode * p_Head)
 {
@@ -128,7 +128,7 @@ void l_destroyLink(CPlayListNode * p_Head)
 }
 
 /************************************************************************/
-/*  CPlayListNode * l_getPrevNode(CPlayListNode *p_Node)·µ»ØÉÏÒ»¸ö½Úµã  */
+/*  CPlayListNode * l_getPrevNode(CPlayListNode *p_Node)è¿”å›žä¸Šä¸€ä¸ªèŠ‚ç‚¹  */
 /************************************************************************/
 CPlayListNode * l_getPrevNode(CPlayListNode *p_Node)
 {
@@ -141,7 +141,7 @@ CPlayListNode * l_getPrevNode(CPlayListNode *p_Node)
 }
 
 /************************************************************************/
-/* CPlayListNode * l_getNextNode(CPlayListNode *p_Node)·µ»ØÏÂÒ»¸ö½Úµã   */
+/* CPlayListNode * l_getNextNode(CPlayListNode *p_Node)è¿”å›žä¸‹ä¸€ä¸ªèŠ‚ç‚¹   */
 /************************************************************************/
 CPlayListNode * l_getNextNode(CPlayListNode *p_Node)
 {
@@ -154,12 +154,12 @@ CPlayListNode * l_getNextNode(CPlayListNode *p_Node)
 }
 
 /************************************************************************/
-/*CPlayListNode * l_moveNodePrev(CPlayListNode *p_Node)½ÚµãÍùÇ°ÒÆ       */
-/*                         ·µ»ØÒÆ¶¯Íê³ÉºóµÄ½ÚµãÖ¸Õë£¬					*/
+/*CPlayListNode * l_moveNodePrev(CPlayListNode *p_Node)èŠ‚ç‚¹å¾€å‰ç§»       */
+/*                         è¿”å›žç§»åŠ¨å®ŒæˆåŽçš„èŠ‚ç‚¹æŒ‡é’ˆï¼Œ					*/
 /************************************************************************/
 CPlayListNode * l_moveNodePrev(CPlayListNode *p_Node)
 {
-	//Í·½Úµã»ò µÚÒ»¸öÓÐÐ§µã »ò ÎÞÐ§½Úµã Ö±½Ó·µ»Ø È·±£²Ù×÷°²È«ÐÔ
+	//å¤´èŠ‚ç‚¹æˆ– ç¬¬ä¸€ä¸ªæœ‰æ•ˆç‚¹ æˆ– æ— æ•ˆèŠ‚ç‚¹ ç›´æŽ¥è¿”å›ž ç¡®ä¿æ“ä½œå®‰å…¨æ€§
 	if(p_Node == NULL || p_Node->name == "_HEAD_" || p_Node->p_Prev->name == "_HEAD_")
 		return p_Node;
 	CPlayListNode * a, * b,* c, * d;
@@ -178,12 +178,12 @@ CPlayListNode * l_moveNodePrev(CPlayListNode *p_Node)
 }
 
 /************************************************************************/
-/*CPlayListNode * l_moveNodeNext(CPlayListNode *p_Node)½ÚµãÍùºóÒÆ       */
-/*                         ·µ»ØÒÆ¶¯Íê³ÉºóµÄ½ÚµãÖ¸Õë						*/
+/*CPlayListNode * l_moveNodeNext(CPlayListNode *p_Node)èŠ‚ç‚¹å¾€åŽç§»       */
+/*                         è¿”å›žç§»åŠ¨å®ŒæˆåŽçš„èŠ‚ç‚¹æŒ‡é’ˆ						*/
 /************************************************************************/
 CPlayListNode * l_moveNodeNext(CPlayListNode *p_Node)
 {
-	//Èç¹ûÊÇÎÞÐ§½Úµã»òÕßÊÇÄ©Î²½Úµã ÔòÖ±½Ó·µ»Ø
+	//å¦‚æžœæ˜¯æ— æ•ˆèŠ‚ç‚¹æˆ–è€…æ˜¯æœ«å°¾èŠ‚ç‚¹ åˆ™ç›´æŽ¥è¿”å›ž
 	if(p_Node == NULL || p_Node->p_Next == NULL)
 		return p_Node;
 	CPlayListNode * a, * b,* c, * d;

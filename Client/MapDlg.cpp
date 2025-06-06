@@ -1,4 +1,4 @@
-// MapDlg.cpp : implementation file
+ï»¿// MapDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -31,8 +31,8 @@ CMapDlg::CMapDlg(CWnd* pParent, int nItem, ClientContext *pContext)
 	m_bBaidu = TRUE;
 	m_bGaode = TRUE;
 	m_pContext = pContext;
-	m_strLngLatBaidu = " °Ù¶ÈÔİ²»Ö§³Ö´ËIP¶¨Î»£¡";
-	m_strLngLatGaode = " ¸ßµÂÔİ²»Ö§³Ö´ËIP¶¨Î»£¡";
+	m_strLngLatBaidu = " ç™¾åº¦æš‚ä¸æ”¯æŒæ­¤IPå®šä½ï¼";
+	m_strLngLatGaode = " é«˜å¾·æš‚ä¸æ”¯æŒæ­¤IPå®šä½ï¼";
 	
 // 	sockaddr_in  sockAddr;
 // 	memset(&sockAddr, 0, sizeof(sockAddr));
@@ -71,14 +71,14 @@ BOOL GetUpdateInfo(char *szText, char *szUrl, char *szStart ,char *szStop)
 	BOOL bRet = FALSE;
 	CString strData;
 	CInternetSession MySession(NULL,0);
-	CHttpFile* pHttpFile = (CHttpFile*)MySession.OpenURL(szUrl); //strÊÇÒª´ò¿ªµÄµØÖ·
-	while(pHttpFile->ReadString(strData)) //ÖğĞĞ¶ÁÈ¡Ò³ÃæÊı¾İ
+	CHttpFile* pHttpFile = (CHttpFile*)MySession.OpenURL(szUrl); //stræ˜¯è¦æ‰“å¼€çš„åœ°å€
+	while(pHttpFile->ReadString(strData)) //é€è¡Œè¯»å–é¡µé¢æ•°æ®
 	{
  		if(strstr(strData,szStop) != 0)
 		{
-			char *ip_stop=strstr(strData,szStop); //IP¶ËÎ²²¿Ö¸Õë¸³Öµ
-			*ip_stop='\0'; //½Ø¶Ï
-			char *ip_start=strstr(strData,szStart)+lstrlen(szStart); //ip¶Î¿ªÊ¼²¿·ÖÖ¸Õë¸³Öµ
+			char *ip_stop=strstr(strData,szStop); //IPç«¯å°¾éƒ¨æŒ‡é’ˆèµ‹å€¼
+			*ip_stop='\0'; //æˆªæ–­
+			char *ip_start=strstr(strData,szStart)+lstrlen(szStart); //ipæ®µå¼€å§‹éƒ¨åˆ†æŒ‡é’ˆèµ‹å€¼
 			if (ip_stop == ip_start)
 				break;
 			lstrcpy(szText,ip_start);
@@ -122,20 +122,20 @@ CString CMapDlg::HtmlMapBaidu(BOOL bBaiduAvl)
 		html+="        }\r\n";
 		html+="        return paramValue == \"\" && (paramValue = null), paramValue\r\n";
 		html+="    }\r\n";
-		html+="    var map = new BMap.Map(\"container\");                         // ´´½¨µØÍ¼ÊµÀı\r\n";
-		html+="    var point = new BMap.Point(getParam(\"lng\"),getParam(\"lat\")); // ´´½¨µã×ø±ê\r\n";
-		html+="    map.centerAndZoom(point, 14);                                // ³õÊ¼»¯µØÍ¼£¬ÉèÖÃÖĞĞÄµã×ø±êºÍµØÍ¼¼¶±ğ\r\n";
-		html+="    var mark = new BMap.Marker(point);                           // ´´½¨±ê×¢\r\n";
-		html+="    map.addOverlay(mark);                                        // ½«±ê×¢Ìí¼Óµ½µØÍ¼ÖĞ\r\n";
-		html+="    map.enableInertialDragging();                                // ÆôÓÃµØÍ¼¹ßĞÔÍÏ×§£¬Ä¬ÈÏ½ûÓÃ\r\n";
-		html+="    map.enableContinuousZoom();                                  // ÆôÓÃÁ¬ĞøËõ·ÅĞ§¹û£¬Ä¬ÈÏ½ûÓÃ\r\n";
-		html+="    map.enableScrollWheelZoom();                                 // ÆôÓÃ¹öÂÖ·Å´óËõĞ¡£¬Ä¬ÈÏ½ûÓÃ\r\n";
-		html+="    map.enableKeyboard();                                        // ÆôÓÃ¼üÅÌ²Ù×÷£¬Ä¬ÈÏ½ûÓÃ\r\n";
-		html+="    map.addControl(new BMap.NavigationControl({enableGeolocation:true}));     // Ìí¼ÓÆ½ÒÆËõ·Å¿Ø¼ş\r\n";
-		html+="    map.addControl(new BMap.MapTypeControl());                                // Ìí¼ÓµØÍ¼ÀàĞÍ¿Ø¼ş\r\n";
-		html+="    map.addControl(new BMap.PanoramaControl({offset:new BMap.Size(20, 40)})); // Ìí¼ÓÈ«¾°¿Ø¼ş\r\n";
-		html+="    map.addControl(new BMap.ScaleControl({offset:new BMap.Size(0, 40)}));     // Ìí¼Ó´øÆ«ÒÆÁ¿µÄ±ÈÀı³ß\r\n";
-		html+="    map.addControl(new BMap.OverviewMapControl());                            // Ìí¼ÓËõÂÔµØÍ¼¿Ø¼ş\r\n";
+		html+="    var map = new BMap.Map(\"container\");                         // åˆ›å»ºåœ°å›¾å®ä¾‹\r\n";
+		html+="    var point = new BMap.Point(getParam(\"lng\"),getParam(\"lat\")); // åˆ›å»ºç‚¹åæ ‡\r\n";
+		html+="    map.centerAndZoom(point, 14);                                // åˆå§‹åŒ–åœ°å›¾ï¼Œè®¾ç½®ä¸­å¿ƒç‚¹åæ ‡å’Œåœ°å›¾çº§åˆ«\r\n";
+		html+="    var mark = new BMap.Marker(point);                           // åˆ›å»ºæ ‡æ³¨\r\n";
+		html+="    map.addOverlay(mark);                                        // å°†æ ‡æ³¨æ·»åŠ åˆ°åœ°å›¾ä¸­\r\n";
+		html+="    map.enableInertialDragging();                                // å¯ç”¨åœ°å›¾æƒ¯æ€§æ‹–æ‹½ï¼Œé»˜è®¤ç¦ç”¨\r\n";
+		html+="    map.enableContinuousZoom();                                  // å¯ç”¨è¿ç»­ç¼©æ”¾æ•ˆæœï¼Œé»˜è®¤ç¦ç”¨\r\n";
+		html+="    map.enableScrollWheelZoom();                                 // å¯ç”¨æ»šè½®æ”¾å¤§ç¼©å°ï¼Œé»˜è®¤ç¦ç”¨\r\n";
+		html+="    map.enableKeyboard();                                        // å¯ç”¨é”®ç›˜æ“ä½œï¼Œé»˜è®¤ç¦ç”¨\r\n";
+		html+="    map.addControl(new BMap.NavigationControl({enableGeolocation:true}));     // æ·»åŠ å¹³ç§»ç¼©æ”¾æ§ä»¶\r\n";
+		html+="    map.addControl(new BMap.MapTypeControl());                                // æ·»åŠ åœ°å›¾ç±»å‹æ§ä»¶\r\n";
+		html+="    map.addControl(new BMap.PanoramaControl({offset:new BMap.Size(20, 40)})); // æ·»åŠ å…¨æ™¯æ§ä»¶\r\n";
+		html+="    map.addControl(new BMap.ScaleControl({offset:new BMap.Size(0, 40)}));     // æ·»åŠ å¸¦åç§»é‡çš„æ¯”ä¾‹å°º\r\n";
+		html+="    map.addControl(new BMap.OverviewMapControl());                            // æ·»åŠ ç¼©ç•¥åœ°å›¾æ§ä»¶\r\n";
 		html+="</script>\r\n";
 	}
 	else
@@ -143,7 +143,7 @@ CString CMapDlg::HtmlMapBaidu(BOOL bBaiduAvl)
 		html+="<html>\r\n";
 		html+="<title>Baidu Map</title>\r\n";
 		html+="<body onContextMenu=\"return false\" onSelectStart=\"return false\" style=\"overflow:hidden\">\r\n";
-		html+="<table width=100% height=100%><tr><td><center><span style=\"font-size:13px;color:red;\">°Ù¶ÈÔİ²»Ö§³Ö´ËIP¶¨Î»£¡</span></center></td></tr></table>\r\n";
+		html+="<table width=100% height=100%><tr><td><center><span style=\"font-size:13px;color:red;\">ç™¾åº¦æš‚ä¸æ”¯æŒæ­¤IPå®šä½ï¼</span></center></td></tr></table>\r\n";
 		html+="</body>\r\n";
 		html+="</html>\r\n";
 	}
@@ -162,9 +162,9 @@ CString CMapDlg::HtmlMapGaode(BOOL bGaodeAvl)
 		html+="    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" charset=\"gbk\" />\r\n";
 		html+="    <meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no, width=device-width\" />\r\n";
 		html+="    <title>Gaode Map</title>\r\n";
-		html+="    <!--ÒıÈë¸ßµÂµØÍ¼JSAPI-->\r\n";
+		html+="    <!--å¼•å…¥é«˜å¾·åœ°å›¾JSAPI-->\r\n";
 		html+="    <script src=\"http://webapi.amap.com/maps?v=1.4.3&key=ee163a6fdd81ccb02394bea1de4f2e88\"></script>\r\n";
-		html+="    <!--ÒıÈëUI×é¼ş¿â(1.0°æ±¾)-->\r\n";
+		html+="    <!--å¼•å…¥UIç»„ä»¶åº“(1.0ç‰ˆæœ¬)-->\r\n";
 		html+="    <script src=\"http://webapi.amap.com/ui/1.0/main.js?v=1.0.11\"></script>\r\n";
 		html+="    <style type=\"text/css\">\r\n";
 		html+="        html, body, #container {width:100%;height:100%;overflow:hidden;margin:0;font-size:13px;}\r\n";
@@ -208,7 +208,7 @@ CString CMapDlg::HtmlMapGaode(BOOL bGaodeAvl)
 		html+="<html>\r\n";
 		html+="<title>Gaode Map</title>\r\n";
 		html+="<body onContextMenu=\"return false\" onSelectStart=\"return false\" style=\"overflow:hidden\">\r\n";
-		html+="<table width=100% height=100%><tr><td><center><span style=\"font-size:13px;color:red;\">¸ßµÂÔİ²»Ö§³Ö´ËIP¶¨Î»£¡</span></center></td></tr></table>\r\n";
+		html+="<table width=100% height=100%><tr><td><center><span style=\"font-size:13px;color:red;\">é«˜å¾·æš‚ä¸æ”¯æŒæ­¤IPå®šä½ï¼</span></center></td></tr></table>\r\n";
 		html+="</body>\r\n";
 		html+="</html>\r\n";
 	}
@@ -269,7 +269,7 @@ BOOL CMapDlg::OnInitDialog()
 	VERIFY(m_pPage->CreateFromStatic(IDC_HTMLVIEW, this));
 	
 	CString strText;
-	strText.Format("\\\\%s - Ô¶³Ì¶¨Î»",m_IPAddress);
+	strText.Format("\\\\%s - è¿œç¨‹å®šä½",m_IPAddress);
 	SetWindowText(strText);
 	
 	CFile file; CFileStatus status;
@@ -316,13 +316,13 @@ BOOL CMapDlg::OnInitDialog()
 	
 	if (m_IPAddress == "127.0.0.1")
 	{
-		AfxGetMainWnd()->MessageBox("²»Ö§³Ö127.0.0.1¶¨Î»£¡",strText,MB_ICONWARNING);
+		AfxGetMainWnd()->MessageBox("ä¸æ”¯æŒ127.0.0.1å®šä½ï¼",strText,MB_ICONWARNING);
 		SetTimer(1, 0, NULL);
 		return FALSE;
 	}
 	
-	m_map_tab.InsertItem(0, "°Ù¶ÈµØÍ¼");
-	m_map_tab.InsertItem(1, "¸ßµÂµØÍ¼");
+	m_map_tab.InsertItem(0, "ç™¾åº¦åœ°å›¾");
+	m_map_tab.InsertItem(1, "é«˜å¾·åœ°å›¾");
 	RECT rectClient;
 	m_pPage->SetParent(&m_map_tab);
 	m_map_tab.GetClientRect(&rectClient);
@@ -352,7 +352,7 @@ BOOL CMapDlg::OnInitDialog()
 	}
 	catch (...)
 	{
-		//MessageBox("Ôİ²»²»Ö§³Ö´ËIP¶¨Î»£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		//MessageBox("æš‚ä¸ä¸æ”¯æŒæ­¤IPå®šä½ï¼","æç¤º",MB_ICONINFORMATION);
 		//DestroyWindow();
 		//return FALSE;
 		m_bBaidu = FALSE;
@@ -360,7 +360,7 @@ BOOL CMapDlg::OnInitDialog()
 	
 	if (m_x_baidu == "" || m_y_baidu == "")
 	{
-		//MessageBox("Ôİ²»²»Ö§³Ö´ËIP¶¨Î»£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		//MessageBox("æš‚ä¸ä¸æ”¯æŒæ­¤IPå®šä½ï¼","æç¤º",MB_ICONINFORMATION);
 		//DestroyWindow();
 		//return FALSE;
 		m_bBaidu = FALSE;
@@ -381,7 +381,7 @@ BOOL CMapDlg::OnInitDialog()
 	}
 	catch (...)
 	{
-		//MessageBox("Ôİ²»²»Ö§³Ö´ËIP¶¨Î»£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		//MessageBox("æš‚ä¸ä¸æ”¯æŒæ­¤IPå®šä½ï¼","æç¤º",MB_ICONINFORMATION);
 		//DestroyWindow();
 		//return FALSE;
 		m_bGaode = FALSE;
@@ -389,7 +389,7 @@ BOOL CMapDlg::OnInitDialog()
 	
 	if (m_x_gaode == "" || m_y_gaode == "")
 	{
-		//MessageBox("Ôİ²»²»Ö§³Ö´ËIP¶¨Î»£¡","ÌáÊ¾",MB_ICONINFORMATION);
+		//MessageBox("æš‚ä¸ä¸æ”¯æŒæ­¤IPå®šä½ï¼","æç¤º",MB_ICONINFORMATION);
 		//DestroyWindow();
 		//return FALSE;
 		m_bGaode = FALSE;
@@ -397,7 +397,7 @@ BOOL CMapDlg::OnInitDialog()
 	
 	if (!m_bBaidu && !m_bGaode)
 	{
-		AfxGetMainWnd()->MessageBox("Ôİ²»²»Ö§³Ö´ËIP¶¨Î»£¡",strText,MB_ICONWARNING);
+		AfxGetMainWnd()->MessageBox("æš‚ä¸ä¸æ”¯æŒæ­¤IPå®šä½ï¼",strText,MB_ICONWARNING);
 		SetTimer(1, 0, NULL);
 		return FALSE;
 	}
@@ -433,12 +433,12 @@ BOOL CMapDlg::OnInitDialog()
 		}
 		catch (...)
 		{
-			//MessageBox("°Ù¶ÈÄæµØÀí±àÂëÊ±³öÏÖ´íÎó£¡","ÌáÊ¾",MB_ICONINFORMATION);
-			strAddress = "°Ù¶ÈÄæµØÀí±àÂëÊ±³öÏÖ´íÎó£¡";
+			//MessageBox("ç™¾åº¦é€†åœ°ç†ç¼–ç æ—¶å‡ºç°é”™è¯¯ï¼","æç¤º",MB_ICONINFORMATION);
+			strAddress = "ç™¾åº¦é€†åœ°ç†ç¼–ç æ—¶å‡ºç°é”™è¯¯ï¼";
 		}
 		
-		m_strLngLatBaidu.Format("IPµØÖ·:¡¾%s¡¿ ¾­¶È¡¾%s¡¿ Î³¶È¡¾%s¡¿",m_IPAddress,m_x_baidu,m_y_baidu);
-		m_strAddressBaidu.Format("µØÀíÎ»ÖÃ:¡¾%s¡¿",strAddress);
+		m_strLngLatBaidu.Format("IPåœ°å€:ã€%sã€‘ ç»åº¦ã€%sã€‘ çº¬åº¦ã€%sã€‘",m_IPAddress,m_x_baidu,m_y_baidu);
+		m_strAddressBaidu.Format("åœ°ç†ä½ç½®:ã€%sã€‘",strAddress);
 	}
 	if (m_bGaode)
 	{
@@ -455,12 +455,12 @@ BOOL CMapDlg::OnInitDialog()
 		}
 		catch (...)
 		{
-			//MessageBox("¸ßµÂÄæµØÀí±àÂëÊ±³öÏÖ´íÎó£¡","ÌáÊ¾",MB_ICONINFORMATION);
-			strAddress = "¸ßµÂÄæµØÀí±àÂëÊ±³öÏÖ´íÎó£¡";
+			//MessageBox("é«˜å¾·é€†åœ°ç†ç¼–ç æ—¶å‡ºç°é”™è¯¯ï¼","æç¤º",MB_ICONINFORMATION);
+			strAddress = "é«˜å¾·é€†åœ°ç†ç¼–ç æ—¶å‡ºç°é”™è¯¯ï¼";
 		}
 		
-		m_strLngLatGaode.Format("IPµØÖ·:¡¾%s¡¿ ¾­¶È¡¾%s¡¿ Î³¶È¡¾%s¡¿",m_IPAddress,m_x_gaode,m_y_gaode);
-		m_strAddressGaode.Format("µØÀíÎ»ÖÃ:¡¾%s¡¿",strAddress);
+		m_strLngLatGaode.Format("IPåœ°å€:ã€%sã€‘ ç»åº¦ã€%sã€‘ çº¬åº¦ã€%sã€‘",m_IPAddress,m_x_gaode,m_y_gaode);
+		m_strAddressGaode.Format("åœ°ç†ä½ç½®:ã€%sã€‘",strAddress);
 	}
 	
 	if (m_bBaidu)
@@ -481,7 +481,7 @@ BOOL CMapDlg::OnInitDialog()
 	}
 	UpdateData(FALSE);
 	
-	//½çÃæ¾ÓÖĞÏÔÊ¾
+	//ç•Œé¢å±…ä¸­æ˜¾ç¤º
 	this->CenterWindow(CWnd::GetDesktopWindow());
 	this->ShowWindow(SW_SHOW);
 	SetIcon(m_hIcon, TRUE);			// Set big icon

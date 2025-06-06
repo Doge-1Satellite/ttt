@@ -1,4 +1,4 @@
-// HoverEdit.cpp : implementation file
+﻿// HoverEdit.cpp : implementation file
 //
 
 #include "stdafx.h"

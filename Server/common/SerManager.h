@@ -1,4 +1,4 @@
-// SerManager.h: interface for the CSerManager class.
+﻿// SerManager.h: interface for the CSerManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

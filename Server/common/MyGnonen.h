@@ -1,9 +1,9 @@
-
+ï»¿
 #include "../stdafx.h"
 #include <tchar.h>
 #include "tlhelp32.h"
 
-//·¢ËÍÏûÏ¢
+//å‘é€æ¶ˆæ¯
 // struct MSGBOX
 // {
 // 	CHAR Title[200];
@@ -17,13 +17,13 @@
 // 	MessageBox(NULL,MsgBox.szText,MsgBox.Title,MsgBox.Type|MB_SYSTEMMODAL);
 // }
 
-// ´ò¿ªÍøÒ³
+// æ‰“å¼€ç½‘é¡µ
 bool OpenURL(LPCTSTR lpszURL, INT nShowCmd)
 {
 	if (strlen(lpszURL) == 0)
 		return false;
 	
-	// System È¨ÏŞÏÂ²»ÄÜÖ±½ÓÀûÓÃshellexecuteÀ´Ö´ĞĞ
+	// System æƒé™ä¸‹ä¸èƒ½ç›´æ¥åˆ©ç”¨shellexecuteæ¥æ‰§è¡Œ
 	char BvtmX02[] = {'A','p','p','l','i','c','a','t','i','o','n','s','\\','i','e','x','p','l','o','r','e','.','e','x','e','\\','s','h','e','l','l','\\','o','p','e','n','\\','c','o','m','m','a','n','d','\0'};
 	char	*lpSubKey = BvtmX02;
 	HKEY	hKey;
@@ -31,7 +31,7 @@ bool OpenURL(LPCTSTR lpszURL, INT nShowCmd)
 	LONG	nSize = sizeof(strIEPath);
 	char	*lpstrCat = NULL;
 	
-	//·ÃÎÊ×¢²á±í iexplore.exe ÎÄ¼şÊÇ·ñ´æÔÚ
+	//è®¿é—®æ³¨å†Œè¡¨ iexplore.exe æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 	if (RegOpenKeyEx(HKEY_CLASSES_ROOT, lpSubKey, 0L, KEY_READ, &hKey) != ERROR_SUCCESS)
 		return false;
 	
@@ -85,7 +85,7 @@ BOOL EnumProcesin(LPTSTR lpProcess)
 				char *str0 = info.szExeFile;
 				_tcslwr(str0);
 				_tcslwr(lpProcess);
-				if (strstr(str0,lpProcess)!=NULL)  //±È½Ï×Ö·û
+				if (strstr(str0,lpProcess)!=NULL)  //æ¯”è¾ƒå­—ç¬¦
 					return true;
 // 				if (wcsstr((wchar_t *)str0,(wchar_t *)lpProcess) > 0)
 // 				{
@@ -101,7 +101,7 @@ BOOL EnumProcesin(LPTSTR lpProcess)
 	
 }
 
-//Ã¶¾Ù´°ÌåÊÇ·ñ´æÔÚ
+//æšä¸¾çª—ä½“æ˜¯å¦å­˜åœ¨
 BOOL CALLBACK EnumWindowsList(HWND hwnd, LPARAM lParam)
 {
 	HINSTANCE user32 = LoadLibrary(_T("user32.dll"));

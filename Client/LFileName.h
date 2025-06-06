@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 
 
@@ -10,33 +10,33 @@ public:
 	LFileName();
 	~LFileName(void);
 protected:
-	wchar_t  wstr_FullFileName[MAX_PATH];   //ÎÄ¼şÈ«Ãû
-    wchar_t  wstr_FileName[MAX_PATH]; //ÎÄ¼şÃû
-	wchar_t  wstr_PathName[MAX_PATH];   //Â·¾¶
+	wchar_t  wstr_FullFileName[MAX_PATH];   //æ–‡ä»¶å…¨å
+    wchar_t  wstr_FileName[MAX_PATH]; //æ–‡ä»¶å
+	wchar_t  wstr_PathName[MAX_PATH];   //è·¯å¾„
 	
-	char str_FullFileName[MAX_PATH];     //È«Ãû
-	char str_FileName[MAX_PATH];        //ÎÄ¼şÃû
-	char str_PathName[MAX_PATH];         //Â·¾¶Ãû
-	char str_ExpandName[MAX_PATH];       //À©Õ¹Ãû  
-	char str_Name[MAX_PATH];              //´¿ÎÄ¼şÃû
+	char str_FullFileName[MAX_PATH];     //å…¨å
+	char str_FileName[MAX_PATH];        //æ–‡ä»¶å
+	char str_PathName[MAX_PATH];         //è·¯å¾„å
+	char str_ExpandName[MAX_PATH];       //æ‰©å±•å  
+	char str_Name[MAX_PATH];              //çº¯æ–‡ä»¶å
 
 	BOOL  AnsiOrUnicode;     // 0  unicode  1 ansi 
     
 
 public:
-	// µÃµ½ÎÄ¼şÃû
+	// å¾—åˆ°æ–‡ä»¶å
 	wchar_t* getFileName(void);
-	// µÃµ½µ±Ç°Â·¾¶
+	// å¾—åˆ°å½“å‰è·¯å¾„
 	wchar_t* getFilePath(void);
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	void init(wchar_t* lpFileName);
 	void init(char* lpFileName);
 	char* getFileNameA(void);
 	char* getFilePathA(void);
-	// µÃµ½ÎÄ¼şÀ©Õ¹Ãû
+	// å¾—åˆ°æ–‡ä»¶æ‰©å±•å
 	char* getFileExpand(void);
-	// µÃµ½´¿ÎÄ¼şÃû
+	// å¾—åˆ°çº¯æ–‡ä»¶å
 	char* getNameA(void);
-	// ³õÊ¼»¯ÎÄ¼şÃû
+	// åˆå§‹åŒ–æ–‡ä»¶å
 	void initFileName(char* lpFileName);
 };
