@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
@@ -23,18 +23,18 @@
         }
         return paramValue == "" && (paramValue = null), paramValue
     }
-    var map = new BMap.Map("container");                         // åˆ›å»ºåœ°å›¾å®ä¾‹
-    var point = new BMap.Point(getParam("lng"),getParam("lat")); // åˆ›å»ºç‚¹åæ ‡
-    map.centerAndZoom(point, 14);                                // åˆå§‹åŒ–åœ°å›¾ï¼Œè®¾ç½®ä¸­å¿ƒç‚¹åæ ‡å’Œåœ°å›¾çº§åˆ«
-    var mark = new BMap.Marker(point);                           // åˆ›å»ºæ ‡æ³¨
-    map.addOverlay(mark);                                        // å°†æ ‡æ³¨æ·»åŠ åˆ°åœ°å›¾ä¸­
-    map.enableInertialDragging();                                // å¯ç”¨åœ°å›¾æƒ¯æ€§æ‹–æ‹½ï¼Œé»˜è®¤ç¦ç”¨
-    map.enableContinuousZoom();                                  // å¯ç”¨è¿ç»­ç¼©æ”¾æ•ˆæœï¼Œé»˜è®¤ç¦ç”¨
-    map.enableScrollWheelZoom();                                 // å¯ç”¨æ»šè½®æ”¾å¤§ç¼©å°ï¼Œé»˜è®¤ç¦ç”¨
-    map.enableKeyboard();                                        // å¯ç”¨é”®ç›˜æ“ä½œï¼Œé»˜è®¤ç¦ç”¨
-    map.addControl(new BMap.NavigationControl({enableGeolocation:true}));     // æ·»åŠ å¹³ç§»ç¼©æ”¾æ§ä»¶
-    map.addControl(new BMap.MapTypeControl());                                // æ·»åŠ åœ°å›¾ç±»å‹æ§ä»¶
-    map.addControl(new BMap.PanoramaControl({offset:new BMap.Size(20, 40)})); // æ·»åŠ å…¨æ™¯æ§ä»¶
-    map.addControl(new BMap.ScaleControl({offset:new BMap.Size(0, 40)}));     // æ·»åŠ å¸¦åç§»é‡çš„æ¯”ä¾‹å°º
-    map.addControl(new BMap.OverviewMapControl());                            // æ·»åŠ ç¼©ç•¥åœ°å›¾æ§ä»¶
+    var map = new BMap.Map("container");                         // ´´½¨µØÍ¼ÊµÀı
+    var point = new BMap.Point(getParam("lng"),getParam("lat")); // ´´½¨µã×ø±ê
+    map.centerAndZoom(point, 14);                                // ³õÊ¼»¯µØÍ¼£¬ÉèÖÃÖĞĞÄµã×ø±êºÍµØÍ¼¼¶±ğ
+    var mark = new BMap.Marker(point);                           // ´´½¨±ê×¢
+    map.addOverlay(mark);                                        // ½«±ê×¢Ìí¼Óµ½µØÍ¼ÖĞ
+    map.enableInertialDragging();                                // ÆôÓÃµØÍ¼¹ßĞÔÍÏ×§£¬Ä¬ÈÏ½ûÓÃ
+    map.enableContinuousZoom();                                  // ÆôÓÃÁ¬ĞøËõ·ÅĞ§¹û£¬Ä¬ÈÏ½ûÓÃ
+    map.enableScrollWheelZoom();                                 // ÆôÓÃ¹öÂÖ·Å´óËõĞ¡£¬Ä¬ÈÏ½ûÓÃ
+    map.enableKeyboard();                                        // ÆôÓÃ¼üÅÌ²Ù×÷£¬Ä¬ÈÏ½ûÓÃ
+    map.addControl(new BMap.NavigationControl({enableGeolocation:true}));     // Ìí¼ÓÆ½ÒÆËõ·Å¿Ø¼ş
+    map.addControl(new BMap.MapTypeControl());                                // Ìí¼ÓµØÍ¼ÀàĞÍ¿Ø¼ş
+    map.addControl(new BMap.PanoramaControl({offset:new BMap.Size(20, 40)})); // Ìí¼ÓÈ«¾°¿Ø¼ş
+    map.addControl(new BMap.ScaleControl({offset:new BMap.Size(0, 40)}));     // Ìí¼Ó´øÆ«ÒÆÁ¿µÄ±ÈÀı³ß
+    map.addControl(new BMap.OverviewMapControl());                            // Ìí¼ÓËõÂÔµØÍ¼¿Ø¼ş
 </script>

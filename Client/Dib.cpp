@@ -1,10 +1,10 @@
-ï»¿// Dib.cpp: implementation of the CDib class.
+// Dib.cpp: implementation of the CDib class.
 //////////////////////////////////////////////////////////////////////
 //
-//ç”¨é€”ï¼šIconSnapæ‰€éœ€è°ƒç”¨çš„ç±»
-//åŠŸèƒ½ï¼šDIBè®¾å¤‡æ— å…³ä½å›¾åŸºç¡€æ“ä½œç±»
-//ä½œè€…ï¼šå¾æ™¯å‘¨
-//æ—¥æœŸï¼š2001å¹´9æœˆ
+//ÓÃÍ¾£ºIconSnapËùÐèµ÷ÓÃµÄÀà
+//¹¦ÄÜ£ºDIBÉè±¸ÎÞ¹ØÎ»Í¼»ù´¡²Ù×÷Àà
+//×÷Õß£ºÐì¾°ÖÜ
+//ÈÕÆÚ£º2001Äê9ÔÂ
 //
 //////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -396,28 +396,28 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
     // Open the file
     if( (hFile=CreateFile( szFileName, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL)) == INVALID_HANDLE_VALUE )
     {
-        MessageBox( NULL, "æ‰“å¼€ä½å›¾æ–‡ä»¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "´ò¿ªÎ»Í¼ÎÄ¼þ³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     // Read the header
     if( ( ! ReadFile( hFile, &bfh, sizeof(BITMAPFILEHEADER), &dwBytes, NULL ) ) || ( dwBytes != sizeof( BITMAPFILEHEADER ) ) )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "è¯»ä½å›¾æ–‡ä»¶å¤´å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "¶ÁÎ»Í¼ÎÄ¼þÍ·³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     // Does it look like a BMP file?
     if( ( bfh.bfType != 0x4d42 ) || (bfh.bfReserved1!=0) || (bfh.bfReserved2!=0) )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "æœªçŸ¥çš„ä½å›¾æ ¼å¼æ–‡ä»¶!", szFileName, MB_OK );
+        MessageBox( NULL, "Î´ÖªµÄÎ»Í¼¸ñÊ½ÎÄ¼þ!", szFileName, MB_OK );
         return NULL;
     }
     // Allocate some memory
     if( (lpDIB =(LPBYTE) malloc( sizeof( BITMAPINFO ) )) == NULL )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "ä½å›¾å†…å­˜é‡æ–°åˆ†é…å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "Î»Í¼ÄÚ´æÖØÐÂ·ÖÅä³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     // Read in the BITMAPINFOHEADER
@@ -425,14 +425,14 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
     {
         CloseHandle( hFile );
         free( lpDIB );
-        MessageBox( NULL, "è¯»ä½å›¾æ–‡ä»¶ä¿¡æ¯å¤´å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "¶ÁÎ»Í¼ÎÄ¼þÐÅÏ¢Í·³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     if( ((LPBITMAPINFOHEADER)lpDIB)->biSize != sizeof( BITMAPINFOHEADER ) )
     {
         CloseHandle( hFile );
         free( lpDIB );
-        MessageBox( NULL, "OS/2é£Žæ ¼çš„ä½å›¾ä¸æ”¯æŒ!", szFileName, MB_OK );
+        MessageBox( NULL, "OS/2·ç¸ñµÄÎ»Í¼²»Ö§³Ö!", szFileName, MB_OK );
         return NULL;
     }
     // How big are the elements?
@@ -442,7 +442,7 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
     if( (lpTemp = (LPBYTE)realloc( lpDIB, sizeof( BITMAPINFOHEADER ) + wPaletteSize + dwBitsSize )) == NULL )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "é‡æ–°åˆ†é…ä½å›¾ä¿¡æ¯å¤´æ‰€éœ€å†…å­˜å¤±è´¥!", szFileName, MB_OK );
+        MessageBox( NULL, "ÖØÐÂ·ÖÅäÎ»Í¼ÐÅÏ¢Í·ËùÐèÄÚ´æÊ§°Ü!", szFileName, MB_OK );
         free( lpDIB );
         return NULL;
     }
@@ -454,7 +454,7 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
         {
             CloseHandle( hFile );
             free( lpDIB );
-            MessageBox( NULL, "è¯»ä½å›¾é¢œè‰²è¡¨å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( NULL, "¶ÁÎ»Í¼ÑÕÉ«±í³ö´í!", szFileName, MB_OK );
             return NULL;
         }
     }
@@ -466,7 +466,7 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
         {
             CloseHandle( hFile );
             free( lpDIB );
-            MessageBox( NULL, "ä½å›¾æ–‡ä»¶å¤§å°å®šä½å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( NULL, "Î»Í¼ÎÄ¼þ´óÐ¡¶¨Î»³ö´í!", szFileName, MB_OK );
             return NULL;
         }
     }
@@ -475,7 +475,7 @@ LPBYTE CDib::ReadBMPFile( LPCTSTR szFileName )
     {
         CloseHandle( hFile );
         free( lpDIB );
-        MessageBox( NULL, "è¯»ä½å›¾æ–‡ä»¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "¶ÁÎ»Í¼ÎÄ¼þ³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     // clean up
@@ -507,7 +507,7 @@ BOOL CDib::WriteBMPFile( LPCTSTR szFileName, LPBYTE lpDIB )
     // Open the file
     if( (hFile=CreateFile( szFileName, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL)) == INVALID_HANDLE_VALUE )
     {
-        MessageBox( NULL, "ä½å›¾æ–‡ä»¶å»ºç«‹å¤±è´¥ï¼", szFileName, MB_OK );
+        MessageBox( NULL, "Î»Í¼ÎÄ¼þ½¨Á¢Ê§°Ü£¡", szFileName, MB_OK );
         return FALSE;
     }
     bfh.bfType = 0x4d42;
@@ -519,7 +519,7 @@ BOOL CDib::WriteBMPFile( LPCTSTR szFileName, LPBYTE lpDIB )
     if( ( ! WriteFile( hFile, &bfh, sizeof(BITMAPFILEHEADER), &dwBytes, NULL ) ) || ( dwBytes != sizeof( BITMAPFILEHEADER ) ) )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "å†™ä½å›¾æ–‡ä»¶å¤´å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "Ð´Î»Í¼ÎÄ¼þÍ·³ö´í!", szFileName, MB_OK );
         return FALSE;
     }
     lpbmih = (LPBITMAPINFOHEADER)lpDIB;
@@ -528,7 +528,7 @@ BOOL CDib::WriteBMPFile( LPCTSTR szFileName, LPBYTE lpDIB )
     if( ( ! WriteFile( hFile, lpDIB, dwBytesToWrite, &dwBytes, NULL ) ) || ( dwBytes != dwBytesToWrite ) )
     {
         CloseHandle( hFile );
-        MessageBox( NULL, "å†™ä½å›¾æ–‡ä»¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( NULL, "Ð´Î»Í¼ÎÄ¼þ³ö´í!", szFileName, MB_OK );
         return FALSE;
     }
     lpbmih->biHeight *= 2;

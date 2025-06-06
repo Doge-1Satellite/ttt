@@ -1,4 +1,4 @@
-ï»¿#if !defined(AFX_REGDLG_H__018418D3_8E57_454D_9BE6_A60EDAE9BBD9__INCLUDED_)
+#if !defined(AFX_REGDLG_H__018418D3_8E57_454D_9BE6_A60EDAE9BBD9__INCLUDED_)
 #define AFX_REGDLG_H__018418D3_8E57_454D_9BE6_A60EDAE9BBD9__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -30,9 +30,9 @@ enum KEYVALUE
 
 struct REGMSG
 {
-	int count;         //åå­—ä¸ªæ•°
-	DWORD size;        //åå­—å¤§å°
-	DWORD valsize;     //å€¼å¤§å°	
+	int count;         //Ãû×Ö¸öÊı
+	DWORD size;        //Ãû×Ö´óĞ¡
+	DWORD valsize;     //Öµ´óĞ¡	
 };
 
 class CRegDlg : public CDialog
@@ -106,14 +106,14 @@ protected:
 	CString		FullPath;
 	int         size[3];
 private:         
-	int how;       //æ‰§è¡Œäº†ä»€ä¹ˆæ“ä½œ 1ï¼Œåˆ é™¤é¡¹  2ï¼Œæ–°å»ºé¡¹   3ï¼Œåˆ é™¤é”®  4ï¼Œ æ–°å»ºé¡¹  5ï¼Œç¼–è¾‘é¡¹               
+	int how;       //Ö´ĞĞÁËÊ²Ã´²Ù×÷ 1£¬É¾³ıÏî  2£¬ĞÂ½¨Ïî   3£¬É¾³ı¼ü  4£¬ ĞÂ½¨Ïî  5£¬±à¼­Ïî               
 	int index;
 	BYTE  type;
 	CString Path;
 	CString Key;
 	CString Value;
-	bool isEnable;    //æ§ä»¶æ˜¯å¦å¯ç”¨
-	bool isEdit;      //æ˜¯å¦æ­£åœ¨ç¼–è¾‘
+	bool isEnable;    //¿Ø¼şÊÇ·ñ¿ÉÓÃ
+	bool isEdit;      //ÊÇ·ñÕıÔÚ±à¼­
 	CStatusBar  m_wndStatusBar;  
 };
 

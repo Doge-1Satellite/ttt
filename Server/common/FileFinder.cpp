@@ -1,4 +1,4 @@
-ï»¿//Download by http://www.NewXing.com
+//Download by http://www.NewXing.com
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -47,7 +47,7 @@ int CFileFinder::FindFiles(LPCTSTR szBaseFolder, LPCTSTR szFileMask, BOOL bSubFo
 }
 
 
-//æŸ¥æ‰¾æŒ‡å®šåˆå§‹ç›®å½•ä¸‹ç¬¦åˆæ¡ä»¶çš„æ–‡ä»¶
+//²éÕÒÖ¸¶¨³õÊ¼Ä¿Â¼ÏÂ·ûºÏÌõ¼şµÄÎÄ¼ş
 int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 {
 	CFileFind	finder;
@@ -58,9 +58,9 @@ int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 
 	_bStopSearch = false;
 
-	opts.sBaseFolder = CPath::AddBackSlash(opts.sBaseFolder);//æ·»åŠ "/"
+	opts.sBaseFolder = CPath::AddBackSlash(opts.sBaseFolder);//Ìí¼Ó"/"
 
-	// æ˜¯å¦éœ€è¦æŸ¥æ‰¾å­ç›®å½•
+	// ÊÇ·ñĞèÒª²éÕÒ×ÓÄ¿Â¼
 	if (opts.bSubfolders)
 	{
 		sFullMask = opts.sBaseFolder + CString("*.*");
@@ -68,12 +68,12 @@ int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 		while ((bFound) && (!_bStopSearch))
 		{
 			bFound = finder.FindNextFile();
-			if ((finder.IsDirectory()) && (!finder.IsDots())) //æŸ¥æ‰¾ç›®å½•
+			if ((finder.IsDirectory()) && (!finder.IsDots())) //²éÕÒÄ¿Â¼
 			{
 				subOpts = opts;
 				subOpts.sBaseFolder = opts.sBaseFolder + finder.GetFileName();
 
-				//é€’å½’æŸ¥æ‰¾å­ç›®å½•
+				//µİ¹é²éÕÒ×ÓÄ¿Â¼
 				Find(subOpts);
 			}
 		}
@@ -81,13 +81,13 @@ int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 
 	finder.Close();
 
-	_sSearchingFolder = opts.sBaseFolder;//æ­£åœ¨æŸ¥æ‰¾çš„ç›®å½•
+	_sSearchingFolder = opts.sBaseFolder;//ÕıÔÚ²éÕÒµÄÄ¿Â¼
 
-	// è°ƒç”¨å›è°ƒå‡½æ•°
+	// µ÷ÓÃ»Øµ÷º¯Êı
 	if (_pFileFinderProc != NULL)
-		_pFileFinderProc(this, FF_FOLDER, _pCustomParam); //æ‰¾åˆ°äº†ç›®å½•ï¼Œåˆ©ç”¨å›è°ƒæ˜¾ç¤ºç›®å½•
+		_pFileFinderProc(this, FF_FOLDER, _pCustomParam); //ÕÒµ½ÁËÄ¿Â¼£¬ÀûÓÃ»Øµ÷ÏÔÊ¾Ä¿Â¼
 	else
-		MessageBox(NULL,"å›è°ƒå‡½æ•°ä¸ºç©º","warning",MB_OK);
+		MessageBox(NULL,"»Øµ÷º¯ÊıÎª¿Õ","warning",MB_OK);
 	sFullMask = opts.sBaseFolder + opts.sFileMask;
 	bFound = finder.FindFile(sFullMask);
 	while ((bFound) && (!_bStopSearch))
@@ -95,7 +95,7 @@ int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 		bFound = finder.FindNextFile();
 		if (!finder.IsDots())
 		{
-			// æ£€æŸ¥é™åˆ¶
+			// ¼ì²éÏŞÖÆ
 			bValidFile = TRUE;
 			if (opts.dwOptionsFlags & FIND_ATTRIBUTES)
 			{
@@ -134,24 +134,24 @@ int CFileFinder::Find(CFileFinder::CFindOpts &opts)
 				bValidFile = FindTextInFile(finder.GetFilePath(), opts.sFindText);
 			}
 
-			// å¦‚æœç¬¦åˆæ‰€æœ‰çš„æŸ¥æ‰¾æ¡ä»¶
+			// Èç¹û·ûºÏËùÓĞµÄ²éÕÒÌõ¼ş
 			if (bValidFile)
 			{
 				CString sName = finder.GetFilePath();
 				if (finder.IsDirectory()) sName += "\\";
-				_aFilesFound.Add(sName);//æ·»åŠ æ‰¾åˆ°çš„è·¯å¾„
+				_aFilesFound.Add(sName);//Ìí¼ÓÕÒµ½µÄÂ·¾¶
 			}
 
-			// è°ƒç”¨å›è°ƒå‡½æ•°
+			// µ÷ÓÃ»Øµ÷º¯Êı
 			if (_pFileFinderProc != NULL)
-				_pFileFinderProc(this, bValidFile ? FF_FOUND : FF_DISCARDED, _pCustomParam);//æ–‡ä»¶æ‰¾åˆ°æˆ–æ²¡æ‰¾åˆ°çš„çŠ¶æ€æ˜¾ç¤º
+				_pFileFinderProc(this, bValidFile ? FF_FOUND : FF_DISCARDED, _pCustomParam);//ÎÄ¼şÕÒµ½»òÃ»ÕÒµ½µÄ×´Ì¬ÏÔÊ¾
 			else
-				MessageBox(NULL,"å›è°ƒå‡½æ•°ä¸ºç©º","warning",MB_OK);
+				MessageBox(NULL,"»Øµ÷º¯ÊıÎª¿Õ","warning",MB_OK);
 		}
 	}
 
 	_pFileFinderProc(this,FF_ENDSEARCH,_pCustomParam);
-	return GetFileCount();//è¿”å›æ‰¾åˆ°çš„æ–‡ä»¶æ•°ç›®
+	return GetFileCount();//·µ»ØÕÒµ½µÄÎÄ¼şÊıÄ¿
 }
 
 
@@ -195,7 +195,7 @@ BOOL CFileFinder::FindTextInFile(LPCTSTR szFile, LPCTSTR szText)
 		sText.MakeUpper();
 		bTextFound = (sText.Find(sFindText) != -1);
 
-		// è°ƒç”¨å›è°ƒå‡½æ•°
+		// µ÷ÓÃ»Øµ÷º¯Êı
 		if (_pFileFinderProc != NULL)
 		{
 			nLoopCount++;
@@ -207,7 +207,7 @@ BOOL CFileFinder::FindTextInFile(LPCTSTR szFile, LPCTSTR szText)
 		}
 		else
 		{
-			MessageBox(NULL,"å›è°ƒå‡½æ•°ä¸ºç©º","warning",MB_OK);
+			MessageBox(NULL,"»Øµ÷º¯ÊıÎª¿Õ","warning",MB_OK);
 		}
 	} 
 	while ((nCharRead == nReadSize) && !bTextFound);

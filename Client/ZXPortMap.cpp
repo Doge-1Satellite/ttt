@@ -1,4 +1,4 @@
-ï»¿// ZXPortMap.cpp: implementation of the CZXPortMap class.
+// ZXPortMap.cpp: implementation of the CZXPortMap class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -54,7 +54,7 @@ CZXPortMap::~CZXPortMap()
 //	AfxMessageBox("~CZXPortMap");
 }
 
-int CZXPortMap::DataSend(SOCKET s, char *DataBuf, int DataLen)//å°†DataBufä¸­çš„DataLenä¸ªå­—èŠ‚å‘åˆ°så»
+int CZXPortMap::DataSend(SOCKET s, char *DataBuf, int DataLen)//½«DataBufÖĞµÄDataLen¸ö×Ö½Ú·¢µ½sÈ¥
 {
 	int nBytesLeft = DataLen;
 	int nBytesSent = 0;
@@ -73,7 +73,7 @@ int CZXPortMap::DataSend(SOCKET s, char *DataBuf, int DataLen)//å°†DataBufä¸­çš„
 	return nBytesSent;
 }
 
-DWORD WINAPI CZXPortMap::TransmitData(LPVOID lParam)//åœ¨ä¸¤ä¸ªSOCKETä¸­è¿›è¡Œæ•°æ®è½¬å‘
+DWORD WINAPI CZXPortMap::TransmitData(LPVOID lParam)//ÔÚÁ½¸öSOCKETÖĞ½øĞĞÊı¾İ×ª·¢
 {
 	SOCKINFO socks = *((SOCKINFO*)lParam);
 	SOCKET ClientSock = socks.ClientSock;
@@ -116,7 +116,7 @@ error:
 	return 0;
 }
 
-SOCKET CZXPortMap::ConnectHost(DWORD dwIP, WORD wPort)//è¿æ¥æŒ‡å®šIPå’Œç«¯å£
+SOCKET CZXPortMap::ConnectHost(DWORD dwIP, WORD wPort)//Á¬½ÓÖ¸¶¨IPºÍ¶Ë¿Ú
 {
 	SOCKET sockid;
 	
@@ -139,7 +139,7 @@ SOCKET CZXPortMap::ConnectHost(char *szIP, WORD wPort)
 	return ConnectHost(inet_addr(szIP), wPort);
 }
 
-SOCKET CZXPortMap::CreateSocket(DWORD dwIP, WORD wPort)//åœ¨dwIPä¸Šç»‘å®šwPortç«¯å£
+SOCKET CZXPortMap::CreateSocket(DWORD dwIP, WORD wPort)//ÔÚdwIPÉÏ°ó¶¨wPort¶Ë¿Ú
 {
 	SOCKET sockid;
 	
@@ -160,7 +160,7 @@ error:
 	return 0;
 }
 
-SOCKET CZXPortMap::CreateTmpSocket(WORD *wPort)//åˆ›å»ºä¸€ä¸ªä¸´æ—¶çš„å¥—æ¥å­—,æŒ‡é’ˆwPortè·å¾—åˆ›å»ºçš„ä¸´æ—¶ç«¯å£
+SOCKET CZXPortMap::CreateTmpSocket(WORD *wPort)//´´½¨Ò»¸öÁÙÊ±µÄÌ×½Ó×Ö,Ö¸ÕëwPort»ñµÃ´´½¨µÄÁÙÊ±¶Ë¿Ú
 {
 	struct sockaddr_in srv_addr = {0};
 	int addrlen = sizeof(struct sockaddr_in);
@@ -189,10 +189,10 @@ DWORD WINAPI CZXPortMap::PortTransfer_1(LPVOID lParam)
 	TransferParam<ADDRESS, SOCKET> *ConfigInfo = (TransferParam<ADDRESS, SOCKET>*)lParam;
 	SOCKET ClientSock, ServerSock;
 	
-	//å‡ºæ ˆï¼Œè·å¾—å®¢æˆ·çš„å¥—æ¥å­—
+	//³öÕ»£¬»ñµÃ¿Í»§µÄÌ×½Ó×Ö
 	ClientSock = ConfigInfo->LocalData.Pop();
 	//printf("ThreadID: %d ==> Now Connecting To Server...", nTimes);
-	//å…ˆè¿æ¥åˆ°ç›®æ ‡è®¡ç®—æœºçš„æœåŠ¡
+	//ÏÈÁ¬½Óµ½Ä¿±ê¼ÆËã»úµÄ·şÎñ
 	ServerSock = ConnectHost(ConfigInfo->GlobalData.szIP, ConfigInfo->GlobalData.wPort);
 	if(ServerSock <= 0)
 	{
@@ -202,9 +202,9 @@ DWORD WINAPI CZXPortMap::PortTransfer_1(LPVOID lParam)
 	}
 	//printf("OK.\r\nStarting TransmitData\r\n");
 	SOCKINFO socks;
-	socks.ClientSock = ClientSock;//å®¢æˆ·çš„å¥—æ¥å­—
-	socks.ServerSock = ServerSock;//ç›®æ ‡è®¡ç®—æœºæœåŠ¡çš„å¥—æ¥å­—
-	//è¿›å…¥çº¯æ•°æ®è½¬å‘çŠ¶æ€
+	socks.ClientSock = ClientSock;//¿Í»§µÄÌ×½Ó×Ö
+	socks.ServerSock = ServerSock;//Ä¿±ê¼ÆËã»ú·şÎñµÄÌ×½Ó×Ö
+	//½øÈë´¿Êı¾İ×ª·¢×´Ì¬
 	return TransmitData((LPVOID)&socks);
 }
 
@@ -219,7 +219,7 @@ BOOL CZXPortMap::PortTransfer_1(WORD ListenPort, char *szIP, WORD wPort)
 	_snprintf(ConfigInfo.GlobalData.szIP, ADDRSIZE, "%s", szIP);
 	ConfigInfo.GlobalData.wPort = wPort;
 	
-	//ç›‘å¬ä¸ªæœåŠ¡ç«¯å£ï¼Œå³æ˜ å°„ç«¯å£
+	//¼àÌı¸ö·şÎñ¶Ë¿Ú£¬¼´Ó³Éä¶Ë¿Ú
 	SOCKET localsockid = CreateSocket(INADDR_ANY, ListenPort);
 	if(localsockid <= 0)
 		goto error;
@@ -231,8 +231,8 @@ BOOL CZXPortMap::PortTransfer_1(WORD ListenPort, char *szIP, WORD wPort)
 			goto error;
 		nTimes++;
 		//printf("OK.\r\n");
-		//å°†æ¥å—åˆ°çš„å®¢æˆ·è¯·æ±‚å¥—æ¥å­—è½¬åˆ°æ–°çš„çº¿ç¨‹é‡Œå¤„ç†
-		//ç„¶åç»§ç»­ç­‰å¾…æ–°çš„è¯·æ±‚
+		//½«½ÓÊÜµ½µÄ¿Í»§ÇëÇóÌ×½Ó×Ö×ªµ½ĞÂµÄÏß³ÌÀï´¦Àí
+		//È»ºó¼ÌĞøµÈ´ıĞÂµÄÇëÇó
 		ConfigInfo.LocalData.Push(AcceptSocket);
 		hThreadPort[++nThreadNum] = CreateThread(NULL, 0, PortTransfer_1, (LPVOID)&ConfigInfo, NULL, &dwThreadId);
 		if(hThreadPort[nThreadNum])
@@ -255,23 +255,23 @@ DWORD WINAPI CZXPortMap::PortTransfer_2(LPVOID lParam)
 	//WORD wPort;
 	SOCKADDR_IN clientaddr;
 	int addrlen = sizeof(clientaddr);
-	//ä¹‹å‰ç”¨é”™äº†ä¸ªAPI(getsockname),è¿™é‡Œåº”è¯¥ç”¨getpeername
+	//Ö®Ç°ÓÃ´íÁË¸öAPI(getsockname),ÕâÀïÓ¦¸ÃÓÃgetpeername
 	if(getpeername(CtrlSocket, (SOCKADDR *)&clientaddr, &addrlen) == SOCKET_ERROR)
 		return 0;
-	//è·å¾—è¿è¡ŒPortTransfer_3æ¨¡å¼çš„è®¡ç®—æœºçš„IP
+	//»ñµÃÔËĞĞPortTransfer_3Ä£Ê½µÄ¼ÆËã»úµÄIP
 	dwCtrlIP = clientaddr.sin_addr.S_un.S_addr;
 	//wPort = ntohs(clientaddr.sin_port);
 	
 	SOCKET ClientSocket, ServerSocket;
 	SOCKINFO socks;
 	//printf("ThreadID: %d ==> Connecting to Client...", nTimes);
-	//å‘å…¬ç½‘å»ºç«‹æ–°çš„è¿æ¥
+	//Ïò¹«Íø½¨Á¢ĞÂµÄÁ¬½Ó
 	ClientSocket = ConnectHost(dwCtrlIP, ConfigInfo->LocalData.Pop());
 	if(ClientSocket <= 0)
 		return 0;
 //	printf("OK.\r\n");
 //	printf("ThreadID: %d ==> Connect to Server...", nTimes);
-	//è¿æ¥åˆ°ç›®æ ‡è®¡ç®—æœºçš„æœåŠ¡
+	//Á¬½Óµ½Ä¿±ê¼ÆËã»úµÄ·şÎñ
 	ServerSocket = ConnectHost(ConfigInfo->GlobalData.szIP, ConfigInfo->GlobalData.wPort);
 	if(ServerSocket <= 0)
 	{
@@ -280,9 +280,9 @@ DWORD WINAPI CZXPortMap::PortTransfer_2(LPVOID lParam)
 		return 0;
 	}
 //	printf("OK.\r\nStarting TransmitData\r\n", nTimes);
-	socks.ClientSock = ClientSocket;//å…¬ç½‘è®¡ç®—æœºçš„å¥—æ¥å­—
-	socks.ServerSock = ServerSocket;//ç›®æ ‡è®¡ç®—æœºæœåŠ¡çš„å¥—æ¥å­—
-	//è¿›å…¥çº¯æ•°æ®è½¬å‘çŠ¶æ€
+	socks.ClientSock = ClientSocket;//¹«Íø¼ÆËã»úµÄÌ×½Ó×Ö
+	socks.ServerSock = ServerSocket;//Ä¿±ê¼ÆËã»ú·şÎñµÄÌ×½Ó×Ö
+	//½øÈë´¿Êı¾İ×ª·¢×´Ì¬
 	return TransmitData((LPVOID)&socks);
 }
 
@@ -297,7 +297,7 @@ BOOL CZXPortMap::PortTransfer_2(char *szCtrlIP, WORD wCtrlPort, char *szIP, WORD
 	ConfigInfo.GlobalData.wPort = wPort;
 	
 	//printf("Creating a ctrlconnection...");
-	//ä¸PortTransfer_3æ¨¡å¼ï¼ˆå·¥ä½œåœ¨å…±ç½‘ï¼‰çš„è®¡ç®—æœºå»ºç«‹æ§åˆ¶ç®¡é“è¿æ¥
+	//ÓëPortTransfer_3Ä£Ê½£¨¹¤×÷ÔÚ¹²Íø£©µÄ¼ÆËã»ú½¨Á¢¿ØÖÆ¹ÜµÀÁ¬½Ó
 	SOCKET CtrlSocket = ConnectHost(szCtrlIP, wCtrlPort);
 	if(CtrlSocket <= 0)
 		goto error;
@@ -305,13 +305,13 @@ BOOL CZXPortMap::PortTransfer_2(char *szCtrlIP, WORD wCtrlPort, char *szIP, WORD
 	//printf("OK.\r\n");
 	while(bIsRunning)
 	{
-		//æ¥æ”¶æ¥è‡ªï¼ˆå·¥ä½œåœ¨å…¬ç½‘ï¼‰è®¡ç®—æœºçš„å‘½ä»¤ï¼Œæ•°æ®ä¸ºä¸€ä¸ªWORDï¼Œ
-		//è¡¨ç¤ºå…¬ç½‘è®¡ç®—æœºç›‘å¬äº†è¿™ä¸ªç«¯å£
+		//½ÓÊÕÀ´×Ô£¨¹¤×÷ÔÚ¹«Íø£©¼ÆËã»úµÄÃüÁî£¬Êı¾İÎªÒ»¸öWORD£¬
+		//±íÊ¾¹«Íø¼ÆËã»ú¼àÌıÁËÕâ¸ö¶Ë¿Ú
 		nRecv = recv(CtrlSocket, (char*)&ReqPort, sizeof(ReqPort), 0);
 		if(nRecv <= 0)
 			goto error;
 		nTimes++;
-		ConfigInfo.LocalData.Push(ReqPort);//ä¼ é€’ä¿¡æ¯çš„ç»“æ„
+		ConfigInfo.LocalData.Push(ReqPort);//´«µİĞÅÏ¢µÄ½á¹¹
 		hThreadPort[++nThreadNum] = CreateThread(NULL, 0, PortTransfer_2, (LPVOID)&ConfigInfo, NULL, &dwThreadId);
 		if(hThreadPort[nThreadNum])
 			CloseHandle(hThreadPort[nThreadNum]);
@@ -333,14 +333,14 @@ DWORD WINAPI CZXPortMap::PortTransfer_3(LPVOID lParam)
 	ClientSocket = ConfigInfo->LocalData.Pop();
 	
 	WORD wPort;
-	tmpSocket = CreateTmpSocket(&wPort);//åˆ›å»ºä¸ªä¸´æ—¶ç«¯å£
+	tmpSocket = CreateTmpSocket(&wPort);//´´½¨¸öÁÙÊ±¶Ë¿Ú
 	
 	if(tmpSocket <= 0 || wPort <= 0)
 	{
 		closesocket(ClientSocket);
 		return 0;
 	}
-	//é€šçŸ¥å†…ç½‘ç”¨æˆ·å‘èµ·æ–°çš„è¿æ¥åˆ°åˆšåˆ›å»ºçš„ä¸´æ—¶ç«¯å£
+	//Í¨ÖªÄÚÍøÓÃ»§·¢ÆğĞÂµÄÁ¬½Óµ½¸Õ´´½¨µÄÁÙÊ±¶Ë¿Ú
 	if(send(CtrlSocket, (char*)&wPort, sizeof(wPort), 0) == SOCKET_ERROR)
 	{
 		closesocket(ClientSocket);
@@ -358,11 +358,11 @@ DWORD WINAPI CZXPortMap::PortTransfer_3(LPVOID lParam)
 	//printf("OK.\r\n");
 	socks.ClientSock = ClientSocket;
 	socks.ServerSock = ServerSocket;
-	//è¿›å…¥çº¯æ•°æ®è½¬å‘çŠ¶æ€
+	//½øÈë´¿Êı¾İ×ª·¢×´Ì¬
 	return TransmitData((LPVOID)&socks);
 }
 
-BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//ç›‘å¬çš„ä¸¤ä¸ªç«¯å£
+BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//¼àÌıµÄÁ½¸ö¶Ë¿Ú
 {
 	DWORD dwThreadId;
 	BOOL bOptVal = TRUE;
@@ -370,10 +370,10 @@ BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//ç›‘å¬çš„ä¸¤ä
 	TransferParam<SOCKET, SOCKET> ConfigInfo;
 	SOCKET ctrlsockid, serversockid, CtrlSocket, AcceptSocket;
 	
-	ctrlsockid = CreateSocket(INADDR_ANY, wCtrlPort);//åˆ›å»ºå¥—æ¥å­—
+	ctrlsockid = CreateSocket(INADDR_ANY, wCtrlPort);//´´½¨Ì×½Ó×Ö
 	if(ctrlsockid <= 0)
 		goto error2;
-	serversockid = CreateSocket(INADDR_ANY, wServerPort);//åˆ›å»ºå¥—æ¥å­—
+	serversockid = CreateSocket(INADDR_ANY, wServerPort);//´´½¨Ì×½Ó×Ö
 	if(serversockid <= 0)
 		goto error1;
 	
@@ -391,7 +391,7 @@ BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//ç›‘å¬çš„ä¸¤ä
 
 	nServerPort=ntohs(sockAddr.sin_port);
 
-	CtrlSocket = accept(ctrlsockid, NULL, NULL);//æ¥å—æ¥è‡ªï¼ˆå†…ç½‘ç”¨æˆ·å‘èµ·ï¼‰PortTransfer_2æ¨¡å¼å»ºç«‹æ§åˆ¶ç®¡é“è¿æ¥çš„è¯·æ±‚
+	CtrlSocket = accept(ctrlsockid, NULL, NULL);//½ÓÊÜÀ´×Ô£¨ÄÚÍøÓÃ»§·¢Æğ£©PortTransfer_2Ä£Ê½½¨Á¢¿ØÖÆ¹ÜµÀÁ¬½ÓµÄÇëÇó
 	if(CtrlSocket == INVALID_SOCKET)
 		goto error0;
 	//setsockopt( keep-alive......
@@ -400,8 +400,8 @@ BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//ç›‘å¬çš„ä¸¤ä
 		//printf("Set SO_KEEPALIVE: ON\n");
 	}
 
-	//ä¸å†…ç½‘ç”¨æˆ·å»ºç«‹äº†è¿æ¥åå°±ç›¸å½“ç«¯å£æ˜ å°„æˆåŠŸäº†
-	//å‡†å¤‡è¿›å…¥æ¥æ”¶æœåŠ¡è¯·æ±‚çŠ¶æ€ï¼Œå¹¶å°†åœ¨æ–°èµ·çš„çº¿ç¨‹ä¸­é€šè¿‡æ§åˆ¶ç®¡é“é€šçŸ¥å†…ç½‘ç”¨æˆ·å‘èµ·æ–°çš„è¿æ¥è¿›è¡Œæ•°æ®è½¬å‘
+	//ÓëÄÚÍøÓÃ»§½¨Á¢ÁËÁ¬½Óºó¾ÍÏàµ±¶Ë¿ÚÓ³Éä³É¹¦ÁË
+	//×¼±¸½øÈë½ÓÊÕ·şÎñÇëÇó×´Ì¬£¬²¢½«ÔÚĞÂÆğµÄÏß³ÌÖĞÍ¨¹ı¿ØÖÆ¹ÜµÀÍ¨ÖªÄÚÍøÓÃ»§·¢ÆğĞÂµÄÁ¬½Ó½øĞĞÊı¾İ×ª·¢
 	ConfigInfo.GlobalData = CtrlSocket;
 	while(bIsRunning)
 	{
@@ -415,7 +415,7 @@ BOOL CZXPortMap::PortTransfer_3(WORD wCtrlPort, WORD wServerPort)//ç›‘å¬çš„ä¸¤ä
 		}
 		nTimes++;
 		//printf("OK.\r\n");
-		ConfigInfo.LocalData.Push(AcceptSocket);//æŠŠæ¥å—åˆ°çš„å¥—æ¥å­—Pushåˆ°æ ˆç»“æ„ä¸­ï¼Œä¼ åˆ°æ–°èµ·çº¿ç¨‹é‚£è¾¹å¯ä»¥å†Popå‡ºæ¥
+		ConfigInfo.LocalData.Push(AcceptSocket);//°Ñ½ÓÊÜµ½µÄÌ×½Ó×ÖPushµ½Õ»½á¹¹ÖĞ£¬´«µ½ĞÂÆğÏß³ÌÄÇ±ß¿ÉÒÔÔÙPop³öÀ´
 		hThreadPort[++nThreadNum] = CreateThread(NULL, 0, PortTransfer_3, (LPVOID)&ConfigInfo, NULL, &dwThreadId);
 		if(hThreadPort[nThreadNum])
 			CloseHandle(hThreadPort[nThreadNum]);

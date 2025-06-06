@@ -1,4 +1,4 @@
-ï»¿// UpdateDlg.cpp : implementation file
+// UpdateDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -6,7 +6,7 @@
 #include "UpdateDlg.h"
 
 #include "winsock.h"//---
-#include "afxinet.h" //WinInetæ‰€éœ€è¦çš„å¤´æ–‡ä»¶
+#include "afxinet.h" //WinInetËùĞèÒªµÄÍ·ÎÄ¼ş
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -80,7 +80,7 @@ BOOL CUpdateDlg::OnInitDialog()
 	else if (strSelect == "Noip")
 		OnNoip();
 	
-	//è·å¾—IP--------------------------------
+	//»ñµÃIP--------------------------------
 	WSADATA wsaData;
 	WSAStartup(MAKEWORD(1,1),&wsaData);
 	char szhostname[128];
@@ -106,10 +106,10 @@ BOOL CUpdateDlg::OnInitDialog()
 		m_Combo_DnsIP.SetCurSel(0);
 	}
 	
-	BOOL m_bOnline=TRUE;//æ˜¯å¦åœ¨çº¿
+	BOOL m_bOnline=TRUE;//ÊÇ·ñÔÚÏß
 	DWORD dwFlag;
 	m_bOnline=InternetGetConnectedState(&dwFlag,0);   
-	if(m_bOnline)//åœ¨çº¿
+	if(m_bOnline)//ÔÚÏß
 	{
 		GetDlgItem(IDC_GETWAN)->EnableWindow(TRUE);
 	}
@@ -171,10 +171,10 @@ void CUpdateDlg::OnBtnDnsUpdate()
 	if (m_3322)
 	{
 		CString Mistr;
-		Mistr=Base64Encode(m_DnsPass);   //åŠ å¯†å‡½æ•°
+		Mistr=Base64Encode(m_DnsPass);   //¼ÓÃÜº¯Êı
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "Select", "3322");
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "3322User", m_DnsUser);
-		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "3322Pass", Mistr);//ä¿å­˜å¯†ç 
+		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "3322Pass", Mistr);//±£´æÃÜÂë
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "3322Domain",m_DnsDomain);
 		
 		CString strUrl, strDNS, strTmp = _T("");
@@ -198,28 +198,28 @@ void CUpdateDlg::OnBtnDnsUpdate()
 		strcat(a,ip);
 		strcat(a,d);
 		
-		SetDlgItemText(IDC_SHOWTIPS, _T("æ›´æ–°ä¸­,è¯·ç¨å€™ ..."));
-		HINTERNET hNet = ::InternetOpen("3322", //å½“HTTPåè®®ä½¿ç”¨æ—¶ï¼Œè¿™ä¸ªå‚æ•°éšæ„èµ‹å€¼
-			PRE_CONFIG_INTERNET_ACCESS, //è®¿é—®ç±»å‹æŒ‡ç¤ºWin32ç½‘ç»œå‡½æ•°ä½¿ç”¨ç™»è®°ä¿¡æ¯å»å‘ç°ä¸€ä¸ªæœåŠ¡å™¨
+		SetDlgItemText(IDC_SHOWTIPS, _T("¸üĞÂÖĞ,ÇëÉÔºò ..."));
+		HINTERNET hNet = ::InternetOpen("3322", //µ±HTTPĞ­ÒéÊ¹ÓÃÊ±£¬Õâ¸ö²ÎÊıËæÒâ¸³Öµ
+			PRE_CONFIG_INTERNET_ACCESS, //·ÃÎÊÀàĞÍÖ¸Ê¾Win32ÍøÂçº¯ÊıÊ¹ÓÃµÇ¼ÇĞÅÏ¢È¥·¢ÏÖÒ»¸ö·şÎñÆ÷
 			NULL, 
-			INTERNET_INVALID_PORT_NUMBER, //ä½¿ç”¨INTERNET_INVALID_PORT_NUMBERç›¸å½“äºæä¾›å´çœçš„ç«¯å£æ•°
-			0 //æ ‡å¿—å»æŒ‡ç¤ºä½¿ç”¨è¿”å›å¥å¥æŸ„çš„å°†æ¥çš„Internetå‡½æ•°å°†"ä¸"ä¸ºå›è°ƒå‡½æ•°å‘é€çŠ¶æ€ä¿¡æ¯ 
+			INTERNET_INVALID_PORT_NUMBER, //Ê¹ÓÃINTERNET_INVALID_PORT_NUMBERÏàµ±ÓÚÌá¹©È´Ê¡µÄ¶Ë¿ÚÊı
+			0 //±êÖ¾È¥Ö¸Ê¾Ê¹ÓÃ·µ»Ø¾ä¾ä±úµÄ½«À´µÄInternetº¯Êı½«"²»"Îª»Øµ÷º¯Êı·¢ËÍ×´Ì¬ĞÅÏ¢ 
 			); 
 		
-		HINTERNET hUrlFile = ::InternetOpenUrl(hNet, //ä»InternetOpenè¿”å›çš„å¥æŸ„ 
-			(char *)a, //éœ€è¦æ‰“å¼€çš„URL 
-			NULL, //ç”¨æ¥å‘æœåŠ¡å™¨ä¼ é€é¢å¤–çš„ä¿¡æ¯,ä¸€èˆ¬ä¸ºNULL 
-			0, //ç”¨æ¥å‘æœåŠ¡å™¨ä¼ é€é¢å¤–çš„ä¿¡æ¯,ä¸€èˆ¬ä¸º 0 
-			INTERNET_FLAG_RELOAD, //InternetOpenUrlè¡Œä¸ºçš„æ ‡å¿— 
-			0); //ä¿¡æ¯å°†ä¸ä¼šè¢«é€åˆ°çŠ¶æ€å›è°ƒå‡½æ•° 
+		HINTERNET hUrlFile = ::InternetOpenUrl(hNet, //´ÓInternetOpen·µ»ØµÄ¾ä±ú 
+			(char *)a, //ĞèÒª´ò¿ªµÄURL 
+			NULL, //ÓÃÀ´Ïò·şÎñÆ÷´«ËÍ¶îÍâµÄĞÅÏ¢,Ò»°ãÎªNULL 
+			0, //ÓÃÀ´Ïò·şÎñÆ÷´«ËÍ¶îÍâµÄĞÅÏ¢,Ò»°ãÎª 0 
+			INTERNET_FLAG_RELOAD, //InternetOpenUrlĞĞÎªµÄ±êÖ¾ 
+			0); //ĞÅÏ¢½«²»»á±»ËÍµ½×´Ì¬»Øµ÷º¯Êı 
 		
 		char buffer[1024] = {0}; 
 		DWORD dwBytesRead = 0; 
-		BOOL bRead = ::InternetReadFile(hUrlFile, //InternetOpenUrlè¿”å›çš„å¥æŸ„ 
-			buffer, //ä¿ç•™æ•°æ®çš„ç¼“å†²åŒº 
+		BOOL bRead = ::InternetReadFile(hUrlFile, //InternetOpenUrl·µ»ØµÄ¾ä±ú 
+			buffer, //±£ÁôÊı¾İµÄ»º³åÇø 
 			sizeof(buffer), 
-			&dwBytesRead); //æŒ‡å‘åŒ…å«è¯»å…¥ç¼“å†²åŒºå­—èŠ‚æ•°çš„å˜é‡çš„æŒ‡é’ˆ; 
-		//å¦‚æœè¿”å›å€¼æ˜¯TRUEï¼Œè€Œä¸”è¿™é‡ŒæŒ‡å‘0ï¼Œåˆ™æ–‡ä»¶å·²ç»è¯»åˆ°äº†æ–‡ä»¶çš„æœ«å°¾ã€‚ 
+			&dwBytesRead); //Ö¸Ïò°üº¬¶ÁÈë»º³åÇø×Ö½ÚÊıµÄ±äÁ¿µÄÖ¸Õë; 
+		//Èç¹û·µ»ØÖµÊÇTRUE£¬¶øÇÒÕâÀïÖ¸Ïò0£¬ÔòÎÄ¼şÒÑ¾­¶Áµ½ÁËÎÄ¼şµÄÄ©Î²¡£ 
 		
 		::InternetCloseHandle(hUrlFile) ; 
 		::InternetCloseHandle(hNet) ;
@@ -227,26 +227,26 @@ void CUpdateDlg::OnBtnDnsUpdate()
 		if(strlen(buffer) > 0)
 		{
 			if(strstr(buffer,"badauth"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("ç”¨æˆ·æˆ–å¯†ç é”™è¯¯,è¯·é‡æ–°æ›´æ–°"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓÃ»§»òÃÜÂë´íÎó,ÇëÖØĞÂ¸üĞÂ"));
 			else if(strstr(buffer,"good"))
-                SetDlgItemText(IDC_SHOWTIPS, _T("å¸Œç½‘IPæ›´æ–°æˆåŠŸ:")+ip);
+                SetDlgItemText(IDC_SHOWTIPS, _T("Ï£ÍøIP¸üĞÂ³É¹¦:")+ip);
 			else if(strstr(buffer,"nohost"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("åŸŸåä¸å­˜åœ¨"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓòÃû²»´æÔÚ"));
 			else if(strstr(buffer,"nochg"))
-                SetDlgItemText(IDC_SHOWTIPS, _T("IPå·²ç»æŒ‡å‘è¯¥åŸŸå:")+ip);
+                SetDlgItemText(IDC_SHOWTIPS, _T("IPÒÑ¾­Ö¸Ïò¸ÃÓòÃû:")+ip);
 			else
-				SetDlgItemText(IDC_SHOWTIPS, _T("æœªçŸ¥åé”™è¯¯ ..."));
+				SetDlgItemText(IDC_SHOWTIPS, _T("Î´ÖªÃû´íÎó ..."));
 		}
-		else SetDlgItemText(IDC_SHOWTIPS, _T("ç½‘ç»œè¿æ¥é”™è¯¯ ..."));
+		else SetDlgItemText(IDC_SHOWTIPS, _T("ÍøÂçÁ¬½Ó´íÎó ..."));
 		//memset(buffer,0,sizeof(buffer));
 	}
 	if (m_oicp)
 	{
 		CString Mistr;
-		Mistr=Base64Encode(m_DnsPass);   //åŠ å¯†å‡½æ•°
+		Mistr=Base64Encode(m_DnsPass);   //¼ÓÃÜº¯Êı
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "Select", "Oicp");
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "OicpUser", m_DnsUser);
-		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "OicpPass", Mistr);//ä¿å­˜å¯†ç 
+		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "OicpPass", Mistr);//±£´æÃÜÂë
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "OicpDomain",m_DnsDomain);
 		
 	    CString id, pass, dns, ip; 
@@ -267,60 +267,60 @@ void CUpdateDlg::OnBtnDnsUpdate()
 		strcat(a,c);
 		strcat(a,ip);
 		
-		SetDlgItemText(IDC_SHOWTIPS, _T("æ›´æ–°ä¸­,è¯·ç¨å€™ ..."));
-		HINTERNET hNet = ::InternetOpen("oray", //å½“HTTPåè®®ä½¿ç”¨æ—¶ï¼Œè¿™ä¸ªå‚æ•°éšæ„èµ‹å€¼
-			PRE_CONFIG_INTERNET_ACCESS, //è®¿é—®ç±»å‹æŒ‡ç¤ºWin32ç½‘ç»œå‡½æ•°ä½¿ç”¨ç™»è®°ä¿¡æ¯å»å‘ç°ä¸€ä¸ªæœåŠ¡å™¨
+		SetDlgItemText(IDC_SHOWTIPS, _T("¸üĞÂÖĞ,ÇëÉÔºò ..."));
+		HINTERNET hNet = ::InternetOpen("oray", //µ±HTTPĞ­ÒéÊ¹ÓÃÊ±£¬Õâ¸ö²ÎÊıËæÒâ¸³Öµ
+			PRE_CONFIG_INTERNET_ACCESS, //·ÃÎÊÀàĞÍÖ¸Ê¾Win32ÍøÂçº¯ÊıÊ¹ÓÃµÇ¼ÇĞÅÏ¢È¥·¢ÏÖÒ»¸ö·şÎñÆ÷
 			NULL, 
-			INTERNET_INVALID_PORT_NUMBER, //ä½¿ç”¨INTERNET_INVALID_PORT_NUMBERç›¸å½“äºæä¾›å´çœçš„ç«¯å£æ•°
-			0 //æ ‡å¿—å»æŒ‡ç¤ºä½¿ç”¨è¿”å›å¥å¥æŸ„çš„å°†æ¥çš„Internetå‡½æ•°å°†"ä¸"ä¸ºå›è°ƒå‡½æ•°å‘é€çŠ¶æ€ä¿¡æ¯ 
+			INTERNET_INVALID_PORT_NUMBER, //Ê¹ÓÃINTERNET_INVALID_PORT_NUMBERÏàµ±ÓÚÌá¹©È´Ê¡µÄ¶Ë¿ÚÊı
+			0 //±êÖ¾È¥Ö¸Ê¾Ê¹ÓÃ·µ»Ø¾ä¾ä±úµÄ½«À´µÄInternetº¯Êı½«"²»"Îª»Øµ÷º¯Êı·¢ËÍ×´Ì¬ĞÅÏ¢ 
 			); 
 		
-		HINTERNET hUrlFile = ::InternetOpenUrl(hNet, //ä»InternetOpenè¿”å›çš„å¥æŸ„ 
-			(char *)a, //éœ€è¦æ‰“å¼€çš„URL 
-			NULL, //ç”¨æ¥å‘æœåŠ¡å™¨ä¼ é€é¢å¤–çš„ä¿¡æ¯,ä¸€èˆ¬ä¸ºNULL 
-			0, //ç”¨æ¥å‘æœåŠ¡å™¨ä¼ é€é¢å¤–çš„ä¿¡æ¯,ä¸€èˆ¬ä¸º 0 
-			INTERNET_FLAG_RELOAD, //InternetOpenUrlè¡Œä¸ºçš„æ ‡å¿— 
-			0); //ä¿¡æ¯å°†ä¸ä¼šè¢«é€åˆ°çŠ¶æ€å›è°ƒå‡½æ•° 
+		HINTERNET hUrlFile = ::InternetOpenUrl(hNet, //´ÓInternetOpen·µ»ØµÄ¾ä±ú 
+			(char *)a, //ĞèÒª´ò¿ªµÄURL 
+			NULL, //ÓÃÀ´Ïò·şÎñÆ÷´«ËÍ¶îÍâµÄĞÅÏ¢,Ò»°ãÎªNULL 
+			0, //ÓÃÀ´Ïò·şÎñÆ÷´«ËÍ¶îÍâµÄĞÅÏ¢,Ò»°ãÎª 0 
+			INTERNET_FLAG_RELOAD, //InternetOpenUrlĞĞÎªµÄ±êÖ¾ 
+			0); //ĞÅÏ¢½«²»»á±»ËÍµ½×´Ì¬»Øµ÷º¯Êı 
 		
 		char buffer[1024] = {0}; 
 		DWORD dwBytesRead = 0; 
-		BOOL bRead = ::InternetReadFile(hUrlFile, //InternetOpenUrlè¿”å›çš„å¥æŸ„ 
-			buffer, //ä¿ç•™æ•°æ®çš„ç¼“å†²åŒº 
+		BOOL bRead = ::InternetReadFile(hUrlFile, //InternetOpenUrl·µ»ØµÄ¾ä±ú 
+			buffer, //±£ÁôÊı¾İµÄ»º³åÇø 
 			sizeof(buffer), 
-			&dwBytesRead); //æŒ‡å‘åŒ…å«è¯»å…¥ç¼“å†²åŒºå­—èŠ‚æ•°çš„å˜é‡çš„æŒ‡é’ˆ; 
-		//å¦‚æœè¿”å›å€¼æ˜¯TRUEï¼Œè€Œä¸”è¿™é‡ŒæŒ‡å‘0ï¼Œåˆ™æ–‡ä»¶å·²ç»è¯»åˆ°äº†æ–‡ä»¶çš„æœ«å°¾ã€‚ 
+			&dwBytesRead); //Ö¸Ïò°üº¬¶ÁÈë»º³åÇø×Ö½ÚÊıµÄ±äÁ¿µÄÖ¸Õë; 
+		//Èç¹û·µ»ØÖµÊÇTRUE£¬¶øÇÒÕâÀïÖ¸Ïò0£¬ÔòÎÄ¼şÒÑ¾­¶Áµ½ÁËÎÄ¼şµÄÄ©Î²¡£ 
 		
 		::InternetCloseHandle(hUrlFile) ; 
 		::InternetCloseHandle(hNet) ;
 		
-//		CString HotName="èŠ±ç”Ÿå£³åŸŸåIPæ›´æ–°";
+//		CString HotName="»¨Éú¿ÇÓòÃûIP¸üĞÂ";
 		if(strlen(buffer) > 0)
 		{
 			if(strstr(buffer,"good"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("èŠ±ç”Ÿå£³IPæ›´æ–°æˆåŠŸ:")+ip);
+				SetDlgItemText(IDC_SHOWTIPS, _T("»¨Éú¿ÇIP¸üĞÂ³É¹¦:")+ip);
 			else if(strstr(buffer,"nochg"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("IPå·²ç»æŒ‡å‘è¯¥åŸŸå:")+ip);
+				SetDlgItemText(IDC_SHOWTIPS, _T("IPÒÑ¾­Ö¸Ïò¸ÃÓòÃû:")+ip);
 			else if(strstr(buffer,"notfqdn"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("æ›´æ–°å¤±è´¥,æœªæ¿€æ´»èŠ±ç”Ÿå£³åŸŸå"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("¸üĞÂÊ§°Ü,Î´¼¤»î»¨Éú¿ÇÓòÃû"));
 			else if(strstr(buffer,"nohost"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("åŸŸåä¸å­˜åœ¨"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓòÃû²»´æÔÚ"));
 			else if(strstr(buffer,"abuse"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("é¢‘ç¹è¯·æ±‚æˆ–éªŒè¯å¤±è´¥"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("Æµ·±ÇëÇó»òÑéÖ¤Ê§°Ü"));
 			else if(strstr(buffer,"badauth"))
-				SetDlgItemText(IDC_SHOWTIPS, _T("ç”¨æˆ·æˆ–å¯†ç é”™è¯¯,è¯·é‡æ–°æ›´æ–°"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓÃ»§»òÃÜÂë´íÎó,ÇëÖØĞÂ¸üĞÂ"));
 			else
-				SetDlgItemText(IDC_SHOWTIPS, _T("æœªçŸ¥åé”™è¯¯ ..."));
+				SetDlgItemText(IDC_SHOWTIPS, _T("Î´ÖªÃû´íÎó ..."));
 		}
-		else SetDlgItemText(IDC_SHOWTIPS, _T("ç½‘ç»œè¿æ¥é”™è¯¯ ..."));
+		else SetDlgItemText(IDC_SHOWTIPS, _T("ÍøÂçÁ¬½Ó´íÎó ..."));
 		//memset(buffer,0,sizeof(buffer));
 	}
 	if (m_noip)
 	{
 		CString Mistr;
-		Mistr=Base64Encode(m_DnsPass);   //åŠ å¯†å‡½æ•°
+		Mistr=Base64Encode(m_DnsPass);   //¼ÓÃÜº¯Êı
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "Select", "Noip");
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "NoipUser", m_DnsUser);
-		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "NoipPass", Mistr);//ä¿å­˜å¯†ç 
+		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "NoipPass", Mistr);//±£´æÃÜÂë
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("UpdateIp", "NoipDomain",m_DnsDomain);
 		
 		CString strUrl, strDNS, strTmp = _T("");
@@ -340,7 +340,7 @@ void CUpdateDlg::OnBtnDnsUpdate()
 		char *szOut;
 		wsprintfA(szEncode, _T("%s:%s"), id, pass);
 		base64_encode1(szEncode, strlen(szEncode), &szOut);
-		SetDlgItemText(IDC_SHOWTIPS, _T("æ›´æ–°ä¸­,è¯·ç¨å€™ ..."));
+		SetDlgItemText(IDC_SHOWTIPS, _T("¸üĞÂÖĞ,ÇëÉÔºò ..."));
 		
 		try
 		{
@@ -367,17 +367,17 @@ void CUpdateDlg::OnBtnDnsUpdate()
 		if(strTmp.GetLength() > 0)
 		{
 			if(strstr(strTmp,_T("badauth")))
-				SetDlgItemText(IDC_SHOWTIPS, _T("ç”¨æˆ·æˆ–å¯†ç é”™è¯¯,è¯·é‡æ–°æ›´æ–°"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓÃ»§»òÃÜÂë´íÎó,ÇëÖØĞÂ¸üĞÂ"));
 			else if(strstr(strTmp,_T("good")))
-                SetDlgItemText(IDC_SHOWTIPS, _T("No-IPæ›´æ–°æˆåŠŸ:")+ip);
+                SetDlgItemText(IDC_SHOWTIPS, _T("No-IP¸üĞÂ³É¹¦:")+ip);
 			else if(strstr(strTmp,_T("nohost")))
-				SetDlgItemText(IDC_SHOWTIPS, _T("åŸŸåä¸å­˜åœ¨"));
+				SetDlgItemText(IDC_SHOWTIPS, _T("ÓòÃû²»´æÔÚ"));
 			else if(strstr(strTmp,_T("nochg")))
-                SetDlgItemText(IDC_SHOWTIPS, _T("IPå·²ç»æŒ‡å‘è¯¥åŸŸå:")+ip);
+                SetDlgItemText(IDC_SHOWTIPS, _T("IPÒÑ¾­Ö¸Ïò¸ÃÓòÃû:")+ip);
 			else
-				SetDlgItemText(IDC_SHOWTIPS, _T("æœªçŸ¥åé”™è¯¯ ..."));
+				SetDlgItemText(IDC_SHOWTIPS, _T("Î´ÖªÃû´íÎó ..."));
 		}
-		else SetDlgItemText(IDC_SHOWTIPS, _T("ç½‘ç»œè¿æ¥é”™è¯¯ ..."));
+		else SetDlgItemText(IDC_SHOWTIPS, _T("ÍøÂçÁ¬½Ó´íÎó ..."));
 		//strTmp.Empty();
 	}
 }
@@ -402,7 +402,7 @@ void CUpdateDlg::OnGetwan()
 		pos2 = strIPAddr.ReverseFind('\"');
 		strIPAddr = strIPAddr.Mid(pos1, pos2 - pos1);
 		SetDlgItemText(IDC_COMBO_DNS, strIPAddr);
-		SetDlgItemText(IDC_SHOWTIPS, _T("è·å–å¤–ç½‘IPæˆåŠŸ"));
+		SetDlgItemText(IDC_SHOWTIPS, _T("»ñÈ¡ÍâÍøIP³É¹¦"));
 	}
 	catch (CException* e)
 	{
@@ -420,7 +420,7 @@ void CUpdateDlg::On3322()
 	m_DnsUser = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "3322User", "xxx@hotmail.com");//_T("xxx@hotmail.com");
 //	m_DnsPass = _T("xxxxx");
 	Mistr  = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "3322Pass", "xxxxx");	
-	m_DnsPass=Base64Decode(Mistr);   //è§£å¯†
+	m_DnsPass=Base64Decode(Mistr);   //½âÃÜ
 	m_DnsDomain =((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "3322Domain", "xxx.f3322.org");//_T("xxx.f3322.org");
 	UpdateData(FALSE);
 }
@@ -434,7 +434,7 @@ void CUpdateDlg::OnOicp()
 	m_DnsUser = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "OicpUser", "xxx@hotmail.com");//_T("xxx@hotmail.com");
 //	m_DnsPass = _T("xxxxx");
 	Mistr  = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "OicpPass", "xxxxx");	
-	m_DnsPass=Base64Decode(Mistr);   //è§£å¯†
+	m_DnsPass=Base64Decode(Mistr);   //½âÃÜ
 	m_DnsDomain =((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "OicpDomain", "xxx.oicp.org");//_T("xxx.oicp.org");
 	UpdateData(FALSE);
 }
@@ -448,15 +448,15 @@ void CUpdateDlg::OnNoip()
 	m_DnsUser = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "NoipUser", "xxx@hotmail.com");//_T("xxx@hotmail.com");
 //	m_DnsPass = _T("xxxxx");
 	Mistr  = ((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "NoipPass", "xxxxx");	
-	m_DnsPass=Base64Decode(Mistr);   //è§£å¯†
+	m_DnsPass=Base64Decode(Mistr);   //½âÃÜ
 	m_DnsDomain =((CClientApp *)AfxGetApp())->m_IniFile.GetString("UpdateIp", "NoipDomain", "xxx.no-ip.org");//_T("xxx.no-ip.org");
 	UpdateData(FALSE);
 }
 
 //////////////////////////////////////////////////////////////////////////
-//Base64åŠ å¯†å‡½æ•°
+//Base64¼ÓÃÜº¯Êı
 //////////////////////////////////////////////////////////////////////////
-CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //åŠ å¯†å‡½æ•°
+CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //¼ÓÃÜº¯Êı
 {
 	ASSERT(lpszSrc != NULL && AfxIsValidString(lpszSrc));
 	const char BASE64_ENCODE_TABLE[64] = {
@@ -487,7 +487,7 @@ CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //åŠ å¯†å‡½æ•°
 			
 			iTest = iTest | (unsigned char) *pInBuffer++;
 			
-			//ä»¥4 byteå€’åºå†™å…¥è¾“å‡ºç¼“å†²
+			//ÒÔ4 byteµ¹ĞòĞ´ÈëÊä³ö»º³å
 			pOutBuffer[3] = BASE64_ENCODE_TABLE[iTest & 0x3F];
 			iTest = iTest >> 6;
 			pOutBuffer[2] = BASE64_ENCODE_TABLE[iTest & 0x3F];
@@ -498,7 +498,7 @@ CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //åŠ å¯†å‡½æ•°
 			pOutBuffer+=4;
 		}
 		
-		//è®¾ç½®å°¾éƒ¨
+		//ÉèÖÃÎ²²¿
 		switch (_tcslen(lpszSrc) % 3)
 		{
 		case 0:
@@ -509,7 +509,7 @@ CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //åŠ å¯†å‡½æ•°
 			pOutBuffer[1] = BASE64_ENCODE_TABLE[iTest & 0x3F];
 			iTest = iTest >> 6;
 			pOutBuffer[0] = BASE64_ENCODE_TABLE[iTest];
-			pOutBuffer[2] = '='; //ç”¨'='ä¹Ÿå°±æ˜¯64ç å¡«å……å‰©ä½™éƒ¨åˆ†
+			pOutBuffer[2] = '='; //ÓÃ'='Ò²¾ÍÊÇ64ÂëÌî³äÊ£Óà²¿·Ö
 			pOutBuffer[3] = '=';
 			break;
 		case 2:
@@ -533,7 +533,7 @@ CString CUpdateDlg::Base64Encode(LPCTSTR lpszSrc)   //åŠ å¯†å‡½æ•°
 }
 
 //////////////////////////////////////////////////////////////////////////
-//Base64è§£å¯†å‡½æ•°
+//Base64½âÃÜº¯Êı
 //////////////////////////////////////////////////////////////////////////
 CString CUpdateDlg::Base64Decode(LPCTSTR lpszSrc) 
 {
@@ -591,7 +591,7 @@ CString CUpdateDlg::Base64Decode(LPCTSTR lpszSrc)
 				if (iTest == 0xFF) 
 				{
 					j--;
-					continue; //è¯»åˆ°255éæ³•å­—ç¬¦
+					continue; //¶Áµ½255·Ç·¨×Ö·û
 				}
 				iPack = iPack << 6 ;
 				iPack = iPack | iTest ;
@@ -601,7 +601,7 @@ CString CUpdateDlg::Base64Decode(LPCTSTR lpszSrc)
 			pOutBuffer[1] = iPack;
 			iPack = iPack >> 8;
 			pOutBuffer[0] = iPack;
-			//å‡†å¤‡å†™å…¥å3ä½
+			//×¼±¸Ğ´Èëºó3Î»
 			pOutBuffer+= 3; iPack = 0;
 			
 		}
@@ -658,7 +658,7 @@ CString CUpdateDlg::Base64Decode(LPCTSTR lpszSrc)
 		return strDecode;
 }
 
-// RC4 åˆå§‹åŒ–
+// RC4 ³õÊ¼»¯
 void CUpdateDlg::rc4_init(unsigned char *s, unsigned char *key, unsigned long Len)
 {
 	int i =0, j = 0, k[256] = {0};
@@ -672,12 +672,12 @@ void CUpdateDlg::rc4_init(unsigned char *s, unsigned char *key, unsigned long Le
 	{
 		j=(j+s[i]+k[i])%256;
 		tmp = s[i];
-		s[i] = s[j];     //äº¤æ¢s[i]å’Œs[j]
+		s[i] = s[j];     //½»»»s[i]ºÍs[j]
 		s[j] = tmp;
 	}
 }
 
-// RC4 åŠ å¯†è§£å¯†å‡½æ•°
+// RC4 ¼ÓÃÜ½âÃÜº¯Êı
 void CUpdateDlg::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 {
 	int x = 0, y = 0, t = 0;
@@ -688,7 +688,7 @@ void CUpdateDlg::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long 
 		x=(x+1)%256;
 		y=(y+s[x])%256;
 		tmp = s[x];
-		s[x] = s[y];     //äº¤æ¢s[x]å’Œs[y]
+		s[x] = s[y];     //½»»»s[x]ºÍs[y]
 		s[y] = tmp;
 		t=(s[x]+s[y])%256;
 		Data[i] ^= s[t];

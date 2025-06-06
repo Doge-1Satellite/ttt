@@ -1,4 +1,4 @@
-﻿// ProxyManager.h: interface for the CProxyManager class.
+// ProxyManager.h: interface for the CProxyManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

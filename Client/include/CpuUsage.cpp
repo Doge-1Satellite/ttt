@@ -1,4 +1,4 @@
-﻿// CpuUsage.cpp: implementation of the CCpuUsage class.
+// CpuUsage.cpp: implementation of the CCpuUsage class.
 //
 //////////////////////////////////////////////////////////////////////
 

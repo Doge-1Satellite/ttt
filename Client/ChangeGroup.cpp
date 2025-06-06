@@ -1,4 +1,4 @@
-ï»¿// ChangeGroup.cpp : implementation file
+// ChangeGroup.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -91,7 +91,7 @@ void CChangeGroup::OnOK()
 	((CEdit*)GetDlgItem(IDC_COMBO_GROUP))->GetWindowText(strGroup);
 	if (strGroup == "" )
 	{
-		AfxMessageBox("è¾“å…¥ä¸èƒ½ä¸ºç©º!");
+		AfxMessageBox("ÊäÈë²»ÄÜÎª¿Õ!");
 		return;
 	}
 	CString strTemp, Temp;
@@ -108,7 +108,7 @@ void CChangeGroup::OnOK()
 	}
 	if ( strGroup == Temp )
 	{
-		AfxMessageBox("åˆ†ç»„æ²¡æœ‰æ”¹å˜!");
+		AfxMessageBox("·Ö×éÃ»ÓĞ¸Ä±ä!");
 		return;
 	}
 	CDialog::OnOK();

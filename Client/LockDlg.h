@@ -1,4 +1,4 @@
-﻿// LOCKDlg.h : header file
+// LOCKDlg.h : header file
 //
 
 #if !defined(AFX_LOCKDLG_H__C2951A1B_246B_4FD3_8C68_DFCA2BE8C8A4__INCLUDED_)

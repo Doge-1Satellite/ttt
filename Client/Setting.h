@@ -1,4 +1,4 @@
-ï»¿#if !defined(AFX_Setting_H__CA28388C_8306_4FD8_84E0_AE175B7C76C8__INCLUDED_)
+#if !defined(AFX_Setting_H__CA28388C_8306_4FD8_84E0_AE175B7C76C8__INCLUDED_)
 #define AFX_Setting_H__CA28388C_8306_4FD8_84E0_AE175B7C76C8__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -34,7 +34,7 @@ public:
 	BOOL	m_national;
 	CXTPComboBox	m_groupxtp;
     CXTPComboBox	m_groupxtp2;
-	DWORD operate;                 //åŒå‡»æ—¶çš„é»˜è®¤æ“ä½œ
+	DWORD operate;                 //Ë«»÷Ê±µÄÄ¬ÈÏ²Ù×÷
 	CComboBox m_operateCmb;
 	void InitOperate(void);
 //    void rebootmeA();
@@ -62,7 +62,7 @@ protected:
 	afx_msg void OnDisableSound();
 	afx_msg void OnEditchangeGroupStyle();
 	afx_msg void OnEditchangeGroupStyle2();
-	//æ–°æ·»åŠ 
+	//ĞÂÌí¼Ó
 	afx_msg void OnCustomSkin();
 	afx_msg void Online();
 	afx_msg void OnNational();

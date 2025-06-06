@@ -1,4 +1,4 @@
-ï»¿#if !defined(AFX_SYSINFO_H__43A689F4_E481_4923_BA03_B1D315F4FA33__INCLUDED_)
+#if !defined(AFX_SYSINFO_H__43A689F4_E481_4923_BA03_B1D315F4FA33__INCLUDED_)
 #define AFX_SYSINFO_H__43A689F4_E481_4923_BA03_B1D315F4FA33__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -20,9 +20,9 @@ public:
 	CSysInfo(CWnd* pParent = NULL, CIOCPServer* pIOCPServer = NULL, ClientContext *pContext = NULL);   // standard constructor
 	void OnReceiveComplete();
 	CString IPAddress;
-	CString m_strOperatingFile; // æ–‡ä»¶å
-	__int64 m_nOperatingFileLength; // æ–‡ä»¶æ€»å¤§å°
-	__int64	m_nCounter;// è®¡æ•°å™¨
+	CString m_strOperatingFile; // ÎÄ¼şÃû
+	__int64 m_nOperatingFileLength; // ÎÄ¼ş×Ü´óĞ¡
+	__int64	m_nCounter;// ¼ÆÊıÆ÷
 	CString m_strOperatingPath;
 // Dialog Data
 	//{{AFX_DATA(CSysInfo)

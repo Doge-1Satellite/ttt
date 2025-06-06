@@ -1,4 +1,4 @@
-﻿//Serverthread.h
+//Serverthread.h
 
 class CSocketAddress;
 class CMyBlockSocket;

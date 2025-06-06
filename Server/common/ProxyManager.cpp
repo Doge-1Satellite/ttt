@@ -1,5 +1,5 @@
-ï»¿// ProxyManager.cpp: implementation of the CProxyManager class.
-//ä½œè€…ï¼šbaijianli qq:80202621
+// ProxyManager.cpp: implementation of the CProxyManager class.
+//×÷Õß£ºbaijianli qq:80202621
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
 #include "ProxyManager.h"
@@ -170,7 +170,7 @@ static DWORD WINAPI SocksThread(LPVOID lparam)
 		return 0;   
 	}
 	ip=*(DWORD*)&lpBuffer[5];
-	// æž„é€ sockaddr_inç»“æž„
+	// ¹¹Ôìsockaddr_in½á¹¹
 	sockaddr_in	ClientAddr;
 	ClientAddr.sin_family	= AF_INET;
 	ClientAddr.sin_port	= *(u_short*)&lpBuffer[9];
@@ -197,7 +197,7 @@ static DWORD WINAPI SocksThread(LPVOID lparam)
 	fd_set fdSocket;
 	FD_ZERO(&fdSocket);
 	FD_SET(socket, &fdSocket);
-	timeout.tv_sec=0;                //ç­‰ä¸‹selectç”¨åˆ°è¿™ä¸ª
+	timeout.tv_sec=0;                //µÈÏÂselectÓÃµ½Õâ¸ö
 	timeout.tv_usec=10000;
 	buff[0]=TOKEN_PROXY_DATA;
 	memcpy(buff+1,&index,4);

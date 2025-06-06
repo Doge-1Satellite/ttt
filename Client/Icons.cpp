@@ -1,10 +1,10 @@
-ï»¿// Icons.cpp: implementation of the CIcons class.
+// Icons.cpp: implementation of the CIcons class.
 //////////////////////////////////////////////////////////////////////
 //
-//ç”¨é€”ï¼šIconSnapæ‰€éœ€è°ƒç”¨çš„ç±»
-//åŠŸèƒ½ï¼šå›¾æ ‡åŸºç¡€æ“ä½œç±»
-//ä½œè€…ï¼šå¾æ™¯å‘¨
-//æ—¥æœŸï¼š2001å¹´9æœˆ
+//ÓÃÍ¾£ºIconSnapËùĞèµ÷ÓÃµÄÀà
+//¹¦ÄÜ£ºÍ¼±ê»ù´¡²Ù×÷Àà
+//×÷Õß£ºĞì¾°ÖÜ
+//ÈÕÆÚ£º2001Äê9ÔÂ
 //
 //////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -95,20 +95,20 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
     // Open the file
     if( (hFile = CreateFile( szFileName, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL )) == INVALID_HANDLE_VALUE )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡æ–‡ä»¶æ‰“å¼€æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÎÄ¼ş´ò¿ªÊ±³ö´í!", szFileName, MB_OK );
         return NULL;
     }
     // Allocate memory for the resource structure
     if( (lpIR = (LPICONRESOURCE)malloc( sizeof(ICONRESOURCE) )) == NULL )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡åˆ†é…å†…å­˜æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±ê·ÖÅäÄÚ´æÊ±³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         return NULL;
     }
     // Read in the header
     if( (lpIR->nNumImages = ReadICOHeader( hFile )) == (UINT)-1 )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd, "è¯»å›¾æ ‡æ–‡ä»¶å¤´æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd, "¶ÁÍ¼±êÎÄ¼şÍ·Ê±³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         free( lpIR );
         return NULL;
@@ -116,7 +116,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
     // Adjust the size of the struct to account for the images
     if( (lpNew = (LPICONRESOURCE)realloc( lpIR, sizeof(ICONRESOURCE) + ((lpIR->nNumImages-1) * sizeof(ICONIMAGE)) )) == NULL )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡å†…å­˜é‡æ–°åˆ†é…å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÄÚ´æÖØĞÂ·ÖÅä³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         free( lpIR );
         return NULL;
@@ -128,7 +128,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
     // Allocate enough memory for the icon directory entries
     if( (lpIDE = (LPICONDIRENTRY)malloc( lpIR->nNumImages * sizeof( ICONDIRENTRY ) ) ) == NULL )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡æ–‡ä»¶å†…å­˜é‡æ–°åˆ†é…å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÎÄ¼şÄÚ´æÖØĞÂ·ÖÅä³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         free( lpIR );
         return NULL;
@@ -136,14 +136,14 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
     // Read in the icon directory entries
     if( ! ReadFile( hFile, lpIDE, lpIR->nNumImages * sizeof( ICONDIRENTRY ), &dwBytesRead, NULL ) )
     {
-        MessageBox(  AfxGetMainWnd()->m_hWnd, "è¯»å›¾æ ‡æ–‡ä»¶æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox(  AfxGetMainWnd()->m_hWnd, "¶ÁÍ¼±êÎÄ¼şÊ±³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         free( lpIR );
         return NULL;
     }
     if( dwBytesRead != lpIR->nNumImages * sizeof( ICONDIRENTRY ) )
     {
-        MessageBox(  AfxGetMainWnd()->m_hWnd, "è¯»å›¾æ ‡æ–‡ä»¶æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox(  AfxGetMainWnd()->m_hWnd, "¶ÁÍ¼±êÎÄ¼şÊ±³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         free( lpIR );
         return NULL;
@@ -154,7 +154,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
         // Allocate memory for the resource
         if( (lpIR->IconImages[i].lpBits = (LPBYTE)malloc(lpIDE[i].dwBytesInRes)) == NULL )
         {
-            MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡å†…å­˜é‡æ–°åˆ†é…å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÄÚ´æÖØĞÂ·ÖÅä³ö´í!", szFileName, MB_OK );
             CloseHandle( hFile );
             free( lpIR );
             free( lpIDE );
@@ -164,7 +164,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
         // Seek to beginning of this image
         if( SetFilePointer( hFile, lpIDE[i].dwImageOffset, NULL, FILE_BEGIN ) == 0xFFFFFFFF )
         {
-            MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡å†…å®¹å®šä½æ—¶å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÄÚÈİ¶¨Î»Ê±³ö´í!", szFileName, MB_OK );
             CloseHandle( hFile );
             free( lpIR );
             free( lpIDE );
@@ -173,7 +173,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
         // Read it in
         if( ! ReadFile( hFile, lpIR->IconImages[i].lpBits, lpIDE[i].dwBytesInRes, &dwBytesRead, NULL ) )
         {
-            MessageBox( AfxGetMainWnd()->m_hWnd, "è¯»å›¾æ ‡å†…å®¹å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( AfxGetMainWnd()->m_hWnd, "¶ÁÍ¼±êÄÚÈİ³ö´í!", szFileName, MB_OK );
             CloseHandle( hFile );
             free( lpIR );
             free( lpIDE );
@@ -181,7 +181,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
         }
         if( dwBytesRead != lpIDE[i].dwBytesInRes )
         {
-            MessageBox(AfxGetMainWnd()->m_hWnd, "è¯»å›¾æ ‡å†…å®¹å‡ºé”™!", szFileName, MB_OK );
+            MessageBox(AfxGetMainWnd()->m_hWnd, "¶ÁÍ¼±êÄÚÈİ³ö´í!", szFileName, MB_OK );
             CloseHandle( hFile );
             free( lpIDE );
             free( lpIR );
@@ -190,7 +190,7 @@ LPICONRESOURCE CIcons::ReadIconFromICOFile( LPCTSTR szFileName )
         // Set the internal pointers appropriately
         if( ! AdjustIconImagePointers( &(lpIR->IconImages[i]) ) )
         {
-            MessageBox( AfxGetMainWnd()->m_hWnd, "å›¾æ ‡å†…éƒ¨æ ¼å¼è½¬æ¢å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( AfxGetMainWnd()->m_hWnd, "Í¼±êÄÚ²¿¸ñÊ½×ª»»³ö´í!", szFileName, MB_OK );
             CloseHandle( hFile );
             free( lpIDE );
             free( lpIR );
@@ -350,7 +350,7 @@ LPICONRESOURCE CIcons::ReadIconFromEXEFile( LPCTSTR szFileName,LPTSTR lpID )
     if( (hLibrary = LoadLibraryEx( szFileName, NULL, LOAD_LIBRARY_AS_DATAFILE )) == NULL )
     {
         // Failed to load - abort
-        MessageBox(AfxGetMainWnd()->m_hWnd , "è£…å…¥æ–‡ä»¶æ—¶å‡ºé”™ - è¯·é€‰æ‹©ä¸€ä¸ªWIN32çš„DLLæˆ–EXEæ–‡ä»¶!", szFileName, MB_OK );
+        MessageBox(AfxGetMainWnd()->m_hWnd , "×°ÈëÎÄ¼şÊ±³ö´í - ÇëÑ¡ÔñÒ»¸öWIN32µÄDLL»òEXEÎÄ¼ş!", szFileName, MB_OK );
         return NULL;
     }
     // Store the info
@@ -383,7 +383,7 @@ LPICONRESOURCE CIcons::ReadIconFromEXEFile( LPCTSTR szFileName,LPTSTR lpID )
         // Allocate enough memory for the images
         if( (lpIR = (LPICONRESOURCE)malloc( sizeof(ICONRESOURCE) + ((lpIcon->idCount-1) * sizeof(ICONIMAGE)) )) == NULL )
         {
-            MessageBox( AfxGetMainWnd()->m_hWnd, "å†…å­˜åˆ†é…å‡ºé”™!", szFileName, MB_OK );
+            MessageBox( AfxGetMainWnd()->m_hWnd, "ÄÚ´æ·ÖÅä³ö´í!", szFileName, MB_OK );
             FreeLibrary( hLibrary );
             return NULL;
         }
@@ -414,7 +414,7 @@ LPICONRESOURCE CIcons::ReadIconFromEXEFile( LPCTSTR szFileName,LPTSTR lpID )
             // Adjust internal pointers
             if( ! AdjustIconImagePointers( &(lpIR->IconImages[i]) ) )
             {
-                MessageBox(AfxGetMainWnd()->m_hWnd, "è½¬æ¢æˆå›¾æ ‡å†…éƒ¨æ ¼å¼æ—¶å‡ºé”™!", szFileName, MB_OK );
+                MessageBox(AfxGetMainWnd()->m_hWnd, "×ª»»³ÉÍ¼±êÄÚ²¿¸ñÊ½Ê±³ö´í!", szFileName, MB_OK );
                 free( lpIR );
                 FreeLibrary( hLibrary );
                 return NULL;
@@ -521,13 +521,13 @@ BOOL CIcons::WriteIconToICOFile( LPICONRESOURCE lpIR, LPCTSTR szFileName )
     // open the file
     if( (hFile = CreateFile( szFileName, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL )) == INVALID_HANDLE_VALUE )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd , "æ–‡ä»¶å»ºç«‹æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd , "ÎÄ¼ş½¨Á¢Ê±³ö´í!", szFileName, MB_OK );
         return FALSE;
     }
     // Write the header
     if( ! WriteICOHeader( hFile, lpIR->nNumImages ) )
     {
-        MessageBox( AfxGetMainWnd()->m_hWnd , "å†™å›¾æ ‡æ–‡ä»¶å¤´æ—¶å‡ºé”™!", szFileName, MB_OK );
+        MessageBox( AfxGetMainWnd()->m_hWnd , "Ğ´Í¼±êÎÄ¼şÍ·Ê±³ö´í!", szFileName, MB_OK );
         CloseHandle( hFile );
         return FALSE;
     }

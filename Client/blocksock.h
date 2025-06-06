@@ -1,4 +1,4 @@
-ï»¿// blocksock.h
+// blocksock.h
 #include <afxsock.h>		// MFC socket extensions
 //#include <afxinet.h>		// MFC WinInet
 
@@ -8,7 +8,7 @@ class CMyBlockSocketException : public CException
 {
 	DECLARE_DYNAMIC(CMyBlockSocketException)
 public:
-// æ„é€ å‡½æ•°
+// ¹¹Ôìº¯Êı
 	CMyBlockSocketException(char* pchMessage);
 
 public:
@@ -24,34 +24,34 @@ private:
 class CSocketAddress : public sockaddr_in
 {
 public:
-	// æ„é€ å‡½æ•°
+	// ¹¹Ôìº¯Êı
 	CSocketAddress()
 	{ sin_family = AF_INET;
 	  sin_port = 0;
-	  sin_addr.s_addr = 0; } // ç¼ºçœå€¼
+	  sin_addr.s_addr = 0; } // È±Ê¡Öµ
 	CSocketAddress(const SOCKADDR& sa) 
 	{ memcpy(this, &sa, sizeof(SOCKADDR)); }
 	CSocketAddress(const SOCKADDR_IN& sin)
 	{ memcpy(this, &sin, sizeof(SOCKADDR_IN)); }
 	CSocketAddress(const ULONG ulAddr, const USHORT ushPort = 0)
-	//å‚æ•°æ˜¯ä¸»æœºçš„å­—èŠ‚é¡ºåº
+	//²ÎÊıÊÇÖ÷»úµÄ×Ö½ÚË³Ğò
 	{ sin_family = AF_INET;
 	  sin_port = htons(ushPort);
 	  sin_addr.s_addr = htonl(ulAddr); }
 	CSocketAddress(const char* pchIP, const USHORT ushPort = 0)
-	//å¸¦ç‚¹çš„åè¿›åˆ¶æ ¼å¼çš„IPåœ°å€
+	//´øµãµÄÊ®½øÖÆ¸ñÊ½µÄIPµØÖ·
 	{ sin_family = AF_INET;
 	  sin_port = htons(ushPort);
-	  sin_addr.s_addr = inet_addr(pchIP); } //ç½‘ç»œå­—èŠ‚é¡ºåº
-	//ä»¥å¸¦ç‚¹çš„åè¿›åˆ¶æ ¼å¼è¿”å›åœ°å€
+	  sin_addr.s_addr = inet_addr(pchIP); } //ÍøÂç×Ö½ÚË³Ğò
+	//ÒÔ´øµãµÄÊ®½øÖÆ¸ñÊ½·µ»ØµØÖ·
 	CString DottedDecimal()
 	{ return inet_ntoa(sin_addr); }
-	//è·å¾—ç«¯å£å’Œåœ°å€
+	//»ñµÃ¶Ë¿ÚºÍµØÖ·
 	USHORT Port() const
 	{ return ntohs(sin_port); }
 	ULONG IPAddr() const
 	{ return ntohl(sin_addr.s_addr); }
-	//å¯¹æ“ä½œç¬¦é‡è½½ï¼Œä»¥æé«˜æ•ˆç‡
+	//¶Ô²Ù×÷·ûÖØÔØ£¬ÒÔÌá¸ßĞ§ÂÊ
 	const CSocketAddress& operator=(const SOCKADDR& sa)
 	{ memcpy(this, &sa, sizeof(SOCKADDR));
 	  return *this; }
@@ -99,12 +99,12 @@ class CMyHttpBlockSocket : public CMyBlockSocket
 {
 public:
 	DECLARE_DYNAMIC(CMyHttpBlockSocket)
-	enum {nSizeRecv = 1000}; //æœ€å¤§æ¥æ”¶ç¼“å†²åŒºçš„å¤§å°(>HTTPå¤´ä¿¡æ¯çš„é•¿åº¦)
+	enum {nSizeRecv = 1000}; //×î´ó½ÓÊÕ»º³åÇøµÄ´óĞ¡(>HTTPÍ·ĞÅÏ¢µÄ³¤¶È)
 	CMyHttpBlockSocket();
 	~CMyHttpBlockSocket();
 	int ReadHttpHeaderLine(char* pch, const int nSize, const int nSecs);
 	int ReadHttpResponse(char* pch, const int nSize, const int nSecs);
 private:
-	char* m_pReadBuf; // è¯»å–ç¼“å†²åŒº
-	int m_nReadBuf; // è¯»å–ç¼“å†²åŒºä¸­çš„å­—èŠ‚æ•°
+	char* m_pReadBuf; // ¶ÁÈ¡»º³åÇø
+	int m_nReadBuf; // ¶ÁÈ¡»º³åÇøÖĞµÄ×Ö½ÚÊı
 };

@@ -1,4 +1,4 @@
-ï»¿// Chat.cpp : implementation file
+// Chat.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -66,9 +66,9 @@ BOOL CChat::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - è¿œç¨‹äº¤è°ˆ", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - Ô¶³Ì½»Ì¸", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
-	m_editTip.SetWindowText("ç¬¬ä¸€æ¡æ¶ˆæ¯å‘é€åï¼Œå¯¹æ–¹èŠå¤©å¯¹è¯æ¡†æ‰ä¼šå¼¹å‡º");
+	m_editTip.SetWindowText("µÚÒ»ÌõÏûÏ¢·¢ËÍºó£¬¶Ô·½ÁÄÌì¶Ô»°¿ò²Å»áµ¯³ö");
 	m_editNewMsg.SetLimitText(4079);
 	// TODO: Add extra initialization here
 	BYTE bToken = COMMAND_NEXT;
@@ -88,7 +88,7 @@ void CChat::OnReceiveComplete()
 	SYSTEMTIME st;
 	GetLocalTime(&st);
 	char Text[8192]={0};
-	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","å¯¹æ–¹:",
+	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","¶Ô·½:",
 		st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,strResult);
 	if (m_editChatLog.GetWindowTextLength() >= 20000)
 		m_editChatLog.SetWindowText("");
@@ -104,14 +104,14 @@ void CChat::OnButtonSend()
 	if (strcmp(str,"")==0)
 	{
 		m_editNewMsg.SetFocus();
-		return; // å‘é€æ¶ˆæ¯ä¸ºç©ºä¸å¤„ç†
+		return; // ·¢ËÍÏûÏ¢Îª¿Õ²»´¦Àí
 	}
 	m_editTip.ShowWindow(SW_HIDE);
 	m_iocpServer->Send(m_pContext, (LPBYTE)str,strlen(str)+1);
 	SYSTEMTIME st;
 	GetLocalTime(&st);
 	char Text[8192]={0};
-	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","è‡ªå·±:",
+	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","×Ô¼º:",
 		st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,str);
 	if (m_editChatLog.GetWindowTextLength() >= 20000)
 		m_editChatLog.SetWindowText("");
@@ -132,7 +132,7 @@ void CChat::OnClose()
 	// TODO: Add your message handler code here and/or call default
 // 	BYTE bToken = COMMAND_CHAT_CLOSE;
 // 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
-// 	AfxMessageBox("è¿œç¨‹äº¤è°ˆå·²ç»“æŸï¼");
+// 	AfxMessageBox("Ô¶³Ì½»Ì¸ÒÑ½áÊø£¡");
 // 	ShowWindow(SW_HIDE);
 // 	Sleep(1000);
 	m_pContext->m_Dialog[0] = 0;
@@ -145,18 +145,18 @@ HBRUSH CChat::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if (pWnd->GetDlgCtrlID() == IDC_EDIT_CHATLOG && nCtlColor == CTLCOLOR_STATIC)
 	{
 		COLORREF clr = RGB(0, 0, 0);
-		pDC->SetTextColor(clr);   //è®¾ç½®é»‘è‰²çš„æ–‡æœ¬
+		pDC->SetTextColor(clr);   //ÉèÖÃºÚÉ«µÄÎÄ±¾
 		clr = RGB(255, 255, 255);
-		pDC->SetBkColor(clr);     //è®¾ç½®ç™½è‰²çš„èƒŒæ™¯
-		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
+		pDC->SetBkColor(clr);     //ÉèÖÃ°×É«µÄ±³¾°
+		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
 	}
 	else if (pWnd == &m_editTip && nCtlColor == CTLCOLOR_EDIT)
 	{
 		COLORREF clr = RGB(255, 0, 0);
-		pDC->SetTextColor(clr);   //è®¾ç½®çº¢è‰²çš„æ–‡æœ¬
+		pDC->SetTextColor(clr);   //ÉèÖÃºìÉ«µÄÎÄ±¾
 		clr = RGB(220, 220, 0);
-		pDC->SetBkColor(clr);     //è®¾ç½®é»„è‰²çš„èƒŒæ™¯
-		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
+		pDC->SetBkColor(clr);     //ÉèÖÃ»ÆÉ«µÄ±³¾°
+		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
 	}
 	else
 	{

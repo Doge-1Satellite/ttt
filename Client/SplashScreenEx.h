@@ -1,4 +1,4 @@
-﻿// SplashScreenEx.cpp : header file
+// SplashScreenEx.cpp : header file
 // by John O'Byrne 01/10/2002
 
 #pragma once

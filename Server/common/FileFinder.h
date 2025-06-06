@@ -1,4 +1,4 @@
-ï»¿//Download by http://www.NewXing.com
+//Download by http://www.NewXing.com
 
 
 #if !defined(__FILEFINDER_H__)
@@ -48,7 +48,7 @@ public:
 
 		~CFindOpts() {}
 
-		// é‡ç½®æ‰€æœ‰çš„å€¼
+		// ÖØÖÃËùÓĞµÄÖµ
 		void Reset()
 		{
 			sBaseFolder.Empty();
@@ -65,14 +65,14 @@ public:
 			tMaxAccessed = CTime::GetCurrentTime();
 		}
 
-		// åŠ å…¥å¸¸è§„æ–‡ä»¶è¿›è¡Œæœç´¢(FILE_ATTRIBUTE_ARCHIVE) 
+		// ¼ÓÈë³£¹æÎÄ¼ş½øĞĞËÑË÷(FILE_ATTRIBUTE_ARCHIVE) 
 		void FindNormalFiles()
 		{
 			dwOptionsFlags |= FIND_ATTRIBUTES;
 			dwFileAttributes |= FILE_ATTRIBUTE_ARCHIVE;
 		}
 
-		// åŠ å…¥æ‰€æœ‰çš„æ–‡ä»¶è¿›è¡Œæœç´¢ (éšè—,åªè¯», ...) ä¸åŒ…æ‹¬ç›®å½•
+		// ¼ÓÈëËùÓĞµÄÎÄ¼ş½øĞĞËÑË÷ (Òş²Ø,Ö»¶Á, ...) ²»°üÀ¨Ä¿Â¼
 		void FindAllFiles()
 		{
 			dwOptionsFlags |= FIND_ATTRIBUTES;
@@ -81,61 +81,61 @@ public:
 								FILE_ATTRIBUTE_SYSTEM | FILE_ATTRIBUTE_TEMPORARY;
 		}
 
-		// åŠ å…¥è·¯å¾„è¿›è¡Œæœç´¢
+		// ¼ÓÈëÂ·¾¶½øĞĞËÑË÷
 		void FindDirectories()
 		{
 			dwOptionsFlags |= FIND_ATTRIBUTES;
 			dwFileAttributes |= FILE_ATTRIBUTE_DIRECTORY;
 		}
 
-		// åœ¨æ–‡ä»¶ä¸­æŸ¥æ‰¾å­—ç¬¦ä¸²
+		// ÔÚÎÄ¼şÖĞ²éÕÒ×Ö·û´®
 		void FindText(LPCTSTR szText)
 		{
 			dwOptionsFlags |= FIND_TEXT;
 			sFindText = szText;
 		}
 
-		CString		sBaseFolder;			// åˆå§‹æ–‡ä»¶å¤¹
-		CString		sFileMask;				// æ–‡ä»¶å±è”½ç (ä¾‹å¦‚: "*.txt")
-		CString		sFindText;				// è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²
-		BOOL		bSubfolders;			// æ˜¯å¦é€’å½’æŸ¥æ‰¾
-		DWORD		dwOptionsFlags;			// åœ¨FindOptionsEnumä¸­çš„å€¼
-		__int64		nMinSize;				// æœ€å°æ–‡ä»¶å°ºå¯¸
-		__int64		nMaxSize;				// æœ€å¤§æ–‡ä»¶å°ºå¯¸
-		CTime		tMinCreated;			// æœ€è€çš„åˆ›å»ºæ—¥æœŸ
-		CTime		tMaxCreated;			// æœ€æ–°çš„åˆ›å»ºæ—¥æœŸ
-		CTime		tMinModified;			// æœ€è€çš„ä¿®æ”¹æ—¥æœŸ
-		CTime		tMaxModified;			// æœ€æ–°çš„ä¿®æ”¹æ—¥æœŸ
-		CTime		tMinAccessed;			// æœ€è€çš„è®¿é—®æ—¥æœŸ
-		CTime		tMaxAccessed;			// æœ€æ–°çš„è®¿é—®æ—¥æœŸ
-		DWORD		dwFileAttributes;		// å¦‚WIN32_FIND_DATA
+		CString		sBaseFolder;			// ³õÊ¼ÎÄ¼ş¼Ğ
+		CString		sFileMask;				// ÎÄ¼şÆÁ±ÎÂë(ÀıÈç: "*.txt")
+		CString		sFindText;				// Òª²éÕÒµÄ×Ö·û´®
+		BOOL		bSubfolders;			// ÊÇ·ñµİ¹é²éÕÒ
+		DWORD		dwOptionsFlags;			// ÔÚFindOptionsEnumÖĞµÄÖµ
+		__int64		nMinSize;				// ×îĞ¡ÎÄ¼ş³ß´ç
+		__int64		nMaxSize;				// ×î´óÎÄ¼ş³ß´ç
+		CTime		tMinCreated;			// ×îÀÏµÄ´´½¨ÈÕÆÚ
+		CTime		tMaxCreated;			// ×îĞÂµÄ´´½¨ÈÕÆÚ
+		CTime		tMinModified;			// ×îÀÏµÄĞŞ¸ÄÈÕÆÚ
+		CTime		tMaxModified;			// ×îĞÂµÄĞŞ¸ÄÈÕÆÚ
+		CTime		tMinAccessed;			// ×îÀÏµÄ·ÃÎÊÈÕÆÚ
+		CTime		tMaxAccessed;			// ×îĞÂµÄ·ÃÎÊÈÕÆÚ
+		DWORD		dwFileAttributes;		// ÈçWIN32_FIND_DATA
 	};
 
-	// æ‰¾åˆ°ä»åˆå§‹ç›®å½•å¼€å§‹çš„ç¬¦åˆszFileMaskçš„æ–‡ä»¶
+	// ÕÒµ½´Ó³õÊ¼Ä¿Â¼¿ªÊ¼µÄ·ûºÏszFileMaskµÄÎÄ¼ş
 	int		FindFiles(LPCTSTR szBaseFolder, LPCTSTR szFileMask, BOOL bSubFolders = FALSE);
-	// æ‰¾åˆ°ç¬¦åˆç±»CFindOptsä¸­å‚æ•°æ‰€è¦æ±‚çš„æ–‡ä»¶
+	// ÕÒµ½·ûºÏÀàCFindOptsÖĞ²ÎÊıËùÒªÇóµÄÎÄ¼ş
 	int		Find(CFileFinder::CFindOpts &opts);
 
-	// åœ¨æ–‡ä»¶ä¸­æ‰¾åˆ°æŒ‡å®šçš„å­—ç¬¦ä¸²
+	// ÔÚÎÄ¼şÖĞÕÒµ½Ö¸¶¨µÄ×Ö·û´®
 	BOOL	FindTextInFile(LPCTSTR szFile, LPCTSTR szText);
 
-	// è¿”å›æ‰¾åˆ°çš„æ–‡ä»¶æ•°ç›®
+	// ·µ»ØÕÒµ½µÄÎÄ¼şÊıÄ¿
 	int		GetFileCount();
-	// è¿”å›è·¯å¾„ä¸ºszPathçš„æ–‡ä»¶ç´¢å¼•
+	// ·µ»ØÂ·¾¶ÎªszPathµÄÎÄ¼şË÷Òı
 	int		FindPathItem(LPCTSTR szPath);
-	// æ ¹æ®æ–‡ä»¶ç´¢å¼•è·¯å¾„è¿”å›CPathå¯¹è±¡
+	// ¸ù¾İÎÄ¼şË÷ÒıÂ·¾¶·µ»ØCPath¶ÔÏó
 	CPath	GetFilePath(int nIndex);
 
-	// åˆ é™¤åˆ—è¡¨æŒ‡å®šä½ç½®çš„é¡¹ç›®
+	// É¾³ıÁĞ±íÖ¸¶¨Î»ÖÃµÄÏîÄ¿
 	void	RemoveAt(int nIndex);
-	// åˆ é™¤åˆ—è¡¨ä¸­æ‰€æœ‰çš„é¡¹ç›®
+	// É¾³ıÁĞ±íÖĞËùÓĞµÄÏîÄ¿
 	void	RemoveAll();
 
-	// å›è°ƒå‡½æ•°ï¼Œç”¨äºæ–‡ä»¶æŸ¥æ‰¾è¿‡ç¨‹ä¸­çŠ¶æ€çš„è®¾å®š
+	// »Øµ÷º¯Êı£¬ÓÃÓÚÎÄ¼ş²éÕÒ¹ı³ÌÖĞ×´Ì¬µÄÉè¶¨
 	void	SetCallback(FILEFINDERPROC pFileFinderProc, void *pCustomParam);
-	// åœæ­¢æœç´¢æ–‡ä»¶
+	// Í£Ö¹ËÑË÷ÎÄ¼ş
 	void	StopSearch();
-	// è¿”å›æ­£åœ¨æŸ¥æ‰¾çš„æ–‡ä»¶å¤¹
+	// ·µ»ØÕıÔÚ²éÕÒµÄÎÄ¼ş¼Ğ
 	LPCTSTR	GetSearchingFolder();
 
 private:

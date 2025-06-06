@@ -1,4 +1,4 @@
-ï»¿// KeyboardManager.h: interface for the CKeyboardManager class.
+// KeyboardManager.h: interface for the CKeyboardManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 #include "Manager.h"
 
 #define	SIZE_IMM_BUFFER					128
-#define XOR_ENCODE_VALUE				98	// é”®ç›˜è®°å½•åŠ å¯†çš„xorå€¼
+#define XOR_ENCODE_VALUE				98	// ¼üÅÌ¼ÇÂ¼¼ÓÃÜµÄxorÖµ
 
 class CKeyboardManager : public CManager  
 {

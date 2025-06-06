@@ -1,4 +1,4 @@
-Ôªø// SerAttribute.cpp : implementation file
+// SerAttribute.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -51,7 +51,7 @@ BOOL CSerAttribute::OnInitDialog()
 	// TODO: Add extra initialization here
 	int nItem = m_list_service->GetNextItem(-1,LVNI_SELECTED);
 	CString strText = m_list_service->GetItemText(nItem, 0);
-	strText += " ÁöÑÂ±ûÊÄß";
+	strText += " µƒ Ù–‘";
 	SetWindowText(strText);
 	
 	char szText[1024];
@@ -67,7 +67,7 @@ BOOL CSerAttribute::OnInitDialog()
 	SetDlgItemText(IDC_EDT_STARTTYPE, szText);
 	m_list_service->GetItemText(nItem, 4, szText, 1024);
 	if (strcmp(szText, "") == 0)
-		SetDlgItemText(IDC_EDT_STATE, "ÂÅúÊ≠¢");
+		SetDlgItemText(IDC_EDT_STATE, "Õ£÷π");
 	else
 		SetDlgItemText(IDC_EDT_STATE, szText);
 	

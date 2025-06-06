@@ -1,4 +1,4 @@
-﻿// CursorInfo.h: interface for the CCursorInfo class.
+// CursorInfo.h: interface for the CCursorInfo class.
 //
 //////////////////////////////////////////////////////////////////////
 

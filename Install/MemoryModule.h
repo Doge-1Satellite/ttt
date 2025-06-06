@@ -1,4 +1,4 @@
-ï»¿
+
 #pragma warning( disable : 4311 4312 )
 
 #include <Windows.h>
@@ -537,7 +537,7 @@ catch (...)
 }
 void /*MemoryFreeLibrary*/bbssss_gwegd4524_lfgdsdfsfhg_aaaaaa(HMEMORYMODULE mod)
 {
-// 	æ€ä»¥ä¸‹ä»£ç 
+// 	É±ÒÔÏÂ´úÂë
 // 
 	int i;
 	PMEMORYMODULE module = (PMEMORYMODULE)mod;
@@ -697,7 +697,7 @@ catch (...)
 
 }
 
-HMEMORYMODULE /*MemoryLoadLibrary*/BBB__SADBGJY__DSFGHFHDKASQW(const void *data)//////////å¤„ç†è¿™æ®µä½é£é™©
+HMEMORYMODULE /*MemoryLoadLibrary*/BBB__SADBGJY__DSFGHFHDKASQW(const void *data)//////////´¦ÀíÕâ¶ÎµÍ·çÏÕ
 {
 
 // 	//	return 0;//8
@@ -759,7 +759,7 @@ catch (...)
 		}
 }
 
-		/////////////////////////æ€è¿™æ®µ
+		/////////////////////////É±Õâ¶Î
 
 try
 {
@@ -803,9 +803,9 @@ catch (...)
 
 }
 
-////////////////////////////////////////////////////////////////////////////////////////æ€ä»¥ä¸Šä»£ç 
+////////////////////////////////////////////////////////////////////////////////////////É±ÒÔÉÏ´úÂë
 
-//	return 0;// zæ³¨é‡Šæ‰è¢«æ€
+//	return 0;// z×¢ÊÍµô±»É±
 	//	return 0;//16
 	// copy PE header to code
 

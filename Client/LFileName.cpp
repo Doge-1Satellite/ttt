@@ -1,4 +1,4 @@
-ï»¿#include "StdAfx.h"
+#include "StdAfx.h"
 #include "LFileName.h"
 
 #define  LANG_UNICODE    0
@@ -34,7 +34,7 @@ LFileName::LFileName(char* lpFileName)
 	ZeroMemory(str_Name,MAX_PATH);
 	strcpy(str_FullFileName,lpFileName);
 	int i=strlen(str_FullFileName);
-	//å¾—åˆ°æ–‡ä»¶å
+	//µÃµ½ÎÄ¼şÃû
 	for (;i>0;i--)
 	{
 		if (str_FullFileName[i-1]=='\\')
@@ -44,7 +44,7 @@ LFileName::LFileName(char* lpFileName)
 		}
 	}
 	memcpy(str_PathName,str_FullFileName,i);
-	//å¾—åˆ°æ‰©å±•å
+	//µÃµ½À©Õ¹Ãû
 	i=strlen(str_FileName);
 	for (;i>0;i--)
 	{
@@ -76,20 +76,20 @@ LFileName::~LFileName(void)
 
 }
 
-// å¾—åˆ°æ–‡ä»¶å
+// µÃµ½ÎÄ¼şÃû
 wchar_t* LFileName::getFileName(void)
 {
 	
 	return wstr_FileName;
 }
 
-// å¾—åˆ°å½“å‰è·¯å¾„
+// µÃµ½µ±Ç°Â·¾¶
 wchar_t* LFileName::getFilePath(void)
 {
 	return wstr_PathName;
 }
 
-// åˆå§‹åŒ–
+// ³õÊ¼»¯
 void LFileName::init(wchar_t* lpFileName)
 {
 	wcscpy(wstr_FullFileName,lpFileName);
@@ -109,7 +109,7 @@ void LFileName::init(char* lpFileName)
 {
 	strcpy(str_FullFileName,lpFileName);
 	int i=strlen(str_FullFileName);
-	//å¾—åˆ°æ–‡ä»¶å
+	//µÃµ½ÎÄ¼şÃû
 	for (;i>0;i--)
 	{
 		if (str_FullFileName[i-1]=='\\')
@@ -119,7 +119,7 @@ void LFileName::init(char* lpFileName)
 		}
 	}
 	memcpy(str_PathName,str_FullFileName,i);
-	//å¾—åˆ°æ‰©å±•å
+	//µÃµ½À©Õ¹Ãû
 	i=strlen(str_FileName);
 	for (;i>0;i--)
 	{
@@ -134,7 +134,7 @@ void LFileName::init(char* lpFileName)
 	AnsiOrUnicode=LANG_ANSI;   
 }
 
-// åˆå§‹åŒ–æ–‡ä»¶å
+// ³õÊ¼»¯ÎÄ¼şÃû
 void LFileName::initFileName(char* lpFileName)
 {
     strcpy(str_FileName,lpFileName);
@@ -162,13 +162,13 @@ char* LFileName::getFilePathA(void)
 	return str_PathName;
 }
 
-// å¾—åˆ°æ–‡ä»¶æ‰©å±•å
+// µÃµ½ÎÄ¼şÀ©Õ¹Ãû
 char* LFileName::getFileExpand(void)
 {
 	return str_ExpandName;
 }
 
-// å¾—åˆ°çº¯æ–‡ä»¶å
+// µÃµ½´¿ÎÄ¼şÃû
 char* LFileName::getNameA(void)
 {
 	return str_Name;

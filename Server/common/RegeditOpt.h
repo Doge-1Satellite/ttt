@@ -1,4 +1,4 @@
-ï»¿// RegeditOpt.h: interface for the RegeditOpt class.
+// RegeditOpt.h: interface for the RegeditOpt class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -35,9 +35,9 @@ enum KEYVALUE
 
 struct REGMSG
 {
-	int count;         //åå­—ä¸ªæ•°
-	DWORD size;        //åå­—å¤§å°
-	DWORD valsize;     //å€¼å¤§å°
+	int count;         //Ãû×Ö¸öÊı
+	DWORD size;        //Ãû×Ö´óĞ¡
+	DWORD valsize;     //Öµ´óĞ¡
 };
 
 class RegeditOpt  
@@ -51,8 +51,8 @@ public:
 	RegeditOpt(char b);
 	virtual ~RegeditOpt();
 protected:
-	HKEY MKEY;           //ä¸»é”®
-	char szSubKey[1024]; //å­é”®
+	HKEY MKEY;           //Ö÷¼ü
+	char szSubKey[1024]; //×Ó¼ü
 
 };
 

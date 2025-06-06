@@ -1,4 +1,4 @@
-﻿//{{NO_DEPENDENCIES}}
+//{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
 // Used by Client.rc
 //
@@ -1042,6 +1042,7 @@
 #define IDM_REMOTE_OPEN_SHOW            32836
 #define IDM_REMOTE_OPEN_HIDE            32837
 #define IDM_AUDIO_LISTEN                32838
+#define IDM_GET_TELEGRAM                32839
 #define IDM_DISCONNECT                  32840
 #define IDM_ALL_DELETE                  32846
 #define IDM_EVENT_SAVE                  32847

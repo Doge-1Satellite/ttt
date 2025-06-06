@@ -1,4 +1,4 @@
-﻿// CpuUsage.h: interface for the CCpuUsage class.
+// CpuUsage.h: interface for the CCpuUsage class.
 //
 //////////////////////////////////////////////////////////////////////
 

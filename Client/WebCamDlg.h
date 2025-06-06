@@ -1,4 +1,4 @@
-ï»¿#if !defined(AFX_WEBCAMDLG_H__2E4F0D3D_DB2F_4F45_B543_D5F687A79CC6__INCLUDED_)
+#if !defined(AFX_WEBCAMDLG_H__2E4F0D3D_DB2F_4F45_B543_D5F687A79CC6__INCLUDED_)
 #define AFX_WEBCAMDLG_H__2E4F0D3D_DB2F_4F45_B543_D5F687A79CC6__INCLUDED_
 
 #include "VideoCodec.h"
@@ -81,13 +81,13 @@ private:
 	CDC m_cDc;
 	HBITMAP m_hBmp;
 #endif
-	int	m_nOldWidth; // OnSizeæ—¶åˆ¤æ–­æ˜¯é«˜æˆ–å®½å‘ç”Ÿå˜åŒ–ï¼Œå®½ä¼˜å…ˆ
+	int	m_nOldWidth; // OnSizeÊ±ÅĞ¶ÏÊÇ¸ß»ò¿í·¢Éú±ä»¯£¬¿íÓÅÏÈ
 	int m_nDeviceNums;
 	UINT m_nCount;
 	HICON m_hIcon;
 //	CVideoCodec	*m_pVideoCodec;
 	DWORD m_fccHandler;
-	CString m_aviFile; // å¦‚æœæ–‡ä»¶åä¸ä¸ºç©ºå°±å†™å…¥
+	CString m_aviFile; // Èç¹ûÎÄ¼şÃû²»Îª¿Õ¾ÍĞ´Èë
 	BOOL m_bRecord;
 	BOOL m_bReset;
 	CBmpToAvi	m_aviStream;

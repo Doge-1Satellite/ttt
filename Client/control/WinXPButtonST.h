@@ -1,4 +1,4 @@
-﻿//
+//
 //	Class:		CWinXPButtonST
 //
 //	Compiler:	Visual C++

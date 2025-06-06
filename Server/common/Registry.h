@@ -1,4 +1,4 @@
-﻿//
+//
 //Registry.h
 
 #if !defined(AFX_REGISTRY_H__E0610A5D_7166_4D02_9D7E_11AF7CF8E229__INCLUDED_)

@@ -1,4 +1,4 @@
-﻿// Dialupass.cpp: implementation of the CDialupass class.
+// Dialupass.cpp: implementation of the CDialupass class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"

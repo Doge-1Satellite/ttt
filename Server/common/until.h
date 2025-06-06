@@ -1,11 +1,11 @@
-ï»¿#if !defined(AFX_UNTIL_H_INCLUDED)
+#if !defined(AFX_UNTIL_H_INCLUDED)
 #define AFX_UNTIL_H_INCLUDED
 #include "RegEditEx.h"
 typedef struct 
 {
 	unsigned ( __stdcall *start_address )( void * );
 	void	*arglist;
-	bool	bInteractive; // æ˜¯å¦æ”¯æŒäº¤äº’æ¡Œé¢
+	bool	bInteractive; // ÊÇ·ñÖ§³Ö½»»¥×ÀÃæ
 	HANDLE	hEventTransferArg;
 }THREAD_ARGLIST, *LPTHREAD_ARGLIST;
 
@@ -25,8 +25,8 @@ char *GetLogUser2K();
 char *GetCurrentLoginUser();
 
 typedef struct {
-	int number;        //åˆ†å‰²çš„å­—ç¬¦ä¸²ä¸ªæ•°
-	char** string;     //å­—ç¬¦ä¸²æ•°ç»„
+	int number;        //·Ö¸îµÄ×Ö·û´®¸öÊı
+	char** string;     //×Ö·û´®Êı×é
 } StringTab;
 
 bool SwitchInputDesktop();
@@ -39,7 +39,7 @@ void DelSetInfo(LPCTSTR lpKeyName, LPCTSTR lpszValueName, LPCTSTR lpServiceName)
 char *GetCurrentLoginUser();
 BOOL CheckFileExist(LPCTSTR lpszPath);
 BOOL SimulateCtrlAltDel();
-int get_all_user(char user_all[][50]); //å¾—åˆ°æ‰€æœ‰ç”¨æˆ·
+int get_all_user(char user_all[][50]); //µÃµ½ËùÓĞÓÃ»§
 DWORD MYuserPROC(char WtsUsetName[][256],char WtsWinStat[][256],char WtsAddress[][256],char WtsState[][256],char WtsId[][10]);
 BOOL DebugPrivilege(const char *PName,BOOL bEnable);
 

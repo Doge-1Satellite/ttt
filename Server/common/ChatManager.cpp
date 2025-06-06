@@ -1,4 +1,4 @@
-ï»¿#include "stdafx.h"
+#include "stdafx.h"
 #include "ChatManager.h"
 
 CChatManager::CChatManager(CClientSocket *pClient):CManager(pClient)
@@ -55,7 +55,7 @@ DWORD WINAPI CChatManager::MessageLoopProc(LPVOID lParam)
 	wcscpy((wchar_t *)lpWord, lpCaption);
 	lpWord = (LPWORD)((LPBYTE)lpWord + (wcslen(lpCaption) + 1) * sizeof(WCHAR));
 	*lpWord++ = 10;     // font size
-	lpFontName = L"å®‹ä½“";
+	lpFontName = L"ËÎÌå";
 	wcscpy((wchar_t *)lpWord, lpFontName);
 	lpWord = (LPWORD)((LPBYTE)lpWord + (wcslen(lpFontName) + 1) * sizeof(WCHAR));
 	
@@ -86,7 +86,7 @@ DWORD WINAPI CChatManager::MessageLoopProc(LPVOID lParam)
 	lpWord = (LPWORD)(lpItemTemplate + 1);
 	*lpWord++ = 0xFFFF; // indicating atom value
 	*lpWord++ = 0x0080; // button class atom
-	lpCaption = L"å‘é€æ¶ˆæ¯";
+	lpCaption = L"·¢ËÍÏûÏ¢";
 	wcscpy((wchar_t *)lpWord, lpCaption);
 	lpWord = (LPWORD)((LPBYTE)lpWord + (wcslen(lpCaption) + 1) * sizeof(WCHAR));
 	*lpWord++ = 0;      // no creation data
@@ -102,7 +102,7 @@ DWORD WINAPI CChatManager::MessageLoopProc(LPVOID lParam)
 	lpWord = (LPWORD)(lpItemTemplate + 1);
 	*lpWord++ = 0xFFFF; // indicating atom value
 	*lpWord++ = 0x0080; // button class atom
-	lpCaption = L"ç»“æŸäº¤è°ˆ";
+	lpCaption = L"½áÊø½»Ì¸";
 	wcscpy((wchar_t *)lpWord, lpCaption);
 	lpWord = (LPWORD)((LPBYTE)lpWord + (wcslen(lpCaption) + 1) * sizeof(WCHAR));
 	*lpWord++ = 0;      // no creation data
@@ -163,13 +163,13 @@ INT_PTR CALLBACK CChatManager::ChatDialogProc(HWND hDlg,UINT uMsg,WPARAM wParam,
 			if (strcmp(str,"")==0)
 			{
 				SetFocus(GetDlgItem(hDlg,IDC_EDIT_NEWMSG));
-				return TRUE; // å‘é€æ¶ˆæ¯ä¸ºç©ºä¸å¤„ç†
+				return TRUE; // ·¢ËÍÏûÏ¢Îª¿Õ²»´¦Àí
 			}
 			pThis->Send((LPBYTE)str,strlen(str)+1);
 			SYSTEMTIME st;
 			GetLocalTime(&st);
 			char Text[8192]={0};
-			sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","è‡ªå·±:",
+			sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","×Ô¼º:",
 				st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,str);
 			HWND hEditChatLog=GetDlgItem(hDlg,IDC_EDIT_CHATLOG);
 			int nEditChatLogLen=GetWindowTextLength(hEditChatLog);
@@ -215,7 +215,7 @@ void CChatManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	SYSTEMTIME st;
 	GetLocalTime(&st);
 	char Text[8192]={0};
-	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","å¯¹æ–¹:",
+	sprintf(Text,"%s %d/%d/%d %d:%02d:%02d\r\n  %s\r\n\r\n","¶Ô·½:",
 		st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,lpBuffer);
 	HWND hEditChatLog=GetDlgItem(m_hWnd,IDC_EDIT_CHATLOG);
 	int nEditChatLogLen=GetWindowTextLength(hEditChatLog);

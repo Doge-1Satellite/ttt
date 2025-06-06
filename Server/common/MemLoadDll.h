@@ -1,4 +1,4 @@
-﻿
+
 #pragma warning( disable : 4311 4312 )
 
 #include <Windows.h>

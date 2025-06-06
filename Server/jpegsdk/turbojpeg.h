@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (C)2009-2015, 2017 D. R. Commander.  All Rights Reserved.
  *
  * Redistribution and use in source and binary forms, with or without

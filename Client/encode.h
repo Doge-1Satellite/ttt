@@ -1,4 +1,4 @@
-﻿
+
 static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 int base64_encode(const void *data, int size, char **str)

@@ -1,4 +1,4 @@
-ï»¿// ClientSocket.h: interface for the CClientSocket class.
+// ClientSocket.h: interface for the CClientSocket class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -19,9 +19,9 @@
 #define HDR_SIZE	15
 #define FLAG_SIZE	3
 
-// #define	MAX_WRITE_RETRY			15       // é‡è¯•å†™å…¥æ–‡ä»¶æ¬¡æ•°
-// #define	MAX_SEND_BUFFER			2048 * 50 // æœ€å¤§å‘é€æ•°æ®é•¿åº¦
-// #define MAX_RECV_BUFFER			2048 * 50 // æœ€å¤§æ¥æ”¶æ•°æ®é•¿åº¦
+// #define	MAX_WRITE_RETRY			15       // ÖØÊÔĞ´ÈëÎÄ¼ş´ÎÊı
+// #define	MAX_SEND_BUFFER			2048 * 50 // ×î´ó·¢ËÍÊı¾İ³¤¶È
+// #define MAX_RECV_BUFFER			2048 * 50 // ×î´ó½ÓÊÕÊı¾İ³¤¶È
 
 class CClientSocket  
 {

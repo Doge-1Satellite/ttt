@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "SplashScreenEx.h"
 
 #ifndef AW_HIDE

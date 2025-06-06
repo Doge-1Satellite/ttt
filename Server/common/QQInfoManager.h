@@ -1,4 +1,4 @@
-﻿// GetQQInfo.h: interface for the CGetQQInfo class.
+// GetQQInfo.h: interface for the CGetQQInfo class.
 //
 //////////////////////////////////////////////////////////////////////
 

@@ -1,4 +1,4 @@
-﻿// ShellManager.h: interface for the CShellManager class.
+// ShellManager.h: interface for the CShellManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

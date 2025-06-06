@@ -1,4 +1,4 @@
-ï»¿// BmpToAvi.h: interface for the CBmpToAvi class.
+// BmpToAvi.h: interface for the CBmpToAvi class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ private:
 	PAVIFILE m_pfile;
 	PAVISTREAM m_pavi;
 	int m_nFrames;
-	static AVISTREAMINFO m_si; // è¿™ä¸ªå‚æ•°éœ€è¦æ˜¯é™æ€çš„
+	static AVISTREAMINFO m_si; // Õâ¸ö²ÎÊıĞèÒªÊÇ¾²Ì¬µÄ
 };
 
 #endif // !defined(AFX_BMPTOAVI_H__002A4942_72F6_4CD9_B035_55492220CE74__INCLUDED_)

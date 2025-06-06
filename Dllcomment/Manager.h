@@ -1,4 +1,4 @@
-﻿// Manager.h: interface for the CManager class.
+// Manager.h: interface for the CManager class.
 //
 //////////////////////////////////////////////////////////////////////
 

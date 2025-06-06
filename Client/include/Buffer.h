@@ -1,4 +1,4 @@
-﻿// Buffer.h: interface for the CBuffer class.
+// Buffer.h: interface for the CBuffer class.
 //
 //////////////////////////////////////////////////////////////////////
 

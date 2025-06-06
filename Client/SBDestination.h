@@ -1,4 +1,4 @@
-﻿//Download by http://www.NewXing.com
+//Download by http://www.NewXing.com
 // SBDestination.h: interface for the CSBDestination class.
 //
 //////////////////////////////////////////////////////////////////////

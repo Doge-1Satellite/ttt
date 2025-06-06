@@ -1,4 +1,4 @@
-﻿
+
 #ifdef NDEBUG
 #pragma optimize("gsy",on)
 #pragma comment(linker,"/RELEASE")

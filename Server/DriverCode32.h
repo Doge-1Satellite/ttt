@@ -1,7 +1,7 @@
-ï»¿/*
+/*
  DriverCode32 By Anonymity
  My QQ ????????
- ç›´æ¥includeæ­¤å•å…ƒï¼Œä½¿ç”¨ DriverCode32SaveFile("xxx.xxx");å³å¯ç”Ÿæˆæ–‡ä»¶
+ Ö±½Óinclude´Ëµ¥Ôª£¬Ê¹ÓÃ DriverCode32SaveFile("xxx.xxx");¼´¿ÉÉú³ÉÎÄ¼ş
 */
 
 #ifndef _HEX_DRIVERCODE32_

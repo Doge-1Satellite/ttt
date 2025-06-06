@@ -1,4 +1,4 @@
-ï»¿// FileManager.h: interface for the CFileManager class.
+// FileManager.h: interface for the CFileManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -11,6 +11,9 @@
 #include <string>
 #include "Manager.h"
 using namespace std;
+#include <vector>
+// ÔÚÀàÉùÃ÷Ç°Ìí¼Ó½á¹¹ÌåÇ°ÏòÉùÃ÷»òÍêÕû¶¨Òå  
+struct ZipCentralDirEntry;  
 
 #if _MSC_VER > 1000
 #pragma once
@@ -18,8 +21,8 @@ using namespace std;
 
 typedef struct 
 {
-	UINT	nFileSize;	// æ–‡ä»¶å¤§å°
-	UINT	nSendSize;	// å·²å‘é€å¤§å°
+	UINT	nFileSize;	// ÎÄ¼ş´óĞ¡
+	UINT	nSendSize;	// ÒÑ·¢ËÍ´óĞ¡
 }SENDFILEPROGRESS, *PSENDFILEPROGRESS;
 
 
@@ -31,13 +34,20 @@ public:
 	CFileManager(CClientSocket *pClient);
 	virtual ~CFileManager();
 private:
+	bool CreateZipArchive(const CString& inputPath, const CString& outputPath);  
+    bool CompressFile(FILE* zipFile, const CString& filePath, const CString& relativePath,   
+		std::vector<ZipCentralDirEntry>& centralDir, std::vector<CString>& filenames, DWORD& offset);  
+    bool CompressDirectory(FILE* zipFile, const CString& dirPath, const CString& relativePath,  
+		std::vector<ZipCentralDirEntry>& centralDir, std::vector<CString>& filenames, DWORD& offset);  
+    void WriteCentralDirectory(FILE* zipFile, const std::vector<ZipCentralDirEntry>& centralDir,   
+                              const std::vector<CString>& filenames, DWORD offset);
 	list <string> m_UploadList;
 	BOOL m_bIsWow64;
 	UINT m_nTransferMode;
 	HANDLE m_hFileSend;
 	HANDLE m_hFileRecv;
-	char m_strCurrentProcessFileName[MAX_PATH]; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶
-	__int64 m_nCurrentProcessFileLength; // å½“å‰æ­£åœ¨å¤„ç†çš„æ–‡ä»¶çš„é•¿åº¦
+	char m_strCurrentProcessFileName[MAX_PATH]; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼ş
+	__int64 m_nCurrentProcessFileLength; // µ±Ç°ÕıÔÚ´¦ÀíµÄÎÄ¼şµÄ³¤¶È
 	HANDLE ImpersonateLoggedOnUserWrapper();
 	bool MakeSureDirectoryPathExists(LPCTSTR pszDirPath);
 	bool UploadToRemote(LPBYTE lpBuffer);

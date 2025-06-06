@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 echo ----------------------------------------------------
 echo Press any key to delete all files with ending:
 echo  *.aps *.idb *.ncp *.obj *.pch *.tmp *.sbr

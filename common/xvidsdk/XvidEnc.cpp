@@ -1,4 +1,4 @@
-ï»¿#include "XvidEnc.h"
+#include "XvidEnc.h"
 #include <Windows.h>
 
 #ifdef _DEBUG
@@ -54,7 +54,7 @@ bool CXvidEnc::Open(int width, int height, int fps, int cbit)
 	m_xvid_enc_create.width = width;
 	m_xvid_enc_create.height = height;
 	m_xvid_enc_create.fincr = 1;
-	m_xvid_enc_create.fbase = fps; // è®¾ç½®FPSå€¼(å¸§ç‡), å¿…é¡»è®¾ç½®
+	m_xvid_enc_create.fbase = fps; // ÉèÖÃFPSÖµ(Ö¡ÂÊ), ±ØĞëÉèÖÃ
 	if (xvid_encore(NULL, XVID_ENC_CREATE, &m_xvid_enc_create, NULL) < 0)
 		return false;
 	

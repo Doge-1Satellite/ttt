@@ -1,4 +1,4 @@
-﻿        page    ,132
+        page    ,132
         title   alloca16 - aligned C stack checking routine
 ;***
 ;chkstk.asm - aligned C stack checking routine

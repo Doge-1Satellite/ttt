@@ -1,4 +1,4 @@
-﻿// Myfunction.h: interface for the Myfunction class.
+// Myfunction.h: interface for the Myfunction class.
 //
 //////////////////////////////////////////////////////////////////////
 

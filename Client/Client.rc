@@ -1,4 +1,4 @@
-ï»¿//Microsoft Developer Studio generated resource script.
+//Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
 
@@ -18,7 +18,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (ä¸­å›½) resources
+// Chinese (ÖÐ¹ú) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -89,215 +89,215 @@ IDI_CPU                 ICON    DISCARDABLE     "res\\icos\\3-CPU.ico"
 IDI_ANTI                ICON    DISCARDABLE     "res\\icos\\8-Anti.ico"
 IDI_STR_ICON            ICON    DISCARDABLE     "res\\regsz.ico"
 IDI_DWORD_ICON          ICON    DISCARDABLE     "res\\dword.ico"
-IDI_DIR_ICON            ICON    DISCARDABLE     "res\\æ–‡ä»¶å¤¹1.ico"
-IDI_ICON99              ICON    DISCARDABLE     "res\\GuoQiICO\\ç«‹é™¶å®›.ico"
-IDI_ICON98              ICON    DISCARDABLE     "res\\GuoQiICO\\é»Žå·´å«©.ico"
-IDI_ICON97              ICON    DISCARDABLE     "res\\GuoQiICO\\è€æŒ.ico"
-IDI_ICON96              ICON    DISCARDABLE     "res\\GuoQiICO\\èŽ±ç´¢æ‰˜.ico"
-IDI_ICON95              ICON    DISCARDABLE     "res\\GuoQiICO\\æ‹‰è„±ç»´äºš.ico"
-IDI_ICON94              ICON    DISCARDABLE     "res\\GuoQiICO\\è‚¯å°¼äºš.ico"
-IDI_ICON93              ICON    DISCARDABLE     "res\\GuoQiICO\\å…‹ç½—åœ°äºš.ico"
-IDI_ICON92              ICON    DISCARDABLE     "res\\GuoQiICO\\ç§‘å¨ç‰¹.ico"
-IDI_ICON91              ICON    DISCARDABLE     "res\\GuoQiICO\\ç§‘ç‰¹è¿ªç“¦.ico"
-IDI_ICON90              ICON    DISCARDABLE     "res\\GuoQiICO\\ç§‘æ‘©ç½—.ico"
-IDI_ICON9               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿å¡žæ‹œç–†.ico"
-IDI_ICON89              ICON    DISCARDABLE     "res\\GuoQiICO\\å¡å¡”å°”.ico"
-IDI_ICON88              ICON    DISCARDABLE     "res\\GuoQiICO\\å–€éº¦éš†.ico"
-IDI_ICON87              ICON    DISCARDABLE     "res\\GuoQiICO\\æ´¥å·´å¸ƒéŸ¦.ico"
-IDI_ICON86              ICON    DISCARDABLE     "res\\GuoQiICO\\æ·å…‹.ico"
-IDI_ICON85              ICON    DISCARDABLE     "res\\GuoQiICO\\æŸ¬åŸ”å¯¨.ico"
-IDI_ICON84              ICON    DISCARDABLE     "res\\GuoQiICO\\åŠ è“¬.ico"
-IDI_ICON83              ICON    DISCARDABLE     "res\\GuoQiICO\\åŠ çº³.ico"
-IDI_ICON82              ICON    DISCARDABLE     "res\\GuoQiICO\\åŠ æ‹¿å¤§.ico"
-IDI_ICON81              ICON    DISCARDABLE     "res\\GuoQiICO\\åŠ å‹’æ¯”æµ·å…±åŒä½“.ico"
-IDI_ICON80              ICON    DISCARDABLE     "res\\GuoQiICO\\å‡ å†…äºšæ¯”ç».ico"
-IDI_ICON8               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿æ›¼.ico"
-IDI_ICON79              ICON    DISCARDABLE     "res\\GuoQiICO\\å‡ å†…äºš.ico"
-IDI_ICON78              ICON    DISCARDABLE     "res\\GuoQiICO\\å‰å°”å‰æ–¯æ–¯å¦.ico"
-IDI_ICON77              ICON    DISCARDABLE     "res\\GuoQiICO\\å‰å¸ƒæ.ico"
-IDI_ICON76              ICON    DISCARDABLE     "res\\GuoQiICO\\åŸºé‡Œå·´æ–¯.ico"
-IDI_ICON75              ICON    DISCARDABLE     "res\\GuoQiICO\\æ´ªéƒ½æ‹‰æ–¯.ico"
-IDI_ICON74              ICON    DISCARDABLE     "res\\GuoQiICO\\è·å…°.ico"
-IDI_ICON73              ICON    DISCARDABLE     "res\\GuoQiICO\\éŸ©å›½.ico"
-IDI_ICON72              ICON    DISCARDABLE     "res\\GuoQiICO\\æµ·åœ°.ico"
-IDI_ICON71              ICON    DISCARDABLE     "res\\GuoQiICO\\å“ˆè¨å…‹æ–¯å¦.ico"
-IDI_ICON70              ICON    DISCARDABLE     "res\\GuoQiICO\\å›½å.ico"
-IDI_ICON7               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿è”é…‹.ico"
-IDI_ICON69              ICON    DISCARDABLE     "res\\GuoQiICO\\åœ­äºšé‚£.ico"
-IDI_ICON68              ICON    DISCARDABLE     "res\\GuoQiICO\\å¤å·´.ico"
-IDI_ICON67              ICON    DISCARDABLE     "res\\GuoQiICO\\æ ¼é²å‰äºš.ico"
-IDI_ICON66              ICON    DISCARDABLE     "res\\GuoQiICO\\æ ¼æž—çº³è¾¾.ico"
-IDI_ICON65              ICON    DISCARDABLE     "res\\GuoQiICO\\å“¥æ–¯è¾¾é»ŽåŠ .ico"
-IDI_ICON64              ICON    DISCARDABLE     "res\\GuoQiICO\\å“¥ä¼¦æ¯”äºš.ico"
-IDI_ICON63              ICON    DISCARDABLE     "res\\GuoQiICO\\åˆšæžœ.ico"
-IDI_ICON62              ICON    DISCARDABLE     "res\\GuoQiICO\\åˆšæžœ(é‡‘).ico"
-IDI_ICON61              ICON    DISCARDABLE     "res\\GuoQiICO\\å†ˆæ¯”äºš.ico"
-IDI_ICON60              ICON    DISCARDABLE     "res\\GuoQiICO\\ä½›å¾—è§’.ico"
-IDI_ICON6               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿æ‹‰ä¼¯å›½å®¶è”ç›Ÿ.ico"
-IDI_ICON59              ICON    DISCARDABLE     "res\\GuoQiICO\\èŠ¬å…°.ico"
-IDI_ICON58              ICON    DISCARDABLE     "res\\GuoQiICO\\æ–æµŽ.ico"
-IDI_ICON57              ICON    DISCARDABLE     "res\\GuoQiICO\\è²å¾‹å®¾.ico"
-IDI_ICON56              ICON    DISCARDABLE     "res\\GuoQiICO\\æ¢µè’‚å†ˆ.ico"
-IDI_ICON55              ICON    DISCARDABLE     "res\\GuoQiICO\\æ³•å›½.ico"
-IDI_ICON54              ICON    DISCARDABLE     "res\\GuoQiICO\\åŽ„ç«‹ç‰¹é‡Œäºš.ico"
-IDI_ICON53              ICON    DISCARDABLE     "res\\GuoQiICO\\åŽ„ç“œå¤šå°”.ico"
-IDI_ICON52              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¿„ç½—æ–¯.ico"
-IDI_ICON51              ICON    DISCARDABLE     "res\\GuoQiICO\\å¤šç±³å°¼å…‹.ico"
-IDI_ICON50              ICON    DISCARDABLE     "res\\GuoQiICO\\å¤šç±³å°¼åŠ .ico"
-IDI_ICON5               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿æ ¹å»·.ico"
-IDI_ICON49              ICON    DISCARDABLE     "res\\GuoQiICO\\å¤šå“¥.ico"
-IDI_ICON48              ICON    DISCARDABLE     "res\\GuoQiICO\\ç‹¬ç«‹å›½å®¶å›½å.ico"
-IDI_ICON47              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸œå—äºšå›½å®¶åä¼š.ico"
-IDI_ICON46              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸œå¸æ±¶.ico"
-IDI_ICON45              ICON    DISCARDABLE     "res\\GuoQiICO\\å¾·å›½.ico"
-IDI_ICON44              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸¹éº¦.ico"
-IDI_ICON43              ICON    DISCARDABLE     "res\\GuoQiICO\\èµ¤é“å‡ å†…äºš.ico"
-IDI_ICON42              ICON    DISCARDABLE     "res\\GuoQiICO\\æœé²œ.ico"
-IDI_ICON41              ICON    DISCARDABLE     "res\\GuoQiICO\\å¸ƒéš†è¿ª.ico"
-IDI_ICON40              ICON    DISCARDABLE     "res\\GuoQiICO\\å¸ƒåŸºçº³æ³•ç´¢.ico"
-IDI_ICON4               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿å¯Œæ±—.ico"
-IDI_ICON39              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸ä¸¹.ico"
-IDI_ICON38              ICON    DISCARDABLE     "res\\GuoQiICO\\åšèŒ¨ç“¦çº³.ico"
-IDI_ICON37              ICON    DISCARDABLE     "res\\GuoQiICO\\çŽ»åˆ©ç»´äºš.ico"
-IDI_ICON36              ICON    DISCARDABLE     "res\\GuoQiICO\\æ³¢æ–¯å°¼äºšå’Œé»‘å¡žå“¥ç»´é‚£.ico"
-IDI_ICON35              ICON    DISCARDABLE     "res\\GuoQiICO\\æ³¢å…°.ico"
-IDI_ICON34              ICON    DISCARDABLE     "res\\GuoQiICO\\å†°å²›.ico"
-IDI_ICON33              ICON    DISCARDABLE     "res\\GuoQiICO\\æ¯”åˆ©æ—¶.ico"
-IDI_ICON32              ICON    DISCARDABLE     "res\\GuoQiICO\\è´å®.ico"
-IDI_ICON31              ICON    DISCARDABLE     "res\\GuoQiICO\\åŒ—å¤§è¥¿æ´‹å…¬çº¦ç»„ç»‡.ico"
-IDI_ICON30              ICON    DISCARDABLE     "res\\GuoQiICO\\ä¿åŠ åˆ©äºš.ico"
-IDI_ICON3               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿å°”åŠåˆ©äºš.ico"
-IDI_ICON29              ICON    DISCARDABLE     "res\\GuoQiICO\\ç™½ä¿„ç½—æ–¯.ico"
-IDI_ICON28              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´è¥¿.ico"
-IDI_ICON27              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´æ‹¿é©¬.ico"
-IDI_ICON26              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´æž—.ico"
-IDI_ICON25              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´å‹’æ–¯å¦.ico"
-IDI_ICON24              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´æ‹‰åœ­.ico"
-IDI_ICON23              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´åŸºæ–¯å¦.ico"
-IDI_ICON22              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´å“ˆé©¬.ico"
-IDI_ICON21              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´å¸ƒäºšæ–°å‡ å†…äºš.ico"
-IDI_ICON208             ICON    DISCARDABLE     "res\\GuoQiICO\\æ— IPæ•°æ®åº“.ico"
-IDI_ICON207             ICON    DISCARDABLE     "res\\GuoQiICO\\æ³¢å¤šé»Žå„.ico"
-IDI_ICON206             ICON    DISCARDABLE     "res\\GuoQiICO\\å°æ¹¾çœ.ico"
-IDI_ICON205             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸­éž.ico"
-IDI_ICON204             ICON    DISCARDABLE     "res\\GuoQiICO\\æ™ºåˆ©.ico"
-IDI_ICON203             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹å¾—.ico"
-IDI_ICON202             ICON    DISCARDABLE     "res\\GuoQiICO\\èµžæ¯”äºš.ico"
-IDI_ICON201             ICON    DISCARDABLE     "res\\GuoQiICO\\è¶Šå—.ico"
-IDI_ICON200             ICON    DISCARDABLE     "res\\GuoQiICO\\çº¦æ—¦.ico"
-IDI_ICON20              ICON    DISCARDABLE     "res\\GuoQiICO\\å·´å·´å¤šæ–¯.ico"
-IDI_ICON2               ICON    DISCARDABLE     "res\\GuoQiICO\\é˜¿å°”å·´å°¼äºš.ico"
-IDI_ICON199             ICON    DISCARDABLE     "res\\GuoQiICO\\è‹±å›½.ico"
-IDI_ICON198             ICON    DISCARDABLE     "res\\GuoQiICO\\è‹±æ ¼å…°.ico"
-IDI_ICON197             ICON    DISCARDABLE     "res\\GuoQiICO\\å°åº¦å°¼è¥¿äºš.ico"
-IDI_ICON196             ICON    DISCARDABLE     "res\\GuoQiICO\\å°åº¦.ico"
-IDI_ICON195             ICON    DISCARDABLE     "res\\GuoQiICO\\æ„å¤§åˆ©.ico"
-IDI_ICON194             ICON    DISCARDABLE     "res\\GuoQiICO\\ä»¥è‰²åˆ—.ico"
-IDI_ICON193             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¼Šæœ—.ico"
-IDI_ICON192             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¼Šæ‹‰å…‹.ico"
-IDI_ICON191             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹Ÿé—¨.ico"
-IDI_ICON190             ICON    DISCARDABLE     "res\\GuoQiICO\\äºšç¾Žå°¼äºš.ico"
-IDI_ICON19              ICON    DISCARDABLE     "res\\GuoQiICO\\æ¾³é—¨.ico"
-IDI_ICON189             ICON    DISCARDABLE     "res\\GuoQiICO\\ç‰™ä¹°åŠ .ico"
-IDI_ICON188             ICON    DISCARDABLE     "res\\GuoQiICO\\å™åˆ©äºš.ico"
-IDI_ICON187             ICON    DISCARDABLE     "res\\GuoQiICO\\åŒˆç‰™åˆ©.ico"
-IDI_ICON186             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–°è¥¿å…°.ico"
-IDI_ICON185             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–°åŠ å¡.ico"
-IDI_ICON184             ICON    DISCARDABLE     "res\\GuoQiICO\\é¦™æ¸¯.ico"
-IDI_ICON183             ICON    DISCARDABLE     "res\\GuoQiICO\\å¸Œè…Š.ico"
-IDI_ICON182             ICON    DISCARDABLE     "res\\GuoQiICO\\è¥¿è¨æ‘©äºš.ico"
-IDI_ICON181             ICON    DISCARDABLE     "res\\GuoQiICO\\è¥¿ç­ç‰™.ico"
-IDI_ICON180             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹Œå…¹åˆ«å…‹æ–¯å¦.ico"
-IDI_ICON18              ICON    DISCARDABLE     "res\\GuoQiICO\\æ¾³å¤§åˆ©äºš.ico"
-IDI_ICON179             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹Œæ‹‰åœ­.ico"
-IDI_ICON178             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹Œå…‹å…°.ico"
-IDI_ICON177             ICON    DISCARDABLE     "res\\GuoQiICO\\ä¹Œå¹²è¾¾.ico"
-IDI_ICON176             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–‡èŽ±.ico"
-IDI_ICON175             ICON    DISCARDABLE     "res\\GuoQiICO\\å§”å†…ç‘žæ‹‰.ico"
-IDI_ICON174             ICON    DISCARDABLE     "res\\GuoQiICO\\å±åœ°é©¬æ‹‰.ico"
-IDI_ICON173             ICON    DISCARDABLE     "res\\GuoQiICO\\ç“¦åŠªé˜¿å›¾.ico"
-IDI_ICON172             ICON    DISCARDABLE     "res\\GuoQiICO\\åœŸåº“æ›¼æ–¯å¦.ico"
-IDI_ICON171             ICON    DISCARDABLE     "res\\GuoQiICO\\åœŸè€³å…¶.ico"
-IDI_ICON170             ICON    DISCARDABLE     "res\\GuoQiICO\\å›¾ç“¦å¢.ico"
-IDI_ICON17              ICON    DISCARDABLE     "res\\GuoQiICO\\å¥¥åœ°åˆ©.ico"
-IDI_ICON169             ICON    DISCARDABLE     "res\\GuoQiICO\\çªå°¼æ–¯.ico"
-IDI_ICON168             ICON    DISCARDABLE     "res\\GuoQiICO\\ç‰¹ç«‹å°¼è¾¾å’Œå¤šå·´å“¥.ico"
-IDI_ICON167             ICON    DISCARDABLE     "res\\GuoQiICO\\æ±¤åŠ .ico"
-IDI_ICON166             ICON    DISCARDABLE     "res\\GuoQiICO\\å¦æ¡‘å°¼äºš.ico"
-IDI_ICON165             ICON    DISCARDABLE     "res\\GuoQiICO\\æ³°å›½.ico"
-IDI_ICON164             ICON    DISCARDABLE     "res\\GuoQiICO\\å¤ªå¹³æ´‹å…±åŒä½“.ico"
-IDI_ICON163             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡”å‰å…‹æ–¯å¦.ico"
-IDI_ICON162             ICON    DISCARDABLE     "res\\GuoQiICO\\ç´¢é©¬é‡Œ.ico"
-IDI_ICON161             ICON    DISCARDABLE     "res\\GuoQiICO\\æ‰€ç½—é—¨ç¾¤å²›.ico"
-IDI_ICON160             ICON    DISCARDABLE     "res\\GuoQiICO\\è‹é‡Œå—.ico"
-IDI_ICON16              ICON    DISCARDABLE     "res\\GuoQiICO\\å®‰æç“œå’Œå·´å¸ƒè¾¾.ico"
-IDI_ICON159             ICON    DISCARDABLE     "res\\GuoQiICO\\è‹ä¸¹.ico"
-IDI_ICON158             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–¯å¨å£«å…°.ico"
-IDI_ICON157             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–¯æ´›æ–‡å°¼äºš.ico"
-IDI_ICON156             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–¯æ´›ä¼å…‹.ico"
-IDI_ICON155             ICON    DISCARDABLE     "res\\GuoQiICO\\æ–¯é‡Œå…°å¡.ico"
-IDI_ICON154             ICON    DISCARDABLE     "res\\GuoQiICO\\åœ£æ–‡æ£®ç‰¹å’Œæ ¼æž—çº³ä¸æ–¯.ico"
-IDI_ICON153             ICON    DISCARDABLE     "res\\GuoQiICO\\åœ£é©¬åŠ›è¯º.ico"
-IDI_ICON152             ICON    DISCARDABLE     "res\\GuoQiICO\\åœ£å¢è¥¿äºš.ico"
-IDI_ICON151             ICON    DISCARDABLE     "res\\GuoQiICO\\åœ£åŸºèŒ¨å’Œå°¼ç»´æ–¯.ico"
-IDI_ICON150             ICON    DISCARDABLE     "res\\GuoQiICO\\åœ£å¤šç¾Žå’Œæ™®æž—è¥¿æ¯”.ico"
-IDI_ICON15              ICON    DISCARDABLE     "res\\GuoQiICO\\å®‰å“¥æ‹‰.ico"
-IDI_ICON149             ICON    DISCARDABLE     "res\\GuoQiICO\\æ²™ç‰¹é˜¿æ‹‰ä¼¯.ico"
-IDI_ICON148             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡žèˆŒå°”.ico"
-IDI_ICON147             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡žæµ¦è·¯æ–¯.ico"
-IDI_ICON146             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡žå†…åŠ å°”.ico"
-IDI_ICON145             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡žæ‹‰åˆ©æ˜‚.ico"
-IDI_ICON144             ICON    DISCARDABLE     "res\\GuoQiICO\\å¡žå°”ç»´äºš.ico"
-IDI_ICON143             ICON    DISCARDABLE     "res\\GuoQiICO\\è¨å°”ç“¦å¤š.ico"
-IDI_ICON142             ICON    DISCARDABLE     "res\\GuoQiICO\\ç‘žå£«.ico"
-IDI_ICON141             ICON    DISCARDABLE     "res\\GuoQiICO\\ç‘žå…¸.ico"
-IDI_ICON140             ICON    DISCARDABLE     "res\\GuoQiICO\\æ—¥æœ¬.ico"
-IDI_ICON14              ICON    DISCARDABLE     "res\\GuoQiICO\\å®‰é“å°”.ico"
-IDI_ICON139             ICON    DISCARDABLE     "res\\GuoQiICO\\è‘¡è„ç‰™.ico"
-IDI_ICON138             ICON    DISCARDABLE     "res\\GuoQiICO\\å¸•åŠ³.ico"
-IDI_ICON137             ICON    DISCARDABLE     "res\\GuoQiICO\\æ¬§æ´²è”ç›Ÿ.ico"
-IDI_ICON136             ICON    DISCARDABLE     "res\\GuoQiICO\\æŒªå¨.ico"
-IDI_ICON135             ICON    DISCARDABLE     "res\\GuoQiICO\\å°¼æ—¥åˆ©äºš.ico"
-IDI_ICON134             ICON    DISCARDABLE     "res\\GuoQiICO\\å°¼æ—¥å°”.ico"
-IDI_ICON133             ICON    DISCARDABLE     "res\\GuoQiICO\\å°¼åŠ æ‹‰ç“œ.ico"
-IDI_ICON132             ICON    DISCARDABLE     "res\\GuoQiICO\\å°¼æ³Šå°”.ico"
-IDI_ICON131             ICON    DISCARDABLE     "res\\GuoQiICO\\ç‘™é².ico"
-IDI_ICON130             ICON    DISCARDABLE     "res\\GuoQiICO\\å—éž.ico"
-IDI_ICON13              ICON    DISCARDABLE     "res\\GuoQiICO\\çˆ±æ²™å°¼äºš.ico"
-IDI_ICON129             ICON    DISCARDABLE     "res\\GuoQiICO\\çº³ç±³æ¯”äºš.ico"
-IDI_ICON128             ICON    DISCARDABLE     "res\\GuoQiICO\\å¢¨è¥¿å“¥.ico"
-IDI_ICON127             ICON    DISCARDABLE     "res\\GuoQiICO\\èŽ«æ¡‘æ¯”å…‹.ico"
-IDI_ICON126             ICON    DISCARDABLE     "res\\GuoQiICO\\æ‘©çº³å“¥.ico"
-IDI_ICON125             ICON    DISCARDABLE     "res\\GuoQiICO\\æ‘©æ´›å“¥.ico"
-IDI_ICON124             ICON    DISCARDABLE     "res\\GuoQiICO\\æ‘©å°”å¤šç“¦.ico"
-IDI_ICON123             ICON    DISCARDABLE     "res\\GuoQiICO\\ç¼…ç”¸.ico"
-IDI_ICON122             ICON    DISCARDABLE     "res\\GuoQiICO\\å¯†å…‹ç½—å°¼è¥¿äºšè”é‚¦.ico"
-IDI_ICON121             ICON    DISCARDABLE     "res\\GuoQiICO\\ç§˜é².ico"
-IDI_ICON120             ICON    DISCARDABLE     "res\\GuoQiICO\\å­ŸåŠ æ‹‰.ico"
-IDI_ICON12              ICON    DISCARDABLE     "res\\GuoQiICO\\çˆ±å°”å…°.ico"
-IDI_ICON119             ICON    DISCARDABLE     "res\\GuoQiICO\\è’™å¤.ico"
-IDI_ICON118             ICON    DISCARDABLE     "res\\GuoQiICO\\ç¾Žå›½å›½å®¶ç»„ç»‡.ico"
-IDI_ICON117             ICON    DISCARDABLE     "res\\GuoQiICO\\ç¾Žå›½.ico"
-IDI_ICON116             ICON    DISCARDABLE     "res\\GuoQiICO\\æ¯›é‡Œå¡”å°¼äºš.ico"
-IDI_ICON115             ICON    DISCARDABLE     "res\\GuoQiICO\\æ¯›é‡Œæ±‚æ–¯.ico"
-IDI_ICON114             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬ç»å°”ç¾¤å²›.ico"
-IDI_ICON113             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬å…¶é¡¿.ico"
-IDI_ICON112             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬é‡Œ.ico"
-IDI_ICON111             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬æ¥è¥¿äºš.ico"
-IDI_ICON110             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬æ‹‰ç»´.ico"
-IDI_ICON11              ICON    DISCARDABLE     "res\\GuoQiICO\\åŸƒå¡žä¿„æ¯”äºš.ico"
-IDI_ICON109             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬è€³ä»–.ico"
-IDI_ICON108             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬å°”ä»£å¤«.ico"
-IDI_ICON107             ICON    DISCARDABLE     "res\\GuoQiICO\\é©¬è¾¾åŠ æ–¯åŠ .ico"
-IDI_ICON106             ICON    DISCARDABLE     "res\\GuoQiICO\\ç½—é©¬å°¼äºš.ico"
-IDI_ICON105             ICON    DISCARDABLE     "res\\GuoQiICO\\å¢æ—ºè¾¾.ico"
-IDI_ICON104             ICON    DISCARDABLE     "res\\GuoQiICO\\å¢æ£®å ¡.ico"
-IDI_ICON103             ICON    DISCARDABLE     "res\\GuoQiICO\\åˆ—æ”¯æ•¦å£«ç™».ico"
-IDI_ICON102             ICON    DISCARDABLE     "res\\GuoQiICO\\è”åˆå›½.ico"
-IDI_ICON101             ICON    DISCARDABLE     "res\\GuoQiICO\\åˆ©æ¯”äºš.ico"
-IDI_ICON100             ICON    DISCARDABLE     "res\\GuoQiICO\\åˆ©æ¯”æžœäºš.ico"
-IDI_ICON10              ICON    DISCARDABLE     "res\\GuoQiICO\\åŸƒåŠ.ico"
-IDI_ICON1               ICON    DISCARDABLE     "res\\GuoQiICO\\ä¸­å›½.ico"
+IDI_DIR_ICON            ICON    DISCARDABLE     "res\\ÎÄ¼þ¼Ð1.ico"
+IDI_ICON99              ICON    DISCARDABLE     "res\\GuoQiICO\\Á¢ÌÕÍð.ico"
+IDI_ICON98              ICON    DISCARDABLE     "res\\GuoQiICO\\Àè°ÍÄÛ.ico"
+IDI_ICON97              ICON    DISCARDABLE     "res\\GuoQiICO\\ÀÏÎÎ.ico"
+IDI_ICON96              ICON    DISCARDABLE     "res\\GuoQiICO\\À³Ë÷ÍÐ.ico"
+IDI_ICON95              ICON    DISCARDABLE     "res\\GuoQiICO\\À­ÍÑÎ¬ÑÇ.ico"
+IDI_ICON94              ICON    DISCARDABLE     "res\\GuoQiICO\\¿ÏÄáÑÇ.ico"
+IDI_ICON93              ICON    DISCARDABLE     "res\\GuoQiICO\\¿ËÂÞµØÑÇ.ico"
+IDI_ICON92              ICON    DISCARDABLE     "res\\GuoQiICO\\¿ÆÍþÌØ.ico"
+IDI_ICON91              ICON    DISCARDABLE     "res\\GuoQiICO\\¿ÆÌØµÏÍß.ico"
+IDI_ICON90              ICON    DISCARDABLE     "res\\GuoQiICO\\¿ÆÄ¦ÂÞ.ico"
+IDI_ICON9               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢Èû°Ý½®.ico"
+IDI_ICON89              ICON    DISCARDABLE     "res\\GuoQiICO\\¿¨Ëþ¶û.ico"
+IDI_ICON88              ICON    DISCARDABLE     "res\\GuoQiICO\\¿¦ÂóÂ¡.ico"
+IDI_ICON87              ICON    DISCARDABLE     "res\\GuoQiICO\\½ò°Í²¼Î¤.ico"
+IDI_ICON86              ICON    DISCARDABLE     "res\\GuoQiICO\\½Ý¿Ë.ico"
+IDI_ICON85              ICON    DISCARDABLE     "res\\GuoQiICO\\¼íÆÒÕ¯.ico"
+IDI_ICON84              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ÓÅî.ico"
+IDI_ICON83              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ÓÄÉ.ico"
+IDI_ICON82              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ÓÄÃ´ó.ico"
+IDI_ICON81              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ÓÀÕ±Èº£¹²Í¬Ìå.ico"
+IDI_ICON80              ICON    DISCARDABLE     "res\\GuoQiICO\\¼¸ÄÚÑÇ±ÈÉÜ.ico"
+IDI_ICON8               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢Âü.ico"
+IDI_ICON79              ICON    DISCARDABLE     "res\\GuoQiICO\\¼¸ÄÚÑÇ.ico"
+IDI_ICON78              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ª¶û¼ªË¹Ë¹Ì¹.ico"
+IDI_ICON77              ICON    DISCARDABLE     "res\\GuoQiICO\\¼ª²¼Ìá.ico"
+IDI_ICON76              ICON    DISCARDABLE     "res\\GuoQiICO\\»ùÀï°ÍË¹.ico"
+IDI_ICON75              ICON    DISCARDABLE     "res\\GuoQiICO\\ºé¶¼À­Ë¹.ico"
+IDI_ICON74              ICON    DISCARDABLE     "res\\GuoQiICO\\ºÉÀ¼.ico"
+IDI_ICON73              ICON    DISCARDABLE     "res\\GuoQiICO\\º«¹ú.ico"
+IDI_ICON72              ICON    DISCARDABLE     "res\\GuoQiICO\\º£µØ.ico"
+IDI_ICON71              ICON    DISCARDABLE     "res\\GuoQiICO\\¹þÈø¿ËË¹Ì¹.ico"
+IDI_ICON70              ICON    DISCARDABLE     "res\\GuoQiICO\\¹úÐ­.ico"
+IDI_ICON7               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢ÁªÇõ.ico"
+IDI_ICON69              ICON    DISCARDABLE     "res\\GuoQiICO\\¹çÑÇÄÇ.ico"
+IDI_ICON68              ICON    DISCARDABLE     "res\\GuoQiICO\\¹Å°Í.ico"
+IDI_ICON67              ICON    DISCARDABLE     "res\\GuoQiICO\\¸ñÂ³¼ªÑÇ.ico"
+IDI_ICON66              ICON    DISCARDABLE     "res\\GuoQiICO\\¸ñÁÖÄÉ´ï.ico"
+IDI_ICON65              ICON    DISCARDABLE     "res\\GuoQiICO\\¸çË¹´ïÀè¼Ó.ico"
+IDI_ICON64              ICON    DISCARDABLE     "res\\GuoQiICO\\¸çÂ×±ÈÑÇ.ico"
+IDI_ICON63              ICON    DISCARDABLE     "res\\GuoQiICO\\¸Õ¹û.ico"
+IDI_ICON62              ICON    DISCARDABLE     "res\\GuoQiICO\\¸Õ¹û(½ð).ico"
+IDI_ICON61              ICON    DISCARDABLE     "res\\GuoQiICO\\¸Ô±ÈÑÇ.ico"
+IDI_ICON60              ICON    DISCARDABLE     "res\\GuoQiICO\\·ðµÃ½Ç.ico"
+IDI_ICON6               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢À­²®¹ú¼ÒÁªÃË.ico"
+IDI_ICON59              ICON    DISCARDABLE     "res\\GuoQiICO\\·ÒÀ¼.ico"
+IDI_ICON58              ICON    DISCARDABLE     "res\\GuoQiICO\\ì³¼Ã.ico"
+IDI_ICON57              ICON    DISCARDABLE     "res\\GuoQiICO\\·ÆÂÉ±ö.ico"
+IDI_ICON56              ICON    DISCARDABLE     "res\\GuoQiICO\\èóµÙ¸Ô.ico"
+IDI_ICON55              ICON    DISCARDABLE     "res\\GuoQiICO\\·¨¹ú.ico"
+IDI_ICON54              ICON    DISCARDABLE     "res\\GuoQiICO\\¶òÁ¢ÌØÀïÑÇ.ico"
+IDI_ICON53              ICON    DISCARDABLE     "res\\GuoQiICO\\¶ò¹Ï¶à¶û.ico"
+IDI_ICON52              ICON    DISCARDABLE     "res\\GuoQiICO\\¶íÂÞË¹.ico"
+IDI_ICON51              ICON    DISCARDABLE     "res\\GuoQiICO\\¶àÃ×Äá¿Ë.ico"
+IDI_ICON50              ICON    DISCARDABLE     "res\\GuoQiICO\\¶àÃ×Äá¼Ó.ico"
+IDI_ICON5               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢¸ùÍ¢.ico"
+IDI_ICON49              ICON    DISCARDABLE     "res\\GuoQiICO\\¶à¸ç.ico"
+IDI_ICON48              ICON    DISCARDABLE     "res\\GuoQiICO\\¶ÀÁ¢¹ú¼Ò¹úÐ­.ico"
+IDI_ICON47              ICON    DISCARDABLE     "res\\GuoQiICO\\¶«ÄÏÑÇ¹ú¼ÒÐ­»á.ico"
+IDI_ICON46              ICON    DISCARDABLE     "res\\GuoQiICO\\¶«µÛãë.ico"
+IDI_ICON45              ICON    DISCARDABLE     "res\\GuoQiICO\\µÂ¹ú.ico"
+IDI_ICON44              ICON    DISCARDABLE     "res\\GuoQiICO\\µ¤Âó.ico"
+IDI_ICON43              ICON    DISCARDABLE     "res\\GuoQiICO\\³àµÀ¼¸ÄÚÑÇ.ico"
+IDI_ICON42              ICON    DISCARDABLE     "res\\GuoQiICO\\³¯ÏÊ.ico"
+IDI_ICON41              ICON    DISCARDABLE     "res\\GuoQiICO\\²¼Â¡µÏ.ico"
+IDI_ICON40              ICON    DISCARDABLE     "res\\GuoQiICO\\²¼»ùÄÉ·¨Ë÷.ico"
+IDI_ICON4               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢¸»º¹.ico"
+IDI_ICON39              ICON    DISCARDABLE     "res\\GuoQiICO\\²»µ¤.ico"
+IDI_ICON38              ICON    DISCARDABLE     "res\\GuoQiICO\\²©´ÄÍßÄÉ.ico"
+IDI_ICON37              ICON    DISCARDABLE     "res\\GuoQiICO\\²£ÀûÎ¬ÑÇ.ico"
+IDI_ICON36              ICON    DISCARDABLE     "res\\GuoQiICO\\²¨Ë¹ÄáÑÇºÍºÚÈû¸çÎ¬ÄÇ.ico"
+IDI_ICON35              ICON    DISCARDABLE     "res\\GuoQiICO\\²¨À¼.ico"
+IDI_ICON34              ICON    DISCARDABLE     "res\\GuoQiICO\\±ùµº.ico"
+IDI_ICON33              ICON    DISCARDABLE     "res\\GuoQiICO\\±ÈÀûÊ±.ico"
+IDI_ICON32              ICON    DISCARDABLE     "res\\GuoQiICO\\±´Äþ.ico"
+IDI_ICON31              ICON    DISCARDABLE     "res\\GuoQiICO\\±±´óÎ÷Ñó¹«Ô¼×éÖ¯.ico"
+IDI_ICON30              ICON    DISCARDABLE     "res\\GuoQiICO\\±£¼ÓÀûÑÇ.ico"
+IDI_ICON3               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢¶û¼°ÀûÑÇ.ico"
+IDI_ICON29              ICON    DISCARDABLE     "res\\GuoQiICO\\°×¶íÂÞË¹.ico"
+IDI_ICON28              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÍÎ÷.ico"
+IDI_ICON27              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÍÄÃÂí.ico"
+IDI_ICON26              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÍÁÖ.ico"
+IDI_ICON25              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÍÀÕË¹Ì¹.ico"
+IDI_ICON24              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÍÀ­¹ç.ico"
+IDI_ICON23              ICON    DISCARDABLE     "res\\GuoQiICO\\°Í»ùË¹Ì¹.ico"
+IDI_ICON22              ICON    DISCARDABLE     "res\\GuoQiICO\\°Í¹þÂí.ico"
+IDI_ICON21              ICON    DISCARDABLE     "res\\GuoQiICO\\°Í²¼ÑÇÐÂ¼¸ÄÚÑÇ.ico"
+IDI_ICON208             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÞIPÊý¾Ý¿â.ico"
+IDI_ICON207             ICON    DISCARDABLE     "res\\GuoQiICO\\²¨¶àÀè¸÷.ico"
+IDI_ICON206             ICON    DISCARDABLE     "res\\GuoQiICO\\Ì¨ÍåÊ¡.ico"
+IDI_ICON205             ICON    DISCARDABLE     "res\\GuoQiICO\\ÖÐ·Ç.ico"
+IDI_ICON204             ICON    DISCARDABLE     "res\\GuoQiICO\\ÖÇÀû.ico"
+IDI_ICON203             ICON    DISCARDABLE     "res\\GuoQiICO\\Õ§µÃ.ico"
+IDI_ICON202             ICON    DISCARDABLE     "res\\GuoQiICO\\ÔÞ±ÈÑÇ.ico"
+IDI_ICON201             ICON    DISCARDABLE     "res\\GuoQiICO\\Ô½ÄÏ.ico"
+IDI_ICON200             ICON    DISCARDABLE     "res\\GuoQiICO\\Ô¼µ©.ico"
+IDI_ICON20              ICON    DISCARDABLE     "res\\GuoQiICO\\°Í°Í¶àË¹.ico"
+IDI_ICON2               ICON    DISCARDABLE     "res\\GuoQiICO\\°¢¶û°ÍÄáÑÇ.ico"
+IDI_ICON199             ICON    DISCARDABLE     "res\\GuoQiICO\\Ó¢¹ú.ico"
+IDI_ICON198             ICON    DISCARDABLE     "res\\GuoQiICO\\Ó¢¸ñÀ¼.ico"
+IDI_ICON197             ICON    DISCARDABLE     "res\\GuoQiICO\\Ó¡¶ÈÄáÎ÷ÑÇ.ico"
+IDI_ICON196             ICON    DISCARDABLE     "res\\GuoQiICO\\Ó¡¶È.ico"
+IDI_ICON195             ICON    DISCARDABLE     "res\\GuoQiICO\\Òâ´óÀû.ico"
+IDI_ICON194             ICON    DISCARDABLE     "res\\GuoQiICO\\ÒÔÉ«ÁÐ.ico"
+IDI_ICON193             ICON    DISCARDABLE     "res\\GuoQiICO\\ÒÁÀÊ.ico"
+IDI_ICON192             ICON    DISCARDABLE     "res\\GuoQiICO\\ÒÁÀ­¿Ë.ico"
+IDI_ICON191             ICON    DISCARDABLE     "res\\GuoQiICO\\Ò²ÃÅ.ico"
+IDI_ICON190             ICON    DISCARDABLE     "res\\GuoQiICO\\ÑÇÃÀÄáÑÇ.ico"
+IDI_ICON19              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÄÃÅ.ico"
+IDI_ICON189             ICON    DISCARDABLE     "res\\GuoQiICO\\ÑÀÂò¼Ó.ico"
+IDI_ICON188             ICON    DISCARDABLE     "res\\GuoQiICO\\ÐðÀûÑÇ.ico"
+IDI_ICON187             ICON    DISCARDABLE     "res\\GuoQiICO\\ÐÙÑÀÀû.ico"
+IDI_ICON186             ICON    DISCARDABLE     "res\\GuoQiICO\\ÐÂÎ÷À¼.ico"
+IDI_ICON185             ICON    DISCARDABLE     "res\\GuoQiICO\\ÐÂ¼ÓÆÂ.ico"
+IDI_ICON184             ICON    DISCARDABLE     "res\\GuoQiICO\\Ïã¸Û.ico"
+IDI_ICON183             ICON    DISCARDABLE     "res\\GuoQiICO\\Ï£À°.ico"
+IDI_ICON182             ICON    DISCARDABLE     "res\\GuoQiICO\\Î÷ÈøÄ¦ÑÇ.ico"
+IDI_ICON181             ICON    DISCARDABLE     "res\\GuoQiICO\\Î÷°àÑÀ.ico"
+IDI_ICON180             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÚ×È±ð¿ËË¹Ì¹.ico"
+IDI_ICON18              ICON    DISCARDABLE     "res\\GuoQiICO\\°Ä´óÀûÑÇ.ico"
+IDI_ICON179             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÚÀ­¹ç.ico"
+IDI_ICON178             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÚ¿ËÀ¼.ico"
+IDI_ICON177             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÚ¸É´ï.ico"
+IDI_ICON176             ICON    DISCARDABLE     "res\\GuoQiICO\\ÎÄÀ³.ico"
+IDI_ICON175             ICON    DISCARDABLE     "res\\GuoQiICO\\Î¯ÄÚÈðÀ­.ico"
+IDI_ICON174             ICON    DISCARDABLE     "res\\GuoQiICO\\Î£µØÂíÀ­.ico"
+IDI_ICON173             ICON    DISCARDABLE     "res\\GuoQiICO\\ÍßÅ¬°¢Í¼.ico"
+IDI_ICON172             ICON    DISCARDABLE     "res\\GuoQiICO\\ÍÁ¿âÂüË¹Ì¹.ico"
+IDI_ICON171             ICON    DISCARDABLE     "res\\GuoQiICO\\ÍÁ¶úÆä.ico"
+IDI_ICON170             ICON    DISCARDABLE     "res\\GuoQiICO\\Í¼ÍßÂ¬.ico"
+IDI_ICON17              ICON    DISCARDABLE     "res\\GuoQiICO\\°ÂµØÀû.ico"
+IDI_ICON169             ICON    DISCARDABLE     "res\\GuoQiICO\\Í»ÄáË¹.ico"
+IDI_ICON168             ICON    DISCARDABLE     "res\\GuoQiICO\\ÌØÁ¢Äá´ïºÍ¶à°Í¸ç.ico"
+IDI_ICON167             ICON    DISCARDABLE     "res\\GuoQiICO\\ÌÀ¼Ó.ico"
+IDI_ICON166             ICON    DISCARDABLE     "res\\GuoQiICO\\Ì¹É£ÄáÑÇ.ico"
+IDI_ICON165             ICON    DISCARDABLE     "res\\GuoQiICO\\Ì©¹ú.ico"
+IDI_ICON164             ICON    DISCARDABLE     "res\\GuoQiICO\\Ì«Æ½Ñó¹²Í¬Ìå.ico"
+IDI_ICON163             ICON    DISCARDABLE     "res\\GuoQiICO\\Ëþ¼ª¿ËË¹Ì¹.ico"
+IDI_ICON162             ICON    DISCARDABLE     "res\\GuoQiICO\\Ë÷ÂíÀï.ico"
+IDI_ICON161             ICON    DISCARDABLE     "res\\GuoQiICO\\ËùÂÞÃÅÈºµº.ico"
+IDI_ICON160             ICON    DISCARDABLE     "res\\GuoQiICO\\ËÕÀïÄÏ.ico"
+IDI_ICON16              ICON    DISCARDABLE     "res\\GuoQiICO\\°²Ìá¹ÏºÍ°Í²¼´ï.ico"
+IDI_ICON159             ICON    DISCARDABLE     "res\\GuoQiICO\\ËÕµ¤.ico"
+IDI_ICON158             ICON    DISCARDABLE     "res\\GuoQiICO\\Ë¹ÍþÊ¿À¼.ico"
+IDI_ICON157             ICON    DISCARDABLE     "res\\GuoQiICO\\Ë¹ÂåÎÄÄáÑÇ.ico"
+IDI_ICON156             ICON    DISCARDABLE     "res\\GuoQiICO\\Ë¹Âå·¥¿Ë.ico"
+IDI_ICON155             ICON    DISCARDABLE     "res\\GuoQiICO\\Ë¹ÀïÀ¼¿¨.ico"
+IDI_ICON154             ICON    DISCARDABLE     "res\\GuoQiICO\\Ê¥ÎÄÉ­ÌØºÍ¸ñÁÖÄÉ¶¡Ë¹.ico"
+IDI_ICON153             ICON    DISCARDABLE     "res\\GuoQiICO\\Ê¥ÂíÁ¦Åµ.ico"
+IDI_ICON152             ICON    DISCARDABLE     "res\\GuoQiICO\\Ê¥Â¬Î÷ÑÇ.ico"
+IDI_ICON151             ICON    DISCARDABLE     "res\\GuoQiICO\\Ê¥»ù´ÄºÍÄáÎ¬Ë¹.ico"
+IDI_ICON150             ICON    DISCARDABLE     "res\\GuoQiICO\\Ê¥¶àÃÀºÍÆÕÁÖÎ÷±È.ico"
+IDI_ICON15              ICON    DISCARDABLE     "res\\GuoQiICO\\°²¸çÀ­.ico"
+IDI_ICON149             ICON    DISCARDABLE     "res\\GuoQiICO\\É³ÌØ°¢À­²®.ico"
+IDI_ICON148             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈûÉà¶û.ico"
+IDI_ICON147             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈûÆÖÂ·Ë¹.ico"
+IDI_ICON146             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈûÄÚ¼Ó¶û.ico"
+IDI_ICON145             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈûÀ­Àû°º.ico"
+IDI_ICON144             ICON    DISCARDABLE     "res\\GuoQiICO\\Èû¶ûÎ¬ÑÇ.ico"
+IDI_ICON143             ICON    DISCARDABLE     "res\\GuoQiICO\\Èø¶ûÍß¶à.ico"
+IDI_ICON142             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈðÊ¿.ico"
+IDI_ICON141             ICON    DISCARDABLE     "res\\GuoQiICO\\Èðµä.ico"
+IDI_ICON140             ICON    DISCARDABLE     "res\\GuoQiICO\\ÈÕ±¾.ico"
+IDI_ICON14              ICON    DISCARDABLE     "res\\GuoQiICO\\°²µÀ¶û.ico"
+IDI_ICON139             ICON    DISCARDABLE     "res\\GuoQiICO\\ÆÏÌÑÑÀ.ico"
+IDI_ICON138             ICON    DISCARDABLE     "res\\GuoQiICO\\ÅÁÀÍ.ico"
+IDI_ICON137             ICON    DISCARDABLE     "res\\GuoQiICO\\Å·ÖÞÁªÃË.ico"
+IDI_ICON136             ICON    DISCARDABLE     "res\\GuoQiICO\\Å²Íþ.ico"
+IDI_ICON135             ICON    DISCARDABLE     "res\\GuoQiICO\\ÄáÈÕÀûÑÇ.ico"
+IDI_ICON134             ICON    DISCARDABLE     "res\\GuoQiICO\\ÄáÈÕ¶û.ico"
+IDI_ICON133             ICON    DISCARDABLE     "res\\GuoQiICO\\Äá¼ÓÀ­¹Ï.ico"
+IDI_ICON132             ICON    DISCARDABLE     "res\\GuoQiICO\\Äá²´¶û.ico"
+IDI_ICON131             ICON    DISCARDABLE     "res\\GuoQiICO\\è§Â³.ico"
+IDI_ICON130             ICON    DISCARDABLE     "res\\GuoQiICO\\ÄÏ·Ç.ico"
+IDI_ICON13              ICON    DISCARDABLE     "res\\GuoQiICO\\°®É³ÄáÑÇ.ico"
+IDI_ICON129             ICON    DISCARDABLE     "res\\GuoQiICO\\ÄÉÃ×±ÈÑÇ.ico"
+IDI_ICON128             ICON    DISCARDABLE     "res\\GuoQiICO\\Ä«Î÷¸ç.ico"
+IDI_ICON127             ICON    DISCARDABLE     "res\\GuoQiICO\\ÄªÉ£±È¿Ë.ico"
+IDI_ICON126             ICON    DISCARDABLE     "res\\GuoQiICO\\Ä¦ÄÉ¸ç.ico"
+IDI_ICON125             ICON    DISCARDABLE     "res\\GuoQiICO\\Ä¦Âå¸ç.ico"
+IDI_ICON124             ICON    DISCARDABLE     "res\\GuoQiICO\\Ä¦¶û¶àÍß.ico"
+IDI_ICON123             ICON    DISCARDABLE     "res\\GuoQiICO\\Ãåµé.ico"
+IDI_ICON122             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃÜ¿ËÂÞÄáÎ÷ÑÇÁª°î.ico"
+IDI_ICON121             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃØÂ³.ico"
+IDI_ICON120             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃÏ¼ÓÀ­.ico"
+IDI_ICON12              ICON    DISCARDABLE     "res\\GuoQiICO\\°®¶ûÀ¼.ico"
+IDI_ICON119             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃÉ¹Å.ico"
+IDI_ICON118             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃÀ¹ú¹ú¼Ò×éÖ¯.ico"
+IDI_ICON117             ICON    DISCARDABLE     "res\\GuoQiICO\\ÃÀ¹ú.ico"
+IDI_ICON116             ICON    DISCARDABLE     "res\\GuoQiICO\\Ã«ÀïËþÄáÑÇ.ico"
+IDI_ICON115             ICON    DISCARDABLE     "res\\GuoQiICO\\Ã«ÀïÇóË¹.ico"
+IDI_ICON114             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂíÉÜ¶ûÈºµº.ico"
+IDI_ICON113             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂíÆä¶Ù.ico"
+IDI_ICON112             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂíÀï.ico"
+IDI_ICON111             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂíÀ´Î÷ÑÇ.ico"
+IDI_ICON110             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂíÀ­Î¬.ico"
+IDI_ICON11              ICON    DISCARDABLE     "res\\GuoQiICO\\°£Èû¶í±ÈÑÇ.ico"
+IDI_ICON109             ICON    DISCARDABLE     "res\\GuoQiICO\\Âí¶úËû.ico"
+IDI_ICON108             ICON    DISCARDABLE     "res\\GuoQiICO\\Âí¶û´ú·ò.ico"
+IDI_ICON107             ICON    DISCARDABLE     "res\\GuoQiICO\\Âí´ï¼ÓË¹¼Ó.ico"
+IDI_ICON106             ICON    DISCARDABLE     "res\\GuoQiICO\\ÂÞÂíÄáÑÇ.ico"
+IDI_ICON105             ICON    DISCARDABLE     "res\\GuoQiICO\\Â¬Íú´ï.ico"
+IDI_ICON104             ICON    DISCARDABLE     "res\\GuoQiICO\\Â¬É­±¤.ico"
+IDI_ICON103             ICON    DISCARDABLE     "res\\GuoQiICO\\ÁÐÖ§¶ØÊ¿µÇ.ico"
+IDI_ICON102             ICON    DISCARDABLE     "res\\GuoQiICO\\ÁªºÏ¹ú.ico"
+IDI_ICON101             ICON    DISCARDABLE     "res\\GuoQiICO\\Àû±ÈÑÇ.ico"
+IDI_ICON100             ICON    DISCARDABLE     "res\\GuoQiICO\\Àû±È¹ûÑÇ.ico"
+IDI_ICON10              ICON    DISCARDABLE     "res\\GuoQiICO\\°£¼°.ico"
+IDI_ICON1               ICON    DISCARDABLE     "res\\GuoQiICO\\ÖÐ¹ú.ico"
 IDI_UPDLL               ICON    DISCARDABLE     "res\\icos\\updll.ico"
 IDI_FATHER_ICON1        ICON    DISCARDABLE     "res\\remote.ico"
 IDI_SYSICO_010          ICON    DISCARDABLE     "res\\ImagIoc\\010.ico"
@@ -323,11 +323,11 @@ IDI_MGICON_D            ICON    DISCARDABLE     "res\\ImagIoc\\Icon_D.ico"
 IDI_WEL_COME            ICON    DISCARDABLE     "res\\GuoQiICO\\251.ico"
 IDI_shangx              ICON    DISCARDABLE     "res\\iconew\\bitbug_favicon (5).ico"
 IDI_reci                ICON    DISCARDABLE     "res\\ImagIoc\\243.ico"
-IDI_zhuji               ICON    DISCARDABLE     "res\\icos\\ä¸Šçº¿.ico"
+IDI_zhuji               ICON    DISCARDABLE     "res\\icos\\ÉÏÏß.ico"
 IDI_ICONSERT2           ICON    DISCARDABLE     "res\\ico2\\Servts2.ico"
 IDI_ICONSERT1           ICON    DISCARDABLE     "res\\ico2\\Servts1.ico"
 IDI_ICONSERT0           ICON    DISCARDABLE     "res\\ico2\\Servts0.ico"
-IDI_QQ                  ICON    DISCARDABLE     "res\\GuoQiICO\\è…¾è®¯qqå›¾æ ‡ä¸‹è½½8.ico"
+IDI_QQ                  ICON    DISCARDABLE     "res\\GuoQiICO\\ÌÚÑ¶qqÍ¼±êÏÂÔØ8.ico"
 IDI_ICON_QQ             ICON    DISCARDABLE     "res\\GuoQiICO\\QQ.ico"
 IDI_File                ICON    DISCARDABLE     "res\\iconew\\FILE.ico"
 IDI_Build               ICON    DISCARDABLE     "res\\iconew\\Build.ico"
@@ -348,13 +348,13 @@ IDI_SYSICO_001          ICON    DISCARDABLE     "res\\guoqiico\\idr_1.ico"
 IDI_MGICON_C            ICON    DISCARDABLE     "res\\ImagIoc\\Icon_C.ico"
 IDI_PRANK               ICON    DISCARDABLE     "res\\iconew\\Prank.ico"
 IDI_CHAT                ICON    DISCARDABLE     "res\\iconew\\chat.ico"
-IDI_XIAXIAN             ICON    DISCARDABLE     "res\\ä¸‹çº¿.ico"
-IDI_SHENGMING           ICON    DISCARDABLE     "res\\å£°æ˜Ž.ico"
-IDI_SHANGXIAN           ICON    DISCARDABLE     "res\\ä¸Šçº¿.ico"
-IDI_CHONGFUSHANGXIAN    ICON    DISCARDABLE     "res\\é‡å¤ä¸Šçº¿.ico"
+IDI_XIAXIAN             ICON    DISCARDABLE     "res\\ÏÂÏß.ico"
+IDI_SHENGMING           ICON    DISCARDABLE     "res\\ÉùÃ÷.ico"
+IDI_SHANGXIAN           ICON    DISCARDABLE     "res\\ÉÏÏß.ico"
+IDI_CHONGFUSHANGXIAN    ICON    DISCARDABLE     "res\\ÖØ¸´ÉÏÏß.ico"
 IDI_BE_CAREFUL1         ICON    DISCARDABLE     "res\\guoqiico\\be_caref.ico"
-IDI_JIANTINGSHIBAI      ICON    DISCARDABLE     "res\\ç›‘å¬å¤±è´¥.ico"
-IDI_JIANTINGCHENGGONG   ICON    DISCARDABLE     "res\\ç›‘å¬æˆåŠŸ.ico"
+IDI_JIANTINGSHIBAI      ICON    DISCARDABLE     "res\\¼àÌýÊ§°Ü.ico"
+IDI_JIANTINGCHENGGONG   ICON    DISCARDABLE     "res\\¼àÌý³É¹¦.ico"
 IDR_MAINFRAME           ICON    DISCARDABLE     "res\\GuoQiICO\\1.ico"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -364,9 +364,9 @@ IDR_MAINFRAME           ICON    DISCARDABLE     "res\\GuoQiICO\\1.ico"
 
 IDR_MAINFRAME MENU DISCARDABLE 
 BEGIN
-    MENUITEM "  è®¾ç½®  ",                    IDM_SETTING_
-    MENUITEM "  ç”Ÿæˆ  ",                    IDM_BUILD_
-    MENUITEM "  å…³äºŽ  ",                    ID_APP_ABOUT
+    MENUITEM "  ÉèÖÃ  ",                    IDM_SETTING_
+    MENUITEM "  Éú³É  ",                    IDM_BUILD_
+    MENUITEM "  ¹ØÓÚ  ",                    ID_APP_ABOUT
 END
 
 IDR_LIST MENU DISCARDABLE 
@@ -374,69 +374,70 @@ BEGIN
     POPUP "MENU"
     BEGIN
         MENUITEM SEPARATOR
-        POPUP "ä¸»è¦åŠŸèƒ½"
+        POPUP "Ö÷Òª¹¦ÄÜ"
         BEGIN
-            MENUITEM "æ–‡ä»¶ç®¡ç†",                    IDM_FILEMANAGER
-            MENUITEM "å±å¹•æŽ§åˆ¶",                    IDM_SCREENSPY
-            MENUITEM "ä¸»æœºç®¡ç†",                    IDM_SYSINFO
-            MENUITEM "æœåŠ¡ç®¡ç†",                    IDM_SERMANAGER
-            MENUITEM "ç³»ç»Ÿç®¡ç†",                    IDM_SYSTEM
-            MENUITEM "é”®ç›˜è®°å½•",                    IDM_KEYBOARD
+            MENUITEM "ÎÄ¼þ¹ÜÀí",                    IDM_FILEMANAGER
+            MENUITEM "ÆÁÄ»¿ØÖÆ",                    IDM_SCREENSPY
+            MENUITEM "Ö÷»ú¹ÜÀí",                    IDM_SYSINFO
+            MENUITEM "·þÎñ¹ÜÀí",                    IDM_SERMANAGER
+            MENUITEM "ÏµÍ³¹ÜÀí",                    IDM_SYSTEM
+            MENUITEM "¼üÅÌ¼ÇÂ¼",                    IDM_KEYBOARD
         END
-        MENUITEM "è¯­éŸ³ç›‘å¬",                    IDM_AUDIO_LISTEN
-        MENUITEM "è¿œç¨‹ç»ˆç«¯",                    IDM_REMOTESHELL
-        MENUITEM "è§†é¢‘æŸ¥çœ‹",                    IDM_WEBCAM
-        MENUITEM "ä»£ç†æ˜ å°„",                    ID_MENUITEM_PROXY_MAP
+        MENUITEM "ÌáÈ¡ T G",                    IDM_GET_TELEGRAM
+        MENUITEM "ÓïÒô¼àÌý",                    IDM_AUDIO_LISTEN
+        MENUITEM "Ô¶³ÌÖÕ¶Ë",                    IDM_REMOTESHELL
+        MENUITEM "ÊÓÆµ²é¿´",                    IDM_WEBCAM
+        MENUITEM "´úÀíÓ³Éä",                    ID_MENUITEM_PROXY_MAP
         MENUITEM SEPARATOR
-        MENUITEM "å†™å…¥å¯åŠ¨",                    IDM_START
-        MENUITEM "æŸ¥æ³¨å†Œè¡¨",                    IDM_REGEDIT
-        POPUP "å…¶ä»–åŠŸèƒ½"
+        MENUITEM "Ð´ÈëÆô¶¯",                    IDM_START
+        MENUITEM "²é×¢²á±í",                    IDM_REGEDIT
+        POPUP "ÆäËû¹¦ÄÜ"
         BEGIN
-            MENUITEM "å…¨å±ä¿®å¤",                    ID_Screen
-            MENUITEM "æ¶ˆæ¯å‘é€",                    IDM_SHOWMSG
-            MENUITEM " åˆ é™¤  IE",                   ID_IEQC
-            MENUITEM "è¿œç¨‹äº¤è°ˆ",                    IDM_CHAT
-            MENUITEM "è¿œç¨‹å®šä½",                    IDM_MAP
-            MENUITEM "å¥½å‹ä¿¡æ¯",                    IDM_QQINFO
+            MENUITEM "È«ÆÁÐÞ¸´",                    ID_Screen
+            MENUITEM "ÏûÏ¢·¢ËÍ",                    IDM_SHOWMSG
+            MENUITEM " É¾³ý  IE",                   ID_IEQC
+            MENUITEM "Ô¶³Ì½»Ì¸",                    IDM_CHAT
+            MENUITEM "Ô¶³Ì¶¨Î»",                    IDM_MAP
+            MENUITEM "ºÃÓÑÐÅÏ¢",                    IDM_QQINFO
         END
-        MENUITEM "æå‡æƒé™",                    IDM_Elevate_Privileges
-        MENUITEM "é‡å¯Exp",                     ID_EXP_ReStart
+        MENUITEM "ÌáÉýÈ¨ÏÞ",                    IDM_Elevate_Privileges
+        MENUITEM "ÖØÆôExp",                     ID_EXP_ReStart
         MENUITEM SEPARATOR
-        POPUP "å¸¸ç”¨é™„åŠ "
+        POPUP "³£ÓÃ¸½¼Ó"
         BEGIN
-            MENUITEM "ä¸‹è½½æ‰§è¡Œ",                    IDM_DOWNEXEC
-            MENUITEM "æ­£å¸¸è¿è¡Œ",                    IDM_START_SHOW
-            MENUITEM "éšè—è¿è¡Œ",                    IDM_START_HIDE
+            MENUITEM "ÏÂÔØÖ´ÐÐ",                    IDM_DOWNEXEC
+            MENUITEM "Õý³£ÔËÐÐ",                    IDM_START_SHOW
+            MENUITEM "Òþ²ØÔËÐÐ",                    IDM_START_HIDE
             MENUITEM SEPARATOR
-            MENUITEM "æ˜¾ç¤ºè®¿é—®",                    IDM_OPEN_URL_SHOW
-            MENUITEM "éšè—è®¿é—®",                    IDM_OPEN_URL_HIDE
+            MENUITEM "ÏÔÊ¾·ÃÎÊ",                    IDM_OPEN_URL_SHOW
+            MENUITEM "Òþ²Ø·ÃÎÊ",                    IDM_OPEN_URL_HIDE
             MENUITEM SEPARATOR
-            MENUITEM "ç­›é€‰è¿›ç¨‹",                    IDM_FIND_PROCESS
-            MENUITEM "ç­›é€‰çª—å£",                    IDM_FINDWINDOWS
-            MENUITEM "é‡ç½®ç­›é€‰",                    ID_CHONGZHI
+            MENUITEM "É¸Ñ¡½ø³Ì",                    IDM_FIND_PROCESS
+            MENUITEM "É¸Ñ¡´°¿Ú",                    IDM_FINDWINDOWS
+            MENUITEM "ÖØÖÃÉ¸Ñ¡",                    ID_CHONGZHI
             MENUITEM SEPARATOR
-            MENUITEM "æ›´æ”¹å¤‡æ³¨",                    IDM_RENAME_REMARK
-            MENUITEM "æ›´æ”¹åˆ†ç»„",                    IDM_CHANGEGROUP
+            MENUITEM "¸ü¸Ä±¸×¢",                    IDM_RENAME_REMARK
+            MENUITEM "¸ü¸Ä·Ö×é",                    IDM_CHANGEGROUP
             MENUITEM SEPARATOR
-            MENUITEM "æ¸…ç†æ—¥å¿—",                    IDM_CLEANEVENT
+            MENUITEM "ÇåÀíÈÕÖ¾",                    IDM_CLEANEVENT
             MENUITEM SEPARATOR
-            MENUITEM "å¤åˆ¶ä¸»æœº IP ",                IDM_IP
-            MENUITEM "å¤åˆ¶ä¸»æœºå¤‡æ³¨",                IDM_BEIZHU
-            MENUITEM "å¤åˆ¶åœ°ç†ä½ç½®",                IDM_DILIXINXI
-            MENUITEM "å¤åˆ¶æ‰€æœ‰ä¿¡æ¯",                IDM_ALL
+            MENUITEM "¸´ÖÆÖ÷»ú IP ",                IDM_IP
+            MENUITEM "¸´ÖÆÖ÷»ú±¸×¢",                IDM_BEIZHU
+            MENUITEM "¸´ÖÆµØÀíÎ»ÖÃ",                IDM_DILIXINXI
+            MENUITEM "¸´ÖÆËùÓÐÐÅÏ¢",                IDM_ALL
         END
-        POPUP "ä¼šè¯ç®¡ç†"
+        POPUP "»á»°¹ÜÀí"
         BEGIN
-            MENUITEM "å¿ƒè·³æ£€æµ‹",                    IDM_RESTART
-            MENUITEM "å¸è½½",                        IDM_REMOVE
+            MENUITEM "ÐÄÌø¼ì²â",                    IDM_RESTART
+            MENUITEM "Ð¶ÔØ",                        IDM_REMOVE
             MENUITEM SEPARATOR
-            MENUITEM "æ³¨é”€",                        IDM_LOGOFF
-            MENUITEM "é‡å¯",                        IDM_REBOOT
-            MENUITEM "å…³æœº",                        IDM_SHUTDOWN
+            MENUITEM "×¢Ïú",                        IDM_LOGOFF
+            MENUITEM "ÖØÆô",                        IDM_REBOOT
+            MENUITEM "¹Ø»ú",                        IDM_SHUTDOWN
         END
         MENUITEM SEPARATOR
-        MENUITEM "é€‰æ‹©å…¨éƒ¨",                    IDM_SELECT_ALL
-        MENUITEM "å–æ¶ˆé€‰æ‹©",                    IDM_UNSELECT_ALL
+        MENUITEM "Ñ¡ÔñÈ«²¿",                    IDM_SELECT_ALL
+        MENUITEM "È¡ÏûÑ¡Ôñ",                    IDM_UNSELECT_ALL
     END
 END
 
@@ -444,21 +445,21 @@ IDR_LOCAL_VIEW MENU DISCARDABLE
 BEGIN
     POPUP "Lview"
     BEGIN
-        MENUITEM "å¤§å›¾æ ‡",                      IDM_LOCAL_BIGICON
-        MENUITEM "å°å›¾æ ‡",                      IDM_LOCAL_SMALLICON
-        MENUITEM "åˆ—è¡¨",                        IDM_LOCAL_LIST
-        MENUITEM "è¯¦ç»†ä¿¡æ¯",                    IDM_LOCAL_REPORT
+        MENUITEM "´óÍ¼±ê",                      IDM_LOCAL_BIGICON
+        MENUITEM "Ð¡Í¼±ê",                      IDM_LOCAL_SMALLICON
+        MENUITEM "ÁÐ±í",                        IDM_LOCAL_LIST
+        MENUITEM "ÏêÏ¸ÐÅÏ¢",                    IDM_LOCAL_REPORT
     END
 END
 
 IDR_REMOTE_VIEW MENU DISCARDABLE 
 BEGIN
-    POPUP "æŸ¥çœ‹"
+    POPUP "²é¿´"
     BEGIN
-        MENUITEM "å¤§å›¾æ ‡",                      IDM_REMOTE_BIGICON
-        MENUITEM "å°å›¾æ ‡",                      IDM_REMOTE_SMALLICON
-        MENUITEM "åˆ—è¡¨",                        IDM_REMOTE_LIST
-        MENUITEM "è¯¦ç»†ä¿¡æ¯",                    IDM_REMOTE_REPORT
+        MENUITEM "´óÍ¼±ê",                      IDM_REMOTE_BIGICON
+        MENUITEM "Ð¡Í¼±ê",                      IDM_REMOTE_SMALLICON
+        MENUITEM "ÁÐ±í",                        IDM_REMOTE_LIST
+        MENUITEM "ÏêÏ¸ÐÅÏ¢",                    IDM_REMOTE_REPORT
     END
 END
 
@@ -466,11 +467,11 @@ IDR_PSLIST MENU DISCARDABLE
 BEGIN
     POPUP "PSLIST"
     BEGIN
-        MENUITEM "åˆ·æ–°è¿›ç¨‹(&R)",                IDM_REFRESHPSLIST
-        MENUITEM "å†»ç»“è¿›ç¨‹(&X)",                IDM_dongjie
-        MENUITEM "è§£å†»è¿›ç¨‹(&B)",                IDM_jiedong
-        MENUITEM "ç»“æŸè¿›ç¨‹(&T)",                IDM_KILLPROCESS
-        MENUITEM "åˆ é™¤æ–‡ä»¶(&D)",                IDM_KILLDELETE
+        MENUITEM "Ë¢ÐÂ½ø³Ì(&R)",                IDM_REFRESHPSLIST
+        MENUITEM "¶³½á½ø³Ì(&X)",                IDM_dongjie
+        MENUITEM "½â¶³½ø³Ì(&B)",                IDM_jiedong
+        MENUITEM "½áÊø½ø³Ì(&T)",                IDM_KILLPROCESS
+        MENUITEM "É¾³ýÎÄ¼þ(&D)",                IDM_KILLDELETE
     END
 END
 
@@ -478,20 +479,20 @@ IDR_MINIMIZE MENU DISCARDABLE
 BEGIN
     POPUP "MINIMIZE"
     BEGIN
-        MENUITEM "éšè—",                        IDM_HIDE
-        MENUITEM "æ˜¾ç¤º",                        IDM_SHOW
-        MENUITEM "é”å®š",                        IDM_LOCK
-        MENUITEM "é€€å‡º",                        IDM_EXIT
+        MENUITEM "Òþ²Ø",                        IDM_HIDE
+        MENUITEM "ÏÔÊ¾",                        IDM_SHOW
+        MENUITEM "Ëø¶¨",                        IDM_LOCK
+        MENUITEM "ÍË³ö",                        IDM_EXIT
     END
 END
 
 IDR_MENU_REPORT MENU DISCARDABLE 
 BEGIN
-    POPUP "å³é”®èœå•"
+    POPUP "ÓÒ¼ü²Ëµ¥"
     BEGIN
-        MENUITEM "å¼€å§‹",                        IDM_START
-        MENUITEM "åœæ­¢",                        IDM_STOP
-        MENUITEM "åˆ é™¤",                        IDM_DELETE_LIST
+        MENUITEM "¿ªÊ¼",                        IDM_START
+        MENUITEM "Í£Ö¹",                        IDM_STOP
+        MENUITEM "É¾³ý",                        IDM_DELETE_LIST
     END
 END
 
@@ -499,8 +500,8 @@ IDR_ADSL_COPY MENU DISCARDABLE
 BEGIN
     POPUP "ADSLCOPY"
     BEGIN
-        MENUITEM "åˆ·æ–°åˆ—è¡¨(&R)",                IDM_REFRESHDIALUPASS
-        MENUITEM "å¤åˆ¶æ•°æ®(&C)",                IDM_ADSL_SAVE
+        MENUITEM "Ë¢ÐÂÁÐ±í(&R)",                IDM_REFRESHDIALUPASS
+        MENUITEM "¸´ÖÆÊý¾Ý(&C)",                IDM_ADSL_SAVE
     END
 END
 
@@ -508,12 +509,12 @@ IDR_WLIST MENU DISCARDABLE
 BEGIN
     POPUP "WLIST"
     BEGIN
-        MENUITEM "åˆ·æ–°æ•°æ®(&R)",                IDM_REFRESHPSLIST
+        MENUITEM "Ë¢ÐÂÊý¾Ý(&R)",                IDM_REFRESHPSLIST
         MENUITEM SEPARATOR
-        MENUITEM "æ–­å¼€è¿žæŽ¥(&U)",                IDM_DISCONNECT_USER
-        MENUITEM "æ³¨é”€ç”¨æˆ·(&L)",                IDM_LOGOFF_USER
+        MENUITEM "¶Ï¿ªÁ¬½Ó(&U)",                IDM_DISCONNECT_USER
+        MENUITEM "×¢ÏúÓÃ»§(&L)",                IDM_LOGOFF_USER
         MENUITEM SEPARATOR
-        MENUITEM "å¤åˆ¶æ•°æ®(&C)",                IDM_COPY
+        MENUITEM "¸´ÖÆÊý¾Ý(&C)",                IDM_COPY
     END
 END
 
@@ -521,15 +522,15 @@ IDR_SLIST MENU DISCARDABLE
 BEGIN
     POPUP "SLIST"
     BEGIN
-        MENUITEM "åˆ·æ–°æ•°æ®(&R)",                IDM_REFRESHPSLIST
+        MENUITEM "Ë¢ÐÂÊý¾Ý(&R)",                IDM_REFRESHPSLIST
         MENUITEM SEPARATOR
-        MENUITEM "å¯ç”¨ç”¨æˆ·(&A)",                IDM_ACTIVE_USER
-        MENUITEM "ç¦ç”¨ç”¨æˆ·(&E)",                IDM_DISABLEUSER
+        MENUITEM "ÆôÓÃÓÃ»§(&A)",                IDM_ACTIVE_USER
+        MENUITEM "½ûÓÃÓÃ»§(&E)",                IDM_DISABLEUSER
         MENUITEM SEPARATOR
-        MENUITEM "ä¿®æ”¹å¯†ç (&P)",                IDM_CHANGEPASSWORD
-        MENUITEM "åˆ é™¤ç”¨æˆ·(&D)",                IDM_DELUSER
+        MENUITEM "ÐÞ¸ÄÃÜÂë(&P)",                IDM_CHANGEPASSWORD
+        MENUITEM "É¾³ýÓÃ»§(&D)",                IDM_DELUSER
         MENUITEM SEPARATOR
-        MENUITEM "å¤åˆ¶æ•°æ®(&C)",                IDM_COPY
+        MENUITEM "¸´ÖÆÊý¾Ý(&C)",                IDM_COPY
     END
 END
 
@@ -537,8 +538,8 @@ IDR_ILIST MENU DISCARDABLE
 BEGIN
     POPUP "ILIST"
     BEGIN
-        MENUITEM "åˆ·æ–°æ•°æ®(&R)",                IDM_REFRESHPSLIST
-        MENUITEM "å¤åˆ¶æ•°æ®(&C)",                IDM_COPY
+        MENUITEM "Ë¢ÐÂÊý¾Ý(&R)",                IDM_REFRESHPSLIST
+        MENUITEM "¸´ÖÆÊý¾Ý(&C)",                IDM_COPY
     END
 END
 
@@ -546,14 +547,14 @@ IDR_WINDOW_LIST MENU DISCARDABLE
 BEGIN
     POPUP "PSWINDOW"
     BEGIN
-        MENUITEM "åˆ·æ–°åˆ—è¡¨(&R)",                ID_WINDOW_REFLUSH
+        MENUITEM "Ë¢ÐÂÁÐ±í(&R)",                ID_WINDOW_REFLUSH
         MENUITEM SEPARATOR
-        MENUITEM "éšè—çª—å£(&H)",                ID_WINDOW_HIDE
-        MENUITEM "æ˜¾ç¤ºçª—å£(&S)",                ID_WINDOW_RETURN
-        MENUITEM "å…³é—­çª—å£(&C)",                ID_WINDOW_CLOST
+        MENUITEM "Òþ²Ø´°¿Ú(&H)",                ID_WINDOW_HIDE
+        MENUITEM "ÏÔÊ¾´°¿Ú(&S)",                ID_WINDOW_RETURN
+        MENUITEM "¹Ø±Õ´°¿Ú(&C)",                ID_WINDOW_CLOST
         MENUITEM SEPARATOR
-        MENUITEM "çª—å£æœ€å°åŒ–(&I)",              ID_WINDOW_MIN
-        MENUITEM "çª—å£æœ€å¤§åŒ–(&A)",              ID_WINDOW_MAX
+        MENUITEM "´°¿Ú×îÐ¡»¯(&I)",              ID_WINDOW_MIN
+        MENUITEM "´°¿Ú×î´ó»¯(&A)",              ID_WINDOW_MAX
     END
 END
 
@@ -561,9 +562,9 @@ IDR_REGL_MENU MENU DISCARDABLE
 BEGIN
     POPUP "reg_list"
     BEGIN
-        MENUITEM "ç¼–è¾‘",                        IDM_REGL_EDIT
-        MENUITEM "åˆ é™¤",                        IDM_REGL_DELKEY
-        POPUP "æ–°å»º"
+        MENUITEM "±à¼­",                        IDM_REGL_EDIT
+        MENUITEM "É¾³ý",                        IDM_REGL_DELKEY
+        POPUP "ÐÂ½¨"
         BEGIN
             MENUITEM "String",                      IDM_REGL_STR
             MENUITEM "DWORD",                       IDM_REGL_DWORD
@@ -576,8 +577,8 @@ IDR_REGT_MENU MENU DISCARDABLE
 BEGIN
     POPUP "reg_tree"
     BEGIN
-        MENUITEM "åˆ é™¤",                        IDM_REGT_DEL
-        MENUITEM "æ–°å»º",                        IDM_REGT_CREAT
+        MENUITEM "É¾³ý",                        IDM_REGT_DEL
+        MENUITEM "ÐÂ½¨",                        IDM_REGT_CREAT
     END
 END
 
@@ -585,30 +586,30 @@ IDR_LOG MENU DISCARDABLE
 BEGIN
     POPUP "LOGLIST"
     BEGIN
-        MENUITEM "åˆ é™¤é€‰ä¸­",                    IDM_EVENT_DELETE
-        MENUITEM "æ¸…é™¤å…¨éƒ¨",                    IDM_ALL_DELETE
-        MENUITEM "å¤åˆ¶é€‰ä¸­",                    IDM_EVENT_COPY
-        MENUITEM "ä¿å­˜é€‰ä¸­",                    IDM_EVENT_SAVE
+        MENUITEM "É¾³ýÑ¡ÖÐ",                    IDM_EVENT_DELETE
+        MENUITEM "Çå³ýÈ«²¿",                    IDM_ALL_DELETE
+        MENUITEM "¸´ÖÆÑ¡ÖÐ",                    IDM_EVENT_COPY
+        MENUITEM "±£´æÑ¡ÖÐ",                    IDM_EVENT_SAVE
     END
 END
 
 IDR_SLIST1 MENU DISCARDABLE 
 BEGIN
-    POPUP "èœå•"
+    POPUP "²Ëµ¥"
     BEGIN
-        MENUITEM "åˆ·æ–°æœåŠ¡",                    ID_MENU_REF
+        MENUITEM "Ë¢ÐÂ·þÎñ",                    ID_MENU_REF
         MENUITEM SEPARATOR
-        MENUITEM "å¯åŠ¨æœåŠ¡",                    ID_MENU_START
-        MENUITEM "åœæ­¢æœåŠ¡",                    ID_MENU_STOP
+        MENUITEM "Æô¶¯·þÎñ",                    ID_MENU_START
+        MENUITEM "Í£Ö¹·þÎñ",                    ID_MENU_STOP
         MENUITEM SEPARATOR
-        MENUITEM "åˆ é™¤æœåŠ¡",                    ID_MENU_DEL
-        MENUITEM "åˆ›å»ºæœåŠ¡",                    ID_MENU_CREATE, GRAYED
+        MENUITEM "É¾³ý·þÎñ",                    ID_MENU_DEL
+        MENUITEM "´´½¨·þÎñ",                    ID_MENU_CREATE, GRAYED
         MENUITEM SEPARATOR
-        POPUP "å¯åŠ¨æ–¹å¼"
+        POPUP "Æô¶¯·½Ê½"
         BEGIN
-            MENUITEM "è‡ªåŠ¨",                        ID_MENU_START_AUTO
-            MENUITEM "æ‰‹åŠ¨",                        ID_MENU_START_MANAGER
-            MENUITEM "ç¦ç”¨",                        ID_MENU_START_DISABLE
+            MENUITEM "×Ô¶¯",                        ID_MENU_START_AUTO
+            MENUITEM "ÊÖ¶¯",                        ID_MENU_START_MANAGER
+            MENUITEM "½ûÓÃ",                        ID_MENU_START_DISABLE
         END
         MENUITEM SEPARATOR
     END
@@ -618,12 +619,12 @@ IDR_MENU1 MENU DISCARDABLE
 BEGIN
     POPUP "11111"
     BEGIN
-        MENUITEM "åˆ·æ–°åˆ—è¡¨(&R)",                ID_MENUITEM40015
-        MENUITEM "å¤åˆ¶æ•°æ®(&C)",                ID_MENUITEM40016
-        MENUITEM "å¸è½½ç¨‹åº(&U)",                ID_MENUITEM40017
-        MENUITEM "æœ¬åœ°æ‰“å¼€(&L)",                ID_MENUITEM40018
-        MENUITEM "ç»“æŸè¿›ç¨‹(&K)",                ID_MENUITEM40019
-        MENUITEM "åˆ é™¤æ–‡ä»¶(&D)",                ID_MENUITEM40020
+        MENUITEM "Ë¢ÐÂÁÐ±í(&R)",                ID_MENUITEM40015
+        MENUITEM "¸´ÖÆÊý¾Ý(&C)",                ID_MENUITEM40016
+        MENUITEM "Ð¶ÔØ³ÌÐò(&U)",                ID_MENUITEM40017
+        MENUITEM "±¾µØ´ò¿ª(&L)",                ID_MENUITEM40018
+        MENUITEM "½áÊø½ø³Ì(&K)",                ID_MENUITEM40019
+        MENUITEM "É¾³ýÎÄ¼þ(&D)",                ID_MENUITEM40020
     END
 END
 
@@ -631,28 +632,28 @@ IDR_FILEMANAGER MENU DISCARDABLE
 BEGIN
     POPUP "FileManger"
     BEGIN
-        MENUITEM "åˆ·æ–°(&R)",                    IDM_REFRESH
-        MENUITEM "ä¸‹è½½(&T)",                    IDM_TRANSFER_R
-        MENUITEM "ä¸Šä¼ (&K)",                    IDM_TRANSFER_S
-        MENUITEM "æ˜¾ç¤ºè¿è¡Œ(&S)",                IDM_REMOTE_OPEN_SHOW
-        MENUITEM "éšè—è¿è¡Œ(&H)",                IDM_REMOTE_OPEN_HIDE
-        MENUITEM "ææƒè¿è¡Œ(&A)",                IDM_USE_ADMIN
+        MENUITEM "Ë¢ÐÂ(&R)",                    IDM_REFRESH
+        MENUITEM "ÏÂÔØ(&T)",                    IDM_TRANSFER_R
+        MENUITEM "ÉÏ´«(&K)",                    IDM_TRANSFER_S
+        MENUITEM "ÏÔÊ¾ÔËÐÐ(&S)",                IDM_REMOTE_OPEN_SHOW
+        MENUITEM "Òþ²ØÔËÐÐ(&H)",                IDM_REMOTE_OPEN_HIDE
+        MENUITEM "ÌáÈ¨ÔËÐÐ(&A)",                IDM_USE_ADMIN
         MENUITEM SEPARATOR
-        MENUITEM "åŽ‹ç¼©æ–‡ä»¶",                    IDM_COMPRESS
-        MENUITEM "è§£åŽ‹æ–‡ä»¶",                    IDM_UNCOMPRESS
-        MENUITEM "åˆ é™¤(&D)",                    IDM_DELETE
-        MENUITEM "é‡å‘½å(&R)",                  IDM_RENAME
-        MENUITEM "æ–°å»ºæ–‡ä»¶å¤¹(&N)",              IDM_NEWFOLDER
-        MENUITEM "å±žæ€§",                        IDM_GET_FILEINFO
+        MENUITEM "Ñ¹ËõÎÄ¼þ",                    IDM_COMPRESS
+        MENUITEM "½âÑ¹ÎÄ¼þ",                    IDM_UNCOMPRESS
+        MENUITEM "É¾³ý(&D)",                    IDM_DELETE
+        MENUITEM "ÖØÃüÃû(&R)",                  IDM_RENAME
+        MENUITEM "ÐÂ½¨ÎÄ¼þ¼Ð(&N)",              IDM_NEWFOLDER
+        MENUITEM "ÊôÐÔ",                        IDM_GET_FILEINFO
     END
 END
 
 IDR_TabCtrl MENU DISCARDABLE 
 BEGIN
-    POPUP "åˆ†ç»„ç®¡ç†"
+    POPUP "·Ö×é¹ÜÀí"
     BEGIN
-        MENUITEM "(T)æ·»åŠ åˆ†ç»„",                 ID_AddGroup
-        MENUITEM "(D)åˆ é™¤åˆ†ç»„",                 ID_DelGroup
+        MENUITEM "(T)Ìí¼Ó·Ö×é",                 ID_AddGroup
+        MENUITEM "(D)É¾³ý·Ö×é",                 ID_DelGroup
     END
 END
 
@@ -664,18 +665,18 @@ END
 
 IDD_TRANSFERMODE_DLG DIALOG DISCARDABLE  0, 0, 371, 75
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "ç¡®è®¤æ–‡ä»¶æ›¿æ¢"
-FONT 9, "å®‹ä½“"
+CAPTION "È·ÈÏÎÄ¼þÌæ»»"
+FONT 9, "ËÎÌå"
 BEGIN
     GROUPBOX        "",IDC_CHUANSHU,6,2,359,66
     LTEXT           "Tips",IDC_TIPS,13,13,342,23
-    PUSHBUTTON      "è¦†ç›–",IDC_OVERWRITE,12,42,43,14
-    PUSHBUTTON      "ç»­ä¼ ",IDC_ADDITION,113,42,43,14
-    PUSHBUTTON      "è·³è¿‡",IDC_JUMP,218,42,43,14
-    PUSHBUTTON      "å…¨éƒ¨è¦†ç›–",IDC_OVERWRITE_ALL,63,42,43,14
-    PUSHBUTTON      "å…¨éƒ¨ç»­ä¼ ",IDC_ADDITION_ALL,166,42,43,14
-    PUSHBUTTON      "å…¨éƒ¨è·³è¿‡",IDC_JUMP_ALL,267,42,43,14
-    PUSHBUTTON      "å–æ¶ˆ",IDC_CANCEL,316,42,43,14
+    PUSHBUTTON      "¸²¸Ç",IDC_OVERWRITE,12,42,43,14
+    PUSHBUTTON      "Ðø´«",IDC_ADDITION,113,42,43,14
+    PUSHBUTTON      "Ìø¹ý",IDC_JUMP,218,42,43,14
+    PUSHBUTTON      "È«²¿¸²¸Ç",IDC_OVERWRITE_ALL,63,42,43,14
+    PUSHBUTTON      "È«²¿Ðø´«",IDC_ADDITION_ALL,166,42,43,14
+    PUSHBUTTON      "È«²¿Ìø¹ý",IDC_JUMP_ALL,267,42,43,14
+    PUSHBUTTON      "È¡Ïû",IDC_CANCEL,316,42,43,14
 END
 
 IDD_SHELL DIALOG DISCARDABLE  0, 0, 331, 203
@@ -691,174 +692,174 @@ IDD_SCREENSPY DIALOG DISCARDABLE  0, 0, 665, 314
 STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
     WS_THICKFRAME
 CAPTION "Dialog"
-FONT 9, "å®‹ä½“"
+FONT 9, "ËÎÌå"
 BEGIN
 END
 
 IDD_MSGBOX DIALOG DISCARDABLE  0, 0, 255, 227
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "æ¶ˆæ¯å¯¹è¯"
-FONT 9, "å®‹ä½“"
+CAPTION "ÏûÏ¢¶Ô»°"
+FONT 9, "ËÎÌå"
 BEGIN
     CONTROL         "",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,27,25,16,8
     CONTROL         "",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,80,25,16,8
     CONTROL         "",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,133,25,16,8
     CONTROL         "",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,188,25,16,8
-    CONTROL         "ç¡®å®š",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON | 
+    CONTROL         "È·¶¨",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON | 
                     WS_GROUP,23,67,28,10
-    CONTROL         "å¸®åŠ©",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON,63,67,29,
+    CONTROL         "°ïÖú",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON,63,67,29,
                     10
-    CONTROL         "æ˜¯|å¦|å–æ¶ˆ",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON,101,
+    CONTROL         "ÊÇ|·ñ|È¡Ïû",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON,101,
                     83,52,10
-    CONTROL         "æ˜¯|å¦",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,101,67,32,
+    CONTROL         "ÊÇ|·ñ",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,101,67,32,
                     10
-    CONTROL         "å–æ¶ˆ|é‡è¯•|ç»§ç»­",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON,
+    CONTROL         "È¡Ïû|ÖØÊÔ|¼ÌÐø",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON,
                     23,83,68,10
-    CONTROL         "ç¡®å®š|å–æ¶ˆ",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,165,
+    CONTROL         "È·¶¨|È¡Ïû",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,165,
                     67,48,10
-    CONTROL         "ç»ˆæ­¢|é‡è¯•|å¿½ç•¥",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON,
+    CONTROL         "ÖÕÖ¹|ÖØÊÔ|ºöÂÔ",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON,
                     165,83,67,10
-    GROUPBOX        "å›¾æ ‡",IDC_STATIC,7,7,241,40
+    GROUPBOX        "Í¼±ê",IDC_STATIC,7,7,241,40
     ICON            "",IDC_STATIC_ICON1,46,17,21,21,SS_NOTIFY
     ICON            "",IDC_STATIC_ICON2,99,18,21,21,SS_NOTIFY
     ICON            "",IDC_STATIC_ICON3,152,18,21,21,SS_NOTIFY
     ICON            "",IDC_STATIC_ICON4,207,18,21,21,SS_NOTIFY
-    GROUPBOX        "æŒ‰é’®",IDC_STATIC,7,53,241,48
-    GROUPBOX        "æ–‡æœ¬",IDC_STATIC,7,108,241,95
-    LTEXT           "æ ‡é¢˜:",IDC_STATIC,13,123,21,8
-    LTEXT           "å†…å®¹:",IDC_STATIC,13,143,21,8
+    GROUPBOX        "°´Å¥",IDC_STATIC,7,53,241,48
+    GROUPBOX        "ÎÄ±¾",IDC_STATIC,7,108,241,95
+    LTEXT           "±êÌâ:",IDC_STATIC,13,123,21,8
+    LTEXT           "ÄÚÈÝ:",IDC_STATIC,13,143,21,8
     EDITTEXT        IDC_EDIT_TITLE,37,118,196,15,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT_TEXT,37,138,196,60,ES_MULTILINE | ES_WANTRETURN | 
                     WS_VSCROLL
-    PUSHBUTTON      "é¢„è§ˆ",IDC_SHOW,57,206,50,15
-    PUSHBUTTON      "å‘é€",IDOK,149,206,50,15
+    PUSHBUTTON      "Ô¤ÀÀ",IDC_SHOW,57,206,50,15
+    PUSHBUTTON      "·¢ËÍ",IDOK,149,206,50,15
 END
 
 IDD_CHANGE_GROUP DIALOG DISCARDABLE  0, 0, 154, 45
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "æ›´æ”¹åˆ†ç»„"
-FONT 9, "å®‹ä½“"
+CAPTION "¸ü¸Ä·Ö×é"
+FONT 9, "ËÎÌå"
 BEGIN
-    PUSHBUTTON      "ç¡®å®š",IDOK,21,24,50,14
-    PUSHBUTTON      "å–æ¶ˆ",IDCANCEL,81,24,50,14
+    PUSHBUTTON      "È·¶¨",IDOK,21,24,50,14
+    PUSHBUTTON      "È¡Ïû",IDCANCEL,81,24,50,14
     COMBOBOX        IDC_COMBO_GROUP,54,7,93,155,CBS_DROPDOWN | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    LTEXT           "åˆ†ç»„åç§°ï¼š",IDC_STATIC,7,10,42,8
+    LTEXT           "·Ö×éÃû³Æ£º",IDC_STATIC,7,10,42,8
 END
 
 IDD_AUDIO DIALOG DISCARDABLE  0, 0, 225, 67
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "è¯­éŸ³ç›‘å¬"
-FONT 9, "å®‹ä½“"
+CAPTION "ÓïÒô¼àÌý"
+FONT 9, "ËÎÌå"
 BEGIN
     GROUPBOX        "",IDC_AUDIO,6,2,213,59
-    CONTROL         "å‘é€æœ¬åœ°è¯­éŸ³åˆ°è¿œç¨‹",IDC_SEND_LOCALAUDIO,"Button",
+    CONTROL         "·¢ËÍ±¾µØÓïÒôµ½Ô¶³Ì",IDC_SEND_LOCALAUDIO,"Button",
                     BS_AUTOCHECKBOX,12,41,88,10
-    LTEXT           "æ­£åœ¨ç›‘å¬è¿œç¨‹å£°éŸ³ ......",IDC_STATIC,12,15,111,8
+    LTEXT           "ÕýÔÚ¼àÌýÔ¶³ÌÉùÒô ......",IDC_STATIC,12,15,111,8
     LTEXT           "Microsoft GSM 6.10 Audio CODEC",IDC_STATIC,12,28,120,8
     LTEXT           "Receive 0 KBytes",IDC_TIPS,135,28,80,8
 END
 
 IDD_SETTING DIALOG DISCARDABLE  0, 0, 195, 107
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "è®¾ç½®"
-FONT 9, "å¾®è½¯é›…é»‘"
+CAPTION "ÉèÖÃ"
+FONT 9, "Î¢ÈíÑÅºÚ"
 BEGIN
-    GROUPBOX        "ç³»ç»Ÿé…ç½®",IDC_SETTINGS,1,0,185,96
-    PUSHBUTTON      "åº”ç”¨/é‡å¯",IDC_APPLY,14,75,53,17
-    LTEXT           "ä¸Šçº¿ç«¯å£",IDC_SETTINGS,11,56,30,8
+    GROUPBOX        "ÏµÍ³ÅäÖÃ",IDC_SETTINGS,1,0,185,96
+    PUSHBUTTON      "Ó¦ÓÃ/ÖØÆô",IDC_APPLY,14,75,53,17
+    LTEXT           "ÉÏÏß¶Ë¿Ú",IDC_SETTINGS,11,56,30,8
     EDITTEXT        IDC_LISTEN_PORT,47,54,53,13,ES_CENTER | ES_AUTOHSCROLL | 
                     ES_NUMBER
-    LTEXT           "è¿žæŽ¥ä¸Šé™",IDC_SETTINGS,11,74,33,8,NOT WS_VISIBLE | 
+    LTEXT           "Á¬½ÓÉÏÏÞ",IDC_SETTINGS,11,74,33,8,NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_CONNECT_MAX,47,72,53,13,ES_CENTER | ES_AUTOHSCROLL | 
                     ES_NUMBER | NOT WS_VISIBLE | WS_DISABLED
-    CONTROL         "æ— é™åˆ¶",IDC_CONNECT_AUTO,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÎÞÏÞÖÆ",IDC_CONNECT_AUTO,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,108,74,35,10
-    CONTROL         "ç¦ç”¨ä¸Šçº¿æ°”æ³¡",IDC_DISABLE_POPTIPS,"Button",
+    CONTROL         "½ûÓÃÉÏÏßÆøÅÝ",IDC_DISABLE_POPTIPS,"Button",
                     BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | 
                     WS_TABSTOP,20,29,63,10
-    CONTROL         "æ˜¾ç¤ºå›½æ——å›¾æ ‡",IDC_NATIONAL,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "ÏÔÊ¾¹úÆìÍ¼±ê",IDC_NATIONAL,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,10,18,65,10
-    CONTROL         "æ˜¾ç¤ºåˆ—è¡¨ç½‘æ ¼",IDC_LINE,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "ÏÔÊ¾ÁÐ±íÍø¸ñ",IDC_LINE,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,10,35,66,10
-    CONTROL         "åœ°ç†ä½ç½®",IDC_DAWED_1,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "µØÀíÎ»ÖÃ",IDC_DAWED_1,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,114,86,53,10
-    CONTROL         "å¤–ç½‘IP",IDC_DAWED_3,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÍâÍøIP",IDC_DAWED_3,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,107,86,53,10
-    CONTROL         "å†…ç½‘IP",IDC_DAWED_4,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÄÚÍøIP",IDC_DAWED_4,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,123,86,53,10
-    CONTROL         "åç§°/å¤‡æ³¨",IDC_DAWED_5,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "Ãû³Æ/±¸×¢",IDC_DAWED_5,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,117,91,54,10
-    CONTROL         "ç³»ç»Ÿ",IDC_DAWED_6,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÏµÍ³",IDC_DAWED_6,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,134,89,53,10
-    CONTROL         "å¤„ç†å™¨",IDC_DAWED_7,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "´¦ÀíÆ÷",IDC_DAWED_7,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,118,87,43,10
-    CONTROL         "æ€æ¯’è½¯ä»¶",IDC_DAWED_14,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "É±¶¾Èí¼þ",IDC_DAWED_14,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,138,85,48,10
-    CONTROL         "å»¶è¿Ÿ",IDC_DAWED_9,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÑÓ³Ù",IDC_DAWED_9,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,134,86,32,9
-    CONTROL         "ç½‘å¡",IDC_DAWED_10,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "Íø¿¨",IDC_DAWED_10,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,128,87,32,9
-    CONTROL         "è§†é¢‘",IDC_DAWED_11,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÊÓÆµ",IDC_DAWED_11,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,130,67,32,10
-    CONTROL         "ç­›é€‰",IDC_DAWED_12,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "É¸Ñ¡",IDC_DAWED_12,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,137,92,32,10
-    CONTROL         "è¿è¡Œæ—¶é—´",IDC_DAWED_16,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÔËÐÐÊ±¼ä",IDC_DAWED_16,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,129,88,47,10
-    GROUPBOX        "ä¸Šçº¿åˆ—è¡¨",IDC_SETTINGS,109,89,54,9,NOT WS_VISIBLE | 
+    GROUPBOX        "ÉÏÏßÁÐ±í",IDC_SETTINGS,109,89,54,9,NOT WS_VISIBLE | 
                     WS_DISABLED
-    CONTROL         "ç¡¬ç›˜/å†…å­˜",IDC_DAWED_8,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "Ó²ÅÌ/ÄÚ´æ",IDC_DAWED_8,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,123,89,47,10
-    LTEXT           "åˆ†ç»„æ ·å¼",IDC_SETTINGS,82,18,33,8,NOT WS_VISIBLE | 
+    LTEXT           "·Ö×éÑùÊ½",IDC_SETTINGS,82,18,33,8,NOT WS_VISIBLE | 
                     WS_DISABLED
     COMBOBOX        IDC_GROUP_STYLE,122,16,54,105,CBS_DROPDOWNLIST | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_GROUP_STYLE2,122,32,54,105,CBS_DROPDOWNLIST | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "åˆ†ç»„ä½ç½®",IDC_SETTINGS,86,34,33,8,NOT WS_VISIBLE | 
+    LTEXT           "·Ö×éÎ»ÖÃ",IDC_SETTINGS,86,34,33,8,NOT WS_VISIBLE | 
                     WS_DISABLED
-    CONTROL         "å®‰è£…æ—¶é—´",IDC_DAWED_15,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "°²×°Ê±¼ä",IDC_DAWED_15,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,112,85,48,10
-    CONTROL         "ç¦ç”¨è¯­éŸ³æç¤º",IDC_DISABLE_SOUND,"Button",
+    CONTROL         "½ûÓÃÓïÒôÌáÊ¾",IDC_DISABLE_SOUND,"Button",
                     BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | 
                     WS_TABSTOP,15,22,63,9
-    CONTROL         "ç‰ˆæœ¬",IDC_DAWED_13,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "°æ±¾",IDC_DAWED_13,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,137,92,47,10
-    CONTROL         "ç½‘ç»œ",IDC_DAWED_2,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÍøÂç",IDC_DAWED_2,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,118,92,31,10
-    PUSHBUTTON      "é€€å‡º",IDCANCEL,113,75,53,17
-    LTEXT           "åŒå‡»æ‰“å¼€",IDC_SETTINGS,87,19,32,9
+    PUSHBUTTON      "ÍË³ö",IDCANCEL,113,75,53,17
+    LTEXT           "Ë«»÷´ò¿ª",IDC_SETTINGS,87,19,32,9
     COMBOBOX        IDC_COMBO_OPERATE,122,18,53,126,CBS_DROPDOWN | 
                     WS_VSCROLL | WS_TABSTOP
-    LTEXT           " çš®è‚¤ï¼š",IDC_SETTINGS,12,16,28,9,NOT WS_VISIBLE | 
+    LTEXT           " Æ¤·ô£º",IDC_SETTINGS,12,16,28,9,NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_SKIN_PATH,40,13,96,15,ES_AUTOHSCROLL | ES_READONLY | 
                     NOT WS_VISIBLE | WS_DISABLED
-    PUSHBUTTON      "æµè§ˆ",IDC_CUSTOM_SKIN,141,14,29,14,NOT WS_VISIBLE | 
+    PUSHBUTTON      "ä¯ÀÀ",IDC_CUSTOM_SKIN,141,14,29,14,NOT WS_VISIBLE | 
                     WS_DISABLED
     COMBOBOX        IDC_INSTALL_WAY,122,34,54,52,CBS_DROPDOWNLIST | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    LTEXT           "åˆ—è¡¨é¢œè‰²",IDC_SETTINGS,86,36,32,8
+    LTEXT           "ÁÐ±íÑÕÉ«",IDC_SETTINGS,86,36,32,8
     EDITTEXT        IDC_SHOWTIPS,145,90,40,12,ES_AUTOHSCROLL | NOT 
                     WS_VISIBLE | WS_DISABLED
-    GROUPBOX        "æ¸©é¦¨æç¤º",IDC_SETTINGS,120,87,34,15,NOT WS_VISIBLE | 
+    GROUPBOX        "ÎÂÜ°ÌáÊ¾",IDC_SETTINGS,120,87,34,15,NOT WS_VISIBLE | 
                     WS_DISABLED
-    CONTROL         "åœ¨çº¿QQ",IDC_DAWED_17,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÔÚÏßQQ",IDC_DAWED_17,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,144,85,40,10
-    CONTROL         "ç”¨æˆ·çŠ¶æ€",IDC_DAWED_18,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "ÓÃ»§×´Ì¬",IDC_DAWED_18,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,134,83,48,10
-    CONTROL         "è¿žæŽ¥æ–¹å¼",IDC_DAWED_19,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "Á¬½Ó·½Ê½",IDC_DAWED_19,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,125,85,48,10
-    CONTROL         "æ˜¾ç¤ºè½¯ä»¶çš®è‚¤",IDC_DISABLE_Pifu,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "ÏÔÊ¾Èí¼þÆ¤·ô",IDC_DISABLE_Pifu,"Button",BS_AUTOCHECKBOX | 
                     BS_FLAT | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,6,50,
                     63,10
 END
 
 IDD_SYSINFO DIALOG DISCARDABLE  0, 0, 433, 223
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "æœåŠ¡å™¨ä¿¡æ¯"
-FONT 9, "å®‹ä½“"
+CAPTION "·þÎñÆ÷ÐÅÏ¢"
+FONT 9, "ËÎÌå"
 BEGIN
     CONTROL         "List1",IDC_INFO_LIST,"SysListView32",LVS_REPORT | 
                     WS_BORDER | WS_TABSTOP,13,28,90,52
@@ -870,49 +871,49 @@ BEGIN
                     WS_BORDER | WS_TABSTOP,114,88,90,52
     CONTROL         "Tab1",IDC_SYSTEM_TAB,"SysTabControl32",WS_TABSTOP,6,7,
                     205,146
-    GROUPBOX        "å¼€å¯ã€ä¿®æ”¹è¿œç¨‹ç«¯å£",IDC_ZITIA,223,11,85,142
+    GROUPBOX        "¿ªÆô¡¢ÐÞ¸ÄÔ¶³Ì¶Ë¿Ú",IDC_ZITIA,223,11,85,142
     EDITTEXT        IDC_PORT,231,27,70,13,ES_AUTOHSCROLL
-    PUSHBUTTON      "ä¿®æ”¹ç»ˆç«¯",IDC_CHANGE,231,45,70,16
-    PUSHBUTTON      "å…³é—­é˜²ç«å¢™",IDC_STOP_FIRE,231,66,70,16
-    PUSHBUTTON      "å¼€å¯3389",IDC_OPEN3389,231,87,70,16
-    PUSHBUTTON      "å…³é—­3389",IDC_CLOSE3389,231,109,70,16
+    PUSHBUTTON      "ÐÞ¸ÄÖÕ¶Ë",IDC_CHANGE,231,45,70,16
+    PUSHBUTTON      "¹Ø±Õ·À»ðÇ½",IDC_STOP_FIRE,231,66,70,16
+    PUSHBUTTON      "¿ªÆô3389",IDC_OPEN3389,231,87,70,16
+    PUSHBUTTON      "¹Ø±Õ3389",IDC_CLOSE3389,231,109,70,16
     CONTROL         "Progress1",IDC_PROGRESS_3389,"msctls_progress32",
                     WS_BORDER,231,132,70,14
-    GROUPBOX        "æ— NETæ·»åŠ ç”¨æˆ·",IDC_ZITI,318,11,109,142
-    LTEXT           "ç”¨æˆ·:",IDC_ZITIA,326,29,21,8
+    GROUPBOX        "ÎÞNETÌí¼ÓÓÃ»§",IDC_ZITI,318,11,109,142
+    LTEXT           "ÓÃ»§:",IDC_ZITIA,326,29,21,8
     EDITTEXT        IDC_USER,351,27,67,13,ES_AUTOHSCROLL
-    LTEXT           "å¯†ç :",IDC_ZITIA,326,52,21,8
+    LTEXT           "ÃÜÂë:",IDC_ZITIA,326,52,21,8
     EDITTEXT        IDC_PASS,351,49,67,13,ES_AUTOHSCROLL
-    LTEXT           "ç»„:",IDC_ZITIA,327,74,13,8
+    LTEXT           "×é:",IDC_ZITIA,327,74,13,8
     EDITTEXT        IDC_ADMIN,351,71,67,13,ES_AUTOHSCROLL
-    PUSHBUTTON      "åˆ›å»ºè´¦å·",IDC_CREAT,336,94,72,20
-    PUSHBUTTON      "å¯ç”¨GUEST",IDC_GUEST,336,121,72,20
-    GROUPBOX        "å¼€å¯ä»£ç†",IDC_ZITIA,6,157,234,59
-    LTEXT           "ä»£ç†ç«¯å£:",IDC_ZITIA,12,174,38,8
+    PUSHBUTTON      "´´½¨ÕËºÅ",IDC_CREAT,336,94,72,20
+    PUSHBUTTON      "ÆôÓÃGUEST",IDC_GUEST,336,121,72,20
+    GROUPBOX        "¿ªÆô´úÀí",IDC_ZITIA,6,157,234,59
+    LTEXT           "´úÀí¶Ë¿Ú:",IDC_ZITIA,12,174,38,8
     EDITTEXT        IDC_PROXY_PORT,50,172,46,13,ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "å¯ç”¨ä»£ç†ç”¨æˆ·/å¯†ç ",IDC_SOCKS5,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "ÆôÓÃ´úÀíÓÃ»§/ÃÜÂë",IDC_SOCKS5,"Button",BS_AUTOCHECKBOX | 
                     BS_FLAT | WS_TABSTOP,101,172,82,11
-    LTEXT           "ç”¨æˆ·åç§°:",IDC_ZITIA,12,194,38,8
+    LTEXT           "ÓÃ»§Ãû³Æ:",IDC_ZITIA,12,194,38,8
     EDITTEXT        IDC_PROXY_USER,50,192,46,13,ES_AUTOHSCROLL | WS_DISABLED
-    LTEXT           "å¯†ç :",IDC_ZITIA,102,192,22,8
+    LTEXT           "ÃÜÂë:",IDC_ZITIA,102,192,22,8
     EDITTEXT        IDC_PROXY_PASS,124,192,57,13,ES_PASSWORD | 
                     ES_AUTOHSCROLL | WS_DISABLED
-    PUSHBUTTON      "å¼€å¯",ID_PROXY,190,177,41,26
-    GROUPBOX        "è¿œç¨‹è¿žæŽ¥",IDC_ZITIA,248,157,179,59
-    LTEXT           "IP:ç«¯å£",IDC_ZITIA,256,174,29,8
+    PUSHBUTTON      "¿ªÆô",ID_PROXY,190,177,41,26
+    GROUPBOX        "Ô¶³ÌÁ¬½Ó",IDC_ZITIA,248,157,179,59
+    LTEXT           "IP:¶Ë¿Ú",IDC_ZITIA,256,174,29,8
     EDITTEXT        IDC_ADDR,290,172,82,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_REMOTE_PORT,377,172,40,13,ES_AUTOHSCROLL
-    CONTROL         "çªç ´é™åˆ¶",IDC_FORCE,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "Í»ÆÆÏÞÖÆ",IDC_FORCE,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,255,194,48,10
-    PUSHBUTTON      "è¿žæŽ¥",IDC_CONNECT,320,192,36,13
-    PUSHBUTTON      "å†…ç½‘",IDC_LAN_CONNECT,373,192,34,13
+    PUSHBUTTON      "Á¬½Ó",IDC_CONNECT,320,192,36,13
+    PUSHBUTTON      "ÄÚÍø",IDC_LAN_CONNECT,373,192,34,13
 END
 
 IDD_REG_DIALOG DIALOG DISCARDABLE  0, 0, 557, 352
 STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
     WS_THICKFRAME
-CAPTION "æ³¨å†Œè¡¨ç®¡ç†"
-FONT 9, "å®‹ä½“"
+CAPTION "×¢²á±í¹ÜÀí"
+FONT 9, "ËÎÌå"
 BEGIN
     CONTROL         "",IDC_TREE,"SysTreeView32",WS_BORDER | WS_HSCROLL | 
                     WS_TABSTOP,1,0,151,302
@@ -922,62 +923,62 @@ END
 
 IDD_REGDATA_DLG DIALOG DISCARDABLE  0, 0, 193, 79
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "è¾“å…¥æ•°æ®"
-FONT 9, "å®‹ä½“"
+CAPTION "ÊäÈëÊý¾Ý"
+FONT 9, "ËÎÌå"
 BEGIN
-    DEFPUSHBUTTON   "ç¡®å®š",IDOK,25,52,50,14
-    PUSHBUTTON      "å–æ¶ˆ",IDCANCEL,121,52,50,14
-    LTEXT           "å ç§°:",IDC_STATIC,13,18,27,8
+    DEFPUSHBUTTON   "È·¶¨",IDOK,25,52,50,14
+    PUSHBUTTON      "È¡Ïû",IDCANCEL,121,52,50,14
+    LTEXT           "Ãû ³Æ:",IDC_STATIC,13,18,27,8
     EDITTEXT        IDC_PATH,42,15,137,14,ES_AUTOHSCROLL
-    LTEXT           "æ•° æ®:",IDC_STATIC,14,33,26,8
+    LTEXT           "Êý ¾Ý:",IDC_STATIC,14,33,26,8
     EDITTEXT        IDC_KEY,42,31,137,14,ES_AUTOHSCROLL
     GROUPBOX        "",IDC_STATIC,7,4,179,68
 END
 
 IDD_UPDATE_DLG DIALOG DISCARDABLE  0, 0, 225, 169
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "åŸŸåæ›´æ–°"
-FONT 9, "å®‹ä½“"
+CAPTION "ÓòÃû¸üÐÂ"
+FONT 9, "ËÎÌå"
 BEGIN
-    GROUPBOX        "å¸Œç½‘/èŠ±ç”Ÿå£³/No-IPåŠ¨æ€åŸŸå",IDC_STATIC,6,6,212,157
-    LTEXT           "ç”¨æˆ·å:",IDC_STATIC,17,22,35,10
+    GROUPBOX        "Ï£Íø/»¨Éú¿Ç/No-IP¶¯Ì¬ÓòÃû",IDC_STATIC,6,6,212,157
+    LTEXT           "ÓÃ»§Ãû:",IDC_STATIC,17,22,35,10
     EDITTEXT        IDC_EDIT_DNSUSER,54,18,150,12,ES_AUTOHSCROLL
-    LTEXT           "å¯†  ç :",IDC_STATIC,17,34,33,8
+    LTEXT           "ÃÜ  Âë:",IDC_STATIC,17,34,33,8
     EDITTEXT        IDC_EDIT_DNSPASS,54,32,150,12,ES_PASSWORD | 
                     ES_AUTOHSCROLL
     CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,13,62,
                     200,1
-    LTEXT           "åŸŸ  å:",IDC_STATIC,17,48,29,8
+    LTEXT           "Óò  Ãû:",IDC_STATIC,17,48,29,8
     EDITTEXT        IDC_EDIT_DNSDOMAIN,54,46,150,12,ES_AUTOHSCROLL
-    LTEXT           "å¤–ç½‘IP:",IDC_STATIC,17,67,31,10
+    LTEXT           "ÍâÍøIP:",IDC_STATIC,17,67,31,10
     COMBOBOX        IDC_COMBO_DNS,54,65,89,64,CBS_DROPDOWN | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    DEFPUSHBUTTON   ">>   æ›´æ–°   <<",IDC_BTN_DNSUPDATE,17,112,185,16
-    LTEXT           "æ³¨å†ŒNo-IPåŸŸå",IDC_SIGNNOIP,11,135,55,10
-    LTEXT           "åŸŸåæ›´æ–°å™¨ï¼",IDC_SHOWTIPS,12,150,200,8
-    PUSHBUTTON      "èŽ·å–å¤–ç½‘IP",IDC_GETWAN,155,66,50,12
+    DEFPUSHBUTTON   ">>   ¸üÐÂ   <<",IDC_BTN_DNSUPDATE,17,112,185,16
+    LTEXT           "×¢²áNo-IPÓòÃû",IDC_SIGNNOIP,11,135,55,10
+    LTEXT           "ÓòÃû¸üÐÂÆ÷£¡",IDC_SHOWTIPS,12,150,200,8
+    PUSHBUTTON      "»ñÈ¡ÍâÍøIP",IDC_GETWAN,155,66,50,12
     GROUPBOX        "",IDC_STATIC,8,79,207,28
-    CONTROL         "å¸Œç½‘åŸŸå",IDC_3322,"Button",BS_AUTORADIOBUTTON,15,91,50,
+    CONTROL         "Ï£ÍøÓòÃû",IDC_3322,"Button",BS_AUTORADIOBUTTON,15,91,50,
                     9
-    CONTROL         "èŠ±ç”Ÿå£³åŸŸå",IDC_HUASHENG,"Button",BS_AUTORADIOBUTTON,79,
+    CONTROL         "»¨Éú¿ÇÓòÃû",IDC_HUASHENG,"Button",BS_AUTORADIOBUTTON,79,
                     91,52,10
-    CONTROL         "No-IPåŸŸå",IDC_NOIP,"Button",BS_AUTORADIOBUTTON,155,91,
+    CONTROL         "No-IPÓòÃû",IDC_NOIP,"Button",BS_AUTORADIOBUTTON,155,91,
                     52,10
-    LTEXT           "æ³¨å†Œ3322åŸŸå",IDC_SIGNNOIP2,85,136,50,10
-    LTEXT           "æ³¨å†ŒèŠ±ç”Ÿå£³åŸŸå",IDC_SIGNNOIP3,154,135,58,10
+    LTEXT           "×¢²á3322ÓòÃû",IDC_SIGNNOIP2,85,136,50,10
+    LTEXT           "×¢²á»¨Éú¿ÇÓòÃû",IDC_SIGNNOIP3,154,135,58,10
 END
 
 IDD_LOCK DIALOGEX 0, 0, 173, 95
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "æŒ‚æœºé”å®š"
-FONT 9, "å®‹ä½“", 0, 0, 0x1
+CAPTION "¹Ò»úËø¶¨"
+FONT 9, "ËÎÌå", 0, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "åŠ é”",ID_SETLOCK,22,68,50,15,BS_FLAT
-    PUSHBUTTON      "é€€å‡º",ID_QUIT,101,68,50,15,BS_FLAT
-    LTEXT           "è®¾ç½®å¯†ç :",-1,22,16,37,8
-    LTEXT           "ç¡®è®¤å¯†ç :",-1,22,33,37,8
-    LTEXT           "è§£é”å¯†ç :",-1,22,51,37,8
+    DEFPUSHBUTTON   "¼ÓËø",ID_SETLOCK,22,68,50,15,BS_FLAT
+    PUSHBUTTON      "ÍË³ö",ID_QUIT,101,68,50,15,BS_FLAT
+    LTEXT           "ÉèÖÃÃÜÂë:",-1,22,16,37,8
+    LTEXT           "È·ÈÏÃÜÂë:",-1,22,33,37,8
+    LTEXT           "½âËøÃÜÂë:",-1,22,51,37,8
     EDITTEXT        IDC_SET,64,12,87,16,ES_PASSWORD | ES_AUTOHSCROLL
     EDITTEXT        IDC_SETAGAIN,64,29,87,16,ES_PASSWORD | ES_AUTOHSCROLL
     EDITTEXT        IDC_UNLOCK,64,47,87,15,ES_PASSWORD | ES_AUTOHSCROLL
@@ -986,12 +987,12 @@ END
 IDD_CHAT DIALOG DISCARDABLE  0, 0, 235, 155
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Chat.........."
-FONT 10, "å®‹ä½“"
+FONT 10, "ËÎÌå"
 BEGIN
     EDITTEXT        IDC_EDIT_NEWMSG,3,113,170,38,ES_MULTILINE | 
                     ES_AUTOVSCROLL | WS_VSCROLL
-    DEFPUSHBUTTON   "å‘é€æ¶ˆæ¯",IDC_BUTTON_SEND,178,116,54,14
-    PUSHBUTTON      "ç»“æŸäº¤è°ˆ",IDC_BUTTON_END,178,133,54,15
+    DEFPUSHBUTTON   "·¢ËÍÏûÏ¢",IDC_BUTTON_SEND,178,116,54,14
+    PUSHBUTTON      "½áÊø½»Ì¸",IDC_BUTTON_END,178,133,54,15
     EDITTEXT        IDC_EDIT_CHATLOG,3,3,229,107,ES_MULTILINE | 
                     ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL
     EDITTEXT        IDC_EDIT_TIP,38,13,152,14,NOT WS_TABSTOP
@@ -1000,47 +1001,47 @@ END
 IDD_BUILD DIALOG DISCARDABLE  0, 0, 263, 135
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Emin"
-FONT 9, "å¾®è½¯é›…é»‘"
+FONT 9, "Î¢ÈíÑÅºÚ"
 BEGIN
-    DEFPUSHBUTTON   "é€€å‡º",IDCANCEL,178,112,64,15,BS_FLAT
-    GROUPBOX        "ä¸Šçº¿åœ°å€",IDC_STATIC,1,8,254,36
+    DEFPUSHBUTTON   "ÍË³ö",IDCANCEL,178,112,64,15,BS_FLAT
+    GROUPBOX        "ÉÏÏßµØÖ·",IDC_STATIC,1,8,254,36
     EDITTEXT        IDC_DNS,36,21,103,14,ES_AUTOHSCROLL
-    LTEXT           "ç«¯å£:",IDC_STATIC,146,23,21,8
+    LTEXT           "¶Ë¿Ú:",IDC_STATIC,146,23,21,8
     EDITTEXT        IDC_PORT,168,21,39,14,ES_AUTOHSCROLL
-    LTEXT           "ä¸Šçº¿åˆ†ç»„:",IDC_STATIC,13,98,37,8
+    LTEXT           "ÉÏÏß·Ö×é:",IDC_STATIC,13,98,37,8
     COMBOBOX        IDC_ONLINE_GROUP,53,97,68,71,CBS_DROPDOWN | CBS_SORT | 
                     WS_VSCROLL | WS_TABSTOP
-    CONTROL         "ç»¿è‰²è¿è¡Œï¼ˆé‡å¯ä¸ä¸Šçº¿ï¼‰",IDC_GREEN,"Button",
+    CONTROL         "ÂÌÉ«ÔËÐÐ£¨ÖØÆô²»ÉÏÏß£©",IDC_GREEN,"Button",
                     BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | 
                     WS_TABSTOP,13,101,104,10
-    DEFPUSHBUTTON   "ç”Ÿæˆ",IDC_BUILD,179,93,63,14,BS_FLAT
-    LTEXT           "å¯åŠ¨æ–¹å¼:",IDC_STATIC,1,118,37,8,NOT WS_VISIBLE | 
+    DEFPUSHBUTTON   "Éú³É",IDC_BUILD,179,93,63,14,BS_FLAT
+    LTEXT           "Æô¶¯·½Ê½:",IDC_STATIC,1,118,37,8,NOT WS_VISIBLE | 
                     WS_DISABLED
     COMBOBOX        IDC_INSTALL_WAY,55,122,68,52,CBS_DROPDOWNLIST | CBS_SORT | 
                     NOT WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "å®‰è£…é…ç½®",IDC_STATIC,0,85,255,45
+    GROUPBOX        "°²×°ÅäÖÃ",IDC_STATIC,0,85,255,45
     EDITTEXT        IDC_BIAOZHI,134,94,6,14,ES_AUTOHSCROLL | ES_READONLY | 
                     NOT WS_VISIBLE | WS_DISABLED
     EDITTEXT        IDC_DNS2,139,93,6,13,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_PORT2,155,100,6,12,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
                     WS_DISABLED
-    LTEXT           "å”¯ä¸€æ ‡è¯†:",IDC_STATIC,157,97,8,8,NOT WS_VISIBLE | 
+    LTEXT           "Î¨Ò»±êÊ¶:",IDC_STATIC,157,97,8,8,NOT WS_VISIBLE | 
                     WS_DISABLED
-    DEFPUSHBUTTON   "æµ‹è¯•",IDC_TEST_MASTER,212,21,34,14
-    DEFPUSHBUTTON   "æµ‹è¯•",IDC_TEST_MASTER2,143,116,6,6,NOT WS_VISIBLE | 
+    DEFPUSHBUTTON   "²âÊÔ",IDC_TEST_MASTER,212,21,34,14
+    DEFPUSHBUTTON   "²âÊÔ",IDC_TEST_MASTER2,143,116,6,6,NOT WS_VISIBLE | 
                     WS_DISABLED
-    CONTROL         "åŽ‹ç¼©ä½“ç§¯",IDC_UPX,"Button",BS_AUTOCHECKBOX | NOT 
+    CONTROL         "Ñ¹ËõÌå»ý",IDC_UPX,"Button",BS_AUTOCHECKBOX | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_TABSTOP,11,118,57,10
     EDITTEXT        IDC_LONGIP2,147,106,6,14,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_LONGPASS2,145,94,6,14,ES_AUTOHSCROLL | ES_READONLY | 
                     NOT WS_VISIBLE | WS_DISABLED
-    DEFPUSHBUTTON   "èŽ·å–å¤–ç½‘",IDC_FTP_IP,157,108,6,13,NOT WS_VISIBLE | 
+    DEFPUSHBUTTON   "»ñÈ¡ÍâÍø",IDC_FTP_IP,157,108,6,13,NOT WS_VISIBLE | 
                     WS_DISABLED
-    DEFPUSHBUTTON   "IPåŠ å¯†",IDC_LONGNECT3,145,109,6,14,NOT WS_VISIBLE | 
+    DEFPUSHBUTTON   "IP¼ÓÃÜ",IDC_LONGNECT3,145,109,6,14,NOT WS_VISIBLE | 
                     WS_DISABLED
-    DEFPUSHBUTTON   "æ•°æ®å¤åˆ¶",IDC_LONGNECT2,145,109,6,13,NOT WS_VISIBLE | 
+    DEFPUSHBUTTON   "Êý¾Ý¸´ÖÆ",IDC_LONGNECT2,145,109,6,13,NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_DLL_NAME,131,119,6,13,ES_AUTOHSCROLL | NOT 
                     WS_VISIBLE | WS_DISABLED
@@ -1051,22 +1052,22 @@ BEGIN
                     ES_AUTOVSCROLL | ES_AUTOHSCROLL | NOT WS_VISIBLE | 
                     WS_DISABLED | WS_VSCROLL
     LTEXT           "IP:",IDC_STATIC,12,24,17,8
-    PUSHBUTTON      "è¯´æ˜Ž",IDC_BTN_PATH,146,94,6,12,NOT WS_VISIBLE | 
+    PUSHBUTTON      "ËµÃ÷",IDC_BTN_PATH,146,94,6,12,NOT WS_VISIBLE | 
                     WS_DISABLED
-    LTEXT           "ç‰ˆæœ¬ä¿¡æ¯:",IDC_STATIC,14,126,37,8,NOT WS_VISIBLE | 
+    LTEXT           "°æ±¾ÐÅÏ¢:",IDC_STATIC,14,126,37,8,NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_VERSION,27,118,68,14,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
                     WS_DISABLED
     COMBOBOX        IDC_FILEATTRIBUTE,110,117,56,130,CBS_DROPDOWNLIST | NOT 
                     WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "å…ˆå°è¯•å®‰è£…å…±äº«æœåŠ¡",IDC_INSTALL_SHARE,"Button",
+    CONTROL         "ÏÈ³¢ÊÔ°²×°¹²Ïí·þÎñ",IDC_INSTALL_SHARE,"Button",
                     BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | 
                     WS_TABSTOP,1,1,8,8
-    LTEXT           "URLï¼š",IDC_STATIC,9,63,21,8
+    LTEXT           "URL£º",IDC_STATIC,9,63,21,8
     EDITTEXT        IDC_EDIT_KB,31,61,132,14,ES_AUTOHSCROLL | WS_DISABLED
-    PUSHBUTTON      "æµ‹è¯•",IDC_KBTEST,171,61,34,14,WS_DISABLED
-    GROUPBOX        "ç½‘ç»œURLæ†ç»‘",IDC_STATIC,1,49,255,32
-    CONTROL         "å¯ç”¨",IDC_KBCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+    PUSHBUTTON      "²âÊÔ",IDC_KBTEST,171,61,34,14,WS_DISABLED
+    GROUPBOX        "ÍøÂçURLÀ¦°ó",IDC_STATIC,1,49,255,32
+    CONTROL         "ÆôÓÃ",IDC_KBCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
                     217,63,29,10
     EDITTEXT        IDC_EDIT_SVCNAME,143,108,11,14,ES_AUTOHSCROLL | NOT 
                     WS_VISIBLE | WS_DISABLED
@@ -1074,23 +1075,23 @@ BEGIN
                     WS_VISIBLE | WS_DISABLED
     EDITTEXT        IDC_EDIT_SHELP,143,112,6,14,ES_AUTOHSCROLL | NOT 
                     WS_VISIBLE | WS_DISABLED
-    PUSHBUTTON      "éšæœºåç§°",IDC_RANDOM2,146,115,6,6,NOT WS_VISIBLE | 
+    PUSHBUTTON      "Ëæ»úÃû³Æ",IDC_RANDOM2,146,115,6,6,NOT WS_VISIBLE | 
                     WS_DISABLED
     EDITTEXT        IDC_AZZDS,145,112,6,13,ES_CENTER | ES_AUTOHSCROLL | 
                     ES_NUMBER | NOT WS_VISIBLE | WS_DISABLED
-    LTEXT           "MB ï¼ˆ0ä¸ºä¸å¢žå¤§ï¼‰",IDC_STATIC,113,101,65,8,NOT 
+    LTEXT           "MB £¨0Îª²»Ôö´ó£©",IDC_STATIC,113,101,65,8,NOT 
                     WS_VISIBLE | WS_DISABLED
-    CONTROL         "å¼€å¯é”®ç›˜ç¦»çº¿è®°å½•",IDC_ZKFKZJ,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "¿ªÆô¼üÅÌÀëÏß¼ÇÂ¼",IDC_ZKFKZJ,"Button",BS_AUTOCHECKBOX | 
                     NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,140,96,8,10
-    LTEXT           "--Emin-æ‘©çº³å“¥2025é‡åˆ¶ç‰ˆ---------",IDC_STATIC,26,116,94,
+    LTEXT           "--Emin-Ä¦ÄÉ¸ç2025ÖØÖÆ°æ---------",IDC_STATIC,26,116,94,
                     11,SS_SUNKEN
 END
 
 IDD_SERMANA DIALOG DISCARDABLE  0, 0, 587, 344
 STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
     WS_THICKFRAME
-CAPTION "æœåŠ¡ç®¡ç†"
-FONT 9, "å®‹ä½“"
+CAPTION "·þÎñ¹ÜÀí"
+FONT 9, "ËÎÌå"
 BEGIN
     CONTROL         "List1",IDC_LIST_SERVER,"SysListView32",LVS_REPORT | 
                     LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | 
@@ -1100,10 +1101,10 @@ END
 IDD_SYSTEM DIALOG DISCARDABLE  0, 0, 470, 301
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
     WS_SYSMENU
-CAPTION "ç³»ç»Ÿç®¡ç†"
-FONT 9, "å®‹ä½“"
+CAPTION "ÏµÍ³¹ÜÀí"
+FONT 9, "ËÎÌå"
 BEGIN
-    GROUPBOX        "CPUä½¿ç”¨çŽ‡:",IDC_STATIC_CPU,3,231,153,53
+    GROUPBOX        "CPUÊ¹ÓÃÂÊ:",IDC_STATIC_CPU,3,231,153,53
     CONTROL         "Progress1",IDC_PROGRESS_MEMORY,"msctls_progress32",
                     WS_BORDER,180,243,140,25
     LTEXT           "0 MB / 0 MB",IDC_SYSINFO_USEMEMORY,210,273,85,8,NOT 
@@ -1111,7 +1112,7 @@ BEGIN
     LTEXT           "0 %",IDC_SYSINFO_USECPU,51,273,49,8,NOT WS_GROUP
     CONTROL         "Progress1",IDC_PROGRESS_CPU,"msctls_progress32",
                     WS_BORDER,10,243,140,25
-    GROUPBOX        "ç‰©ç†å†…å­˜ä½¿ç”¨æƒ…å†µ:",IDC_STATIC_MORY,173,231,153,53
+    GROUPBOX        "ÎïÀíÄÚ´æÊ¹ÓÃÇé¿ö:",IDC_STATIC_MORY,173,231,153,53
     CONTROL         "List1",IDC_LIST_WINDOWS,"SysListView32",LVS_REPORT | 
                     WS_BORDER | WS_TABSTOP,246,37,92,46
     CONTROL         "List1",IDC_INFOT,"SysListView32",LVS_REPORT | WS_BORDER | 
@@ -1131,159 +1132,159 @@ BEGIN
                     WS_BORDER | WS_TABSTOP,14,94,92,46
     EDITTEXT        IDC_EDT_HOSTS,14,151,92,27,ES_MULTILINE | ES_WANTRETURN | 
                     WS_VSCROLL
-    PUSHBUTTON      "èŽ·å–",IDC_BTN_GETHOSTS,14,183,43,14,NOT WS_VISIBLE
-    PUSHBUTTON      "ä¿å­˜",IDC_BTN_SETHOSTS,62,183,43,14,NOT WS_VISIBLE | 
+    PUSHBUTTON      "»ñÈ¡",IDC_BTN_GETHOSTS,14,183,43,14,NOT WS_VISIBLE
+    PUSHBUTTON      "±£´æ",IDC_BTN_SETHOSTS,62,183,43,14,NOT WS_VISIBLE | 
                     WS_DISABLED
 END
 
 IDD_FILE DIALOGEX 0, 0, 405, 312
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "æ–‡ä»¶ç®¡ç†"
-FONT 9, "å®‹ä½“", 0, 0, 0x1
+CAPTION "ÎÄ¼þ¹ÜÀí"
+FONT 9, "ËÎÌå", 0, 0, 0x1
 BEGIN
     CONTROL         "List1",IDC_LIST_REMOTE,"SysListView32",LVS_REPORT | 
                     LVS_SHOWSELALWAYS | LVS_AUTOARRANGE | LVS_EDITLABELS | 
                     WS_BORDER | WS_TABSTOP,0,35,404,235,WS_EX_ACCEPTFILES,
                     HIDC_LIST_REMOTE
-    LTEXT           "è¿œç¨‹ï¼š",IDC_STATIC_REMOTE,5,22,25,8
+    LTEXT           "Ô¶³Ì£º",IDC_STATIC_REMOTE,5,22,25,8
     COMBOBOX        IDC_REMOTE_PATH,33,20,365,58,CBS_DROPDOWN | 
                     CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "æœç´¢æ–‡ä»¶å:",IDC_STATIC2,7,282,46,9
+    LTEXT           "ËÑË÷ÎÄ¼þÃû:",IDC_STATIC2,7,282,46,9
     EDITTEXT        IDC_EDT_SEARCHSTR,55,279,87,14,ES_AUTOHSCROLL
-    CONTROL         "åŒ…å«å­æ–‡ä»¶å¤¹",IDC_CK_SUBFORDLE,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "°üº¬×ÓÎÄ¼þ¼Ð",IDC_CK_SUBFORDLE,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,155,283,64,10
-    CONTROL         "æ–‡ä»¶å†…å…³é”®å­—æœç´¢",IDC_CK_INFILE,"Button",
+    CONTROL         "ÎÄ¼þÄÚ¹Ø¼ü×ÖËÑË÷",IDC_CK_INFILE,"Button",
                     BS_AUTOCHECKBOX | WS_TABSTOP,225,283,80,10
-    PUSHBUTTON      "å¼€å§‹æœç´¢",IDC_BTN_SEARCH,317,280,64,14
+    PUSHBUTTON      "¿ªÊ¼ËÑË÷",IDC_BTN_SEARCH,317,280,64,14
 END
 
 IDD_PLAY DIALOG DISCARDABLE  0, 0, 582, 86
 STYLE WS_CHILD
-FONT 9, "å®‹ä½“"
+FONT 9, "ËÎÌå"
 BEGIN
-    PUSHBUTTON      "æ˜¾ç¤ºæ¡Œé¢",IDC_ZHUOMIAN2,9,36,49,15
-    PUSHBUTTON      "éšè—æ¡Œé¢",IDC_ZHUOMIAN1,9,14,49,15
-    PUSHBUTTON      "éšè—ä»»åŠ¡æ ",IDC_RENWULAN1,64,14,49,15
-    PUSHBUTTON      "æ˜¾ç¤ºä»»åŠ¡æ ",IDC_RENWULAN2,63,36,49,15
-    PUSHBUTTON      "å…³é—­æ˜¾ç¤ºå™¨",IDC_XIANSHIQI1,119,14,49,15
-    PUSHBUTTON      "å‘å‡ºå™ªéŸ³",IDC_ZAOYIN,231,14,49,15
-    PUSHBUTTON      "é—ªåŠ¨å±å¹•",IDC_SHANPING,231,36,49,15
-    PUSHBUTTON      "å¼¹å‡ºå…‰é©±",IDC_GUANGQU1,175,14,49,15
-    PUSHBUTTON      "æ”¶å›žå…‰é©±",IDC_GUANGQU2,175,36,49,15
-    PUSHBUTTON      "æ‰“å¼€æ˜¾ç¤ºå™¨",IDC_XIANSHIQI2,119,36,49,15
-    PUSHBUTTON      "äº’æ¢é¼ æ ‡",IDC_MOUSE1,286,14,49,15
-    PUSHBUTTON      "æ¢å¤é¼ æ ‡",IDC_MOUSE2,286,36,49,15
-    GROUPBOX        "å¨±ä¹/æ¶ä½œå‰§",IDC_STATIC,4,3,339,79
-    GROUPBOX        "æœ¬åœ°å·¥å…·",IDC_STATIC,348,3,229,79
-    PUSHBUTTON      "è®°äº‹æœ¬",IDC_BUTTON3,465,14,49,15,BS_CENTER | BS_VCENTER
-    PUSHBUTTON      "è®¡ç®—å™¨",IDC_BUTTON1,353,14,49,15,BS_CENTER | BS_VCENTER
-    PUSHBUTTON      "æ³¨å†Œè¡¨",IDC_BUTTON5,353,36,49,15,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "ÏÔÊ¾×ÀÃæ",IDC_ZHUOMIAN2,9,36,49,15
+    PUSHBUTTON      "Òþ²Ø×ÀÃæ",IDC_ZHUOMIAN1,9,14,49,15
+    PUSHBUTTON      "Òþ²ØÈÎÎñÀ¸",IDC_RENWULAN1,64,14,49,15
+    PUSHBUTTON      "ÏÔÊ¾ÈÎÎñÀ¸",IDC_RENWULAN2,63,36,49,15
+    PUSHBUTTON      "¹Ø±ÕÏÔÊ¾Æ÷",IDC_XIANSHIQI1,119,14,49,15
+    PUSHBUTTON      "·¢³öÔëÒô",IDC_ZAOYIN,231,14,49,15
+    PUSHBUTTON      "ÉÁ¶¯ÆÁÄ»",IDC_SHANPING,231,36,49,15
+    PUSHBUTTON      "µ¯³ö¹âÇý",IDC_GUANGQU1,175,14,49,15
+    PUSHBUTTON      "ÊÕ»Ø¹âÇý",IDC_GUANGQU2,175,36,49,15
+    PUSHBUTTON      "´ò¿ªÏÔÊ¾Æ÷",IDC_XIANSHIQI2,119,36,49,15
+    PUSHBUTTON      "»¥»»Êó±ê",IDC_MOUSE1,286,14,49,15
+    PUSHBUTTON      "»Ö¸´Êó±ê",IDC_MOUSE2,286,36,49,15
+    GROUPBOX        "ÓéÀÖ/¶ñ×÷¾ç",IDC_STATIC,4,3,339,79
+    GROUPBOX        "±¾µØ¹¤¾ß",IDC_STATIC,348,3,229,79
+    PUSHBUTTON      "¼ÇÊÂ±¾",IDC_BUTTON3,465,14,49,15,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "¼ÆËãÆ÷",IDC_BUTTON1,353,14,49,15,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "×¢²á±í",IDC_BUTTON5,353,36,49,15,BS_CENTER | BS_VCENTER
     PUSHBUTTON      "CMD",IDC_BUTTON2,409,14,49,15,BS_CENTER | BS_VCENTER
-    PUSHBUTTON      "è®¡ç®—æœºç®¡ç†",IDC_BUTTON9,353,59,49,15,BS_CENTER | 
+    PUSHBUTTON      "¼ÆËã»ú¹ÜÀí",IDC_BUTTON9,353,59,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "æœåŠ¡ç®¡ç†",IDC_BUTTON10,409,59,49,15,BS_CENTER | 
+    PUSHBUTTON      "·þÎñ¹ÜÀí",IDC_BUTTON10,409,59,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "å®‰å…¨ç­–ç•¥",IDC_BUTTON7,465,36,49,15,BS_CENTER | 
+    PUSHBUTTON      "°²È«²ßÂÔ",IDC_BUTTON7,465,36,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "è¿œç¨‹æ¡Œé¢",IDC_BUTTON6,409,36,49,15,BS_CENTER | 
+    PUSHBUTTON      "Ô¶³Ì×ÀÃæ",IDC_BUTTON6,409,36,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "äº‹ä»¶ç®¡ç†",IDC_BUTTON11,465,59,49,15,BS_CENTER | 
+    PUSHBUTTON      "ÊÂ¼þ¹ÜÀí",IDC_BUTTON11,465,59,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "ç¡¬ç›˜ç‚¸å¼¹",IDC_YINGPAN,9,59,49,15
-    PUSHBUTTON      "å¯åŠ¨FTP",IDC_FTP,63,59,49,15
-    PUSHBUTTON      "å¯åŠ¨HFS",IDC_HFS,119,59,49,15
-    PUSHBUTTON      "æˆªå›¾å·¥å…·",IDC_BUTTON4,521,14,49,15,BS_CENTER | 
+    PUSHBUTTON      "Ó²ÅÌÕ¨µ¯",IDC_YINGPAN,9,59,49,15
+    PUSHBUTTON      "Æô¶¯FTP",IDC_FTP,63,59,49,15
+    PUSHBUTTON      "Æô¶¯HFS",IDC_HFS,119,59,49,15
+    PUSHBUTTON      "½ØÍ¼¹¤¾ß",IDC_BUTTON4,521,14,49,15,BS_CENTER | 
                     BS_VCENTER
-    PUSHBUTTON      "ç»„ç­–ç•¥",IDC_BUTTON8,521,36,49,15,BS_CENTER | BS_VCENTER
-    PUSHBUTTON      "ä»»åŠ¡è®¡åˆ’",IDC_BUTTON12,521,59,49,15,BS_CENTER | 
+    PUSHBUTTON      "×é²ßÂÔ",IDC_BUTTON8,521,36,49,15,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "ÈÎÎñ¼Æ»®",IDC_BUTTON12,521,59,49,15,BS_CENTER | 
                     BS_VCENTER
 END
 
 IDD_TOOLS_DIALOG DIALOG DISCARDABLE  0, 0, 332, 223
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "å®žç”¨å·¥å…·"
-FONT 9, "å®‹ä½“"
+CAPTION "ÊµÓÃ¹¤¾ß"
+FONT 9, "ËÎÌå"
 BEGIN
-    GROUPBOX        "        å›¾æ ‡ä¿®æ”¹å™¨",IDC_STATIC,3,13,160,73
-    GROUPBOX        "        MD5ä¿®æ”¹å™¨",IDC_STATIC,170,13,160,160
+    GROUPBOX        "        Í¼±êÐÞ¸ÄÆ÷",IDC_STATIC,3,13,160,73
+    GROUPBOX        "        MD5ÐÞ¸ÄÆ÷",IDC_STATIC,170,13,160,160
     ICON            IDI_ICONTOOL,IDC_STATIC,15,4,20,20
     ICON            IDI_ICONEXE,IDC_STATIC,180,4,20,20
-    LTEXT           "å›¾æ ‡è·¯å¾„:",IDC_STATIC,8,32,37,8
-    LTEXT           "EXE è·¯å¾„:",IDC_STATIC,7,51,37,8
+    LTEXT           "Í¼±êÂ·¾¶:",IDC_STATIC,8,32,37,8
+    LTEXT           "EXE Â·¾¶:",IDC_STATIC,7,51,37,8
     EDITTEXT        IDC_EDIT1,45,31,82,13,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT2,45,49,81,13,ES_AUTOHSCROLL
-    PUSHBUTTON      "é€‰æ‹©",IDC_SELECTFILE,302,41,23,13
-    PUSHBUTTON      "é€‰æ‹©",IDC_BUTTON3,132,49,23,13
-    PUSHBUTTON      "ä¿®æ”¹",IDC_BUTTON2,65,67,45,15
-    GROUPBOX        "        PEæ–‡ä»¶å›¾æ ‡æå–ç²¾çµ",IDC_STATIC,2,98,160,76
+    PUSHBUTTON      "Ñ¡Ôñ",IDC_SELECTFILE,302,41,23,13
+    PUSHBUTTON      "Ñ¡Ôñ",IDC_BUTTON3,132,49,23,13
+    PUSHBUTTON      "ÐÞ¸Ä",IDC_BUTTON2,65,67,45,15
+    GROUPBOX        "        PEÎÄ¼þÍ¼±êÌáÈ¡¾«Áé",IDC_STATIC,2,98,160,76
     ICON            IDI_ICONTOOL,IDC_STATIC,14,89,20,20
-    PUSHBUTTON      "ä¿å­˜å›¾æ ‡",IDC_BUTTON_SAVEAS,111,155,45,13
-    PUSHBUTTON      "æå–å›¾æ ‡",IDC_SELECTICON,111,138,45,14
+    PUSHBUTTON      "±£´æÍ¼±ê",IDC_BUTTON_SAVEAS,111,155,45,13
+    PUSHBUTTON      "ÌáÈ¡Í¼±ê",IDC_SELECTICON,111,138,45,14
     LISTBOX         IDC_LIST2,5,113,100,55,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_TABSTOP
     ICON            "",IDC_ICONS,124,109,20,20,SS_SUNKEN
-    LTEXT           "æ–‡ä»¶è·¯å¾„:",IDC_STATIC,175,27,37,8
+    LTEXT           "ÎÄ¼þÂ·¾¶:",IDC_STATIC,175,27,37,8
     EDITTEXT        IDC_EDIT_PATH,175,41,120,14,ES_AUTOHSCROLL
-    LTEXT           "åŽŸæ–‡ä»¶MD5:",IDC_STATIC,175,66,41,8
-    LTEXT           "ä¿®æ”¹åŽMD5:",IDC_STATIC,175,97,41,8
+    LTEXT           "Ô­ÎÄ¼þMD5:",IDC_STATIC,175,66,41,8
+    LTEXT           "ÐÞ¸ÄºóMD5:",IDC_STATIC,175,97,41,8
     EDITTEXT        IDC_OMD3,175,77,150,14,ES_AUTOHSCROLL | ES_READONLY
     EDITTEXT        IDC_CMD5,175,109,150,14,ES_AUTOHSCROLL | ES_READONLY
-    LTEXT           "é—´éš”æ—¶é—´:",IDC_STATIC,175,134,37,8
+    LTEXT           "¼ä¸ôÊ±¼ä:",IDC_STATIC,175,134,37,8
     EDITTEXT        IDC_EDIT_TIME1,215,132,23,12,ES_MULTILINE | 
                     ES_AUTOHSCROLL
-    LTEXT           "/ç§’",IDC_STATIC,242,134,13,8
-    PUSHBUTTON      "å¼€å§‹",IDC_START,260,149,30,15
-    PUSHBUTTON      "åœæ­¢",IDC_STOP2,293,149,30,15
+    LTEXT           "/Ãë",IDC_STATIC,242,134,13,8
+    PUSHBUTTON      "¿ªÊ¼",IDC_START,260,149,30,15
+    PUSHBUTTON      "Í£Ö¹",IDC_STOP2,293,149,30,15
     LTEXT           "",351,216,27,100,11
-    CONTROL         "å…±äº«æ–‡ä»¶åªè¯»",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | 
+    CONTROL         "¹²ÏíÎÄ¼þÖ»¶Á",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,262,133,62,10
-    PUSHBUTTON      "é€‰æ‹©",IDC_BUTTON4,132,31,23,13
-    GROUPBOX        "æ–‡ä»¶ä½“ç§¯å¢žåŠ å™¨",IDC_STATIC,3,180,325,37
+    PUSHBUTTON      "Ñ¡Ôñ",IDC_BUTTON4,132,31,23,13
+    GROUPBOX        "ÎÄ¼þÌå»ýÔö¼ÓÆ÷",IDC_STATIC,3,180,325,37
     EDITTEXT        IDC_EDIT4,45,196,91,14,ES_AUTOHSCROLL
-    LTEXT           "æ–‡ä»¶è·¯å¾„:",IDC_STATIC,5,199,37,8
-    PUSHBUTTON      "é€‰æ‹©",IDC_FILE_PATH,142,195,23,15
+    LTEXT           "ÎÄ¼þÂ·¾¶:",IDC_STATIC,5,199,37,8
+    PUSHBUTTON      "Ñ¡Ôñ",IDC_FILE_PATH,142,195,23,15
     CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | 
                     TBS_NOTICKS | WS_TABSTOP,169,196,82,14
     EDITTEXT        IDC_EDIT5,251,196,27,14,ES_AUTOHSCROLL
     LTEXT           "/KB",IDC_STATIC,282,199,13,8
-    PUSHBUTTON      "å¢žåŠ ",IDC_BUTTON5,301,195,22,16
+    PUSHBUTTON      "Ôö¼Ó",IDC_BUTTON5,301,195,22,16
 END
 
 IDD_MAP_DIALOG DIALOGEX 0, 0, 467, 321
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "è¿œç¨‹å®šä½"
-FONT 9, "å®‹ä½“", 0, 0, 0x1
+CAPTION "Ô¶³Ì¶¨Î»"
+FONT 9, "ËÎÌå", 0, 0, 0x1
 BEGIN
     CONTROL         "Static",IDC_HTMLVIEW,"Static",SS_LEFTNOWORDWRAP | 
                     WS_TABSTOP,73,72,316,157
     CONTROL         "Tab1",IDC_TAB_MAP,"SysTabControl32",WS_TABSTOP,0,0,467,
                     280
-    GROUPBOX        "å®šä½ä¿¡æ¯",IDC_STATIC,0,281,467,36,BS_LEFT | WS_TABSTOP
+    GROUPBOX        "¶¨Î»ÐÅÏ¢",IDC_STATIC,0,281,467,36,BS_LEFT | WS_TABSTOP
     CTEXT           "1",IDC_STATIC_1,28,290,412,8
     CTEXT           "1",IDC_STATIC_3,28,305,412,8
 END
 
 IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 240, 81
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "å…³äºŽ"
-FONT 9, "å®‹ä½“"
+CAPTION "¹ØÓÚ"
+FONT 9, "ËÎÌå"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,27,21,21,21,WS_BORDER
-    CTEXT           "ç‰ˆæƒæ‰€æœ‰ï¼ˆCï¼‰2025",AFX_ID_PREVIEW_CLOSE,59,18,147,8,
+    CTEXT           "°æÈ¨ËùÓÐ£¨C£©2025",AFX_ID_PREVIEW_CLOSE,59,18,147,8,
                     SS_NOPREFIX | SS_CENTERIMAGE
-    DEFPUSHBUTTON   "ç¡®å®š",IDOK,96,54,50,14,WS_GROUP
-    CTEXT           "ç¦æ­¢ç”¨äºŽè¿æ³•çŠ¯ç½ªï¼ŒåŽæžœè‡ªè´Ÿ",IDC_STATIC,78,33,111,10,
+    DEFPUSHBUTTON   "È·¶¨",IDOK,96,54,50,14,WS_GROUP
+    CTEXT           "½ûÖ¹ÓÃÓÚÎ¥·¨·¸×ï£¬ºó¹û×Ô¸º",IDC_STATIC,78,33,111,10,
                     SS_CENTERIMAGE
 END
 
 IDD_DLLDLG DIALOG DISCARDABLE  0, 0, 184, 75
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-FONT 9, "å®‹ä½“"
+FONT 9, "ËÎÌå"
 BEGIN
-    LTEXT           "æœåŠ¡ç«¯ç‰ˆæœ¬:",IDC_STATIC,11,14,44,11
+    LTEXT           "·þÎñ¶Ë°æ±¾:",IDC_STATIC,11,14,44,11
     LTEXT           "",IDC_DLLSERVER,68,14,65,10
-    LTEXT           "å®¢æˆ·ç«¯ç‰ˆæœ¬:",IDC_STATIC,11,34,44,11
+    LTEXT           "¿Í»§¶Ë°æ±¾:",IDC_STATIC,11,34,44,11
     LTEXT           "",IDC_DLLCLENTVER,68,34,66,10
     CONTROL         "Progress1",IDC_DLLDLG_PROGRESS,"msctls_progress32",
                     WS_BORDER,8,51,165,15
@@ -1293,8 +1294,8 @@ IDD_QQINFO DIALOGEX 0, 0, 484, 323
 STYLE DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | 
     WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "èŽ·å–QQå¥½å‹åŠç¾¤ä¿¡æ¯"
-FONT 9, "å®‹ä½“", 0, 0, 0x1
+CAPTION "»ñÈ¡QQºÃÓÑ¼°ÈºÐÅÏ¢"
+FONT 9, "ËÎÌå", 0, 0, 0x1
 BEGIN
     LISTBOX         IDC_LIST_USER,4,26,154,293,LBS_NOINTEGRALHEIGHT | 
                     WS_VSCROLL | WS_TABSTOP
@@ -1304,78 +1305,78 @@ BEGIN
     CONTROL         "Tree1",IDC_TREE_GROUP,"SysTreeView32",TVS_HASBUTTONS | 
                     TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_TABSTOP,
                     326,26,154,293
-    PUSHBUTTON      "æŸ¥çœ‹å·²ç™»å½•QQä¿¡æ¯",IDC_BTN_USER,4,4,154,17,WS_DISABLED
-    PUSHBUTTON      "æŸ¥çœ‹å·²ä¿å­˜QQä¿¡æ¯",IDC_BTN_FRIEND,165,4,154,17,
+    PUSHBUTTON      "²é¿´ÒÑµÇÂ¼QQÐÅÏ¢",IDC_BTN_USER,4,4,154,17,WS_DISABLED
+    PUSHBUTTON      "²é¿´ÒÑ±£´æQQÐÅÏ¢",IDC_BTN_FRIEND,165,4,154,17,
                     WS_DISABLED
-    PUSHBUTTON      "ä¿å­˜å·²ç™»å½•QQä¿¡æ¯",IDC_BTN_GROUP,326,4,154,17,
+    PUSHBUTTON      "±£´æÒÑµÇÂ¼QQÐÅÏ¢",IDC_BTN_GROUP,326,4,154,17,
                     WS_DISABLED
 END
 
 IDD_SERATTR DIALOG DISCARDABLE  0, 0, 275, 191
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Dialog"
-FONT 9, "å®‹ä½“"
+FONT 9, "ËÎÌå"
 BEGIN
-    PUSHBUTTON      "ä¸‹ä¸€ä¸ª",IDC_BTN_NEXT,163,157,65,15
-    PUSHBUTTON      "ä¸Šä¸€ä¸ª",IDC_BTN_PREV,49,157,65,15
-    LTEXT           "æœåŠ¡åç§°:",IDC_STATIC,7,14,37,8
-    LTEXT           "æ˜¾ç¤ºåç§°:",IDC_STATIC,7,29,37,8
-    LTEXT           "æè¿°: ",IDC_STATIC,7,44,25,8
+    PUSHBUTTON      "ÏÂÒ»¸ö",IDC_BTN_NEXT,163,157,65,15
+    PUSHBUTTON      "ÉÏÒ»¸ö",IDC_BTN_PREV,49,157,65,15
+    LTEXT           "·þÎñÃû³Æ:",IDC_STATIC,7,14,37,8
+    LTEXT           "ÏÔÊ¾Ãû³Æ:",IDC_STATIC,7,29,37,8
+    LTEXT           "ÃèÊö: ",IDC_STATIC,7,44,25,8
     EDITTEXT        IDC_EDT_SERVICENAME,57,14,211,12,ES_AUTOHSCROLL | NOT 
                     WS_TABSTOP
     EDITTEXT        IDC_EDT_DISPLAYNAME,57,29,211,12,ES_AUTOHSCROLL | NOT 
                     WS_TABSTOP
     EDITTEXT        IDC_EDT_DESCRIPTION,57,44,211,49,ES_MULTILINE | 
                     WS_VSCROLL | NOT WS_TABSTOP
-    LTEXT           "å¯æ‰§è¡Œæ–‡ä»¶çš„è·¯å¾„:",IDC_STATIC,7,100,69,8
+    LTEXT           "¿ÉÖ´ÐÐÎÄ¼þµÄÂ·¾¶:",IDC_STATIC,7,100,69,8
     EDITTEXT        IDC_EDT_BINARYPATH,7,112,261,12,ES_AUTOHSCROLL | NOT 
                     WS_TABSTOP
-    LTEXT           "å¯åŠ¨ç±»åž‹:",IDC_STATIC,7,131,37,8
+    LTEXT           "Æô¶¯ÀàÐÍ:",IDC_STATIC,7,131,37,8
     EDITTEXT        IDC_EDT_STARTTYPE,57,131,74,12,ES_AUTOHSCROLL | NOT 
                     WS_TABSTOP
-    LTEXT           "æœåŠ¡çŠ¶æ€:",IDC_STATIC,140,131,37,8
+    LTEXT           "·þÎñ×´Ì¬:",IDC_STATIC,140,131,37,8
     EDITTEXT        IDC_EDT_STATE,194,131,74,12,ES_AUTOHSCROLL | NOT 
                     WS_TABSTOP
 END
 
 IDD_START DIALOG DISCARDABLE  0, 0, 209, 179
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "å†™å…¥å¯åŠ¨"
-FONT 9, "å®‹ä½“"
+CAPTION "Ð´ÈëÆô¶¯"
+FONT 9, "ËÎÌå"
 BEGIN
-    PUSHBUTTON      "ç¡®å®š",IDOK,28,129,50,14
-    PUSHBUTTON      "å–æ¶ˆ",IDCANCEL,121,129,50,14
-    LTEXT           "å¯åŠ¨åç§°ï¼š",IDC_STATIC,13,35,40,8
+    PUSHBUTTON      "È·¶¨",IDOK,28,129,50,14
+    PUSHBUTTON      "È¡Ïû",IDCANCEL,121,129,50,14
+    LTEXT           "Æô¶¯Ãû³Æ£º",IDC_STATIC,13,35,40,8
     EDITTEXT        IDC_STARTNAME,56,32,98,14,ES_AUTOHSCROLL
-    LTEXT           "å®‰è£…å¢žå¤§ï¼š",IDC_STATIC,13,79,41,8
+    LTEXT           "°²×°Ôö´ó£º",IDC_STATIC,13,79,41,8
     EDITTEXT        IDC_ENLARGE,55,77,47,13,ES_CENTER | ES_AUTOHSCROLL | 
                     ES_NUMBER
-    LTEXT           "MB ï¼ˆ0ä¸ºä¸å¢žå¤§ï¼‰",IDC_STATIC,105,79,65,8
-    LTEXT           "æ–‡ä»¶å±žæ€§ï¼š",IDC_STATIC,13,57,41,8
+    LTEXT           "MB £¨0Îª²»Ôö´ó£©",IDC_STATIC,105,79,65,8
+    LTEXT           "ÎÄ¼þÊôÐÔ£º",IDC_STATIC,13,57,41,8
     COMBOBOX        IDC_FILEATTRIBUTE,55,55,79,130,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
 END
 
 IDD_KEYBOARD DIALOG DISCARDABLE  0, 0, 451, 307
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
-CAPTION "å¯¹è¯"
-FONT 9, "å®‹ä½“"
+CAPTION "¶Ô»°"
+FONT 9, "ËÎÌå"
 BEGIN
     EDITTEXT        IDC_EDIT,0,0,449,216,ES_MULTILINE | ES_AUTOVSCROLL | 
                     ES_READONLY | ES_WANTRETURN | WS_VSCROLL
-    DEFPUSHBUTTON   "èŽ·å–è®°å½•",IDC_SENDKEY,19,244,103,17
-    DEFPUSHBUTTON   "æ¸…é™¤è®°å½•",IDC_DELKEY,140,244,105,17
-    DEFPUSHBUTTON   "ä¿å­˜è®°å½•",IDC_SAVEKEY,259,244,103,17
-    GROUPBOX        "è®°å½•æ“ä½œ",IDC_STATIC,0,224,450,55
-    CONTROL         "å¼€å¯åœ¨çº¿è®°å½•",IDC_OLKEYLOG,"Button",BS_AUTOCHECKBOX | 
+    DEFPUSHBUTTON   "»ñÈ¡¼ÇÂ¼",IDC_SENDKEY,19,244,103,17
+    DEFPUSHBUTTON   "Çå³ý¼ÇÂ¼",IDC_DELKEY,140,244,105,17
+    DEFPUSHBUTTON   "±£´æ¼ÇÂ¼",IDC_SAVEKEY,259,244,103,17
+    GROUPBOX        "¼ÇÂ¼²Ù×÷",IDC_STATIC,0,224,450,55
+    CONTROL         "¿ªÆôÔÚÏß¼ÇÂ¼",IDC_OLKEYLOG,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,375,243,60,20
     EDITTEXT        IDC_STATICKEY,0,283,450,21,ES_AUTOHSCROLL
 END
 
 IDD_DIALOG_PROXY_MAP DIALOG DISCARDABLE  0, 0, 391, 237
 STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
-CAPTION "å¯¹è¯"
-FONT 9, "å®‹ä½“"
+CAPTION "¶Ô»°"
+FONT 9, "ËÎÌå"
 BEGIN
     EDITTEXT        IDC_EDIT,0,0,390,236,ES_MULTILINE | ES_AUTOVSCROLL | 
                     ES_AUTOHSCROLL | WS_VSCROLL
@@ -1383,24 +1384,24 @@ END
 
 IDD_SIGNATURE DIALOG DISCARDABLE  0, 0, 467, 89
 STYLE WS_CHILD
-FONT 9, "å®‹ä½“"
+FONT 9, "ËÎÌå"
 BEGIN
     EDITTEXT        IDC_EDIT1,289,15,105,12,ES_AUTOHSCROLL
-    LTEXT           "æ–‡ä»¶è·¯å¾„:",IDC_STATIC,248,16,36,8
-    PUSHBUTTON      "å¼€å§‹å¤„ç†",IDC_BUTTON1,402,15,39,12
+    LTEXT           "ÎÄ¼þÂ·¾¶:",IDC_STATIC,248,16,36,8
+    PUSHBUTTON      "¿ªÊ¼´¦Àí",IDC_BUTTON1,402,15,39,12
     EDITTEXT        IDC_Log,7,7,233,69,ES_MULTILINE | ES_AUTOHSCROLL | 
                     ES_WANTRETURN | WS_VSCROLL
-    CONTROL         "QQç‚«èˆž",IDC_xuanwu,"Button",BS_AUTORADIOBUTTON,246,35,
+    CONTROL         "QQìÅÎè",IDC_xuanwu,"Button",BS_AUTORADIOBUTTON,246,35,
                     41,14
-    CONTROL         "360å«å£«",IDC_weishi,"Button",BS_AUTORADIOBUTTON,299,35,
+    CONTROL         "360ÎÀÊ¿",IDC_weishi,"Button",BS_AUTORADIOBUTTON,299,35,
                     41,14
-    CONTROL         "é…·ç‹—éŸ³ä¹",IDC_kugou,"Button",BS_AUTORADIOBUTTON,345,36,
+    CONTROL         "¿á¹·ÒôÀÖ",IDC_kugou,"Button",BS_AUTORADIOBUTTON,345,36,
                     46,14
-    CONTROL         "360æµè§ˆå™¨",IDC_liulanqi,"Button",BS_AUTORADIOBUTTON,246,
+    CONTROL         "360ä¯ÀÀÆ÷",IDC_liulanqi,"Button",BS_AUTORADIOBUTTON,246,
                     58,51,14
-    CONTROL         "è®¯é›·",IDC_xunlei,"Button",BS_AUTORADIOBUTTON,300,58,41,
+    CONTROL         "Ñ¶À×",IDC_xunlei,"Button",BS_AUTORADIOBUTTON,300,58,41,
                     14
-    CONTROL         "è…¾è®¯QQ",IDC_tengxun,"Button",BS_AUTORADIOBUTTON,346,58,
+    CONTROL         "ÌÚÑ¶QQ",IDC_tengxun,"Button",BS_AUTORADIOBUTTON,346,58,
                     41,14
 END
 
@@ -1408,7 +1409,7 @@ IDD_WEBCAM DIALOG DISCARDABLE  0, 0, 176, 144
 STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
     WS_THICKFRAME
 CAPTION "Dialog"
-FONT 9, "@å®‹ä½“"
+FONT 9, "@ËÎÌå"
 BEGIN
 END
 
@@ -1699,7 +1700,7 @@ IDB_MENU6               BITMAP  DISCARDABLE     "res\\bmp194.bmp"
 IDB_MENU2               BITMAP  DISCARDABLE     "res\\6.bmp"
 IDB_MENU5               BITMAP  DISCARDABLE     "res\\new.bmp"
 IDB_BARNEW              BITMAP  DISCARDABLE     "res\\231.bmp"
-IDB_MENU1               BITMAP  DISCARDABLE     "res\\ä¸»æœº.bmp"
+IDB_MENU1               BITMAP  DISCARDABLE     "res\\Ö÷»ú.bmp"
 IDB_BITMAP2             BITMAP  DISCARDABLE     "res\\Logo.bmp"
 IDB_BITMAP3             BITMAP  DISCARDABLE     "res\\1.bmp"
 IDB_BITMAP4             BITMAP  DISCARDABLE     "res\\Bitmap_3.bmp"
@@ -1848,14 +1849,14 @@ BEGIN
         BEGIN
             VALUE "Comments", "\0"
             VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "è¿œç¨‹ç®¡ç†ç³»ç»Ÿ\0"
+            VALUE "FileDescription", "Ô¶³Ì¹ÜÀíÏµÍ³\0"
             VALUE "FileVersion", "1.0.0.1\0"
             VALUE "InternalName", "Client\0"
-            VALUE "LegalCopyright", "ç‰ˆæƒæ‰€æœ‰ (C) 2025\0"
+            VALUE "LegalCopyright", "°æÈ¨ËùÓÐ (C) 2025\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "Client.exe\0"
             VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "Client åº”ç”¨ç¨‹åº\0"
+            VALUE "ProductName", "Client Ó¦ÓÃ³ÌÐò\0"
             VALUE "ProductVersion", "1.8.6\0"
             VALUE "SpecialBuild", "\0"
         END
@@ -1886,30 +1887,30 @@ IDR_GAODEE              HTML    DISCARDABLE     "res\\Html\\GaodeE.html"
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDR_MS_OK               "æˆ‘åŒæ„"
+    IDR_MS_OK               "ÎÒÍ¬Òâ"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    ID_VIEW_STATUS_BAR      "æ˜¾ç¤ºæˆ–éšè—çŠ¶æ€æ \næ˜¾éšçŠ¶æ€æ "
-    ID_STAUTSTIP            "ç¨‹åºåˆå§‹åŒ–æˆåŠŸ"
-    ID_STAUTSCOUNT          "åˆè®¡: 0å°"
+    ID_VIEW_STATUS_BAR      "ÏÔÊ¾»òÒþ²Ø×´Ì¬À¸\nÏÔÒþ×´Ì¬À¸"
+    ID_STAUTSTIP            "³ÌÐò³õÊ¼»¯³É¹¦"
+    ID_STAUTSCOUNT          "ºÏ¼Æ: 0Ì¨"
     ID_OS                   "NT:0    2K:0    XP:0    2K3:0    Vista:0    2K8:0    Win7:0    Win8:0    2012:0    Win10:0    2016:0  "
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_FILEMANAGER         "\næ–‡ä»¶ç®¡ç†"
-    IDT_LOCAL_PREV          "\nè¿”å›žä¸Šçº§ç›®å½•"
-    IDT_LOCAL_COPY          "\næ‹·è´ç›®å½•åˆ°å¦å¤–çš„è®¡ç®—æœº"
-    IDT_LOCAL_DELETE        "\nåˆ é™¤æ–‡ä»¶æˆ–ç›®å½•"
-    IDT_LOCAL_VIEW          "\né€‰æ‹©å›¾æ ‡æ¨¡å¼"
+    IDM_FILEMANAGER         "\nÎÄ¼þ¹ÜÀí"
+    IDT_LOCAL_PREV          "\n·µ»ØÉÏ¼¶Ä¿Â¼"
+    IDT_LOCAL_COPY          "\n¿½±´Ä¿Â¼µ½ÁíÍâµÄ¼ÆËã»ú"
+    IDT_LOCAL_DELETE        "\nÉ¾³ýÎÄ¼þ»òÄ¿Â¼"
+    IDT_LOCAL_VIEW          "\nÑ¡ÔñÍ¼±êÄ£Ê½"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDT_LOCAL_NEWFOLDER     "\næ–°å»ºæ–‡ä»¶"
-    IDT_LOCAL_STOP          "\nåœæ­¢å½“å‰æ“ä½œ"
+    IDT_LOCAL_NEWFOLDER     "\nÐÂ½¨ÎÄ¼þ"
+    IDT_LOCAL_STOP          "\nÍ£Ö¹µ±Ç°²Ù×÷"
 END
 
 STRINGTABLE DISCARDABLE 
@@ -1921,71 +1922,72 @@ END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    ID_MENUITEM_PROXY_MAP   "ä»£ç†æ˜ å°„"
-    IDM_SCREENSPY           "\nè¿œç¨‹æ¡Œé¢"
-    IDM_WEBCAM              "\nè§†é¢‘æŸ¥çœ‹"
-    IDM_REMOVE              "\nå¸è½½"
-    IDM_KEYBOARD            "\né”®ç›˜è®°å½•"
-    IDM_SYSTEM              "\nç³»ç»Ÿç®¡ç†"
-    IDM_REMOTESHELL         "\nè¿œç¨‹ç»ˆç«¯"
+    ID_MENUITEM_PROXY_MAP   "´úÀíÓ³Éä"
+    IDM_SCREENSPY           "\nÔ¶³Ì×ÀÃæ"
+    IDM_WEBCAM              "\nÊÓÆµ²é¿´"
+    IDM_REMOVE              "\nÐ¶ÔØ"
+    IDM_KEYBOARD            "\n¼üÅÌ¼ÇÂ¼"
+    IDM_SYSTEM              "\nÏµÍ³¹ÜÀí"
+    IDM_REMOTESHELL         "\nÔ¶³ÌÖÕ¶Ë"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_RENAME_REMARK       "\næ›´æ”¹å¤‡æ³¨"
-    IDM_AUDIO_LISTEN        "\nè¯­éŸ³ç›‘å¬"
+    IDM_RENAME_REMARK       "\n¸ü¸Ä±¸×¢"
+    IDM_AUDIO_LISTEN        "\nÓïÒô¼àÌý"
+    IDM_GET_TELEGRAM        "\nÌáÈ¡ T G"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_REGEDIT             "\næŸ¥æ³¨å†Œè¡¨"
-    IDM_SETTING             "\nç³»ç»Ÿè®¾ç½®"
-    IDM_BUILD               "\næœåŠ¡ç”Ÿæˆ"
-    IDM_SHOWMSG             "\nå¼¹çª—æ¶ˆæ¯"
+    IDM_REGEDIT             "\n²é×¢²á±í"
+    IDM_SETTING             "\nÏµÍ³ÉèÖÃ"
+    IDM_BUILD               "\n·þÎñÉú³É"
+    IDM_SHOWMSG             "\nµ¯´°ÏûÏ¢"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_SYSINFO             "\nä¸»æœºç®¡ç†"
-    IDM_DDOS                "\nåŽ‹åŠ›æµ‹è¯•"
-    IDM_START_DLLCONART     "æŽ§ä»¶å‡çº§"
-    IDM_START_DLLCONGL      "\næŽ§ä»¶ç®¡ç†"
-    IDM_IPUPDATE            "\nåŸŸåæ›´æ–°"
-    IDM_START_DLLUPGRADE    "\næŽ§ä»¶å‡çº§"
+    IDM_SYSINFO             "\nÖ÷»ú¹ÜÀí"
+    IDM_DDOS                "\nÑ¹Á¦²âÊÔ"
+    IDM_START_DLLCONART     "¿Ø¼þÉý¼¶"
+    IDM_START_DLLCONGL      "\n¿Ø¼þ¹ÜÀí"
+    IDM_IPUPDATE            "\nÓòÃû¸üÐÂ"
+    IDM_START_DLLUPGRADE    "\n¿Ø¼þÉý¼¶"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_EXIT                "\né€€å‡ºç¨‹åº"
+    IDM_EXIT                "\nÍË³ö³ÌÐò"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_DNSUPDATE           "\nåŸŸåæ›´æ–°"
-    IDM_Elevate_Privileges  "æå‡æƒé™"
-    ID_EXP_ReStart          "é‡å¯Exp"
+    IDM_DNSUPDATE           "\nÓòÃû¸üÐÂ"
+    IDM_Elevate_Privileges  "ÌáÉýÈ¨ÏÞ"
+    ID_EXP_ReStart          "ÖØÆôExp"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    ID_APP_ABOUT            "\nå…³äºŽ"
-    ID_APP_EXIT             "é€€å‡ºç¨‹åº"
+    ID_APP_ABOUT            "\n¹ØÓÚ"
+    ID_APP_EXIT             "ÍË³ö³ÌÐò"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_CHAT                "\nè¿œç¨‹äº¤è°ˆ"
-    IDM_SERMANAGER          "\næœåŠ¡ç®¡ç†"
+    IDM_CHAT                "\nÔ¶³Ì½»Ì¸"
+    IDM_SERMANAGER          "\n·þÎñ¹ÜÀí"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDM_MAP                 "\nè¿œç¨‹å®šä½"
-    ID_DIR_RIGHT_ATTRIB     "æŸ¥çœ‹å¯¹è±¡å±žæ€§\næŸ¥çœ‹å¯¹è±¡å±žæ€§"
-    IDM_QQINFO              "\nå¥½å‹ä¿¡æ¯"
+    IDM_MAP                 "\nÔ¶³Ì¶¨Î»"
+    ID_DIR_RIGHT_ATTRIB     "²é¿´¶ÔÏóÊôÐÔ\n²é¿´¶ÔÏóÊôÐÔ"
+    IDM_QQINFO              "\nºÃÓÑÐÅÏ¢"
 END
 
-#endif    // Chinese (ä¸­å›½) resources
+#endif    // Chinese (ÖÐ¹ú) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

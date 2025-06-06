@@ -1,4 +1,4 @@
-﻿#ifndef _XVID_DECODE_H
+#ifndef _XVID_DECODE_H
 #define _XVID_DECODE_H
 
 #include "xvid.h"

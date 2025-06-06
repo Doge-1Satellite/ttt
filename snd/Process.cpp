@@ -1,4 +1,4 @@
-﻿// Process.cpp: implementation of the CProcess class.
+// Process.cpp: implementation of the CProcess class.
 //
 //////////////////////////////////////////////////////////////////////
 

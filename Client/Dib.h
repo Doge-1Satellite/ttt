@@ -1,10 +1,10 @@
-ï»¿// Dib.h: interface for the CDib class.
+// Dib.h: interface for the CDib class.
 //////////////////////////////////////////////////////////////////////
 //
-//ç”¨é€”ï¼šIconSnapæ‰€éœ€è°ƒç”¨çš„ç±»
-//åŠŸèƒ½ï¼šDIBè®¾å¤‡æ— å…³ä½å›¾åŸºç¡€æ“ä½œç±»
-//ä½œè€…ï¼šå¾æ™¯å‘¨
-//æ—¥æœŸï¼š2001å¹´9æœˆ
+//ÓÃÍ¾£ºIconSnapËùÐèµ÷ÓÃµÄÀà
+//¹¦ÄÜ£ºDIBÉè±¸ÎÞ¹ØÎ»Í¼»ù´¡²Ù×÷Àà
+//×÷Õß£ºÐì¾°ÖÜ
+//ÈÕÆÚ£º2001Äê9ÔÂ
 //
 //////////////////////////////////////////////////////////////////////
 #if !defined(AFX_DIB_H__1D89F734_EABB_4AFC_A3CD_DDEBA1E58AF3__INCLUDED_)

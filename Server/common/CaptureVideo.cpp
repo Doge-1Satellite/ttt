@@ -1,5 +1,5 @@
-ï»¿//-------------------------------------------------------------------
-// CCaptureVideoè§†é¢‘æ•æ‰ç±»å®ç°æ–‡ä»¶CaptureVideo.cpp
+//-------------------------------------------------------------------
+// CCaptureVideoÊÓÆµ²¶×½ÀàÊµÏÖÎÄ¼şCaptureVideo.cpp
 //-------------------------------------------------------------------
 // CaptureVideo.cpp: implementation of the CCaptureVideo class.
 //
@@ -125,7 +125,7 @@ int CCaptureVideo::EnumDevices(DeviceInfo *head)
 		return 0;
   DeviceInfo *ptr = head;
   int id = 0;
-  //æšä¸¾è§†é¢‘æ‰‘æ‰è®¾å¤‡
+  //Ã¶¾ÙÊÓÆµÆË×½Éè±¸
   ICreateDevEnum *pCreateDevEnum;
   
   ICaptureGraphBuilder2 *pBuilder = NULL;
@@ -204,7 +204,7 @@ int CCaptureVideo::EnumDevices(DeviceInfo *head)
 						hr = pVSC->GetStreamCaps(iFormat, &pmtConfig, (BYTE*)&scc);
 						if (SUCCEEDED(hr))
 						{
-							//åˆ†è¾¨ç‡
+							//·Ö±æÂÊ
 							if(HEADER(pmtConfig->pbFormat)->biWidth != 0 && HEADER(pmtConfig->pbFormat)->biHeight != 0)
 							{
 								char cResolution[32] = {0};
@@ -280,7 +280,7 @@ HRESULT CCaptureVideo::Start(int iDeviceID, HWND hWnd , int width, int height)
   hr = m_pGB->AddFilter(m_pNullRenderer, L"NullRenderer");
   CComQIPtr< IBaseFilter, &IID_IBaseFilter > pGrabBase( m_pGrabber );
 		
-		//è®¾ç½®è§†é¢‘æ ¼å¼
+		//ÉèÖÃÊÓÆµ¸ñÊ½
   AM_MEDIA_TYPE mt; 
   ZeroMemory(&mt, sizeof(AM_MEDIA_TYPE));
   mt.majortype = MEDIATYPE_Video;
@@ -322,11 +322,11 @@ HRESULT CCaptureVideo::Start(int iDeviceID, HWND hWnd , int width, int height)
   {
 	  return S_FALSE;
   }
-  pvih->bmiHeader.biHeight=height;     //ä¿®æ”¹é‡‡é›†è§†é¢‘çš„é«˜ä¸º240 
-  pvih->bmiHeader.biWidth=width;       //ä¿®æ”¹é‡‡é›†è§†é¢‘çš„å®½ä¸º320 
+  pvih->bmiHeader.biHeight=height;     //ĞŞ¸Ä²É¼¯ÊÓÆµµÄ¸ßÎª240 
+  pvih->bmiHeader.biWidth=width;       //ĞŞ¸Ä²É¼¯ÊÓÆµµÄ¿íÎª320 
   pvih->AvgTimePerFrame = 10000000/10;
   pmt->pbFormat = (unsigned char*)pvih; 
-  hr = pConfig->SetFormat(pmt);       //é‡æ–°è®¾ç½®å‚æ•° 
+  hr = pConfig->SetFormat(pmt);       //ÖØĞÂÉèÖÃ²ÎÊı 
   if(FAILED(hr))
   {
 	return hr;
@@ -403,9 +403,9 @@ HRESULT CCaptureVideo::Start(int iDeviceID, HWND hWnd , int width, int height)
   CXvidEnc::XVID_GLOBAL_INIT() ; 
   m_pEnc->Open();
   m_bIsStarted = true;
-  //è®¾ç½®è§†é¢‘æ•æ‰çª—å£
+  //ÉèÖÃÊÓÆµ²¶×½´°¿Ú
 //  SetupVideoWindow();
-  hr = m_pMC->Run();//å¼€å§‹è§†é¢‘æ•æ‰
+  hr = m_pMC->Run();//¿ªÊ¼ÊÓÆµ²¶×½
   if(FAILED(hr))
   {
 	  return hr;
@@ -465,9 +465,9 @@ HRESULT CCaptureVideo::InitCaptureGraphBuilder()
 {
   HRESULT hr;
 
-  // åˆ›å»ºIGraphBuilderæ¥å£
+  // ´´½¨IGraphBuilder½Ó¿Ú
   hr=CoCreateInstance(CLSID_FilterGraph, NULL, CLSCTX_INPROC_SERVER, IID_IGraphBuilder, (void **)&m_pGB);
-  // åˆ›å»ºICaptureGraphBuilder2æ¥å£
+  // ´´½¨ICaptureGraphBuilder2½Ó¿Ú
   hr = CoCreateInstance (CLSID_CaptureGraphBuilder2 , NULL, CLSCTX_INPROC,
 						IID_ICaptureGraphBuilder2, (void **) &m_pCapture);
   if (FAILED(hr))return hr;

@@ -1,4 +1,4 @@
-ï»¿// Start.cpp : implementation file
+// Start.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -64,14 +64,14 @@ void CStart::OnOK()
 	m_FileAttribute.GetLBText(m_FileAttribute.GetCurSel(),m_strCur);
 	
 
-	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Start", "StartName", m_StartName);  //å®‰è£…åç§°
+	((CClientApp *)AfxGetApp())->m_IniFile.SetString("Start", "StartName", m_StartName);  //°²×°Ãû³Æ
 	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Start","FileAttribute",m_FileAttribute.GetCurSel());
-	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Start","Enlarge",m_Enlarge);     //å®‰è£…å¢å¤§
+	((CClientApp *)AfxGetApp())->m_IniFile.SetInt("Start","Enlarge",m_Enlarge);     //°²×°Ôö´ó
 
 	char ShowText[200];
-	wsprintf(ShowText,"%s %s","æ–‡ä»¶åç§°:",m_StartName);
+	wsprintf(ShowText,"%s %s","ÎÄ¼şÃû³Æ:",m_StartName);
 
-	::MessageBox(0, ShowText,"æˆåŠŸå†™å…¥å¯åŠ¨", MB_ICONINFORMATION);//å¼¹å‡ºæç¤ºæ¡†
+	::MessageBox(0, ShowText,"³É¹¦Ğ´ÈëÆô¶¯", MB_ICONINFORMATION);//µ¯³öÌáÊ¾¿ò
 
 	CDialog::OnOK();
 }

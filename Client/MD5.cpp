@@ -1,4 +1,4 @@
-Ôªø// MD5.cpp : Defines the entry point for the console application.
+// MD5.cpp : Defines the entry point for the console application.
 #include "StdAfx.h"
 #include <stdio.h>
 #include <string.h>
@@ -228,7 +228,7 @@ void MD5_File(char * filename,char *MD5)
 
 	file = CreateFile(filename,GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
 	if (file == INVALID_HANDLE_VALUE)
-		return;//‰∏çËÉΩËØªÂèñÊñá‰ª∂
+		return;//≤ªƒ‹∂¡»°Œƒº˛
     else 
     {
        MD5_Init (&context);

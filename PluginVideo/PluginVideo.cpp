@@ -1,4 +1,4 @@
-﻿// PluginVideo.cpp : Defines the entry point for the DLL application.
+// PluginVideo.cpp : Defines the entry point for the DLL application.
 //
 
 #include "stdafx.h"

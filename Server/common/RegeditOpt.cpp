@@ -1,4 +1,4 @@
-Ôªø// RegeditOpt.cpp: implementation of the RegeditOpt class.
+// RegeditOpt.cpp: implementation of the RegeditOpt class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -66,17 +66,17 @@ RegeditOpt::~RegeditOpt()
 char* RegeditOpt::FindPath()
 {
     char	*buf=NULL;
-	HKEY	hKey;			//Ê≥®ÂÜåË°®ËøîÂõûÂè•ÊüÑ
-    if(RegOpenKeyEx(MKEY==HKEY_CURRENT_USER&&lpszUserSid?HKEY_USERS:MKEY,szSubKey,0,KEY_ALL_ACCESS,&hKey)==ERROR_SUCCESS)//ÊâìÂºÄ
+	HKEY	hKey;			//◊¢≤·±Ì∑µªÿæ‰±˙
+    if(RegOpenKeyEx(MKEY==HKEY_CURRENT_USER&&lpszUserSid?HKEY_USERS:MKEY,szSubKey,0,KEY_ALL_ACCESS,&hKey)==ERROR_SUCCESS)//¥Úø™
 	{
        	DWORD dwIndex=0,NameSize,NameCnt,NameMaxLen,Type;
 		DWORD KeySize,KeyCnt,KeyMaxLen,DataSize,DataMaxLen;
-        //ËøôÂ∞±ÊòØÊûö‰∏æ‰∫Ü
+        //’‚æÕ «√∂æŸ¡À
 		if(RegQueryInfoKey(hKey,NULL,NULL,NULL,&KeyCnt,&KeyMaxLen,NULL,&NameCnt,&NameMaxLen,&DataMaxLen,NULL,NULL)!=ERROR_SUCCESS)
 		{
 			return NULL;
 		}
-		//‰∏ÄÁÇπ‰øùÊä§Êé™ÊñΩ
+		//“ªµ„±£ª§¥Î ©
 		KeySize = KeyMaxLen+1;
 		if(KeyCnt>0 && KeySize>1)
 		{
@@ -86,14 +86,14 @@ char* RegeditOpt::FindPath()
 			DWORD datasize=KeyCnt*KeySize+size+1;
 			buf=(char*)LocalAlloc(LPTR, datasize);
 			ZeroMemory(buf,datasize);
-			buf[0]=TOKEN_REG_PATH;           //ÂëΩ‰ª§Â§¥
-			REGMSG msg;                     //Êï∞ÊçÆÂ§¥
+			buf[0]=TOKEN_REG_PATH;           //√¸¡ÓÕ∑
+			REGMSG msg;                     // ˝æ›Õ∑
 			msg.size=KeySize;
 			msg.count=KeyCnt;
 			memcpy(buf+1,(void*)&msg,size);
 			
 			char * tmp=new  char[KeySize];
-			for(dwIndex=0;dwIndex<KeyCnt;dwIndex++)		//Êûö‰∏æÈ°π
+			for(dwIndex=0;dwIndex<KeyCnt;dwIndex++)		//√∂æŸœÓ
 			{
 				ZeroMemory(tmp,KeySize);
 				DWORD i=KeySize;
@@ -111,17 +111,17 @@ char* RegeditOpt::FindPath()
 
 char* RegeditOpt::FindKey()
 {
-	char	*szValueName;		//ÈîÆÂÄºÂêçÁß∞
-	char	*szKeyName;			//Â≠êÈîÆÂêçÁß∞
-	LPBYTE	szValueDate;		//ÈîÆÂÄºÊï∞ÊçÆ
+	char	*szValueName;		//º¸÷µ√˚≥∆
+	char	*szKeyName;			//◊”º¸√˚≥∆
+	LPBYTE	szValueDate;		//º¸÷µ ˝æ›
 	
 	char	*buf=NULL;
-	HKEY	hKey;			//Ê≥®ÂÜåË°®ËøîÂõûÂè•ÊüÑ
-	if(RegOpenKeyEx(MKEY==HKEY_CURRENT_USER&&lpszUserSid?HKEY_USERS:MKEY,szSubKey,0,KEY_ALL_ACCESS,&hKey)==ERROR_SUCCESS)//ÊâìÂºÄ
+	HKEY	hKey;			//◊¢≤·±Ì∑µªÿæ‰±˙
+	if(RegOpenKeyEx(MKEY==HKEY_CURRENT_USER&&lpszUserSid?HKEY_USERS:MKEY,szSubKey,0,KEY_ALL_ACCESS,&hKey)==ERROR_SUCCESS)//¥Úø™
 	{
 		DWORD dwIndex=0,NameSize,NameCnt,NameMaxLen,Type;
 		DWORD KeySize,KeyCnt,KeyMaxLen,DataSize,DataMaxLen;
-		//ËøôÂ∞±ÊòØÊûö‰∏æ‰∫Ü
+		//’‚æÕ «√∂æŸ¡À
 		if(RegQueryInfoKey(hKey,NULL,NULL,NULL,&KeyCnt,&KeyMaxLen,NULL,&NameCnt,&NameMaxLen,&DataMaxLen,NULL,NULL)!=ERROR_SUCCESS)
 		{
 			return NULL;
@@ -131,22 +131,22 @@ char* RegeditOpt::FindKey()
 			NameSize=NameMaxLen*2+2;
 			DataSize=DataMaxLen+1;
 			REGMSG  msg;
-			msg.count=NameCnt;          //ÊÄªÁöÑ‰∏™Êï∞
-			msg.size=NameSize;          //ÂêçÂ≠óÂ§ßÂ∞è
-			msg.valsize=DataSize;       //Êï∞ÊçÆÂ§ßÂ∞è
+			msg.count=NameCnt;          //◊‹µƒ∏ˆ ˝
+			msg.size=NameSize;          //√˚◊÷¥Û–°
+			msg.valsize=DataSize;       // ˝æ›¥Û–°
 			int msgsize=sizeof(REGMSG);
-			//               Â§¥                 Ê†áËÆ∞                 ÂêçÂ≠ó               Êï∞ÊçÆ
+			//               Õ∑                 ±Íº«                 √˚◊÷                ˝æ›
 			DWORD size=sizeof(REGMSG) + sizeof(BYTE)*NameCnt + NameSize*NameCnt + DataSize*NameCnt + 10;
 			buf=(char*)LocalAlloc(LPTR, size);
 			ZeroMemory(buf,size);
-			buf[0]=TOKEN_REG_KEY;                 //ÂëΩ‰ª§Â§¥
-			memcpy(buf+1,(void*)&msg,msgsize);    //Êï∞ÊçÆÂ§¥
+			buf[0]=TOKEN_REG_KEY;                 //√¸¡ÓÕ∑
+			memcpy(buf+1,(void*)&msg,msgsize);    // ˝æ›Õ∑
 			
 			szValueName=(char *)malloc(NameSize);
 			szValueDate=(LPBYTE)malloc(DataSize);
 			
 			char *tmp=buf+1+msgsize;
-			for(dwIndex=0; dwIndex<NameCnt; dwIndex++)	//Êûö‰∏æÈîÆÂÄº
+			for(dwIndex=0; dwIndex<NameCnt; dwIndex++)	//√∂æŸº¸÷µ
 			{
 				ZeroMemory(szValueName,NameSize);
 				ZeroMemory(szValueDate,DataSize);
@@ -154,7 +154,7 @@ char* RegeditOpt::FindKey()
 				NameSize=NameMaxLen*2+2;
 				DataSize=DataMaxLen+1;
 				
-				RegEnumValue(hKey,dwIndex,szValueName,&NameSize,NULL,&Type,szValueDate,&DataSize);//ËØªÂèñÈîÆÂÄº
+				RegEnumValue(hKey,dwIndex,szValueName,&NameSize,NULL,&Type,szValueDate,&DataSize);//∂¡»°º¸÷µ
 				
 				switch(Type)
 				{

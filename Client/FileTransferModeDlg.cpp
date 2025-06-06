@@ -1,4 +1,4 @@
-ï»¿// FileTransferModeDlg.cpp : implementation file
+// FileTransferModeDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -55,7 +55,7 @@ BOOL CFileTransferModeDlg::OnInitDialog()
 	
 	// TODO: Add extra initialization here
 	CString	str;
-	str.Format(_T("æ­¤æ–‡ä»¶å¤¹å·²åŒ…å«ä¸€ä¸ªåä¸ºâ€œ%sâ€çš„æ–‡ä»¶"), m_strFileName);
+	str.Format(_T("´ËÎÄ¼ş¼ĞÒÑ°üº¬Ò»¸öÃûÎª¡°%s¡±µÄÎÄ¼ş"), m_strFileName);
 
 	for (int i = 0; i < str.GetLength(); i += 120)
 	{

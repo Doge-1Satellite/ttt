@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <body>
 <pre>
 <h1>Build Log</h1>
@@ -6,33 +6,6 @@
 --------------------Configuration: libcef - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC41.tmp" with contents
-[
-/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LIBCEF_EXPORTS" /Fp"Release/libcef.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /Zm660 /c 
-"C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\libcef.cpp"
-]
-Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPCC41.tmp" 
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC42.tmp" with contents
-[
-/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LIBCEF_EXPORTS" /Fp"Release/libcef.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /Zm660 /c 
-"C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\StdAfx.cpp"
-]
-Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSPCC42.tmp" 
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSPCC43.tmp" with contents
-[
-kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/libcef.pdb" /machine:I386 /out:"../Release/libcef.dll" /implib:"Release/libcef.lib" 
-".\Release\libcef.obj"
-".\Release\StdAfx.obj"
-]
-Creating command line "link.exe @C:\Users\Administrator\AppData\Local\Temp\RSPCC43.tmp"
-<h3>Output Window</h3>
-Compiling...
-StdAfx.cpp
-Compiling...
-libcef.cpp
-C:\Users\Administrator\Desktop\源码\远程源码\Emin摩纳哥源码GAI通讯\Emin摩纳哥源码\libcef\../Install/MemoryModule.h(892) : warning C4390: ';' : empty controlled statement found; is this the intent?
-Linking...
-   Creating library Release/libcef.lib and object Release/libcef.exp
 
 
 

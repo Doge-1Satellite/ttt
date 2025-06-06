@@ -1,4 +1,4 @@
-﻿// BmpToAvi.cpp: implementation of the CBmpToAvi class.
+// BmpToAvi.cpp: implementation of the CBmpToAvi class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -49,7 +49,7 @@ bool CBmpToAvi::Open( LPCTSTR szFile, LPBITMAPINFO lpbmi )
 	m_si.fccHandler = mmioFOURCC('X','V','I','D');
 
 	m_si.dwScale = 1;
-	m_si.dwRate = 10; // 每秒5帧
+	m_si.dwRate = 10; // ÿ��5֡
 	SetRect(&m_si.rcFrame, 0, 0, lpbmi->bmiHeader.biWidth, lpbmi->bmiHeader.biHeight);
 	m_si.dwSuggestedBufferSize = lpbmi->bmiHeader.biSizeImage;
 	

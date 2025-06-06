@@ -1,4 +1,4 @@
-﻿// ScreenSpy.h: interface for the CScreenSpy class.
+// ScreenSpy.h: interface for the CScreenSpy class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -21,9 +21,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-// 两种算法
-#define ALGORITHM_HOME	1	// 家用办公算法
-#define ALGORITHM_XVID	2	// 影视娱乐算法
+// �����㷨
+#define ALGORITHM_HOME	1	// ���ð칫�㷨
+#define ALGORITHM_XVID	2	// Ӱ�������㷨
 
 class CScreenSpy  
 {

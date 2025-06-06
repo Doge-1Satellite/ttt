@@ -1,4 +1,4 @@
-ï»¿// Myfunction.cpp: implementation of the Myfunction class.
+// Myfunction.cpp: implementation of the Myfunction class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ Myfunction:: ~Myfunction()
 
 }
 
-//strstrå‡½æ•°æºç 
+//strstrº¯ÊıÔ´Âë
 //////////////////////////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strstr(const char * str1,const char * str2)
 {
@@ -41,7 +41,7 @@ char * Myfunction:: my_strstr(const char * str1,const char * str2)
         return(NULL);
 }
 
-//è‡ªå®šä¹‰å‡½æ•° stricmp(å­—ç¬¦ä¸²æ¯”è¾ƒ ä¸åŒºåˆ†å¤§å°å†™)
+//×Ô¶¨Òåº¯Êı stricmp(×Ö·û´®±È½Ï ²»Çø·Ö´óĞ¡Ğ´)
 ////////////////////////////////////////////////////////////////////////////////////////
 int Myfunction:: my_stricmp(const char *dst, const char *src)
 {
@@ -56,7 +56,7 @@ int Myfunction:: my_stricmp(const char *dst, const char *src)
    return(ch1 - ch2);
 }
 
-//strchrå‡½æ•°æºç 
+//strchrº¯ÊıÔ´Âë
 //////////////////////////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strchr(const char *str, int ch)
 {
@@ -67,7 +67,7 @@ char * Myfunction:: my_strchr(const char *str, int ch)
    return(NULL);
 }
 
-//æºç strnicmp
+//Ô´Âëstrnicmp
 /////////////////////////////////////////////////////////////////////////////
 int Myfunction:: my_strnicmp(const char *dst,const char *src,int count)
 {
@@ -82,7 +82,7 @@ int Myfunction:: my_strnicmp(const char *dst,const char *src,int count)
    return (ch1 - ch2);
 }
 
-//å»é™¤å­—ç¬¦ä¸²ç±»å‹å‰é¢çš„ç©ºæ ¼
+//È¥³ı×Ö·û´®ÀàĞÍÇ°ÃæµÄ¿Õ¸ñ
 /////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: DelSpace(char *szData)
 {
@@ -97,14 +97,14 @@ char * Myfunction:: DelSpace(char *szData)
 } 
  
 
-//ceilå‡½æ•°æºç 
+//ceilº¯ÊıÔ´Âë
 //////////////////////////////////////////////////////////////////////////////////////////////////
 double Myfunction:: my_ceil(double x)
 {
     double y=x;
-     if( (*( ( (int *) &y)+1) & 0x80000000) != 0)//æˆ–è€…if(x<0)
+     if( (*( ( (int *) &y)+1) & 0x80000000) != 0)//»òÕßif(x<0)
          return (float)((int)x);
-     else                  //è®¨è®ºéè´Ÿçš„æƒ…å†µã€‚
+     else                  //ÌÖÂÛ·Ç¸ºµÄÇé¿ö¡£
     {
          if(x == 0)
          return (float)((int)x);
@@ -113,7 +113,7 @@ double Myfunction:: my_ceil(double x)
     }
 }
 
-//memcpyå‡½æ•°æºç 
+//memcpyº¯ÊıÔ´Âë
 /////////////////////////////////////////////////////////////////////////////////////////////////
 void * Myfunction:: my_memcpy(void * dst, const void * src, size_t count)
 {
@@ -126,7 +126,7 @@ void * Myfunction:: my_memcpy(void * dst, const void * src, size_t count)
          return(ret);
 }
 
-//strncmpå‡½æ•°æºç 
+//strncmpº¯ÊıÔ´Âë
 //////////////////////////////////////////////////////////////////////////////////////////////////
 int Myfunction:: my_strncmp(const char *first,const char *last,int count)
 {
@@ -136,7 +136,7 @@ int Myfunction:: my_strncmp(const char *first,const char *last,int count)
    return( *(unsigned char *)first - *(unsigned char *)last );
 }
 
-//substrå‡½æ•°æºç 
+//substrº¯ÊıÔ´Âë
 //////////////////////////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_substr(char   *str,int   istar,int   iend) 
 { 
@@ -164,7 +164,7 @@ char * Myfunction:: my_substr(char   *str,int   istar,int   iend)
     return   str; 
 } 
 
-//æºç strncpy
+//Ô´Âëstrncpy
 /////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strncpy( char * dest, const char * source, int count )
 {
@@ -175,7 +175,7 @@ char * Myfunction:: my_strncpy( char * dest, const char * source, int count )
    return(dest);
 } 
 
-//æºç strcat
+//Ô´Âëstrcat
 /////////////////////////////////////////////////////////////////////////////
 char* Myfunction:: my_strcat( char * dst , const char * src )  
 {  
@@ -186,7 +186,7 @@ char* Myfunction:: my_strcat( char * dst , const char * src )
     return( dst );                  
 }
 
-//æºç strlen
+//Ô´Âëstrlen
 /////////////////////////////////////////////////////////////////////////////
 typedef unsigned long  ulong;  
 size_t Myfunction:: my_strlen(const char * str)
@@ -227,7 +227,7 @@ const char * char_ptr;
       }
  } 
 
-//æºç strcpy
+//Ô´Âëstrcpy
 /////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strcpy (char * dst, char * src)
 {
@@ -237,7 +237,7 @@ char * Myfunction:: my_strcpy (char * dst, char * src)
     return( dst );
 }
 
-//æºç memfind
+//Ô´Âëmemfind
 /////////////////////////////////////////////////////////////////////////////
 int Myfunction:: my_memfind(const char *mem, const char *str, int sizem, int sizes)   
 {   
@@ -253,7 +253,7 @@ int Myfunction:: my_memfind(const char *mem, const char *str, int sizem, int siz
 	return -1;   
 }
 
-//æºç strcmp
+//Ô´Âëstrcmp
 /////////////////////////////////////////////////////////////////////////////
 int Myfunction:: my_strcmp ( const char* src, const char* dst )  
 {  
@@ -267,7 +267,7 @@ int Myfunction:: my_strcmp ( const char* src, const char* dst )
     return( ret );  
 }  
 
-//æºç strncat
+//Ô´Âëstrncat
 /////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strncat(char *dest,const char *source,int count)
 {
@@ -278,7 +278,7 @@ char * Myfunction:: my_strncat(char *dest,const char *source,int count)
    return(dest);
 }
 
-//æºç rand
+//Ô´Âërand
 /////////////////////////////////////////////////////////////////////////////
 #define RANDOM_MAX 0x7FFFFFFF
 static unsigned long next = 1;
@@ -300,7 +300,7 @@ int Myfunction:: my_rand(void)
    return my_do_rand(&next);
 }
 
-//æºç strrchr
+//Ô´Âëstrrchr
 /////////////////////////////////////////////////////////////////////////////
 char * Myfunction:: my_strrchr(const char * str,int ch)
 {
@@ -314,7 +314,7 @@ char * Myfunction:: my_strrchr(const char * str,int ch)
 	return(NULL);
 }
 
-// RC4 åˆå§‹åŒ–
+// RC4 ³õÊ¼»¯
 void Myfunction:: rc4_init(unsigned char *s, unsigned char *key, unsigned long Len)
 {
 	int i =0, j = 0, k[256] = {0};
@@ -328,12 +328,12 @@ void Myfunction:: rc4_init(unsigned char *s, unsigned char *key, unsigned long L
 	{
 		j=(j+s[i]+k[i])%256;
 		tmp = s[i];
-		s[i] = s[j];     //äº¤æ¢s[i]å’Œs[j]
+		s[i] = s[j];     //½»»»s[i]ºÍs[j]
 		s[j] = tmp;
 	}
 }
 
-// RC4 åŠ å¯†è§£å¯†å‡½æ•°
+// RC4 ¼ÓÃÜ½âÃÜº¯Êı
 void Myfunction:: rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long Len)
 {
 	int x = 0, y = 0, t = 0;
@@ -344,7 +344,7 @@ void Myfunction:: rc4_crypt(unsigned char *s, unsigned char *Data, unsigned long
 		x=(x+1)%256;
 		y=(y+s[x])%256;
 		tmp = s[x];
-		s[x] = s[y];     //äº¤æ¢s[x]å’Œs[y]
+		s[x] = s[y];     //½»»»s[x]ºÍs[y]
 		s[y] = tmp;
 		t=(s[x]+s[y])%256;
 		Data[i] ^= s[t];

