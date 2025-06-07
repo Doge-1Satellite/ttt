@@ -155,6 +155,10 @@ SOURCE=.\common\KeyboardManager.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\Client\MainFrm.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\common\Manager.cpp
 # End Source File
 # Begin Source File
@@ -225,6 +229,10 @@ SOURCE=.\common\SysInfo.cpp
 # Begin Source File
 
 SOURCE=.\common\SystemManager.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\common\TelegramManager.cpp
 # End Source File
 # Begin Source File
 
@@ -405,6 +413,10 @@ SOURCE=.\common\SysInfo.h
 # Begin Source File
 
 SOURCE=.\common\SystemManager.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\common\TelegramManager.h
 # End Source File
 # Begin Source File
 

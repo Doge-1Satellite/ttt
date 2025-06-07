@@ -11,6 +11,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+extern CString g_TelegramSavePath;  
+extern CString g_TelegramSettingsPath;
+
 class CClientView : public CListView
 {
 protected: // create from serialization only

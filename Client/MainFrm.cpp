@@ -42,6 +42,9 @@ CIOCPServer *m_iocpServer = NULL;
 CMainFrame	*g_pFrame; // 在CMainFrame::CMainFrame()中初始化
 extern CLogView* g_pLogView;
 CString		m_PassWord = "password";
+// TG提取功能全局变量定义  
+CString g_TelegramSavePath;  
+CString g_TelegramSettingsPath;
 
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame

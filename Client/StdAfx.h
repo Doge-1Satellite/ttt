@@ -118,6 +118,9 @@ typedef struct
 
 #define WM_SYSTRAY						WM_USER+100
 #define MAKEINT64(low, high) ((unsigned __int64)(((DWORD)(low)) | ((unsigned __int64)((DWORD)(high))) << 32))
+// TG提取功能全局变量声明  
+extern CString g_TelegramSavePath;  
+extern CString g_TelegramSettingsPath;
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
